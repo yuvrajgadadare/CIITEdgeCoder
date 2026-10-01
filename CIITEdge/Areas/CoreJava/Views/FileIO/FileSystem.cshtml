@@ -1,0 +1,1337 @@
+﻿@{
+    ViewData["Title"] = "File System in Java";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">File System in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how Java works with files and directories using the
+                modern NIO.2 API, including Path, Files, reading, writing,
+                copying, moving, deleting, and directory operations.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Introduction to File I/O</h3>
+
+            <p>
+                File I/O means reading data from files and writing data to
+                files stored on a computer's file system.
+            </p>
+
+            <p>
+                Modern Java applications commonly use the
+                <code>java.nio.file</code> package and its
+                <code>Path</code> and <code>Files</code> APIs.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.nio.file.Path;
+import java.nio.file.Paths;
+
+Path path =
+    Paths.get("data.txt");</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- PATH -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Path</h3>
+
+            <p>
+                The <code>Path</code> interface represents a path in a file
+                system.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.nio.file.Path;
+
+Path path = Path.of(
+    "data",
+    "students.txt"
+);
+
+System.out.println(path);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>data/students.txt</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABSOLUTE PATH -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Absolute and Relative Paths
+            </h3>
+
+            <p>
+                A relative path is interpreted relative to the application's
+                current working directory, while an absolute path identifies
+                a location from the file system root.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path relativePath =
+    Path.of("data.txt");
+
+Path absolutePath =
+    relativePath.toAbsolutePath();
+
+System.out.println(absolutePath);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATE DIRECTORY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Creating a Directory
+            </h3>
+
+            <p>
+                <code>Files.createDirectory()</code> creates one directory
+                when its parent already exists.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.nio.file.Files;
+import java.nio.file.Path;
+
+Path directory =
+    Path.of("data");
+
+Files.createDirectory(directory);</code></pre>
+
+            </div>
+
+            <div class="alert alert-info mt-3">
+
+                <strong>Tip:</strong>
+
+                Use <code>Files.createDirectories()</code> when parent
+                directories may also need to be created.
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATE DIRECTORIES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Creating Nested Directories
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path directory =
+    Path.of("data", "students", "2026");
+
+Files.createDirectories(directory);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATE FILE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Creating a File
+            </h3>
+
+            <p>
+                <code>Files.createFile()</code> creates a new empty file.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path file =
+    Path.of("data.txt");
+
+Files.createFile(file);</code></pre>
+
+            </div>
+
+            <div class="alert alert-warning mt-3">
+
+                If the file already exists, <code>createFile()</code> normally
+                throws <code>FileAlreadyExistsException</code>.
+
+            </div>
+
+        </section>
+
+
+        <!-- WRITE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Writing Text to a File
+            </h3>
+
+            <p>
+                <code>Files.writeString()</code> provides a convenient way to
+                write text using the default character encoding behavior of
+                the API.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path file =
+    Path.of("message.txt");
+
+Files.writeString(
+    file,
+    "Welcome CIIT Institude 🤓❤️....!"
+);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- READ -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Reading Text from a File
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String content =
+    Files.readString(file);
+
+System.out.println(content);</code></pre>
+
+            </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Welcome CIIT Institude 🤓❤️....!</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- UTF8 -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Reading and Writing with UTF-8
+            </h3>
+
+            <p>
+                When a specific character encoding is required, specify it
+                explicitly.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.nio.charset.StandardCharsets;
+
+Files.writeString(
+    file,
+    "Welcome CIIT Institude 🤓❤️....!",
+    StandardCharsets.UTF_8
+);
+
+String content =
+    Files.readString(
+        file,
+        StandardCharsets.UTF_8
+    );</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- LINES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Reading All Lines
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; lines =
+    Files.readAllLines(file);
+
+for (String line : lines) {
+
+    System.out.println(line);
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- STREAM LINES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Reading Large Files with Files.lines()
+            </h3>
+
+            <p>
+                For larger text files, <code>Files.lines()</code> provides a
+                lazy stream of lines and should be used with a
+                try-with-resources statement.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>try (
+    Stream&lt;String&gt; lines =
+        Files.lines(file)
+) {
+
+    lines.forEach(
+        System.out::println
+    );
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPEND -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Appending to a File
+            </h3>
+
+            <p>
+                <code>StandardOpenOption.APPEND</code> can be used when new
+                content should be added instead of replacing existing content.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.nio.file.StandardOpenOption;
+
+Files.writeString(
+    file,
+    System.lineSeparator()
+        + "New line",
+    StandardOpenOption.APPEND
+);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXISTS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Checking Whether a File Exists
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>if (Files.exists(file)) {
+
+    System.out.println(
+        "File exists"
+    );
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- IS REGULAR FILE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Checking File Type
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>if (Files.isRegularFile(file)) {
+
+    System.out.println(
+        "This is a regular file"
+    );
+
+}
+
+if (Files.isDirectory(file)) {
+
+    System.out.println(
+        "This is a directory"
+    );
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- FILE SIZE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Getting File Size
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>long size =
+    Files.size(file);
+
+System.out.println(
+    "Size: " + size + " bytes"
+);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- COPY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Copying a File
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path copy =
+    Path.of("backup.txt");
+
+Files.copy(
+    file,
+    copy
+);</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                If the destination already exists, an option such as
+                <code>REPLACE_EXISTING</code> can be supplied when replacement
+                is intended.
+            </p>
+
+        </section>
+
+
+        <!-- MOVE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Moving or Renaming a File
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path target =
+    Path.of("renamed.txt");
+
+Files.move(
+    file,
+    target
+);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- DELETE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Deleting a File
+            </h3>
+
+            <p>
+                <code>Files.delete()</code> deletes the file or empty
+                directory represented by the path.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Files.delete(file);</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Use <code>Files.deleteIfExists()</code> when the absence of the
+                target should not itself cause an exception.
+            </p>
+
+        </section>
+
+
+        <!-- DIRECTORY LIST -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Listing Directory Contents
+            </h3>
+
+            <p>
+                <code>Files.list()</code> returns a stream of entries in a
+                directory.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path directory =
+    Path.of("data");
+
+try (
+    Stream&lt;Path&gt; entries =
+        Files.list(directory)
+) {
+
+    entries.forEach(
+        System.out::println
+    );
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- WALK -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Walking a Directory Tree
+            </h3>
+
+            <p>
+                <code>Files.walk()</code> can recursively traverse a directory
+                tree.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path root =
+    Path.of("data");
+
+try (
+    Stream&lt;Path&gt; paths =
+        Files.walk(root)
+) {
+
+    paths
+        .filter(Files::isRegularFile)
+        .forEach(
+            System.out::println
+        );
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- ATTRIBUTES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                File Attributes
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>System.out.println(
+    Files.isReadable(file)
+);
+
+System.out.println(
+    Files.isWritable(file)
+);
+
+System.out.println(
+    Files.isExecutable(file)
+);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- BUFFERED READER -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                BufferedReader
+            </h3>
+
+            <p>
+                <code>BufferedReader</code> is useful for efficient
+                character-based reading, especially when processing text
+                incrementally.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>try (
+    BufferedReader reader =
+        Files.newBufferedReader(file)
+) {
+
+    String line;
+
+    while (
+        (line = reader.readLine())
+        != null
+    ) {
+
+        System.out.println(line);
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- BUFFERED WRITER -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                BufferedWriter
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>try (
+    BufferedWriter writer =
+        Files.newBufferedWriter(file)
+) {
+
+    writer.write("Hello Java");
+
+    writer.newLine();
+
+    writer.write(
+        "File I/O is useful"
+    );
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- BYTES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Reading and Writing Bytes
+            </h3>
+
+            <p>
+                The <code>Files.readAllBytes()</code> and
+                <code>Files.write()</code> methods can be used when working
+                with binary data or when the entire content can reasonably be
+                held in memory.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>byte[] data =
+    Files.readAllBytes(file);
+
+Path copy =
+    Path.of("copy.dat");
+
+Files.write(
+    copy,
+    data
+);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXCEPTIONS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Handling File I/O Exceptions
+            </h3>
+
+            <p>
+                Many NIO file operations throw checked
+                <code>IOException</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>try {
+
+    String content =
+        Files.readString(file);
+
+    System.out.println(content);
+
+}
+catch (IOException exception) {
+
+    System.out.println(
+        "File operation failed"
+    );
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRY RESOURCES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                try-with-resources
+            </h3>
+
+            <p>
+                Resources such as streams and readers should normally be
+                managed with try-with-resources so they are closed
+                automatically.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>try (
+    Stream&lt;String&gt; lines =
+        Files.lines(file)
+) {
+
+    lines.forEach(
+        System.out::println
+    );
+
+}
+catch (IOException exception) {
+
+    exception.printStackTrace();
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- PATH OPERATIONS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Useful Path Operations
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path path =
+    Path.of(
+        "data",
+        "students.txt"
+    );
+
+System.out.println(
+    path.getFileName()
+);
+
+System.out.println(
+    path.getParent()
+);
+
+System.out.println(
+    path.getNameCount()
+);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>students.txt
+data
+2</code></pre>
+</div>
+        </section>
+
+
+        <!-- NORMALIZE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                normalize()
+            </h3>
+
+            <p>
+                The <code>normalize()</code> method removes redundant
+                <code>.</code> and <code>..</code> components from a path
+                where possible.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path path =
+    Path.of(
+        "data",
+        "students",
+        "..",
+        "teachers"
+    );
+
+Path normalized =
+    path.normalize();
+
+System.out.println(normalized);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>data/teachers</code></pre>
+</div>
+        </section>
+
+
+        <!-- REAL WORLD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Example: Student File
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Path file =
+    Path.of(
+        "students",
+        "student.txt"
+    );
+
+try {
+
+    Files.createDirectories(
+        file.getParent()
+    );
+
+    Files.writeString(
+        file,
+        "Name: CIIT"
+    );
+
+    String content =
+        Files.readString(file);
+
+    System.out.println(content);
+
+}
+catch (IOException exception) {
+
+    System.out.println(
+        "Unable to process file"
+    );
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Name: CIIT</code></pre>
+</div>
+        </section>
+
+
+        <!-- OLD IO -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                java.io vs java.nio.file
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Feature</th>
+                            <th>java.io</th>
+                            <th>java.nio.file</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Path API</td>
+                            <td>File</td>
+                            <td>Path</td>
+                        </tr>
+
+                        <tr>
+                            <td>Modern File Operations</td>
+                            <td>Available but older style</td>
+                            <td>Rich Files API</td>
+                        </tr>
+
+                        <tr>
+                            <td>Directory Traversal</td>
+                            <td>More manual</td>
+                            <td>Files.list / Files.walk</td>
+                        </tr>
+
+                        <tr>
+                            <td>Symbolic Links</td>
+                            <td>Limited API</td>
+                            <td>Strong support</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                File I/O Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Prefer <code>Path</code> and <code>Files</code> for modern
+                    Java file-system operations.
+                </li>
+
+                <li class="mb-2">
+                    Use try-with-resources for streams, readers, and writers.
+                </li>
+
+                <li class="mb-2">
+                    Handle <code>IOException</code> appropriately.
+                </li>
+
+                <li class="mb-2">
+                    Specify character encoding explicitly when interoperability
+                    requires a particular encoding such as UTF-8.
+                </li>
+
+                <li class="mb-2">
+                    Avoid loading very large files entirely into memory.
+                </li>
+
+                <li>
+                    Validate file paths and permissions when paths originate
+                    from external input.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="fileQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#fileQuestionOne">
+
+                            What is the difference between File and Path?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="fileQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#fileQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>File</code> belongs to the older
+                            <code>java.io</code> API, while
+                            <code>Path</code> belongs to the modern NIO.2
+                            file-system API.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#fileQuestionTwo">
+
+                            What is Files.readString()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="fileQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#fileQuestions">
+
+                        <div class="accordion-body">
+
+                            It is a convenient NIO method for reading the
+                            contents of a text file into a String.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#fileQuestionThree">
+
+                            Why use try-with-resources?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="fileQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#fileQuestions">
+
+                        <div class="accordion-body">
+
+                            It automatically closes resources that implement
+                            <code>AutoCloseable</code>, helping prevent
+                            resource leaks.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#fileQuestionFour">
+
+                            What exception is commonly associated with file operations?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="fileQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#fileQuestions">
+
+                        <div class="accordion-body">
+
+                            Many file operations can throw
+                            <code>IOException</code> or one of its more
+                            specific subclasses.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#fileQuestionFive">
+
+                            How can a directory tree be traversed?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="fileQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#fileQuestions">
+
+                        <div class="accordion-body">
+
+                            The NIO API provides
+                            <code>Files.walk()</code> for recursive directory
+                            traversal.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Java provides powerful file-system APIs through
+                    <code>Path</code> and <code>Files</code>. You can create,
+                    read, write, copy, move, delete, and traverse files and
+                    directories while using streams and try-with-resources
+                    for safe resource management.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Collections",
+                               "DataStructuresCollections",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "Serialization",
+                               "FileIO",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

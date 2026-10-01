@@ -1,0 +1,424 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Box Model";
+}
+
+<style>
+
+    /* ================================================= */
+    /* PAGE */
+    /* ================================================= */
+
+    #css-box-model-page {
+        color: #212529;
+    }
+
+        #css-box-model-page .content-section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+            #css-box-model-page .content-section > h1 {
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            #css-box-model-page .content-section > h2 {
+                font-weight: 700;
+                margin-top: 35px;
+                margin-bottom: 15px;
+            }
+
+            #css-box-model-page .content-section > p {
+                line-height: 1.7;
+            }
+
+
+        /* ================================================= */
+        /* DIAGRAM */
+        /* ================================================= */
+
+        #css-box-model-page .box-model-diagram {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #css-box-model-page .margin-layer {
+            background-color: #ffe0b2;
+            border: 2px dashed #f57c00;
+            padding: 25px;
+            display: inline-block;
+        }
+
+        #css-box-model-page .border-layer {
+            background-color: #fff9c4;
+            border: 6px solid #fbc02d;
+            padding: 20px;
+        }
+
+        #css-box-model-page .padding-layer {
+            background-color: #c8e6c9;
+            border: 2px dashed #388e3c;
+            padding: 20px;
+        }
+
+        #css-box-model-page .content-layer {
+            background-color: #bbdefb;
+            border: 2px solid #1976d2;
+            padding: 25px 40px;
+            font-weight: 700;
+        }
+
+
+        /* ================================================= */
+        /* CODE */
+        /* ================================================= */
+
+        #css-box-model-page .code-box {
+            background-color: #212529;
+            color: #f8f9fa;
+            border-radius: 6px;
+            padding: 18px;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+
+            #css-box-model-page .code-box pre {
+                margin: 0;
+                white-space: pre-wrap;
+            }
+
+
+        /* ================================================= */
+        /* OUTPUT */
+        /* ================================================= */
+
+        #css-box-model-page .browser-output {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        #css-box-model-page .output-box {
+            width: 240px;
+            margin: 20px auto;
+            border: 5px solid #2563eb;
+            padding: 20px;
+            background-color: #dbeafe;
+            text-align: center;
+            box-sizing: content-box;
+        }
+
+        #css-box-model-page .output-content {
+            background-color: #bfdbfe;
+            padding: 15px;
+        }
+
+
+        /* ================================================= */
+        /* SUMMARY */
+        /* ================================================= */
+
+        #css-box-model-page .summary-box {
+            background-color: #e0f7fa;
+            border: 1px solid #90e0ef;
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin-top: 30px;
+        }
+
+            #css-box-model-page .summary-box h2 {
+                color: #075985;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            #css-box-model-page .summary-box p {
+                color: #075985;
+                margin-bottom: 0;
+                line-height: 1.6;
+            }
+
+</style>
+
+
+<div id="css-box-model-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS Box Model
+                </h1>
+
+                <p>
+                    The CSS Box Model explains how every HTML element is
+                    displayed as a rectangular box on a web page.
+                </p>
+
+                <p>
+                    Each element consists of four main parts:
+                    <strong>Content, Padding, Border, and Margin.</strong>
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>
+                    CSS Box Model Diagram
+                </h2>
+
+                <div class="box-model-diagram">
+
+                    <div class="margin-layer">
+
+                        <strong>Margin</strong>
+
+                        <div class="border-layer">
+
+                            <strong>Border</strong>
+
+                            <div class="padding-layer">
+
+                                <strong>Padding</strong>
+
+                                <div class="content-layer">
+
+                                    Content
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SIMPLE EXPLANATION -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Simple Explanation
+                </h2>
+
+                <p>
+                    Think of an HTML element like a box.
+                    The actual content is placed in the center.
+                    Padding creates space around the content.
+                    Border surrounds the padding.
+                    Margin creates space outside the border.
+                </p>
+
+                <ul>
+
+                    <li>
+                        <strong>Content:</strong>
+                        The actual text, image, or other element.
+                    </li>
+
+                    <li>
+                        <strong>Padding:</strong>
+                        Space between the content and border.
+                    </li>
+
+                    <li>
+                        <strong>Border:</strong>
+                        The visible boundary around the element.
+                    </li>
+
+                    <li>
+                        <strong>Margin:</strong>
+                        Space outside the border.
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- CODE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Code Example
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>.box {
+    width: 240px;
+    margin: 20px;
+    border: 5px solid #2563eb;
+    padding: 20px;
+    background-color: #dbeafe;
+}</code></pre>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- OUTPUT -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Output
+                </h2>
+
+                <div class="browser-output">
+
+                    <div class="output-box">
+
+                        <div class="output-content">
+
+                            CIIT Training Institute
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BOX MODEL ORDER -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Box Model Order
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Part</th>
+                                <th>Description</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Content</td>
+                                <td>Actual text, image, or element content.</td>
+                            </tr>
+
+                            <tr>
+                                <td>Padding</td>
+                                <td>Space between content and border.</td>
+                            </tr>
+
+                            <tr>
+                                <td>Border</td>
+                                <td>Boundary surrounding the element.</td>
+                            </tr>
+
+                            <tr>
+                                <td>Margin</td>
+                                <td>Space outside the border.</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        The CSS Box Model consists of Content, Padding,
+                        Border, and Margin. Understanding these four
+                        parts is essential for controlling spacing,
+                        sizing, and layout in CSS.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- NAVIGATION -->
+                <!-- ================================================= -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("WebFonts", "TextFonts", new { area = "CSS" })">
+
+                            ← Previous: Web Fonts
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("WidthAndHeight", "BoxModel", new { area = "CSS" })">
+
+                            Next: Width & Height →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

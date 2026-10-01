@@ -1,0 +1,884 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript in the Browser";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-browser-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-browser-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-browser-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-browser-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-browser-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-browser-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-browser-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #javascript-browser-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-browser-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGES
+       ========================================================= */
+
+    #javascript-browser-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-browser-page .browser-image {
+        width: 100%;
+        max-height: 420px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-browser-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0 5px;
+    }
+
+
+    /* =========================================================
+       BROWSER PARTS
+       ========================================================= */
+
+    #javascript-browser-page .browser-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-browser-page .browser-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-browser-page .browser-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       FLOW
+       ========================================================= */
+
+    #javascript-browser-page .flow-diagram {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-browser-page .flow-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-browser-page .flow-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-browser-page .flow-box {
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        padding: 14px 18px;
+        min-width: 130px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-browser-page .flow-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-browser-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-browser-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-browser-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-browser-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-browser-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        min-width: 105px;
+    }
+
+    #javascript-browser-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-browser-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-browser-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-browser-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-browser-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-browser-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-browser-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-browser-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-browser-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-browser-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-browser-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-browser-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - TUTORIAL CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    JavaScript in the Browser
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript works inside a web browser
+                    and how it can interact with web pages and browser features.
+                </p>
+
+
+                <!-- =================================================
+                     INTRODUCTION
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript Runs in the Browser
+                </h2>
+
+                <p class="section-text">
+                    When you open a web page, the browser can load and
+                    execute JavaScript code.
+                </p>
+
+                <p class="section-text">
+                    JavaScript can respond to user actions, change page
+                    content, read form values, and use browser features.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE 1
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting/document-window-navigator.png"
+                         alt="Window Document and Navigator browser objects"
+                         class="browser-image" />
+
+                    <p class="image-caption">
+                        JavaScript can work with browser objects such as
+                        Window, Document, and Navigator.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT BROWSER OBJECTS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Browser Objects
+                </h2>
+
+                <p class="section-text">
+                    Three useful browser objects are
+                    <strong>window</strong>, <strong>document</strong>,
+                    and <strong>navigator</strong>.
+                </p>
+
+
+                <div class="row g-3 mt-2">
+
+                    <div class="col-md-4">
+
+                        <div class="browser-card">
+
+                            <h5>
+                                Window
+                            </h5>
+
+                            <p>
+                                Represents the browser window or tab
+                                where the web page is running.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="browser-card">
+
+                            <h5>
+                                Document
+                            </h5>
+
+                            <p>
+                                Represents the current web page and
+                                provides access to the DOM.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="browser-card">
+
+                            <h5>
+                                Navigator
+                            </h5>
+
+                            <p>
+                                Provides information about the browser
+                                environment.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE 2
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting/dom-screenshot.png"
+                         alt="Document Object Model tree"
+                         class="browser-image" />
+
+                    <p class="image-caption">
+                        The DOM represents the structure of an HTML page
+                        as a tree of objects.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SIMPLE FLOW
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How JavaScript Interacts with the Browser
+                </h2>
+
+                <div class="flow-diagram">
+
+                    <div class="flow-title">
+                        Simple Browser Interaction Flow
+                    </div>
+
+                    <div class="flow-container">
+
+                        <div class="flow-box">
+                            Web Page
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Browser
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            JavaScript
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Web APIs
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Result
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     DOM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript and the DOM
+                </h2>
+
+                <p class="section-text">
+                    DOM means Document Object Model. It represents
+                    the HTML page as a tree of objects.
+                </p>
+
+                <p class="section-text">
+                    JavaScript can use the DOM to find HTML elements
+                    and change their content.
+                </p>
+
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Example
+                    </h5>
+
+                    <p>
+                        JavaScript can select a heading and change its
+                        text without reloading the entire page.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     DOM CODE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    DOM Example
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const heading = document.querySelector("h1");
+
+heading.textContent = "Welcome to CIIT Training Institute!";</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     BROWSER API EXAMPLE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Browser API Example
+                </h2>
+
+                <p class="section-text">
+                    JavaScript can also read information provided by
+                    browser APIs.
+                </p>
+
+
+                <!-- CODE -->
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>console.log("Welcome to CIIT Training Institute!");
+console.log("JavaScript is running in the browser.");
+console.log("Browser Language:", navigator.language);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryBrowserCode()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example Output
+                </h2>
+
+                <div class="output-box">
+
+                    Welcome to CIIT Training Institute!<br />
+                    JavaScript is running in the browser.<br />
+                    Browser Language: en-US
+
+                </div>
+
+
+                <!-- =================================================
+                     WEB APIS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Common Web APIs
+                </h2>
+
+                <p class="section-text">
+                    Browsers provide Web APIs that JavaScript can use
+                    for different browser-related tasks.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Examples
+                    </h5>
+
+                    <p class="mb-2">
+                        • DOM API
+                    </p>
+
+                    <p class="mb-2">
+                        • Web Storage API
+                    </p>
+
+                    <p class="mb-2">
+                        • Fetch API
+                    </p>
+
+                    <p class="mb-2">
+                        • Timer APIs
+                    </p>
+
+                    <p class="mb-0">
+                        • Web Workers API
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     CIIT EXAMPLE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    CIIT Training Institute Example
+                </h2>
+
+                <p class="section-text">
+                    JavaScript can be used to create interactive
+                    learning websites such as the CIIT Training Institute
+                    tutorial platform.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const institute = "CIIT Training Institute";
+
+console.log("Welcome to " + institute);
+console.log("Learn JavaScript Step by Step.");</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryCIITCode()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Welcome to CIIT Training Institute<br />
+                    Learn JavaScript Step by Step.
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        JavaScript can run inside a web browser and interact
+                        with web pages and browser features. The Window,
+                        Document, and Navigator objects are important parts
+                        of the browser environment. JavaScript can also use
+                        Web APIs to build interactive web applications.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("HowJavaScriptWorks", "Introduction", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: How JavaScript Works
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("DeveloperTools", "Introduction", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Browser Developer Tools
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function tryBrowserCode() {
+
+        const code =
+            'console.log("Welcome to CIIT Training Institute!");\n' +
+            'console.log("JavaScript is running in the browser.");\n' +
+            'console.log("Browser Language:", navigator.language);';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryCIITCode() {
+
+        const code =
+            'const institute = "CIIT Training Institute";\n' +
+            '\n' +
+            'console.log("Welcome to " + institute);\n' +
+            'console.log("Learn JavaScript Step by Step.");';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+</script>

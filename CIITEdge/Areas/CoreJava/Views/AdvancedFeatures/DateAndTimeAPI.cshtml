@@ -1,0 +1,1485 @@
+﻿@{
+    ViewData["Title"] = "Date and Time API in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <!-- HEADER -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Date and Time API in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn the modern Java Date and Time API using LocalDate,
+                LocalTime, LocalDateTime, ZonedDateTime, Instant, Duration,
+                Period, formatting, parsing, and time-zone handling.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Why Use the Modern Date and Time API?</h3>
+
+            <p>
+                Modern Java applications should generally use the
+                <code>java.time</code> package for new date and time code.
+            </p>
+
+            <p>
+                The API provides immutable and thread-safe types for
+                representing dates, times, date-time combinations, instants,
+                durations, periods, and time zones.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>java.time
+    │
+    ├── LocalDate
+    ├── LocalTime
+    ├── LocalDateTime
+    ├── ZonedDateTime
+    ├── Instant
+    ├── Duration
+    └── Period</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- LOCAL DATE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                LocalDate
+            </h3>
+
+            <p>
+                <code>LocalDate</code> represents a date without a time and
+                without a time zone.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.LocalDate;
+
+LocalDate today =
+    LocalDate.now();
+
+System.out.println(today);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- CREATE DATE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Creating a LocalDate
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDate date =
+    LocalDate.of(
+        2026,
+        9,
+        5
+    );
+
+System.out.println(date);</code></pre>
+            </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>2026-09-05</code></pre>
+</div>
+        </section>
+
+
+        <!-- DATE METHODS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                LocalDate Methods
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDate date =
+    LocalDate.of(
+        2026,
+        9,
+        5
+    );
+
+System.out.println(
+    date.getYear()
+);
+
+System.out.println(
+    date.getMonth()
+);
+
+System.out.println(
+    date.getDayOfMonth()
+);
+
+System.out.println(
+    date.getDayOfWeek()
+);</code></pre>
+            </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>2026
+SEPTEMBER
+5
+SATURDAY</code></pre>
+</div>
+        </section>
+
+
+        <!-- PLUS MINUS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Adding and Removing Date Values
+            </h3>
+
+            <p>
+                Date-time objects are immutable. Methods such as
+                <code>plusDays()</code> return a new value rather than
+                modifying the existing object.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDate date =
+    LocalDate.of(
+        2026,
+        9,
+        5
+    );
+
+LocalDate nextWeek =
+    date.plusDays(7);
+
+LocalDate previousMonth =
+    date.minusMonths(1);
+
+System.out.println(nextWeek);
+System.out.println(previousMonth);</code></pre>
+            </div>
+    <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>2026-09-12
+2026-08-05</code></pre>
+</div>
+        </section>
+
+
+        <!-- LOCAL TIME -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                LocalTime
+            </h3>
+
+            <p>
+                <code>LocalTime</code> represents a time without a date and
+                without a time zone.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.LocalTime;
+
+LocalTime currentTime =
+    LocalTime.now();
+
+System.out.println(
+    currentTime
+);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- CREATE TIME -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Creating a LocalTime
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalTime time =
+    LocalTime.of(
+        14,
+        30,
+        15
+    );
+
+System.out.println(time);</code></pre>
+            </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>14:30:15</code></pre>
+</div>
+        </section>
+
+
+        <!-- LOCAL DATETIME -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                LocalDateTime
+            </h3>
+
+            <p>
+                <code>LocalDateTime</code> combines a date and time but does
+                not contain time-zone information.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.LocalDateTime;
+
+LocalDateTime now =
+    LocalDateTime.now();
+
+System.out.println(now);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- CREATE DATETIME -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Creating LocalDateTime
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDateTime meeting =
+    LocalDateTime.of(
+        2026,
+        9,
+        5,
+        10,
+        30
+    );
+
+System.out.println(meeting);</code></pre>
+            </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>2026-09-05T10:30</code></pre>
+</div>
+        </section>
+
+
+        <!-- ZONED -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                ZonedDateTime
+            </h3>
+
+            <p>
+                <code>ZonedDateTime</code> represents a date and time together
+                with a time zone.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+ZonedDateTime indiaTime =
+    ZonedDateTime.now(
+        ZoneId.of(
+            "Asia/Kolkata"
+        )
+    );
+
+System.out.println(indiaTime);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- ZONE ID -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                ZoneId
+            </h3>
+
+            <p>
+                <code>ZoneId</code> represents a time-zone identifier such as
+                <code>Asia/Kolkata</code> or <code>America/New_York</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>ZoneId zone =
+    ZoneId.of(
+        "Asia/Kolkata"
+    );
+
+System.out.println(zone);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Asia/Kolkata</code></pre>
+</div>
+        </section>
+
+
+        <!-- INSTANT -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Instant
+            </h3>
+
+            <p>
+                <code>Instant</code> represents a point on the UTC timeline.
+                It is useful for timestamps and machine-oriented time values.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.Instant;
+
+Instant timestamp =
+    Instant.now();
+
+System.out.println(
+    timestamp
+);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- OFFSET -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                OffsetDateTime
+            </h3>
+
+            <p>
+                <code>OffsetDateTime</code> represents a date and time with a
+                UTC offset.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.OffsetDateTime;
+
+OffsetDateTime value =
+    OffsetDateTime.now();
+
+System.out.println(value);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- PERIOD -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Period
+            </h3>
+
+            <p>
+                <code>Period</code> represents a date-based amount of time in
+                years, months, and days.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.Period;
+
+Period period =
+    Period.of(
+        1,
+        2,
+        10
+    );
+
+System.out.println(period);</code></pre>
+            </div>
+                    <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>P1Y2M10D</code></pre>
+</div>
+        </section>
+
+
+        <!-- PERIOD BETWEEN -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Period.between()
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDate start =
+    LocalDate.of(
+        2025,
+        1,
+        1
+    );
+
+LocalDate end =
+    LocalDate.of(
+        2026,
+        9,
+        5
+    );
+
+Period difference =
+    Period.between(
+        start,
+        end
+    );
+
+System.out.println(
+    difference.getYears()
+);
+
+System.out.println(
+    difference.getMonths()
+);
+
+System.out.println(
+    difference.getDays()
+);</code></pre>
+            </div>
+                        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>1
+8
+4</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- DURATION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Duration
+            </h3>
+
+            <p>
+                <code>Duration</code> represents a time-based amount such as
+                seconds and nanoseconds.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.Duration;
+
+Duration duration =
+    Duration.ofHours(5);
+
+System.out.println(
+    duration
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>PT5H</code></pre>
+</div>
+        </section>
+
+
+        <!-- DURATION BETWEEN -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Duration.between()
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalTime start =
+    LocalTime.of(
+        10,
+        0
+    );
+
+LocalTime end =
+    LocalTime.of(
+        12,
+        30
+    );
+
+Duration duration =
+    Duration.between(
+        start,
+        end
+    );
+
+System.out.println(
+    duration.toMinutes()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>150</code></pre>
+</div>
+        </section>
+
+
+        <!-- PERIOD VS DURATION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Period vs Duration
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Type</th>
+                            <th>Represents</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>Period</code></td>
+                            <td>Date-based amount such as years, months, days.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>Duration</code></td>
+                            <td>Time-based amount such as seconds and nanoseconds.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- FORMATTER -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                DateTimeFormatter
+            </h3>
+
+            <p>
+                <code>DateTimeFormatter</code> formats date and time objects
+                into strings and parses strings into date-time objects.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+LocalDate date =
+    LocalDate.of(
+        2026,
+        9,
+        5
+    );
+
+DateTimeFormatter formatter =
+    DateTimeFormatter.ofPattern(
+        "dd-MM-yyyy"
+    );
+
+String formatted =
+    date.format(
+        formatter
+    );
+
+System.out.println(formatted);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>05-09-2026</code></pre>
+</div>
+        </section>
+
+
+        <!-- PARSING -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Parsing a Date
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text =
+    "05-09-2026";
+
+DateTimeFormatter formatter =
+    DateTimeFormatter.ofPattern(
+        "dd-MM-yyyy"
+    );
+
+LocalDate date =
+    LocalDate.parse(
+        text,
+        formatter
+    );
+
+System.out.println(date);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>2026-09-05</code></pre>
+</div>
+        </section>
+
+
+        <!-- ISO -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                ISO Date Formats
+            </h3>
+
+            <p>
+                The Java time API provides standard ISO-based formatters such
+                as <code>DateTimeFormatter.ISO_LOCAL_DATE</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDate date =
+    LocalDate.of(
+        2026,
+        9,
+        5
+    );
+
+String value =
+    date.format(
+        DateTimeFormatter.ISO_LOCAL_DATE
+    );
+
+System.out.println(value);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>2026-09-05</code></pre>
+</div>
+        </section>
+
+
+        <!-- COMPARISON -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Comparing Dates
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDate first =
+    LocalDate.of(
+        2026,
+        1,
+        1
+    );
+
+LocalDate second =
+    LocalDate.of(
+        2026,
+        9,
+        5
+    );
+
+System.out.println(
+    first.isBefore(second)
+);
+
+System.out.println(
+    second.isAfter(first)
+);
+
+System.out.println(
+    first.isEqual(second)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>true
+true
+false</code></pre>
+</div>
+        </section>
+
+
+        <!-- WITH -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                with() Methods
+            </h3>
+
+            <p>
+                Date-time objects provide methods such as
+                <code>withYear()</code>, <code>withMonth()</code>, and
+                <code>withDayOfMonth()</code> to create modified values.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDate date =
+    LocalDate.of(
+        2026,
+        9,
+        5
+    );
+
+LocalDate modified =
+    date.withYear(2030);
+
+System.out.println(modified);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>2030-09-05</code></pre>
+</div>
+        </section>
+
+
+        <!-- MONTH ENUM -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Month and DayOfWeek
+            </h3>
+
+            <p>
+                The modern API provides enums such as <code>Month</code> and
+                <code>DayOfWeek</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDate date =
+    LocalDate.now();
+
+Month month =
+    date.getMonth();
+
+DayOfWeek day =
+    date.getDayOfWeek();
+
+System.out.println(month);
+System.out.println(day);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- TIME ZONE CONVERSION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Converting Between Time Zones
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>ZonedDateTime india =
+    ZonedDateTime.now(
+        ZoneId.of(
+            "Asia/Kolkata"
+        )
+    );
+
+ZonedDateTime newYork =
+    india.withZoneSameInstant(
+        ZoneId.of(
+            "America/New_York"
+        )
+    );
+
+System.out.println(india);
+System.out.println(newYork);</code></pre>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <strong>Important:</strong>
+                <code>withZoneSameInstant()</code> preserves the same instant
+                while displaying it in another time zone.
+            </div>
+
+        </section>
+
+
+        <!-- CLOCK -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Clock
+            </h3>
+
+            <p>
+                <code>Clock</code> provides an abstraction for obtaining the
+                current instant and time. It can also make time-dependent
+                application code easier to test.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.time.Clock;
+import java.time.Instant;
+
+Clock clock =
+    Clock.systemUTC();
+
+Instant now =
+    clock.instant();
+
+System.out.println(now);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- IMMUTABILITY -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Immutability
+            </h3>
+
+            <p>
+                Classes in the modern Java date and time API are immutable.
+                Operations return new objects rather than changing existing
+                instances.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LocalDate original =
+    LocalDate.of(
+        2026,
+        9,
+        5
+    );
+
+LocalDate changed =
+    original.plusDays(10);
+
+System.out.println(original);
+System.out.println(changed);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>2026-09-05
+2026-09-15</code></pre>
+</div>
+        </section>
+
+
+        <!-- LEGACY -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Legacy Date API
+            </h3>
+
+            <p>
+                Older Java applications may contain classes such as
+                <code>java.util.Date</code> and <code>java.util.Calendar</code>.
+                New code should generally prefer the <code>java.time</code>
+                API.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Legacy</th>
+                            <th>Modern Alternative</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>Date</code></td>
+                            <td><code>Instant</code> or another java.time type</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>Calendar</code></td>
+                            <td><code>ZonedDateTime</code> or related types</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>SimpleDateFormat</code></td>
+                            <td><code>DateTimeFormatter</code></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- REAL WORLD -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Example 👨‍🏫👀
+            </h3>
+
+            <p>
+                A booking application may store an instant and display the
+                booking time in the user's local time zone.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Instant bookingTime =
+    Instant.now();
+
+ZonedDateTime userTime =
+    bookingTime.atZone(
+        ZoneId.of(
+            "Asia/Kolkata"
+        )
+    );
+
+DateTimeFormatter formatter =
+    DateTimeFormatter.ofPattern(
+        "dd MMM yyyy HH:mm z"
+    );
+
+System.out.println(
+    userTime.format(formatter)
+);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Date and Time Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Prefer the <code>java.time</code> API for new code.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>LocalDate</code> when only a calendar date is
+                    required.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>LocalTime</code> when only a local time is
+                    required.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>Instant</code> for machine-oriented timestamps.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>ZonedDateTime</code> when time-zone information
+                    matters.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>Duration</code> for time-based amounts and
+                    <code>Period</code> for date-based amounts.
+                </li>
+
+                <li>
+                    Avoid using the legacy date API for new application code
+                    unless compatibility requires it.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="dateTimeQuestions">
+
+                <!-- Q1 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#dateQuestionOne">
+
+                            What is the Java Date and Time API?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="dateQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#dateTimeQuestions">
+
+                        <div class="accordion-body">
+
+                            The modern Java Date and Time API is provided mainly
+                            through the <code>java.time</code> package.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q2 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#dateQuestionTwo">
+
+                            What is the difference between LocalDate and LocalDateTime?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="dateQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#dateTimeQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>LocalDate</code> contains only a date, while
+                            <code>LocalDateTime</code> contains both a date and
+                            a time without a time zone.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q3 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#dateQuestionThree">
+
+                            What is ZonedDateTime?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="dateQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#dateTimeQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>ZonedDateTime</code> represents a date and
+                            time together with a time zone.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q4 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#dateQuestionFour">
+
+                            What is the difference between Period and Duration?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="dateQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#dateTimeQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>Period</code> represents date-based amounts
+                            such as years, months, and days, while
+                            <code>Duration</code> represents time-based amounts
+                            such as seconds and nanoseconds.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q5 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#dateQuestionFive">
+
+                            What is Instant?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="dateQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#dateTimeQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>Instant</code> represents a point on the UTC
+                            timeline and is useful for machine-oriented
+                            timestamps.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q6 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-parent="#dateTimeQuestions"
+                                data-bs-target="#dateQuestionSix">
+
+                            Why is java.time preferred over legacy Date and Calendar?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="dateQuestionSix"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#dateTimeQuestions">
+
+                        <div class="accordion-body">
+
+                            The modern API provides clearer types, immutable
+                            values, better time-zone support, and a more
+                            consistent design.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q7 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#dateQuestionSeven">
+
+                            Are java.time classes mutable?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="dateQuestionSeven"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#dateTimeQuestions">
+
+                        <div class="accordion-body">
+
+                            The main date and time value classes in
+                            <code>java.time</code> are immutable. Operations
+                            return new values instead of modifying existing
+                            instances.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">
+                    Summary
+                </h5>
+
+                <p class="mb-0">
+                    Java's modern Date and Time API provides LocalDate,
+                    LocalTime, LocalDateTime, ZonedDateTime, OffsetDateTime,
+                    Instant, Period, Duration, ZoneId, Clock, and
+                    DateTimeFormatter. These immutable types provide a
+                    consistent way to work with dates, times, timestamps,
+                    durations, and time zones.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Optional",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+
+            <a href="@Url.Action(
+                               "AsynchronousProgramming",
+                               "AsynchronousParallelProgramming",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+</div>

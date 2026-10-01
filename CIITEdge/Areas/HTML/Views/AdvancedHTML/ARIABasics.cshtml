@@ -1,0 +1,327 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "ARIA Basics";
+}
+
+<style>
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #343a40;
+        font-weight: 600;
+        margin-top: 22px;
+        margin-bottom: 10px;
+    }
+
+    .content-section p,
+    .content-section li {
+        line-height: 1.75;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        margin: 22px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 18px;
+    }
+
+    .diagram-flow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .diagram-box {
+        background: #fff;
+        border: 2px solid #4f46e5;
+        border-radius: 8px;
+        padding: 14px 18px;
+        text-align: center;
+        font-weight: 600;
+        min-width: 150px;
+    }
+
+    .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .example-card {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin: 16px 0;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <div class="col-lg-9 content-section">
+
+            <h1 class="mb-3">ARIA Basics</h1>
+
+            <p>
+                ARIA stands for <strong>Accessible Rich Internet Applications</strong>.
+                It is a set of attributes that helps make web pages and interactive
+                elements easier to understand and use with assistive technologies.
+            </p>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                ARIA should improve accessibility when normal HTML elements are not
+                enough. Whenever possible, prefer semantic HTML elements such as
+                <code>&lt;button&gt;</code>, <code>&lt;nav&gt;</code>,
+                <code>&lt;main&gt;</code>, and <code>&lt;input&gt;</code>.
+            </div>
+
+            <h2>1. Why ARIA Is Used</h2>
+
+            <p>
+                Modern websites often contain interactive components such as menus,
+                dialogs, tabs, sliders, and custom buttons.
+                A custom element may not provide enough information to a screen reader.
+            </p>
+
+            <p>
+                ARIA allows developers to provide additional information about the
+                role, state, and properties of an element.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">How ARIA Helps Accessibility</div>
+
+                <div class="diagram-flow">
+                    <div class="diagram-box">HTML Element</div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">ARIA Role / State</div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">Assistive Technology</div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">Better User Understanding</div>
+                </div>
+            </div>
+
+            <h2>2. ARIA Roles</h2>
+
+            <p>
+                A <strong>role</strong> describes what an element represents.
+                For example, a custom element can be identified as a button.
+            </p>
+
+            <pre><code>&lt;div role="button"&gt;Save&lt;/div&gt;</code></pre>
+
+            <p>
+                The role tells assistive technology that the element is intended to
+                behave like a button.
+            </p>
+
+            <div class="info-box">
+                Use real semantic elements whenever possible.
+                A real <code>&lt;button&gt;</code> is generally preferable to a
+                <code>&lt;div role="button"&gt;</code>.
+            </div>
+
+            <h2>3. Common ARIA Roles</h2>
+
+            <div class="example-card">
+                <ul>
+                    <li><code>button</code> – identifies a button-like control.</li>
+                    <li><code>navigation</code> – identifies navigation content.</li>
+                    <li><code>dialog</code> – identifies a dialog or modal window.</li>
+                    <li><code>tab</code> – identifies a tab in a tab interface.</li>
+                    <li><code>tabpanel</code> – identifies content associated with a tab.</li>
+                </ul>
+            </div>
+
+            <h2>4. ARIA States and Properties</h2>
+
+            <p>
+                ARIA also provides attributes that describe the current state or
+                additional information about an element.
+            </p>
+
+            <p>
+                A common example is <code>aria-expanded</code>. It tells assistive
+                technology whether a collapsible section is currently expanded.
+            </p>
+
+            <pre><code>&lt;button aria-expanded="false"&gt;
+    Menu
+&lt;/button&gt;</code></pre>
+
+            <p>
+                When the menu opens, the value can be changed to:
+            </p>
+
+            <pre><code>aria-expanded="true"</code></pre>
+
+            <h2>5. aria-label</h2>
+
+            <p>
+                The <code>aria-label</code> attribute provides an accessible name
+                when visible text is not available or is not sufficient.
+            </p>
+
+            <pre><code>&lt;button aria-label="Close"&gt;
+    ×
+&lt;/button&gt;</code></pre>
+
+            <p>
+                A screen reader can use the label to identify the purpose of the
+                button.
+            </p>
+
+            <h2>6. aria-hidden</h2>
+
+            <p>
+                The <code>aria-hidden</code> attribute can indicate that an element
+                should not be exposed to assistive technology.
+            </p>
+
+            <pre><code>&lt;span aria-hidden="true"&gt;★&lt;/span&gt;</code></pre>
+
+            <p>
+                This can be useful for decorative content that does not provide
+                meaningful information to the user.
+            </p>
+
+            <h2>7. ARIA and Semantic HTML</h2>
+
+            <p>
+                Semantic HTML already provides important accessibility information.
+                Therefore, ARIA should not be added unnecessarily.
+            </p>
+
+            <pre><code>&lt;button&gt;Submit&lt;/button&gt;</code></pre>
+
+            <p>
+                This is usually better than recreating the same control using a
+                generic element and adding ARIA attributes.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple rule:</strong>
+                First choose the correct HTML element. Add ARIA when extra
+                accessibility information is genuinely needed.
+            </div>
+
+            <h2>8. Basic ARIA Example</h2>
+
+            <p>
+                The following example uses a button to control the visibility of
+                a menu.
+            </p>
+
+            <pre><code>&lt;button aria-expanded="false"&gt;
+    Open Menu
+&lt;/button&gt;
+
+&lt;div&gt;
+    Menu content
+&lt;/div&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <p>
+                When the menu is opened, JavaScript can update
+                <code>aria-expanded</code> from <code>false</code> to
+                <code>true</code>.
+            </p>
+
+            <h2>9. ARIA with JavaScript</h2>
+
+            <p>
+                ARIA states often change while the user interacts with a page.
+                JavaScript can update these attributes dynamically.
+            </p>
+
+            <pre><code>button.setAttribute("aria-expanded", "true");</code></pre>
+
+            <p>
+                This keeps the accessibility information synchronized with the
+                visible state of the component.
+            </p>
+
+            <h2>10. Best Practices for ARIA</h2>
+
+            <ul>
+                <li>Prefer semantic HTML elements first.</li>
+                <li>Use ARIA only when it provides useful accessibility information.</li>
+                <li>Keep ARIA states synchronized with the actual UI state.</li>
+                <li>Use meaningful accessible names for controls.</li>
+                <li>Test interactive components with keyboard navigation and assistive technologies.</li>
+            </ul>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    ARIA provides roles, states, and properties that help assistive
+                    technologies understand interactive web content. Use semantic HTML
+                    whenever possible and add ARIA only when additional accessibility
+                    information is required.
+                </p>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("HTMLAccessibility", "AdvancedHTML", new { area = "HTML" })">
+                    ← Previous: HTML Accessibility
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("BestPractices", "AdvancedHTML", new { area = "HTML" })">
+                    Next: HTML Best Practices →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

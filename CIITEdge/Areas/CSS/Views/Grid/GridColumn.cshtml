@@ -1,0 +1,846 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Grid Column";
+}
+
+<style>
+
+    #css-grid-column-page {
+        color: #212529;
+    }
+
+    #css-grid-column-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-grid-column-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-column-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-column-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-grid-column-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* Code */
+
+    #css-grid-column-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-grid-column-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* Explanation */
+
+    #css-grid-column-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-grid-column-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Diagram */
+
+    #css-grid-column-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-column-page .grid-diagram {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 100px);
+        gap: 10px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-grid-column-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* Highlighted Column */
+
+    #css-grid-column-page .highlight-column {
+        background-color: #f97316;
+        border: 3px solid #c2410c;
+    }
+
+    /* Output */
+
+    #css-grid-column-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-column-page .output-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 100px);
+        gap: 15px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-grid-column-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #css-grid-column-page .output-highlight {
+        background-color: orange;
+        border: 2px solid darkorange;
+    }
+
+    /* Property Cards */
+
+    #css-grid-column-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-grid-column-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-column-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Note */
+
+    #css-grid-column-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* Summary */
+
+    #css-grid-column-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-grid-column-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-column-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+    @@media (max-width: 991px) {
+
+        #css-grid-column-page .content-section {
+            padding: 20px;
+        }
+
+        #css-grid-column-page .grid-diagram,
+        #css-grid-column-page .output-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-grid-column-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS Grid Column
+                </h1>
+
+                <p>
+                    CSS Grid allows you to control where a Grid item
+                    starts and ends across the columns of a Grid
+                    container.
+                </p>
+
+                <p>
+                    The <strong>grid-column</strong> property is used
+                    to define the starting and ending column lines
+                    of a Grid item.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- WHAT IS GRID COLUMN -->
+                <!-- ================================================= -->
+
+                <h2>
+                    What is grid-column?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The <strong>grid-column</strong> property
+                        controls the horizontal position and width
+                        of a Grid item.
+                    </p>
+
+                    <p>
+                        It can be used to make an item span across
+                        one or more Grid columns.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC SYNTAX -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Basic Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    grid-column: 1 / 3;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The Grid item starts at
+                        <strong>column line 1</strong>
+                        and ends at
+                        <strong>column line 3</strong>.
+                    </p>
+
+                    <p>
+                        Therefore, the item spans across
+                        <strong>2 columns</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- COLUMN LINES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Understanding Grid Column Lines
+                </h2>
+
+                <p>
+                    Every Grid column has column lines.
+                    These lines are used to position Grid items.
+                </p>
+
+                <div class="diagram-box">
+
+                    <div class="grid-diagram">
+
+                        <div class="diagram-item">
+                            Column 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Column 2
+                        </div>
+
+                        <div class="diagram-item highlight-column">
+                            Column 3
+                        </div>
+
+                        <div class="diagram-item">
+                            Column 4
+                        </div>
+
+                        <div class="diagram-item">
+                            Column 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Column 2
+                        </div>
+
+                        <div class="diagram-item highlight-column">
+                            Column 3
+                        </div>
+
+                        <div class="diagram-item">
+                            Column 4
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        A four-column Grid has five vertical
+                        column lines.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- COLUMN START -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Starting at a Specific Column
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    grid-column-start: 2;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The Grid item starts at
+                        <strong>column line 2</strong>.
+                    </p>
+
+                    <p>
+                        The browser automatically determines the
+                        remaining placement when an end position
+                        is not specified.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- COLUMN END -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Ending at a Specific Column
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    grid-column-end: 4;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The Grid item ends at
+                        <strong>column line 4</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- START / END -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Using grid-column-start and grid-column-end
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The item starts at column line
+                        <strong>1</strong>.
+                    </p>
+
+                    <p>
+                        The item ends at column line
+                        <strong>4</strong>.
+                    </p>
+
+                    <p>
+                        Therefore, the item spans across
+                        <strong>3 columns</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SHORTHAND -->
+                <!-- ================================================= -->
+
+                <h2>
+                    grid-column Shorthand
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    grid-column: 1 / 4;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        This is a shorthand version of:
+                    </p>
+
+<pre><code>grid-column-start: 1;
+grid-column-end: 4;</code></pre>
+
+                    <p>
+                        The item spans from column line
+                        <strong>1</strong> to column line
+                        <strong>4</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SPAN -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Using span
+                </h2>
+
+                <p>
+                    The <strong>span</strong> keyword allows an item
+                    to span a specific number of columns.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    grid-column: span 2;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The item spans across
+                        <strong>2 columns</strong>.
+                    </p>
+
+                    <p>
+                        The starting position is determined by the
+                        Grid's automatic placement.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PRACTICAL EXAMPLE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Practical Example
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.header {
+    grid-column: 1 / 5;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The Grid contains four equal columns.
+                    </p>
+
+                    <p>
+                        The header starts at column line
+                        <strong>1</strong>
+                        and ends at column line
+                        <strong>5</strong>.
+                    </p>
+
+                    <p>
+                        Therefore, the header spans across all
+                        <strong>4 columns</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- OUTPUT -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Output
+                </h2>
+
+                <div class="browser-output">
+
+                    <div class="output-grid">
+
+                        <div class="output-item output-highlight">
+                            Header
+                        </div>
+
+                        <div class="output-item">
+                            Column 1
+                        </div>
+
+                        <div class="output-item">
+                            Column 2
+                        </div>
+
+                        <div class="output-item">
+                            Column 3
+                        </div>
+
+                        <div class="output-item">
+                            Column 4
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="mt-3">
+                    The <strong>Header</strong> spans all four Grid
+                    columns because the code uses
+                    <strong>grid-column: 1 / 5;</strong>.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- MULTIPLE COLUMNS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Spanning Multiple Columns
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    grid-column: 2 / 4;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The item starts at column line
+                        <strong>2</strong>
+                        and ends at column line
+                        <strong>4</strong>.
+                    </p>
+
+                    <p>
+                        Therefore, it occupies
+                        <strong>2 columns</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PROPERTY CARDS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Important Grid Column Properties
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                grid-column
+                            </h3>
+
+                            <p>
+                                Shorthand property used to define
+                                the start and end column lines.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                grid-column-start
+                            </h3>
+
+                            <p>
+                                Defines the starting column line
+                                of a Grid item.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                grid-column-end
+                            </h3>
+
+                            <p>
+                                Defines the ending column line
+                                of a Grid item.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- REAL WORLD -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Real-World Uses
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Website headers
+                    </li>
+
+                    <li>
+                        Dashboard layouts
+                    </li>
+
+                    <li>
+                        Navigation sections
+                    </li>
+
+                    <li>
+                        Featured content
+                    </li>
+
+                    <li>
+                        Course cards
+                    </li>
+
+                    <li>
+                        Admin dashboards
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- NOTE -->
+                <!-- ================================================= -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    The values in
+                    <strong>grid-column</strong>
+                    refer to Grid column lines, not directly to
+                    column numbers. For example,
+                    <strong>grid-column: 1 / 4;</strong>
+                    spans three Grid columns.
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>grid-column</strong> property
+                        controls the horizontal placement of a
+                        Grid item. It can define where an item starts
+                        and ends using column lines. The
+                        <strong>grid-column-start</strong> and
+                        <strong>grid-column-end</strong> properties
+                        provide individual control, while
+                        <strong>grid-column</strong> provides a
+                        convenient shorthand.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- NAVIGATION -->
+                <!-- ================================================= -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2 mb-md-0">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("GridGap", "Grid", new { area = "CSS" })">
+
+                            ← Previous: Grid Gap
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("GridRow", "Grid", new { area = "CSS" })">
+
+                            Next: Grid Row →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

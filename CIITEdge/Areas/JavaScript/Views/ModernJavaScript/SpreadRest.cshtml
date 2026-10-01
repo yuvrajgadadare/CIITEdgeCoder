@@ -1,0 +1,1050 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Spread & Rest Operators";
+}
+
+<style>
+
+    #spread-rest-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #spread-rest-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #spread-rest-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #spread-rest-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #spread-rest-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #spread-rest-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+    #spread-rest-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #spread-rest-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #spread-rest-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* IMAGE */
+
+    #spread-rest-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #spread-rest-page .spread-rest-visual {
+        width: 100%;
+        background: #f8f9fa;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    #spread-rest-page .image-caption {
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* DIAGRAM */
+
+    #spread-rest-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #spread-rest-page .diagram-title {
+        font-size: 21px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 22px;
+    }
+
+    #spread-rest-page .diagram-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #spread-rest-page .diagram-item {
+        background: #ffffff;
+        border: 2px solid #6d3fc0;
+        border-radius: 9px;
+        padding: 16px 22px;
+        font-weight: 600;
+        color: #212529;
+    }
+
+    #spread-rest-page .diagram-item.spread {
+        border-color: #6d3fc0;
+    }
+
+    #spread-rest-page .diagram-item.rest {
+        border-color: #198754;
+    }
+
+    #spread-rest-page .diagram-arrow {
+        font-size: 25px;
+        font-weight: 700;
+        color: #6d3fc0;
+    }
+
+    /* TABLE */
+
+    #spread-rest-page .comparison-wrapper {
+        overflow-x: auto;
+        margin: 25px 0;
+    }
+
+    #spread-rest-page .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+
+    #spread-rest-page .comparison-table th,
+    #spread-rest-page .comparison-table td {
+        border: 1px solid #dee2e6;
+        padding: 14px;
+        text-align: left;
+    }
+
+    #spread-rest-page .comparison-table th {
+        background: #5b21b6;
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    #spread-rest-page .comparison-table td {
+        color: #495057;
+        background: #ffffff;
+    }
+
+    /* CODE */
+
+    #spread-rest-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 22px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #spread-rest-page .code-box code {
+        color: #f8f9fa;
+    }
+
+    /* TRY IT */
+
+    #spread-rest-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 22px;
+    }
+
+    #spread-rest-page .try-it-btn {
+        background: #198754;
+        border: 1px solid #198754;
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #spread-rest-page .try-it-btn:hover {
+        background: #157347;
+        border-color: #157347;
+    }
+
+    /* OUTPUT */
+
+    #spread-rest-page .output-box {
+        background: #212529;
+        color: #ffffff;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 18px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    /* SUMMARY */
+
+    #spread-rest-page .summary-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #spread-rest-page .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #spread-rest-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* NAVIGATION */
+
+    #spread-rest-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    #spread-rest-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    #spread-rest-page .previous-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    #spread-rest-page .next-btn {
+        background: #5b21b6;
+        border: 1px solid #5b21b6;
+        color: #ffffff;
+    }
+
+    #spread-rest-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #spread-rest-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    @@media (max-width: 768px) {
+
+        #spread-rest-page .content-section {
+            padding: 20px;
+        }
+
+        #spread-rest-page .page-title {
+            font-size: 30px;
+        }
+
+        #spread-rest-page .section-title {
+            font-size: 23px;
+        }
+
+        #spread-rest-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #spread-rest-page .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        #spread-rest-page .diagram-row {
+            flex-direction: column;
+        }
+
+        #spread-rest-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+</style>
+
+
+<main id="spread-rest-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- PAGE HEADER -->
+
+                    <h1 class="page-title">
+                        Spread & Rest Operators
+                    </h1>
+
+                    <p class="lead-text">
+                        The spread and rest operators use the same
+                        <strong>...</strong> syntax, but they are used
+                        for different purposes in JavaScript.
+                    </p>
+
+
+                    <!-- INTRODUCTION -->
+
+                    <h2 class="section-title">
+                        What are Spread & Rest Operators?
+                    </h2>
+
+                    <p class="section-text">
+
+                        The <strong>spread operator</strong> expands the
+                        elements of an array or the properties of an
+                        object.
+
+                    </p>
+
+                    <p class="section-text">
+
+                        The <strong>rest operator</strong> collects
+                        multiple values into a single array.
+
+                    </p>
+
+
+                    <!-- CONCEPT -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p>
+                            <strong>Spread (...)</strong> means
+                            "expand or unpack values".
+                        </p>
+
+                        <p class="mb-0">
+                            <strong>Rest (...)</strong> means
+                            "collect or pack values".
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RELATED IMAGE / DIAGRAM
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <div class="spread-rest-visual">
+
+                            <svg width="100%"
+                                 height="350"
+                                 viewBox="0 0 900 350"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                                <rect width="900"
+                                      height="350"
+                                      fill="#f8f9fa" />
+
+                                <text x="450"
+                                      y="45"
+                                      text-anchor="middle"
+                                      font-size="27"
+                                      font-weight="700"
+                                      fill="#212529">
+
+                                    Spread vs Rest Operator
+
+                                </text>
+
+
+                                <!-- SPREAD -->
+
+                                <rect x="65"
+                                      y="90"
+                                      width="350"
+                                      height="180"
+                                      rx="14"
+                                      fill="#ffffff"
+                                      stroke="#6d3fc0"
+                                      stroke-width="3" />
+
+                                <text x="240"
+                                      y="125"
+                                      text-anchor="middle"
+                                      font-size="23"
+                                      font-weight="700"
+                                      fill="#5b21b6">
+
+                                    Spread Operator
+
+                                </text>
+
+                                <text x="240"
+                                      y="158"
+                                      text-anchor="middle"
+                                      font-size="23"
+                                      fill="#212529">
+
+                                    ...
+
+                                </text>
+
+                                <rect x="105"
+                                      y="180"
+                                      width="270"
+                                      height="55"
+                                      rx="8"
+                                      fill="#f8f9fa" />
+
+                                <text x="240"
+                                      y="214"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      fill="#198754">
+
+                                    [1, 2, 3] → 1, 2, 3
+
+                                </text>
+
+                                <text x="240"
+                                      y="252"
+                                      text-anchor="middle"
+                                      font-size="15"
+                                      fill="#495057">
+
+                                    Expands / Unpacks
+
+                                </text>
+
+
+                                <!-- REST -->
+
+                                <rect x="485"
+                                      y="90"
+                                      width="350"
+                                      height="180"
+                                      rx="14"
+                                      fill="#ffffff"
+                                      stroke="#198754"
+                                      stroke-width="3" />
+
+                                <text x="660"
+                                      y="125"
+                                      text-anchor="middle"
+                                      font-size="23"
+                                      font-weight="700"
+                                      fill="#198754">
+
+                                    Rest Operator
+
+                                </text>
+
+                                <text x="660"
+                                      y="158"
+                                      text-anchor="middle"
+                                      font-size="23"
+                                      fill="#212529">
+
+                                    ...
+
+                                </text>
+
+                                <rect x="525"
+                                      y="180"
+                                      width="270"
+                                      height="55"
+                                      rx="8"
+                                      fill="#f8f9fa" />
+
+                                <text x="660"
+                                      y="214"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      fill="#198754">
+
+                                    1, 2, 3 → [1, 2, 3]
+
+                                </text>
+
+                                <text x="660"
+                                      y="252"
+                                      text-anchor="middle"
+                                      font-size="15"
+                                      fill="#495057">
+
+                                    Collects / Packs
+
+                                </text>
+
+
+                                <text x="450"
+                                      y="315"
+                                      text-anchor="middle"
+                                      font-size="17"
+                                      font-weight="600"
+                                      fill="#495057">
+
+                                    Same ... syntax • Different purpose
+
+                                </text>
+
+                            </svg>
+
+                        </div>
+
+                        <p class="image-caption">
+                            Spread expands values, while Rest collects values.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         COMPARISON
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Spread vs Rest
+                    </h2>
+
+                    <div class="comparison-wrapper">
+
+                        <table class="comparison-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Spread</th>
+                                    <th>Rest</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Syntax</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Purpose</td>
+                                    <td>Expands values</td>
+                                    <td>Collects values</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Common Use</td>
+                                    <td>Arrays / Objects</td>
+                                    <td>Function parameters</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Direction</td>
+                                    <td>Unpack</td>
+                                    <td>Pack</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Spread with Arrays
+                    </h2>
+
+                    <p class="section-text">
+
+                        The spread operator can copy the elements of
+                        one array into another array.
+
+                    </p>
+
+                    <pre class="code-box"><code>let numbers = [10, 20, 30];
+
+let newNumbers = [...numbers, 40, 50];
+
+console.log(newNumbers);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="trySpreadRestExample1()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        [10, 20, 30, 40, 50]
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Combining Arrays
+                    </h2>
+
+                    <pre class="code-box"><code>let first = [1, 2, 3];
+let second = [4, 5, 6];
+
+let combined = [...first, ...second];
+
+console.log(combined);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="trySpreadRestExample2()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        [1, 2, 3, 4, 5, 6]
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Spread with Objects
+                    </h2>
+
+                    <pre class="code-box"><code>let student = {
+    name: "Rahul",
+    age: 22
+};
+
+let updatedStudent = {
+    ...student,
+    course: "JavaScript"
+};
+
+console.log(updatedStudent);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="trySpreadRestExample3()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        name: Rahul
+                        <br />
+                        age: 22
+                        <br />
+                        course: JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 4
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 4: Rest Parameters
+                    </h2>
+
+                    <p class="section-text">
+
+                        Rest parameters collect multiple arguments
+                        into an array.
+
+                    </p>
+
+                    <pre class="code-box"><code>function sum(...numbers) {
+
+    let total = 0;
+
+    for (let number of numbers) {
+        total = total + number;
+    }
+
+    return total;
+}
+
+console.log(sum(10, 20, 30));</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="trySpreadRestExample4()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        60
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 5
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 5: Rest with First Parameter
+                    </h2>
+
+                    <pre class="code-box"><code>function showStudent(name, ...subjects) {
+
+    console.log("Name:", name);
+    console.log("Subjects:", subjects);
+}
+
+showStudent("Amit", "JavaScript", "HTML", "CSS");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="trySpreadRestExample5()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Name: Amit
+                        <br />
+                        Subjects: JavaScript, HTML, CSS
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT NOTE
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Points
+                        </h5>
+
+                        <p>
+                            • Spread operator expands or unpacks values.
+                        </p>
+
+                        <p>
+                            • Rest operator collects multiple values.
+                        </p>
+
+                        <p>
+                            • Both use the <strong>...</strong> syntax.
+                        </p>
+
+                        <p class="mb-0">
+                            • Rest parameters are commonly used in functions.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+
+                            The spread operator is useful for expanding
+                            arrays and objects, while the rest operator
+                            is useful for collecting multiple values into
+                            an array. Both use the same three-dot
+                            <strong>...</strong> syntax.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("TemplateLiterals", "ModernJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            ← Previous: Template Literals
+
+                        </a>
+
+
+                        <a href="@Url.Action("Modules", "ModernJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            Next: JavaScript Modules →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function trySpreadRestExample1() {
+
+        const code =
+            'let numbers = [10, 20, 30];\\n' +
+            '\\n' +
+            'let newNumbers = [...numbers, 40, 50];\\n' +
+            '\\n' +
+            'console.log(newNumbers);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function trySpreadRestExample2() {
+
+        const code =
+            'let first = [1, 2, 3];\\n' +
+            'let second = [4, 5, 6];\\n' +
+            '\\n' +
+            'let combined = [...first, ...second];\\n' +
+            '\\n' +
+            'console.log(combined);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function trySpreadRestExample3() {
+
+        const code =
+            'let student = {\\n' +
+            '    name: "Rahul",\\n' +
+            '    age: 22\\n' +
+            '};\\n' +
+            '\\n' +
+            'let updatedStudent = {\\n' +
+            '    ...student,\\n' +
+            '    course: "JavaScript"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("name:", updatedStudent.name);\\n' +
+            'console.log("age:", updatedStudent.age);\\n' +
+            'console.log("course:", updatedStudent.course);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       ========================================================= */
+
+    function trySpreadRestExample4() {
+
+        const code =
+            'function sum(...numbers) {\\n' +
+            '    let total = 0;\\n' +
+            '\\n' +
+            '    for (let number of numbers) {\\n' +
+            '        total = total + number;\\n' +
+            '    }\\n' +
+            '\\n' +
+            '    return total;\\n' +
+            '}\\n' +
+            '\\n' +
+            'console.log(sum(10, 20, 30));';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 5
+       ========================================================= */
+
+    function trySpreadRestExample5() {
+
+        const code =
+            'function showStudent(name, ...subjects) {\\n' +
+            '    console.log("Name:", name);\\n' +
+            '    console.log("Subjects:", subjects);\\n' +
+            '}\\n' +
+            '\\n' +
+            'showStudent("Amit", "JavaScript", "HTML", "CSS");';
+
+        openCompiler(code);
+    }
+
+</script>

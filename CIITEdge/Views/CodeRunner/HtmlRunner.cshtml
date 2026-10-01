@@ -1,0 +1,355 @@
+﻿@{
+}
+
+<div class="container-fluid mt-3 px-4">
+
+    <h2 class="mb-3">
+        🌐 Interactive HTML & JS Code Playground
+    </h2>
+
+    <div class="row"
+         style="height: calc(100vh - 140px); min-height: 600px;">
+
+        <!-- ================================================= -->
+        <!-- SOURCE CODE EDITOR -->
+        <!-- ================================================= -->
+
+        <div class="col-md-6 d-flex flex-column h-100">
+
+            <div class="card border-0 shadow-sm flex-grow-1 d-flex flex-column bg-light p-2">
+
+                <label class="form-label fw-bold text-secondary mb-1">
+                    ✍️ Source Code Editor:
+                </label>
+
+                <!-- EMPTY EDITOR - NO DEFAULT CODE -->
+
+                <textarea id="codeEditor"
+                          class="form-control font-monospace p-3 text-white bg-dark flex-grow-1"
+                          style="resize: none;
+                                 font-size: 0.9rem;
+                                 line-height: 1.4;"></textarea>
+
+                <button id="runBtn"
+                        class="btn btn-success btn-lg w-100 mt-2 shadow-sm fw-bold">
+                    ▶ Render & Run Code
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- OUTPUT SECTION -->
+        <!-- ================================================= -->
+
+        <div class="col-md-6 d-flex flex-column h-100 mt-3 mt-md-0">
+
+            <!-- ================================================= -->
+            <!-- LIVE PREVIEW -->
+            <!-- ================================================= -->
+
+            <div class="card border-0 shadow-sm mb-3"
+                 style="height: 65%;">
+
+                <div class="card-header bg-secondary bg-opacity-10 fw-bold text-secondary py-2">
+
+                    🖥️ Live Preview Screen
+
+                </div>
+
+                <div class="card-body p-0 h-100">
+
+                    <iframe id="previewFrame"
+                            sandbox="allow-scripts allow-modals allow-same-origin"
+                            class="w-100 h-100 border-0"
+                            style="background-color: #ffffff;">
+                    </iframe>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- ERROR CONSOLE -->
+            <!-- ================================================= -->
+
+            <div class="card border-0 shadow-sm flex-grow-1 bg-dark text-white font-monospace"
+                 style="height: 30%;">
+
+                <div class="card-header bg-danger bg-opacity-25 fw-bold text-danger py-2 border-bottom border-secondary">
+
+                    🐞 JavaScript Console / Error Logs
+
+                </div>
+
+                <div id="errorConsole"
+                     class="card-body p-3 overflow-auto text-success"
+                     style="font-size: 0.85rem; max-height: 150px;">
+
+                    Waiting for code...
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+    const codeEditor =
+        document.getElementById("codeEditor");
+
+    const previewFrame =
+        document.getElementById("previewFrame");
+
+    const runBtn =
+        document.getElementById("runBtn");
+
+    const errorConsole =
+        document.getElementById("errorConsole");
+
+
+    // =========================================================
+    // DECODE BASE64 CODE RECEIVED FROM TRY IT
+    // =========================================================
+
+    function decodeBase64Code(encodedCode) {
+
+        try {
+
+            // URL-safe Base64 back to normal Base64
+
+            let base64 =
+                encodedCode
+                    .replace(/-/g, "+")
+                    .replace(/_/g, "/");
+
+
+            // Add missing padding
+
+            while (base64.length % 4 !== 0) {
+
+                base64 += "=";
+
+            }
+
+
+            return decodeURIComponent(
+                escape(
+                    window.atob(base64)
+                )
+            );
+
+        }
+        catch (error) {
+
+            console.error(
+                "Decode Error:",
+                error
+            );
+
+            return "";
+
+        }
+
+    }
+
+
+    // =========================================================
+    // RENDER HTML CODE
+    // =========================================================
+
+    function renderCode() {
+
+        const sourceCode =
+            codeEditor.value;
+
+
+        // Clear console
+
+        errorConsole.innerHTML =
+            '<span class="text-muted">Console reset. Running script...</span><br/>';
+
+
+        // If editor is empty
+
+        if (!sourceCode.trim()) {
+
+            previewFrame.srcdoc = "";
+
+            errorConsole.innerHTML =
+                '<span class="text-muted">Waiting for code...</span>';
+
+            return;
+
+        }
+
+
+        // =====================================================
+        // CREATE PREVIEW
+        // =====================================================
+
+        previewFrame.srcdoc =
+            sourceCode;
+
+
+        // =====================================================
+        // ERROR HANDLING
+        // =====================================================
+
+        previewFrame.onload = function () {
+
+            try {
+
+                previewFrame.contentWindow.onerror =
+                    function (
+                        message,
+                        source,
+                        lineno,
+                        colno,
+                        error
+                    ) {
+
+                        const errorElement =
+                            document.createElement("div");
+
+
+                        errorElement.className =
+                            "text-danger fw-bold mt-1";
+
+
+                        errorElement.innerHTML =
+                            `💥 Runtime Error: ${message}
+                            <br/>
+                            <span class="text-secondary">
+                                (Line: ${lineno}, Col: ${colno})
+                            </span>`;
+
+
+                        errorConsole.appendChild(
+                            errorElement
+                        );
+
+
+                        errorConsole.scrollTop =
+                            errorConsole.scrollHeight;
+
+
+                        return false;
+
+                    };
+
+            }
+            catch (error) {
+
+                console.error(error);
+
+            }
+
+        };
+
+    }
+
+
+    // =========================================================
+    // TRY IT CODE LOAD
+    // =========================================================
+
+    // =========================================================
+// LOAD CODE FROM TRY IT BUTTON
+// =========================================================
+
+function loadTryItCode() {
+
+    const urlParams =
+        new URLSearchParams(window.location.search);
+
+    const encodedCode =
+        urlParams.get("code");
+
+    // No code received
+    if (!encodedCode) {
+
+        codeEditor.value = "";
+
+        previewFrame.srcdoc = "";
+
+        errorConsole.innerHTML =
+            '<span class="text-muted">Waiting for code...</span>';
+
+        return;
+    }
+
+    try {
+
+        // Convert URL-safe Base64 to normal Base64
+        let base64 =
+            encodedCode
+                .replace(/-/g, "+")
+                .replace(/_/g, "/");
+
+        // Add missing Base64 padding
+        while (base64.length % 4 !== 0) {
+            base64 += "=";
+        }
+
+        // Decode Base64
+        const decodedCode =
+            decodeURIComponent(
+                escape(
+                    window.atob(base64)
+                )
+            );
+
+        // Put code into editor
+        codeEditor.value =
+            decodedCode;
+
+        // Automatically render code
+        renderCode();
+
+    }
+    catch (error) {
+
+        console.error(
+            "Code Decode Error:",
+            error
+        );
+
+        codeEditor.value = "";
+
+        previewFrame.srcdoc = "";
+
+        errorConsole.innerHTML =
+            '<span class="text-danger fw-bold">' +
+            '❌ Unable to load HTML code.' +
+            '</span>';
+    }
+}
+
+    // =========================================================
+    // PAGE LOAD
+    // =========================================================
+
+    window.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            loadTryItCode();
+
+        }
+    );
+
+</script>

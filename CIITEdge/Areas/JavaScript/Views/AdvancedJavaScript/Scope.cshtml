@@ -1,0 +1,819 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Scope in JavaScript";
+}
+
+<style>
+
+    #javascript-scope-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    /* ==============================
+       MAIN CONTENT
+       ============================== */
+
+    #javascript-scope-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    /* ==============================
+       PAGE TITLE
+       ============================== */
+
+    #javascript-scope-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-scope-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    /* ==============================
+       SECTION
+       ============================== */
+
+    #javascript-scope-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-scope-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* ==============================
+       CONCEPT BOX
+       ============================== */
+
+    #javascript-scope-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-scope-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-scope-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-scope-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       DIAGRAM
+       ============================== */
+
+    #javascript-scope-page .flow-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-scope-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #javascript-scope-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-scope-page .flow-box {
+        min-width: 150px;
+        padding: 15px 20px;
+        border: 2px solid #7c3aed;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 600;
+        background: #ffffff;
+    }
+
+    #javascript-scope-page .flow-box.result {
+        background: #f3e8ff;
+        color: #5b21b6;
+    }
+
+    #javascript-scope-page .flow-arrow {
+        font-size: 28px;
+        color: #7c3aed;
+        font-weight: bold;
+    }
+
+    #javascript-scope-page .flow-caption {
+        text-align: center;
+        color: #6c757d;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       CODE SECTION
+       ============================== */
+
+    #javascript-scope-page .code-section {
+        position: relative;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    #javascript-scope-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-scope-page .code-box code {
+        color: #ffffff;
+        background: transparent;
+    }
+
+    /* ==============================
+       TRY IT BUTTON
+       ============================== */
+
+    #javascript-scope-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-scope-page .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        padding: 9px 18px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    #javascript-scope-page .try-it-btn:hover {
+        background: #157347;
+        transform: translateY(-1px);
+    }
+
+    /* ==============================
+       OUTPUT
+       ============================== */
+
+    #javascript-scope-page .output-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-left: 5px solid #198754;
+        border-radius: 8px;
+        padding: 15px 18px;
+        margin-top: 8px;
+        margin-bottom: 30px;
+        color: #212529;
+        line-height: 1.8;
+    }
+
+    /* ==============================
+       IMPORTANT POINTS
+       ============================== */
+
+    #javascript-scope-page .note-box {
+        background: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 5px solid #ffb300;
+        border-radius: 8px;
+        padding: 18px;
+        margin: 25px 0;
+        color: #6d4c41;
+        line-height: 1.7;
+    }
+
+    /* ==============================
+       SUMMARY
+       ============================== */
+
+    #javascript-scope-page .summary-box {
+        background: #f3e8ff;
+        border: 1px solid #d8b4fe;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-scope-page .summary-box h2 {
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-scope-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       NAVIGATION
+       ============================== */
+
+    #javascript-scope-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-scope-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    #javascript-scope-page .previous-btn {
+        background: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-scope-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-scope-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-scope-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    /* ==============================
+       RESPONSIVE
+       ============================== */
+
+    @@media (max-width: 768px) {
+
+        #javascript-scope-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-scope-page .page-title {
+            font-size: 29px;
+        }
+
+        #javascript-scope-page .flow-row {
+            flex-direction: column;
+        }
+
+        #javascript-scope-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-scope-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-scope-page .nav-btn {
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+<main id="javascript-scope-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDE - COURSE SYLLABUS
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 RIGHT SIDE - MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- =================================================
+                         PAGE HEADER
+                         ================================================= -->
+
+                    <h1 class="page-title">
+                        Scope in JavaScript
+                    </h1>
+
+                    <p class="lead-text">
+                        Scope determines where a variable can be accessed
+                        and used in a JavaScript program.
+                    </p>
+
+
+                    <!-- =================================================
+                         WHAT IS SCOPE
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What is Scope?
+                    </h2>
+
+                    <p class="section-text">
+                        In JavaScript, scope defines the area of a program
+                        where a variable is accessible.
+                    </p>
+
+                    <p class="section-text">
+                        In simple words, scope tells us
+                        <strong>where a variable can be used</strong>.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+                            Scope is the visibility and accessibility
+                            of variables in a JavaScript program.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DIAGRAM
+                         ================================================= -->
+
+                    <div class="flow-card">
+
+                        <div class="flow-title">
+                            How JavaScript Scope Works
+                        </div>
+
+                        <div class="flow-row">
+
+                            <div class="flow-box">
+                                Variable
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Scope
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box result">
+                                Accessible Area
+                            </div>
+
+                        </div>
+
+                        <p class="flow-caption">
+                            Scope decides where a variable can be accessed.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TYPES OF SCOPE
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Types of Scope in JavaScript
+                    </h2>
+
+                    <div class="concept-box">
+
+                        <p>
+                            <strong>1. Global Scope</strong>
+                            – Variable can be accessed from different
+                            parts of the program.
+                        </p>
+
+                        <p>
+                            <strong>2. Function Scope</strong>
+                            – Variables declared inside a function
+                            are accessible inside that function.
+                        </p>
+
+                        <p class="mb-0">
+                            <strong>3. Block Scope</strong>
+                            – Variables declared using
+                            <code>let</code> and <code>const</code>
+                            are accessible inside their block.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Global Scope
+                    </h2>
+
+                    <p class="section-text">
+                        A variable declared outside a function has
+                        global scope and can be accessed inside a function.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>let course = "JavaScript";
+
+function showCourse() {
+    console.log(course);
+}
+
+showCourse();</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runScopeExample1()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Function Scope
+                    </h2>
+
+                    <p class="section-text">
+                        A variable declared inside a function can be
+                        accessed only inside that function.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function greet() {
+
+    let message = "Hello CIIT";
+
+    console.log(message);
+}
+
+greet();</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runScopeExample2()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        Hello CIIT
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Block Scope
+                    </h2>
+
+                    <p class="section-text">
+                        Variables declared with
+                        <code>let</code> and <code>const</code>
+                        are block-scoped.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>if (true) {
+
+    let message = "Inside Block";
+
+    console.log(message);
+}</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runScopeExample3()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        Inside Block
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT POINTS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Important Points
+                    </h2>
+
+
+                    <div class="note-box">
+
+                        <p>
+                            • Scope determines where a variable
+                            can be accessed.
+                        </p>
+
+                        <p>
+                            • Variables declared outside functions
+                            can have global scope.
+                        </p>
+
+                        <p>
+                            • Variables declared inside functions
+                            are available inside that function.
+                        </p>
+
+                        <p>
+                            • <code>let</code> and <code>const</code>
+                            follow block scope.
+                        </p>
+
+                        <p class="mb-0">
+                            • Understanding scope helps prevent
+                            variable conflicts and unexpected behavior.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2>
+                            Summary
+                        </h2>
+
+                        <p>
+                            JavaScript scope defines where variables
+                            can be accessed. Global scope, function scope,
+                            and block scope help organize variables and
+                            control their visibility within a program.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <!-- PREVIOUS -->
+
+                        <a href="@Url.Action("Index", "AdvancedJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Advanced JavaScript
+                            </span>
+
+                        </a>
+
+
+                        <!-- NEXT -->
+
+                        <a href="@Url.Action("Closures", "AdvancedJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Closures
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1 - GLOBAL SCOPE
+       ========================================================= */
+
+    function runScopeExample1() {
+
+        var code =
+`let course = "JavaScript";
+
+function showCourse() {
+    console.log(course);
+}
+
+showCourse();`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2 - FUNCTION SCOPE
+       ========================================================= */
+
+    function runScopeExample2() {
+
+        var code =
+`function greet() {
+
+    let message = "Hello CIIT";
+
+    console.log(message);
+}
+
+greet();`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3 - BLOCK SCOPE
+       ========================================================= */
+
+    function runScopeExample3() {
+
+        var code =
+`if (true) {
+
+    let message = "Inside Block";
+
+    console.log(message);
+}`;
+
+        openCompiler(code);
+    }
+
+</script>

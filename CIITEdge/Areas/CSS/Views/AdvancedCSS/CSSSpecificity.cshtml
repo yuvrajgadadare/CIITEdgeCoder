@@ -1,0 +1,1059 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Specificity";
+}
+
+<div id="css-specificity-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">CSS Specificity</h1>
+
+                <p class="lead">
+                    CSS specificity determines which CSS rule takes priority
+                    when multiple selectors target the same HTML element.
+                </p>
+
+                <hr />
+
+                <!-- What is Specificity -->
+                <h2 class="h4 mt-4">What is CSS Specificity?</h2>
+
+                <p>
+                    When more than one CSS rule applies to the same element,
+                    the browser needs to determine which rule should be used.
+                </p>
+
+                <p>
+                    CSS specificity is one of the mechanisms used to decide
+                    which selector has greater priority.
+                </p>
+
+                <!-- Interactive Visual -->
+                <h2 class="h4 mt-4">Interactive Specificity Visual</h2>
+
+                <p>
+                    Hover over each level to see its priority. Higher
+                    specificity generally gives a selector more priority
+                    when declarations compete for the same property.
+                </p>
+
+                <div class="specificity-visual-section">
+
+                    <div class="specificity-levels">
+
+                        <div class="specificity-level element-level">
+
+                            <div class="specificity-score">
+                                1
+                            </div>
+
+                            <div>
+                                <strong>Element Selector</strong>
+                                <span>p, div, h1</span>
+                            </div>
+
+                        </div>
+
+                        <div class="specificity-level class-level">
+
+                            <div class="specificity-score">
+                                10
+                            </div>
+
+                            <div>
+                                <strong>Class / Attribute / Pseudo-Class</strong>
+                                <span>.card, [type], :hover</span>
+                            </div>
+
+                        </div>
+
+                        <div class="specificity-level id-level">
+
+                            <div class="specificity-score">
+                                100
+                            </div>
+
+                            <div>
+                                <strong>ID Selector</strong>
+                                <span>#header, #main</span>
+                            </div>
+
+                        </div>
+
+                        <div class="specificity-level inline-level">
+
+                            <div class="specificity-score">
+                                1000*
+                            </div>
+
+                            <div>
+                                <strong>Inline Style</strong>
+                                <span>style="..."</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="specificity-image-wrapper">
+
+                        <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1200&q=80"
+                             alt="Colorful layered abstract design representing CSS hierarchy"
+                             class="specificity-image"
+                             tabindex="0" />
+
+                        <div class="specificity-image-overlay">
+                            CSS Hierarchy
+                        </div>
+
+                    </div>
+
+                    <p class="image-caption">
+                        CSS specificity can be understood as a hierarchy of selector priority.
+                    </p>
+
+                </div>
+
+                <!-- Basic Idea -->
+                <h2 class="h4 mt-4">Basic Idea of Specificity</h2>
+
+                <div class="specificity-flow">
+
+                    <div class="flow-box">
+                        Element
+                        <strong>1</strong>
+                    </div>
+
+                    <div class="flow-arrow">
+                        →
+                    </div>
+
+                    <div class="flow-box">
+                        Class
+                        <strong>10</strong>
+                    </div>
+
+                    <div class="flow-arrow">
+                        →
+                    </div>
+
+                    <div class="flow-box">
+                        ID
+                        <strong>100</strong>
+                    </div>
+
+                    <div class="flow-arrow">
+                        →
+                    </div>
+
+                    <div class="flow-box">
+                        Inline
+                        <strong>1000*</strong>
+                    </div>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p class="mb-0">
+                        You can think of specificity as a priority system.
+                        When competing declarations have otherwise comparable
+                        conditions, a more specific selector generally wins.
+                    </p>
+
+                </div>
+
+                <!-- Example -->
+                <h2 class="h4 mt-4">Basic Example</h2>
+
+                <pre class="code-box"><code>p {
+    color: blue;
+}
+
+.text {
+    color: red;
+}
+
+#message {
+    color: green;
+}</code></pre>
+
+                <p>
+                    Suppose the same paragraph has the class
+                    <code>text</code> and the ID <code>message</code>.
+                    More than one rule matches the element.
+                </p>
+
+                <pre class="code-box"><code>&lt;p id="message" class="text"&gt;
+    Hello CSS
+&lt;/p&gt;</code></pre>
+
+                <p>
+                    The ID selector has greater specificity than the class
+                    and element selectors, so the final text color becomes
+                    <strong>green</strong>.
+                </p>
+
+                <!-- Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <p id="specificity-message"
+                       class="specificity-text">
+                        Hello CSS
+                    </p>
+
+                </div>
+
+                <!-- Specificity Table -->
+                <h2 class="h4 mt-4">Specificity Levels</h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Selector Type</th>
+                                <th>Example</th>
+                                <th>Typical Specificity Weight</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Universal Selector</td>
+                                <td><code>*</code></td>
+                                <td>0</td>
+                            </tr>
+
+                            <tr>
+                                <td>Element Selector</td>
+                                <td><code>p</code></td>
+                                <td>1</td>
+                            </tr>
+
+                            <tr>
+                                <td>Class Selector</td>
+                                <td><code>.card</code></td>
+                                <td>10</td>
+                            </tr>
+
+                            <tr>
+                                <td>Attribute Selector</td>
+                                <td><code>[type="text"]</code></td>
+                                <td>10</td>
+                            </tr>
+
+                            <tr>
+                                <td>Pseudo-Class</td>
+                                <td><code>:hover</code></td>
+                                <td>10</td>
+                            </tr>
+
+                            <tr>
+                                <td>ID Selector</td>
+                                <td><code>#main</code></td>
+                                <td>100</td>
+                            </tr>
+
+                            <tr>
+                                <td>Inline Style</td>
+                                <td><code>style="..."</code></td>
+                                <td>Higher priority in normal author CSS</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Class vs ID -->
+                <h2 class="h4 mt-4">Class vs ID</h2>
+
+                <pre class="code-box"><code>.course {
+    color: #2563eb;
+}
+
+#course {
+    color: #7c3aed;
+}</code></pre>
+
+                <pre class="code-box"><code>&lt;p id="course" class="course"&gt;
+    Learn CSS
+&lt;/p&gt;</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Result</h3>
+
+                    <p class="mb-0">
+                        Both rules match the paragraph, but the ID selector
+                        has greater specificity than the class selector.
+                    </p>
+
+                </div>
+
+                <!-- Multiple Selectors -->
+                <h2 class="h4 mt-4">Multiple Selector Specificity</h2>
+
+                <p>
+                    Specificity can also be thought of as a combination of
+                    selector types rather than simply counting selectors.
+                </p>
+
+                <pre class="code-box"><code>p {
+    color: blue;
+}
+
+.course p {
+    color: red;
+}
+
+#main .course p {
+    color: green;
+}</code></pre>
+
+                <div class="specificity-comparison">
+
+                    <div class="comparison-item">
+
+                        <code>p</code>
+
+                        <span>
+                            1 element
+                        </span>
+
+                    </div>
+
+                    <div class="comparison-item">
+
+                        <code>.course p</code>
+
+                        <span>
+                            1 class + 1 element
+                        </span>
+
+                    </div>
+
+                    <div class="comparison-item">
+
+                        <code>#main .course p</code>
+
+                        <span>
+                            1 ID + 1 class + 1 element
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Pseudo Class -->
+                <h2 class="h4 mt-4">Pseudo-Class Specificity</h2>
+
+                <p>
+                    Pseudo-classes such as <code>:hover</code>,
+                    <code>:focus</code>, and <code>:checked</code>
+                    contribute to specificity similarly to class selectors.
+                </p>
+
+                <pre class="code-box"><code>.button:hover {
+    background-color: #7c3aed;
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Example</h3>
+
+                    <p class="mb-0">
+                        The selector contains one class and one pseudo-class,
+                        so both contribute to the selector's specificity.
+                    </p>
+
+                </div>
+
+                <!-- Attribute -->
+                <h2 class="h4 mt-4">Attribute Selector Specificity</h2>
+
+                <pre class="code-box"><code>input[type="text"] {
+    border-color: #2563eb;
+}</code></pre>
+
+                <p>
+                    Attribute selectors contribute to specificity at the
+                    same general level as class selectors.
+                </p>
+
+                <!-- !important -->
+                <h2 class="h4 mt-4">What about !important?</h2>
+
+                <p>
+                    The <code>!important</code> annotation changes the
+                    normal cascade priority and should be used carefully.
+                </p>
+
+                <pre class="code-box"><code>.message {
+    color: red !important;
+}</code></pre>
+
+                <div class="note-box">
+
+                    <h3 class="h6">Important</h3>
+
+                    <p class="mb-0">
+                        Avoid using <code>!important</code> as a general
+                        solution for specificity problems. Excessive use
+                        can make styles harder to maintain and override.
+                    </p>
+
+                </div>
+
+                <!-- Source Order -->
+                <h2 class="h4 mt-4">Specificity and Source Order</h2>
+
+                <p>
+                    When competing declarations have the same origin and
+                    specificity, the later applicable declaration can win
+                    through source order.
+                </p>
+
+                <pre class="code-box"><code>.title {
+    color: #2563eb;
+}
+
+.title {
+    color: #7c3aed;
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Result</h3>
+
+                    <p class="mb-0">
+                        Because both selectors have the same specificity,
+                        the later declaration takes precedence.
+                    </p>
+
+                </div>
+
+                <!-- Practical Example -->
+                <h2 class="h4 mt-4">Practical Example</h2>
+
+                <pre class="code-box"><code:.course-title {
+    color: #2563eb;
+}
+.card .course-title {
+    color: #7c3aed;
+}
+#featured .course-title {
+    color: #0f766e;
+}</code></pre>
+
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div id="specificity-featured"
+                         class="specificity-course-card">
+
+                        <h3 class="specificity-course-title">
+                            CSS Master Course
+                        </h3>
+
+                        <p>
+                            Multiple selectors can target the same element.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Specificity Calculator -->
+                <h2 class="h4 mt-4">Specificity Comparison</h2>
+
+                <div class="specificity-score-grid">
+
+                    <div class="score-card element-score">
+                        <span>Element</span>
+                        <strong>1</strong>
+                        <small>p</small>
+                    </div>
+
+                    <div class="score-card class-score">
+                        <span>Class</span>
+                        <strong>10</strong>
+                        <small>.card</small>
+                    </div>
+
+                    <div class="score-card id-score">
+                        <span>ID</span>
+                        <strong>100</strong>
+                        <small>#main</small>
+                    </div>
+
+                    <div class="score-card inline-score">
+                        <span>Inline</span>
+                        <strong>1000*</strong>
+                        <small>style</small>
+                    </div>
+
+                </div>
+
+                <!-- Best Practices -->
+                <h2 class="h4 mt-4">CSS Specificity Best Practices</h2>
+
+                <ul>
+
+                    <li>
+                        Keep selectors as simple as possible.
+                    </li>
+
+                    <li>
+                        Avoid unnecessarily long selector chains.
+                    </li>
+
+                    <li>
+                        Prefer reusable classes for component styling.
+                    </li>
+
+                    <li>
+                        Avoid depending heavily on IDs for styling.
+                    </li>
+
+                    <li>
+                        Use <code>!important</code> only when there is a
+                        clear reason.
+                    </li>
+
+                    <li>
+                        Keep CSS organized so that overrides are predictable.
+                    </li>
+
+                </ul>
+
+                <!-- Real World -->
+                <h2 class="h4 mt-4">Real-World Uses</h2>
+
+                <ul>
+
+                    <li>Managing component styles</li>
+                    <li>Resolving conflicting CSS rules</li>
+                    <li>Building reusable UI components</li>
+                    <li>Maintaining large stylesheets</li>
+                    <li>Debugging unexpected styling</li>
+
+                </ul>
+
+                <!-- Important Note -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        Specificity is only one part of the CSS cascade.
+                        Origin, importance, inheritance, layer rules,
+                        and source order can also affect which declaration
+                        is ultimately applied.
+                    </p>
+
+                </div>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS specificity helps determine which competing CSS
+                        selector has priority. Element selectors have lower
+                        specificity than classes, while IDs have higher
+                        specificity. Inline styles can have strong priority,
+                        and <code>!important</code> changes normal priority.
+                        Understanding specificity makes CSS easier to debug
+                        and maintain.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("Functions", "AdvancedCSS", new { area = "CSS" })">
+
+                            ← Previous: CSS Functions
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("CSSBestPractices", "AdvancedCSS", new { area = "CSS" })">
+
+                            Next: CSS Best Practices →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-specificity-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-specificity-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-specificity-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-specificity-page .content-section p,
+        #css-specificity-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Interactive Visual */
+    #css-specificity-page .specificity-visual-section {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    #css-specificity-page .specificity-levels {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    #css-specificity-page .specificity-level {
+        min-height: 145px;
+        border-radius: 12px;
+        padding: 18px;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+        #css-specificity-page .specificity-level:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+    #css-specificity-page .element-level {
+        background-color: #2563eb;
+    }
+
+    #css-specificity-page .class-level {
+        background-color: #7c3aed;
+    }
+
+    #css-specificity-page .id-level {
+        background-color: #0f766e;
+    }
+
+    #css-specificity-page .inline-level {
+        background-color: #db2777;
+    }
+
+    #css-specificity-page .specificity-score {
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+
+    #css-specificity-page .specificity-level strong {
+        display: block;
+        font-size: 15px;
+    }
+
+    #css-specificity-page .specificity-level span {
+        display: block;
+        font-family: monospace;
+        font-size: 12px;
+        margin-top: 6px;
+        opacity: 0.95;
+    }
+
+    #css-specificity-page .specificity-image-wrapper {
+        width: 100%;
+        max-width: 850px;
+        height: 280px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    #css-specificity-page .specificity-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+        transition: transform 0.55s ease, filter 0.55s ease;
+    }
+
+        #css-specificity-page .specificity-image-wrapper:hover .specificity-image,
+        #css-specificity-page .specificity-image:focus {
+            transform: scale(1.08);
+            filter: saturate(1.2) brightness(1.05);
+        }
+
+    #css-specificity-page .specificity-image-overlay {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(33,37,41,0.68);
+        color: #ffffff;
+        border-radius: 10px;
+        padding: 14px 22px;
+        font-size: 20px;
+        font-weight: 700;
+        pointer-events: none;
+    }
+
+    #css-specificity-page .image-caption {
+        margin: 12px 5px 0;
+        color: #6c757d !important;
+        text-align: center;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    /* Flow */
+    #css-specificity-page .specificity-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 15px;
+    }
+
+    #css-specificity-page .flow-box {
+        min-width: 125px;
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 8px;
+        padding: 14px;
+        text-align: center;
+        color: #212529;
+        font-weight: 700;
+    }
+
+        #css-specificity-page .flow-box strong {
+            display: block;
+            color: #2563eb;
+            font-size: 20px;
+            margin-top: 5px;
+        }
+
+    #css-specificity-page .flow-arrow {
+        color: #2563eb;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    /* Code */
+    #css-specificity-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Explanation */
+    #css-specificity-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-specificity-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Output */
+    #css-specificity-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    /* Specificity Output */
+    #css-specificity-page #specificity-message {
+        color: green;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+
+    #css-specificity-page .specificity-text {
+        color: red;
+    }
+
+    /* Comparison */
+    #css-specificity-page .specificity-comparison {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #css-specificity-page .comparison-item {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+    }
+
+        #css-specificity-page .comparison-item code {
+            display: block;
+            color: #2563eb;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        #css-specificity-page .comparison-item span {
+            display: block;
+            margin-top: 8px;
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+    /* Practical Card */
+    #css-specificity-page .specificity-course-card {
+        width: min(90%, 650px);
+        margin: auto;
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+    }
+
+    #css-specificity-page .specificity-course-title {
+        color: #2563eb;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-specificity-page #specificity-featured .specificity-course-title {
+        color: #0f766e;
+    }
+
+    /* Score Grid */
+    #css-specificity-page .specificity-score-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #css-specificity-page .score-card {
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        color: #ffffff;
+        transition: transform 0.3s ease;
+    }
+
+        #css-specificity-page .score-card:hover {
+            transform: translateY(-6px);
+        }
+
+    #css-specificity-page .element-score {
+        background-color: #2563eb;
+    }
+
+    #css-specificity-page .class-score {
+        background-color: #7c3aed;
+    }
+
+    #css-specificity-page .id-score {
+        background-color: #0f766e;
+    }
+
+    #css-specificity-page .inline-score {
+        background-color: #db2777;
+    }
+
+    #css-specificity-page .score-card span {
+        display: block;
+        font-size: 14px;
+    }
+
+    #css-specificity-page .score-card strong {
+        display: block;
+        font-size: 26px;
+        margin: 8px 0;
+    }
+
+    #css-specificity-page .score-card small {
+        font-family: monospace;
+        font-size: 12px;
+    }
+
+    /* Note */
+    #css-specificity-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-specificity-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-specificity-page .note-box p {
+            color: #78350f;
+        }
+
+    /* Summary */
+    #css-specificity-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-specificity-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-specificity-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    @@media (max-width: 991px) {
+
+        #css-specificity-page .specificity-levels {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #css-specificity-page .specificity-score-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 768px) {
+
+        #css-specificity-page .content-section {
+            padding: 20px;
+        }
+
+        #css-specificity-page .specificity-image-wrapper {
+            height: 240px;
+        }
+
+        #css-specificity-page .specificity-flow {
+            flex-direction: column;
+        }
+
+        #css-specificity-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-specificity-page .specificity-comparison {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        #css-specificity-page .content-section {
+            padding: 16px;
+        }
+
+        #css-specificity-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-specificity-page .specificity-levels {
+            grid-template-columns: 1fr;
+        }
+
+        #css-specificity-page .specificity-score-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-specificity-page .specificity-image-wrapper {
+            height: 200px;
+        }
+
+        #css-specificity-page .specificity-image-overlay {
+            font-size: 17px;
+        }
+    }
+
+</style>

@@ -1,0 +1,635 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML5 Canvas";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #374151;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    .content-section p {
+        color: #4b5563;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+    pre code {
+        background: transparent !important;
+        color: #fff !important;
+    }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #fff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .canvas-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 120px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .canvas-demo {
+        border: 1px solid #212529;
+        max-width: 100%;
+        background: #fff;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML5 Canvas</h1>
+
+            <p>
+                The HTML5 <code>&lt;canvas&gt;</code> element provides a drawing area
+                that can be controlled using JavaScript.
+            </p>
+
+            <p>
+                It can be used to create graphics, charts, drawings, animations,
+                games, and other dynamic visual content.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Idea:</strong>
+                <code>&lt;canvas&gt;</code> gives you a blank drawing area.
+                JavaScript is used to actually draw inside that area.
+            </div>
+
+            <h2>1. How Canvas Works</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    Canvas Working
+                </div>
+
+                <div class="canvas-flow">
+
+                    <div class="flow-item">
+                        HTML<br>
+                        Canvas
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        JavaScript
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Draw<br>
+                        Shapes
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Graphics
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>2. What is the canvas Element?</h2>
+
+            <p>
+                The <code>&lt;canvas&gt;</code> element creates a rectangular area
+                where graphics can be drawn.
+            </p>
+
+            <pre><code>&lt;canvas id="myCanvas"
+        width="400"
+        height="200"&gt;
+&lt;/canvas&gt;</code></pre>
+
+            <p>
+                The <code>width</code> and <code>height</code> attributes define
+                the drawing area's dimensions.
+            </p>
+
+            <h2>3. A Canvas by Itself</h2>
+
+            <p>
+                Canvas creates the drawing area, but it does not automatically draw
+                shapes or graphics.
+            </p>
+
+            <div class="demo-box">
+                <canvas id="emptyCanvas"
+                        width="400"
+                        height="150"
+                        class="canvas-demo">
+                </canvas>
+            </div>
+
+            <p>
+                The blank area above is a canvas. JavaScript is needed to draw inside it.
+            </p>
+
+            <h2>4. Getting the Canvas Context</h2>
+
+            <p>
+                JavaScript normally gets a drawing context from the canvas.
+                The 2D context is commonly used for two-dimensional drawings.
+            </p>
+
+            <pre><code>&lt;canvas id="myCanvas"
+        width="400"
+        height="200"&gt;
+&lt;/canvas&gt;
+
+&lt;script&gt;
+
+    const canvas = document.getElementById("myCanvas");
+
+    const ctx = canvas.getContext("2d");
+
+&lt;/script&gt;</code></pre>
+
+            <p>
+                Here, <code>ctx</code> represents the 2D drawing context.
+            </p>
+
+            <h2>5. Drawing a Rectangle</h2>
+
+            <p>
+                The <code>fillRect()</code> method draws a filled rectangle.
+            </p>
+
+            <pre><code>ctx.fillRect(50, 40, 150, 80);</code></pre>
+
+            <p>
+                The values represent the rectangle's position and size.
+            </p>
+
+            <h2>6. Canvas Drawing Example</h2>
+
+            <div class="demo-box">
+                <canvas id="rectangleCanvas"
+                        width="450"
+                        height="180"
+                        class="canvas-demo">
+                </canvas>
+            </div>
+
+            <h2>7. Drawing a Line</h2>
+
+            <p>
+                Canvas can also draw lines using paths.
+            </p>
+
+            <pre><code>ctx.beginPath();
+
+ctx.moveTo(50, 50);
+ctx.lineTo(250, 120);
+
+ctx.stroke();</code></pre>
+
+            <h2>8. Drawing a Circle</h2>
+
+            <p>
+                The <code>arc()</code> method can be used to create circular shapes.
+            </p>
+
+            <pre><code>ctx.beginPath();
+
+ctx.arc(150, 80, 50, 0, 2 * Math.PI);
+
+ctx.stroke();</code></pre>
+
+            <h2>9. Drawing Text</h2>
+
+            <p>
+                Canvas can also display text using methods such as
+                <code>fillText()</code>.
+            </p>
+
+            <pre><code>ctx.font = "24px Arial";
+
+ctx.fillText("Hello Canvas", 50, 80);</code></pre>
+
+            <h2>10. Drawing a Simple Shape</h2>
+
+            <p>
+                Canvas becomes useful when multiple drawing operations are combined.
+            </p>
+
+            <pre><code>ctx.beginPath();
+
+ctx.moveTo(50, 120);
+ctx.lineTo(120, 40);
+ctx.lineTo(190, 120);
+ctx.closePath();
+
+ctx.stroke();</code></pre>
+
+            <h2>11. Canvas vs SVG</h2>
+
+            <p>
+                Both Canvas and SVG can be used for graphics, but they work differently.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Canvas</th>
+                            <th>SVG</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Type</td>
+                            <td>Drawing surface</td>
+                            <td>Vector graphics</td>
+                        </tr>
+
+                        <tr>
+                            <td>Drawing</td>
+                            <td>Usually controlled through JavaScript</td>
+                            <td>Uses XML-like elements</td>
+                        </tr>
+
+                        <tr>
+                            <td>Best For</td>
+                            <td>Dynamic graphics, games, animations</td>
+                            <td>Icons, diagrams, scalable graphics</td>
+                        </tr>
+
+                        <tr>
+                            <td>DOM Elements</td>
+                            <td>Individual drawings are not separate HTML elements</td>
+                            <td>Graphics are represented by elements</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>12. Common Uses of Canvas</h2>
+
+            <ul>
+                <li>Games</li>
+                <li>Charts and graphs</li>
+                <li>Drawing applications</li>
+                <li>Animations</li>
+                <li>Image processing</li>
+                <li>Interactive visualizations</li>
+            </ul>
+
+            <h2>13. Canvas Dimensions</h2>
+
+            <p>
+                Canvas dimensions should normally be defined using the
+                <code>width</code> and <code>height</code> attributes.
+            </p>
+
+            <pre><code>&lt;canvas
+    width="600"
+    height="300"&gt;
+&lt;/canvas&gt;</code></pre>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                The canvas drawing coordinate system begins at the top-left corner.
+                The horizontal position is represented by X and the vertical position
+                by Y.
+            </div>
+
+            <h2>14. Canvas Coordinate System</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    Canvas Coordinate System
+                </div>
+
+                <div class="demo-box mb-0">
+
+                    <canvas id="coordinateCanvas"
+                            width="500"
+                            height="220"
+                            class="canvas-demo">
+                    </canvas>
+
+                </div>
+
+                <p class="mt-3 mb-0">
+                    The top-left point represents approximately
+                    <code>(0, 0)</code>.
+                </p>
+
+            </div>
+
+            <h2>15. Styling Canvas Drawing</h2>
+
+            <p>
+                JavaScript can change properties such as the fill style,
+                stroke style, and line width before drawing.
+            </p>
+
+            <pre><code>ctx.fillStyle = "black";
+
+ctx.fillRect(50, 50, 150, 80);</code></pre>
+
+            <p>
+                The drawing properties are applied when the drawing operation is performed.
+            </p>
+
+            <h2>16. Complete Simple Canvas Example</h2>
+
+            <pre><code>&lt;canvas id="myCanvas"
+        width="500"
+        height="250"&gt;
+&lt;/canvas&gt;
+
+&lt;script&gt;
+
+    const canvas = document.getElementById("myCanvas");
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillRect(50, 50, 150, 80);
+
+    ctx.beginPath();
+
+    ctx.arc(300, 90, 40, 0, 2 * Math.PI);
+
+    ctx.stroke();
+
+    ctx.font = "22px Arial";
+
+    ctx.fillText("Canvas", 200, 180);
+
+&lt;/script&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>17. Canvas and JavaScript</h2>
+
+            <p>
+                Canvas does not provide a high-level drawing language by itself.
+                JavaScript is typically used to control the drawing operations.
+            </p>
+
+            <p>
+                This makes canvas useful for interactive applications because
+                JavaScript can change the drawing according to user actions or
+                application data.
+            </p>
+
+            <h2>18. Common Mistakes</h2>
+
+            <h3>Mistake 1: Forgetting the canvas ID</h3>
+
+            <p>
+                JavaScript usually needs a way to locate the canvas element,
+                so giving it an appropriate <code>id</code> is useful.
+            </p>
+
+            <h3>Mistake 2: Forgetting getContext()</h3>
+
+            <p>
+                You need a drawing context before using common Canvas 2D drawing methods.
+            </p>
+
+            <h3>Mistake 3: Expecting Canvas to draw automatically</h3>
+
+            <p>
+                The canvas element creates the drawing surface.
+                JavaScript performs the actual drawing.
+            </p>
+
+            <h3>Mistake 4: Confusing Canvas with SVG</h3>
+
+            <p>
+                Canvas and SVG both support graphics, but their approaches and
+                suitable use cases are different.
+            </p>
+
+            <h2>19. Best Practices</h2>
+
+            <ul>
+                <li>Give the canvas a meaningful ID when JavaScript needs to access it.</li>
+                <li>Set appropriate canvas dimensions.</li>
+                <li>Use JavaScript for drawing and interaction.</li>
+                <li>Choose Canvas when dynamic drawing is appropriate.</li>
+                <li>Consider SVG when individual scalable graphic elements are important.</li>
+                <li>Provide suitable alternatives when the graphic contains important information.</li>
+            </ul>
+
+            <h2>20. Practice Example</h2>
+
+            <p>
+                Create a canvas and draw:
+            </p>
+
+            <ul>
+                <li>One rectangle</li>
+                <li>One circle</li>
+                <li>One line</li>
+                <li>One text message</li>
+            </ul>
+
+            <pre><code>&lt;canvas id="practiceCanvas"
+        width="500"
+        height="250"&gt;
+&lt;/canvas&gt;
+
+&lt;script&gt;
+
+    const canvas =
+        document.getElementById("practiceCanvas");
+
+    const ctx =
+        canvas.getContext("2d");
+
+    ctx.fillRect(30, 30, 120, 70);
+
+    ctx.beginPath();
+
+    ctx.arc(250, 70, 40, 0, 2 * Math.PI);
+
+    ctx.stroke();
+
+    ctx.beginPath();
+
+    ctx.moveTo(330, 30);
+    ctx.lineTo(450, 100);
+
+    ctx.stroke();
+
+    ctx.font = "22px Arial";
+
+    ctx.fillText(
+        "My Canvas",
+        160,
+        180
+    );
+
+&lt;/script&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    The HTML5 <code>&lt;canvas&gt;</code> element creates a drawing
+                    area that is usually controlled through JavaScript. It can be used
+                    for shapes, text, charts, games, animations, and other dynamic
+                    graphics. Canvas provides the surface, while JavaScript performs
+                    the actual drawing operations.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("AudioVideo", "HTML5Features", new { area = "HTML" })">
+                    ← Previous: Audio &amp; Video
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("SVG", "HTML5Features", new { area = "HTML" })">
+                    Next: SVG →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script>
+    const rectangleCanvas = document.getElementById("rectangleCanvas");
+
+    if (rectangleCanvas) {
+        const ctx = rectangleCanvas.getContext("2d");
+
+        ctx.fillRect(50, 40, 150, 80);
+
+        ctx.beginPath();
+        ctx.arc(300, 80, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.font = "22px Arial";
+        ctx.fillText("Canvas", 175, 160);
+    }
+
+    const coordinateCanvas = document.getElementById("coordinateCanvas");
+
+    if (coordinateCanvas) {
+        const ctx = coordinateCanvas.getContext("2d");
+
+        ctx.beginPath();
+        ctx.moveTo(40, 180);
+        ctx.lineTo(460, 180);
+        ctx.moveTo(40, 180);
+        ctx.lineTo(40, 30);
+        ctx.stroke();
+
+        ctx.font = "16px Arial";
+        ctx.fillText("(0, 0)", 45, 25);
+        ctx.fillText("X", 455, 170);
+        ctx.fillText("Y", 25, 45);
+
+        ctx.beginPath();
+        ctx.arc(180, 100, 35, 0, 2 * Math.PI);
+        ctx.stroke();
+    }
+</script>

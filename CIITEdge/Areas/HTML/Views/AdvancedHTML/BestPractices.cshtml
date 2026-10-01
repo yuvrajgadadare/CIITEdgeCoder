@@ -1,0 +1,348 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Best Practices";
+}
+
+<style>
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #343a40;
+        font-weight: 600;
+        margin-top: 22px;
+        margin-bottom: 10px;
+    }
+
+    .content-section p,
+    .content-section li {
+        line-height: 1.75;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        margin: 22px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 18px;
+    }
+
+    .diagram-flow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .diagram-box {
+        background: #fff;
+        border: 2px solid #4f46e5;
+        border-radius: 8px;
+        padding: 14px 18px;
+        text-align: center;
+        font-weight: 600;
+        min-width: 145px;
+    }
+
+    .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <div class="col-lg-9 content-section">
+
+            <h1 class="mb-3">HTML Best Practices</h1>
+
+            <p>
+                HTML best practices are simple guidelines that help developers
+                create clean, readable, accessible, and maintainable web pages.
+            </p>
+
+            <p>
+                Good HTML structure makes a website easier to understand for
+                developers, browsers, search engines, and users.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Good HTML Development Approach</div>
+
+                <div class="diagram-flow">
+                    <div class="diagram-box">Semantic HTML</div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">Clean Structure</div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">Accessibility</div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">Maintainable Website</div>
+                </div>
+            </div>
+
+            <h2>1. Use Semantic HTML</h2>
+
+            <p>
+                Use HTML elements according to their meaning instead of using
+                generic elements for everything.
+            </p>
+
+            <p>
+                For example, use <code>&lt;header&gt;</code>,
+                <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>,
+                <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code>
+                where appropriate.
+            </p>
+
+            <pre><code>&lt;header&gt;
+    &lt;h1&gt;My Website&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;section&gt;
+        &lt;h2&gt;About Us&lt;/h2&gt;
+    &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>2. Keep HTML Structure Proper</h2>
+
+            <p>
+                Elements should be correctly nested and closed.
+                A clear structure makes the document easier to read and maintain.
+            </p>
+
+            <pre><code>&lt;div&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+            <div class="info-box">
+                Avoid unnecessarily complicated nesting.
+                Keep the HTML hierarchy simple and meaningful.
+            </div>
+
+            <h2>3. Use Meaningful Headings</h2>
+
+            <p>
+                Headings help users understand the structure of a page.
+                Use headings in a logical order.
+            </p>
+
+            <p>
+                A page can use <code>&lt;h1&gt;</code> for its main topic,
+                followed by <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code>
+                for related sections.
+            </p>
+
+            <h2>4. Write Clean and Readable Code</h2>
+
+            <p>
+                Proper indentation and formatting make HTML easier to read.
+                Developers should be able to understand the structure quickly.
+            </p>
+
+            <pre><code>&lt;section&gt;
+    &lt;h2&gt;Courses&lt;/h2&gt;
+
+    &lt;p&gt;
+        Learn HTML, CSS, and JavaScript.
+    &lt;/p&gt;
+&lt;/section&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>5. Use Descriptive Attributes</h2>
+
+            <p>
+                Attributes should provide meaningful information.
+                For example, image elements should normally include useful
+                <code>alt</code> text when the image conveys information.
+            </p>
+
+            <pre><code>&lt;img src="course.jpg" alt="HTML course illustration"&gt;</code></pre>
+
+            <h2>6. Add alt Text for Images</h2>
+
+            <p>
+                The <code>alt</code> attribute describes an image when the image
+                cannot be viewed or when assistive technology needs information
+                about it.
+            </p>
+
+            <p>
+                For decorative images, the alternative text can be empty when
+                appropriate.
+            </p>
+
+            <h2>7. Use Labels with Form Controls</h2>
+
+            <p>
+                Form controls should have clear labels so users can understand
+                what information is expected.
+            </p>
+
+            <pre><code>&lt;label for="email"&gt;Email Address&lt;/label&gt;
+&lt;input type="email" id="email"&gt;</code></pre>
+
+            <h2>8. Avoid Unnecessary Inline Styles</h2>
+
+            <p>
+                HTML should mainly describe the structure and meaning of the
+                content. Styling is generally better handled through CSS.
+            </p>
+
+            <p>
+                This keeps HTML cleaner and makes the design easier to update.
+            </p>
+
+            <h2>9. Use Unique IDs</h2>
+
+            <p>
+                An <code>id</code> should identify a specific element and should
+                not be unnecessarily repeated on multiple elements.
+            </p>
+
+            <pre><code>&lt;input id="username"&gt;
+&lt;input id="email"&gt;</code></pre>
+
+            <h2>10. Prefer Classes for Reusable Styling</h2>
+
+            <p>
+                Use the <code>class</code> attribute when the same style or
+                behavior needs to be applied to multiple elements.
+            </p>
+
+            <pre><code>&lt;p class="highlight"&gt;Important content&lt;/p&gt;
+&lt;p class="highlight"&gt;Another important message&lt;/p&gt;</code></pre>
+
+            <h2>11. Keep Accessibility in Mind</h2>
+
+            <p>
+                HTML should be usable by as many people as possible.
+                Semantic elements, meaningful labels, keyboard-friendly controls,
+                and suitable alternative text all contribute to accessibility.
+            </p>
+
+            <div class="info-box">
+                Good HTML accessibility often starts with choosing the correct
+                HTML element rather than adding extra attributes later.
+            </div>
+
+            <h2>12. Keep Code Simple</h2>
+
+            <p>
+                Avoid adding HTML elements that do not have a clear purpose.
+                Simple markup is easier to maintain and debug.
+            </p>
+
+            <h2>13. Use Valid and Consistent HTML</h2>
+
+            <p>
+                Keep opening and closing tags correct, use consistent formatting,
+                and avoid unnecessary duplication.
+            </p>
+
+            <p>
+                Consistent HTML structure makes teamwork and future maintenance
+                easier.
+            </p>
+
+            <h2>14. Think About Maintainability</h2>
+
+            <p>
+                HTML is often modified many times during the life of a website.
+                Organize the markup so another developer can understand and
+                update it without difficulty.
+            </p>
+
+            <h2>15. Basic Best Practices Checklist</h2>
+
+            <ul>
+                <li>Use semantic HTML elements.</li>
+                <li>Keep the document structure clean.</li>
+                <li>Use meaningful headings.</li>
+                <li>Write readable and properly indented HTML.</li>
+                <li>Use meaningful attributes.</li>
+                <li>Provide suitable alternative text for images.</li>
+                <li>Associate labels with form controls.</li>
+                <li>Keep styling separate from structure when practical.</li>
+                <li>Use unique IDs and reusable classes appropriately.</li>
+                <li>Consider accessibility from the beginning.</li>
+            </ul>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML best practices help developers create structured,
+                    readable, accessible, and maintainable web pages. Use
+                    semantic elements, meaningful attributes, clean formatting,
+                    proper headings, and accessible form and image markup.
+                </p>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("ARIABasics", "AdvancedHTML", new { area = "HTML" })">
+                    ← Previous: ARIA Accessibility
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("SEOFriendlyHTML", "AdvancedHTML", new { area = "HTML" })">
+                    Next: SEO Friendly HTML →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

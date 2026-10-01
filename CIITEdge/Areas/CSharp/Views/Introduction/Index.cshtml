@@ -1,0 +1,938 @@
+﻿@{
+    ViewData["Title"] = "Introduction to C#";
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+        .try-it-btn:hover {
+            background: #157347;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+    .workflow-code {
+        margin: 0;
+        padding: 20px 10px;
+        text-align: center;
+        white-space: pre-line;
+        line-height: 1.8;
+    }
+
+        .workflow-code code {
+            display: block;
+            text-align: center;
+        }
+</style>
+
+<main id="tutorials" class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ========================================================= -->
+        <!-- LEFT SIDEBAR - COURSE SYLLABUS -->
+        <!-- ========================================================= -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ========================================================= -->
+        <!-- RIGHT CONTENT AREA -->
+        <!-- ========================================================= -->
+        <section class="col-lg-9">
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body p-4 p-lg-5">
+
+                    <!-- ================================================= -->
+                    <!-- PAGE HEADER -->
+                    <!-- ================================================= -->
+
+                    <div class="mb-4">
+                        <h2 class="fw-bold mb-3">
+                            Introduction to C#
+                        </h2>
+
+                        <p class="lead text-muted mb-0">
+                            Learn the fundamentals of C# programming and understand
+                            why C# is one of the most widely used programming languages
+                            for modern application development.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- WHAT IS C# -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            What is C#?
+                        </h3>
+
+                        <p>
+                            C# (C-Sharp) is a popular, modern programming language made
+                            by Microsoft. It is designed to be safe, easy to read,
+                            and powerful.
+                        </p>
+
+                        <p>
+                            Think of C# as the written language (like English). You use it
+                            to write instructions that tell a computer what to do.
+                            Today, C# is completely free and cross-platform, meaning you
+                            can use it to build apps for Windows, Mac, Linux, iPhones,
+                            and Android phones.
+                        </p>
+
+                        <p>
+                            C# is a general-purpose programming language. It can be used
+                            to build many different types of applications such as web
+                            applications, desktop applications, APIs, cloud applications,
+                            games, and enterprise software.
+                        </p>
+
+                        <p>
+                            C# is also a cross-platform language. This means that modern
+                            C# applications can run on Windows, macOS, and Linux using
+                            the .NET platform.
+                        </p>
+
+                        <p>
+                            C# was developed by Microsoft and is mainly used together
+                            with the <strong>.NET</strong> platform.
+                        </p>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- WHY LEARN C# -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Why Learn C#?
+                        </h3>
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            Modern Language
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            C# provides modern programming features that
+                                            make application development easier,
+                                            cleaner, and more productive.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            Object-Oriented
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            C# supports classes, objects, inheritance,
+                                            polymorphism, abstraction, and encapsulation.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            Cross-Platform
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            Modern .NET applications can run on Windows,
+                                            macOS, and Linux.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            Automatic Memory Management
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            C# applications use garbage collection to
+                                            automatically manage unused objects and
+                                            memory.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- KEY FEATURES -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Key Features of C#
+                        </h3>
+
+                        <ul>
+
+                            <li class="mb-2">
+                                Simple and easy to learn
+                            </li>
+
+                            <li class="mb-2">
+                                Object-oriented
+                            </li>
+
+                            <li class="mb-2">
+                                Type-safe
+                            </li>
+
+                            <li class="mb-2">
+                                Cross-platform
+                            </li>
+
+                            <li class="mb-2">
+                                Secure
+                            </li>
+
+                            <li class="mb-2">
+                                Modern and powerful
+                            </li>
+
+                            <li class="mb-2">
+                                Supports asynchronous programming
+                            </li>
+
+                            <li class="mb-2">
+                                Automatic garbage collection
+                            </li>
+
+                            <li class="mb-2">
+                                High performance with JIT compilation
+                            </li>
+
+                        </ul>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- .NET ECOSYSTEM -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            The .NET Ecosystem
+                        </h3>
+
+                        <p>
+                            If C# is the language, .NET is the entire toolset and
+                            workshop where you use that language. .NET provides the
+                            environment, tools, and libraries required to build and
+                            run C# applications.
+                        </p>
+
+                        <p>
+                            Over the years, .NET has evolved.
+                        </p>
+
+                        <p>
+                            <strong>Old Way (.NET Framework):</strong>
+                            It was primarily designed to work on Windows computers.
+                        </p>
+
+                        <p>
+                            <strong>Modern Way (.NET Core / Modern .NET):</strong>
+                            Modern .NET is cross-platform and works on Windows,
+                            macOS, and Linux.
+                        </p>
+
+                        <p>
+                            When you install the .NET platform, you work with several
+                            important components.
+                        </p>
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+
+                                        <th>
+                                            Component
+                                        </th>
+
+                                        <th>
+                                            Description
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>SDK</strong>
+                                        </td>
+
+                                        <td>
+                                            Software Development Kit provides the tools
+                                            required to create, build, test, and develop
+                                            .NET applications.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Runtime</strong>
+                                        </td>
+
+                                        <td>
+                                            The .NET Runtime provides the environment
+                                            required to execute .NET applications.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>Libraries</strong>
+                                        </td>
+
+                                        <td>
+                                            .NET libraries contain reusable classes,
+                                            methods, and functions that help developers
+                                            perform common programming tasks.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>CLR</strong>
+                                        </td>
+
+                                        <td>
+                                            Common Language Runtime manages the execution
+                                            of .NET applications and provides services
+                                            such as memory management and exception
+                                            handling.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- HOW C# WORKS -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            How C# Works
+                        </h3>
+
+                        <p>
+                            A C# source file normally has the
+                            <code>.cs</code> extension.
+                            When we build a C# application, the C# compiler converts
+                            the source code into Intermediate Language (IL).
+                        </p>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                C#
+                            </div>
+
+                            <pre class="mb-0 workflow-code"><code>C# Source Code
+↓
+C# Compiler
+↓
+Intermediate Language (IL)
+↓
+CLR
+↓
+JIT Compiler
+↓
+Machine Code
+↓
+Operating System / Hardware</code></pre>
+
+                        </div>
+
+                        <p>
+                            The CLR manages the execution of the application.
+                            The JIT (Just-In-Time) compiler converts the Intermediate
+                            Language into machine instructions that the computer can
+                            execute.
+                        </p>
+
+                        <p>
+                            This process allows modern .NET applications to run on
+                            different operating systems.
+                        </p>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- CLR -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            The Common Language Runtime (CLR)
+                        </h3>
+
+                        <p>
+                            The Common Language Runtime (CLR) is one of the most important
+                            parts of the .NET platform. It manages the execution of
+                            C# programs while they are running.
+                        </p>
+
+                        <p>
+                            When you run a C# program, it does not instantly talk to
+                            the computer's processor. Instead, it goes through a
+                            two-step process.
+                        </p>
+
+
+                        <div class="text-center mb-4">
+
+                            <img src="~/images/csharp/1.png"
+                                 class="img-fluid rounded border"
+                                 alt="C# CLR Execution Process" />
+
+                        </div>
+
+
+                        <p>
+                            <strong>Step 1:</strong>
+                            The .NET tools translate your C# code into a middle-ground
+                            language called Intermediate Language (IL). This is a
+                            universal code that can be moved to any computer.
+                        </p>
+
+
+                        <p>
+                            <strong>Step 2:</strong>
+                            When the application runs, the CLR takes that universal
+                            code and uses the JIT (Just-In-Time) Compiler to translate
+                            it into machine code that your computer understands.
+                        </p>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- WHAT DOES CLR DO -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            What Does the CLR Do?
+                        </h3>
+
+                        <p>
+                            While your program is running, the CLR watches over it
+                            and provides several services that help the application
+                            run safely and efficiently.
+                        </p>
+
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            Garbage Collection
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            It automatically cleans up unused memory
+                                            so the application can use memory efficiently.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            Exception Handling
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            It provides mechanisms for handling errors
+                                            and unexpected situations during program
+                                            execution.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            JIT Compilation
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            The JIT compiler converts Intermediate Language
+                                            into machine code when the application runs.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            Program Management
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            The CLR manages important aspects of program
+                                            execution and provides services required by
+                                            .NET applications.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- SIMPLE C# PROGRAM -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Simple C# Program
+                        </h3>
+
+                        <p>
+                            Let's look at a simple C# program that prints a message
+                            on the console.
+                        </p>
+
+
+                        <div id="tutorialCode" class="code-block">
+
+                            <div class="code-lang-tag">
+                                C#
+                            </div>
+<pre class="mb-0"><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("WelCome CIIT Institute🤓");
+    }
+}</code></pre>
+
+                        </div>
+
+    <div class="text-end mt-2 mb-3">
+
+                           
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself()">
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+                                </button>
+                           
+    </div>
+</section>
+
+
+                    <!-- ================================================= -->
+                    <!-- UNDERSTANDING PROGRAM -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Understanding the Program
+                        </h3>
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+
+                                        <th>
+                                            Code
+                                        </th>
+
+                                        <th>
+                                            Purpose
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            <code>using System;</code>
+                                        </td>
+
+                                        <td>
+                                            Imports the System namespace so we can use
+                                            classes such as <strong>Console</strong>.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <code>class Program</code>
+                                        </td>
+
+                                        <td>
+                                            Defines a class named
+                                            <strong>Program</strong>.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <code>static void Main()</code>
+                                        </td>
+
+                                        <td>
+                                            Defines the main method where execution of
+                                            the program begins.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <code>Console.WriteLine()</code>
+                                        </td>
+
+                                        <td>
+                                            Displays text on the console.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- WHERE C# IS USED -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Where is C# Used?
+                        </h3>
+
+                        <ul>
+
+                            <li class="mb-2">
+                                Web application development
+                            </li>
+
+                            <li class="mb-2">
+                                Backend and API development
+                            </li>
+
+                            <li class="mb-2">
+                                Desktop application development
+                            </li>
+
+                            <li class="mb-2">
+                                Enterprise applications
+                            </li>
+
+                            <li class="mb-2">
+                                Cloud applications
+                            </li>
+
+                            <li class="mb-2">
+                                Game development using Unity
+                            </li>
+
+                            <li class="mb-2">
+                                Windows application development
+                            </li>
+
+                            <li class="mb-2">
+                                Microservices and distributed applications
+                            </li>
+
+                        </ul>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- CIIT PRACTICAL NOTE -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <div class="alert alert-info border-0">
+
+                            <h5 class="fw-bold">
+                                CIIT Practical Learning
+                            </h5>
+
+                            <p class="mb-0">
+                                At CIIT Institute, C# is learned step-by-step with
+                                practical coding examples. Students can start with
+                                programming fundamentals and gradually move toward
+                                real-world application development using .NET.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+                    <!-- ================================================= -->
+                    <!-- SUMMARY - BELOW EDITOR -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <div class="alert alert-primary border-0">
+
+                            <h5 class="fw-bold">
+                                Summary
+                            </h5>
+
+                            <p class="mb-0">
+                                C# is a modern, powerful, object-oriented programming
+                                language developed by Microsoft. It works with the .NET
+                                platform and can be used to build web applications,
+                                APIs, desktop applications, cloud solutions, games,
+                                and enterprise software.
+
+                                Understanding C#, .NET, CLR, JIT compilation, and basic
+                                program structure provides a strong foundation for
+                                learning advanced C# development.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- NEXT TOPIC -->
+                    <!-- ================================================= -->
+
+    <div class="d-flex justify-content-end align-items-center mb-5">
+
+    <a href="/CSharp/Introduction/DevelopmentTools"
+       class="btn btn-primary">
+        Next Topic →
+    </a>
+
+</div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<script>
+
+    function tryItYourself() 
+    {
+
+        const codeElement = document.querySelector("#tutorialCode pre code"
+        );
+
+        if (!codeElement) {
+            alert("Tutorial code not found.");
+            return;
+        }
+
+        const code = codeElement.textContent;
+
+        const form = document.createElement("form");
+
+        form.method = "POST";
+        form.action = '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+        form.target = "_blank";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
+        document.body.removeChild(form);
+    }
+</script>

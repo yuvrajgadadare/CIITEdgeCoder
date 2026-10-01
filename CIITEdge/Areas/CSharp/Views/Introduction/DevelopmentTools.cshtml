@@ -1,0 +1,1061 @@
+﻿@{
+    ViewData["Title"] = "Development Tools";
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+        .try-it-btn:hover {
+            background: #157347;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+    .workflow-code {
+        text-align: center;
+        white-space: pre-line;
+        line-height: 1.8;
+        margin: 0;
+    }
+
+        .workflow-code code {
+            display: block;
+            text-align: center;
+        }
+</style>
+
+
+<main id="tutorials" class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ========================================================= -->
+        <!-- LEFT SIDEBAR - COURSE SYLLABUS -->
+        <!-- ========================================================= -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ========================================================= -->
+        <!-- RIGHT CONTENT AREA -->
+        <!-- ========================================================= -->
+
+        <section class="col-lg-9">
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body p-4 p-lg-5">
+
+
+                    <!-- ================================================= -->
+                    <!-- PAGE HEADER -->
+                    <!-- ================================================= -->
+
+                    <div class="mb-4">
+
+                        <h2 class="fw-bold mb-3">
+                            Development Tools
+                        </h2>
+
+                        <p class="lead text-muted mb-0">
+                            Setting up .NET means installing the tools you need to
+                            build applications. In this topic, we will learn about
+                            the three main tools used for C# development:
+                            the .NET CLI, Visual Studio, and Visual Studio Code.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- .NET SDK & CLI -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            The .NET SDK & CLI (The Core Engine)
+                        </h3>
+
+                        <p>
+                            Think of the .NET SDK as the engine under the hood.
+                            You must install this first. It includes the .NET CLI,
+                            which lets you control your projects using text commands.
+                        </p>
+
+                        <p>
+                            The .NET SDK provides the tools required to create,
+                            build, test, and run .NET applications.
+                        </p>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            How to Install
+                        </h5>
+
+                        <p>
+                            Go to the official .NET website, download the installer
+                            for your computer (Windows, Mac, or Linux), and run it.
+                        </p>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            How to Check It
+                        </h5>
+
+                        <p>
+                            Open your computer's terminal such as Command Prompt,
+                            PowerShell, or Terminal and type:
+                        </p>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                Terminal
+                            </div>
+
+                            <pre class="mb-0"><code>dotnet --version</code></pre>
+
+                        </div>
+
+
+                        <p>
+                            If a version number appears, the .NET SDK is installed
+                            correctly and the command is working.
+                        </p>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Useful .NET CLI Commands
+                        </h5>
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+                                        <th>Command</th>
+                                        <th>Purpose</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <code>dotnet --version</code>
+                                        </td>
+
+                                        <td>
+                                            Displays the installed .NET SDK version.
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <code>dotnet new console -n MyApp</code>
+                                        </td>
+
+                                        <td>
+                                            Creates a new console application
+                                            folder named <strong>MyApp</strong>.
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <code>dotnet run</code>
+                                        </td>
+
+                                        <td>
+                                            Builds and runs the current .NET application.
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <code>dotnet build</code>
+                                        </td>
+
+                                        <td>
+                                            Builds the application and checks the
+                                            project for compilation errors.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- VERIFY INSTALLATION -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Verify Your .NET Installation
+                        </h3>
+
+                        <p>
+                            After installing the .NET SDK, it is a good practice to
+                            verify that the SDK is correctly installed and available
+                            from the terminal.
+                        </p>
+
+                        <p>
+                            Open Command Prompt or PowerShell and run the following
+                            commands one by one:
+                        </p>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                Terminal
+                            </div>
+
+                            <pre class="mb-0"><code>dotnet --version
+dotnet --info
+dotnet --list-sdks</code></pre>
+
+                        </div>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            What These Commands Show
+                        </h5>
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+                                        <th>Command</th>
+                                        <th>What It Shows</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <code>dotnet --version</code>
+                                        </td>
+
+                                        <td>
+                                            Shows the currently selected .NET SDK version.
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <code>dotnet --info</code>
+                                        </td>
+
+                                        <td>
+                                            Shows detailed information about the
+                                            installed .NET environment.
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <code>dotnet --list-sdks</code>
+                                        </td>
+
+                                        <td>
+                                            Shows all .NET SDK versions installed
+                                            on the computer.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="alert alert-success border-0 mt-4">
+
+                            <strong>Tip:</strong>
+                            If these commands return information instead of an error,
+                            your .NET SDK is available from the terminal.
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- VISUAL STUDIO -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Visual Studio (The Full Power Tool for Windows)
+                        </h3>
+
+                        <p>
+                            Visual Studio is a massive, all-in-one software box.
+                            It has everything built-in, but it is heavy and primarily
+                            used on Windows.
+                        </p>
+
+                        <p>
+                            Visual Studio provides many features such as code editing,
+                            debugging, project management, testing, NuGet package
+                            management, Git integration, and tools for building
+                            ASP.NET and .NET applications.
+                        </p>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            How to Install
+                        </h5>
+
+                        <p>
+                            Download the Visual Studio Installer from Microsoft's website
+                            and start the installation process.
+                        </p>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Important Step
+                        </h5>
+
+                        <p>
+                            During installation, it will ask you to choose
+                            <strong>Workloads</strong> (packages of features).
+                            Select the workloads required for the type of application
+                            you want to develop.
+                        </p>
+
+
+                        <div class="alert alert-info border-0">
+
+                            <h6 class="fw-bold">
+                                Recommended Workloads for C# Development
+                            </h6>
+
+                            <ul class="mb-0">
+
+                                <li class="mb-2">
+                                    <strong>ASP.NET and web development</strong>
+                                </li>
+
+                                <li>
+                                    <strong>.NET desktop development</strong>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Best For
+                        </h5>
+
+                        <p>
+                            Visual Studio is suitable for large business applications
+                            and developers who prefer an all-in-one development
+                            environment where most tools are already available.
+                        </p>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- VISUAL STUDIO CODE -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Visual Studio Code (The Lightweight Editor)
+                        </h3>
+
+                        <p>
+                            <strong>Visual Studio Code (VS Code)</strong> is a very
+                            fast, lightweight text editor. It works on Windows,
+                            Mac, and Linux.
+                        </p>
+
+                        <p>
+                            It starts simple, but you can add extensions (plugins)
+                            to make it powerful for different programming languages
+                            and development platforms.
+                        </p>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            How to Install
+                        </h5>
+
+                        <p>
+                            Download Visual Studio Code from the VS Code website
+                            and install it on your computer.
+                        </p>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Make VS Code Work with .NET
+                        </h5>
+
+                        <ol>
+
+                            <li class="mb-3">
+                                Open Visual Studio Code.
+                            </li>
+
+                            <li class="mb-3">
+                                Click the <strong>Extensions</strong> icon on the
+                                left menu. It looks like four small squares.
+                            </li>
+
+                            <li class="mb-3">
+                                Search for and install the
+                                <strong>C# Dev Kit</strong>.
+                            </li>
+
+                            <li class="mb-3">
+                                The C# Dev Kit provides support for working with
+                                C# and .NET projects inside VS Code.
+                            </li>
+
+                        </ol>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Create a New .NET Project
+                        </h5>
+
+                        <p>
+                            Open an empty folder in VS Code. Press
+                            <strong>Ctrl + Shift + P</strong>
+                            (or <strong>Cmd + Shift + P</strong> on Mac)
+                            to open the Command Palette.
+                        </p>
+
+                        <p>
+                            Then search for:
+                        </p>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                VS Code
+                            </div>
+
+                            <pre class="mb-0"><code>.NET: New Project</code></pre>
+
+                        </div>
+
+
+                        <p>
+                            Choose the project type you want to create and follow
+                            the instructions provided by VS Code.
+                        </p>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- CREATE PROJECT USING CLI -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Create Your First .NET Project Using CLI
+                        </h3>
+
+                        <p>
+                            The .NET CLI allows you to create and manage projects
+                            directly from the terminal. This is especially useful
+                            because developers can create projects without opening
+                            an IDE.
+                        </p>
+
+                        <p>
+                            Open Command Prompt or PowerShell and run:
+                        </p>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                Terminal
+                            </div>
+
+                            <pre class="mb-0"><code>dotnet new console -n MyFirstApp</code></pre>
+
+                        </div>
+
+
+                        <p>
+                            This command creates a new console application named
+                            <strong>MyFirstApp</strong>.
+                        </p>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Step 2: Open the Project Folder
+                        </h5>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                Terminal
+                            </div>
+
+                            <pre class="mb-0"><code>cd MyFirstApp</code></pre>
+
+                        </div>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Step 3: Run the Application
+                        </h5>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                Terminal
+                            </div>
+
+                            <pre class="mb-0"><code>dotnet run</code></pre>
+
+                        </div>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Expected Output
+                        </h5>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                Output
+                            </div>
+
+                            <pre class="mb-0"><code>WelCome to CIIT World 🌍👨‍🏫...!</code></pre>
+
+                        </div>
+
+
+                        <div class="alert alert-success border-0">
+
+                            <strong>Practical Learning:</strong>
+                            This is one of the simplest ways to understand how the
+                            .NET SDK, CLI, project creation, build process, and
+                            application execution work together.
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- WHICH TOOL -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Which Tool Should You Use?
+                        </h3>
+
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            Visual Studio
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            Use <strong>Visual Studio</strong> if you
+                                            are on Windows and want an all-in-one tool
+                                            where everything is already set up.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="card h-100 border">
+
+                                    <div class="card-body">
+
+                                        <h5 class="fw-bold">
+                                            Visual Studio Code
+                                        </h5>
+
+                                        <p class="text-muted mb-0">
+                                            Use <strong>VS Code</strong> if you want
+                                            a fast, lightweight tool, or if you are
+                                            using a Mac or Linux computer.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- QUICK COMPARISON -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Visual Studio vs VS Code
+                        </h3>
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Visual Studio</th>
+                                        <th>VS Code</th>
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>Type</td>
+                                        <td>Full IDE</td>
+                                        <td>Lightweight Code Editor</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Platform</td>
+                                        <td>Primarily Windows</td>
+                                        <td>Windows, macOS, Linux</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Installation Size</td>
+                                        <td>Larger</td>
+                                        <td>Smaller</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Extensions</td>
+                                        <td>Many features are built-in</td>
+                                        <td>Extensions are commonly used</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Best For</td>
+                                        <td>Large and enterprise applications</td>
+                                        <td>Lightweight and flexible development</td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- BASIC DEVELOPMENT WORKFLOW -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Basic C# Development Workflow
+                        </h3>
+
+                        <p>
+                            A simple C# development workflow can be understood as:
+                        </p>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                Development Workflow
+                            </div>
+
+                            <pre class="mb-0 workflow-code"><code>Install .NET SDK
+↓
+Choose Visual Studio / VS Code
+↓
+Create a .NET Project
+↓
+Write C# Code
+↓
+Build the Project
+↓
+Run the Application
+↓
+Debug and Fix Errors</code></pre>
+
+                        </div>
+
+                        <p>
+                            Understanding this workflow will make it easier to work
+                            with C# projects throughout the rest of the course.
+                        </p>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- COMMON PROBLEMS -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Common Problems & Quick Fixes
+                        </h3>
+
+                        <p>
+                            Beginners may face some common setup problems while
+                            starting C# development. The following table provides
+                            quick solutions.
+                        </p>
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+                                        <th>Problem</th>
+                                        <th>Possible Solution</th>
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            <code>dotnet</code> command is not recognized
+                                        </td>
+
+                                        <td>
+                                            Check whether the .NET SDK is installed
+                                            correctly and restart the terminal.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            C# code is not recognized in VS Code
+                                        </td>
+
+                                        <td>
+                                            Make sure the C# Dev Kit extension is installed
+                                            and enabled.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Project build fails
+                                        </td>
+
+                                        <td>
+                                            Read the error message in the terminal or
+                                            Error List and fix the reported issue.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Wrong .NET SDK version
+                                        </td>
+
+                                        <td>
+                                            Run <code>dotnet --version</code> and
+                                            <code>dotnet --list-sdks</code> to check
+                                            installed SDK versions.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Changes are not reflected
+                                        </td>
+
+                                        <td>
+                                            Save the file and rebuild or run the
+                                            application again.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- SIMPLE C# CODE EXAMPLE -->
+                    <!-- ================================================= -->
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Simple C# Code Example
+                        </h3>
+
+                        <p>
+                            Once the development environment is ready, you can create
+                            and run a simple C# program.
+                        </p>
+
+                        <div id="tutorialCode" class="code-block mb-3 shadow-sm">
+
+                            <div class="code-lang-tag">
+                                C#
+                            </div>
+
+<pre class="mb-0"><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("WelCome CIIT Institute🤓");
+    }
+}</code></pre>
+
+</div>
+
+                        <div class="text-end mt-2 mb-3">
+
+                           
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryItYourself()">
+                                <i class="bi bi-play-fill me-1"></i>
+                                Try It
+                            </button>
+
+                        </div>
+
+                    </section>
+
+                    <!-- ================================================= -->
+                    <!-- SUMMARY -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <div class="alert alert-primary border-0">
+
+                            <h5 class="fw-bold">
+                                Summary
+                            </h5>
+
+                            <p class="mb-0">
+                                Development tools provide everything required to
+                                create, build, run, and debug C# applications.
+                                The <strong>.NET SDK</strong> provides the core
+                                development tools and the <strong>.NET CLI</strong>
+                                allows developers to manage projects using commands.
+
+                                <br /><br />
+
+                                <strong>Visual Studio</strong> provides a complete
+                                development environment, while
+                                <strong>Visual Studio Code</strong> provides a
+                                lightweight and flexible development experience.
+
+                                <br /><br />
+
+                                You also learned how to verify your .NET installation,
+                                create a console project using the .NET CLI, run a
+                                project, compare Visual Studio with VS Code, and
+                                troubleshoot common setup problems.
+
+                                <br /><br />
+
+                                Understanding these tools is an important first step
+                                before learning C# programming in depth.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- NEXT TOPIC -->
+                    <!-- ================================================= -->
+
+                    
+
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+
+                        <a href="/CSharp/Introduction/Index"
+                           class="btn btn-outline-secondary">
+                            ← Previous Topic
+                        </a>
+
+                        <a href="/CSharp/Introduction/FirstProgram"
+                           class="btn btn-primary">
+                            Next Topic →
+                        </a>
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<script>
+
+    function tryItYourself() {
+
+        const codeElement = document.querySelector(
+            "#tutorialCode pre code"
+        );
+
+        if (!codeElement) {
+            alert("Tutorial code not found.");
+            return;
+        }
+
+        // Get only the code from this tutorial example
+        const code = codeElement.textContent.trim();
+
+        // Create temporary form
+        const form = document.createElement("form");
+
+        form.method = "POST";
+
+        form.action = '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+        // IMPORTANT:
+        // Open compiler in a NEW TAB
+        form.target = "_blank";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        // Submit code to compiler
+        form.submit();
+
+        // Remove temporary form
+        document.body.removeChild(form);
+    }
+
+</script>

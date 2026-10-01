@@ -1,0 +1,1354 @@
+﻿@{
+    ViewData["Title"] = "Optional in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <!-- HEADER -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Optional in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how Java's Optional class represents a value that may or
+                may not be present, helping developers write clearer code for
+                potentially missing values.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is Optional?</h3>
+
+            <p>
+                <code>Optional&lt;T&gt;</code> is a container object that may
+                contain a non-null value or may be empty.
+            </p>
+
+            <p>
+                It is commonly used as a return type when the absence of a
+                result is a valid possibility.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>
+                                            Value Available
+                                                  ↓
+                                            Optional&lt;T&gt;
+                                                  ↓
+                                                Use Value
+                                                  ↓
+                                                No Value
+                                                  ↓
+                                            Optional.empty()
+                                                  ↓
+                                            Handle Absence</code></pre>                   
+            </div>
+
+        </section>
+
+
+        <!-- CREATING OPTIONAL -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Creating Optional
+            </h3>
+
+            <p>
+                Java provides several factory methods for creating Optional
+                instances.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; value =
+    Optional.of("CIIT");
+
+Optional&lt;String&gt; empty =
+    Optional.empty();
+
+Optional&lt;String&gt; nullable =
+    Optional.ofNullable(
+        getName()
+    );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- OF -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Optional.of()
+            </h3>
+
+            <p>
+                <code>Optional.of()</code> creates an Optional containing a
+                non-null value.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.of("Sam");
+
+System.out.println(name);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Optional[Sam]</code></pre>
+</div>
+
+            <div class="alert alert-warning mt-3">
+                <strong>Important:</strong>
+                Passing <code>null</code> to <code>Optional.of()</code> throws
+                <code>NullPointerException</code>.
+            </div>
+
+        </section>
+
+
+        <!-- OF NULLABLE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Optional.ofNullable()
+            </h3>
+
+            <p>
+                <code>Optional.ofNullable()</code> creates an Optional that
+                contains the value when it is non-null, otherwise it creates
+                an empty Optional.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String name = null;
+
+Optional&lt;String&gt; result =
+    Optional.ofNullable(name);
+
+System.out.println(result);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Optional.empty</code></pre>
+</div>
+        </section>
+
+
+        <!-- EMPTY -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Optional.empty()
+            </h3>
+
+            <p>
+                <code>Optional.empty()</code> represents an Optional with no
+                value.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; result =
+    Optional.empty();
+
+System.out.println(
+    result.isEmpty()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>true</code></pre>
+</div>
+        </section>
+
+
+        <!-- ISPRESENT -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                isPresent()
+            </h3>
+
+            <p>
+                <code>isPresent()</code> checks whether a value exists.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.of("Neha");
+
+if (name.isPresent()) {
+
+    System.out.println(
+        "Value is available"
+    );
+
+}</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Value is available</code></pre>
+</div>
+        </section>
+
+
+        <!-- ISEMPTY -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                isEmpty()
+            </h3>
+
+            <p>
+                <code>isEmpty()</code> checks whether an Optional contains no
+                value.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.empty();
+
+if (name.isEmpty()) {
+
+    System.out.println(
+        "No value available"
+    );
+
+}</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>No value available</code></pre>
+</div>
+        </section>
+
+
+        <!-- GET -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                get()
+            </h3>
+
+            <p>
+                <code>get()</code> returns the contained value.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.of("Sam");
+
+String value =
+    name.get();
+
+System.out.println(value);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Sam</code></pre>
+</div>
+
+            <div class="alert alert-danger mt-3">
+                Avoid calling <code>get()</code> blindly. If the Optional is
+                empty, <code>get()</code> throws
+                <code>NoSuchElementException</code>.
+            </div>
+
+        </section>
+
+
+        <!-- OR ELSE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                orElse()
+            </h3>
+
+            <p>
+                <code>orElse()</code> returns the contained value or a
+                fallback value when the Optional is empty.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.empty();
+
+String result =
+    name.orElse("Unknown");
+
+System.out.println(result);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Unknown</code></pre>
+</div>
+        </section>
+
+
+        <!-- OR ELSE GET -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                orElseGet()
+            </h3>
+
+            <p>
+                <code>orElseGet()</code> accepts a Supplier and computes the
+                fallback value when it is actually needed.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.empty();
+
+String result =
+    name.orElseGet(
+        () -&gt; "Generated Name"
+    );
+
+System.out.println(result);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Generated Name</code></pre>
+</div>
+        </section>
+
+
+        <!-- OR ELSE THROW -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                orElseThrow()
+            </h3>
+
+            <p>
+                <code>orElseThrow()</code> returns the value when present and
+                throws an exception when the Optional is empty.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.of("Amit");
+
+String result =
+    name.orElseThrow();
+
+System.out.println(result);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit</code></pre>
+</div>
+        </section>
+
+
+        <!-- CUSTOM EXCEPTION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                orElseThrow() with Custom Exception
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.empty();
+
+String result =
+    name.orElseThrow(
+        () -&gt;
+            new IllegalArgumentException(
+                "Name not found"
+            )
+    );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- IF PRESENT -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                ifPresent()
+            </h3>
+
+            <p>
+                <code>ifPresent()</code> executes a Consumer when a value is
+                present.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.of("Priya");
+
+name.ifPresent(
+    value -&gt;
+        System.out.println(value)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Priya</code></pre>
+</div>
+        </section>
+
+
+        <!-- IF PRESENT OR ELSE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                ifPresentOrElse()
+            </h3>
+
+            <p>
+                <code>ifPresentOrElse()</code> allows separate actions for
+                present and empty cases.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.ofNullable(
+        getName()
+    );
+
+name.ifPresentOrElse(
+
+    value -&gt;
+        System.out.println(
+            "Name: " + value
+        ),
+
+    () -&gt;
+        System.out.println(
+            "Name not found"
+        )
+);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- FILTER -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                filter()
+            </h3>
+
+            <p>
+                <code>filter()</code> keeps the Optional value only when it
+                satisfies the supplied predicate.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;Integer&gt; age =
+    Optional.of(25);
+
+Optional&lt;Integer&gt; adultAge =
+    age.filter(
+        value -&gt; value &gt;= 18
+    );
+
+adultAge.ifPresent(
+    System.out::println
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>25</code></pre>
+</div>
+        </section>
+
+
+        <!-- MAP -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                map()
+            </h3>
+
+            <p>
+                <code>map()</code> transforms the value inside the Optional
+                when it is present.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.of("java");
+
+Optional&lt;String&gt; upper =
+    name.map(
+        String::toUpperCase
+    );
+
+System.out.println(
+    upper.orElse("UNKNOWN")
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>JAVA</code></pre>
+</div>
+        </section>
+
+
+        <!-- FLATMAP -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                flatMap()
+            </h3>
+
+            <p>
+                <code>flatMap()</code> is useful when the mapping function
+                itself returns an Optional and you want to avoid nested
+                Optional values.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.of("Amit");
+
+Optional&lt;String&gt; result =
+    name.flatMap(
+        value -&gt;
+            Optional.of(
+                value.toUpperCase()
+            )
+    );
+
+System.out.println(
+    result.orElse("Unknown")
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>AMIT</code></pre>
+</div>
+        </section>
+
+
+        <!-- MAP VS FLATMAP -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                map() vs flatMap()
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Operation</th>
+                            <th>Use</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>map()</code></td>
+                            <td>
+                                Transforms the contained value.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><code>flatMap()</code></td>
+                            <td>
+                                Transforms using a function that already
+                                returns Optional and avoids nesting.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- OR -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                or()
+            </h3>
+
+            <p>
+                The <code>or()</code> method can provide another Optional when
+                the current Optional is empty.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;String&gt; primary =
+    Optional.empty();
+
+Optional&lt;String&gt; backup =
+    Optional.of("Backup Value");
+
+Optional&lt;String&gt; result =
+    primary.or(
+        () -&gt; backup
+    );
+
+System.out.println(
+    result.orElse("None")
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Backup Value</code></pre>
+</div>
+        </section>
+
+
+        <!-- STREAM -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Optional and Stream API
+            </h3>
+
+            <p>
+                Optional integrates naturally with stream operations such as
+                <code>findFirst()</code> and <code>findAny()</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of(
+        "Amit",
+        "Neha",
+        "Rahul"
+    );
+
+Optional&lt;String&gt; result =
+    names.stream()
+        .filter(
+            name -&gt;
+                name.startsWith("N")
+        )
+        .findFirst();
+
+result.ifPresent(
+    System.out::println
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Neha</code></pre>
+</div>
+        </section>
+
+
+        <!-- RETURN TYPE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Optional as a Method Return Type
+            </h3>
+
+            <p>
+                One common use of Optional is representing a method result
+                that may not exist.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;User&gt; findUserById(
+    int id
+) {
+
+    // Search user
+
+    return Optional.empty();
+}</code></pre>
+            </div>
+
+            <p class="mt-3">
+                The caller can explicitly handle the possibility that no user
+                was found.
+            </p>
+
+        </section>
+
+
+        <!-- REAL WORLD -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Real-World Example
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;User&gt; user =
+    findUserById(101);
+
+String name =
+    user.map(
+        User::getName
+    )
+    .orElse(
+        "User Not Found"
+    );
+
+System.out.println(name);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- OPTIONAL PRIMITIVES -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                OptionalInt, OptionalLong and OptionalDouble
+            </h3>
+
+            <p>
+                Java provides primitive-specialized Optional classes for
+                numeric values.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>OptionalInt age =
+    OptionalInt.of(25);
+
+if (age.isPresent()) {
+
+    System.out.println(
+        age.getAsInt()
+    );
+
+}</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>25</code></pre>
+</div>
+
+            <div class="table-responsive mt-3">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Class</th>
+                            <th>Value Type</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>Optional&lt;T&gt;</code></td>
+                            <td>Reference type</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>OptionalInt</code></td>
+                            <td>int</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>OptionalLong</code></td>
+                            <td>long</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>OptionalDouble</code></td>
+                            <td>double</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Optional Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Use Optional mainly as a return type where absence is
+                    meaningful.
+                </li>
+
+                <li class="mb-2">
+                    Avoid blindly calling <code>get()</code>.
+                </li>
+
+                <li class="mb-2">
+                    Prefer <code>orElse()</code>,
+                    <code>orElseGet()</code>, or
+                    <code>orElseThrow()</code> when appropriate.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>map()</code> and <code>flatMap()</code> for
+                    transformations.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>ifPresent()</code> when an action should happen
+                    only when a value exists.
+                </li>
+
+                <li>
+                    Do not use Optional merely to wrap every field in a domain
+                    object.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- COMMON MISTAKES -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Common Mistakes
+            </h3>
+
+            <div class="alert alert-warning">
+
+                <ul class="mb-0">
+
+                    <li class="mb-2">
+                        Calling <code>get()</code> without checking presence.
+                    </li>
+
+                    <li class="mb-2">
+                        Using Optional everywhere instead of where it provides
+                        meaningful semantics.
+                    </li>
+
+                    <li class="mb-2">
+                        Returning <code>null</code> from a method declared to
+                        return Optional.
+                    </li>
+
+                    <li>
+                        Confusing <code>orElse()</code> with
+                        <code>orElseGet()</code>.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- OR ELSE DIFFERENCE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                orElse() vs orElseGet()
+            </h3>
+
+            <p>
+                The fallback expression passed to <code>orElse()</code> is
+                evaluated even when the Optional contains a value. With
+                <code>orElseGet()</code>, the Supplier is invoked only when
+                the Optional is empty.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String result =
+    optionalValue.orElse(
+        createDefaultValue()
+    );</code></pre>
+            </div>
+
+            <div class="code-block mt-3">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String result =
+    optionalValue.orElseGet(
+        () -&gt;
+            createDefaultValue()
+    );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="optionalQuestions">
+
+                <!-- Q1 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#optionalQuestionOne">
+
+                            What is Optional in Java?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="optionalQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#optionalQuestions">
+
+                        <div class="accordion-body">
+
+                            Optional is a container that may contain a non-null
+                            value or may be empty.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q2 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#optionalQuestionTwo">
+
+                            What is the difference between of() and ofNullable()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="optionalQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#optionalQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>of()</code> requires a non-null value and
+                            throws NullPointerException for null.
+                            <code>ofNullable()</code> creates an empty
+                            Optional when the supplied value is null.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q3 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#optionalQuestionThree">
+
+                            What is the difference between get() and orElse()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="optionalQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#optionalQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>get()</code> throws an exception when the
+                            Optional is empty, while <code>orElse()</code>
+                            returns a fallback value.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q4 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#optionalQuestionFour">
+
+                            What is orElseGet()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="optionalQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#optionalQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>orElseGet()</code> accepts a Supplier and
+                            calculates the fallback value only when the
+                            Optional is empty.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q5 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#optionalQuestionFive">
+
+                            What is the purpose of map() in Optional?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="optionalQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#optionalQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>map()</code> transforms the contained value
+                            when the Optional is present.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q6 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#optionalQuestionSix">
+
+                            Why should get() be avoided when possible?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="optionalQuestionSix"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#optionalQuestions">
+
+                        <div class="accordion-body">
+
+                            Calling <code>get()</code> on an empty Optional
+                            throws NoSuchElementException. Explicit fallback
+                            or exception-handling methods are usually clearer.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q7 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#optionalQuestionSeven">
+
+                            Can Optional contain null?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="optionalQuestionSeven"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#optionalQuestions">
+
+                        <div class="accordion-body">
+
+                            No. Optional itself represents either a non-null
+                            value or absence. <code>Optional.of(null)</code>
+                            throws an exception, while
+                            <code>Optional.ofNullable(null)</code> produces
+                            an empty Optional.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">
+                    Summary
+                </h5>
+
+                <p class="mb-0">
+                    Optional represents a value that may or may not be
+                    available. Important methods include of, ofNullable,
+                    empty, isPresent, isEmpty, get, orElse, orElseGet,
+                    orElseThrow, ifPresent, ifPresentOrElse, filter, map,
+                    flatMap, and or. Optional is especially useful for making
+                    potentially absent method results explicit.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "StreamAPI",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+
+            <a href="@Url.Action(
+                               "DateAndTimeAPI",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+</div>

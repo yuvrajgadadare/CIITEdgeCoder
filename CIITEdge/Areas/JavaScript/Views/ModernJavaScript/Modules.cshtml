@@ -1,0 +1,1090 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Modules";
+}
+
+<style>
+
+    #javascript-modules-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-modules-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-modules-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-modules-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-modules-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-modules-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+    /* CONCEPT */
+
+    #javascript-modules-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-modules-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-modules-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* IMAGE */
+
+    #javascript-modules-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-modules-page .modules-visual {
+        width: 100%;
+        background: #f8f9fa;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    #javascript-modules-page .image-caption {
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* DIAGRAM */
+
+    #javascript-modules-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #javascript-modules-page .diagram-title {
+        font-size: 21px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 22px;
+    }
+
+    #javascript-modules-page .diagram-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-modules-page .diagram-item {
+        background: #ffffff;
+        border: 2px solid #6d3fc0;
+        border-radius: 9px;
+        padding: 16px 22px;
+        font-weight: 600;
+        color: #212529;
+    }
+
+    #javascript-modules-page .diagram-item.green {
+        border-color: #198754;
+    }
+
+    #javascript-modules-page .diagram-item.main {
+        background: #6d3fc0;
+        color: #ffffff;
+    }
+
+    #javascript-modules-page .diagram-arrow {
+        font-size: 25px;
+        font-weight: 700;
+        color: #6d3fc0;
+    }
+
+    /* CODE */
+
+    #javascript-modules-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 22px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-modules-page .code-box code {
+        color: #f8f9fa;
+    }
+
+    /* TRY IT */
+
+    #javascript-modules-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 22px;
+    }
+
+    #javascript-modules-page .try-it-btn {
+        background: #198754;
+        border: 1px solid #198754;
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #javascript-modules-page .try-it-btn:hover {
+        background: #157347;
+        border-color: #157347;
+    }
+
+    /* OUTPUT */
+
+    #javascript-modules-page .output-box {
+        background: #212529;
+        color: #ffffff;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 18px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    /* TABLE */
+
+    #javascript-modules-page .comparison-wrapper {
+        overflow-x: auto;
+        margin: 25px 0;
+    }
+
+    #javascript-modules-page .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+
+    #javascript-modules-page .comparison-table th,
+    #javascript-modules-page .comparison-table td {
+        border: 1px solid #dee2e6;
+        padding: 14px;
+        text-align: left;
+    }
+
+    #javascript-modules-page .comparison-table th {
+        background: #5b21b6;
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    #javascript-modules-page .comparison-table td {
+        background: #ffffff;
+        color: #495057;
+    }
+
+    /* SUMMARY */
+
+    #javascript-modules-page .summary-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-modules-page .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-modules-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* NAVIGATION */
+
+    #javascript-modules-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    #javascript-modules-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    #javascript-modules-page .previous-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    #javascript-modules-page .next-btn {
+        background: #5b21b6;
+        border: 1px solid #5b21b6;
+        color: #ffffff;
+    }
+
+    #javascript-modules-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-modules-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-modules-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-modules-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-modules-page .section-title {
+            font-size: 23px;
+        }
+
+        #javascript-modules-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-modules-page .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        #javascript-modules-page .diagram-row {
+            flex-direction: column;
+        }
+
+        #javascript-modules-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+</style>
+
+
+<main id="javascript-modules-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- PAGE HEADER -->
+
+                    <h1 class="page-title">
+                        JavaScript Modules
+                    </h1>
+
+                    <p class="lead-text">
+
+                        JavaScript Modules allow us to divide a large
+                        JavaScript program into smaller, reusable and
+                        manageable files.
+
+                    </p>
+
+
+                    <!-- INTRODUCTION -->
+
+                    <h2 class="section-title">
+                        What are JavaScript Modules?
+                    </h2>
+
+                    <p class="section-text">
+
+                        A module is a separate JavaScript file that
+                        contains related variables, functions, classes,
+                        or other code.
+
+                    </p>
+
+                    <p class="section-text">
+
+                        Modules help us organize our application and
+                        reuse code between different JavaScript files.
+
+                    </p>
+
+
+                    <!-- SIMPLE DEFINITION -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+
+                            JavaScript Modules allow us to
+                            <strong>export</strong> code from one file
+                            and <strong>import</strong> that code into
+                            another file.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RELATED VISUAL
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <div class="modules-visual">
+
+                            <svg width="100%"
+                                 height="350"
+                                 viewBox="0 0 900 350"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                                <rect width="900"
+                                      height="350"
+                                      fill="#f8f9fa" />
+
+                                <text x="450"
+                                      y="45"
+                                      text-anchor="middle"
+                                      font-size="27"
+                                      font-weight="700"
+                                      fill="#212529">
+
+                                    JavaScript Modules
+
+                                </text>
+
+
+                                <!-- MODULE A -->
+
+                                <rect x="70"
+                                      y="90"
+                                      width="230"
+                                      height="170"
+                                      rx="14"
+                                      fill="#ffffff"
+                                      stroke="#6d3fc0"
+                                      stroke-width="3" />
+
+                                <text x="185"
+                                      y="125"
+                                      text-anchor="middle"
+                                      font-size="21"
+                                      font-weight="700"
+                                      fill="#5b21b6">
+
+                                    math.js
+
+                                </text>
+
+                                <text x="185"
+                                      y="165"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      fill="#212529">
+
+                                    function add()
+
+                                </text>
+
+                                <text x="185"
+                                      y="200"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      fill="#198754">
+
+                                    export
+
+                                </text>
+
+                                <text x="185"
+                                      y="235"
+                                      text-anchor="middle"
+                                      font-size="15"
+                                      fill="#495057">
+
+                                    Reusable Code
+
+                                </text>
+
+
+                                <!-- ARROW -->
+
+                                <text x="340"
+                                      y="180"
+                                      text-anchor="middle"
+                                      font-size="35"
+                                      font-weight="700"
+                                      fill="#6d3fc0">
+
+                                    →
+
+                                </text>
+
+                                <text x="340"
+                                      y="215"
+                                      text-anchor="middle"
+                                      font-size="15"
+                                      fill="#495057">
+
+                                    import
+
+                                </text>
+
+
+                                <!-- MODULE B -->
+
+                                <rect x="370"
+                                      y="90"
+                                      width="230"
+                                      height="170"
+                                      rx="14"
+                                      fill="#ffffff"
+                                      stroke="#198754"
+                                      stroke-width="3" />
+
+                                <text x="485"
+                                      y="125"
+                                      text-anchor="middle"
+                                      font-size="21"
+                                      font-weight="700"
+                                      fill="#198754">
+
+                                    app.js
+
+                                </text>
+
+                                <text x="485"
+                                      y="165"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      fill="#212529">
+
+                                    import { add }
+
+                                </text>
+
+                                <text x="485"
+                                      y="200"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      fill="#198754">
+
+                                    use function
+
+                                </text>
+
+                                <text x="485"
+                                      y="235"
+                                      text-anchor="middle"
+                                      font-size="15"
+                                      fill="#495057">
+
+                                    Application Code
+
+                                </text>
+
+
+                                <!-- RESULT -->
+
+                                <text x="640"
+                                      y="180"
+                                      text-anchor="middle"
+                                      font-size="35"
+                                      font-weight="700"
+                                      fill="#6d3fc0">
+
+                                    →
+
+                                </text>
+
+                                <rect x="665"
+                                      y="115"
+                                      width="170"
+                                      height="120"
+                                      rx="14"
+                                      fill="#5b21b6" />
+
+                                <text x="750"
+                                      y="155"
+                                      text-anchor="middle"
+                                      font-size="19"
+                                      font-weight="700"
+                                      fill="#ffffff">
+
+                                    Result
+
+                                </text>
+
+                                <text x="750"
+                                      y="195"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      fill="#ffffff">
+
+                                    30
+
+                                </text>
+
+
+                                <text x="450"
+                                      y="305"
+                                      text-anchor="middle"
+                                      font-size="17"
+                                      font-weight="600"
+                                      fill="#495057">
+
+                                    Export → Import → Reuse
+
+                                </text>
+
+                            </svg>
+
+                        </div>
+
+                        <p class="image-caption">
+
+                            One JavaScript file can export code and another
+                            JavaScript file can import and reuse it.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         HOW MODULES WORK
+                         ================================================= -->
+
+                    <div class="diagram-box">
+
+                        <div class="diagram-title">
+                            How JavaScript Modules Work
+                        </div>
+
+                        <div class="diagram-row">
+
+                            <div class="diagram-item">
+                                Create Module
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-item main">
+                                export
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-item green">
+                                import
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-item">
+                                Reuse Code
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXPORT
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Export
+                    </h2>
+
+                    <p class="section-text">
+
+                        The <strong>export</strong> keyword makes a
+                        variable, function, or class available to
+                        other JavaScript modules.
+
+                    </p>
+
+                    <pre class="code-box"><code>export function add(a, b) {
+    return a + b;
+}</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryModulesExample1()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Function exported successfully.
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORT
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Import
+                    </h2>
+
+                    <p class="section-text">
+
+                        The <strong>import</strong> keyword is used to
+                        use exported code inside another JavaScript
+                        module.
+
+                    </p>
+
+                    <pre class="code-box"><code>import { add } from "./math.js";
+
+let result = add(10, 20);
+
+console.log(result);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryModulesExample2()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        30
+
+                    </div>
+
+
+                    <!-- =================================================
+                         NAMED EXPORT
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Named Export
+                    </h2>
+
+                    <p class="section-text">
+
+                        Multiple variables or functions can be exported
+                        from the same module.
+
+                    </p>
+
+                    <pre class="code-box"><code>export const name = "Rahul";
+
+export function greet() {
+    return "Hello " + name;
+}</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryModulesExample3()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Hello Rahul
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DEFAULT EXPORT
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Default Export
+                    </h2>
+
+                    <p class="section-text">
+
+                        A module can have one default export.
+
+                    </p>
+
+                    <pre class="code-box"><code>export default function greet() {
+    return "Welcome to CIIT Training Institute";
+}</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryModulesExample4()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Welcome to CIIT Training Institute
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BENEFITS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Benefits of JavaScript Modules
+                    </h2>
+
+                    <div class="comparison-wrapper">
+
+                        <table class="comparison-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Benefit</th>
+                                    <th>Description</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Code Organization</td>
+                                    <td>
+                                        Divides large applications into
+                                        smaller files.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Code Reusability</td>
+                                    <td>
+                                        Code can be imported and reused.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Maintainability</td>
+                                    <td>
+                                        Smaller files are easier to manage.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Separation</td>
+                                    <td>
+                                        Different parts of an application
+                                        can be kept separate.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT POINTS
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Points
+                        </h5>
+
+                        <p>
+                            • <strong>export</strong> makes code available
+                            to another module.
+                        </p>
+
+                        <p>
+                            • <strong>import</strong> brings exported code
+                            into another module.
+                        </p>
+
+                        <p>
+                            • Modules help organize large applications.
+                        </p>
+
+                        <p class="mb-0">
+                            • Modules improve code reusability and
+                            maintainability.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+
+                            JavaScript Modules allow developers to split
+                            code into separate files. The
+                            <strong>export</strong> keyword shares code
+                            from a module, while the
+                            <strong>import</strong> keyword allows another
+                            module to use that code.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("SpreadRest", "ModernJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            ← Previous: Spread & Rest Operators
+
+                        </a>
+
+
+                        <a href="@Url.Action("Index", "AsynchronousJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            Next: Asynchronous JavaScript →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function tryModulesExample1() {
+
+        const code =
+            'function add(a, b) {\\n' +
+            '    return a + b;\\n' +
+            '}\\n' +
+            '\\n' +
+            'console.log("Export example");';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function tryModulesExample2() {
+
+        const code =
+            'function add(a, b) {\\n' +
+            '    return a + b;\\n' +
+            '}\\n' +
+            '\\n' +
+            'let result = add(10, 20);\\n' +
+            '\\n' +
+            'console.log(result);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function tryModulesExample3() {
+
+        const code =
+            'const name = "Rahul";\\n' +
+            '\\n' +
+            'function greet() {\\n' +
+            '    return "Hello " + name;\\n' +
+            '}\\n' +
+            '\\n' +
+            'console.log(greet());';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       ========================================================= */
+
+    function tryModulesExample4() {
+
+        const code =
+            'function greet() {\\n' +
+            '    return "Welcome to CIIT Training Institute";\\n' +
+            '}\\n' +
+            '\\n' +
+            'console.log(greet());';
+
+        openCompiler(code);
+    }
+
+</script>

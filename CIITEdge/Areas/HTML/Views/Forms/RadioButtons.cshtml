@@ -1,0 +1,694 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Radio Buttons";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #4f46e5;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+        .demo-box label {
+            margin-left: 6px;
+            margin-right: 18px;
+            cursor: pointer;
+        }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+
+    .highlight {
+        background: #fff3cd;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML Radio Buttons</h1>
+
+            <p>
+                Radio buttons allow users to select <strong>one option from a group of related choices</strong>.
+                They are commonly used when only one answer should be selected, such as gender,
+                payment method, education level, or delivery preference.
+            </p>
+
+            <div class="info-box">
+                <strong>Key Point:</strong>
+                Radio buttons that belong to the same group must use the same
+                <code>name</code> attribute.
+            </div>
+
+            <h2>1. What is a Radio Button?</h2>
+
+            <p>
+                A radio button is created using the
+                <code>&lt;input&gt;</code> element with
+                <code>type="radio"</code>.
+            </p>
+
+            <pre><code>&lt;input type="radio" name="gender" value="male"&gt; Male</code></pre>
+
+            <p>
+                The user can select the radio button to choose the associated option.
+            </p>
+
+            <h2>2. Basic Radio Button Example</h2>
+
+            <pre><code>&lt;form&gt;
+    &lt;input type="radio" name="gender" value="male"&gt;
+    &lt;label&gt;Male&lt;/label&gt;
+
+    &lt;input type="radio" name="gender" value="female"&gt;
+    &lt;label&gt;Female&lt;/label&gt;
+&lt;/form&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <input type="radio" name="demo-gender-1" value="male" id="male1">
+                <label for="male1">Male</label>
+
+                <input type="radio" name="demo-gender-1" value="female" id="female1">
+                <label for="female1">Female</label>
+            </div>
+
+            <h2>3. The Importance of the name Attribute</h2>
+
+            <p>
+                The <code>name</code> attribute groups radio buttons together.
+                Radio buttons with the same <code>name</code> allow only one option to be selected.
+            </p>
+
+            <pre><code>&lt;input type="radio" name="course" value="dotnet"&gt; .NET
+&lt;input type="radio" name="course" value="java"&gt; Java
+&lt;input type="radio" name="course" value="python"&gt; Python</code></pre>
+
+            <p>
+                Since all three radio buttons use the same
+                <code>name="course"</code>, only one course can be selected.
+            </p>
+
+            <h2>4. Radio Buttons with Labels</h2>
+
+            <p>
+                It is recommended to connect every radio button with a
+                <code>&lt;label&gt;</code>.
+                The <code>for</code> attribute of the label should match the
+                radio button's <code>id</code>.
+            </p>
+
+            <pre><code>&lt;input type="radio" id="dotnet" name="course" value="dotnet"&gt;
+&lt;label for="dotnet"&gt;.NET&lt;/label&gt;
+
+&lt;input type="radio" id="java" name="course" value="java"&gt;
+&lt;label for="java"&gt;Java&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <input type="radio" id="dotnet-demo" name="course-demo-1" value="dotnet">
+                <label for="dotnet-demo">.NET</label>
+
+                <input type="radio" id="java-demo" name="course-demo-1" value="java">
+                <label for="java-demo">Java</label>
+
+                <input type="radio" id="python-demo" name="course-demo-1" value="python">
+                <label for="python-demo">Python</label>
+            </div>
+
+            <h2>5. The value Attribute</h2>
+
+            <p>
+                The <code>value</code> attribute stores the value associated with the selected radio button.
+                This value is submitted when the form is sent.
+            </p>
+
+            <pre><code>&lt;input type="radio"
+       id="beginner"
+       name="level"
+       value="beginner"&gt;
+
+&lt;label for="beginner"&gt;Beginner&lt;/label&gt;</code></pre>
+
+            <p>
+                If the user selects this option, the submitted value is
+                <code>beginner</code>.
+            </p>
+
+            <h2>6. Selecting a Radio Button by Default</h2>
+
+            <p>
+                Use the <code>checked</code> attribute when one option should be selected by default.
+            </p>
+
+            <pre><code>&lt;input type="radio"
+       id="online"
+       name="mode"
+       value="online"
+       checked&gt;
+
+&lt;label for="online"&gt;Online&lt;/label&gt;
+
+&lt;input type="radio"
+       id="offline"
+       name="mode"
+       value="offline"&gt;
+
+&lt;label for="offline"&gt;Offline&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <input type="radio" id="online-demo" name="mode-demo-1" value="online" checked>
+                <label for="online-demo">Online</label>
+
+                <input type="radio" id="offline-demo" name="mode-demo-1" value="offline">
+                <label for="offline-demo">Offline</label>
+            </div>
+
+            <h2>7. Required Radio Buttons</h2>
+
+            <p>
+                Add the <code>required</code> attribute when the user must select an option before submitting the form.
+            </p>
+
+            <pre><code>&lt;input type="radio"
+       id="yes"
+       name="experience"
+       value="yes"
+       required&gt;
+
+&lt;label for="yes"&gt;Yes&lt;/label&gt;
+
+&lt;input type="radio"
+       id="no"
+       name="experience"
+       value="no"&gt;
+
+&lt;label for="no"&gt;No&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                Usually, <code>required</code> is applied to at least one radio button
+                in the group so the browser requires a selection.
+            </div>
+
+            <h2>8. Radio Buttons in a Form</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;p&gt;Choose your course:&lt;/p&gt;
+
+    &lt;input type="radio"
+           id="html-course"
+           name="course"
+           value="html"
+           required&gt;
+    &lt;label for="html-course"&gt;HTML&lt;/label&gt;
+
+    &lt;input type="radio"
+           id="css-course"
+           name="course"
+           value="css"&gt;
+    &lt;label for="css-course"&gt;CSS&lt;/label&gt;
+
+    &lt;input type="radio"
+           id="js-course"
+           name="course"
+           value="javascript"&gt;
+    &lt;label for="js-course"&gt;JavaScript&lt;/label&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>9. Example: Gender Selection</h2>
+
+            <pre><code>&lt;fieldset&gt;
+    &lt;legend&gt;Select Gender&lt;/legend&gt;
+
+    &lt;input type="radio"
+           id="male"
+           name="gender"
+           value="male"&gt;
+    &lt;label for="male"&gt;Male&lt;/label&gt;
+
+    &lt;input type="radio"
+           id="female"
+           name="gender"
+           value="female"&gt;
+    &lt;label for="female"&gt;Female&lt;/label&gt;
+
+    &lt;input type="radio"
+           id="other"
+           name="gender"
+           value="other"&gt;
+    &lt;label for="other"&gt;Other&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <fieldset class="p-3">
+                    <legend class="float-none w-auto px-2">Select Gender</legend>
+
+                    <input type="radio" id="male-demo" name="gender-demo-1" value="male">
+                    <label for="male-demo">Male</label>
+
+                    <input type="radio" id="female-demo" name="gender-demo-1" value="female">
+                    <label for="female-demo">Female</label>
+
+                    <input type="radio" id="other-demo" name="gender-demo-1" value="other">
+                    <label for="other-demo">Other</label>
+                </fieldset>
+            </div>
+
+            <h2>10. Using fieldset and legend</h2>
+
+            <p>
+                The <code>&lt;fieldset&gt;</code> element groups related form controls,
+                while <code>&lt;legend&gt;</code> provides a caption for the group.
+            </p>
+
+            <pre><code>&lt;fieldset&gt;
+    &lt;legend&gt;Preferred Payment Method&lt;/legend&gt;
+
+    &lt;input type="radio"
+           id="card"
+           name="payment"
+           value="card"&gt;
+    &lt;label for="card"&gt;Credit Card&lt;/label&gt;
+
+    &lt;input type="radio"
+           id="upi"
+           name="payment"
+           value="upi"&gt;
+    &lt;label for="upi"&gt;UPI&lt;/label&gt;
+
+    &lt;input type="radio"
+           id="cash"
+           name="payment"
+           value="cash"&gt;
+    &lt;label for="cash"&gt;Cash&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>11. Radio Buttons vs Checkboxes</h2>
+
+            <p>
+                Radio buttons and checkboxes are both form controls, but they are used for different purposes.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Radio Button</th>
+                            <th>Checkbox</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Selection</td>
+                            <td>Usually one option</td>
+                            <td>One or more options</td>
+                        </tr>
+                        <tr>
+                            <td>Input Type</td>
+                            <td><code>radio</code></td>
+                            <td><code>checkbox</code></td>
+                        </tr>
+                        <tr>
+                            <td>Grouping</td>
+                            <td>Same <code>name</code></td>
+                            <td>Can have different names</td>
+                        </tr>
+                        <tr>
+                            <td>Example</td>
+                            <td>Select one payment method</td>
+                            <td>Select multiple skills</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>12. Example of One Selection Only</h2>
+
+            <pre><code>&lt;p&gt;Choose your experience level:&lt;/p&gt;
+
+&lt;input type="radio"
+       id="beginner-level"
+       name="experience-level"
+       value="beginner"&gt;
+&lt;label for="beginner-level"&gt;Beginner&lt;/label&gt;
+
+&lt;input type="radio"
+       id="intermediate-level"
+       name="experience-level"
+       value="intermediate"&gt;
+&lt;label for="intermediate-level"&gt;Intermediate&lt;/label&gt;
+
+&lt;input type="radio"
+       id="advanced-level"
+       name="experience-level"
+       value="advanced"&gt;
+&lt;label for="advanced-level"&gt;Advanced&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <p>
+                Because all three controls use the same
+                <code>name="experience-level"</code>,
+                only one option can be selected.
+            </p>
+
+            <h2>13. Disabled Radio Button</h2>
+
+            <p>
+                Use the <code>disabled</code> attribute when an option should not be selectable.
+            </p>
+
+            <pre><code>&lt;input type="radio"
+       id="offline"
+       name="training-mode"
+       value="offline"
+       disabled&gt;
+
+&lt;label for="offline"&gt;Offline - Not Available&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <input type="radio" id="online-demo-2" name="training-mode-demo" value="online">
+                <label for="online-demo-2">Online</label>
+
+                <input type="radio" id="offline-demo-2" name="training-mode-demo" value="offline" disabled>
+                <label for="offline-demo-2">Offline - Not Available</label>
+            </div>
+
+            <h2>14. Radio Button with Styling</h2>
+
+            <p>
+                Radio buttons can be styled using CSS while keeping the HTML structure simple.
+            </p>
+
+            <pre><code>&lt;style&gt;
+    input[type="radio"] {
+        accent-color: #4f46e5;
+    }
+&lt;/style&gt;</code></pre>
+
+            <div class="info-box">
+                <strong>Note:</strong>
+                The <code>accent-color</code> property can be used to customize the visual color
+                of form controls supported by the browser.
+            </div>
+
+            <h2>15. Common Mistakes</h2>
+
+            <h3>Mistake 1: Different name attributes</h3>
+
+            <pre><code>&lt;input type="radio" name="course1" value="html"&gt;
+&lt;input type="radio" name="course2" value="css"&gt;</code></pre>
+
+            <p>
+                These controls are treated as separate groups and may both be selected.
+            </p>
+
+            <h3>Mistake 2: Missing value attribute</h3>
+
+            <pre><code>&lt;input type="radio" name="course"&gt;</code></pre>
+
+            <p>
+                It is better to provide a meaningful <code>value</code> so the selected option
+                can be identified during form submission.
+            </p>
+
+            <h3>Mistake 3: Missing labels</h3>
+
+            <pre><code>&lt;input type="radio" name="course" value="html"&gt;</code></pre>
+
+            <p>
+                Without a label, the option may be less clear and less convenient to use.
+            </p>
+
+            <h2>16. Best Practices</h2>
+
+            <ul>
+                <li>Use the same <code>name</code> for radio buttons in the same group.</li>
+                <li>Always provide a meaningful <code>value</code>.</li>
+                <li>Use labels with matching <code>for</code> and <code>id</code> values.</li>
+                <li>Use <code>required</code> when a selection is mandatory.</li>
+                <li>Use <code>fieldset</code> and <code>legend</code> for related options when appropriate.</li>
+                <li>Keep radio button choices clear and easy to understand.</li>
+            </ul>
+
+            <h2>17. Practice Example</h2>
+
+            <p>
+                Create a form that asks the user to choose one preferred learning mode:
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;Preferred Learning Mode&lt;/legend&gt;
+
+        &lt;input type="radio"
+               id="online-learning"
+               name="learning-mode"
+               value="online"
+               required&gt;
+        &lt;label for="online-learning"&gt;Online&lt;/label&gt;
+
+        &lt;input type="radio"
+               id="offline-learning"
+               name="learning-mode"
+               value="offline"&gt;
+        &lt;label for="offline-learning"&gt;Offline&lt;/label&gt;
+
+        &lt;input type="radio"
+               id="hybrid-learning"
+               name="learning-mode"
+               value="hybrid"&gt;
+        &lt;label for="hybrid-learning"&gt;Hybrid&lt;/label&gt;
+
+    &lt;/fieldset&gt;
+
+    &lt;br&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>18. Key Attributes of Radio Buttons</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>type</code></td>
+                            <td>Defines the input as a radio button.</td>
+                        </tr>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>Groups related radio buttons.</td>
+                        </tr>
+                        <tr>
+                            <td><code>value</code></td>
+                            <td>Defines the submitted value.</td>
+                        </tr>
+                        <tr>
+                            <td><code>id</code></td>
+                            <td>Uniquely identifies the radio button.</td>
+                        </tr>
+                        <tr>
+                            <td><code>checked</code></td>
+                            <td>Selects the option by default.</td>
+                        </tr>
+                        <tr>
+                            <td><code>required</code></td>
+                            <td>Requires the user to select an option.</td>
+                        </tr>
+                        <tr>
+                            <td><code>disabled</code></td>
+                            <td>Prevents the user from selecting the option.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    Radio buttons are used when the user should select one option from a group of related choices.
+                    Use <code>type="radio"</code>, keep the same <code>name</code> for the group,
+                    provide meaningful <code>value</code> attributes, connect labels using
+                    <code>id</code> and <code>for</code>, and use attributes such as
+                    <code>checked</code>, <code>required</code>, and <code>disabled</code>
+                    when needed.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("SelectAndOption", "Forms", new { area = "HTML" })">
+                    ← Previous: Select and Option
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("CheckBoxes", "Forms", new { area = "HTML" })">
+                    Next: Checkboxes →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

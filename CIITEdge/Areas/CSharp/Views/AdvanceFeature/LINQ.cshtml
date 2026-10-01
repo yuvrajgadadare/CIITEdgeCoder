@@ -1,0 +1,1836 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "LINQ";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    LINQ (Language Integrated Query)
+                </h2>
+
+                <p class="text-muted mb-4">
+                    LINQ stands for <strong>Language Integrated Query</strong>.
+                    It provides a consistent way to query and manipulate data
+                    from collections, arrays, databases, XML, and other data sources
+                    using C# syntax.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    LINQ allows developers to filter, sort, search, group,
+                    transform, and calculate data using readable C# queries.
+                </div>
+
+
+                <!-- WHAT IS LINQ -->
+
+                <h3 class="fw-bold text-dark mt-4 mb-3">
+                    What is LINQ?
+                </h3>
+
+                <p class="text-muted">
+                    Normally, developers may need to write loops and conditions
+                    repeatedly to search or filter data. LINQ provides methods
+                    and query syntax that make these operations easier to read
+                    and maintain.
+                </p>
+
+                <p class="text-muted">
+                    LINQ can work with in-memory collections such as
+                    <strong>List</strong>, <strong>Array</strong>, and
+                    <strong>Dictionary</strong>. It is also widely used with
+                    technologies such as Entity Framework Core.
+                </p>
+
+
+                <!-- WHY LINQ -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Why Use LINQ?
+                </h3>
+
+                <ul class="text-muted">
+                    <li>Makes data querying easier.</li>
+                    <li>Reduces repetitive loops and conditions.</li>
+                    <li>Improves code readability.</li>
+                    <li>Provides filtering, sorting, grouping, and projection.</li>
+                    <li>Works with many different data sources.</li>
+                    <li>Works naturally with lambda expressions.</li>
+                </ul>
+
+
+                <!-- NAMESPACE -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    LINQ Namespace
+                </h3>
+
+                <p class="text-muted">
+                    LINQ extension methods such as Where(), Select(), OrderBy(),
+                    and GroupBy() are available through the
+                    <strong>System.Linq</strong> namespace.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System.Linq;</code></pre>
+                </div>
+
+
+                <!-- BASIC EXAMPLE -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Basic LINQ Example
+                </h3>
+
+                <p class="text-muted">
+                    The following example filters numbers greater than 20.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        List&lt;int&gt; numbers =
+            new List&lt;int&gt; { 10, 20, 30, 40, 50 };
+
+        var result =
+            numbers.Where(number =&gt; number &gt; 20);
+
+        foreach (int number in result)
+        {
+            Console.WriteLine(number);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+               <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30
+40
+50</code></pre>
+                </div>
+
+
+                <!-- WHERE -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Where()
+                </h3>
+
+                <p class="text-muted">
+                    Where() is used to filter elements based on a condition.
+                    It returns the elements that satisfy the specified condition.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; marks =
+    new List&lt;int&gt; { 35, 55, 65, 40, 80 };
+
+var passed =
+    marks.Where(mark =&gt; mark &gt;= 50);
+
+foreach (int mark in passed)
+{
+    Console.WriteLine(mark);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>55
+65
+80</code></pre>
+                </div>
+
+
+                <!-- SELECT -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Select()
+                </h3>
+
+                <p class="text-muted">
+                    Select() is used to transform each element into another form.
+                </p>
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 1, 2, 3, 4, 5 };
+
+var squares =
+    numbers.Select(number =&gt; number * number);
+
+foreach (int number in squares)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>1
+4
+9
+16
+25</code></pre>
+                </div>
+
+
+                <!-- ORDERBY -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    OrderBy()
+                </h3>
+
+                <p class="text-muted">
+                    OrderBy() sorts data in ascending order.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 50, 20, 40, 10, 30 };
+
+var result =
+    numbers.OrderBy(number =&gt; number);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+                </div>
+
+
+                <!-- ORDERBY DESCENDING -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    OrderByDescending()
+                </h3>
+
+                <p class="text-muted">
+                    OrderByDescending() sorts data in descending order.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 50, 20, 40, 30 };
+
+var result =
+    numbers.OrderByDescending(number =&gt; number);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>50
+40
+30
+20
+10</code></pre>
+                </div>
+
+
+                <!-- FIRST -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    First()
+                </h3>
+
+                <p class="text-muted">
+                    First() returns the first element from a sequence.
+                    If the sequence is empty, First() throws an exception.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30 };
+
+int result = numbers.First();
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10</code></pre>
+                </div>
+
+
+                <!-- FIRST OR DEFAULT -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    FirstOrDefault()
+                </h3>
+
+                <p class="text-muted">
+                    FirstOrDefault() returns the first element if available.
+                    Otherwise, it returns the default value of the type.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt;();
+
+int result = numbers.FirstOrDefault();
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>0</code></pre>
+                </div>
+
+
+                <!-- SINGLE -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Single()
+                </h3>
+
+                <p class="text-muted">
+                    Single() expects exactly one matching element.
+                    If there are zero or multiple matching elements,
+                    it throws an exception.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30 };
+
+int result =
+    numbers.Single(number =&gt; number == 20);
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>20</code></pre>
+                </div>
+
+
+                <!-- ANY -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Any()
+                </h3>
+
+                <p class="text-muted">
+                    Any() checks whether at least one element satisfies
+                    a condition.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30 };
+
+bool result =
+    numbers.Any(number =&gt; number &gt; 25);
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>True</code></pre>
+                </div>
+
+
+                <!-- ALL -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    All()
+                </h3>
+
+                <p class="text-muted">
+                    All() checks whether every element satisfies a condition.
+                </p>
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; marks =
+    new List&lt;int&gt; { 60, 70, 80, 90 };
+
+bool result =
+    marks.All(mark =&gt; mark &gt;= 50);
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>True</code></pre>
+                </div>
+
+
+                <!-- COUNT -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Count()
+                </h3>
+
+                <p class="text-muted">
+                    Count() returns the number of elements in a collection.
+                    It can also count elements that satisfy a condition.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40, 50 };
+
+int result =
+    numbers.Count(number =&gt; number &gt; 25);
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>3</code></pre>
+                </div>
+
+
+                <!-- SUM -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Sum()
+                </h3>
+
+                <p class="text-muted">
+                    Sum() calculates the total of numeric values.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30 };
+
+int total = numbers.Sum();
+
+Console.WriteLine(total);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>60</code></pre>
+                </div>
+
+
+                <!-- AVERAGE -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Average()
+                </h3>
+
+                <p class="text-muted">
+                    Average() calculates the average value of numeric data.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; marks =
+    new List&lt;int&gt; { 60, 70, 80 };
+
+double average = marks.Average();
+
+Console.WriteLine(average);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>70</code></pre>
+                </div>
+
+
+                <!-- MIN MAX -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Min() and Max()
+                </h3>
+
+                <p class="text-muted">
+                    Min() returns the smallest value and Max() returns
+                    the largest value.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 50, 20, 40, 30 };
+
+Console.WriteLine(numbers.Min());
+Console.WriteLine(numbers.Max());</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+50</code></pre>
+                </div>
+
+
+                <!-- SKIP -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Skip()
+                </h3>
+
+                <p class="text-muted">
+                    Skip() ignores a specified number of elements from
+                    the beginning of a sequence.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40, 50 };
+
+var result = numbers.Skip(2);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30
+40
+50</code></pre>
+                </div>
+
+
+                <!-- TAKE -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Take()
+                </h3>
+
+                <p class="text-muted">
+                    Take() returns a specified number of elements from
+                    the beginning of a sequence.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40, 50 };
+
+var result = numbers.Take(3);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30</code></pre>
+                </div>
+
+
+                <!-- DISTINCT -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Distinct()
+                </h3>
+
+                <p class="text-muted">
+                    Distinct() removes duplicate values from a sequence.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 20, 30, 30, 30 };
+
+var result = numbers.Distinct();
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30</code></pre>
+                </div>
+
+
+                <!-- GROUPBY -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    GroupBy()
+                </h3>
+
+                <p class="text-muted">
+                    GroupBy() groups elements according to a specified key.
+                    It is useful when data needs to be categorized.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Student
+{
+    public string Name { get; set; }
+    public string Course { get; set; }
+}
+
+List&lt;Student&gt; students = new List&lt;Student&gt;
+{
+    new Student { Name = "Rahul", Course = "C#" },
+    new Student { Name = "Sneha", Course = "Java" },
+    new Student { Name = "Amit", Course = "C#" }
+};
+
+var groups =
+    students.GroupBy(student =&gt; student.Course);
+
+foreach (var group in groups)
+{
+    Console.WriteLine(group.Key);
+
+    foreach (var student in group)
+    {
+        Console.WriteLine(student.Name);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+              <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>C#
+Rahul
+Amit
+Java
+Sneha</code></pre>
+                </div>
+
+
+                <!-- QUERY SYNTAX -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    LINQ Query Syntax
+                </h3>
+
+                <p class="text-muted">
+                    LINQ supports two major styles: method syntax and query syntax.
+                    Query syntax looks similar to SQL.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40, 50 };
+
+var result =
+    from number in numbers
+    where number &gt; 20
+    select number;
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30
+40
+50</code></pre>
+                </div>
+
+
+                <!-- METHOD VS QUERY -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Method Syntax vs Query Syntax
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Method Syntax</th>
+                                <th>Query Syntax</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Style</td>
+                                <td>Uses extension methods</td>
+                                <td>Uses from, where, select</td>
+                            </tr>
+                            <tr>
+                                <td>Example</td>
+                                <td>Where(x =&gt; x &gt; 20)</td>
+                                <td>from x in data where x &gt; 20 select x</td>
+                            </tr>
+                            <tr>
+                                <td>Common Usage</td>
+                                <td>Very common in modern C#</td>
+                                <td>Useful for SQL-like queries</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- DEFERRED EXECUTION -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Deferred Execution
+                </h3>
+
+                <p class="text-muted">
+                    Many LINQ queries are executed when the results are actually
+                    enumerated rather than immediately when the query is created.
+                    This behavior is called deferred execution.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30 };
+
+var result =
+    numbers.Where(number =&gt; number &gt; 10);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <p class="text-muted">
+                    The Where() query represents a sequence that is evaluated
+                    when it is enumerated.
+                </p>
+
+
+                <!-- TO LIST -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    ToList()
+                </h3>
+
+                <p class="text-muted">
+                    ToList() immediately materializes the query result into
+                    a List.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40 };
+
+List&lt;int&gt; result =
+    numbers.Where(number =&gt; number &gt; 20)
+           .ToList();
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30
+40</code></pre>
+                </div>
+
+
+                <!-- OBJECT QUERY -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    LINQ with Objects
+                </h3>
+
+                <p class="text-muted">
+                    LINQ is very useful for querying lists of objects.
+                    We can filter objects based on their properties.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Student
+{
+    public string Name { get; set; }
+    public int Marks { get; set; }
+}
+
+List&lt;Student&gt; students = new List&lt;Student&gt;
+{
+    new Student { Name = "Rahul", Marks = 80 },
+    new Student { Name = "Sneha", Marks = 45 },
+    new Student { Name = "Amit", Marks = 90 }
+};
+
+var result =
+    students.Where(student =&gt; student.Marks &gt;= 50);
+
+foreach (Student student in result)
+{
+    Console.WriteLine(student.Name);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Rahul
+Amit</code></pre>
+                </div>
+
+
+                <!-- REAL WORLD -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                   Example🌍📩
+                </h3>
+
+                <p class="text-muted">
+                    Consider an employee management system containing thousands
+                    of employee records. LINQ can be used to find employees
+                    from a specific department, filter employees based on salary,
+                    sort employees, or calculate average salary.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+class Employee
+{
+    public string Name { get; set; }
+    public string Department { get; set; }
+    public int Salary { get; set; }
+}
+
+List&lt;Employee&gt; employees = new List&lt;Employee&gt;
+{
+    new Employee
+    {
+        Name = "Rahul",
+        Department = "IT",
+        Salary = 60000
+    },
+
+    new Employee
+    {
+        Name = "Sneha",
+        Department = "HR",
+        Salary = 50000
+    },
+
+    new Employee
+    {
+        Name = "Amit",
+        Department = "IT",
+        Salary = 75000
+    }
+};
+
+var result =
+    employees
+    .Where(employee =&gt; employee.Department == "IT")
+    .OrderByDescending(employee =&gt; employee.Salary);
+
+foreach (Employee employee in result)
+{
+    Console.WriteLine(
+        employee.Name + " - " + employee.Salary);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Amit - 75000
+Rahul - 60000</code></pre>
+                </div>
+
+
+                <!-- ENTITY FRAMEWORK -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    LINQ with Entity Framework Core
+                </h3>
+
+                <p class="text-muted">
+                    LINQ is widely used with Entity Framework Core to query
+                    relational databases using strongly typed C# expressions.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>var employees = dbContext.Employees
+    .Where(employee =&gt; employee.Department == "IT")
+    .OrderBy(employee =&gt; employee.Name)
+    .ToList();</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    In this example, the query filters employees from the IT
+                    department, sorts them by name, and materializes the result
+                    as a List.
+                </p>
+
+
+                <!-- COMMON METHODS -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Important LINQ Methods
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Where()</td>
+                                <td>Filters data.</td>
+                            </tr>
+                            <tr>
+                                <td>Select()</td>
+                                <td>Transforms or projects data.</td>
+                            </tr>
+                            <tr>
+                                <td>OrderBy()</td>
+                                <td>Sorts data ascending.</td>
+                            </tr>
+                            <tr>
+                                <td>OrderByDescending()</td>
+                                <td>Sorts data descending.</td>
+                            </tr>
+                            <tr>
+                                <td>First()</td>
+                                <td>Returns the first element.</td>
+                            </tr>
+                            <tr>
+                                <td>FirstOrDefault()</td>
+                                <td>Returns the first element or default value.</td>
+                            </tr>
+                            <tr>
+                                <td>Any()</td>
+                                <td>Checks whether any element matches.</td>
+                            </tr>
+                            <tr>
+                                <td>All()</td>
+                                <td>Checks whether all elements match.</td>
+                            </tr>
+                            <tr>
+                                <td>Count()</td>
+                                <td>Counts elements.</td>
+                            </tr>
+                            <tr>
+                                <td>Sum()</td>
+                                <td>Calculates total.</td>
+                            </tr>
+                            <tr>
+                                <td>Average()</td>
+                                <td>Calculates average.</td>
+                            </tr>
+                            <tr>
+                                <td>GroupBy()</td>
+                                <td>Groups data.</td>
+                            </tr>
+                            <tr>
+                                <td>Distinct()</td>
+                                <td>Removes duplicate values.</td>
+                            </tr>
+                            <tr>
+                                <td>Take()</td>
+                                <td>Takes a specified number of elements.</td>
+                            </tr>
+                            <tr>
+                                <td>Skip()</td>
+                                <td>Skips a specified number of elements.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- BEST PRACTICES -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    LINQ Best Practices
+                </h3>
+
+                <ul class="text-muted">
+                    <li>Use meaningful variable and property names.</li>
+                    <li>Keep LINQ queries readable.</li>
+                    <li>Avoid unnecessarily complex chained queries.</li>
+                    <li>Use ToList() when immediate materialization is required.</li>
+                    <li>Be aware of deferred execution.</li>
+                    <li>When using Entity Framework Core, understand which operations are translated to SQL.</li>
+                    <li>Use projection with Select() when only specific fields are required.</li>
+                </ul>
+
+
+                <!-- COMMON MISTAKES -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Common Mistakes
+                </h3>
+
+                <ul class="text-muted">
+                    <li>Calling First() when the collection may be empty.</li>
+                    <li>Using Single() when multiple records may exist.</li>
+                    <li>Forgetting that many LINQ queries use deferred execution.</li>
+                    <li>Creating unnecessarily complicated queries.</li>
+                    <li>Loading more database data than required.</li>
+                    <li>Not understanding the difference between IEnumerable and IQueryable.</li>
+                </ul>
+
+
+                <!-- CIIT -->
+
+                <div class="alert alert-success mt-4">
+                    <strong>CIIT Practical Point:</strong>
+                    LINQ is one of the most important concepts for modern
+                    .NET developers. It is heavily used with collections,
+                    Entity Framework Core, APIs, business logic, reporting,
+                    filtering, sorting, and data processing.
+                </div>
+
+
+                <!-- INTERVIEW -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-4">
+                    Interview Questions
+                </h3>
+
+                <h5 class="fw-bold">
+                    1. What is LINQ?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    LINQ stands for Language Integrated Query and provides
+                    a consistent way to query and manipulate data using C#.
+                </p>
+
+                <h5 class="fw-bold">
+                    2. What is the difference between Where() and Select()?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    Where() filters elements based on a condition, while
+                    Select() transforms or projects elements into another form.
+                </p>
+
+                <h5 class="fw-bold">
+                    3. What is deferred execution?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    Deferred execution means that many LINQ queries are evaluated
+                    when their results are enumerated rather than when the query
+                    is initially created.
+                </p>
+
+                <h5 class="fw-bold">
+                    4. What is the difference between First() and FirstOrDefault()?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    First() throws an exception when no element exists, while
+                    FirstOrDefault() returns the default value when no element exists.
+                </p>
+
+                <h5 class="fw-bold">
+                    5. What is the difference between Any() and All()?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    Any() checks whether at least one element satisfies a condition,
+                    while All() checks whether every element satisfies the condition.
+                </p>
+
+                <h5 class="fw-bold">
+                    6. What is GroupBy()?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    GroupBy() groups elements based on a specified key.
+                </p>
+
+                <h5 class="fw-bold">
+                    7. What is ToList() used for?
+                </h5>
+
+                <p class="text-muted">
+                    ToList() executes/materializes the sequence into a List,
+                    which is useful when an immediate in-memory collection is required.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    LINQ stands for <strong>Language Integrated Query</strong>
+                    and provides a powerful way to query and manipulate data
+                    using C#.
+                </p>
+
+                <p class="mb-3">
+                    You learned important LINQ methods such as
+                    <strong>
+                        Where(), Select(), OrderBy(), First(),
+                        Any(), All(), Count(), Sum(), Average(), GroupBy(),
+                        Take(), Skip(), and Distinct()
+                    </strong>.
+                </p>
+
+                <p class="mb-3">
+                    You also learned the difference between method syntax and
+                    query syntax, deferred execution, and LINQ with objects
+                    and Entity Framework Core.
+                </p>
+
+                <p class="mb-0">
+                    LINQ is an essential skill for modern
+                    <strong>C# and .NET developers</strong> because it is widely
+                    used for collection processing, database queries,
+                    APIs, and business applications.
+                </p>
+
+            </div>
+
+
+            <!-- PRACTICE -->
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Use Where() to find numbers greater than 50.</li>
+                    <li>Use Select() to calculate squares of numbers.</li>
+                    <li>Sort a collection using OrderBy().</li>
+                    <li>Sort a collection using OrderByDescending().</li>
+                    <li>Find the first element using First().</li>
+                    <li>Use FirstOrDefault() with an empty collection.</li>
+                    <li>Use Any() to check whether a number exists.</li>
+                    <li>Use All() to check whether all marks are passing.</li>
+                    <li>Calculate the total using Sum().</li>
+                    <li>Calculate the average using Average().</li>
+                    <li>Find minimum and maximum values.</li>
+                    <li>Remove duplicate values using Distinct().</li>
+                    <li>Use GroupBy() to group students by course.</li>
+                    <li>Write the same LINQ query using method and query syntax.</li>
+                    <li>Write a LINQ query to filter employees by department and sort by salary.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- TOPIC NAVIGATION -->
+
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="@Url.Action(
+                           "ExtensionMethods",
+                           "AdvanceFeature",
+                           new { area = "CSharp" }
+                       )"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="@Url.Action(
+                           "AsynchronousProgramming",
+                           "AsynchronousParallelProgramming",
+                           new { area = "CSharp" }
+                       )"
+                   class="btn btn-primary">
+                    Next Module →
+                </a>
+
+            </div>
+        </section>
+    </div>
+</main>
+<script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

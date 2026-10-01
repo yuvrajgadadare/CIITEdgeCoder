@@ -1,0 +1,836 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Error Handling in JavaScript";
+}
+
+<style>
+
+    #javascript-error-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-error-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-error-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-error-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-error-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-error-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* ==============================
+       CONCEPT BOX
+       ============================== */
+
+    #javascript-error-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-error-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-error-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-error-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       DIAGRAM
+       ============================== */
+
+    #javascript-error-page .flow-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-error-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #javascript-error-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-error-page .flow-box {
+        min-width: 140px;
+        padding: 16px 20px;
+        border: 2px solid #7c3aed;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 600;
+        background: #ffffff;
+    }
+
+    #javascript-error-page .flow-box.error {
+        border-color: #dc3545;
+        color: #dc3545;
+        background: #fff5f5;
+    }
+
+    #javascript-error-page .flow-box.result {
+        border-color: #198754;
+        color: #198754;
+        background: #f0fff4;
+    }
+
+    #javascript-error-page .flow-arrow {
+        font-size: 28px;
+        color: #7c3aed;
+        font-weight: bold;
+    }
+
+    #javascript-error-page .flow-caption {
+        text-align: center;
+        color: #6c757d;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       CODE
+       ============================== */
+
+    #javascript-error-page .code-section {
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    #javascript-error-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-error-page .code-box code {
+        color: #ffffff;
+        background: transparent;
+    }
+
+    /* ==============================
+       TRY IT
+       ============================== */
+
+    #javascript-error-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-error-page .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        padding: 9px 18px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    #javascript-error-page .try-it-btn:hover {
+        background: #157347;
+        transform: translateY(-1px);
+    }
+
+    /* ==============================
+       OUTPUT
+       ============================== */
+
+    #javascript-error-page .output-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-left: 5px solid #198754;
+        border-radius: 8px;
+        padding: 15px 18px;
+        margin-top: 8px;
+        margin-bottom: 30px;
+        color: #212529;
+        line-height: 1.8;
+    }
+
+    /* ==============================
+       NOTE
+       ============================== */
+
+    #javascript-error-page .note-box {
+        background: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 5px solid #ffb300;
+        border-radius: 8px;
+        padding: 18px;
+        margin: 25px 0;
+        color: #6d4c41;
+        line-height: 1.7;
+    }
+
+    /* ==============================
+       SUMMARY
+       ============================== */
+
+    #javascript-error-page .summary-box {
+        background: #f3e8ff;
+        border: 1px solid #d8b4fe;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-error-page .summary-box h2 {
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-error-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       NAVIGATION
+       ============================== */
+
+    #javascript-error-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-error-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    #javascript-error-page .previous-btn {
+        background: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-error-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-error-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-error-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-error-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-error-page .page-title {
+            font-size: 29px;
+        }
+
+        #javascript-error-page .flow-row {
+            flex-direction: column;
+        }
+
+        #javascript-error-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-error-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-error-page .nav-btn {
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+<main id="javascript-error-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDE - COURSE SYLLABUS
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 RIGHT SIDE - MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- PAGE TITLE -->
+
+                    <h1 class="page-title">
+                        Error Handling in JavaScript
+                    </h1>
+
+                    <p class="lead-text">
+                        Error handling allows JavaScript programs to
+                        detect, handle and respond to errors without
+                        unexpectedly stopping the application.
+                    </p>
+
+
+                    <!-- =================================================
+                         WHAT IS ERROR HANDLING
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What is Error Handling?
+                    </h2>
+
+                    <p class="section-text">
+                        Errors can occur while a JavaScript program
+                        is running. Error handling provides a way to
+                        manage these errors.
+                    </p>
+
+                    <p class="section-text">
+                        JavaScript commonly uses
+                        <strong>try</strong>, <strong>catch</strong>,
+                        <strong>finally</strong> and
+                        <strong>throw</strong> for error handling.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+                            Error handling is the process of detecting
+                            and handling errors in a JavaScript program.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DIAGRAM
+                         ================================================= -->
+
+                    <div class="flow-card">
+
+                        <div class="flow-title">
+                            JavaScript Error Handling Flow
+                        </div>
+
+                        <div class="flow-row">
+
+                            <div class="flow-box">
+                                try
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box error">
+                                Error
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                catch
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box result">
+                                Handle Error
+                            </div>
+
+                        </div>
+
+                        <p class="flow-caption">
+                            The catch block handles an error generated
+                            inside the try block.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TRY CATCH
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        try...catch
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>try</strong> block contains code
+                        that may generate an error.
+                    </p>
+
+                    <p class="section-text">
+                        The <strong>catch</strong> block executes when
+                        an error occurs inside the try block.
+                    </p>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Basic try...catch
+                    </h2>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>try {
+
+    console.log("Starting program");
+
+    throw new Error("Something went wrong");
+
+}
+catch (error) {
+
+    console.log("Error handled");
+
+}</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runErrorExample1()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        Starting program
+                        <br />
+
+                        Error handled
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Using Error Object
+                    </h2>
+
+                    <p class="section-text">
+                        The catch block receives an error object.
+                        We can use its <strong>message</strong>
+                        property to display information about the error.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>try {
+
+    throw new Error("Invalid operation");
+
+}
+catch (error) {
+
+    console.log(error.message);
+
+}</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runErrorExample2()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        Invalid operation
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: try...catch...finally
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>finally</strong> block executes
+                        whether an error occurs or not.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>try {
+
+    console.log("Try block executed");
+
+}
+catch (error) {
+
+    console.log("Error occurred");
+
+}
+finally {
+
+    console.log("Finally block executed");
+
+}</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runErrorExample3()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        Try block executed
+                        <br />
+
+                        Finally block executed
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT POINTS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Important Points
+                    </h2>
+
+
+                    <div class="note-box">
+
+                        <p>
+                            • <strong>try</strong> contains code that
+                            may generate an error.
+                        </p>
+
+                        <p>
+                            • <strong>catch</strong> handles the error.
+                        </p>
+
+                        <p>
+                            • <strong>finally</strong> executes after
+                            try/catch processing.
+                        </p>
+
+                        <p>
+                            • <strong>throw</strong> can be used to
+                            create a custom error.
+                        </p>
+
+                        <p class="mb-0">
+                            • Error handling helps make applications
+                            more reliable and easier to debug.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2>
+                            Summary
+                        </h2>
+
+                        <p>
+                            JavaScript provides try, catch, finally
+                            and throw to handle errors. Proper error
+                            handling prevents unexpected application
+                            failures and makes JavaScript programs
+                            more reliable.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("Closures", "AdvancedJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Closures
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("BestPractices", "AdvancedJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: JavaScript Best Practices
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function runErrorExample1() {
+
+        var code =
+`try {
+
+    console.log("Starting program");
+
+    throw new Error("Something went wrong");
+
+}
+catch (error) {
+
+    console.log("Error handled");
+
+}`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function runErrorExample2() {
+
+        var code =
+`try {
+
+    throw new Error("Invalid operation");
+
+}
+catch (error) {
+
+    console.log(error.message);
+
+}`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function runErrorExample3() {
+
+        var code =
+`try {
+
+    console.log("Try block executed");
+
+}
+catch (error) {
+
+    console.log("Error occurred");
+
+}
+finally {
+
+    console.log("Finally block executed");
+
+}`;
+
+        openCompiler(code);
+    }
+
+</script>

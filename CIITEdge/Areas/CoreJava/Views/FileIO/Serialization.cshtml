@@ -1,0 +1,1198 @@
+﻿@{
+    ViewData["Title"] = "Serialization in Java";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Serialization in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how Java objects can be represented as a byte stream,
+                how serialization and deserialization work, and how to use
+                Serializable, transient fields, serialVersionUID, and safer
+                alternatives for application data.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is Serialization?</h3>
+
+            <p>
+                Serialization is the process of converting an object's state
+                into a byte stream so that it can be stored or transmitted.
+            </p>
+
+            <p>
+                Deserialization is the reverse process: reconstructing an
+                object from a serialized representation.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>
+                                         Object
+                                           ↓
+                                       Serialization
+                                           ↓
+                                       Byte Stream
+                                           ↓
+                                     Storage / Transfer
+                                           ↓
+                                      Deserialization
+                                           ↓
+                                        Object</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- SERIALIZABLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Serializable Interface
+            </h3>
+
+            <p>
+                A class can implement
+                <code>java.io.Serializable</code> to indicate that its
+                instances can participate in Java's built-in object
+                serialization mechanism.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.io.Serializable;
+
+class Student implements Serializable {
+
+    private String name;
+
+    private int age;
+
+}</code></pre>
+
+            </div>
+
+            <div class="alert alert-info mt-3">
+
+                <strong>Important:</strong>
+
+                <code>Serializable</code> is a marker interface. It does not
+                require implementing methods.
+
+            </div>
+
+        </section>
+
+
+        <!-- OBJECT OUTPUT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                ObjectOutputStream
+            </h3>
+
+            <p>
+                <code>ObjectOutputStream</code> writes serializable objects to
+                an output stream.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
+Student student =
+    new Student();
+
+try (
+    ObjectOutputStream output =
+        new ObjectOutputStream(
+            new FileOutputStream(
+                "student.ser"
+            )
+        )
+) {
+
+    output.writeObject(student);
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- OBJECT INPUT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                ObjectInputStream
+            </h3>
+
+            <p>
+                <code>ObjectInputStream</code> can reconstruct objects from a
+                serialized stream.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+try (
+    ObjectInputStream input =
+        new ObjectInputStream(
+            new FileInputStream(
+                "student.ser"
+            )
+        )
+) {
+
+    Student student =
+        (Student) input.readObject();
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPLETE EXAMPLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Complete Serialization Example
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.io.*;
+
+class Student implements Serializable {
+
+    private static final long
+        serialVersionUID = 1L;
+
+    private String name;
+
+    private int age;
+
+    Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+    public String getName() {
+
+        return name;
+
+    }
+
+    public int getAge() {
+
+        return age;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- WRITE OBJECT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Writing the Object
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Student student =
+    new Student(
+        "Amit",
+        22
+    );
+
+try (
+    ObjectOutputStream output =
+        new ObjectOutputStream(
+            new FileOutputStream(
+                "student.ser"
+            )
+        )
+) {
+
+    output.writeObject(student);
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- READ OBJECT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Reading the Object
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>try (
+    ObjectInputStream input =
+        new ObjectInputStream(
+            new FileInputStream(
+                "student.ser"
+            )
+        )
+) {
+
+    Student student =
+        (Student) input.readObject();
+
+    System.out.println(
+        student.getName()
+    );
+
+    System.out.println(
+        student.getAge()
+    );
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit
+22</code></pre>
+</div>
+        </section>
+
+
+        <!-- SERIAL VERSION UID -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                serialVersionUID
+            </h3>
+
+            <p>
+                <code>serialVersionUID</code> is a version identifier used
+                during Java serialization compatibility checks.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>private static final long
+    serialVersionUID = 1L;</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Explicitly declaring it makes the intended serialization
+                version easier to control.
+            </p>
+
+        </section>
+
+
+        <!-- DESERIALIZATION EXCEPTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                InvalidClassException
+            </h3>
+
+            <p>
+                During deserialization, incompatible class version information
+                can result in <code>InvalidClassException</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>try {
+
+    ObjectInputStream input =
+        new ObjectInputStream(
+            new FileInputStream(
+                "student.ser"
+            )
+        );
+
+    Student student =
+        (Student) input.readObject();
+
+}
+catch (InvalidClassException exception) {
+
+    System.out.println(
+        "Incompatible serialized class"
+    );
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Incompatible serialized class</code></pre>
+</div>
+        <h5 class="fw-bold">Important:</h5>
+
+ <p class="mb-0">
+     This is a conditional/error output, not a guaranteed normal output.
+
+ </p>
+         </section>
+
+        <!-- TRANSIENT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                transient Keyword
+            </h3>
+
+            <p>
+                A field marked <code>transient</code> is skipped by the
+                default Java serialization mechanism.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class User implements Serializable {
+
+    private String username;
+
+    private transient String password;
+
+}</code></pre>
+
+            </div>
+
+            <div class="alert alert-warning mt-3">
+
+                <strong>Security Note:</strong>
+
+                Do not treat <code>transient</code> as a general security
+                mechanism. Sensitive data should be handled using appropriate
+                application-level security practices.
+
+            </div>
+
+        </section>
+
+
+        <!-- STATIC -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Static Fields and Serialization
+            </h3>
+
+            <p>
+                Static fields belong to the class rather than to an individual
+                object, so they are not part of an object's serialized
+                instance state.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Counter implements Serializable {
+
+    private static int count;
+
+    private int value;
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The instance field <code>value</code> can participate in
+                serialization, while the static field
+                <code>count</code> does not represent per-object serialized
+                state.
+            </p>
+
+        </section>
+
+
+        <!-- SERIALIZABLE GRAPH -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Object Graph Serialization
+            </h3>
+
+            <p>
+                Serialization can traverse referenced objects as part of an
+                object graph, provided the relevant referenced objects are
+                serializable.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Address implements Serializable {
+
+    private String city;
+
+}
+
+class Employee implements Serializable {
+
+    private String name;
+
+    private Address address;
+
+}</code></pre>
+
+            </div>
+
+            <div class="alert alert-warning mt-3">
+
+                If a non-transient referenced object is not serializable,
+                serialization can fail with
+                <code>NotSerializableException</code>.
+
+            </div>
+
+        </section>
+
+
+        <!-- NOT SERIALIZABLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                NotSerializableException
+            </h3>
+
+            <p>
+                If the serialization mechanism encounters a non-transient
+                field whose runtime object is not serializable, Java can throw
+                <code>NotSerializableException</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>try {
+
+    output.writeObject(employee);
+
+}
+catch (NotSerializableException exception) {
+
+    System.out.println(
+        "Object cannot be serialized"
+    );
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Object cannot be serialized</code></pre>
+</div>
+<h5 class="fw-bold">Important:</h5>
+
+ <p class="mb-0">
+     This is a Exception Case, not a normal successful output.
+
+ </p>
+        </section>
+
+        
+        <!-- CUSTOM WRITE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Custom Serialization Hooks
+            </h3>
+
+            <p>
+                A serializable class can define private
+                <code>writeObject()</code> and
+                <code>readObject()</code> methods to customize the default
+                serialization process.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>private void writeObject(
+    ObjectOutputStream output
+) throws IOException {
+
+    output.defaultWriteObject();
+
+}
+
+private void readObject(
+    ObjectInputStream input
+) throws IOException,
+         ClassNotFoundException {
+
+    input.defaultReadObject();
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXTERNALIZABLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Externalizable
+            </h3>
+
+            <p>
+                <code>Externalizable</code> provides more explicit control
+                over serialization by requiring implementations of
+                <code>writeExternal()</code> and
+                <code>readExternal()</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Student
+    implements Externalizable {
+
+    public Student() {
+    }
+
+    public void writeExternal(
+        ObjectOutput output
+    ) throws IOException {
+
+        // write fields explicitly
+
+    }
+
+    public void readExternal(
+        ObjectInput input
+    ) throws IOException,
+             ClassNotFoundException {
+
+        // read fields explicitly
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Externalizable is a specialized mechanism and requires careful
+                handling of the serialization contract.
+            </p>
+
+        </section>
+
+
+        <!-- INHERITANCE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Serialization and Inheritance
+            </h3>
+
+            <p>
+                If a serializable subclass extends a non-serializable
+                superclass, the superclass portion is not restored through
+                default serialization. The first accessible no-argument
+                constructor of the non-serializable superclass is involved
+                during deserialization.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Person {
+
+    protected String name;
+
+}
+
+class Student
+    extends Person
+    implements Serializable {
+
+    private int age;
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- SERIALIZATION SECURITY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Serialization Security
+            </h3>
+
+            <p>
+                Java native deserialization can be dangerous when untrusted
+                serialized data is accepted because deserialization can invoke
+                class-specific behavior and reconstruct complex object
+                graphs.
+            </p>
+
+            <div class="alert alert-danger mt-3">
+
+                <strong>Security Rule:</strong>
+
+                Avoid deserializing untrusted Java serialization streams.
+                Prefer safer data formats and explicit validation for
+                untrusted external data.
+
+            </div>
+
+        </section>
+
+
+        <!-- SAFER ALTERNATIVES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Alternatives to Native Serialization
+            </h3>
+
+            <p>
+                Modern applications often use explicit data formats such as
+                JSON or other protocol formats instead of Java native
+                serialization for external communication.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Approach</th>
+                            <th>Typical Use</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Java Serialization</td>
+                            <td>Legacy/internal object persistence scenarios</td>
+                        </tr>
+
+                        <tr>
+                            <td>JSON</td>
+                            <td>REST APIs and human-readable data exchange</td>
+                        </tr>
+
+                        <tr>
+                            <td>Protocol Buffers</td>
+                            <td>Efficient structured service communication</td>
+                        </tr>
+
+                        <tr>
+                            <td>Database Persistence</td>
+                            <td>Long-term structured application data</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- SERIALIZATION VS JSON -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Java Serialization vs JSON
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Feature</th>
+                            <th>Java Serialization</th>
+                            <th>JSON</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Format</td>
+                            <td>Java-specific binary format</td>
+                            <td>Text format</td>
+                        </tr>
+
+                        <tr>
+                            <td>Language Interoperability</td>
+                            <td>Limited</td>
+                            <td>Excellent</td>
+                        </tr>
+
+                        <tr>
+                            <td>Human Readable</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+
+                        <tr>
+                            <td>External Input</td>
+                            <td>Requires strong security controls</td>
+                            <td>Still requires validation</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- REAL WORLD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Example: Saving Student Data 🤓👨‍🏫
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Student implements Serializable {
+
+    private static final long
+        serialVersionUID = 1L;
+
+    private String name;
+
+    private int age;
+
+    Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Student student =
+    new Student(
+        "Neha",
+        21
+    );
+
+try (
+    ObjectOutputStream output =
+        new ObjectOutputStream(
+            new FileOutputStream(
+                "student.ser"
+            )
+        )
+) {
+
+    output.writeObject(student);
+
+}
+
+System.out.println(
+    "Student saved"
+);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Student saved</code></pre>
+</div>
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Serialization Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Use try-with-resources for serialization streams.
+                </li>
+
+                <li class="mb-2">
+                    Declare <code>serialVersionUID</code> explicitly when
+                    using Java serialization.
+                </li>
+
+                <li class="mb-2">
+                    Mark fields that should not be serialized as
+                    <code>transient</code> when appropriate.
+                </li>
+
+                <li class="mb-2">
+                    Avoid native Java deserialization of untrusted data.
+                </li>
+
+                <li class="mb-2">
+                    Prefer explicit data-transfer formats for external APIs.
+                </li>
+
+                <li>
+                    Consider whether long-term persistence should use a
+                    database or a stable application-level data format.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="serializationQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#serializationQuestionOne">
+
+                            What is serialization?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="serializationQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#serializationQuestions">
+
+                        <div class="accordion-body">
+
+                            Serialization converts an object's state into a
+                            byte stream that can be stored or transmitted.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#serializationQuestionTwo">
+
+                            What is deserialization?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="serializationQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#serializationQuestions">
+
+                        <div class="accordion-body">
+
+                            Deserialization reconstructs an object from a
+                            serialized representation.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#serializationQuestionThree">
+
+                            What is serialVersionUID?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="serializationQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#serializationQuestions">
+
+                        <div class="accordion-body">
+
+                            It is a version identifier used by Java's
+                            serialization mechanism when checking class
+                            compatibility during deserialization.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#serializationQuestionFour">
+
+                            What does transient do?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="serializationQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#serializationQuestions">
+
+                        <div class="accordion-body">
+
+                            A transient field is excluded from default Java
+                            serialization.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#serializationQuestionFive">
+
+                            Is Java native deserialization safe for untrusted data?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="serializationQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#serializationQuestions">
+
+                        <div class="accordion-body">
+
+                            No. Native Java deserialization of untrusted input
+                            can create serious security risks. Untrusted data
+                            should use safer formats and strong validation.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Java serialization converts object state into a byte
+                    stream and deserialization reconstructs objects from that
+                    stream. Important concepts include Serializable,
+                    ObjectOutputStream, ObjectInputStream, serialVersionUID,
+                    transient fields, object graphs, custom serialization,
+                    and the security risks of native deserialization.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "FileSystem",
+                               "FileIO",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "ExceptionHandling",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

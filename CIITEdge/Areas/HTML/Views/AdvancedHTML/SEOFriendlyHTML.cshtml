@@ -1,0 +1,341 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "SEO Friendly HTML";
+}
+
+<style>
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #343a40;
+        font-weight: 600;
+        margin-top: 22px;
+        margin-bottom: 10px;
+    }
+
+    .content-section p,
+    .content-section li {
+        line-height: 1.75;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        margin: 22px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 18px;
+    }
+
+    .diagram-flow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .diagram-box {
+        background: #fff;
+        border: 2px solid #4f46e5;
+        border-radius: 8px;
+        padding: 14px 18px;
+        text-align: center;
+        font-weight: 600;
+        min-width: 150px;
+    }
+
+    .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <div class="col-lg-9 content-section">
+
+            <h1 class="mb-3">SEO Friendly HTML</h1>
+
+            <p>
+                SEO Friendly HTML means writing HTML in a way that helps
+                search engines understand the structure and meaning of a web page.
+            </p>
+
+            <p>
+                Good HTML structure can make content easier to discover and
+                understand while also improving accessibility and usability.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Basic SEO-Friendly HTML Structure</div>
+
+                <div class="diagram-flow">
+                    <div class="diagram-box">Meaningful Title</div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">Structured Headings</div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">Useful Content</div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">Search-Friendly Page</div>
+                </div>
+            </div>
+
+            <h2>1. Use a Meaningful Page Title</h2>
+
+            <p>
+                The <code>&lt;title&gt;</code> element describes the page title.
+                Use a clear and relevant title that represents the page content.
+            </p>
+
+            <pre><code>&lt;title&gt;HTML Full Course for Beginners&lt;/title&gt;</code></pre>
+
+            <h2>2. Use Proper Heading Structure</h2>
+
+            <p>
+                Headings organize the content of a page.
+                Use <code>&lt;h1&gt;</code> for the main page topic and use
+                lower-level headings for related sections.
+            </p>
+
+            <pre><code>&lt;h1&gt;HTML Tutorial&lt;/h1&gt;
+&lt;h2&gt;HTML Basics&lt;/h2&gt;
+&lt;h2&gt;HTML Forms&lt;/h2&gt;
+&lt;h3&gt;Input Types&lt;/h3&gt;</code></pre>
+
+            <div class="info-box">
+                Use headings according to the meaning and structure of the
+                content rather than only for changing text size.
+            </div>
+
+            <h2>3. Write Useful and Relevant Content</h2>
+
+            <p>
+                Search engines need meaningful content to understand what a page
+                is about. Content should clearly explain the topic and provide
+                value to the user.
+            </p>
+
+            <h2>4. Use Semantic HTML</h2>
+
+            <p>
+                Semantic elements give meaning to different parts of a page.
+                Examples include <code>&lt;header&gt;</code>,
+                <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>,
+                <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code>.
+            </p>
+
+            <pre><code>&lt;main&gt;
+    &lt;article&gt;
+        &lt;h1&gt;Learn HTML&lt;/h1&gt;
+        &lt;p&gt;Start learning HTML step by step.&lt;/p&gt;
+    &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>5. Use Descriptive Link Text</h2>
+
+            <p>
+                Link text should explain where the link goes.
+                Avoid unclear text such as "Click Here" when a more meaningful
+                description can be used.
+            </p>
+
+            <pre><code>&lt;a href="/html-basics"&gt;
+    Learn HTML Basics
+&lt;/a&gt;</code></pre>
+
+            <h2>6. Add Alternative Text to Images</h2>
+
+            <p>
+                Use meaningful <code>alt</code> text for informative images.
+                This helps users who cannot see the image and gives additional
+                context about its purpose.
+            </p>
+
+            <pre><code>&lt;img src="html-course.jpg"
+     alt="HTML course lessons for beginners"&gt;</code></pre>
+
+            <h2>7. Use Meta Description</h2>
+
+            <p>
+                A meta description provides a short description of the page.
+                It can help describe the page content in search results.
+            </p>
+
+            <pre><code>&lt;meta name="description"
+      content="Learn HTML from basics to advanced concepts with simple examples."&gt;</code></pre>
+
+            <h2>8. Use Clean URLs</h2>
+
+            <p>
+                Clear and descriptive URLs can make page addresses easier for
+                users and search engines to understand.
+            </p>
+
+            <pre><code>/html/forms
+/html/semantic-html
+/html/advanced-html</code></pre>
+
+            <h2>9. Avoid Keyword Stuffing</h2>
+
+            <p>
+                Do not repeatedly add the same keywords just to influence search
+                rankings. Write naturally for the user and keep the content relevant.
+            </p>
+
+            <div class="info-box">
+                Good SEO starts with useful content, clear structure,
+                accessibility, and a good user experience.
+            </div>
+
+            <h2>10. Make Images Meaningful</h2>
+
+            <p>
+                Use appropriate image formats, meaningful alternative text,
+                and descriptive context where necessary.
+            </p>
+
+            <h2>11. Keep HTML Well Structured</h2>
+
+            <p>
+                Clean and logically structured HTML helps browsers, assistive
+                technologies, developers, and search engines understand the page.
+            </p>
+
+            <h2>12. Create Mobile-Friendly Pages</h2>
+
+            <p>
+                Web pages should be designed to work across different screen sizes.
+                The viewport meta tag is commonly used to control the page's
+                viewport on mobile devices.
+            </p>
+
+            <pre><code>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+            <h2>13. Use a Logical Page Structure</h2>
+
+            <p>
+                A clear structure makes the relationship between different
+                sections easier to understand.
+            </p>
+
+            <pre><code>&lt;header&gt;
+    Website Header
+&lt;/header&gt;
+
+&lt;nav&gt;
+    Navigation
+&lt;/nav&gt;
+
+&lt;main&gt;
+    Main Content
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Footer
+&lt;/footer&gt;</code></pre>
+
+            <h2>14. SEO and Accessibility Work Together</h2>
+
+            <p>
+                Many good HTML practices improve both accessibility and search
+                engine understanding. Semantic headings, descriptive links,
+                meaningful content, and alternative text are useful examples.
+            </p>
+
+            <h2>15. SEO-Friendly HTML Checklist</h2>
+
+            <ul>
+                <li>Use a meaningful page title.</li>
+                <li>Use headings in a logical structure.</li>
+                <li>Write useful and relevant content.</li>
+                <li>Use semantic HTML elements.</li>
+                <li>Use descriptive link text.</li>
+                <li>Add meaningful alternative text to informative images.</li>
+                <li>Use an appropriate meta description.</li>
+                <li>Keep URLs clear and meaningful.</li>
+                <li>Avoid unnecessary keyword repetition.</li>
+                <li>Keep HTML clean and well structured.</li>
+                <li>Make the page usable on different screen sizes.</li>
+            </ul>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    SEO Friendly HTML focuses on meaningful content, semantic
+                    structure, clear headings, descriptive links, suitable
+                    metadata, useful image descriptions, and clean HTML.
+                    These practices help create pages that are easier to
+                    understand and use.
+                </p>
+                <div class="d-flex justify-content-between mt-4">
+                    <a class="btn btn-outline-primary"
+                       href="@Url.Action("BestPractices", "AdvancedHTML", new { area = "HTML" })">
+                        ← Previous: HTML Best Practices
+                    </a>
+
+                    <span class="btn course-completed-btn">
+                        🎉 Course Completed
+                    </span>
+                </div>
+
+                <style>
+                                    .course-completed-btn {
+                                        background-color: #198754;
+                                        border: 1px solid #146c43;
+                                        color: #fff;
+                                        font-weight: 600;
+                                        cursor: default;
+                                        opacity: 1;
+                                    }
+                </style>
+
+        </div>
+    </div>
+</main>

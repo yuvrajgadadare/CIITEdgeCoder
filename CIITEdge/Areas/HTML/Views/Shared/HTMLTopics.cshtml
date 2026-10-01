@@ -1,0 +1,900 @@
+﻿@{
+    // Current controller name.
+    var currentController =
+        ViewContext.RouteData.Values["controller"]?.ToString();
+
+    // Current action name.
+    var currentAction =
+        ViewContext.RouteData.Values["action"]?.ToString();
+
+    // Checks whether the current topic is active.
+    bool IsActive(string controller, string action)
+    {
+        return string.Equals(
+                   currentController,
+                   controller,
+                   StringComparison.OrdinalIgnoreCase)
+               &&
+               string.Equals(
+                   currentAction,
+                   action,
+                   StringComparison.OrdinalIgnoreCase);
+    }
+}
+
+
+<style>
+
+    /* =========================================================
+       COURSE SYLLABUS CARD
+       ========================================================= */
+
+    .html-syllabus-card {
+        border: 0;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+    /* =========================================================
+       COURSE SYLLABUS HEADER
+       ========================================================= */
+
+    .html-syllabus-header {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        padding: 14px 18px !important;
+        font-size: 15px;
+        font-weight: 700;
+        display: block !important;
+        visibility: visible !important;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+
+    .html-syllabus-header span {
+        color: #ffffff !important;
+    }
+
+
+    /* =========================================================
+       MODULE TITLES
+       ========================================================= */
+
+    .html-module-title {
+        background-color: #f8f9fa !important;
+        font-weight: 700 !important;
+        color: #212529 !important;
+        padding: 12px 16px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+
+    /* =========================================================
+       TOPIC LINKS
+       ========================================================= */
+
+    .html-topic-link {
+        display: block;
+        padding: 10px 16px 10px 28px;
+        font-size: 14px;
+        color: #495057 !important;
+        text-decoration: none !important;
+        border: 0 !important;
+        border-bottom: 1px solid #f1f1f1 !important;
+        background-color: #ffffff !important;
+    }
+
+
+    .html-topic-link:hover {
+        background-color: #f1f3f5 !important;
+        color: #212529 !important;
+    }
+
+
+    /* =========================================================
+       ACTIVE TOPIC
+       ========================================================= */
+
+    .html-topic-link.active,
+    .html-topic-link.active:hover,
+    .html-topic-link.active:focus {
+
+        background-color: #ffffff !important;
+        color: #495057 !important;
+        font-weight: 400 !important;
+
+        border-top: 0 !important;
+        border-left: 0 !important;
+        border-right: 0 !important;
+        border-bottom: 2px solid #2563eb !important;
+
+        box-shadow: none !important;
+    }
+
+
+    /* =========================================================
+       SIDEBAR SCROLLBAR
+       ========================================================= */
+
+    .html-syllabus-card::-webkit-scrollbar {
+        width: 6px;
+    }
+
+
+    .html-syllabus-card::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+
+    .html-syllabus-card::-webkit-scrollbar-thumb {
+        background: #c8c8c8;
+        border-radius: 10px;
+    }
+
+
+    .html-syllabus-card::-webkit-scrollbar-thumb:hover {
+        background: #aaaaaa;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @@media (max-width: 991px) {
+
+        .html-syllabus-card {
+            position: relative;
+            top: auto;
+            max-height: none;
+            overflow: hidden;
+        }
+
+
+        .html-syllabus-header {
+            position: relative;
+        }
+
+    }
+
+</style>
+
+
+<!-- =========================================================
+     HTML COURSE SYLLABUS
+     ========================================================= -->
+
+<div class="card html-syllabus-card">
+
+
+    <!-- =====================================================
+         COURSE SYLLABUS HEADER
+         ===================================================== -->
+
+    <div class="card-header html-syllabus-header">
+
+        <span>COURSE SYLLABUS</span>
+
+    </div>
+
+
+    <div class="list-group list-group-flush">
+
+
+        <!-- =====================================================
+             MODULE 1
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            1. Introduction to HTML
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Introduction", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Introduction", new { area = "HTML" })">
+
+            Introduction to HTML
+
+        </a>
+
+
+        @* <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Introduction", "WhatIsHTML") ? "active" : "")"
+           href="@Url.Action("WhatIsHTML", "Introduction", new { area = "HTML" })">
+
+            What is HTML?
+
+        </a> *@
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Introduction", "HTMLDocumentStructure") ? "active" : "")"
+           href="@Url.Action("HTMLDocumentStructure", "Introduction", new { area = "HTML" })">
+
+            HTML Document Structure
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Introduction", "HowHTMLWorks") ? "active" : "")"
+           href="@Url.Action("HowHTMLWorks", "Introduction", new { area = "HTML" })">
+
+            How HTML Works
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Introduction", "HTMLvsCSSvsJavaScript") ? "active" : "")"
+           href="@Url.Action("HTMLvsCSSvsJavaScript", "Introduction", new { area = "HTML" })">
+
+            HTML vs CSS vs JavaScript
+
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 2
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            2. Basic HTML
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("BasicHTML", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "BasicHTML", new { area = "HTML" })">
+
+            Basic HTML
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("BasicHTML", "HTMLElements") ? "active" : "")"
+           href="@Url.Action("HTMLElements", "BasicHTML", new { area = "HTML" })">
+
+            HTML Elements
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("BasicHTML", "HTMLAttributes") ? "active" : "")"
+           href="@Url.Action("HTMLAttributes", "BasicHTML", new { area = "HTML" })">
+
+            HTML Attributes
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("BasicHTML", "Headings") ? "active" : "")"
+           href="@Url.Action("Headings", "BasicHTML", new { area = "HTML" })">
+
+            Headings
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("BasicHTML", "Paragraphs") ? "active" : "")"
+           href="@Url.Action("Paragraphs", "BasicHTML", new { area = "HTML" })">
+
+            Paragraphs
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("BasicHTML", "Comments") ? "active" : "")"
+           href="@Url.Action("Comments", "BasicHTML", new { area = "HTML" })">
+
+            Comments
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("BasicHTML", "LineBreaks") ? "active" : "")"
+           href="@Url.Action("LineBreaks", "BasicHTML", new { area = "HTML" })">
+
+            Line Breaks
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("BasicHTML", "HorizontalRules") ? "active" : "")"
+           href="@Url.Action("HorizontalRules", "BasicHTML", new { area = "HTML" })">
+
+            Horizontal Rules
+
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 3
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            3. HTML Tags
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Tags", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Tags", new { area = "HTML" })">
+
+            HTML Tags
+
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 4
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            4. Text Formatting
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("TextFormatting", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "TextFormatting", new { area = "HTML" })">
+
+            Text Formatting
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("TextFormatting", "TextFormatting") ? "active" : "")"
+           href="@Url.Action("TextFormatting", "TextFormatting", new { area = "HTML" })">
+
+            Text Formatting Elements
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("TextFormatting", "BoldAndStrong") ? "active" : "")"
+           href="@Url.Action("BoldAndStrong", "TextFormatting", new { area = "HTML" })">
+
+            Bold &amp; Strong
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("TextFormatting", "ItalicAndEmphasis") ? "active" : "")"
+           href="@Url.Action("ItalicAndEmphasis", "TextFormatting", new { area = "HTML" })">
+
+            Italic &amp; Emphasis
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("TextFormatting", "UnderlineAndHighlight") ? "active" : "")"
+           href="@Url.Action("UnderlineAndHighlight", "TextFormatting", new { area = "HTML" })">
+
+            Underline &amp; Highlight
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("TextFormatting", "SubscriptAndSuperscript") ? "active" : "")"
+           href="@Url.Action("SubscriptAndSuperscript", "TextFormatting", new { area = "HTML" })">
+
+            Subscript &amp; Superscript
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("TextFormatting", "Quotations") ? "active" : "")"
+           href="@Url.Action("Quotations", "TextFormatting", new { area = "HTML" })">
+
+            Quotations
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("TextFormatting", "Abbreviations") ? "active" : "")"
+           href="@Url.Action("Abbreviations", "TextFormatting", new { area = "HTML" })">
+
+            Abbreviations
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("TextFormatting", "SpecialCharacters") ? "active" : "")"
+           href="@Url.Action("SpecialCharacters", "TextFormatting", new { area = "HTML" })">
+
+            Special Characters
+
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 5
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            5. Links &amp; Media
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("LinksAndMedia", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "LinksAndMedia", new { area = "HTML" })">
+
+            Links &amp; Media
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("LinksAndMedia", "Hyperlinks") ? "active" : "")"
+           href="@Url.Action("Hyperlinks", "LinksAndMedia", new { area = "HTML" })">
+
+            Hyperlinks
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("LinksAndMedia", "LinkAttributes") ? "active" : "")"
+           href="@Url.Action("LinkAttributes", "LinksAndMedia", new { area = "HTML" })">
+
+            Link Attributes
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("LinksAndMedia", "Images") ? "active" : "")"
+           href="@Url.Action("Images", "LinksAndMedia", new { area = "HTML" })">
+
+            Images
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("LinksAndMedia", "ImageAttributes") ? "active" : "")"
+           href="@Url.Action("ImageAttributes", "LinksAndMedia", new { area = "HTML" })">
+
+            Image Attributes
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("LinksAndMedia", "Audio") ? "active" : "")"
+           href="@Url.Action("Audio", "LinksAndMedia", new { area = "HTML" })">
+
+            Audio
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("LinksAndMedia", "Video") ? "active" : "")"
+           href="@Url.Action("Video", "LinksAndMedia", new { area = "HTML" })">
+
+            Video
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("LinksAndMedia", "Iframes") ? "active" : "")"
+           href="@Url.Action("Iframes", "LinksAndMedia", new { area = "HTML" })">
+
+            Iframes
+
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 6
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            6. Lists &amp; Tables
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("ListsAndTables", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "ListsAndTables", new { area = "HTML" })">
+
+            Lists &amp; Tables
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("ListsAndTables", "UnorderedLists") ? "active" : "")"
+           href="@Url.Action("UnorderedLists", "ListsAndTables", new { area = "HTML" })">
+
+            Unordered Lists
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("ListsAndTables", "OrderedLists") ? "active" : "")"
+           href="@Url.Action("OrderedLists", "ListsAndTables", new { area = "HTML" })">
+
+            Ordered Lists
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("ListsAndTables", "DescriptionLists") ? "active" : "")"
+           href="@Url.Action("DescriptionLists", "ListsAndTables", new { area = "HTML" })">
+
+            Description Lists
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("ListsAndTables", "NestedLists") ? "active" : "")"
+           href="@Url.Action("NestedLists", "ListsAndTables", new { area = "HTML" })">
+
+            Nested Lists
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("ListsAndTables", "Tables") ? "active" : "")"
+           href="@Url.Action("Tables", "ListsAndTables", new { area = "HTML" })">
+
+            Tables
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("ListsAndTables", "TableHeaders") ? "active" : "")"
+           href="@Url.Action("TableHeaders", "ListsAndTables", new { area = "HTML" })">
+
+            Table Headers
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("ListsAndTables", "ColspanAndRowspan") ? "active" : "")"
+           href="@Url.Action("ColspanAndRowspan", "ListsAndTables", new { area = "HTML" })">
+
+            Colspan &amp; Rowspan
+
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 7
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            7. HTML Forms
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Forms", new { area = "HTML" })">
+
+            Forms
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "FormBasics") ? "active" : "")"
+           href="@Url.Action("FormBasics", "Forms", new { area = "HTML" })">
+
+            Form Basics
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "FormAttributes") ? "active" : "")"
+           href="@Url.Action("FormAttributes", "Forms", new { area = "HTML" })">
+
+            Form Attributes
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "InputTypes") ? "active" : "")"
+           href="@Url.Action("InputTypes", "Forms", new { area = "HTML" })">
+
+            Input Types
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "Labels") ? "active" : "")"
+           href="@Url.Action("Labels", "Forms", new { area = "HTML" })">
+
+            Labels
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "TextArea") ? "active" : "")"
+           href="@Url.Action("TextArea", "Forms", new { area = "HTML" })">
+
+            Text Area
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "SelectAndOption") ? "active" : "")"
+           href="@Url.Action("SelectAndOption", "Forms", new { area = "HTML" })">
+
+            Select &amp; Option
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "RadioButtons") ? "active" : "")"
+           href="@Url.Action("RadioButtons", "Forms", new { area = "HTML" })">
+
+            Radio Buttons
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "CheckBoxes") ? "active" : "")"
+           href="@Url.Action("CheckBoxes", "Forms", new { area = "HTML" })">
+
+            Check Boxes
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "Buttons") ? "active" : "")"
+           href="@Url.Action("Buttons", "Forms", new { area = "HTML" })">
+
+            Buttons
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("Forms", "FormValidation") ? "active" : "")"
+           href="@Url.Action("FormValidation", "Forms", new { area = "HTML" })">
+
+            Form Validation
+
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 8
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            8. Semantic HTML
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "SemanticHTML", new { area = "HTML" })">
+
+            Semantic HTML
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "SemanticElements") ? "active" : "")"
+           href="@Url.Action("SemanticElements", "SemanticHTML", new { area = "HTML" })">
+
+            Semantic Elements
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "Header") ? "active" : "")"
+           href="@Url.Action("Header", "SemanticHTML", new { area = "HTML" })">
+
+            Header
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "Nav") ? "active" : "")"
+           href="@Url.Action("Nav", "SemanticHTML", new { area = "HTML" })">
+
+            Nav
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "Main") ? "active" : "")"
+           href="@Url.Action("Main", "SemanticHTML", new { area = "HTML" })">
+
+            Main
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "Section") ? "active" : "")"
+           href="@Url.Action("Section", "SemanticHTML", new { area = "HTML" })">
+
+            Section
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "Article") ? "active" : "")"
+           href="@Url.Action("Article", "SemanticHTML", new { area = "HTML" })">
+
+            Article
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "Aside") ? "active" : "")"
+           href="@Url.Action("Aside", "SemanticHTML", new { area = "HTML" })">
+
+            Aside
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "Footer") ? "active" : "")"
+           href="@Url.Action("Footer", "SemanticHTML", new { area = "HTML" })">
+
+            Footer
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("SemanticHTML", "HTMLPageLayout") ? "active" : "")"
+           href="@Url.Action("HTMLPageLayout", "SemanticHTML", new { area = "HTML" })">
+
+            HTML Page Layout
+
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 9
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            9. HTML5 Features
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("HTML5Features", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "HTML5Features", new { area = "HTML" })">
+
+            HTML5 Features
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("HTML5Features", "HTML5Introduction") ? "active" : "")"
+           href="@Url.Action("HTML5Introduction", "HTML5Features", new { area = "HTML" })">
+
+            HTML5 Introduction
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("HTML5Features", "NewInputTypes") ? "active" : "")"
+           href="@Url.Action("NewInputTypes", "HTML5Features", new { area = "HTML" })">
+
+            New Input Types
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("HTML5Features", "AudioVideo") ? "active" : "")"
+           href="@Url.Action("AudioVideo", "HTML5Features", new { area = "HTML" })">
+
+            Audio &amp; Video
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("HTML5Features", "Canvas") ? "active" : "")"
+           href="@Url.Action("Canvas", "HTML5Features", new { area = "HTML" })">
+
+            Canvas
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("HTML5Features", "SVG") ? "active" : "")"
+           href="@Url.Action("SVG", "HTML5Features", new { area = "HTML" })">
+
+            SVG
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("HTML5Features", "ProgressMeter") ? "active" : "")"
+           href="@Url.Action("ProgressMeter", "HTML5Features", new { area = "HTML" })">
+
+            Progress &amp; Meter
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("HTML5Features", "DetailsSummary") ? "active" : "")"
+           href="@Url.Action("DetailsSummary", "HTML5Features", new { area = "HTML" })">
+
+            Details &amp; Summary
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("HTML5Features", "DataAttributes") ? "active" : "")"
+           href="@Url.Action("DataAttributes", "HTML5Features", new { area = "HTML" })">
+
+            Data Attributes
+
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 10
+             ===================================================== -->
+
+        <div class="list-group-item html-module-title">
+            10. Advanced HTML
+        </div>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("AdvancedHTML", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "AdvancedHTML", new { area = "HTML" })">
+
+            Advanced HTML
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("AdvancedHTML", "GlobalAttributes") ? "active" : "")"
+           href="@Url.Action("GlobalAttributes", "AdvancedHTML", new { area = "HTML" })">
+
+            Global Attributes
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("AdvancedHTML", "MetaTags") ? "active" : "")"
+           href="@Url.Action("MetaTags", "AdvancedHTML", new { area = "HTML" })">
+
+            Meta Tags
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("AdvancedHTML", "Viewport") ? "active" : "")"
+           href="@Url.Action("Viewport", "AdvancedHTML", new { area = "HTML" })">
+
+            Viewport
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("AdvancedHTML", "HTMLAccessibility") ? "active" : "")"
+           href="@Url.Action("HTMLAccessibility", "AdvancedHTML", new { area = "HTML" })">
+
+            HTML Accessibility
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("AdvancedHTML", "ARIABasics") ? "active" : "")"
+           href="@Url.Action("ARIABasics", "AdvancedHTML", new { area = "HTML" })">
+
+            ARIA Basics
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("AdvancedHTML", "BestPractices") ? "active" : "")"
+           href="@Url.Action("BestPractices", "AdvancedHTML", new { area = "HTML" })">
+
+            HTML Best Practices
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action html-topic-link @(IsActive("AdvancedHTML", "SEOFriendlyHTML") ? "active" : "")"
+           href="@Url.Action("SEOFriendlyHTML", "AdvancedHTML", new { area = "HTML" })">
+
+            SEO-Friendly HTML
+
+        </a>
+
+
+    </div>
+
+</div>

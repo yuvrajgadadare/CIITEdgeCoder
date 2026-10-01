@@ -1,0 +1,843 @@
+﻿@{
+    ViewData["Title"] = "Switch Expressions in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-2">Switch Expressions in Java</h1>
+                <p class="text-muted mb-0">
+                    Learn modern switch expressions, arrow labels, yield, and pattern-oriented syntax.
+                </p>
+            </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Introduction -->
+        <h2 class="fw-bold">1. What is a Switch Expression?</h2>
+
+        <p>
+            A traditional <code>switch</code> statement is mainly used to control
+            program flow. A modern Java <strong>switch expression</strong> can also
+            produce a value.
+        </p>
+
+        <p>
+            Switch expressions were introduced as a preview feature in Java 12
+            and became a standard language feature in Java 14.
+        </p>
+
+        <div class="alert alert-info">
+            <strong>Key idea:</strong>
+            A switch expression evaluates to a value that can be assigned to a variable
+            or returned from a method.
+        </div>
+
+        <!-- Traditional switch -->
+        <h2 class="fw-bold mt-5">2. switch Statement</h2>
+
+        <p>
+            The older switch syntax commonly uses <code>case</code>,
+            <code>break</code>, and mutable variables.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>int day = 2;
+String name;
+
+switch (day) {
+
+    case 1:
+        name = "Monday";
+        break;
+
+    case 2:
+        name = "Tuesday";
+        break;
+
+    default:
+        name = "Unknown";
+}</code></pre>
+        </div>
+
+        <!-- Arrow syntax -->
+        <h2 class="fw-bold mt-5">3. Arrow Syntax</h2>
+
+        <p>
+            Modern switch expressions can use <code>-&gt;</code> instead of
+            the traditional colon syntax.
+        </p>
+
+        <p>
+            Arrow labels do not fall through to the next case.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>int day = 2;
+
+switch (day) {
+
+    case 1 -&gt; System.out.println("Monday");
+    case 2 -&gt; System.out.println("Tuesday");
+    case 3 -&gt; System.out.println("Wednesday");
+    default -&gt; System.out.println("Other day");
+}</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Tuesday</code></pre>
+</div>
+        <div class="alert alert-success">
+            <strong>Benefit:</strong>
+            Arrow labels eliminate accidental fall-through between cases.
+        </div>
+
+        <!-- Switch as expression -->
+        <h2 class="fw-bold mt-5">4. Switch Expression Returning a Value</h2>
+
+        <p>
+            A switch expression can directly return a value.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>int day = 2;
+
+String dayName = switch (day) {
+
+    case 1 -&gt; "Monday";
+    case 2 -&gt; "Tuesday";
+    case 3 -&gt; "Wednesday";
+    case 4 -&gt; "Thursday";
+    case 5 -&gt; "Friday";
+    case 6 -&gt; "Saturday";
+    case 7 -&gt; "Sunday";
+
+    default -&gt; "Invalid day";
+};
+
+System.out.println(dayName);</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Tuesday</code></pre>
+</div>
+
+        <!-- Multiple labels -->
+        <h2 class="fw-bold mt-5">5. Multiple Case Labels</h2>
+
+        <p>
+            Multiple constants can be handled by a single switch arm.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>int day = 6;
+
+String type = switch (day) {
+
+    case 1, 2, 3, 4, 5 -&gt; "Weekday";
+
+    case 6, 7 -&gt; "Weekend";
+
+    default -&gt; "Invalid";
+};
+
+System.out.println(type);</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Weekend</code></pre>
+</div>
+
+        <!-- Expression body -->
+        <h2 class="fw-bold mt-5">6. Block Body</h2>
+
+        <p>
+            A switch arm can contain multiple statements by using braces.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>int number = 10;
+
+String result = switch (number) {
+
+    case 10 -&gt; {
+        System.out.println("Number is ten");
+        yield "TEN";
+    }
+
+    default -&gt; {
+        System.out.println("Other number");
+        yield "OTHER";
+    }
+};
+
+System.out.println(result);</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Number is ten
+TEN</code></pre>
+</div>
+
+        <!-- yield -->
+        <h2 class="fw-bold mt-5">7. yield Keyword</h2>
+
+        <p>
+            The <code>yield</code> keyword is used to return a value from a
+            block inside a switch expression.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>int score = 80;
+
+String grade = switch (score / 10) {
+
+    case 10, 9 -&gt; "A";
+
+    case 8 -&gt; {
+        System.out.println("Very good");
+        yield "B";
+    }
+
+    case 7 -&gt; "C";
+
+    case 6 -&gt; "D";
+
+    default -&gt; "F";
+};
+
+System.out.println(grade);</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Very good
+B</code></pre>
+</div>
+        <div class="alert alert-warning">
+            <strong>Remember:</strong>
+            Use <code>yield</code> when the switch arm uses a block and needs to
+            produce a value.
+        </div>
+
+        <!-- Exhaustiveness -->
+        <h2 class="fw-bold mt-5">8. Exhaustiveness</h2>
+
+        <p>
+            A switch expression must be exhaustive. It must handle every possible
+            input value.
+        </p>
+
+        <p>
+            For many types, a <code>default</code> case is used to cover remaining values.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>int value = 5;
+
+String result = switch (value) {
+
+    case 1 -&gt; "One";
+    case 2 -&gt; "Two";
+
+    default -&gt; "Other";
+};</code></pre>
+        </div>
+
+        <!-- Enum -->
+        <h2 class="fw-bold mt-5">9. Switch Expressions with Enum</h2>
+
+        <p>
+            Switch expressions work particularly well with enums.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>enum Level {
+    LOW,
+    MEDIUM,
+    HIGH
+}
+
+Level level = Level.HIGH;
+
+String message = switch (level) {
+
+    case LOW -&gt; "Low priority";
+
+    case MEDIUM -&gt; "Medium priority";
+
+    case HIGH -&gt; "High priority";
+};
+
+System.out.println(message);</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>High priority</code></pre>
+</div>
+
+        <div class="alert alert-success">
+            <strong>Advantage:</strong>
+            When all enum constants are covered, a separate <code>default</code>
+            may not be necessary.
+        </div>
+
+        <!-- String -->
+        <h2 class="fw-bold mt-5">10. Switch Expressions with String</h2>
+
+        <p>
+            Strings can also be used with switch expressions.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String language = "Java";
+
+String category = switch (language) {
+
+    case "Java" -&gt; "Programming Language";
+
+    case "SQL" -&gt; "Database Language";
+
+    case "HTML" -&gt; "Markup Language";
+
+    default -&gt; "Unknown";
+};
+
+System.out.println(category);</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Programming Language</code></pre>
+</div>
+
+        <!-- Character -->
+        <h2 class="fw-bold mt-5">11. Switch Expressions with Character</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>char grade = 'A';
+
+String result = switch (grade) {
+
+    case 'A' -&gt; "Excellent";
+
+    case 'B' -&gt; "Good";
+
+    case 'C' -&gt; "Average";
+
+    default -&gt; "Needs improvement";
+};
+
+System.out.println(result);</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Excellent</code></pre>
+</div>
+
+        <!-- Method return -->
+        <h2 class="fw-bold mt-5">12. Switch Expression in a Method</h2>
+
+        <p>
+            A switch expression can be returned directly from a method.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public static String getDayType(int day) {
+
+    return switch (day) {
+
+        case 1, 2, 3, 4, 5 -&gt; "Weekday";
+
+        case 6, 7 -&gt; "Weekend";
+
+        default -&gt; "Invalid";
+    };
+}</code></pre>
+        </div>
+
+        <!-- Nested -->
+        <h2 class="fw-bold mt-5">13. Avoid Complex Nested Switches</h2>
+
+        <p>
+            Although switch expressions are concise, deeply nested switches can
+            still make code difficult to understand.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String result = switch (type) {
+
+    case "A" -&gt; {
+        yield switch (status) {
+            case "ACTIVE" -&gt; "Running";
+            default -&gt; "Stopped";
+        };
+    }
+
+    default -&gt; "Unknown";
+};</code></pre>
+        </div>
+
+        <p>
+            For complex business logic, consider extracting logic into separate methods.
+        </p>
+
+        <!-- Pattern matching -->
+        <h2 class="fw-bold mt-5">14. Switch and Pattern Matching</h2>
+
+        <p>
+            Modern Java also supports pattern matching with switch.
+            This makes it possible to select behavior based on the type and
+            characteristics of an object.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String describe(Object value) {
+
+    return switch (value) {
+
+        case String text -&gt;
+            "String: " + text;
+
+        case Integer number -&gt;
+            "Integer: " + number;
+
+        case null -&gt;
+            "null";
+
+        default -&gt;
+            "Other type";
+    };
+}</code></pre>
+        </div>
+
+        <div class="alert alert-info">
+            <strong>Modern Java:</strong>
+            Pattern matching for switch became a standard feature in Java 21.
+        </div>
+
+        <!-- Guarded pattern -->
+        <h2 class="fw-bold mt-5">15. Pattern Matching with when</h2>
+
+        <p>
+            In modern Java, additional conditions can be expressed using a
+            <code>when</code> guard in pattern matching.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String classify(Object value) {
+
+    return switch (value) {
+
+        case Integer number when number &gt; 0 -&gt;
+            "Positive integer";
+
+        case Integer number -&gt;
+            "Zero or negative integer";
+
+        case String text -&gt;
+            "Text";
+
+        default -&gt;
+            "Other";
+    };
+}</code></pre>
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>Version note:</strong>
+            The guarded <code>when</code> syntax is part of the modern
+            pattern-matching switch language evolution and requires an appropriate
+            recent Java version.
+        </div>
+
+        <!-- Null -->
+        <h2 class="fw-bold mt-5">16. Handling null</h2>
+
+        <p>
+            Modern pattern matching switch can explicitly handle <code>null</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String check(Object value) {
+
+    return switch (value) {
+
+        case null -&gt; "Value is null";
+
+        case String text -&gt;
+            "Text value";
+
+        default -&gt;
+            "Other value";
+    };
+}</code></pre>
+        </div>
+
+        <!-- Benefits -->
+        <h2 class="fw-bold mt-5">17. Advantages of Switch Expressions</h2>
+
+        <ul>
+            <li>Can directly return a value.</li>
+            <li>Reduces boilerplate code.</li>
+            <li>Arrow syntax prevents accidental fall-through.</li>
+            <li>Supports multiple labels.</li>
+            <li>Works well with enums and strings.</li>
+            <li>Supports block expressions using <code>yield</code>.</li>
+            <li>Works with modern pattern matching.</li>
+            <li>Improves readability for many branching operations.</li>
+        </ul>
+
+        <!-- Traditional vs modern -->
+        <h2 class="fw-bold mt-5">18. Traditional switch vs Switch Expression</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Traditional switch</th>
+                        <th>Modern switch expression</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Usually statement-oriented</td>
+                        <td>Can produce a value</td>
+                    </tr>
+                    <tr>
+                        <td>Often requires break</td>
+                        <td>Arrow labels avoid fall-through</td>
+                    </tr>
+                    <tr>
+                        <td>More verbose</td>
+                        <td>More concise</td>
+                    </tr>
+                    <tr>
+                        <td>Uses case with colon frequently</td>
+                        <td>Can use arrow syntax</td>
+                    </tr>
+                    <tr>
+                        <td>No yield concept</td>
+                        <td>Uses yield inside block arms</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Complete Example -->
+        <h2 class="fw-bold mt-5">19. Example 😁🫥</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Main {
+
+    public static String getCategory(String language) {
+
+        return switch (language) {
+
+            case "Java" -&gt;
+                "Object-Oriented Programming";
+
+            case "SQL" -&gt;
+                "Database";
+
+            case "HTML", "CSS" -&gt;
+                "Web";
+
+            default -&gt;
+                "Other";
+        };
+    }
+
+    public static void main(String[] args) {
+
+        String language = "Java";
+
+        String category =
+            getCategory(language);
+
+        System.out.println(
+            "Language: " + language
+        );
+
+        System.out.println(
+            "Category: " + category
+        );
+    }
+}</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Language: Java
+Category: Object-Oriented Programming</code></pre>
+</div>
+        <!-- Best Practices -->
+        <h2 class="fw-bold mt-5">20. Best Practices</h2>
+
+        <ul>
+            <li>Use switch expressions when a branch naturally produces a value.</li>
+            <li>Prefer arrow syntax for modern code.</li>
+            <li>Keep each switch arm simple.</li>
+            <li>Use exhaustive handling where practical.</li>
+            <li>Use <code>yield</code> only when a block needs to produce a value.</li>
+            <li>Use pattern matching when type-based branching improves clarity.</li>
+            <li>Avoid deeply nested switch expressions.</li>
+            <li>Use an appropriate Java version for the language features being used.</li>
+        </ul>
+
+        <!-- Interview Questions -->
+        <h2 class="fw-bold mt-5">21. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="switchQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#switchQuestionOne">
+                        What is a switch expression?
+                    </button>
+                </h2>
+
+                <div id="switchQuestionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#switchQuestions">
+
+                    <div class="accordion-body">
+                        A switch expression is a modern Java switch construct that
+                        evaluates to a value.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#switchQuestionTwo">
+                        Which Java version standardized switch expressions?
+                    </button>
+                </h2>
+
+                <div id="switchQuestionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#switchQuestions">
+
+                    <div class="accordion-body">
+                        Switch expressions became a standard Java language feature
+                        in Java 14 after being introduced through preview releases.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#switchQuestionThree">
+                        What is the purpose of yield?
+                    </button>
+                </h2>
+
+                <div id="switchQuestionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#switchQuestions">
+
+                    <div class="accordion-body">
+                        <code>yield</code> returns a value from a block inside a
+                        switch expression.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#switchQuestionFour">
+                        What is the advantage of arrow syntax?
+                    </button>
+                </h2>
+
+                <div id="switchQuestionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#switchQuestions">
+
+                    <div class="accordion-body">
+                        Arrow syntax prevents the traditional fall-through behavior
+                        and makes switch branches more concise.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#switchQuestionFive">
+                        What does exhaustive mean for a switch expression?
+                    </button>
+                </h2>
+
+                <div id="switchQuestionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#switchQuestions">
+
+                    <div class="accordion-body">
+                        Exhaustive means that every possible input value is handled,
+                        either through explicit cases or a default branch.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#switchQuestionSix">
+                        What is pattern matching in switch?
+                    </button>
+                </h2>
+
+                <div id="switchQuestionSix"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#switchQuestions">
+
+                    <div class="accordion-body">
+                        Pattern matching allows a switch to match values based on
+                        their types and additional conditions.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="alert alert-success mt-5">
+            <h4 class="fw-bold">Summary</h4>
+
+            <p class="mb-2">
+                In this lesson, you learned:
+            </p>
+
+            <ul class="mb-0">
+                <li>Traditional switch statements</li>
+                <li>Modern switch expressions</li>
+                <li>Arrow syntax</li>
+                <li>Multiple case labels</li>
+                <li>Switch expressions returning values</li>
+                <li>The <code>yield</code> keyword</li>
+                <li>Exhaustive switch expressions</li>
+                <li>Switch expressions with enums and strings</li>
+                <li>Pattern matching with switch</li>
+                <li>Modern null handling</li>
+                <li>Best practices for switch expressions</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("VarKeyword", "ModernJava", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("PatternMatching", "ModernJava", new { area = "CoreJava" })">
+                Next: Topic →
+            </a>
+
+        </div>
+
+    </div>
+</div>

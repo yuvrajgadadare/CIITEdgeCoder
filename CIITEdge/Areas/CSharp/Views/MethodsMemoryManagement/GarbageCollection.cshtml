@@ -1,0 +1,914 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+}
+
+<style>
+    .try-it-btn {
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease;
+    }
+
+        .try-it-btn:hover {
+            background: #157347;
+            color: #fff;
+        }
+
+</style>
+
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- Page Header -->
+                <h2 class="h1 fw-bold text-dark mb-3">Garbage Collection in C#</h2>
+
+                <p class="text-muted mb-4">
+                    Garbage Collection (GC) is an important feature of .NET that
+                    automatically manages memory used by objects in a C# application.
+                    It identifies objects that are no longer being used and releases
+                    the memory occupied by those objects.
+                </p>
+
+                <p class="text-muted mb-4">
+                    In simple words, Garbage Collection helps developers manage
+                    <b>managed memory</b> automatically, so developers do not normally
+                    need to manually free memory after every object is no longer required.
+                </p>
+
+                <div class="alert alert-info border-0 shadow-sm mb-4">
+                    <strong>Beginner Tip:</strong>
+                    You create objects using <b>new</b>, but you generally do not
+                    manually delete those objects in C#. The .NET Garbage Collector
+                    manages their memory automatically.
+                </div>
+
+
+                <!-- What is Garbage Collection -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    What is Garbage Collection?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Garbage Collection is the automatic memory management mechanism
+                    provided by the .NET runtime. When an object is created, memory
+                    is allocated for that object. When the object is no longer
+                    reachable from the application, the Garbage Collector can
+                    eventually reclaim that memory.
+                </p>
+
+                <p class="text-muted mb-4">
+                    This process reduces the need for manual memory management and
+                    helps prevent many common memory-management problems.
+                </p>
+
+
+                <!-- Why GC -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Why Do We Need Garbage Collection?
+                </h3>
+
+                <p class="text-muted mb-3">
+                    Applications continuously create objects while they are running.
+                    If unused objects were never removed from memory, memory usage
+                    could continuously increase.
+                </p>
+
+                <ul class="text-muted mb-4">
+                    <li class="mb-2">
+                        Automatically manages memory used by managed objects.
+                    </li>
+
+                    <li class="mb-2">
+                        Reclaims memory from objects that are no longer reachable.
+                    </li>
+
+                    <li class="mb-2">
+                        Reduces the need for manual memory deallocation.
+                    </li>
+
+                    <li class="mb-2">
+                        Helps developers focus on application logic rather than
+                        manually tracking every object's lifetime.
+                    </li>
+
+                    <li class="mb-2">
+                        Helps reduce certain types of memory-management errors.
+                    </li>
+                </ul>
+
+
+                <!-- Managed Heap -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Garbage Collection and Managed Heap
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Objects created with <b>new</b> are generally allocated on the
+                    managed heap. The .NET Garbage Collector monitors this managed
+                    heap and determines which objects are still reachable.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span> <span class="class-name">Student</span>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name;<br>
+                    }<br><br>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span> <span class="class-name">Student</span>();<br>
+
+                    student.Name =
+                    <span class="string-lit">"Rahul"</span>;
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, a <b>Student</b> object is created using <b>new</b>.
+                    The object is stored in managed memory and is automatically
+                    managed by the .NET runtime.
+                </p>
+
+
+                <!-- Object Reachability -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Reachable and Unreachable Objects
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The Garbage Collector primarily works based on whether objects
+                    are still reachable by the application.
+                </p>
+
+                <p class="text-muted mb-3">
+                    If a reference still points to an object, that object is
+                    considered reachable.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span> <span class="class-name">Student</span>();<br><br>
+
+                    student.Name =
+                    <span class="string-lit">"Amit"</span>;
+                </div>
+
+                <p class="text-muted mb-4">
+                    As long as the application can reach the object through a
+                    live reference, the Garbage Collector treats it as in use.
+                </p>
+
+
+                <!-- Unreachable -->
+                <h4 class="h4 fw-bold text-dark mt-4 mb-3">
+                    Example of an Unreachable Object
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span> <span class="class-name">Student</span>();<br><br>
+
+                    student.Name =
+                    <span class="string-lit">"Amit"</span>;<br><br>
+
+                    student = <span class="keyword">null</span>;
+                </div>
+
+                <p class="text-muted mb-4">
+                    After assigning <b>null</b> to the variable, the previously
+                    created object may no longer be reachable through that reference.
+                    If there are no other references to the object, it becomes
+                    eligible for garbage collection.
+                </p>
+
+                <div class="alert alert-warning border-0 mb-4">
+                    <strong>Important:</strong>
+                    Becoming eligible for garbage collection does not mean that
+                    the object is removed from memory immediately. The Garbage
+                    Collector decides when collection should occur.
+                </div>
+
+
+                <!-- GC Process -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    How Garbage Collection Works
+                </h3>
+
+                <p class="text-muted mb-4">
+                    At a high level, the Garbage Collector identifies objects that
+                    are no longer reachable and reclaims their memory.
+                </p>
+
+                <div class="alert alert-light border shadow-sm mb-4">
+
+                    <div class="fw-bold text-dark mb-2">
+                        1. Objects are created
+                    </div>
+
+                    <div class="text-muted mb-2">
+                        ↓
+                    </div>
+
+                    <div class="fw-bold text-dark mb-2">
+                        2. Objects are stored in managed memory
+                    </div>
+
+                    <div class="text-muted mb-2">
+                        ↓
+                    </div>
+
+                    <div class="fw-bold text-dark mb-2">
+                        3. Some objects become unreachable
+                    </div>
+
+                    <div class="text-muted mb-2">
+                        ↓
+                    </div>
+
+                    <div class="fw-bold text-dark mb-2">
+                        4. Garbage Collector identifies eligible objects
+                    </div>
+
+                    <div class="text-muted mb-2">
+                        ↓
+                    </div>
+
+                    <div class="fw-bold text-success">
+                        5. Memory is reclaimed
+                    </div>
+
+                </div>
+
+
+                <!-- Generations -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Garbage Collection Generations
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The .NET Garbage Collector uses generations to improve the
+                    efficiency of memory management. Objects are grouped based on
+                    their age and how long they have survived.
+                </p>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Generation</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td><b>Generation 0</b></td>
+                                <td>
+                                    Contains newly created objects. Short-lived
+                                    objects are commonly collected here.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Generation 1</b></td>
+                                <td>
+                                    Contains objects that survived a Generation 0
+                                    collection.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Generation 2</b></td>
+                                <td>
+                                    Contains longer-lived objects that have survived
+                                    multiple collections.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="alert alert-info border-0 mb-4">
+                    <strong>Key Point:</strong>
+                    Garbage Collection is optimized around the idea that many
+                    objects are short-lived, while some objects remain alive for
+                    a long time.
+                </div>
+
+
+                <!-- Generation Example -->
+                <h4 class="h4 fw-bold text-dark mt-4 mb-3">
+                    Generation Example
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Suppose an application creates many temporary objects.
+                    New objects generally begin in Generation 0. If an object
+                    survives garbage collection, it may move to a higher
+                    generation.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">for</span> (
+                    <span class="keyword">int</span> i = 0; i &lt; 1000; i++)<br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">var</span> data =
+                    <span class="keyword">new</span> <span class="class-name">Student</span>();<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    In a real application, temporary objects may be created during
+                    processing. Objects that are no longer reachable can eventually
+                    become eligible for collection.
+                </p>
+
+
+                <!-- GC.Collect -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Using GC.Collect()
+                </h3>
+
+                <p class="text-muted mb-4">
+                    C# provides the <b>GC.Collect()</b> method to request a garbage
+                    collection. However, developers normally should not call it
+                    unnecessarily because the .NET runtime has its own garbage
+                    collection strategy.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">GC</span>.<span class="method-name">Collect</span>();
+                </div>
+
+                <div class="alert alert-warning border-0 mb-4">
+                    <strong>Important:</strong>
+                    <b>GC.Collect()</b> should not be treated as a normal way to
+                    clean memory after every object. The Garbage Collector is
+                    designed to automatically determine appropriate collection times.
+                </div>
+
+
+                <!-- Get Generation -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Checking an Object's Generation
+                </h3>
+
+                <p class="text-muted mb-3">
+                    The <b>GC.GetGeneration()</b> method can be used to find the
+                    generation of an object.
+                </p>
+
+                @* <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">var</span> student =
+                    <span class="keyword">new</span> <span class="class-name">Student</span>();<br><br>
+
+                    <span class="keyword">int</span> generation =
+                    <span class="class-name">GC</span>.<span class="method-name">GetGeneration</span>(student);<br><br>
+
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    generation);
+                </div> *@
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+                        <pre class="mb-0"><code>using System;
+
+class Student
+{
+    public string Name;
+}
+
+class Program
+{
+    static void Main()
+    {
+        var student = new Student();
+
+        int generation = GC.GetGeneration(student);
+
+        Console.WriteLine(generation);
+    }
+}</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+                        </button>
+                    </div>
+
+                <!-- Stack Heap Connection -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Stack, Heap and Garbage Collection
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Garbage Collection is mainly associated with the
+                    <b>managed heap</b>. Understanding the difference between
+                    Stack and Heap memory makes Garbage Collection easier to understand.
+                </p>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Stack</th>
+                                <th>Managed Heap</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Commonly stores local value-type data and
+                                    method call information.
+                                </td>
+
+                                <td>
+                                    Stores objects and dynamically allocated
+                                    managed data.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Memory is associated with method execution.
+                                </td>
+
+                                <td>
+                                    Objects can remain alive beyond a single
+                                    method call.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Not managed by the Garbage Collector in the
+                                    same way as the managed heap.
+                                </td>
+
+                                <td>
+                                    Managed by the .NET Garbage Collector.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- IDisposable -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Garbage Collection and IDisposable
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Garbage Collection manages memory for managed objects, but not
+                    every resource used by an application is simply managed memory.
+                    Applications may also use external or unmanaged resources such
+                    as files, database connections, network resources, and streams.
+                </p>
+
+                <p class="text-muted mb-4">
+                    For such resources, classes commonly implement
+                    <b>IDisposable</b>. The <b>using</b> statement helps ensure that
+                    the resource is disposed of properly.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">using</span> (
+                    <span class="keyword">var</span> file =
+                    <span class="keyword">new</span> <span class="class-name">StreamReader</span>(
+                    <span class="string-lit">"data.txt"</span>))<br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">string</span> content =
+                    file.ReadToEnd();<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    content);<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    The <b>using</b> statement ensures that the object is disposed
+                    when the block is completed, helping release the associated
+                    resource promptly.
+                </p>
+
+                <div class="alert alert-success border-0 shadow-sm mb-4">
+                    <strong>Remember:</strong>
+                    Garbage Collection and resource disposal are related to
+                    application resource management, but they are not the same thing.
+                    GC manages managed memory, while <b>IDisposable</b> is used for
+                    deterministic cleanup of resources.
+                </div>
+
+
+                <!-- Finalizers -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Finalizers in C#
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A finalizer is a special method that can be used by a class to
+                    perform cleanup before an object is reclaimed by the Garbage
+                    Collector. Finalizers are mainly relevant when working with
+                    unmanaged resources.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span> <span class="class-name">Demo</span>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;~<span class="class-name">Demo</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="comment">// Cleanup logic</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <div class="alert alert-warning border-0 mb-4">
+                    <strong>Best Practice:</strong>
+                    Do not use finalizers unnecessarily. When a type owns unmanaged
+                    resources, the recommended disposal pattern should generally be
+                    used instead of relying only on finalization.
+                </div>
+
+
+                <!-- Memory Leak -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Can Garbage Collection Prevent All Memory Leaks?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    No. Garbage Collection can reclaim objects that are no longer
+                    reachable, but an object can remain reachable even when the
+                    application no longer logically needs it.
+                </p>
+
+                <p class="text-muted mb-4">
+                    For example, keeping unnecessary objects in long-lived collections,
+                    event subscriptions, caches, or static references can cause memory
+                    usage to grow.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">static</span>
+                    <span class="class-name">List</span>&lt;
+                    <span class="class-name">Student</span>&gt; students =
+                    <span class="keyword">new</span>
+                    <span class="class-name">List</span>&lt;
+                    <span class="class-name">Student</span>&gt;();
+                </div>
+
+                <p class="text-muted mb-4">
+                    If objects continue to be referenced by a long-lived collection,
+                    the Garbage Collector cannot simply collect those objects because
+                    they are still reachable.
+                </p>
+
+
+                <!-- Best Practices -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Garbage Collection Best Practices
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Allow the .NET runtime to manage normal managed memory.
+                    </li>
+
+                    <li class="mb-2">
+                        Avoid calling <b>GC.Collect()</b> unnecessarily.
+                    </li>
+
+                    <li class="mb-2">
+                        Dispose objects that implement <b>IDisposable</b>.
+                    </li>
+
+                    <li class="mb-2">
+                        Prefer the <b>using</b> statement for disposable resources
+                        whenever appropriate.
+                    </li>
+
+                    <li class="mb-2">
+                        Avoid keeping unnecessary objects in long-lived collections.
+                    </li>
+
+                    <li class="mb-2">
+                        Be careful with static references and event subscriptions.
+                    </li>
+
+                    <li class="mb-2">
+                        Understand object lifetime when designing applications.
+                    </li>
+
+                </ul>
+
+
+                <!-- Real World Example -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Example 👨‍🏫❤️
+                </h3>
+
+                <p class="text-muted mb-3">
+                    Consider an e-commerce application. While processing a customer
+                    request, the application may create several temporary objects
+                    such as order details, calculations, response models, and
+                    temporary data.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Once those objects are no longer needed and there are no active
+                    references to them, they can become eligible for garbage
+                    collection. The .NET runtime can then reclaim their managed
+                    memory when appropriate.
+                </p>
+
+
+                <!-- Interview -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    CIIT Interview Points
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        What is Garbage Collection in C#?
+                    </li>
+
+                    <li class="mb-2">
+                        What is a managed heap?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the difference between reachable and unreachable objects?
+                    </li>
+
+                    <li class="mb-2">
+                        What are Generation 0, Generation 1, and Generation 2?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the purpose of <b>GC.Collect()</b>?
+                    </li>
+
+                    <li class="mb-2">
+                        Why should <b>GC.Collect()</b> not be called unnecessarily?
+                    </li>
+
+                    <li class="mb-2">
+                        What is <b>IDisposable</b>?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the purpose of the <b>using</b> statement?
+                    </li>
+
+                    <li class="mb-2">
+                        Can Garbage Collection prevent every memory leak?
+                    </li>
+
+                </ul>
+
+
+                <!-- Common Mistakes -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Common Beginner Mistakes
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Thinking that <b>null</b> immediately deletes an object.
+                    </li>
+
+                    <li class="mb-2">
+                        Calling <b>GC.Collect()</b> after every object creation.
+                    </li>
+
+                    <li class="mb-2">
+                        Assuming Garbage Collection immediately releases all resources.
+                    </li>
+
+                    <li class="mb-2">
+                        Forgetting to dispose objects that implement
+                        <b>IDisposable</b>.
+                    </li>
+
+                    <li class="mb-2">
+                        Keeping unnecessary references in long-lived objects.
+                    </li>
+
+                </ul>
+
+
+                <!-- Summary -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Summary
+                </h3>
+
+                <div class="alert alert-primary border-0 shadow-sm mb-4">
+
+                    <ul class="mb-0">
+
+                        <li class="mb-2">
+                            Garbage Collection is an automatic memory-management
+                            feature of .NET.
+                        </li>
+
+                        <li class="mb-2">
+                            It works primarily with the managed heap.
+                        </li>
+
+                        <li class="mb-2">
+                            Objects that are no longer reachable can become eligible
+                            for garbage collection.
+                        </li>
+
+                        <li class="mb-2">
+                            .NET uses generations such as Gen 0, Gen 1, and Gen 2.
+                        </li>
+
+                        <li class="mb-2">
+                            <b>GC.Collect()</b> can request collection, but normally
+                            should not be used unnecessarily.
+                        </li>
+
+                        <li class="mb-2">
+                            Garbage Collection manages managed memory, while
+                            <b>IDisposable</b> helps with deterministic resource cleanup.
+                        </li>
+
+                        <li>
+                            Good object lifetime and resource-management practices
+                            are important for building reliable applications.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Practice -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Practice Questions
+                </h3>
+
+                <ol class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Explain Garbage Collection in your own words.
+                    </li>
+
+                    <li class="mb-2">
+                        What is the managed heap?
+                    </li>
+
+                    <li class="mb-2">
+                        What makes an object eligible for Garbage Collection?
+                    </li>
+
+                    <li class="mb-2">
+                        Explain Generation 0, Generation 1, and Generation 2.
+                    </li>
+
+                    <li class="mb-2">
+                        Write a C# program that creates an object and then removes
+                        its reference.
+                    </li>
+
+                    <li class="mb-2">
+                        What does <b>GC.Collect()</b> do?
+                    </li>
+
+                    <li class="mb-2">
+                        Why should developers avoid unnecessary calls to
+                        <b>GC.Collect()</b>?
+                    </li>
+
+                    <li class="mb-2">
+                        Explain the difference between Garbage Collection and
+                        <b>IDisposable</b>.
+                    </li>
+
+                </ol>
+
+
+                <!-- Next Topic -->
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+
+                        <a href="/CSharp/MethodsMemoryManagement/MemoryBasics"
+                           class="btn btn-outline-secondary">
+                            ← Previous Topic
+                        </a>
+
+                        <a href="/CSharp/OOPC/ClassesObjects"
+                           class="btn btn-primary">
+                            Next Topic →
+                        </a>
+
+                    </div>
+
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+    <script>
+
+        function tryItYourself(button) {
+
+            // Find the code example containing this button
+            const example = button.closest(".try-it-example");
+
+            if (!example) {
+                alert("Code example not found.");
+                return;
+            }
+
+            // Find only this example's code
+            const codeElement = example.querySelector("pre code");
+
+            if (!codeElement) {
+                alert("Tutorial code not found.");
+                return;
+            }
+
+            // Get exact code and preserve indentation/new lines
+            const code = codeElement.textContent.trim();
+
+            // Create temporary form
+            const form = document.createElement("form");
+
+            form.method = "POST";
+
+            form.action =
+                '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+            // IMPORTANT: Open compiler in new tab
+            form.target = "_blank";
+
+            const input = document.createElement("input");
+
+            input.type = "hidden";
+            input.name = "code";
+            input.value = code;
+
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+
+            form.submit();
+
+            document.body.removeChild(form);
+        }
+
+    </script>

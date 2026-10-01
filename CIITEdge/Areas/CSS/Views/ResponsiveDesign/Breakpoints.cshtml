@@ -1,0 +1,585 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Breakpoints";
+}
+
+<div id="css-breakpoints-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">CSS Breakpoints</h1>
+
+                <p class="lead">
+                    CSS breakpoints are specific screen widths where the layout
+                    of a responsive website changes to provide a better user experience.
+                </p>
+
+                <hr />
+
+                <!-- What is Breakpoint -->
+                <h2 class="h4 mt-4">What is a Breakpoint?</h2>
+
+                <p>
+                    A breakpoint is a predefined viewport width where you change
+                    CSS styles using media queries.
+                </p>
+
+                <p>
+                    For example, a website may display three columns on a desktop,
+                    two columns on a tablet, and one column on a mobile device.
+                </p>
+
+                <!-- Diagram -->
+                <h2 class="h4 mt-4">Responsive Breakpoint Diagram</h2>
+
+                <div class="breakpoint-diagram">
+
+                    <div class="breakpoint-card">
+                        <div class="breakpoint-title">Mobile</div>
+                        <div class="breakpoint-value">Below 576px</div>
+                        <div class="breakpoint-layout">
+                            1 Column
+                        </div>
+                    </div>
+
+                    <div class="breakpoint-arrow">→</div>
+
+                    <div class="breakpoint-card">
+                        <div class="breakpoint-title">Tablet</div>
+                        <div class="breakpoint-value">576px – 991px</div>
+                        <div class="breakpoint-layout">
+                            2 Columns
+                        </div>
+                    </div>
+
+                    <div class="breakpoint-arrow">→</div>
+
+                    <div class="breakpoint-card">
+                        <div class="breakpoint-title">Desktop</div>
+                        <div class="breakpoint-value">992px and above</div>
+                        <div class="breakpoint-layout">
+                            3 Columns
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Simple Explanation -->
+                <div class="explanation-box">
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p>
+                        Breakpoints divide different screen sizes into groups.
+                        At each breakpoint, the layout can change according to
+                        the available screen space.
+                    </p>
+
+                    <p class="mb-0">
+                        Breakpoints are normally implemented with CSS media queries.
+                    </p>
+                </div>
+
+                <!-- Common Breakpoints -->
+                <h2 class="h4 mt-4">Common Breakpoint Examples</h2>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Breakpoint</th>
+                                <th>Typical Device</th>
+                                <th>Example Usage</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Below 576px</td>
+                                <td>Small Mobile</td>
+                                <td>Single-column layout</td>
+                            </tr>
+
+                            <tr>
+                                <td>576px – 767px</td>
+                                <td>Mobile / Small Tablet</td>
+                                <td>Compact layout</td>
+                            </tr>
+
+                            <tr>
+                                <td>768px – 991px</td>
+                                <td>Tablet</td>
+                                <td>Two-column layout</td>
+                            </tr>
+
+                            <tr>
+                                <td>992px – 1199px</td>
+                                <td>Desktop</td>
+                                <td>Wider content layout</td>
+                            </tr>
+
+                            <tr>
+                                <td>1200px and above</td>
+                                <td>Large Desktop</td>
+                                <td>Large multi-column layout</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Code Example -->
+                <h2 class="h4 mt-4">Example: Changing Layout at Breakpoints</h2>
+
+                <p>
+                    The following example starts with a four-column layout.
+                    The number of columns decreases as the screen becomes smaller.
+                </p>
+
+                <pre class="code-box"><code>.breakpoint-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.breakpoint-box {
+    background-color: #2563eb;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+@@media (max-width: 1199px) {
+
+    .breakpoint-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@@media (max-width: 991px) {
+
+    .breakpoint-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .breakpoint-box {
+        background-color: #7c3aed;
+    }
+}
+
+@@media (max-width: 575px) {
+
+    .breakpoint-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .breakpoint-box {
+        background-color: #0f766e;
+    }
+}</code></pre>
+
+                <!-- Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="breakpoint-grid">
+
+                        <div class="breakpoint-box">
+                            Box 1
+                        </div>
+
+                        <div class="breakpoint-box">
+                            Box 2
+                        </div>
+
+                        <div class="breakpoint-box">
+                            Box 3
+                        </div>
+
+                        <div class="breakpoint-box">
+                            Box 4
+                        </div>
+
+                    </div>
+
+                    <p class="output-note">
+                        Resize the browser window to observe the layout changes
+                        at different breakpoints.
+                    </p>
+
+                </div>
+
+                <!-- Explanation of Breakpoints -->
+                <h2 class="h4 mt-4">How This Example Works</h2>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Desktop</h3>
+
+                    <p class="mb-0">
+                        Above <code>1199px</code>, the grid displays
+                        <strong>4 columns</strong>.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Medium Desktop</h3>
+
+                    <p class="mb-0">
+                        At <code>1199px</code> or below, the grid changes to
+                        <strong>3 columns</strong>.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Tablet</h3>
+
+                    <p class="mb-0">
+                        At <code>991px</code> or below, the grid changes to
+                        <strong>2 columns</strong> and the box color changes to
+                        <code>#7c3aed</code>.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Mobile</h3>
+
+                    <p class="mb-0">
+                        At <code>575px</code> or below, the grid changes to
+                        <strong>1 column</strong> and the box color changes to
+                        <code>#0f766e</code>.
+                    </p>
+
+                </div>
+
+                <!-- Choosing Breakpoints -->
+                <h2 class="h4 mt-4">How to Choose Breakpoints</h2>
+
+                <p>
+                    Breakpoints should be chosen according to how your content
+                    behaves rather than only targeting specific device models.
+                </p>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Recommended Approach</h3>
+
+                    <p>
+                        Start with your layout and resize the browser.
+                        When the content starts looking crowded or difficult to read,
+                        introduce a breakpoint and adjust the layout.
+                    </p>
+
+                    <p class="mb-0">
+                        This makes the design more flexible across different
+                        screen sizes.
+                    </p>
+
+                </div>
+
+                <!-- Important -->
+                <h2 class="h4 mt-4">Important Point</h2>
+
+                <div class="note-box">
+
+                    <h3 class="h6">Do not create too many breakpoints</h3>
+
+                    <p class="mb-0">
+                        Too many breakpoints can make CSS difficult to maintain.
+                        Use only the breakpoints that are actually required
+                        by your layout.
+                    </p>
+
+                </div>
+
+                <!-- Real World Uses -->
+                <h2 class="h4 mt-4">Real-World Uses of Breakpoints</h2>
+
+                <ul>
+                    <li>Changing navigation layouts</li>
+                    <li>Adjusting card and grid columns</li>
+                    <li>Changing font sizes</li>
+                    <li>Changing spacing and padding</li>
+                    <li>Making sidebars stack below content</li>
+                    <li>Creating mobile-friendly forms</li>
+                </ul>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS breakpoints define screen widths where a responsive
+                        layout changes. They are implemented using media queries
+                        and help websites adapt their structure, spacing,
+                        typography, and components for different viewport sizes.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("MediaQueries", "ResponsiveDesign", new { area = "CSS" })">
+
+                            ← Previous: Media Queries
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("MobileFirst", "ResponsiveDesign", new { area = "CSS" })">
+
+                            Next: Mobile First →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-breakpoints-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-breakpoints-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-breakpoints-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-breakpoints-page .content-section p,
+        #css-breakpoints-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    #css-breakpoints-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    #css-breakpoints-page .breakpoint-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-breakpoints-page .breakpoint-card {
+        min-width: 180px;
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+    }
+
+    #css-breakpoints-page .breakpoint-title {
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    #css-breakpoints-page .breakpoint-value {
+        color: #495057;
+        font-size: 14px;
+        margin-top: 6px;
+    }
+
+    #css-breakpoints-page .breakpoint-layout {
+        margin-top: 10px;
+        background-color: #e0f2fe;
+        color: #075985;
+        padding: 8px;
+        border-radius: 5px;
+        font-weight: 600;
+    }
+
+    #css-breakpoints-page .breakpoint-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2563eb;
+    }
+
+    #css-breakpoints-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+    #css-breakpoints-page .property-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+        #css-breakpoints-page .property-card h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    #css-breakpoints-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    #css-breakpoints-page .breakpoint-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+    #css-breakpoints-page .breakpoint-box {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 25px;
+        text-align: center;
+        border-radius: 8px;
+        font-weight: 700;
+    }
+
+    #css-breakpoints-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #6c757d !important;
+        text-align: center;
+    }
+
+    #css-breakpoints-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-breakpoints-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-breakpoints-page .note-box p {
+            color: #78350f;
+        }
+
+    #css-breakpoints-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-breakpoints-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-breakpoints-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    @@media (max-width: 991px) {
+
+        #css-breakpoints-page .content-section {
+            padding: 22px;
+        }
+
+        #css-breakpoints-page .breakpoint-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #css-breakpoints-page .breakpoint-box {
+            background-color: #7c3aed;
+        }
+    }
+
+    @@media (max-width: 575px) {
+
+        #css-breakpoints-page .content-section {
+            padding: 16px;
+        }
+
+        #css-breakpoints-page .breakpoint-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-breakpoints-page .breakpoint-box {
+            background-color: #0f766e;
+        }
+
+        #css-breakpoints-page .breakpoint-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-breakpoints-page .breakpoint-card {
+            width: 100%;
+        }
+    }
+
+</style>

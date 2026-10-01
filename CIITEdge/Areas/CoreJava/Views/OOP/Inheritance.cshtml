@@ -1,0 +1,1414 @@
+﻿@{
+    ViewData["Title"] = "Inheritance in Java";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Inheritance in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how inheritance allows one class to acquire accessible
+                fields and methods from another class and how Java supports
+                different inheritance structures.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is Inheritance?</h3>
+
+            <p>
+                Inheritance is an object-oriented programming mechanism in
+                which a class derives from another class. The derived class
+                can reuse accessible members of the parent class and can add
+                its own state and behavior.
+            </p>
+
+            <p>
+                In Java, inheritance between classes is created using the
+                <code>extends</code> keyword.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Animal {
+
+    void eat() {
+
+        System.out.println("Animal is eating");
+
+    }
+
+}
+
+class Dog extends Animal {
+
+    void bark() {
+
+        System.out.println("Dog is barking");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- PARENT CHILD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Parent and Child Classes</h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Term</th>
+                            <th>Meaning</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Superclass</td>
+                            <td>
+                                The class whose members are inherited.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Subclass</td>
+                            <td>
+                                The class that extends the superclass.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Parent Class</td>
+                            <td>
+                                Another common name for superclass.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Child Class</td>
+                            <td>
+                                Another common name for subclass.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- BASIC EXAMPLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Basic Inheritance Example</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Vehicle {
+
+    void start() {
+
+        System.out.println("Vehicle started");
+
+    }
+
+}
+
+class Car extends Vehicle {
+
+    void drive() {
+
+        System.out.println("Car is driving");
+
+    }
+
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Car car = new Car();
+
+        car.start();
+
+        car.drive();
+
+    }
+
+}</code></pre>
+
+            </div>
+      
+            <p class="mt-3">
+    Output:
+</p>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Vehicle started
+Car is driving</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- REUSE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Code Reuse</h3>
+
+            <p>
+                Inheritance can reduce duplication when a group of classes
+                shares common behavior.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>Vehicle
+   │
+   ├── start()
+   ├── stop()
+   │
+   ↓
+Car
+   │
+   ├── drive()
+   └── honk()</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- SINGLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">1. Single Inheritance</h3>
+
+            <p>
+                Single inheritance occurs when one subclass extends one
+                superclass.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Animal {
+
+    void eat() {
+
+        System.out.println("Eating");
+
+    }
+
+}
+
+class Dog extends Animal {
+
+    void bark() {
+
+        System.out.println("Barking");
+
+    }
+
+}</code></pre>
+
+            </div>
+           
+      
+            <p class="mt-3">
+    Output:
+</p>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Structure</div>
+
+                <pre class="mb-0"><code>Animal
+   ↓
+  Dog</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- MULTILEVEL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">2. Multilevel Inheritance</h3>
+
+            <p>
+                Multilevel inheritance occurs when a class extends another
+                class that itself extends another class.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Animal {
+
+    void eat() {
+
+        System.out.println("Eating");
+
+    }
+
+}
+
+class Dog extends Animal {
+
+    void bark() {
+
+        System.out.println("Barking");
+
+    }
+
+}
+
+class Puppy extends Dog {
+
+    void play() {
+
+        System.out.println("Playing");
+
+    }
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Structure</div>
+
+                <pre class="mb-0"><code>Animal
+   ↓
+  Dog
+   ↓
+ Puppy</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- HIERARCHICAL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">3. Hierarchical Inheritance</h3>
+
+            <p>
+                Hierarchical inheritance occurs when multiple subclasses
+                extend the same superclass.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Animal {
+
+    void eat() {
+
+        System.out.println("Eating");
+
+    }
+
+}
+
+class Dog extends Animal {
+
+    void bark() {
+
+        System.out.println("Barking");
+
+    }
+
+}
+
+class Cat extends Animal {
+
+    void meow() {
+
+        System.out.println("Meowing");
+
+    }
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Structure</div>
+
+                <pre class="mb-0"><code>       Animal
+       /    \
+      ↓      ↓
+     Dog    Cat</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- MULTIPLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                4. Multiple Inheritance Through Interfaces
+            </h3>
+
+            <p>
+                Java does not allow a class to extend multiple classes.
+                However, a class can implement multiple interfaces.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Camera {
+
+    void takePhoto();
+
+}
+
+interface GPS {
+
+    void navigate();
+
+}
+
+class SmartPhone implements Camera, GPS {
+
+    public void takePhoto() {
+
+        System.out.println("Taking photo");
+
+    }
+
+    public void navigate() {
+
+        System.out.println("Navigating");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                A class can implement multiple interfaces, allowing it to
+                combine contracts from multiple sources.
+            </p>
+
+        </section>
+
+
+        <!-- HYBRID -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                5. Hybrid Inheritance Through Interfaces
+            </h3>
+
+            <p>
+                Hybrid inheritance combines more than one inheritance
+                structure. Java avoids multiple inheritance of classes but
+                can express more complex designs through interfaces.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Animal {
+
+    void eat() {
+
+        System.out.println("Eating");
+
+    }
+
+}
+
+interface Swimmable {
+
+    void swim();
+
+}
+
+interface RunnableAnimal {
+
+    void run();
+
+}
+
+class Duck extends Animal
+        implements Swimmable, RunnableAnimal {
+
+    public void swim() {
+
+        System.out.println("Swimming");
+
+    }
+
+    public void run() {
+
+        System.out.println("Running");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- IS-A -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">IS-A Relationship</h3>
+
+            <p>
+                Inheritance represents an IS-A relationship.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>Dog IS-A Animal
+
+Car IS-A Vehicle
+
+Manager IS-A Employee</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXTENDS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">The extends Keyword</h3>
+
+            <p>
+                The <code>extends</code> keyword establishes class
+                inheritance.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class CiitStudent  {
+
+    void attendClass() {
+
+        System.out.println("Attending regular lectures at CIIT Institute 🤓👨‍🏫...!"); 
+
+    }
+
+}
+
+class CiitGraduate extends CiitStudent { 
+
+    void attendPlacement() {
+
+        System.out.println("Attending the CIIT Campus Placement Drive for top tech jobs 👀🤓...!");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUPER -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">The super Keyword</h3>
+
+            <p>
+                The <code>super</code> keyword refers to the immediate
+                superclass. It can be used to access accessible superclass
+                members and invoke superclass constructors.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Animal {
+
+    String name = "Animal";
+
+}
+
+class Dog extends Animal {
+
+    String name = "Dog";
+
+    void display() {
+
+        System.out.println(name);
+
+        System.out.println(super.name);
+
+    }
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Dog
+Animal</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUPER METHOD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Calling a Superclass Method
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Animal {
+
+    void sound() {
+
+        System.out.println("Animal sound");
+
+    }
+
+}
+
+class Dog extends Animal {
+
+    void sound() {
+
+        super.sound();
+
+        System.out.println("Dog bark");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUPER CONSTRUCTOR -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Calling a Superclass Constructor
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Person {
+
+    String name;
+
+    Person(String name) {
+
+        this.name = name;
+
+    }
+
+}
+
+class Student extends Person {
+
+    int age;
+
+    Student(String name, int age) {
+
+        super(name);
+
+        this.age = age;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                <code>super(name)</code> invokes the constructor of the
+                immediate superclass.
+            </p>
+
+        </section>
+
+
+        <!-- METHOD INHERITANCE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Inherited Methods</h3>
+
+            <p>
+                A subclass can use accessible methods inherited from its
+                superclass.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Vehicle {
+
+    void start() {
+
+        System.out.println("Starting");
+
+    }
+
+}
+
+class Car extends Vehicle {
+
+}
+
+Car car = new Car();
+
+car.start();</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Starting</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- OVERRIDING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Method Overriding</h3>
+
+            <p>
+                A subclass can provide a specific implementation of an
+                inherited instance method. This is called method overriding.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Animal {
+
+    void sound() {
+
+        System.out.println("Animal sound");
+
+    }
+
+}
+
+class Dog extends Animal {
+
+    @@Override
+    void sound() {
+
+        System.out.println("Dog barks");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The <code>@@Override</code> annotation tells the compiler that
+                the method is intended to override an inherited method.
+            </p>
+
+        </section>
+
+
+        <!-- FINAL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                final and Inheritance
+            </h3>
+
+            <p>
+                A class declared with <code>final</code> cannot be extended.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>final class SecurityManager {
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                A method declared <code>final</code> cannot be overridden by
+                a subclass.
+            </p>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Parent {
+
+    final void display() {
+
+        System.out.println("Parent");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACCESS MODIFIERS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Access Modifiers and Inheritance
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Modifier</th>
+                            <th>Inherited/Accessible in Subclass</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>public</code></td>
+                            <td>Yes, subject to normal access rules.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>protected</code></td>
+                            <td>Yes, with Java's protected-access rules.</td>
+                        </tr>
+
+                        <tr>
+                            <td>No modifier</td>
+                            <td>
+                                Accessible within the same package.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><code>private</code></td>
+                            <td>
+                                Not directly accessible from the subclass.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONSTRUCTOR INHERITANCE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Are Constructors Inherited?
+            </h3>
+
+            <p>
+                No. Constructors are not inherited by subclasses.
+            </p>
+
+            <p>
+                However, a subclass constructor can invoke a superclass
+                constructor using <code>super()</code>.
+            </p>
+
+        </section>
+
+
+        <!-- OBJECT CLASS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Object: The Root Class
+            </h3>
+
+            <p>
+                Every Java class ultimately derives from
+                <code>java.lang.Object</code>, either directly or indirectly.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>
+                                     Object
+                                       ↓
+                                     Person
+                                       ↓
+                                    Employee
+                                       ↓
+                                    Manager</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                This means classes inherit methods such as
+                <code>toString()</code>, <code>equals()</code>, and
+                <code>hashCode()</code> from <code>Object</code>, subject to
+                overriding and normal Java rules.
+            </p>
+
+        </section>
+
+
+        <!-- COMPOSITION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Inheritance vs Composition
+            </h3>
+
+            <p>
+                Inheritance represents an IS-A relationship, while
+                composition represents a HAS-A relationship.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Inheritance</th>
+                            <th>Composition</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>IS-A relationship.</td>
+                            <td>HAS-A relationship.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Uses <code>extends</code>.</td>
+                            <td>Uses object references.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Creates a class hierarchy.</td>
+                            <td>Combines objects to build behavior.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Can create tighter coupling.</td>
+                            <td>Often provides more flexible composition.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICAL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Practical Example: Employee Hierarchy
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Employee {
+
+    protected String name;
+
+    Employee(String name) {
+
+        this.name = name;
+
+    }
+
+    void work() {
+
+        System.out.println(
+            name + " is working"
+        );
+
+    }
+
+}
+
+class Developer extends Employee {
+
+    Developer(String name) {
+
+        super(name);
+
+    }
+
+    void writeCode() {
+
+        System.out.println(
+            name + " is writing code"
+        );
+
+    }
+
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Developer developer =
+            new Developer("Samadhan");
+
+        developer.work();
+
+        developer.writeCode();
+
+    }
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Samadhan is working
+Samadhan is writing code</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- BENEFITS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Benefits of Inheritance</h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Promotes reuse of common behavior.
+                </li>
+
+                <li class="mb-2">
+                    Helps model hierarchical relationships.
+                </li>
+
+                <li class="mb-2">
+                    Supports runtime polymorphism through overriding.
+                </li>
+
+                <li class="mb-2">
+                    Reduces duplication in suitable class hierarchies.
+                </li>
+
+                <li>
+                    Allows common behavior to be defined at a higher level.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- LIMITATIONS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Limitations of Inheritance</h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Deep inheritance hierarchies can become difficult to
+                    understand.
+                </li>
+
+                <li class="mb-2">
+                    Subclasses can become tightly coupled to superclass
+                    implementation.
+                </li>
+
+                <li class="mb-2">
+                    Java does not support multiple inheritance of classes.
+                </li>
+
+                <li>
+                    Inheritance should be used only when the IS-A relationship
+                    is semantically appropriate.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Inheritance Best Practices</h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Use inheritance for genuine IS-A relationships.
+                </li>
+
+                <li class="mb-2">
+                    Prefer composition when behavior is better modeled as a
+                    HAS-A relationship.
+                </li>
+
+                <li class="mb-2">
+                    Keep inheritance hierarchies reasonably shallow.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>@@Override</code> when overriding methods.
+                </li>
+
+                <li>
+                    Design superclass contracts carefully because subclasses
+                    depend on them.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Interview Questions</h3>
+
+            <div class="accordion" id="inheritanceQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#inheritanceQuestionOne">
+
+                            Does Java support multiple inheritance of classes?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="inheritanceQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#inheritanceQuestions">
+
+                        <div class="accordion-body">
+
+                            No. A Java class cannot extend multiple classes.
+                            Multiple interfaces can be implemented instead.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#inheritanceQuestionTwo">
+
+                            What is the difference between extends and
+                            implements?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="inheritanceQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#inheritanceQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>extends</code> is used for class inheritance
+                            and interface inheritance, while
+                            <code>implements</code> is used when a class
+                            implements one or more interfaces.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#inheritanceQuestionThree">
+
+                            Are constructors inherited?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="inheritanceQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#inheritanceQuestions">
+
+                        <div class="accordion-body">
+
+                            No. Constructors are not inherited, but a subclass
+                            constructor can invoke a superclass constructor
+                            using <code>super()</code>.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#inheritanceQuestionFour">
+
+                            What is the purpose of super?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="inheritanceQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#inheritanceQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>super</code> can refer to accessible
+                            superclass members and can invoke superclass
+                            constructors.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Inheritance allows a Java class to derive from another
+                    class and reuse accessible behavior. Java supports
+                    single, multilevel, and hierarchical class inheritance,
+                    while multiple and more complex structures can be modeled
+                    through interfaces. The <code>super</code> keyword,
+                    method overriding, and careful use of composition are
+                    important parts of inheritance design.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Encapsulation",
+                               "OOP",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "Polymorphism",
+                               "OOP",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,777 @@
+﻿    @{
+        Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+        ViewData["Title"] = "Date & Time";
+    }
+
+    <style>
+        #datetime-page {
+            padding: 30px 0 50px;
+        }
+
+        #datetime-page .content-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.08);
+        }
+
+        #datetime-page .page-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 12px;
+        }
+
+        #datetime-page .lead-text,
+        #datetime-page .section-text {
+            color: #495057;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        #datetime-page .section-title {
+            font-size: 27px;
+            font-weight: 700;
+            color: #212529;
+            margin-top: 32px;
+            margin-bottom: 15px;
+        }
+
+        #datetime-page .concept-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 22px;
+            margin: 22px 0 30px;
+        }
+
+        #datetime-page .concept-box h5 {
+            color: #5b21b6;
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        #datetime-page .concept-box p {
+            color: #495057;
+            line-height: 1.8;
+        }
+
+        /* DIAGRAM */
+
+        #datetime-page .flow-card {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0 30px;
+        }
+
+        #datetime-page .flow-title {
+            text-align: center;
+            color: #5b21b6;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        #datetime-page .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        #datetime-page .flow-box {
+            min-width: 145px;
+            padding: 15px 20px;
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            background: #fff;
+        }
+
+        #datetime-page .flow-arrow {
+            font-size: 24px;
+            color: #7c3aed;
+            font-weight: bold;
+        }
+
+        /* IMAGE */
+
+        #datetime-page .image-card {
+            text-align: center;
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 25px 0 30px;
+        }
+
+        #datetime-page .datetime-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: auto;
+        }
+
+        #datetime-page .image-caption {
+            color: #6c757d;
+            font-size: 14px;
+            margin-top: 12px;
+            margin-bottom: 0;
+        }
+
+        /* CODE */
+
+        #datetime-page .code-box {
+            background: #212529;
+            color: #fff;
+            border-radius: 8px;
+            padding: 18px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        #datetime-page .code-box code {
+            color: #fff;
+        }
+
+        /* TRY IT */
+
+        #datetime-page .try-it-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin: 10px 0;
+        }
+
+        #datetime-page .try-it-btn {
+            background: #198754;
+            color: #fff;
+            border: 1px solid #198754;
+            border-radius: 7px;
+            padding: 10px 20px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 105px;
+            justify-content: center;
+        }
+
+        #datetime-page .try-it-btn:hover {
+            background: #157347;
+            border-color: #157347;
+        }
+
+        /* OUTPUT */
+
+        #datetime-page .output-box {
+            background: #f8f9fa;
+            border-left: 4px solid #198754;
+            border-radius: 7px;
+            padding: 15px 17px;
+            margin: 10px 0 28px;
+            color: #198754;
+            font-family: Consolas, Monaco, monospace;
+            line-height: 1.8;
+        }
+
+        /* NOTE */
+
+        #datetime-page .note-box {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-left: 5px solid #ffb300;
+            border-radius: 8px;
+            padding: 18px;
+            margin: 25px 0;
+            color: #6d4c41;
+            line-height: 1.7;
+        }
+
+        /* NAVIGATION */
+
+        #datetime-page .bottom-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        #datetime-page .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        #datetime-page .previous-btn {
+            background: #f8f9fa;
+            color: #495057;
+            border: 1px solid #dee2e6;
+        }
+
+        #datetime-page .previous-btn:hover {
+            background: #e9ecef;
+            color: #212529;
+        }
+
+        #datetime-page .next-btn {
+            background: #5b21b6;
+            color: #fff;
+            border: 1px solid #5b21b6;
+        }
+
+        #datetime-page .next-btn:hover {
+            background: #4c1d95;
+            color: #fff;
+        }
+
+        @@media (max-width: 768px) {
+
+            #datetime-page .content-section {
+                padding: 20px;
+            }
+
+            #datetime-page .page-title {
+                font-size: 29px;
+            }
+
+            #datetime-page .flow-row {
+                flex-direction: column;
+            }
+
+            #datetime-page .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            #datetime-page .bottom-navigation {
+                flex-direction: column;
+            }
+
+            #datetime-page .nav-btn {
+                justify-content: center;
+            }
+        }
+    </style>
+
+
+    <main id="datetime-page">
+
+        <div class="container-fluid">
+
+            <div class="row g-4">
+
+                <!-- ============================================
+                     COURSE SYLLABUS
+                     ============================================ -->
+
+                <aside class="col-lg-3">
+
+                    @Html.Partial(
+                        "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                    )
+
+                </aside>
+
+
+                <!-- ============================================
+                     MAIN CONTENT
+                     ============================================ -->
+
+                <section class="col-lg-9">
+
+                    <div class="content-section">
+
+                        <!-- PAGE TITLE -->
+
+                        <h1 class="page-title">
+                            Date &amp; Time in JavaScript
+                        </h1>
+
+                        <p class="lead-text">
+                            JavaScript provides the built-in Date object
+                            for working with dates and time.
+                        </p>
+
+                        <p class="section-text">
+                            Using the Date object, we can get the current
+                            date and time, extract individual date values,
+                            and format dates for applications.
+                        </p>
+
+
+                        <!-- WHAT IS DATE OBJECT -->
+
+                        <h2 class="section-title">
+                            What is the Date Object?
+                        </h2>
+
+                        <p class="section-text">
+                            The Date object represents a single moment in time.
+                            JavaScript uses the Date object to work with
+                            year, month, day, hour, minute and second values.
+                        </p>
+
+
+                        <div class="concept-box">
+
+                            <h5>
+                                Simple Definition
+                            </h5>
+
+                            <p class="mb-0">
+                                The Date object is a built-in JavaScript
+                                object used to create, read and manipulate
+                                date and time values.
+                            </p>
+
+                        </div>
+
+
+                        <!-- DIAGRAM -->
+
+                        <div class="flow-card">
+
+                            <div class="flow-title">
+                                Working with Date Object
+                            </div>
+
+                            <div class="flow-row">
+
+                                <div class="flow-box">
+                                    new Date()
+                                </div>
+
+                                <div class="flow-arrow">
+                                    →
+                                </div>
+
+                                <div class="flow-box">
+                                    Date Object
+                                </div>
+
+                                <div class="flow-arrow">
+                                    →
+                                </div>
+
+                                <div class="flow-box">
+                                    getDate()
+                                </div>
+
+                                <div class="flow-arrow">
+                                    →
+                                </div>
+
+                                <div class="flow-box">
+                                    getMonth()
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- IMAGE -->
+
+                        <div class="image-card">
+
+                            <img src="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/date_object.png"
+                                 alt="JavaScript Date Object"
+                                 class="datetime-image"
+                                 onerror="this.style.display='none';" />
+
+                            <p class="image-caption">
+                                JavaScript Date object is used to work with
+                                date and time values.
+                            </p>
+
+                        </div>
+
+
+                        <!-- CURRENT DATE -->
+
+                        <h2 class="section-title">
+                            Creating a Date Object
+                        </h2>
+
+                        <p class="section-text">
+                            We can create a Date object using the
+                            <strong>new Date()</strong> constructor.
+                        </p>
+
+
+                        <pre class="code-box"><code>var today = new Date();
+
+    console.log(today);</code></pre>
+
+
+                        <div class="output-box">
+
+                            <strong>Output:</strong>
+                            <br />
+                            Current date and time
+
+                        </div>
+
+
+                        <!-- ============================================
+                             EXAMPLE 1
+                             ============================================ -->
+
+                        <h2 class="section-title">
+                            Example 1: Get Current Date
+                        </h2>
+
+                        <p class="section-text">
+                            The following example creates a Date object
+                            and displays the current date.
+                        </p>
+
+
+                        <pre class="code-box"><code>var today = new Date();
+
+    console.log(today.toDateString());</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="runExample1()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="output-box">
+
+                            <strong>Output:</strong>
+                            <br />
+                            Current date
+
+                        </div>
+
+
+                        <!-- ============================================
+                             EXAMPLE 2
+                             ============================================ -->
+
+                        <h2 class="section-title">
+                            Example 2: Get Date Parts
+                        </h2>
+
+                        <p class="section-text">
+                            JavaScript provides methods such as
+                            getFullYear(), getMonth() and getDate()
+                            to get individual date values.
+                        </p>
+
+
+                        <pre class="code-box"><code>var today = new Date();
+
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    var day = today.getDate();
+
+    console.log(year);
+    console.log(month);
+    console.log(day);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="runExample2()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="output-box">
+
+                            <strong>Output:</strong>
+                            <br />
+                            Current Year
+                            <br />
+                            Current Month
+                            <br />
+                            Current Day
+
+                        </div>
+
+
+                        <!-- ============================================
+                             EXAMPLE 3
+                             ============================================ -->
+
+                        <h2 class="section-title">
+                            Example 3: Create a Specific Date
+                        </h2>
+
+                        <p class="section-text">
+                            We can also create a Date object with a
+                            specific date.
+                        </p>
+
+
+                        <pre class="code-box"><code>var birthday = new Date("1995-05-15");
+
+    console.log(birthday.toDateString());</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="runExample3()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="output-box">
+
+                            <strong>Output:</strong>
+                            <br />
+                            Mon May 15 1995
+
+                        </div>
+
+
+                        <!-- COMMON METHODS -->
+
+                        <h2 class="section-title">
+                            Common Date Methods
+                        </h2>
+
+                        <div class="concept-box">
+
+                            <p>
+                                <strong>getFullYear()</strong> –
+                                Returns the year.
+                            </p>
+
+                            <p>
+                                <strong>getMonth()</strong> –
+                                Returns the month from 0 to 11.
+                            </p>
+
+                            <p>
+                                <strong>getDate()</strong> –
+                                Returns the day of the month.
+                            </p>
+
+                            <p>
+                                <strong>getDay()</strong> –
+                                Returns the day of the week from 0 to 6.
+                            </p>
+
+                            <p>
+                                <strong>getHours()</strong> –
+                                Returns the hour.
+                            </p>
+
+                            <p class="mb-0">
+                                <strong>getMinutes()</strong> –
+                                Returns the minutes.
+                            </p>
+
+                        </div>
+
+
+                        <!-- IMPORTANT POINTS -->
+
+                        <h2 class="section-title">
+                            Important Points
+                        </h2>
+
+                        <div class="note-box">
+
+                            <p>
+                                • JavaScript uses the Date object for
+                                date and time operations.
+                            </p>
+
+                            <p>
+                                • new Date() creates a Date object.
+                            </p>
+
+                            <p>
+                                • getMonth() returns values from 0 to 11.
+                            </p>
+
+                            <p>
+                                • getDate() returns the day of the month.
+                            </p>
+
+                            <p>
+                                • getFullYear() returns the four-digit year.
+                            </p>
+
+                            <p class="mb-0">
+                                • Date values can be formatted using
+                                different Date methods.
+                            </p>
+
+                        </div>
+
+
+                        <!-- SUMMARY -->
+
+                        <div class="concept-box">
+
+                            <h5>
+                                Summary
+                            </h5>
+
+                            <p class="mb-0">
+                                The JavaScript Date object allows us to work
+                                with dates and time. We can create dates,
+                                retrieve date components and format dates
+                                using built-in Date methods.
+                            </p>
+
+                        </div>
+
+
+                        <!-- NAVIGATION -->
+    <div class="bottom-navigation">
+
+        <!-- PREVIOUS -->
+        <a href="@Url.Action("JSON", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+           class="nav-btn previous-btn">
+
+            <span>←</span>
+
+            <span>
+                Previous: JSON
+            </span>
+
+        </a>
+
+
+        <!-- NEXT - MODEL 12 START -->
+        <a href="@Url.Action("Index", "AdvancedJavaScript", new { area = "JavaScript" })"
+           class="nav-btn next-btn">
+
+            <span>
+                Next: Advanced JavaScript
+            </span>
+
+            <span>→</span>
+
+        </a>
+
+    </div>
+
+    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* =========================================================
+           OPEN CIIT JAVASCRIPT COMPILER
+           ========================================================= */
+
+        function openCompiler(code) {
+
+            var compilerUrl =
+                "/JavaScriptCompiler/Index?code=" +
+                encodeURIComponent(code);
+
+            window.open(
+                compilerUrl,
+                "_blank"
+            );
+        }
+
+
+        /* =========================================================
+           EXAMPLE 1
+           GET CURRENT DATE
+           ========================================================= */
+
+        function runExample1() {
+
+            var code =
+    `var today = new Date();
+
+    console.log(today.toDateString());`;
+
+            openCompiler(code);
+        }
+
+
+        /* =========================================================
+           EXAMPLE 2
+           GET DATE PARTS
+           ========================================================= */
+
+        function runExample2() {
+
+            var code =
+    `var today = new Date();
+
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    var day = today.getDate();
+
+    console.log(year);
+    console.log(month);
+    console.log(day);`;
+
+            openCompiler(code);
+        }
+
+
+        /* =========================================================
+           EXAMPLE 3
+           SPECIFIC DATE
+           ========================================================= */
+
+        function runExample3() {
+
+            var code =
+    `var birthday = new Date("1995-05-15");
+
+    console.log(birthday.toDateString());`;
+
+            openCompiler(code);
+        }
+
+    </script>

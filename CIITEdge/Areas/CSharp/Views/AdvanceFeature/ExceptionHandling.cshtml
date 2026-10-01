@@ -1,0 +1,1540 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Advanced Features";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <!-- MODULE 6 -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                   Advanced Features
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Learn important advanced C# features including Exception Handling,
+                    Delegates, Events, Lambda Expressions, Extension Methods, and LINQ.
+                    These features are widely used in modern .NET and ASP.NET Core applications.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Module Objective:</strong>
+                    Understand how advanced C# features improve application reliability,
+                    flexibility, code reusability, and data processing.
+                </div>
+
+
+                <!-- ================= EXCEPTION HANDLING ================= -->
+
+                <section id="exception-handling">
+
+                    <h2 class="h2 fw-bold text-dark mt-4 mb-4">
+                        1. Exception Handling
+                    </h2>
+
+                    <p class="text-muted">
+                        Exception handling is used to handle runtime errors in a program
+                        without terminating the application unexpectedly.
+                    </p>
+
+                    <div class="alert alert-warning">
+                        <strong>Simple Definition:</strong>
+                        An exception is an unexpected error that occurs while a program
+                        is running.
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Why Do We Need Exception Handling?
+                    </h4>
+
+                    <ul class="text-muted">
+                        <li>Prevents application crashes.</li>
+                        <li>Provides meaningful error messages.</li>
+                        <li>Allows the application to continue safely.</li>
+                        <li>Helps developers identify runtime problems.</li>
+                        <li>Improves application reliability.</li>
+                    </ul>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        try-catch
+                    </h4>
+
+                    <p class="text-muted">
+                        The try block contains code that may generate an exception.
+                        The catch block handles the exception.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+try
+{
+    int a = 10;
+    int b = 0;
+
+    int result = a / b;
+
+    Console.WriteLine(result);
+}
+catch (Exception ex)
+{
+    Console.WriteLine("An error occurred.");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>An error occurred.</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Displaying Exception Message
+                    </h4>
+
+@*                     <div class="code-block mb-4 shadow-sm">
+                        <div class="code-lang-tag">C#</div>
+                        <pre class="mb-0"><code>try
+{
+    int number = int.Parse("ABC");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}</code></pre>
+                    </div> *@
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+try
+{
+    int number = int.Parse("ABC");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>The input string 'ABC' was not in a correct format.</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Multiple catch Blocks
+                    </h4>
+
+                    <p class="text-muted">
+                        Multiple catch blocks can be used to handle different types
+                        of exceptions separately.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+try
+{
+    int[] numbers = { 10, 20, 30 };
+
+    Console.WriteLine(numbers[5]);
+}
+catch (IndexOutOfRangeException)
+{
+    Console.WriteLine("Invalid array index.");
+}
+catch (Exception)
+{
+    Console.WriteLine("Some other error occurred.");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>Invalid array index.</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        finally Block
+                    </h4>
+
+                    <p class="text-muted">
+                        The finally block executes whether an exception occurs or not.
+                        It is commonly used for cleanup operations.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+try
+{
+    Console.WriteLine("Try block executed.");
+}
+catch
+{
+    Console.WriteLine("Catch block executed.");
+}
+finally
+{
+    Console.WriteLine("Finally block executed.");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>Try block executed.
+Finally block executed.</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        throw Keyword
+                    </h4>
+
+                    <p class="text-muted">
+                        The throw keyword is used to explicitly generate an exception.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int age = 15;
+
+if (age &lt; 18)
+{
+    throw new Exception("Age must be 18 or above.");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                    <div class="alert alert-success">
+                        <strong>CIIT Practical Point:</strong>
+                        Exception handling is essential in ASP.NET Core applications
+                        for handling database errors, API failures, validation errors,
+                        file operations, and unexpected runtime problems.
+                    </div>
+
+                </section>
+
+
+                <!-- ================= DELEGATES AND EVENTS ================= -->
+
+                <section id="delegates-events">
+
+                    <h2 class="h2 fw-bold text-dark mt-5 mb-4">
+                        2. Delegates and Events
+                    </h2>
+
+                    <p class="text-muted">
+                        Delegates and events provide a mechanism for passing methods
+                        as values and creating event-driven applications.
+                    </p>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        What is a Delegate?
+                    </h4>
+
+                    <p class="text-muted">
+                        A delegate is a type-safe reference to a method.
+                        It can store a reference to a method and invoke that method later.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+delegate void MessageDelegate();
+
+class Program
+{
+    static void ShowMessage()
+    {
+        Console.WriteLine("Welcome to C#");
+    }
+
+    static void Main()
+    {
+        MessageDelegate message = ShowMessage;
+
+        message();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>Welcome to C#</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Delegate with Parameters
+                    </h4>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+delegate void CalculateDelegate(int a, int b);
+
+class Program
+{
+    static void Add(int a, int b)
+    {
+        Console.WriteLine(a + b);
+    }
+
+    static void Main()
+    {
+        CalculateDelegate calculate = Add;
+
+        calculate(10, 20);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>30</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        What is an Event?
+                    </h4>
+
+                    <p class="text-muted">
+                        An event is used to notify other parts of an application
+                        when something happens.
+                    </p>
+
+                    <p class="text-muted">
+                        Examples include button clicks, payment completion,
+                        order placement, and user registration.
+                    </p>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Event Example
+                    </h4>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Order
+{
+    public event Action OrderPlaced;
+
+    public void PlaceOrder()
+    {
+        Console.WriteLine("Order placed.");
+
+        OrderPlaced?.Invoke();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Order order = new Order();
+
+        order.OrderPlaced += SendNotification;
+
+        order.PlaceOrder();
+    }
+
+    static void SendNotification()
+    {
+        Console.WriteLine("Notification sent.");
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>Order placed.
+Notification sent.</code></pre>
+                    </div>
+
+
+                    <div class="alert alert-success">
+                        <strong>CIIT Practical Point:</strong>
+                        Delegates and events are useful in event-driven systems,
+                        notification systems, UI applications, callbacks and
+                        application-level communication.
+                    </div>
+
+                </section>
+
+
+                <!-- ================= LAMBDA ================= -->
+
+                <section id="lambda-expressions">
+
+                    <h2 class="h2 fw-bold text-dark mt-5 mb-4">
+                        3. Lambda Expressions
+                    </h2>
+
+                    <p class="text-muted">
+                        Lambda expressions provide a short and readable syntax
+                        for writing anonymous functions.
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong>Simple Definition:</strong>
+                        A lambda expression is a compact way of representing
+                        a method or function.
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Lambda Syntax
+                    </h4>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <div class="code-lang-tag">C#</div>
+                        <pre class="mb-0"><code>(parameters) =&gt; expression</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Simple Lambda Example
+                    </h4>
+
+@*                     <div class="code-block mb-4 shadow-sm">
+                        <div class="code-lang-tag">C#</div>
+                        <pre class="mb-0"><code>Func&lt;int, int&gt; square = number =&gt; number * number;
+
+Console.WriteLine(square(5));</code></pre>
+                    </div> *@
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Func&lt;int, int&gt; square = number =&gt; number * number;
+
+Console.WriteLine(square(5));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>25</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Lambda with Multiple Parameters
+                    </h4>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Func&lt;int, int, int&gt; add =
+    (a, b) =&gt; a + b;
+
+Console.WriteLine(add(10, 20));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>30</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Lambda with List
+                    </h4>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+using System.Collections.Generic;
+
+namespace ListExample
+{
+    class Program
+    {
+        static void Main()
+        {
+            List<int> numbers =
+                new List<int> { 10, 20, 30, 40, 50 };
+
+            numbers.ForEach(number =>
+                Console.WriteLine(number));
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+                    </div>
+
+
+                    <div class="alert alert-success">
+                        <strong>CIIT Practical Point:</strong>
+                        Lambda expressions are heavily used with LINQ,
+                        collections, filtering, sorting, searching and
+                        event handling in modern .NET applications.
+                    </div>
+
+                </section>
+
+
+                <!-- ================= EXTENSION METHODS ================= -->
+
+                <section id="extension-methods">
+
+                    <h2 class="h2 fw-bold text-dark mt-5 mb-4">
+                        4. Extension Methods
+                    </h2>
+
+                    <p class="text-muted">
+                        Extension methods allow developers to add new methods
+                        to an existing type without modifying the original type
+                        or creating a derived class.
+                    </p>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Extension Method Syntax
+                    </h4>
+
+                    <p class="text-muted">
+                        An extension method is defined inside a static class.
+                        The first parameter uses the <strong>this</strong> keyword.
+                    </p>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <div class="code-lang-tag">C#</div>
+                        <pre class="mb-0"><code>public static class StringExtensions
+{
+    public static bool IsLong(this string text)
+    {
+        return text.Length &gt; 5;
+    }
+}</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Extension Method Example
+                    </h4>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+public static class StringExtensions
+{
+    public static bool IsLong(this string text)
+    {
+        return text.Length &gt; 5;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string name = "Rahul";
+
+        Console.WriteLine(name.IsLong());
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>False</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Another Extension Method Example
+                    </h4>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+public static class NumberExtensions
+{
+    public static bool IsEven(this int number)
+    {
+        return number % 2 == 0;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        int number = 20;
+
+        Console.WriteLine(number.IsEven());
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>True</code></pre>
+                    </div>
+
+
+                    <div class="alert alert-success">
+                        <strong>CIIT Practical Point:</strong>
+                        Extension methods are commonly used in .NET libraries
+                        and application utility classes to add reusable functionality
+                        to existing types.
+                    </div>
+
+                </section>
+
+
+                <!-- ================= LINQ ================= -->
+
+                <section id="linq">
+
+                    <h2 class="h2 fw-bold text-dark mt-5 mb-4">
+                        5. LINQ
+                    </h2>
+
+                    <p class="text-muted">
+                        LINQ stands for <strong>Language Integrated Query</strong>.
+                        It provides a consistent way to query and manipulate
+                        data from collections, databases, XML and other data sources.
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong>Simple Definition:</strong>
+                        LINQ allows us to filter, sort, search, group and transform
+                        data using readable C# syntax.
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Why Do We Use LINQ?
+                    </h4>
+
+                    <ul class="text-muted">
+                        <li>Filter data easily.</li>
+                        <li>Sort collections.</li>
+                        <li>Search for records.</li>
+                        <li>Select specific fields.</li>
+                        <li>Group data.</li>
+                        <li>Calculate values such as Sum and Average.</li>
+                        <li>Write readable data-processing code.</li>
+                    </ul>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Where() Method
+                    </h4>
+
+                    <p class="text-muted">
+                        Where() is used to filter data based on a condition.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 15, 20, 25, 30 };
+
+var result = numbers.Where(n =&gt; n &gt; 20);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>25
+30</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Select() Method
+                    </h4>
+
+                    <p class="text-muted">
+                        Select() is used to transform or project each element.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 1, 2, 3, 4, 5 };
+
+var squares = numbers.Select(n =&gt; n * n);
+
+foreach (int number in squares)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>1
+4
+9
+16
+25</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        OrderBy()
+                    </h4>
+
+                    <p class="text-muted">
+                        OrderBy() sorts data in ascending order.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 50, 20, 40, 10, 30 };
+
+var result = numbers.OrderBy(n =&gt; n);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        OrderByDescending()
+                    </h4>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 40, 20, 50, 30 };
+
+var result = numbers.OrderByDescending(n =&gt; n);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>50
+40
+30
+20
+10</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        First() and FirstOrDefault()
+                    </h4>
+
+                    <p class="text-muted">
+                        First() returns the first element of a collection.
+                        FirstOrDefault() returns the first element or the default
+                        value when no matching element exists.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;string&gt; names =
+    new List&lt;string&gt; { "Rahul", "Sneha", "Amit" };
+
+string firstName = names.First();
+
+Console.WriteLine(firstName);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>Rahul</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Any() Method
+                    </h4>
+
+                    <p class="text-muted">
+                        Any() checks whether at least one element satisfies
+                        a specified condition.
+                    </p>
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40 };
+
+bool result = numbers.Any(n =&gt; n &gt; 25);
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>True</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Count() Method
+                    </h4>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40, 50 };
+
+int count = numbers.Count();
+
+Console.WriteLine(count);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>5</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        Sum() and Average()
+                    </h4>
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; marks =
+    new List&lt;int&gt; { 80, 90, 70, 85, 75 };
+
+int total = marks.Sum();
+double average = marks.Average();
+
+Console.WriteLine("Total: " + total);
+Console.WriteLine("Average: " + average);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                    <h5 class="fw-bold">Output</h5>
+
+                    <div class="code-block mb-4 shadow-sm">
+                        <pre class="mb-0"><code>Total: 400
+Average: 80</code></pre>
+                    </div>
+
+
+                    <h4 class="fw-bold text-dark mt-4 mb-3">
+                        LINQ Method Summary
+                    </h4>
+
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Purpose</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Where()</td>
+                                    <td>Filters data</td>
+                                </tr>
+                                <tr>
+                                    <td>Select()</td>
+                                    <td>Transforms data</td>
+                                </tr>
+                                <tr>
+                                    <td>OrderBy()</td>
+                                    <td>Sorts ascending</td>
+                                </tr>
+                                <tr>
+                                    <td>OrderByDescending()</td>
+                                    <td>Sorts descending</td>
+                                </tr>
+                                <tr>
+                                    <td>First()</td>
+                                    <td>Returns the first element</td>
+                                </tr>
+                                <tr>
+                                    <td>FirstOrDefault()</td>
+                                    <td>Returns the first element or default</td>
+                                </tr>
+                                <tr>
+                                    <td>Any()</td>
+                                    <td>Checks whether any element matches</td>
+                                </tr>
+                                <tr>
+                                    <td>Count()</td>
+                                    <td>Counts elements</td>
+                                </tr>
+                                <tr>
+                                    <td>Sum()</td>
+                                    <td>Calculates total</td>
+                                </tr>
+                                <tr>
+                                    <td>Average()</td>
+                                    <td>Calculates average</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="alert alert-success">
+                        <strong>CIIT Practical Point:</strong>
+                        LINQ is extensively used in .NET applications for processing
+                        collections, filtering database records, querying Entity Framework
+                        data and transforming application data.
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    In this module, you learned how to handle runtime errors using
+                    <strong>Exception Handling</strong>. You also learned how
+                    <strong>Delegates</strong> and <strong>Events</strong> are used
+                    for method references and event-driven programming.
+                </p>
+
+                <p class="mb-3">
+                    <strong>Lambda Expressions</strong> provide a short and readable way
+                    to write functions, while <strong>Extension Methods</strong> allow
+                    developers to add functionality to existing types.
+                </p>
+
+                <p class="mb-3">
+                    You also learned how <strong>LINQ</strong> can be used to filter,
+                    sort, search, transform, and process data from collections.
+                </p>
+
+                <p class="mb-0">
+                    Understanding these advanced C# features is an important step toward
+                    developing modern and maintainable <strong>.NET and ASP.NET Core</strong>
+                    applications.
+                </p>
+
+            </div>
+
+            <!-- PRACTICE QUESTIONS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Create a program using try-catch for division by zero.</li>
+                    <li>Create a program using multiple catch blocks.</li>
+                    <li>Demonstrate the use of the finally block.</li>
+                    <li>Create a custom exception using the throw keyword.</li>
+                    <li>Create a delegate that accepts two integer parameters.</li>
+                    <li>Create an event for an order placement operation.</li>
+                    <li>Create a lambda expression to calculate the square of a number.</li>
+                    <li>Create a lambda expression to find the larger of two numbers.</li>
+                    <li>Create an extension method for checking whether a number is even.</li>
+                    <li>Use LINQ Where() to filter numbers greater than 50.</li>
+                    <li>Use LINQ Select() to calculate squares of numbers.</li>
+                    <li>Use OrderBy() and OrderByDescending() on a List.</li>
+                    <li>Use Any() to check whether a collection contains matching values.</li>
+                    <li>Use Sum() and Average() on student marks.</li>
+                    <li>Explain the difference between delegates and events.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- MODULE NAVIGATION -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="/CSharp/DataStructuresCollection/Collections"
+                   class="btn btn-outline-secondary">
+                    ← Previous Module
+                </a>
+
+                <a href="/CSharp/AsynchronousParallelProgramming/AsynchronousProgramming"
+                   class="btn btn-primary">
+                    Next Module →
+                </a>
+
+            </div>
+             
+        </section>
+    </div>
+</main>
+<script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

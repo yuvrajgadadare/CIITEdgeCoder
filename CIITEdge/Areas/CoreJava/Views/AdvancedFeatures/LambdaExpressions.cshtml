@@ -1,0 +1,807 @@
+﻿@{
+    ViewData["Title"] = "Lambda Expressions in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Lambda Expressions in Java</h2>
+            <p class="lead text-muted mb-0">
+                Learn how lambda expressions provide a concise way to represent
+                behavior and work with functional interfaces, collections,
+                streams, and modern Java APIs.
+            </p>
+        </div>
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">What is a Lambda Expression?</h3>
+
+            <p>
+                A lambda expression is a compact representation of behavior
+                that can be passed as a value. Lambda expressions are closely
+                associated with functional interfaces.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>(parameters) -&gt; expression</code></pre>
+            </div>
+
+            <div class="code-block mt-3">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>(parameters) -&gt; {
+    // statements
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- BASIC LAMBDA -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Basic Lambda Expression</h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Runnable task = () -&gt; {
+
+
+   System.out.println("CIIT Institute background task is running successfully 🏠👍...!");
+
+};
+
+task.run();</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>CIIT Institute background task is running successfully 🏠👍...!</code></pre>
+</div>
+
+            <p class="mt-3">
+                The lambda <code>() -&gt; { ... }</code> provides the
+                implementation of the single abstract method of
+                <code>Runnable</code>.
+            </p>
+        </section>
+
+        <!-- PARAMETERS -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Lambda Parameters</h3>
+
+            <p>
+                Lambda expressions can accept zero, one, or multiple
+                parameters.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>var square = (int number) -&gt;
+    number * number;
+
+System.out.println(
+    square.applyAsInt(5)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>25</code></pre>
+</div>
+
+            <p class="mt-3">
+                For compatible functional interfaces, parameter types can
+                often be inferred.
+            </p>
+        </section>
+
+        <!-- FUNCTIONAL INTERFACE -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Lambda and Functional Interfaces</h3>
+
+            <p>
+                A functional interface has exactly one abstract method.
+                Lambda expressions can provide implementations for such
+                interfaces.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>interface Calculator {
+
+    int calculate(int a, int b);
+
+}
+
+Calculator addition =
+    (a, b) -&gt; a + b;
+
+System.out.println(
+    addition.calculate(10, 20)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30</code></pre>
+</div>
+        </section>
+
+        <!-- BLOCK BODY -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Expression Body vs Block Body</h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Calculator add =
+    (a, b) -&gt; a + b;</code></pre>
+            </div>
+
+            <div class="code-block mt-3">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Calculator multiply =
+    (a, b) -&gt; {
+
+        int result = a * b;
+
+        return result;
+    };</code></pre>
+            </div>
+        </section>
+
+        <!-- JAVA UTIL FUNCTION -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Built-in Functional Interfaces</h3>
+
+            <p>
+                Java provides many functional interfaces in
+                <code>java.util.function</code>.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Interface</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><code>Predicate&lt;T&gt;</code></td>
+                            <td>Tests a condition and returns boolean.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>Function&lt;T,R&gt;</code></td>
+                            <td>Converts an input into an output.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>Consumer&lt;T&gt;</code></td>
+                            <td>Consumes an input without returning a result.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>Supplier&lt;T&gt;</code></td>
+                            <td>Supplies a value without taking an input.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>UnaryOperator&lt;T&gt;</code></td>
+                            <td>Transforms a value into the same type.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>BinaryOperator&lt;T&gt;</code></td>
+                            <td>Combines two values of the same type.</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+
+        <!-- PREDICATE -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Predicate</h3>
+
+            <p>
+                <code>Predicate&lt;T&gt;</code> represents a boolean-valued
+                function.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Predicate&lt;Integer&gt; isEven =
+    number -&gt; number % 2 == 0;
+
+System.out.println(
+    isEven.test(10)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>true</code></pre>
+</div>
+        </section>
+
+        <!-- FUNCTION -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Function</h3>
+
+            <p>
+                <code>Function&lt;T,R&gt;</code> accepts one value and produces
+                another value.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Function&lt;String, Integer&gt; length =
+    text -&gt; text.length();
+
+System.out.println(
+    length.apply("Java")
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>4</code></pre>
+</div>
+        </section>
+
+        <!-- CONSUMER -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Consumer</h3>
+
+            <p>
+                <code>Consumer&lt;T&gt;</code> accepts a value and performs an
+                operation without returning a result.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Consumer&lt;String&gt; printer =
+    text -&gt; System.out.println(text);
+
+printer.accept("Welcome to CIIT Institute: Learn, Code, and Succeed 👀👨‍🏫...!");
+</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Welcome to CIIT Institute: Learn, Code, and Succeed 👀👨‍🏫...!</code></pre>
+</div>
+        </section>
+
+        <!-- SUPPLIER -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Supplier</h3>
+
+            <p>
+                <code>Supplier&lt;T&gt;</code> produces a value without taking
+                an input.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Supplier&lt;Double&gt; randomValue =
+    () -&gt; Math.random();
+
+System.out.println(
+    randomValue.get()
+);</code></pre>
+            </div>
+        </section>
+
+        <!-- METHOD REFERENCE -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Method References</h3>
+
+            <p>
+                Method references provide an even shorter syntax when an
+                existing method already matches the required functional
+                interface.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of(
+        "Amit",
+        "Neha",
+        "Rahul"
+    );
+
+names.forEach(
+    System.out::println
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit
+Neha
+Rahul</code></pre>
+</div>
+
+            <p class="mt-3">
+                The expression <code>System.out::println</code> is a method
+                reference.
+            </p>
+        </section>
+
+        <!-- LAMBDA WITH COLLECTION -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Lambda with Collections</h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    new ArrayList&lt;&gt;();
+
+names.add("Amit");
+names.add("Neha");
+names.add("Rahul");
+
+names.forEach(
+    name -&gt;
+        System.out.println(name)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit
+Neha
+Rahul</code></pre>
+</div>
+        </section>
+
+        <!-- SORTING -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Lambda for Sorting</h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    new ArrayList&lt;&gt;(
+        List.of(50, 10, 40, 20)
+    );
+
+numbers.sort(
+    (a, b) -&gt; Integer.compare(a, b)
+);
+
+System.out.println(numbers);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>[10, 20, 40, 50]</code></pre>
+</div>
+
+            <p class="mt-3">
+                For simple natural ordering, Java also provides
+                <code>Comparator.naturalOrder()</code>.
+            </p>
+        </section>
+
+        <!-- STREAM -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Lambda Expressions with Streams</h3>
+
+            <p>
+                Lambda expressions are widely used with the Stream API.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(
+        10, 15, 20, 25, 30
+    );
+
+numbers.stream()
+    .filter(number -&gt; number &gt; 20)
+    .forEach(
+        number -&gt;
+            System.out.println(number)
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>25
+30</code></pre>
+</div>
+        </section>
+
+        <!-- CAPTURE -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Variable Capture</h3>
+
+            <p>
+                A lambda can access local variables from its enclosing scope
+                when those variables are final or effectively final.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>int multiplier = 10;
+
+Function&lt;Integer, Integer&gt; multiply =
+    number -&gt; number * multiplier;
+
+System.out.println(
+    multiply.apply(5)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>50</code></pre>
+</div>
+
+            <div class="alert alert-info mt-3">
+                <strong>Important:</strong>
+                You cannot later reassign <code>multiplier</code> if it is
+                being captured by the lambda.
+            </div>
+        </section>
+
+        <!-- THIS -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">this in Lambda Expressions</h3>
+
+            <p>
+                A lambda expression does not create a new <code>this</code>
+                context. Inside a lambda, <code>this</code> refers to the
+                enclosing object.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>class Printer {
+
+    private String prefix = "Message: ";
+
+    void print() {
+
+        Consumer&lt;String&gt; action =
+            text -&gt;
+                System.out.println(
+                    prefix + text
+                );
+
+        action.accept("Hello");
+
+    }
+
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- LAMBDA VS ANONYMOUS -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">
+                Lambda vs Anonymous Class
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Runnable task =
+    new Runnable() {
+
+        @@Override
+        public void run() {
+
+            System.out.println(
+                "Running"
+            );
+
+        }
+    };</code></pre>
+            </div>
+
+            <div class="code-block mt-3">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Runnable task =
+    () -&gt;
+        System.out.println(
+            "Running"
+        );</code></pre>
+            </div>
+
+            <p class="mt-3">
+                The lambda form is more concise when the target type is a
+                functional interface.
+            </p>
+        </section>
+
+        <!-- WHEN TO USE -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">When Should You Use Lambda Expressions?</h3>
+
+            <ul>
+                <li class="mb-2">
+                    Processing collections.
+                </li>
+
+                <li class="mb-2">
+                    Filtering and transforming stream data.
+                </li>
+
+                <li class="mb-2">
+                    Passing small pieces of behavior to APIs.
+                </li>
+
+                <li class="mb-2">
+                    Implementing functional interfaces.
+                </li>
+
+                <li>
+                    Creating concise callbacks and event-like operations.
+                </li>
+            </ul>
+        </section>
+
+        <!-- BEST PRACTICES -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Lambda Best Practices</h3>
+
+            <ul>
+                <li class="mb-2">
+                    Keep lambda expressions short and readable.
+                </li>
+
+                <li class="mb-2">
+                    Use meaningful parameter names.
+                </li>
+
+                <li class="mb-2">
+                    Prefer method references when they improve readability.
+                </li>
+
+                <li class="mb-2">
+                    Avoid deeply nested lambda expressions.
+                </li>
+
+                <li>
+                    Use a regular method when the lambda becomes too complex.
+                </li>
+            </ul>
+        </section>
+
+        <!-- INTERVIEW -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Interview Questions</h3>
+
+            <div class="accordion" id="lambdaQuestions">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#lambdaQuestionOne">
+                            What is a lambda expression?
+                        </button>
+                    </h2>
+
+                    <div id="lambdaQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#lambdaQuestions">
+
+                        <div class="accordion-body">
+                            A lambda expression is a concise representation of
+                            behavior that can be used where a compatible
+                            functional interface is expected.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#lambdaQuestionTwo">
+                            What is a functional interface?
+                        </button>
+                    </h2>
+
+                    <div id="lambdaQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#lambdaQuestions">
+
+                        <div class="accordion-body">
+                            A functional interface has exactly one abstract
+                            method and can be used as the target type of a
+                            lambda expression.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#lambdaQuestionThree">
+                            What is the difference between a lambda and an anonymous class?
+                        </button>
+                    </h2>
+
+                    <div id="lambdaQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#lambdaQuestions">
+
+                        <div class="accordion-body">
+                            A lambda is a concise implementation of a
+                            functional interface, while an anonymous class
+                            creates an anonymous class instance and can define
+                            more structure and behavior.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#lambdaQuestionFour">
+                            What are Predicate, Function, Consumer and Supplier?
+                        </button>
+                    </h2>
+
+                    <div id="lambdaQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#lambdaQuestions">
+
+                        <div class="accordion-body">
+                            Predicate tests a condition, Function transforms
+                            input into output, Consumer accepts input without
+                            returning a result, and Supplier produces a value
+                            without an input.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#lambdaQuestionFive">
+                            What is a method reference?
+                        </button>
+                    </h2>
+
+                    <div id="lambdaQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#lambdaQuestions">
+
+                        <div class="accordion-body">
+                            A method reference is a compact syntax such as
+                            <code>System.out::println</code> for referring to
+                            an existing compatible method.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SUMMARY -->
+        <section class="mb-4">
+            <div class="alert alert-primary border-0">
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Lambda expressions provide concise implementations of
+                    functional interfaces. They are heavily used with
+                    collections, Comparator, the Stream API, and the
+                    java.util.function package. Method references provide
+                    another concise way to reuse existing methods.
+                </p>
+            </div>
+        </section>
+
+        <!-- NAVIGATION -->
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "ExceptionHandling",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+                ← Previous: Topic
+            </a>
+
+            <a href="@Url.Action(
+                               "FunctionalInterfaces",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+                Next: Topic 
+                <span class="ms-2">→</span>
+            </a>
+
+        </div>
+
+    </div>
+</div>

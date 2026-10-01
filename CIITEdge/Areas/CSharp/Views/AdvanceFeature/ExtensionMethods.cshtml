@@ -1,0 +1,973 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Extension Methods";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Extension Methods
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Extension Methods are a powerful feature of C# that allow us
+                    to add new methods to an existing type without modifying its
+                    original source code or creating a derived class.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    An Extension Method allows us to add a new method to an
+                    existing class, structure, interface, or other type without
+                    changing the original type.
+                </div>
+
+
+                <!-- WHAT IS EXTENSION METHOD -->
+
+                <h3 class="fw-bold text-dark mt-4 mb-3">
+                    What is an Extension Method?
+                </h3>
+
+                <p class="text-muted">
+                    Suppose we have an existing class such as <strong>string</strong>
+                    or <strong>int</strong>. We may want to add our own functionality
+                    to that type.
+                </p>
+
+                <p class="text-muted">
+                    Instead of changing the original class, C# allows us to create
+                    a static method that behaves like an instance method.
+                </p>
+
+                <div class="alert alert-warning">
+                    <strong>Important:</strong>
+                    Extension methods are defined inside a
+                    <strong>static class</strong>, and the extension method itself
+                    must be <strong>static</strong>.
+                </div>
+
+
+                <!-- SYNTAX -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Extension Method Syntax
+                </h3>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>public static returnType MethodName(
+    this TypeName parameter)
+{
+    // Method logic
+}</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    The <strong>this</strong> keyword before the first parameter
+                    tells C# that the method is an extension method for that type.
+                </p>
+
+
+                <!-- SIMPLE EXAMPLE -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Simple Extension Method Example
+                </h3>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+static class MyExtensions
+{
+    public static void SayHello(this string name)
+    {
+        Console.WriteLine("WelCome CIIT " + name);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string name = "Institute 😍..";
+
+        name.SayHello();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>WelCome CIIT Institute 😍..</code></pre>
+                </div>
+
+
+                <!-- HOW IT WORKS -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    How Extension Methods Work
+                </h3>
+
+                <p class="text-muted">
+                    In the above example, <strong>SayHello()</strong> is not actually
+                    a method defined inside the string class.
+                </p>
+
+                <p class="text-muted">
+                    The method is defined inside <strong>MyExtensions</strong>,
+                    but the <strong>this string name</strong> parameter allows us
+                    to call it using:
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>name.SayHello();</code></pre>
+                </div>
+
+
+                <!-- INTEGER -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Extension Method for int
+                </h3>
+
+                <p class="text-muted">
+                    Extension methods can be created for built-in types such as int.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+static class NumberExtensions
+{
+    public static bool IsEven(this int number)
+    {
+        return number % 2 == 0;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        int number = 10;
+
+        Console.WriteLine(number.IsEven());
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>True</code></pre>
+                </div>
+
+
+                <!-- STRING -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Extension Method for String
+                </h3>
+
+                <p class="text-muted">
+                    We can create custom string-related functionality using
+                    extension methods.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+static class StringExtensions
+{
+    public static int WordCount(this string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return 0;
+        }
+
+        return text.Split(
+            ' ',
+            StringSplitOptions.RemoveEmptyEntries).Length;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string sentence = "C# is easy to learn";
+
+        Console.WriteLine(sentence.WordCount());
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>5</code></pre>
+                </div>
+
+
+                <!-- PARAMETERS -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Extension Method with Additional Parameters
+                </h3>
+
+                <p class="text-muted">
+                    An extension method can also accept additional parameters
+                    after the first parameter marked with <strong>this</strong>.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+static class NumberExtensions
+{
+    public static int Add(
+        this int number,
+        int value)
+    {
+        return number + value;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        int number = 10;
+
+        Console.WriteLine(number.Add(5));
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>15</code></pre>
+                </div>
+
+
+                <!-- COLLECTION -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Extension Method for Collections
+                </h3>
+
+                <p class="text-muted">
+                    Extension methods are frequently used with collections and
+                    are an important part of the .NET and LINQ programming model.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+static class ListExtensions
+{
+    public static int CountEven(
+        this List&lt;int&gt; numbers)
+    {
+        return numbers.Count(
+            number =&gt; number % 2 == 0);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List&lt;int&gt; numbers =
+            new List&lt;int&gt; { 10, 15, 20, 25, 30 };
+
+        Console.WriteLine(
+            numbers.CountEven());
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>3</code></pre>
+                </div>
+
+
+                <!-- MULTIPLE -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Multiple Extension Methods
+                </h3>
+
+                <p class="text-muted">
+                    A static extension class can contain multiple extension methods
+                    for the same or different types.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+static class StringExtensions
+{
+    public static bool IsLong(
+        this string text)
+    {
+        return text.Length &gt; 10;
+    }
+
+    public static string MakeUpper(
+        this string text)
+    {
+        return text.ToUpper();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string text = "WelCome to CIIT Training Institute 👨‍🏫❤️...!";
+
+        Console.WriteLine(text.IsLong());
+        Console.WriteLine(text.MakeUpper());
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>True
+WelCome to CIIT Training Institute 👨‍🏫❤️...!</code></pre>
+                </div>
+
+
+                <!-- STATIC CALL -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Calling Extension Method as a Static Method
+                </h3>
+
+                <p class="text-muted">
+                    Although extension methods are normally called using
+                    instance syntax, they can also be called like normal
+                    static methods.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>string name = "Sam";
+
+name.SayHello();</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    The compiler treats this approximately like:
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>MyExtensions.SayHello(name);</code></pre>
+                </div>
+
+
+                <!-- RULES -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Rules for Extension Methods
+                </h3>
+
+                <ul class="text-muted">
+                    <li>The extension method must be declared inside a static class.</li>
+                    <li>The extension method itself must be static.</li>
+                    <li>The first parameter must use the <strong>this</strong> keyword.</li>
+                    <li>The first parameter specifies the type being extended.</li>
+                    <li>The extension class must be accessible where the method is used.</li>
+                    <li>A namespace import may be required to bring the extension method into scope.</li>
+                </ul>
+
+
+                <!-- ADVANTAGES -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Advantages of Extension Methods
+                </h3>
+
+                <ul class="text-muted">
+                    <li>Allows adding functionality without modifying existing classes.</li>
+                    <li>Makes utility functionality easier to discover and use.</li>
+                    <li>Can improve code readability.</li>
+                    <li>Works with classes, structures, interfaces, and other types.</li>
+                    <li>Widely used throughout .NET libraries.</li>
+                    <li>Very useful when creating reusable helper functionality.</li>
+                </ul>
+
+
+                <!-- LIMITATIONS -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Limitations of Extension Methods
+                </h3>
+
+                <ul class="text-muted">
+                    <li>Extension methods cannot access private members of the extended type.</li>
+                    <li>They do not actually modify the original type.</li>
+                    <li>Too many extension methods can make APIs difficult to understand.</li>
+                    <li>They should be used when they make the code clearer.</li>
+                </ul>
+
+
+                <!-- EXTENSION VS NORMAL -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Extension Method vs Normal Method
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Normal Method</th>
+                                <th>Extension Method</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Defined inside</td>
+                                <td>Class itself</td>
+                                <td>Separate static class</td>
+                            </tr>
+                            <tr>
+                                <td>Requires this</td>
+                                <td>No</td>
+                                <td>Yes, for first parameter</td>
+                            </tr>
+                            <tr>
+                                <td>Modifies original class</td>
+                                <td>Yes</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>Calling style</td>
+                                <td>object.Method()</td>
+                                <td>object.ExtensionMethod()</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- LINQ CONNECTION -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Extension Methods and LINQ
+                </h3>
+
+                <p class="text-muted">
+                    Many LINQ methods are implemented as extension methods.
+                    This is why we can write methods such as
+                    <strong>Where()</strong>, <strong>Select()</strong>,
+                    <strong>OrderBy()</strong>, and <strong>Count()</strong>
+                    directly on collections.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40, 50 };
+
+var result =
+    numbers.Where(number =&gt; number &gt; 20);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30
+40
+50</code></pre>
+                </div>
+
+
+                <!-- REAL WORLD -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Example 📩🌍
+                </h3>
+
+                <p class="text-muted">
+                    In an enterprise application, developers often create reusable
+                    extension methods for formatting, validation, conversion,
+                    logging helpers, or common business operations.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+static class ValidationExtensions
+{
+    public static bool IsValidEmail(
+        this string email)
+    {
+        return email.Contains("#");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string email = "student@example.com";
+
+        Console.WriteLine(
+            email.IsValidEmail());
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>False</code></pre>
+                </div>
+
+
+                <!-- CIIT -->
+
+                <div class="alert alert-success mt-4">
+                    <strong>CIIT Practical Point:</strong>
+                    Extension Methods are widely used in modern .NET development.
+                    They are especially important when working with LINQ, Entity
+                    Framework Core, collections, reusable helper libraries,
+                    validation, and utility functionality.
+                </div>
+
+
+                <!-- COMMON MISTAKES -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Common Mistakes
+                </h3>
+
+                <ul class="text-muted">
+                    <li>Forgetting to make the extension class static.</li>
+                    <li>Forgetting to make the extension method static.</li>
+                    <li>Forgetting the <strong>this</strong> keyword.</li>
+                    <li>Using an incorrect first parameter type.</li>
+                    <li>Creating too many unnecessary extension methods.</li>
+                    <li>Trying to access private members of the extended type.</li>
+                    <li>Forgetting the namespace containing the extension method.</li>
+                </ul>
+
+
+                <!-- INTERVIEW -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-4">
+                    Interview Questions
+                </h3>
+
+                <h5 class="fw-bold">
+                    1. What is an Extension Method?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    An Extension Method allows us to add functionality to an existing
+                    type without modifying its source code.
+                </p>
+
+                <h5 class="fw-bold">
+                    2. Where are Extension Methods declared?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    Extension methods are declared inside a static class.
+                </p>
+
+                <h5 class="fw-bold">
+                    3. Why is the this keyword used?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    The this keyword on the first parameter identifies the type
+                    that the extension method extends.
+                </p>
+
+                <h5 class="fw-bold">
+                    4. Can an Extension Method access private members?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    No. Extension methods do not have special access to private
+                    members of the extended type.
+                </p>
+
+                <h5 class="fw-bold">
+                    5. Are LINQ methods Extension Methods?
+                </h5>
+
+                <p class="text-muted">
+                    Many LINQ methods are implemented as extension methods,
+                    allowing them to be called directly on collections.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    Extension Methods allow developers to add new functionality
+                    to existing types without changing their original source code.
+                </p>
+
+                <p class="mb-3">
+                    You learned how to create extension methods using a
+                    <strong>static class</strong>, the <strong>static</strong>
+                    keyword, and the <strong>this</strong> keyword.
+                </p>
+
+                <p class="mb-3">
+                    Extension methods can be created for strings, integers,
+                    collections, and custom types. They are also heavily used
+                    by the .NET framework and LINQ.
+                </p>
+
+                <p class="mb-0">
+                    Understanding Extension Methods helps developers write
+                    reusable, readable, and maintainable <strong>C# and .NET</strong>
+                    applications.
+                </p>
+
+            </div>
+
+
+            <!-- PRACTICE QUESTIONS -->
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Create an extension method for string to convert text to uppercase.</li>
+                    <li>Create an extension method for int to check whether a number is even.</li>
+                    <li>Create an extension method to calculate the square of a number.</li>
+                    <li>Create an extension method to count words in a string.</li>
+                    <li>Create an extension method for a List of integers.</li>
+                    <li>Create an extension method that checks whether an email is valid.</li>
+                    <li>Create multiple extension methods inside one static class.</li>
+                    <li>Explain the purpose of the this keyword in extension methods.</li>
+                    <li>Explain the difference between normal methods and extension methods.</li>
+                    <li>Explain how LINQ uses extension methods.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- TOPIC NAVIGATION -->
+
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="/CSharp/AdvanceFeature/LambdaExpressions"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="/CSharp/AdvanceFeature/LINQ"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+<script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

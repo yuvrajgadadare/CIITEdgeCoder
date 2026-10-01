@@ -1,0 +1,907 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Loops";
+}
+
+<style>
+    .try-it-btn {
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease;
+    }
+
+    .try-it-btn:hover {
+    background: #157347;
+    color: #fff;
+    }
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Loops
+                </h2>
+
+                <!-- What is Loop -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    What is a Loop?
+                </h4>
+
+                <p class="text-muted mb-4">
+                    A loop is a control flow statement that allows us to repeatedly execute
+                    a block of code until a specified condition is satisfied.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Loops are mainly used when the same operation needs to be performed
+                    multiple times. Instead of writing the same code again and again,
+                    we can use a loop to execute the code repeatedly.
+                </p>
+
+                <div class="alert alert-info mb-5">
+                    <strong>Example:</strong>
+                    If you want to print numbers from 1 to 100, you do not need to write
+                    <code>Console.WriteLine()</code> 100 times. A loop can perform this task
+                    using only a few lines of code.
+                </div>
+
+                <!-- Types -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Types of Loops in C#
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Loops are mainly divided into the following types:
+                </p>
+
+                <div class="table-responsive mb-5">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Loop</th>
+                                <th>Purpose</th>
+                                <th>Best Used When</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>for</strong></td>
+                                <td>Repeats code based on a counter</td>
+                                <td>Number of iterations is known</td>
+                            </tr>
+                            <tr>
+                                <td><strong>while</strong></td>
+                                <td>Repeats code while a condition is true</td>
+                                <td>Number of iterations may not be known</td>
+                            </tr>
+                            <tr>
+                                <td><strong>do-while</strong></td>
+                                <td>Executes the block at least once</td>
+                                <td>Code must execute at least one time</td>
+                            </tr>
+                            <tr>
+                                <td><strong>foreach</strong></td>
+                                <td>Iterates through a collection</td>
+                                <td>Working with arrays or collections</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- FOR LOOP -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    1. For Loop
+                </h3>
+
+                <p class="text-muted mb-4">
+                    For Loop in C# is a control flow statement that allows us to repeatedly
+                    execute a block of code a specified number of times.
+                    The For Loop in C# is used when we know the exact number iterations.
+                    It contain three stages i.e. initialization, condition and increment
+                    or decrement operation.
+                </p>
+
+                <p class="text-muted mb-4">
+                    The three parts of a for loop are:
+                </p>
+
+                <ul class="text-muted mb-4">
+                    <li>
+                        <strong>Initialization:</strong>
+                        Runs only once when the loop begins. This is typically where
+                        you declare and set your loop counter variable.
+                    </li>
+                    <li>
+                        <strong>Condition:</strong>
+                        A Boolean expression evaluated before every iteration. If true,
+                        the loop body runs; if false, the loop terminates.
+                    </li>
+                    <li>
+                        <strong>Iterator:</strong>
+                        Executes at the end of every loop iteration, usually incrementing
+                        or decrementing the counter variable.
+                    </li>
+                </ul>
+
+                <p class="mb-4">
+                    <img src="~/Images/CSharp/forloop.png"
+                         class="img-fluid rounded shadow-sm"
+                         alt="C# For Loop" />
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Syntax
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>for (initialization; condition; iterator)
+{
+    // Code to be executed
+}</code></pre>
+                </div>
+
+                <!-- For Example 1 -->
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example 1: Basic Incrementing Loop (Counting Up)
+                </h5>
+
+                <p class="text-muted mb-3">
+                    Write a program to print numbers from 1 to 10.
+                </p>
+
+@*                 <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>for (int i = 1; i &lt;= 10; i++)
+{
+    Console.WriteLine(i);
+}</code></pre>
+                </div> *@
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+                        <pre class="mb-0"><code>using System;
+ 
+for (int i = 1; i &lt;= 10; i++)
+{
+    Console.WriteLine(i);
+}</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+                        </button>
+                    </div>
+
+                <p class="text-muted mb-4">
+                    <strong>Output:</strong> 1 2 3 4 5 6 7 8 9 10
+                </p>
+
+                <!-- For Example 2 -->
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example 2: Decrementing Loop (Counting Down)
+                </h5>
+
+                <p class="text-muted mb-3">
+                    A for loop can also be used to count backwards.
+                </p>
+
+                    <div class="try-it-example">
+
+                        <div class="code-block shadow-sm">
+
+                            <div class="code-lang-tag">
+                                C#
+                            </div>
+
+                            <pre class="mb-0"><code>using System;
+ 
+for (int i = 10; i >= 1; i--)
+{
+    Console.WriteLine(i);
+}</code></pre>
+
+                        </div>
+
+                        <div class="text-end mt-2 mb-3">
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryItYourself(this)">
+                                <i class="bi bi-play-fill me-1"></i>
+                                Try It
+                            </button>
+                        </div>
+
+                <p class="text-muted mb-4">
+                    <strong>Output:</strong> 10 9 8 7 6 5 4 3 2 1
+                </p>
+
+                <!-- For Example 3 -->
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example 3: Printing Even Numbers
+                </h5>
+
+                <p class="text-muted mb-3">
+                    We can use a loop with a condition to print only even numbers.
+                </p>
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+                                <pre class="mb-0"><code>using System;
+ 
+for (int i = 1; i <= 10; i++)
+{
+    if (i % 2 == 0)
+    {
+        Console.WriteLine(i);
+    }
+}</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+                                </button>
+                            </div>
+
+                <p class="text-muted mb-4">
+                    <strong>Output:</strong> 2 4 6 8 10
+                </p>
+
+                <!-- While Loop -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    2. While Loop
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The while loop executes a block of code repeatedly as long as the
+                    specified condition evaluates to true.
+                </p>
+
+                <p class="text-muted mb-4">
+                    The condition is checked before every iteration. If the condition is
+                    false initially, the loop body will not execute even once.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Syntax
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>while (condition)
+{
+    // Code to be executed
+}</code></pre>
+                </div>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                            <div class="try-it-example">
+
+                                <div class="code-block shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        C#
+                                    </div>
+
+                                    <pre class="mb-0"><code>using System;
+ 
+int i = 1;
+
+while (i <= 5)
+{
+    Console.WriteLine(i);
+    i++;
+}</code></pre>
+
+                                </div>
+
+                                <div class="text-end mt-2 mb-3">
+                                    <button type="button"
+                                            class="try-it-btn"
+                                            onclick="tryItYourself(this)">
+                                        <i class="bi bi-play-fill me-1"></i>
+                                        Try It
+                                    </button>
+                                </div>
+
+                <p class="text-muted mb-4">
+                    <strong>Output:</strong> 1 2 3 4 5
+                </p>
+
+                <div class="alert alert-warning mb-5">
+                    <strong>Important:</strong>
+                    Make sure the condition eventually becomes false.
+                    Otherwise, the while loop can become an infinite loop.
+                </div>
+
+                <!-- Do While -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    3. Do-While Loop
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The do-while loop is similar to the while loop, but there is one
+                    important difference: the code block executes at least once before
+                    the condition is checked.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Syntax
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>do
+{
+    // Code to be executed
+}
+while (condition);</code></pre>
+                </div>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                                <div class="try-it-example">
+
+                                    <div class="code-block shadow-sm">
+
+                                        <div class="code-lang-tag">
+                                            C#
+                                        </div>
+
+<pre class="mb-0"><code>using System;
+ 
+int i = 1;
+do
+{
+    Console.WriteLine(i);
+    i++;
+}
+while (i <= 5);</code></pre>
+
+                                    </div>
+
+                                    <div class="text-end mt-2 mb-3">
+                                        <button type="button"
+                                                class="try-it-btn"
+                                                onclick="tryItYourself(this)">
+                                            <i class="bi bi-play-fill me-1"></i>
+                                            Try It
+                                        </button>
+                                    </div>
+
+                <p class="text-muted mb-4">
+                    <strong>Output:</strong> 1 2 3 4 5
+                </p>
+
+                <div class="alert alert-info mb-5">
+                    <strong>Key Point:</strong>
+                    A do-while loop always executes its body at least once,
+                    even if the condition is initially false.
+                </div>
+
+                <!-- Foreach -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    4. Foreach Loop
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The foreach loop is used to iterate through each element of an array
+                    or collection. It is commonly used when we want to read every item
+                    without manually managing an index.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Syntax
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>foreach (dataType variable in collection)
+{
+    // Code to be executed
+}</code></pre>
+                </div>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                                    <div class="try-it-example">
+
+                                        <div class="code-block shadow-sm">
+
+                                            <div class="code-lang-tag">
+                                                C#
+                                            </div>
+
+<pre class="mb-0"><code>using System;
+ 
+string[] courses =
+{
+    "C#",
+    ".NET",
+    "SQL",
+    "Azure"
+};
+
+foreach (string course in courses)
+{
+    Console.WriteLine(course);
+}</code></pre>
+
+                                        </div>
+
+                                        <div class="text-end mt-2 mb-3">
+                                            <button type="button"
+                                                    class="try-it-btn"
+                                                    onclick="tryItYourself(this)">
+                                                <i class="bi bi-play-fill me-1"></i>
+                                                Try It
+                                            </button>
+                                        </div>
+
+                <p class="text-muted mb-4">
+                    The foreach loop automatically moves through every element of the
+                    collection one by one.
+                </p>
+
+                <!-- Nested Loops -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    5. Nested Loops
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A loop inside another loop is called a nested loop.
+                    The inner loop completes all of its iterations for every iteration
+                    of the outer loop.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example: Pattern Printing
+                </h5>
+
+                                        <div class="try-it-example">
+
+                                            <div class="code-block shadow-sm">
+
+                                                <div class="code-lang-tag">
+                                                    C#
+                                                </div>
+
+<pre class="mb-0"><code>using System;
+ 
+for (int i = 1; i <= 3; i++)
+{
+    for (int j = 1; j <= 3; j++)
+    {
+        Console.Write("* ");
+    }
+
+    Console.WriteLine();
+}</code></pre>
+
+                                            </div>
+
+                                            <div class="text-end mt-2 mb-3">
+                                                <button type="button"
+                                                        class="try-it-btn"
+                                                        onclick="tryItYourself(this)">
+                                                    <i class="bi bi-play-fill me-1"></i>
+                                                    Try It
+                                                </button>
+                                            </div>
+
+                <p class="text-muted mb-4">
+                    <strong>Output:</strong>
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>* * *
+* * *
+* * *</code></pre>
+                </div>
+
+                <!-- Break -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    6. Break Statement
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>break</code> statement is used to immediately terminate
+                    a loop. When the break statement is executed, control moves outside
+                    the loop.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                                            <div class="try-it-example">
+
+                                                <div class="code-block shadow-sm">
+
+                                                    <div class="code-lang-tag">
+                                                        C#
+                                                    </div>
+
+<pre class="mb-0"><code>using System;
+ 
+for (int i = 1; i <= 10; i++)
+{
+    if (i == 5)
+    {
+        break;
+    }
+
+    Console.WriteLine(i);
+}</code></pre>
+
+                                                </div>
+
+                                                <div class="text-end mt-2 mb-3">
+                                                    <button type="button"
+                                                            class="try-it-btn"
+                                                            onclick="tryItYourself(this)">
+                                                        <i class="bi bi-play-fill me-1"></i>
+                                                        Try It
+                                                    </button>
+                                                </div>
+
+                <p class="text-muted mb-4">
+                    <strong>Output:</strong> 1 2 3 4
+                </p>
+
+                <!-- Continue -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    7. Continue Statement
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>continue</code> statement skips the current iteration
+                    of the loop and moves to the next iteration.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                                                <div class="try-it-example">
+
+                                                    <div class="code-block shadow-sm">
+
+                                                        <div class="code-lang-tag">
+                                                            C#
+                                                        </div>
+
+                                                        <pre class="mb-0"><code>using System;
+ 
+for (int i = 1; i <= 5; i++)
+{
+    if (i == 3)
+    {
+        continue;
+    }
+
+    Console.WriteLine(i);
+}</code></pre>
+
+                                                    </div>
+
+                                                    <div class="text-end mt-2 mb-3">
+                                                        <button type="button"
+                                                                class="try-it-btn"
+                                                                onclick="tryItYourself(this)">
+                                                            <i class="bi bi-play-fill me-1"></i>
+                                                            Try It
+                                                        </button>
+                                                    </div>
+
+                <p class="text-muted mb-4">
+                    <strong>Output:</strong> 1 2 4 5
+                </p>
+
+                <!-- Loop Comparison -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    For vs While vs Do-While vs Foreach
+                </h3>
+
+                <div class="table-responsive mb-5">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Feature</th>
+                                <th>for</th>
+                                <th>while</th>
+                                <th>do-while</th>
+                                <th>foreach</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Condition Checked</td>
+                                <td>Before iteration</td>
+                                <td>Before iteration</td>
+                                <td>After iteration</td>
+                                <td>Automatically</td>
+                            </tr>
+                            <tr>
+                                <td>Minimum Execution</td>
+                                <td>Zero times</td>
+                                <td>Zero times</td>
+                                <td>At least once</td>
+                                <td>Depends on collection</td>
+                            </tr>
+                            <tr>
+                                <td>Best For</td>
+                                <td>Known iterations</td>
+                                <td>Unknown iterations</td>
+                                <td>Menu/input scenarios</td>
+                                <td>Collections</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Real World -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    Real-World Example
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Loops are widely used in real-world applications such as processing
+                    student records, displaying product lists, reading database records,
+                    generating reports, processing orders, and validating user input.
+                </p>
+
+                                                    <div class="try-it-example">
+
+                                                        <div class="code-block shadow-sm">
+
+                                                            <div class="code-lang-tag">
+                                                                C#
+                                                            </div>
+
+<pre class="mb-0"><code>using System;
+ 
+string[] students =
+{
+    "Rahul",
+    "Priya",
+    "Amit",
+    "Sneha"
+};
+
+foreach (string student in students)
+{
+    Console.WriteLine($"Student: {student}");
+}</code></pre>
+
+                                                        </div>
+
+                                                        <div class="text-end mt-2 mb-3">
+                                                            <button type="button"
+                                                                    class="try-it-btn"
+                                                                    onclick="tryItYourself(this)">
+                                                                <i class="bi bi-play-fill me-1"></i>
+                                                                Try It
+                                                            </button>
+                                                        </div>
+
+                <p class="text-muted mb-4">
+                    Here, the <code>foreach</code> loop processes each student name
+                    one by one. Similar logic can be used to process records received
+                    from a database or API.
+                </p>
+
+                <!-- Common Mistakes -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    Common Mistakes to Avoid
+                </h3>
+
+                <ul class="text-muted mb-5">
+                    <li class="mb-2">
+                        Always make sure the loop condition can eventually become false.
+                    </li>
+                    <li class="mb-2">
+                        Be careful with <code>i++</code> and <code>i--</code> to avoid
+                        unexpected results.
+                    </li>
+                    <li class="mb-2">
+                        Avoid accidentally creating an infinite loop.
+                    </li>
+                    <li class="mb-2">
+                        Use <code>break</code> when you need to terminate a loop early.
+                    </li>
+                    <li class="mb-2">
+                        Use <code>continue</code> when you want to skip only the current iteration.
+                    </li>
+                    <li class="mb-2">
+                        Use <code>foreach</code> when you simply need to process every
+                        item in a collection.
+                    </li>
+                </ul>
+
+                <!-- Summary -->
+                <div class="alert alert-success mt-5">
+                    <h5 class="fw-bold">Summary</h5>
+
+                    <p class="mb-0">
+                        Loops are used to repeatedly execute a block of code.
+                        C# provides different types of loops such as
+                        <code>for</code>, <code>while</code>, <code>do-while</code>,
+                        and <code>foreach</code>. The <code>for</code> loop is useful
+                        when the number of iterations is known, while
+                        <code>while</code> and <code>do-while</code> are useful when
+                        execution depends on a condition. The <code>foreach</code>
+                        loop is commonly used with arrays and collections.
+                        Nested loops can be used for patterns and multi-dimensional
+                        data, while <code>break</code> and <code>continue</code>
+                        provide additional control over loop execution.
+                    </p>
+                </div>
+
+                <!-- Practice Questions -->
+                <div class="mt-5">
+                    <h4 class="fw-bold text-dark mb-3">
+                        Practice Questions
+                    </h4>
+
+                    <ol class="text-muted">
+                        <li class="mb-2">
+                            Write a program to print numbers from 1 to 100 using a for loop.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program to print numbers from 100 to 1 using a for loop.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program to print all even numbers between 1 and 50.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program to calculate the sum of numbers from 1 to 100.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program to print the multiplication table of a number.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program using while loop to print numbers from 1 to 10.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program using do-while loop for a simple menu.
+                        </li>
+
+                        <li class="mb-2">
+                            Create an array of five student names and display them using foreach.
+                        </li>
+
+                        <li class="mb-2">
+                            Create a nested loop to print a star pattern.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program using break and continue statements.
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Next Topic -->
+                <div class="d-flex justify-content-between align-items-center mb-5">
+
+                    <a href="/CSharp/BasicLanguage/ControlFlowStatements"
+                       class="btn btn-outline-secondary">
+                        ← Previous Topic
+                    </a>
+
+                    <a href="/CSharp/MethodsMemoryManagement/Methods"
+                       class="btn btn-primary">
+                        Next Topic →
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<script>
+
+    function tryItYourself(button) {
+
+        // Find the code example containing this button
+        const example = button.closest(".try-it-example");
+
+        if (!example) {
+            alert("Code example not found.");
+            return;
+        }
+
+        // Find only this example's code
+        const codeElement = example.querySelector("pre code");
+
+        if (!codeElement) {
+            alert("Tutorial code not found.");
+            return;
+        }
+
+        // Get exact code and preserve indentation/new lines
+        const code = codeElement.textContent.trim();
+
+        // Create temporary form
+        const form = document.createElement("form");
+
+        form.method = "POST";
+
+        form.action =
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+        // IMPORTANT: Open compiler in new tab
+        form.target = "_blank";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
+        document.body.removeChild(form);
+    }
+
+</script>

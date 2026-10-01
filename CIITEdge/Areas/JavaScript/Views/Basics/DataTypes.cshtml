@@ -1,0 +1,1020 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Data Types";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-datatypes-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-datatypes-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-datatypes-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-datatypes-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-datatypes-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-datatypes-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-datatypes-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-datatypes-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-datatypes-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGE
+       ========================================================= */
+
+    #javascript-datatypes-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-datatypes-page .datatype-image {
+        width: 100%;
+        max-height: 430px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-datatypes-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       TYPE CARDS
+       ========================================================= */
+
+    #javascript-datatypes-page .type-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-datatypes-page .type-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    #javascript-datatypes-page .type-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-datatypes-page .type-example {
+        margin-top: 10px;
+        font-family: Consolas, Monaco, monospace;
+        color: #212529;
+        font-size: 13px;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-datatypes-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-datatypes-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-datatypes-page .diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-datatypes-page .diagram-item {
+        min-width: 135px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-datatypes-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-datatypes-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-datatypes-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-datatypes-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-datatypes-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-datatypes-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-datatypes-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-datatypes-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-datatypes-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-datatypes-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-datatypes-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-datatypes-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-datatypes-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-datatypes-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-datatypes-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-datatypes-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-datatypes-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-datatypes-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - TUTORIAL CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- =================================================
+                     PAGE TITLE
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    Data Types
+                </h1>
+
+                <p class="lead-text">
+                    Learn what data types are and how JavaScript
+                    stores different kinds of values.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS A DATA TYPE?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is a Data Type?
+                </h2>
+
+                <p class="section-text">
+                    A data type tells us what kind of value is being
+                    used in a JavaScript program.
+                </p>
+
+                <p class="section-text">
+                    For example, a student name is text, marks are
+                    numbers, and a result status can be true or false.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://images.shiksha.com/mediadata/ugcDocuments/images/wordpressImages/2023_03_image-52.jpg"
+                         alt="JavaScript Data Types"
+                         class="datatype-image" />
+
+                    <p class="image-caption">
+                        JavaScript data types classification.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     CLASSIFICATION
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript Data Types
+                </h2>
+
+                <p class="section-text">
+                    JavaScript has eight standard data types:
+                    seven primitive types and one Object type.
+                </p>
+
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Data Type Classification
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            Primitive Types
+                        </div>
+
+                        <div class="diagram-arrow">
+                            +
+                        </div>
+
+                        <div class="diagram-item">
+                            Object
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PRIMITIVE DATA TYPES
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Primitive Data Types
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <h5>
+                                String
+                            </h5>
+
+                            <p>
+                                Used for text values.
+                            </p>
+
+                            <div class="type-example">
+                                "JavaScript"
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <h5>
+                                Number
+                            </h5>
+
+                            <p>
+                                Used for numeric values.
+                            </p>
+
+                            <div class="type-example">
+                                100
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <h5>
+                                BigInt
+                            </h5>
+
+                            <p>
+                                Used for very large integer values.
+                            </p>
+
+                            <div class="type-example">
+                                9007199254740993n
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <h5>
+                                Boolean
+                            </h5>
+
+                            <p>
+                                Represents true or false.
+                            </p>
+
+                            <div class="type-example">
+                                true
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <h5>
+                                Undefined
+                            </h5>
+
+                            <p>
+                                Represents a value that has not been assigned.
+                            </p>
+
+                            <div class="type-example">
+                                let value;
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <h5>
+                                Null
+                            </h5>
+
+                            <p>
+                                Represents an intentional absence of a value.
+                            </p>
+
+                            <div class="type-example">
+                                null
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <h5>
+                                Symbol
+                            </h5>
+
+                            <p>
+                                Represents a unique primitive value.
+                            </p>
+
+                            <div class="type-example">
+                                Symbol("id")
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <h5>
+                                Object
+                            </h5>
+
+                            <p>
+                                Used to store collections of related
+                                properties and values.
+                            </p>
+
+                            <div class="type-example">
+                                { name: "Omkar" }
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Common Data Types
+                </h2>
+
+                <p class="section-text">
+                    Here we create different variables and store
+                    different types of values.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const studentName = "Neha";
+const marks = 90;
+const isEnrolled = true;
+
+console.log("Welcome to CIIT Training Institute ❤️🧑‍🎓.....!");
+console.log("Student:", studentName);
+console.log("Marks:", marks);
+console.log("Enrolled:", isEnrolled);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryCommonTypes()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Welcome to CIIT Training Institute ❤️🧑‍🎓.....!<br />
+                    Student: Neha<br />
+                    Marks: 90<br />
+                    Enrolled: true
+
+                </div>
+
+
+                <!-- =================================================
+                     TYPEOF
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Checking Data Type with typeof
+                </h2>
+
+                <p class="section-text">
+                    The <strong>typeof</strong> operator is used to
+                    check the type of a value.
+                </p>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: typeof Operator
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const student = "Rohit";
+const score = 85;
+const selected = true;
+
+console.log("Student:", student);
+console.log("Type:", typeof student);
+
+console.log("Score:", score);
+console.log("Type:", typeof score);
+
+console.log("Selected:", selected);
+console.log("Type:", typeof selected);
+
+console.log("CIIT Training Institute ❤️.....!");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryTypeofExample()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Student: Rohit<br />
+                    Type: string<br />
+                    Score: 85<br />
+                    Type: number<br />
+                    Selected: true<br />
+                    Type: boolean<br />
+                    CIIT Training Institute ❤️.....!
+
+                </div>
+
+
+                <!-- =================================================
+                     UNDEFINED AND NULL
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    undefined and null
+                </h2>
+
+                <p class="section-text">
+                    <strong>undefined</strong> usually means that
+                    a value has not been assigned, while
+                    <strong>null</strong> is commonly used to represent
+                    an intentional empty value.
+                </p>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 3: undefined and null
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let course;
+const trainer = null;
+
+console.log("Course:", course);
+console.log("Course Type:", typeof course);
+
+console.log("Trainer:", trainer);
+console.log("Trainer Type:", typeof trainer);
+
+console.log("Learning at CIIT Training Institute ❤️🧑‍🎓.....!");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryNullUndefinedExample()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Course: undefined<br />
+                    Course Type: undefined<br />
+                    Trainer: null<br />
+                    Trainer Type: object<br />
+                    Learning at CIIT Training Institute ❤️🧑‍🎓.....!
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Important Point
+                    </h5>
+
+                    <p>
+                        JavaScript has seven primitive data types:
+                        String, Number, BigInt, Boolean, Undefined,
+                        Null, and Symbol. Object is the eighth
+                        standard data type.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Data types describe the kind of value used by
+                        a JavaScript program. JavaScript has seven
+                        primitive data types and the Object type.
+                        The <strong>typeof</strong> operator can be
+                        used to check the type of a value.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Variables", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Variables
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("TypeConversion", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Type Conversion
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryCommonTypes() {
+
+        const code =
+            'const studentName = "Neha";\n' +
+            'const marks = 90;\n' +
+            'const isEnrolled = true;\n' +
+            '\n' +
+            'console.log("Welcome to CIIT Training Institute ❤️🧑‍🎓.....!");\n' +
+            'console.log("Student:", studentName);\n' +
+            'console.log("Marks:", marks);\n' +
+            'console.log("Enrolled:", isEnrolled);';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryTypeofExample() {
+
+        const code =
+            'const student = "Rohit";\n' +
+            'const score = 85;\n' +
+            'const selected = true;\n' +
+            '\n' +
+            'console.log("Student:", student);\n' +
+            'console.log("Type:", typeof student);\n' +
+            '\n' +
+            'console.log("Score:", score);\n' +
+            'console.log("Type:", typeof score);\n' +
+            '\n' +
+            'console.log("Selected:", selected);\n' +
+            'console.log("Type:", typeof selected);\n' +
+            '\n' +
+            'console.log("CIIT Training Institute ❤️.....!");';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryNullUndefinedExample() {
+
+        const code =
+            'let course;\n' +
+            'const trainer = null;\n' +
+            '\n' +
+            'console.log("Course:", course);\n' +
+            'console.log("Course Type:", typeof course);\n' +
+            '\n' +
+            'console.log("Trainer:", trainer);\n' +
+            'console.log("Trainer Type:", typeof trainer);\n' +
+            '\n' +
+            'console.log("Learning at CIIT Training Institute ❤️🧑‍🎓.....!");';
+
+        openCompiler(code);
+
+    }
+
+</script>

@@ -1,0 +1,1043 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Objects";
+}
+
+<style>
+
+    #javascript-objects-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-objects-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-objects-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-objects-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-objects-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-objects-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-objects-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-objects-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-objects-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-objects-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       OBJECT IMAGE
+       ========================================================= */
+
+    #javascript-objects-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-objects-page .objects-image {
+        width: 100%;
+        height: 360px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #ffffff;
+    }
+
+    #javascript-objects-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       PROPERTY CARDS
+       ========================================================= */
+
+    #javascript-objects-page .property-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-objects-page .property-name {
+        display: inline-block;
+        background: #f3ecff;
+        color: #4c1d95;
+        border: 1px solid #d8b4fe;
+        border-radius: 6px;
+        padding: 5px 9px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-objects-page .property-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-objects-page .property-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-objects-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-objects-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 24px;
+    }
+
+    #javascript-objects-page .object-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-objects-page .object-box {
+        background: #ffffff;
+        border: 2px solid #7c3aed;
+        border-radius: 10px;
+        padding: 18px;
+        min-width: 190px;
+        text-align: center;
+    }
+
+    #javascript-objects-page .object-box-title {
+        color: #5b21b6;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-objects-page .object-property {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        padding: 8px 10px;
+        margin: 6px 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        color: #343a40;
+    }
+
+    #javascript-objects-page .diagram-arrow {
+        font-size: 25px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+    #javascript-objects-page .diagram-note {
+        text-align: center;
+        color: #6c757d;
+        margin-top: 18px;
+        margin-bottom: 0;
+        line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-objects-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-objects-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-objects-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-objects-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-objects-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-objects-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-objects-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-objects-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-objects-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-objects-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-objects-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-objects-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-objects-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-objects-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-objects-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-objects-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-objects-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-objects-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-objects-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-objects-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-objects-page .objects-image {
+            height: 280px;
+        }
+
+        #javascript-objects-page .object-flow {
+            flex-direction: column;
+        }
+
+        #javascript-objects-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-objects-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    JavaScript Objects
+                </h1>
+
+                <p class="lead-text">
+                    JavaScript objects are used to store related information
+                    together using key-value pairs.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS A JAVASCRIPT OBJECT?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is a JavaScript Object?
+                </h2>
+
+                <p class="section-text">
+                    A JavaScript object is a collection of related data
+                    stored using <strong>key-value pairs</strong>.
+                </p>
+
+                <p class="section-text">
+                    Each key describes a piece of information and the value
+                    stores the actual data associated with that key.
+                </p>
+
+
+                <!-- =================================================
+                     CONCEPT BOX
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Why Do We Use Objects?
+                    </h5>
+
+                    <p>
+                        Objects help us keep related information together
+                        instead of storing every value in a separate variable.
+                    </p>
+
+                    <p>
+                        For example, a student can have a
+                        <strong>name</strong>, <strong>age</strong>,
+                        <strong>course</strong>, and <strong>city</strong>
+                        inside one object.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     ACTUAL JAVASCRIPT OBJECT IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://media2.dev.to/dynamic/image/width%3D800%2Cheight%3D%2Cfit%3Dscale-down%2Cgravity%3Dauto%2Cformat%3Dauto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv1b58vdbay08r4hlbeeh.png"
+                         alt="JavaScript Object Key Value Structure"
+                         class="objects-image" />
+
+                    <p class="image-caption">
+                        JavaScript Object - Key-Value Structure and Object Properties
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     OBJECT STRUCTURE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Object Structure
+                </h2>
+
+                <p class="section-text">
+                    An object is written using curly braces
+                    <strong>{ }</strong>. Inside the braces, properties
+                    are written as key-value pairs.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let student = {
+    name: "Amit",
+    age: 22,
+    course: "JavaScript"
+};</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     SEPARATE EXPLANATORY DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How JavaScript Objects Store Data
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Object Key-Value Structure
+                    </div>
+
+                    <div class="object-flow">
+
+                        <div class="object-box">
+
+                            <div class="object-box-title">
+                                student
+                            </div>
+
+                            <div class="object-property">
+                                name : "Amit"
+                            </div>
+
+                            <div class="object-property">
+                                age : 22
+                            </div>
+
+                            <div class="object-property">
+                                course : "JavaScript"
+                            </div>
+
+                        </div>
+
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+
+                        <div class="object-box">
+
+                            <div class="object-box-title">
+                                Key → Value
+                            </div>
+
+                            <div class="object-property">
+                                name → Amit
+                            </div>
+
+                            <div class="object-property">
+                                age → 22
+                            </div>
+
+                            <div class="object-property">
+                                course → JavaScript
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="diagram-note">
+                        Each property contains a key and its corresponding
+                        value inside the JavaScript object.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     COMMON OBJECT PROPERTIES
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Common Object Properties
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <span class="property-name">
+                                name
+                            </span>
+
+                            <h5>
+                                Name Property
+                            </h5>
+
+                            <p>
+                                Stores the name or title related to the object.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <span class="property-name">
+                                age
+                            </span>
+
+                            <h5>
+                                Age Property
+                            </h5>
+
+                            <p>
+                                Stores a numeric value such as a person's age.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <span class="property-name">
+                                course
+                            </span>
+
+                            <h5>
+                                Course Property
+                            </h5>
+
+                            <p>
+                                Stores information about a course or subject.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <span class="property-name">
+                                city
+                            </span>
+
+                            <h5>
+                                City Property
+                            </h5>
+
+                            <p>
+                                Stores location-related information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Creating an Object
+                </h2>
+
+                <p class="section-text">
+                    We can create an object using curly braces and define
+                    its properties using key-value pairs.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let student = {
+    name: "Amit",
+    age: 22,
+    course: "JavaScript"
+};
+
+console.log(student);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runObjectExample1()">
+
+                        <span>▶</span>
+
+                        <span>
+                            Try It
+                        </span>
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: { name: "Amit", age: 22, course: "JavaScript" }
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Accessing Object Properties
+                </h2>
+
+                <p class="section-text">
+                    We can access an object's property using dot notation.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let student = {
+    name: "Amit",
+    course: "JavaScript"
+};
+
+console.log(student.name);
+console.log(student.course);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runObjectExample2()">
+
+                        <span>▶</span>
+
+                        <span>
+                            Try It
+                        </span>
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output:<br />
+                    Amit<br />
+                    JavaScript
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 3: Updating an Object Property
+                </h2>
+
+                <p class="section-text">
+                    Existing property values can be changed by assigning
+                    a new value to the property.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let student = {
+    name: "Amit",
+    age: 22
+};
+
+student.age = 23;
+
+console.log(student.age);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runObjectExample3()">
+
+                        <span>▶</span>
+
+                        <span>
+                            Try It
+                        </span>
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: 23
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 4
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 4: Adding a New Property
+                </h2>
+
+                <p class="section-text">
+                    A new property can be added to an existing object
+                    by assigning a value to a new property name.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let student = {
+    name: "Amit",
+    course: "JavaScript"
+};
+
+student.city = "Pune";
+
+console.log(student.city);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runObjectExample4()">
+
+                        <span>▶</span>
+
+                        <span>
+                            Try It
+                        </span>
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Pune
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        JavaScript objects are used to store related
+                        information using key-value pairs. Objects can
+                        contain multiple properties, and we can create,
+                        access, update, and add properties as required.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("StringMethods", "ArraysStrings", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: String Methods
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("ObjectProperties", "Objects", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Object Properties
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function runObjectExample1() {
+
+        const code =
+            'let student = {\\n' +
+            '    name: "Amit",\\n' +
+            '    age: 22,\\n' +
+            '    course: "JavaScript"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log(student);';
+
+        openCompiler(code);
+
+    }
+
+
+    function runObjectExample2() {
+
+        const code =
+            'let student = {\\n' +
+            '    name: "Amit",\\n' +
+            '    course: "JavaScript"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log(student.name);\\n' +
+            'console.log(student.course);';
+
+        openCompiler(code);
+
+    }
+
+
+    function runObjectExample3() {
+
+        const code =
+            'let student = {\\n' +
+            '    name: "Amit",\\n' +
+            '    age: 22\\n' +
+            '};\\n' +
+            '\\n' +
+            'student.age = 23;\\n' +
+            '\\n' +
+            'console.log(student.age);';
+
+        openCompiler(code);
+
+    }
+
+
+    function runObjectExample4() {
+
+        const code =
+            'let student = {\\n' +
+            '    name: "Amit",\\n' +
+            '    course: "JavaScript"\\n' +
+            '};\\n' +
+            '\\n' +
+            'student.city = "Pune";\\n' +
+            '\\n' +
+            'console.log(student.city);';
+
+        openCompiler(code);
+
+    }
+
+</script>

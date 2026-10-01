@@ -1,0 +1,343 @@
+﻿ 
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIIT Code Runner - Interactive Playground</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+            :root {
+                --ciit-bg-dark: #0f172a;
+                --ciit-editor-bg: #1e293b;
+                --ciit-terminal-bg: #090d16;
+                --ciit-primary: #2563eb;
+                --ciit-accent: #06b6d4;
+            }
+
+            body {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                background-color: var(--ciit-bg-dark);
+                color: #f8fafc;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            .code-font {
+                font-family: 'Fira Code', monospace;
+            }
+
+            /* Top Navigation Header */
+            .compiler-header {
+                background-color: #0b0f19;
+                border-bottom: 1px solid #334155;
+                padding: 0.6rem 1.5rem;
+            }
+
+            /* Workspace Grid */
+            .workspace-container {
+                display: flex;
+                flex: 1;
+                overflow: hidden;
+            }
+
+            /* Left Task / Instructions Sidebar */
+            .task-sidebar {
+                width: 320px;
+                background-color: #111827;
+                border-right: 1px solid #334155;
+                overflow-y: auto;
+            }
+
+            /* Main Code Area */
+            .editor-container {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                background-color: var(--ciit-editor-bg);
+            }
+
+            .editor-header {
+                background-color: #0f172a;
+                border-bottom: 1px solid #334155;
+                padding: 0.5rem 1rem;
+            }
+
+            .code-input-area {
+                flex: 1;
+                background-color: var(--ciit-editor-bg);
+                color: #f8fafc;
+                border: none;
+                outline: none;
+                resize: none;
+                padding: 1rem;
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            /* Bottom Output Terminal */
+            .terminal-container {
+                height: 220px;
+                background-color: var(--ciit-terminal-bg);
+                border-top: 1px solid #334155;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .terminal-header {
+                background-color: #0f172a;
+                padding: 0.4rem 1rem;
+                font-size: 0.85rem;
+                border-bottom: 1px solid #1e293b;
+            }
+
+            .terminal-output {
+                flex: 1;
+                padding: 1rem;
+                overflow-y: auto;
+                font-size: 0.9rem;
+                color: #38bdf8;
+            }
+
+            /* Responsive Adjustments */
+            @Html.Raw("@")media (max-width: 992px) {
+                body { overflow: auto; height: auto; }
+                .workspace-container { flex-direction: column; }
+                .task-sidebar { width: 100%; height: auto; }
+                .editor-container { min-height: 400px; }
+                .terminal-container { height: 200px; }
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Compiler Top Header Bar -->
+    <header class="compiler-header d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+            <a class="navbar-brand fw-bold text-primary fs-4 m-0" href="index.html">
+                CIIT<span class="text-info">.eTutorial</span>
+            </a>
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle d-none d-md-inline-block">
+                Interactive Code Sandbox
+            </span>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="d-flex align-items-center gap-2">
+            <label class="text-secondary small fw-semibold d-none d-sm-inline">Language:</label>
+            <select class="form-select form-select-sm bg-dark text-white border-secondary fw-semibold" id="languageSelect" style="width: auto;" onchange="changeLanguage()">
+                <option value="java" selected>Core Java</option>
+                <option value="python">Python 3</option>
+                <option value="javascript">JavaScript (ES6)</option>
+                <option value="csharp">C# (.NET)</option>
+                <option value="typescript">TypeScript / Angular</option>
+            </select>
+
+            <button class="btn btn-success btn-sm fw-bold px-3 ms-2" onclick="runCode()">
+                <i class="bi bi-play-fill me-1"></i> Run Code
+            </button>
+            <button class="btn btn-outline-secondary btn-sm fw-semibold" onclick="resetCode()">
+                <i class="bi bi-arrow-counterclockwise"></i> Reset
+            </button>
+        </div>
+    </header>
+
+    <!-- Workspace Grid -->
+    <div class="workspace-container">
+
+        <!-- Sidebar: Task Instructions & Hints -->
+        <aside class="task-sidebar p-3">
+            <span class="badge bg-info-subtle text-info fw-bold mb-2">Practice Exercise</span>
+            <h5 class="fw-bold text-white mb-3" id="taskTitle">Java: Array Iteration & Loops</h5>
+
+            <p class="text-secondary small mb-3" id="taskDesc">
+                Write a Java program to store candidate technologies in an array and iterate through them using an enhanced <code>for</code> loop.
+            </p>
+
+            <div class="card bg-dark border-secondary p-3 mb-3">
+                <h6 class="text-warning fw-bold small mb-2"><i class="bi bi-lightbulb me-1"></i> Objective:</h6>
+                <ul class="text-secondary small ps-3 m-0" id="taskTips">
+                    <li>Initialize a String array with course names.</li>
+                    <li>Use <code>System.out.println()</code> for printing output.</li>
+                    <li>Ensure class name matches <code>Main</code>.</li>
+                </ul>
+            </div>
+
+            <h6 class="text-white fw-bold small mb-2">Available Practice Topics:</h6>
+            <div class="list-group list-group-flush bg-transparent small">
+                <button class="list-group-item list-group-item-action bg-transparent text-secondary border-secondary active text-white" onclick="selectExercise(1)">1. Array Loop Counter</button>
+                <button class="list-group-item list-group-item-action bg-transparent text-secondary border-secondary" onclick="selectExercise(2)">2. Check Prime Number</button>
+                <button class="list-group-item list-group-item-action bg-transparent text-secondary border-secondary" onclick="selectExercise(3)">3. String Manipulation</button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Editor & Terminal -->
+        <main class="editor-container">
+
+            <!-- Code Editor Box -->
+            <div class="editor-header d-flex justify-content-between align-items-center">
+                <span class="text-secondary small code-font d-flex align-items-center gap-2">
+                    <i class="bi bi-code-square text-info"></i> <span id="fileName">Main.java</span>
+                </span>
+                <span class="badge bg-secondary-subtle text-secondary small">Monaco-style Editor</span>
+            </div>
+
+            <textarea id="codeEditor" class="code-input-area code-font" spellcheck="false">// Select a language from the dropdown above to start writing code
+public class Main {
+    public static void main(String[] args) {
+        String[] courses = {"Core Java", "Python", "JavaScript", "C#", "Angular", "TypeScript"};
+        
+        System.out.println("Welcome to CIIT Training Institute Code Runner!");
+        System.out.println("----------------------------------------------");
+        
+        for (String course : courses) {
+            System.out.println("Course Available: " + course);
+        }
+    }
+}</textarea>
+
+            <!-- Bottom Output Terminal -->
+            <div class="terminal-container">
+                <div class="terminal-header d-flex justify-content-between align-items-center">
+                    <span class="text-muted code-font"><i class="bi bi-terminal-fill me-1 text-success"></i> Terminal Output</span>
+                    <button class="btn btn-link text-secondary btn-sm text-decoration-none p-0" onclick="clearTerminal()">Clear Console</button>
+                </div>
+                <div class="terminal-output code-font" id="terminalConsole">
+                    Click "Run Code" button above to execute program...
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Interactive JavaScript Simulation Script -->
+    <script>
+            // Preset boilerplate snippets
+            const codeTemplates = {
+                java: `public class Main {\n    public static void main(String[] args) {\n        String[] courses = {"Core Java", "Python", "JavaScript", "C#", "Angular", "TypeScript"};\n        \n        System.out.println("Welcome to CIIT Training Institute Code Runner!");\n        System.out.println("----------------------------------------------");\n        \n        for (String course : courses) {\n            System.out.println("Course Available: " + course);\n        }\n    }\n}`,
+                python: `# CIIT Python Playground\ncourses = ["Core Java", "Python", "JavaScript", "C#", "Angular", "TypeScript"]\n\nprint("Welcome to CIIT Training Institute Code Runner!")\nprint("-" * 45)\n\nfor course in courses:\n    print(f"Course Available: {course}")`,
+                javascript: `// CIIT JavaScript Playground\nconst courses = ["Core Java", "Python", "JavaScript", "C#", "Angular", "TypeScript"];\n\nconsole.log("Welcome to CIIT Training Institute Code Runner!");\nconsole.log("----------------------------------------------");\n\ncourses.forEach(course => {\n    console.log(\`Course Available: \${course}\`);\n});`,
+                csharp: `using System;\n\nnamespace CIITDemo {\n    class Program {\n        static void Main(string[] args) {\n            string[] courses = {"Core Java", "Python", "JavaScript", "C#", "Angular", "TypeScript"};\n            \n            Console.WriteLine("Welcome to CIIT Training Institute Code Runner!");\n            Console.WriteLine("----------------------------------------------");\n            \n            foreach (string course in courses) {\n                Console.WriteLine("Course Available: " + course);\n            }\n        }\n    }\n}`,
+                typescript: `// CIIT TypeScript Playground\ninterface CourseList {\n    courses: string[];\n}\n\nconst ciitData: CourseList = {\n    courses: ["Core Java", "Python", "JavaScript", "C#", "Angular", "TypeScript"]\n};\n\nconsole.log("Welcome to CIIT Training Institute Code Runner!");\nconsole.log("----------------------------------------------");\n\nciitData.courses.forEach((course: string) => {\n    console.log(\`Course Available: \${course}\`);\n});`
+            };
+
+            const fileExtensions = {
+                java: 'Main.java',
+                python: 'main.py',
+                javascript: 'script.js',
+                csharp: 'Program.cs',
+                typescript: 'app.ts'
+            };
+
+            function changeLanguage() {
+                const lang = document.getElementById('languageSelect').value;
+                document.getElementById('codeEditor').value = codeTemplates[lang];
+                document.getElementById('fileName').innerText = fileExtensions[lang];
+                document.getElementById('terminalConsole').innerHTML = `<span class="text-muted">Switched language to ${lang.toUpperCase()}. Click "Run Code" to execute.</span>`;
+            }
+
+            function runCode() {
+                const lang = document.getElementById('languageSelect').value;
+                const consoleBox = document.getElementById('terminalConsole');
+
+                consoleBox.innerHTML = `<span class="text-warning">[Compiling & Executing ${fileExtensions[lang]}...]</span><br>`;
+
+                setTimeout(() => {
+                    consoleBox.innerHTML += `Welcome to CIIT Training Institute Code Runner!<br>`;
+                    consoleBox.innerHTML += `----------------------------------------------<br>`;
+                    consoleBox.innerHTML += `Course Available: Core Java<br>`;
+                    consoleBox.innerHTML += `Course Available: Python<br>`;
+                    consoleBox.innerHTML += `Course Available: JavaScript<br>`;
+                    consoleBox.innerHTML += `Course Available: C#<br>`;
+                    consoleBox.innerHTML += `Course Available: Angular<br>`;
+                    consoleBox.innerHTML += `Course Available: TypeScript<br><br>`;
+                    consoleBox.innerHTML += `<span class="text-success">✔ Process finished with exit code 0</span>`;
+                }, 500);
+            }
+
+            function resetCode() {
+                changeLanguage();
+            }
+
+            function clearTerminal() {
+                document.getElementById('terminalConsole').innerHTML = `<span class="text-muted">Console cleared.</span>`;
+            }
+
+            function selectExercise(num) {
+                alert("Loading Exercise #" + num + " into the runner...");
+            }
+
+
+
+            async function runCode() {
+                const language = document.getElementById('languageSelect').value;
+                const code = document.getElementById('codeEditor').value;
+                const consoleBox = document.getElementById('terminalConsole');
+
+                consoleBox.innerHTML = `<span class="text-warning">[Running code on server...]</span><br>`;
+
+                try {
+                    const response = await fetch('/CodeRunner/Execute', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            language: language,
+                            code: code,
+                            timeoutMilliseconds: 5000
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.isTimedOut) {
+                        consoleBox.innerHTML = `
+                    <div class="text-danger fw-bold mb-2">
+                        <i class="bi bi-clock-history me-1"></i> ${escapeHtml(data.error)}
+                    </div>
+                    <div class="p-2 bg-dark rounded border border-danger text-secondary small">
+                        <strong>Troubleshooting Checklist:</strong>
+                        <ul class="mb-0 ps-3">
+                            <li>Check your <code>while</code> loops and <code>for</code> loops for valid exit conditions.</li>
+                            <li>Ensure recursive functions have a proper base condition.</li>
+                            <li>Interactive input (e.g., <code>input()</code>, <code>Console.ReadLine()</code>) is not supported in the sandbox runner.</li>
+                        </ul>
+                    </div>`;
+                        return;
+                    }
+
+                    let outputHtml = '';
+                    if (data.output) {
+                        outputHtml += `<span class="text-light">${escapeHtml(data.output)}</span>`;
+                    }
+                    if (data.error) {
+                        outputHtml += `<span class="text-danger">${escapeHtml(data.error)}</span>`;
+                    }
+
+                    outputHtml += `<br><span class="text-success">✔ Process finished in ${data.executionTimeMs} ms with exit code ${data.exitCode}</span>`;
+                    consoleBox.innerHTML = outputHtml;
+
+                } catch (err) {
+                    consoleBox.innerHTML = `<span class="text-danger">Failed to communicate with execution server: ${err.message}</span>`;
+                }
+            }
+
+            function escapeHtml(str) {
+                return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+    </script>
+</body>
+</html>

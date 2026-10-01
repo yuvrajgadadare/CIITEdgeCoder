@@ -1,0 +1,1169 @@
+﻿    @{
+    ViewData["Title"] = "Generics in Java";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Generics in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how Java Generics provide type safety, reusable
+                components, generic classes, methods, interfaces, wildcards,
+                bounds, and type inference.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What are Generics?</h3>
+
+            <p>
+                Generics allow classes, interfaces, and methods to operate
+                with parameterized types. They help catch type-related
+                errors at compile time instead of relying on runtime casts.
+            </p>
+
+            <p>
+                Generics are widely used throughout the Java Collections
+                Framework.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    new ArrayList&lt;&gt;();
+
+names.add("Amit");
+names.add("Neha");</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- WITHOUT GENERICS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Before Generics</h3>
+
+            <p>
+                Older Java code could store objects without specifying their
+                intended type.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List values = new ArrayList();
+
+values.add("Java");
+values.add(100);
+
+String text = (String) values.get(0);</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Raw collections lose useful compile-time type checking and
+                often require explicit casts.
+            </p>
+
+        </section>
+
+
+        <!-- WITH GENERICS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Using Generics</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; values =
+    new ArrayList&lt;&gt;();
+
+values.add("Java");
+
+String text = values.get(0);</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The compiler knows that the list contains Strings, so an
+                explicit cast is not required.
+            </p>
+
+        </section>
+
+
+        <!-- TYPE SAFETY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Type Safety</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    new ArrayList&lt;&gt;();
+
+names.add("Java");
+
+// Compile-time error:
+// names.add(100);</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Generics prevent incompatible values from being added to a
+                parameterized collection.
+            </p>
+
+        </section>
+
+
+        <!-- GENERIC CLASS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Generic Classes</h3>
+
+            <p>
+                A generic class declares one or more type parameters.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Box&lt;T&gt; {
+
+    private T value;
+
+    void set(T value) {
+
+        this.value = value;
+
+    }
+
+    T get() {
+
+        return value;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- USING GENERIC CLASS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Using a Generic Class
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Box&lt;String&gt; stringBox =
+    new Box&lt;&gt;();
+
+stringBox.set("Hello");
+
+String text = stringBox.get();
+
+System.out.println(text);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Hello</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- DIFFERENT TYPES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Same Generic Class with Different Types
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Box&lt;Integer&gt; numberBox =
+    new Box&lt;&gt;();
+
+numberBox.set(100);
+
+Box&lt;Double&gt; decimalBox =
+    new Box&lt;&gt;();
+
+decimalBox.set(10.5);</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The same generic class can be reused with different reference
+                types.
+            </p>
+
+        </section>
+
+
+        <!-- MULTIPLE TYPE PARAMETERS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Multiple Type Parameters
+            </h3>
+
+            <p>
+                A generic class can declare multiple type parameters.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Pair&lt;K, V&gt; {
+
+    private K key;
+
+    private V value;
+
+    Pair(K key, V value) {
+
+        this.key = key;
+        this.value = value;
+
+    }
+
+    K getKey() {
+
+        return key;
+
+    }
+
+    V getValue() {
+
+        return value;
+
+    }
+
+}</code></pre>
+
+            </div>
+            
+
+        </section>
+
+
+        <!-- USING PAIR -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Using Multiple Type Parameters
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Pair&lt;Integer, String&gt; student =
+    new Pair&lt;&gt;(101, "Amit");
+
+System.out.println(
+    student.getKey()
+);
+
+System.out.println(
+    student.getValue()
+);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- GENERIC METHOD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Generic Methods
+            </h3>
+
+            <p>
+                A method can declare its own type parameter independently of
+                the class.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Utility {
+
+    static &lt;T&gt; void print(T value) {
+
+        System.out.println(value);
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- GENERIC METHOD USAGE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Calling a Generic Method
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Utility.print("Java");
+
+Utility.print(100);
+
+Utility.print(10.5);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Java
+100
+10.5</code></pre>
+</div>
+
+            <p class="mt-3">
+                Java can infer the appropriate type argument from the method
+                invocation.
+            </p>
+
+        </section>
+
+
+        <!-- GENERIC INTERFACE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Generic Interfaces
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Repository&lt;T&gt; {
+
+    void save(T value);
+
+    T find();
+
+}
+
+class StringRepository
+    implements Repository&lt;String&gt; {
+
+    private String value;
+
+    public void save(String value) {
+
+        this.value = value;
+
+    }
+
+    public String find() {
+
+        return value;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOUNDED TYPES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Bounded Type Parameters
+            </h3>
+
+            <p>
+                A type parameter can be restricted using an upper bound.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Calculator {
+
+    static &lt;T extends Number&gt;
+    double doubleValue(T value) {
+
+        return value.doubleValue();
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Here, <code>T</code> must be a subtype of
+                <code>Number</code>.
+            </p>
+
+        </section>
+
+
+        <!-- MULTIPLE BOUNDS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Multiple Bounds
+            </h3>
+
+            <p>
+                A type parameter can have multiple bounds. A class, when
+                present, must come first, followed by interfaces.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>&lt;T extends Number &amp; Comparable&lt;T&gt;&gt;</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- WILDCARDS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Wildcards
+            </h3>
+
+            <p>
+                The wildcard <code>?</code> represents an unknown type.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;?&gt; values;</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                A wildcard is useful when code needs to work with a collection
+                whose exact element type is not known.
+            </p>
+
+        </section>
+
+
+        <!-- UNBOUNDED WILDCARD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Unbounded Wildcard
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static void printList(
+    List&lt;?&gt; values
+) {
+
+    for (Object value : values) {
+
+        System.out.println(value);
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- UPPER BOUNDED -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Upper-Bounded Wildcard
+            </h3>
+
+            <p>
+                An upper-bounded wildcard uses <code>? extends Type</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;? extends Number&gt; numbers;</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Such a reference can point to a list of Number or any subtype
+                of Number.
+            </p>
+
+        </section>
+
+
+        <!-- LOWER BOUNDED -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Lower-Bounded Wildcard
+            </h3>
+
+            <p>
+                A lower-bounded wildcard uses <code>? super Type</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;? super Integer&gt; values;
+
+values.add(10);
+values.add(20);</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                This is useful when a method needs to safely consume values
+                of a particular type.
+            </p>
+
+        </section>
+
+
+        <!-- PECS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                PECS Principle
+            </h3>
+
+            <div class="alert alert-info border-0">
+
+                <strong>PECS:</strong>
+
+                Producer Extends, Consumer Super.
+
+            </div>
+
+            <ul>
+
+                <li class="mb-2">
+                    Use <code>? extends T</code> when a generic structure
+                    produces values of type T.
+                </li>
+
+                <li>
+                    Use <code>? super T</code> when a generic structure
+                    consumes values of type T.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- DIAMOND -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Diamond Operator
+            </h3>
+
+            <p>
+                The diamond operator <code>&lt;&gt;</code> allows the compiler
+                to infer generic type arguments in many object creation
+                expressions.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    new ArrayList&lt;&gt;();</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- RAW TYPES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Raw Types
+            </h3>
+
+            <p>
+                A raw type omits the generic type argument.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List values = new ArrayList();</code></pre>
+
+            </div>
+
+            <div class="alert alert-warning mt-3">
+
+                Raw types are mainly retained for compatibility with
+                pre-generics Java code. New code should normally use
+                parameterized types.
+
+            </div>
+
+        </section>
+
+
+        <!-- TYPE ERASURE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Type Erasure
+            </h3>
+
+            <p>
+                Java implements generics primarily through type erasure.
+                Generic type information used for compile-time checking is
+                generally erased from ordinary class and method signatures at
+                runtime.
+            </p>
+
+            <p>
+                This provides compatibility with older Java bytecode while
+                still giving developers compile-time type safety.
+            </p>
+
+        </section>
+
+
+        <!-- CANNOT USE PRIMITIVES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Generics and Primitive Types
+            </h3>
+
+            <p>
+                Java type arguments must be reference types, not primitive
+                types.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>// Invalid:
+// List&lt;int&gt; values;
+
+// Correct:
+List&lt;Integer&gt; values =
+    new ArrayList&lt;&gt;();</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Wrapper classes such as <code>Integer</code>,
+                <code>Double</code>, and <code>Boolean</code> are used when
+                primitive values need to participate in generic APIs.
+            </p>
+
+        </section>
+
+
+        <!-- AUTOBOXING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Generics and Autoboxing
+            </h3>
+
+            <p>
+                Java can automatically convert between primitive values and
+                their corresponding wrapper types in many contexts.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    new ArrayList&lt;&gt;();
+
+numbers.add(10);
+
+int value = numbers.get(0);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- GENERIC STACK -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Practical Example: Generic Stack
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Stack&lt;T&gt; {
+
+    private List&lt;T&gt; items =
+        new ArrayList&lt;&gt;();
+
+    void push(T item) {
+
+        items.add(item);
+
+    }
+
+    T pop() {
+
+        return items.remove(
+            items.size() - 1
+        );
+
+    }
+
+    boolean isEmpty() {
+
+        return items.isEmpty();
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- STACK USAGE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Using the Generic Stack
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Stack&lt;String&gt; stack =
+    new Stack&lt;&gt;();
+
+stack.push("Java");
+stack.push("Spring");
+
+System.out.println(stack.pop());</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Spring</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- BENEFITS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Benefits of Generics
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Provides compile-time type safety.
+                </li>
+
+                <li class="mb-2">
+                    Reduces explicit casting.
+                </li>
+
+                <li class="mb-2">
+                    Makes reusable classes and methods possible.
+                </li>
+
+                <li class="mb-2">
+                    Improves readability of APIs.
+                </li>
+
+                <li>
+                    Works naturally with Java collections.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Generics Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Prefer parameterized types over raw types.
+                </li>
+
+                <li class="mb-2">
+                    Use meaningful type parameter names such as
+                    <code>T</code>, <code>K</code>, and <code>V</code> where
+                    appropriate.
+                </li>
+
+                <li class="mb-2">
+                    Use bounded wildcards when they express the intended API
+                    relationship.
+                </li>
+
+                <li class="mb-2">
+                    Follow the PECS principle for producer and consumer APIs.
+                </li>
+
+                <li>
+                    Avoid unnecessary unchecked casts and raw-type usage.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="genericQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#genericQuestionOne">
+
+                            What are Generics in Java?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="genericQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#genericQuestions">
+
+                        <div class="accordion-body">
+
+                            Generics allow types to be parameterized, enabling
+                            reusable and type-safe classes, interfaces, and
+                            methods.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#genericQuestionTwo">
+
+                            What is the benefit of Generics?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="genericQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#genericQuestions">
+
+                        <div class="accordion-body">
+
+                            Generics provide compile-time type checking,
+                            reduce casts, and allow reusable type-safe
+                            components.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#genericQuestionThree">
+
+                            What is a wildcard?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="genericQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#genericQuestions">
+
+                        <div class="accordion-body">
+
+                            The <code>?</code> wildcard represents an unknown
+                            generic type. It can be unbounded or constrained
+                            using <code>extends</code> or
+                            <code>super</code>.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#genericQuestionFour">
+
+                            What is PECS?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="genericQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#genericQuestions">
+
+                        <div class="accordion-body">
+
+                            PECS stands for Producer Extends, Consumer Super.
+                            It is a common guideline for choosing between
+                            upper- and lower-bounded wildcards.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#genericQuestionFive">
+
+                            Can Generics use primitive types?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="genericQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#genericQuestions">
+
+                        <div class="accordion-body">
+
+                            No. Generic type arguments must be reference
+                            types. Wrapper classes such as
+                            <code>Integer</code> are used instead of
+                            <code>int</code>.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Generics provide compile-time type safety and reusable
+                    parameterized components in Java. Important concepts
+                    include generic classes and methods, bounded type
+                    parameters, wildcards, PECS, type inference, raw types,
+                    and type erasure.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Strings",
+                               "DataStructuresCollections",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "Collections",
+                               "DataStructuresCollections",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,1300 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Polymorphism in C#";
+}
+
+<style>
+.try-it-btn {
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease;
+}
+ 
+.try-it-btn:hover {
+    background: #157347;
+    color: #fff;
+}
+
+</style>
+
+<main id="tutorials" class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="col-lg-3">
+
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+
+        </aside>
+
+
+        <!-- ================= READING CONTENT ================= -->
+        <section class="col-lg-9">
+
+            <!-- PAGE HEADER -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="mb-4">
+
+                        <span class="text-uppercase tracking-widest text-primary fw-bold small">
+                        </span>
+
+                        <h1 class="fw-bold text-dark mt-2 mb-3">
+                            Polymorphism in C#
+                        </h1>
+
+                        <p class="lead text-muted mb-0">
+                            Learn how one method, object, or interface can behave
+                            in different ways in C#.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= WHAT IS POLYMORPHISM ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        What is Polymorphism?
+                    </h2>
+
+                    <p>
+                        <strong>Polymorphism</strong> is one of the four important
+                        pillars of Object-Oriented Programming (OOP).
+                    </p>
+
+                    <p>
+                        The word polymorphism comes from two words:
+                        <strong>Poly</strong> means "many" and
+                        <strong>Morph</strong> means "forms".
+                    </p>
+
+                    <p>
+                        Therefore, polymorphism means
+                        <strong>"one thing having many forms."</strong>
+                    </p>
+
+                    <p>
+                        In C#, polymorphism allows the same method name or reference
+                        to perform different operations depending on the situation.
+                    </p>
+
+                    <div class="alert alert-info">
+
+                        <strong>Simple Example:</strong>
+
+                        A person can behave differently in different situations.
+                        The same person can be a teacher in a classroom, a customer
+                        in a shop, and a parent at home.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TYPES ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Types of Polymorphism in C#
+                    </h2>
+
+                    <p>
+                        C# mainly supports two types of polymorphism:
+                    </p>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered">
+
+                            <thead class="table-dark">
+
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Also Called</th>
+                                    <th>Achieved Using</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Compile-Time Polymorphism</td>
+                                    <td>Static / Early Binding</td>
+                                    <td>Method Overloading</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Run-Time Polymorphism</td>
+                                    <td>Dynamic / Late Binding</td>
+                                    <td>Method Overriding</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= COMPILE TIME ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        1. Compile-Time Polymorphism
+                    </h2>
+
+                    <p>
+                        Compile-time polymorphism is achieved using
+                        <strong>method overloading</strong>.
+                    </p>
+
+                    <p>
+                        In method overloading, multiple methods have the same name
+                        but different parameters.
+                    </p>
+
+                    <p>
+                        The compiler decides which method should be called during
+                        compilation.
+                    </p>
+
+
+                    <h3 class="h5 fw-bold mt-4 mb-3">
+                        Example: Method Overloading
+                    </h3>
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Calculator
+{
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    public int Add(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+
+    public double Add(double a, double b)
+    {
+        return a + b;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Calculator calculator = new Calculator();
+
+        Console.WriteLine(calculator.Add(10, 20));
+
+        Console.WriteLine(calculator.Add(10, 20, 30));
+
+        Console.WriteLine(calculator.Add(10.5, 20.5));
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+</div>
+
+
+  <h3 class="h5 fw-bold mb-3">
+       Output
+  </h3>
+
+   <div class="code-block mb-4">
+
+     <pre class="mb-0">30
+60
+31</pre>
+
+                    </div>
+
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Program Explanation
+                    </h3>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered">
+
+                            <thead class="table-dark">
+
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Explanation</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Calculator</td>
+                                    <td>
+                                        Class containing overloaded Add methods.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Add(int, int)</td>
+                                    <td>
+                                        Adds two integer values.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Add(int, int, int)</td>
+                                    <td>
+                                        Adds three integer values.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Add(double, double)</td>
+                                    <td>
+                                        Adds two decimal values.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>calculator.Add()</td>
+                                    <td>
+                                        The compiler selects the correct method
+                                        based on the arguments.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= RUNTIME ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        2. Run-Time Polymorphism
+                    </h2>
+
+                    <p>
+                        Run-time polymorphism is achieved using
+                        <strong>method overriding</strong>.
+                    </p>
+
+                    <p>
+                        In method overriding, a child class provides its own
+                        implementation of a method that is already defined
+                        in the parent class.
+                    </p>
+
+                    <p>
+                        The method that will execute is decided at runtime.
+                    </p>
+
+
+                    <div class="alert alert-warning">
+
+                        <strong>Important:</strong>
+
+                        Run-time polymorphism commonly uses
+                        <strong>virtual</strong> and
+                        <strong>override</strong> keywords.
+
+                    </div>
+
+
+                    <h3 class="h5 fw-bold mt-4 mb-3">
+                        Example: Method Overriding
+                    </h3>
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Animal
+{
+    public virtual void Sound()
+    {
+        Console.WriteLine("Animal makes a sound");
+    }
+}
+
+class Dog : Animal
+{
+    public override void Sound()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Cat : Animal
+{
+    public override void Sound()
+    {
+        Console.WriteLine("Cat meows");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal animal;
+
+        animal = new Dog();
+        animal.Sound();
+
+        animal = new Cat();
+        animal.Sound();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block mb-4">
+
+                        <pre class="mb-0">Dog barks
+Cat meows</pre>
+
+                    </div>
+
+
+                    <h3 class="h5 fw-bold mb-3">
+                        How This Program Works
+                    </h3>
+
+                    <ol>
+
+                        <li>
+                            <strong>Animal</strong> contains the virtual
+                            <code>Sound()</code> method.
+                        </li>
+
+                        <li>
+                            <strong>Dog</strong> overrides the
+                            <code>Sound()</code> method.
+                        </li>
+
+                        <li>
+                            <strong>Cat</strong> also overrides the
+                            <code>Sound()</code> method.
+                        </li>
+
+                        <li>
+                            The variable <code>animal</code> is of type
+                            <code>Animal</code>.
+                        </li>
+
+                        <li>
+                            At runtime, it can refer to a Dog or Cat object.
+                        </li>
+
+                        <li>
+                            The appropriate overridden method is executed.
+                        </li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+        </div>
+
+
+            <!-- ================= VIRTUAL OVERRIDE ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        virtual and override Keywords
+                    </h2>
+
+
+                    <h3 class="h5 fw-bold mt-3">
+                        virtual Keyword
+                    </h3>
+
+                    <p>
+                        The <code>virtual</code> keyword allows a method in
+                        the parent class to be overridden by a child class.
+                    </p>
+
+
+                    <h3 class="h5 fw-bold mt-3">
+                        override Keyword
+                    </h3>
+
+                    <p>
+                        The <code>override</code> keyword is used in the child
+                        class to provide a new implementation of the parent
+                        class method.
+                    </p>
+
+
+                    <div class="code-block">
+
+                        <pre class="mb-0"><span class="keyword">class</span> <span class="class-name">Parent</span>
+{
+    <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="method-name">Show</span>()
+    {
+        Console.WriteLine(<span class="string-lit">"Parent Show"</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Child</span> : Parent
+{
+    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="method-name">Show</span>()
+    {
+        Console.WriteLine(<span class="string-lit">"Child Show"</span>);
+    }
+}</pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= PARENT REFERENCE ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Parent Reference and Child Object
+                    </h2>
+
+                    <p>
+                        One of the most important concepts in runtime polymorphism
+                        is that a parent class reference can hold a child class object.
+                    </p>
+
+
+                    <div class="code-block mb-3">
+
+                        <pre class="mb-0">Animal animal = new Dog();</pre>
+
+                    </div>
+
+
+                    <p>
+                        Here:
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            <code>Animal</code> is the reference type.
+                        </li>
+
+                        <li>
+                            <code>Dog</code> is the actual object type.
+                        </li>
+
+                        <li>
+                            The object is created at runtime.
+                        </li>
+
+                        <li>
+                            The overridden method of Dog is executed.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="alert alert-success">
+
+                        <strong>Remember:</strong>
+
+                        Reference type decides what members are accessible,
+                        while the actual object type determines the overridden
+                        implementation that executes at runtime.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= REAL WORLD PAYMENT ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                       Example: Payment System 🤓🌍
+                    </h2>
+
+                    <p>
+                        Polymorphism is commonly used in real-world applications.
+                        For example, an application may support different payment methods.
+                    </p>
+
+                    <p>
+                        Every payment method can have a common
+                        <code>Pay()</code> method, but each payment type can
+                        implement the method differently.
+                    </p>
+
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Payment
+{
+    public virtual void Pay()
+    {
+        Console.WriteLine("Processing payment");
+    }
+}
+
+class CreditCardPayment : Payment
+{
+    public override void Pay()
+    {
+        Console.WriteLine("Payment through Credit Card");
+    }
+}
+
+class UPIPayment : Payment
+{
+    public override void Pay()
+    {
+        Console.WriteLine("Payment through UPI");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Payment payment;
+
+        payment = new CreditCardPayment();
+        payment.Pay();
+
+        payment = new UPIPayment();
+        payment.Pay();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block mb-4">
+
+                        <pre class="mb-0">Payment through Credit Card
+Payment through UPI</pre>
+
+                    </div>
+
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Why Polymorphism is Useful Here?
+                    </h3>
+
+                    <p>
+                        The application can work with the common
+                        <code>Payment</code> type instead of writing separate
+                        logic for every payment method.
+                    </p>
+
+                    <p>
+                        Later, we can add another payment type such as
+                        <code>CashPayment</code> without changing the common
+                        payment structure.
+                    </p>
+
+                </div>
+
+            </div>
+            </div>
+
+
+
+            <!-- ================= MULTIPLE OBJECTS ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Polymorphism with Multiple Objects
+                    </h2>
+
+                    <p>
+                        A parent class reference can be used to store multiple
+                        child objects. This becomes very useful when working
+                        with collections and arrays.
+                    </p>
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Animal
+{
+    public virtual void Sound()
+    {
+        Console.WriteLine("Animal sound");
+    }
+}
+
+class Dog : Animal
+{
+    public override void Sound()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Cat : Animal
+{
+    public override void Sound()
+    {
+        Console.WriteLine("Cat meows");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal[] animals =
+        {
+            new Dog(),
+            new Cat(),
+            new Dog()
+        };
+
+        foreach (Animal animal in animals)
+        {
+            animal.Sound();
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block">
+
+                        <pre class="mb-0">Dog barks
+Cat meows
+Dog barks</pre>
+
+                    </div>
+
+
+                    <p class="mt-4 mb-0">
+                        This is a very important practical use of runtime polymorphism.
+                        A single collection can contain different child objects.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+
+            <!-- ================= OVERLOADING VS OVERRIDING ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Method Overloading vs Method Overriding
+                    </h2>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered">
+
+                            <thead class="table-dark">
+
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Overloading</th>
+                                    <th>Overriding</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Polymorphism</td>
+                                    <td>Compile-Time</td>
+                                    <td>Run-Time</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Classes</td>
+                                    <td>Usually same class</td>
+                                    <td>Parent and child classes</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Method Name</td>
+                                    <td>Same</td>
+                                    <td>Same</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Parameters</td>
+                                    <td>Must be different</td>
+                                    <td>Must match overridden method</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Keywords</td>
+                                    <td>No special keyword required</td>
+                                    <td>virtual / override commonly used</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Decision</td>
+                                    <td>Compiler</td>
+                                    <td>Runtime</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ABSTRACT CLASS ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Polymorphism with Abstract Classes
+                    </h2>
+
+                    <p>
+                        Abstract classes can also be used to achieve runtime
+                        polymorphism. An abstract method does not contain an
+                        implementation in the parent class.
+                    </p>
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+abstract class Shape
+{
+    public abstract void Draw();
+}
+
+class Circle : Shape
+{
+    public override void Draw()
+    {
+        Console.WriteLine("Drawing Circle");
+    }
+}
+
+class Rectangle : Shape
+{
+    public override void Draw()
+    {
+        Console.WriteLine("Drawing Rectangle");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Shape shape;
+
+        shape = new Circle();
+        shape.Draw();
+
+        shape = new Rectangle();
+        shape.Draw();
+    }
+}
+</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block">
+
+                        <pre class="mb-0">Drawing Circle
+Drawing Rectangle</pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+            </div>
+
+            <!-- ================= ADVANTAGES ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Advantages of Polymorphism
+                    </h2>
+
+                    <ul>
+
+                        <li>Improves code reusability.</li>
+
+                        <li>Reduces duplicate code.</li>
+
+                        <li>Makes applications easier to maintain.</li>
+
+                        <li>Supports flexible application design.</li>
+
+                        <li>
+                            Helps implement common behavior with different
+                            implementations.
+                        </li>
+
+                        <li>
+                            Makes large applications easier to extend.
+                        </li>
+
+                        <li>
+                            Very useful in enterprise application development.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= COMMON MISTAKES ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Common Mistakes
+                    </h2>
+
+                    <ol>
+
+                        <li>
+                            Forgetting to use <code>virtual</code> in the parent
+                            method when using the traditional overriding approach.
+                        </li>
+
+                        <li>
+                            Using <code>new</code> when the intention is actually
+                            to override a virtual method.
+                        </li>
+
+                        <li>
+                            Confusing method overloading with method overriding.
+                        </li>
+
+                        <li>
+                            Trying to override a method that is not virtual,
+                            abstract, or already overridable.
+                        </li>
+
+                        <li>
+                            Creating unnecessary inheritance only to use polymorphism.
+                        </li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CIIT PRACTICAL POINT ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        CIIT Practical Point
+                    </h2>
+
+                    <div class="alert alert-success mb-0">
+
+                        <p class="mb-2">
+                            In real-world .NET applications, polymorphism is heavily
+                            used when designing scalable and maintainable systems.
+                        </p>
+
+                        <p class="mb-2">
+                            For example, a project may have a common service or
+                            interface and multiple implementations for different
+                            business requirements.
+                        </p>
+
+                        <p class="mb-0">
+                            This makes the application flexible and easier to extend
+                            when new functionality is added.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= INTERVIEW ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Important Interview Points
+                    </h2>
+
+                    <ul>
+
+                        <li>What is polymorphism?</li>
+
+                        <li>
+                            What are the types of polymorphism in C#?
+                        </li>
+
+                        <li>
+                            What is compile-time polymorphism?
+                        </li>
+
+                        <li>
+                            What is run-time polymorphism?
+                        </li>
+
+                        <li>
+                            What is method overloading?
+                        </li>
+
+                        <li>
+                            What is method overriding?
+                        </li>
+
+                        <li>
+                            What is the difference between overloading and overriding?
+                        </li>
+
+                        <li>
+                            What is the purpose of virtual?
+                        </li>
+
+                        <li>
+                            What is the purpose of override?
+                        </li>
+
+                        <li>
+                            Can a parent reference hold a child object?
+                        </li>
+
+                        <li>
+                            What is late binding?
+                        </li>
+
+                        <li>
+                            How is polymorphism useful in real-world applications?
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SUMMARY ================= -->
+            <div class="alert alert-primary mb-4">
+
+                <h2 class="h5 fw-bold">
+                    Summary
+                </h2>
+
+                <p>
+                    Polymorphism means
+                    <strong>one thing having many forms</strong>.
+                    It allows the same method or reference to behave differently
+                    depending on the situation.
+                </p>
+
+                <p>
+                    C# supports compile-time polymorphism through method
+                    overloading and run-time polymorphism through method overriding.
+                </p>
+
+                <p class="mb-0">
+                    Understanding polymorphism is essential for developing
+                    flexible, reusable, and maintainable object-oriented applications.
+                </p>
+
+            </div>
+
+
+            <!-- ================= PRACTICE ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Practice Questions
+                    </h2>
+
+                    <ol>
+
+                        <li>
+                            Create a Calculator class using method overloading.
+                        </li>
+
+                        <li>
+                            Create a Shape parent class and override Draw()
+                            in Circle and Rectangle.
+                        </li>
+
+                        <li>
+                            Create a Vehicle class and override Start()
+                            in Car and Bike.
+                        </li>
+
+                        <li>
+                            Create a Payment class and implement different
+                            payment types.
+                        </li>
+
+                        <li>
+                            Create an Employee parent class and override
+                            CalculateSalary() for different employees.
+                        </li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= NEXT TOPIC ================= -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+    <a href="/CSharp/OOPC/Inheritance"
+       class="btn btn-outline-secondary">
+        ← Previous Topic
+    </a>
+
+    <a href="/CSharp/OOPC/Interfaces"
+       class="btn btn-primary">
+        Next Topic →
+    </a>
+
+</div>
+
+        </section>
+
+    </div>
+
+</main>
+
+                        <script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+            alert("Code example not found.");
+            return;
+        }
+ 
+        // Find only this example's code
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+            alert("Tutorial code not found.");
+            return;
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+    }
+ 
+</script>

@@ -1,0 +1,736 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML5 SVG";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #374151;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    .content-section p {
+        color: #4b5563;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+    pre code {
+        background: transparent !important;
+        color: #fff !important;
+    }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #ffffff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .svg-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 120px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+        text-align: center;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML5 SVG</h1>
+
+            <p>
+                SVG stands for <strong>Scalable Vector Graphics</strong>.
+                It is used to create vector-based graphics directly in HTML.
+            </p>
+
+            <p>
+                SVG is useful for icons, diagrams, logos, charts, illustrations,
+                and other graphics that need to remain sharp at different sizes.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Idea:</strong>
+                SVG creates graphics using elements such as
+                <code>&lt;circle&gt;</code>, <code>&lt;rect&gt;</code>,
+                <code>&lt;line&gt;</code>, and <code>&lt;path&gt;</code>.
+            </div>
+
+            <h2>1. How SVG Works</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    SVG Working
+                </div>
+
+                <div class="svg-flow">
+
+                    <div class="flow-item">
+                        SVG
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Shapes
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Vector<br>Graphics
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Scalable<br>Output
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>2. What is SVG?</h2>
+
+            <p>
+                SVG is an XML-based vector graphics format that can be embedded
+                directly inside an HTML document.
+            </p>
+
+            <p>
+                Unlike a normal raster image, SVG graphics are based on shapes
+                and coordinates. This allows them to scale without becoming blurry.
+            </p>
+
+            <h2>3. Basic SVG Example</h2>
+
+            <p>
+                An SVG drawing starts with the <code>&lt;svg&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;svg width="200" height="100"&gt;
+
+    &lt;circle
+        cx="100"
+        cy="50"
+        r="35"&gt;
+    &lt;/circle&gt;
+
+&lt;/svg&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <svg width="200" height="100" viewBox="0 0 200 100">
+                    <circle cx="100" cy="50" r="35"
+                            fill="none"
+                            stroke="black"
+                            stroke-width="2">
+                    </circle>
+                </svg>
+            </div>
+
+            <h2>4. SVG Width and Height</h2>
+
+            <p>
+                The <code>width</code> and <code>height</code> attributes define
+                the SVG drawing area's dimensions.
+            </p>
+
+            <pre><code>&lt;svg width="400" height="200"&gt;
+
+    ...
+
+&lt;/svg&gt;</code></pre>
+
+            <p>
+                You can change these values depending on the size of the graphic.
+            </p>
+
+            <h2>5. SVG Circle</h2>
+
+            <p>
+                The <code>&lt;circle&gt;</code> element creates a circle.
+            </p>
+
+            <pre><code>&lt;svg width="200" height="120"&gt;
+
+    &lt;circle
+        cx="100"
+        cy="60"
+        r="40"&gt;
+    &lt;/circle&gt;
+
+&lt;/svg&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="demo-box">
+                <svg width="200" height="120" viewBox="0 0 200 120">
+                    <circle cx="100" cy="60" r="40"
+                            fill="none"
+                            stroke="black"
+                            stroke-width="2">
+                    </circle>
+                </svg>
+            </div>
+
+            <h2>6. SVG Rectangle</h2>
+
+            <p>
+                The <code>&lt;rect&gt;</code> element creates a rectangle.
+            </p>
+
+            <pre><code>&lt;svg width="250" height="120"&gt;
+
+    &lt;rect
+        x="30"
+        y="25"
+        width="180"
+        height="70"&gt;
+    &lt;/rect&gt;
+
+&lt;/svg&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="demo-box">
+                <svg width="250" height="120" viewBox="0 0 250 120">
+                    <rect x="30" y="25"
+                          width="180"
+                          height="70"
+                          fill="none"
+                          stroke="black"
+                          stroke-width="2">
+                    </rect>
+                </svg>
+            </div>
+
+            <h2>7. SVG Line</h2>
+
+            <p>
+                The <code>&lt;line&gt;</code> element draws a straight line
+                between two points.
+            </p>
+
+            <pre><code>&lt;svg width="250" height="120"&gt;
+
+    &lt;line
+        x1="30"
+        y1="30"
+        x2="210"
+        y2="90"&gt;
+    &lt;/line&gt;
+
+&lt;/svg&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="demo-box">
+                <svg width="250" height="120" viewBox="0 0 250 120">
+                    <line x1="30" y1="30"
+                          x2="210" y2="90"
+                          stroke="black"
+                          stroke-width="2">
+                    </line>
+                </svg>
+            </div>
+
+            <h2>8. SVG Polygon</h2>
+
+            <p>
+                The <code>&lt;polygon&gt;</code> element can create a shape
+                using multiple connected points.
+            </p>
+
+            <pre><code>&lt;svg width="250" height="150"&gt;
+
+    &lt;polygon
+        points="125,20 210,120 40,120"&gt;
+    &lt;/polygon&gt;
+
+&lt;/svg&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="demo-box">
+                <svg width="250" height="150" viewBox="0 0 250 150">
+                    <polygon points="125,20 210,120 40,120"
+                             fill="none"
+                             stroke="black"
+                             stroke-width="2">
+                    </polygon>
+                </svg>
+            </div>
+
+            <h2>9. SVG Text</h2>
+
+            <p>
+                SVG can also display text using the <code>&lt;text&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;svg width="300" height="100"&gt;
+
+    &lt;text x="40" y="60"&gt;
+        Hello SVG
+    &lt;/text&gt;
+
+&lt;/svg&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="demo-box">
+                <svg width="300" height="100" viewBox="0 0 300 100">
+                    <text x="40"
+                          y="60"
+                          font-size="28">
+                        Hello SVG
+                    </text>
+                </svg>
+            </div>
+
+            <h2>10. SVG Styling</h2>
+
+            <p>
+                SVG elements can have properties such as
+                <code>fill</code>, <code>stroke</code>, and
+                <code>stroke-width</code>.
+            </p>
+
+            <pre><code>&lt;svg width="200" height="120"&gt;
+
+    &lt;circle
+        cx="100"
+        cy="60"
+        r="40"
+        fill="none"
+        stroke="black"
+        stroke-width="3"&gt;
+    &lt;/circle&gt;
+
+&lt;/svg&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>11. SVG Coordinate System</h2>
+
+            <p>
+                SVG uses an X and Y coordinate system.
+                The origin is normally at the top-left of the SVG viewport.
+            </p>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    SVG Coordinates
+                </div>
+
+                <div class="demo-box mb-0">
+
+                    <svg width="500"
+                         height="220"
+                         viewBox="0 0 500 220">
+
+                        <line x1="40"
+                              y1="180"
+                              x2="460"
+                              y2="180"
+                              stroke="black"
+                              stroke-width="2">
+                        </line>
+
+                        <line x1="40"
+                              y1="180"
+                              x2="40"
+                              y2="30"
+                              stroke="black"
+                              stroke-width="2">
+                        </line>
+
+                        <text x="45"
+                              y="25"
+                              font-size="16">
+                            (0, 0)
+                        </text>
+
+                        <text x="455"
+                              y="170"
+                              font-size="16">
+                            X
+                        </text>
+
+                        <text x="25"
+                              y="45"
+                              font-size="16">
+                            Y
+                        </text>
+
+                        <circle cx="180"
+                                cy="100"
+                                r="35"
+                                fill="none"
+                                stroke="black"
+                                stroke-width="2">
+                        </circle>
+
+                    </svg>
+
+                </div>
+
+            </div>
+
+            <h2>12. SVG vs Canvas</h2>
+
+            <p>
+                SVG and Canvas can both create graphics, but their approach is different.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>SVG</th>
+                            <th>Canvas</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Type</td>
+                            <td>Vector graphics</td>
+                            <td>Drawing surface</td>
+                        </tr>
+
+                        <tr>
+                            <td>Shapes</td>
+                            <td>Individual elements</td>
+                            <td>Drawn onto the canvas</td>
+                        </tr>
+
+                        <tr>
+                            <td>Scaling</td>
+                            <td>Scales without losing vector quality</td>
+                            <td>Depends on canvas resolution</td>
+                        </tr>
+
+                        <tr>
+                            <td>Good For</td>
+                            <td>Icons, diagrams, logos</td>
+                            <td>Games, dynamic drawings, animations</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>13. Where SVG is Commonly Used</h2>
+
+            <ul>
+                <li>Logos</li>
+                <li>Icons</li>
+                <li>Charts</li>
+                <li>Diagrams</li>
+                <li>Maps</li>
+                <li>Illustrations</li>
+                <li>Scalable interface graphics</li>
+            </ul>
+
+            <h2>14. SVG and Responsive Design</h2>
+
+            <p>
+                SVG graphics can scale well when they are designed appropriately.
+                This makes SVG useful for responsive interfaces where the same graphic
+                may appear at different sizes.
+            </p>
+
+            <p>
+                The <code>viewBox</code> attribute is especially useful for controlling
+                the coordinate system and scaling behavior of an SVG.
+            </p>
+
+            <pre><code>&lt;svg
+    viewBox="0 0 200 100"
+    width="100%"&gt;
+
+    ...
+
+&lt;/svg&gt;</code></pre>
+
+            <h2>15. SVG as an Image File</h2>
+
+            <p>
+                SVG graphics can also exist as separate <code>.svg</code> files
+                and can be used through an image element.
+            </p>
+
+            <pre><code>&lt;img
+    src="logo.svg"
+    alt="Company Logo"&gt;</code></pre>
+
+            <h2>16. Inline SVG</h2>
+
+            <p>
+                SVG can also be written directly inside an HTML document.
+                This is called inline SVG.
+            </p>
+
+            <pre><code>&lt;svg width="200"
+     height="100"
+     viewBox="0 0 200 100"&gt;
+
+    &lt;circle
+        cx="100"
+        cy="50"
+        r="30"&gt;
+    &lt;/circle&gt;
+
+&lt;/svg&gt;</code></pre>
+
+            <h2>17. SVG Accessibility</h2>
+
+            <p>
+                When an SVG communicates important information, its accessibility
+                should be considered. Images and graphical content should have
+                suitable text alternatives or supporting text when required.
+            </p>
+
+            <p>
+                For decorative graphics, the implementation should ensure that
+                they do not create unnecessary noise for assistive technologies.
+            </p>
+
+            <h2>18. Common Mistakes</h2>
+
+            <h3>Mistake 1: Confusing SVG with Canvas</h3>
+
+            <p>
+                SVG represents graphics using elements and shapes, while Canvas
+                provides a drawing surface controlled through scripting.
+            </p>
+
+            <h3>Mistake 2: Forgetting viewBox</h3>
+
+            <p>
+                For responsive SVG graphics, a properly designed
+                <code>viewBox</code> is often important for scaling.
+            </p>
+
+            <h3>Mistake 3: Using SVG for every graphic</h3>
+
+            <p>
+                SVG is excellent for many vector graphics, but Canvas or regular
+                image formats may be more appropriate depending on the requirement.
+            </p>
+
+            <h2>19. Best Practices</h2>
+
+            <ul>
+                <li>Use SVG for graphics that benefit from vector scaling.</li>
+                <li>Use meaningful dimensions and coordinates.</li>
+                <li>Use <code>viewBox</code> for flexible SVG layouts.</li>
+                <li>Keep important graphics accessible.</li>
+                <li>Choose SVG or Canvas based on the application's needs.</li>
+            </ul>
+
+            <h2>20. Practice Example</h2>
+
+            <p>
+                Create an SVG containing a rectangle, circle, line, and text.
+            </p>
+
+            <pre><code>&lt;svg
+    width="500"
+    height="250"
+    viewBox="0 0 500 250"&gt;
+
+    &lt;rect
+        x="30"
+        y="30"
+        width="120"
+        height="70"
+        fill="none"
+        stroke="black"&gt;
+    &lt;/rect&gt;
+
+    &lt;circle
+        cx="250"
+        cy="65"
+        r="35"
+        fill="none"
+        stroke="black"&gt;
+    &lt;/circle&gt;
+
+    &lt;line
+        x1="330"
+        y1="30"
+        x2="450"
+        y2="100"
+        stroke="black"&gt;
+    &lt;/line&gt;
+
+    &lt;text
+        x="170"
+        y="180"&gt;
+        SVG Graphics
+    &lt;/text&gt;
+
+&lt;/svg&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    SVG stands for Scalable Vector Graphics and is used to create
+                    scalable vector-based graphics in web pages. Common SVG elements
+                    include <code>&lt;circle&gt;</code>, <code>&lt;rect&gt;</code>,
+                    <code>&lt;line&gt;</code>, <code>&lt;polygon&gt;</code>, and
+                    <code>&lt;text&gt;</code>. SVG is especially useful for logos,
+                    icons, diagrams, and other graphics that need to remain sharp
+                    at different sizes.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Canvas", "HTML5Features", new { area = "HTML" })">
+                    ← Previous: Canvas
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("ProgressMeter", "HTML5Features", new { area = "HTML" })">
+                    Next: Progress &amp; Meter →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

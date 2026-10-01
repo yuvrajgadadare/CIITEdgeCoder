@@ -1,0 +1,818 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Paragraphs";
+}
+
+<style>
+
+    #html-paragraphs-page pre {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        #html-paragraphs-page pre code {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+    #html-paragraphs-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 24px;
+    }
+
+    #html-paragraphs-page .info-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+        #html-paragraphs-page .info-card h5 {
+            color: #5b21b6;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+    #html-paragraphs-page .example-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #html-paragraphs-page .comparison-table th {
+        background: #f8f9fa;
+    }
+
+</style>
+
+
+<main id="html-paragraphs-page"
+      class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/HTML/Views/Shared/HTMLTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <section class="col-lg-9">
+
+
+            <!-- PAGE TITLE -->
+            <div class="mb-4">
+
+                <h1 class="fw-bold">
+                    HTML Paragraphs
+                </h1>
+
+                <p class="lead">
+                    Learn how to create paragraphs, organize text content,
+                    and understand how browsers handle whitespace inside
+                    HTML paragraphs.
+                </p>
+
+            </div>
+
+
+            <!-- INTRODUCTION -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    What is an HTML Paragraph?
+                </h2>
+
+                <p>
+                    The HTML <code>&lt;p&gt;</code> element is used to define
+                    a paragraph of text.
+                </p>
+
+                <p>
+                    Paragraphs are one of the most commonly used elements in
+                    HTML because they help organize readable text content
+                    into separate sections.
+                </p>
+
+                <div class="alert alert-info">
+
+                    <strong>Basic Syntax:</strong>
+
+                    <pre class="mb-0 mt-3"><code>&lt;p&gt;Your paragraph text goes here.&lt;/p&gt;</code></pre>
+
+                </div>
+
+            </div>
+
+
+            <!-- BASIC EXAMPLE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Basic Paragraph Example
+                </h2>
+
+                <pre><code>&lt;p&gt;
+    HTML is the foundation of web development.
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+                <h3 class="h5 fw-bold mt-4">
+                    Output
+                </h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        HTML is the foundation of web development.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MULTIPLE PARAGRAPHS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Multiple Paragraphs
+                </h2>
+
+                <p>
+                    You can use multiple <code>&lt;p&gt;</code> elements
+                    to create multiple paragraphs on the same page.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    HTML is used to structure web pages.
+&lt;/p&gt;
+
+&lt;p&gt;
+    CSS is used to style web pages.
+&lt;/p&gt;
+
+&lt;p&gt;
+    JavaScript adds behavior and interaction.
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+                <div class="example-box">
+
+                    <p>
+                        HTML is used to structure web pages.
+                    </p>
+
+                    <p>
+                        CSS is used to style web pages.
+                    </p>
+
+                    <p class="mb-0">
+                        JavaScript adds behavior and interaction.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PARAGRAPH DISPLAY -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Paragraphs Create Separate Blocks
+                </h2>
+
+                <p>
+                    Browsers normally display each paragraph as a separate
+                    block of text with spacing around it.
+                </p>
+
+                <pre><code>&lt;p&gt;First paragraph&lt;/p&gt;
+
+&lt;p&gt;Second paragraph&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+                <div class="example-box">
+
+                    <p>
+                        First paragraph
+                    </p>
+
+                    <p class="mb-0">
+                        Second paragraph
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MULTILINE SOURCE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Writing a Paragraph Across Multiple Lines
+                </h2>
+
+                <p>
+                    HTML source code can be formatted across multiple lines
+                    to improve readability.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    HTML is used to create
+    the structure of web pages.
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+                <p>
+                    The browser normally renders the text as a continuous
+                    paragraph unless an element such as <code>&lt;br&gt;</code>
+                    is used to create a line break.
+                </p>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        HTML is used to create
+                        the structure of web pages.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- WHITESPACE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Whitespace in HTML
+                </h2>
+
+                <p>
+                    Browsers generally collapse consecutive spaces, tabs,
+                    and line breaks in normal HTML text into a single space.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    HTML     CSS       JavaScript
+&lt;/p&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+                <p>
+                    The browser will normally display the text with regular
+                    spacing rather than preserving every space exactly as
+                    written in the source code.
+                </p>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Output
+                </h3>
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        HTML CSS JavaScript
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- BR VS P -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Paragraph vs Line Break
+                </h2>
+
+                <p>
+                    The <code>&lt;p&gt;</code> element and
+                    <code>&lt;br&gt;</code> element have different purposes.
+                </p>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle comparison-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Element</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;p&gt;</code>
+                                </td>
+
+                                <td>
+                                    Defines a paragraph.
+                                </td>
+
+                                <td>
+                                    <code>&lt;p&gt;Hello&lt;/p&gt;</code>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;br&gt;</code>
+                                </td>
+
+                                <td>
+                                    Inserts a line break.
+                                </td>
+
+                                <td>
+                                    <code>Hello&lt;br&gt;World</code>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- PARAGRAPH WITH BR -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Paragraph with Line Breaks
+                </h2>
+
+                <pre><code>&lt;p&gt;
+    Welcome to CIIT Institute.&lt;br&gt;
+    Learn HTML step-by-step.&lt;br&gt;
+    Start your web development journey.
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Output
+                </h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        Welcome to CIIT Institute.<br />
+                        Learn HTML step-by-step.<br />
+                        Start your web development journey.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PARAGRAPH WITH TEXT FORMATTING -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Paragraphs with Text Formatting
+                </h2>
+
+                <p>
+                    Paragraphs can contain other inline HTML elements for
+                    formatting and emphasis.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    Learn &lt;strong&gt;HTML&lt;/strong&gt; and
+    &lt;em&gt;web development&lt;/em&gt;.
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        Learn <strong>HTML</strong> and
+                        <em>web development</em>.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PARAGRAPH WITH LINK -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Paragraph with a Link
+                </h2>
+
+                <pre><code>&lt;p&gt;
+    Visit our
+    &lt;a href="#"&gt;HTML Course&lt;/a&gt;
+    to continue learning.
+&lt;/p&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+
+                        Visit our
+                        <a href="#">
+                            HTML Course
+                        </a>
+                        to continue learning.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PARAGRAPH ATTRIBUTES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Attributes with Paragraphs
+                </h2>
+
+                <p>
+                    The <code>&lt;p&gt;</code> element can also use common
+                    HTML attributes such as <code>id</code>,
+                    <code>class</code>, and <code>style</code>.
+                </p>
+
+                <pre><code>&lt;p id="intro"
+   class="description"
+   style="color: blue;"&gt;
+
+    WELCOME TO CIIT TRAINING INSTITUTE 👀🤓 .
+
+&lt;/p&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p id="paragraph-example"
+                       class="fw-semibold"
+                       style="color: blue;">
+
+                        WELCOME TO CIIT TRAINING INSTITUTE 👀🤓 .
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SEMANTIC MEANING -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Why Use Paragraphs?
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Readability
+                            </h5>
+
+                            <p class="mb-0">
+                                Paragraphs break long text into manageable
+                                sections for readers.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Content Structure
+                            </h5>
+
+                            <p class="mb-0">
+                                Paragraphs help organize related information
+                                into separate content blocks.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Accessibility
+                            </h5>
+
+                            <p class="mb-0">
+                                Proper document structure makes content easier
+                                for users and assistive technologies to understand.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Maintainability
+                            </h5>
+
+                            <p class="mb-0">
+                                Clearly separated paragraphs make HTML easier
+                                to read and maintain.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMPLETE EXAMPLE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Complete Example
+                </h2>
+
+                <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;Paragraph Example&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;CIIT Institute&lt;/h1&gt;
+
+    &lt;p&gt;
+        CIIT Institute provides training in
+        modern software development technologies.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        Students can learn HTML, CSS, JavaScript,
+        C#, Java, Python, and other technologies.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        Start learning today and build your
+        web development skills.
+    &lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+            </div>
+            <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <!-- COMMON MISTAKES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Common Mistakes
+                </h2>
+
+                <ul>
+
+                    <li class="mb-2">
+                        Using paragraph tags only for visual spacing.
+                    </li>
+
+                    <li class="mb-2">
+                        Creating unnecessary nested paragraphs.
+                    </li>
+
+                    <li class="mb-2">
+                        Expecting multiple spaces in source code to appear
+                        exactly the same in the browser.
+                    </li>
+
+                    <li>
+                        Using <code>&lt;br&gt;</code> repeatedly when a
+                        separate paragraph would be more appropriate.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Practice Exercise
+                </h2>
+
+                <ol>
+
+                    <li class="mb-2">
+                        Create three paragraphs about yourself.
+                    </li>
+
+                    <li class="mb-2">
+                        Add a heading above the paragraphs.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>&lt;br&gt;</code> inside one paragraph.
+                    </li>
+
+                    <li class="mb-2">
+                        Make one word bold using
+                        <code>&lt;strong&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Add a link inside a paragraph.
+                    </li>
+
+                    <li>
+                        Apply a CSS class to one paragraph.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    The <code>&lt;p&gt;</code> element is used to create
+                    paragraphs in HTML. Paragraphs help organize readable
+                    text content into separate sections. HTML normally
+                    collapses consecutive whitespace, while the
+                    <code>&lt;br&gt;</code> element can be used when a
+                    line break is required inside text.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Headings", "BasicHTML", new { area = "HTML" })">
+
+                    ← Previous: Headings
+
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Comments", "BasicHTML", new { area = "HTML" })">
+
+                    Next: Comments →
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>

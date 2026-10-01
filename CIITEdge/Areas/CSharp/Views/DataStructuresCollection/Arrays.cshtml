@@ -1,0 +1,840 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Arrays";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <!-- ARRAYS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4" id="arrays">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">Arrays in C#</h2>
+
+                <p class="text-muted mb-4">
+                    An array is a collection of elements of the same data type stored under
+                    a single variable name. Arrays are useful when we need to store multiple
+                    values of the same type.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    An array allows us to store multiple values of the same data type
+                    in a single variable.
+                </div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Why Do We Use Arrays?</h4>
+
+                <p class="text-muted">
+                    Suppose we want to store marks of five students. Without an array,
+                    we would need five separate variables.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>int mark1 = 80;
+int mark2 = 75;
+int mark3 = 90;
+int mark4 = 85;
+int mark5 = 70;</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    Using an array, we can store all these values in a single variable.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>int[] marks = { 80, 75, 90, 85, 70 };</code></pre>
+                </div>
+
+                <div class="alert alert-success">
+                    Arrays make programs easier to manage when we have multiple values.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Array Syntax</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>dataType[] arrayName = new dataType[size];</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    Example:
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>int[] numbers = new int[5];</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Declaring and Initializing an Array
+                </h4>
+
+                <p class="text-muted">
+                    An array can be declared and initialized at the same time.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] numbers = { 10, 20, 30, 40, 50 };
+
+Console.WriteLine(numbers[0]);
+Console.WriteLine(numbers[1]);
+Console.WriteLine(numbers[2]);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30</code></pre>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>Important:</strong>
+                    Array indexing starts from <strong>0</strong>, not 1.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Accessing Array Elements
+                </h4>
+
+                <p class="text-muted">
+                    Each element in an array can be accessed using its index.
+                </p>
+
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string[] names = { "Rahul", "Amit", "Sneha", "Priya" };
+
+Console.WriteLine(names[0]);
+Console.WriteLine(names[2]);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Rahul
+Sneha</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Changing Array Values
+                </h4>
+
+                <p class="text-muted">
+                    Array elements can be changed by assigning a new value to a specific index.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] numbers = { 10, 20, 30 };
+
+numbers[1] = 100;
+
+Console.WriteLine(numbers[1]);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>100</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Array Length
+                </h4>
+
+                <p class="text-muted">
+                    The <strong>Length</strong> property returns the total number of
+                    elements present in an array.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] numbers = { 10, 20, 30, 40, 50 };
+
+Console.WriteLine(numbers.Length);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>5</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Using for Loop with Array
+                </h4>
+
+                <p class="text-muted">
+                    A for loop can be used to access every element of an array using its index.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] numbers = { 10, 20, 30, 40, 50 };
+
+for (int i = 0; i &lt; numbers.Length; i++)
+{
+    Console.WriteLine(numbers[i]);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Using foreach with Array
+                </h4>
+
+                <p class="text-muted">
+                    The foreach loop is commonly used when we want to read every
+                    element of an array.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] numbers = { 10, 20, 30, 40, 50 };
+
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Sorting an Array
+                </h4>
+
+                <p class="text-muted">
+                    The <strong>Array.Sort()</strong> method sorts array elements
+                    in ascending order.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] numbers = { 50, 20, 40, 10, 30 };
+
+Array.Sort(numbers);
+
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Searching in an Array
+                </h4>
+
+                <p class="text-muted">
+                    The <strong>Array.IndexOf()</strong> method can be used to find
+                    the index of a particular element.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] numbers = { 10, 20, 30, 40, 50 };
+
+int index = Array.IndexOf(numbers, 30);
+
+Console.WriteLine(index);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>2</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Multidimensional Array
+                </h4>
+
+                <p class="text-muted">
+                    A multidimensional array stores data in more than one dimension.
+                    A two-dimensional array is commonly used to represent rows and columns.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[,] matrix =
+{
+    { 10, 20 },
+    { 30, 40 }
+};
+
+Console.WriteLine(matrix[0, 0]);
+Console.WriteLine(matrix[1, 1]);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+40</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Jagged Array
+                </h4>
+
+                <p class="text-muted">
+                    A jagged array is an array of arrays. Each inner array can contain
+                    a different number of elements.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[][] numbers = new int[2][];
+
+numbers[0] = new int[] { 10, 20 };
+numbers[1] = new int[] { 30, 40, 50 };
+
+Console.WriteLine(numbers[0][1]);
+Console.WriteLine(numbers[1][2]);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>20
+50</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Common Array Mistakes
+                </h4>
+
+                <ul class="text-muted">
+                    <li>Array indexing starts from 0.</li>
+                    <li>Do not access an index outside the array range.</li>
+                    <li>All elements of a normal array must have the same data type.</li>
+                    <li>Use Length to determine the number of elements.</li>
+                    <li>Remember that a normal array has a fixed size.</li>
+                </ul>
+
+
+                <div class="alert alert-success">
+                    <strong>CIIT Practical Point:</strong>
+                    Arrays are commonly used for storing marks, employee IDs,
+                    product prices, student names and other fixed-size data.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Real-World Example
+                </h4>
+
+                <p class="text-muted">
+                    Consider a student management system where we need to store
+                    marks of multiple subjects.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] marks = { 85, 78, 92, 88, 75 };
+
+int total = 0;
+
+foreach (int mark in marks)
+{
+    total = total + mark;
+}
+
+Console.WriteLine("Total Marks: " + total);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Total Marks: 418</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Interview Questions
+                </h4>
+
+                <h5 class="fw-bold">1. What is an array in C#?</h5>
+                <p class="text-muted mb-4">
+                    An array is a collection of elements of the same data type
+                    stored under a single variable name.
+                </p>
+
+                <h5 class="fw-bold">2. From which index does an array start?</h5>
+                <p class="text-muted mb-4">
+                    Array indexing starts from 0.
+                </p>
+
+                <h5 class="fw-bold">3. What is the difference between an array and a List?</h5>
+                <p class="text-muted mb-4">
+                    An array has a fixed size, while a List can dynamically grow or shrink.
+                </p>
+
+                <h5 class="fw-bold">4. What is Array.Length?</h5>
+                <p class="text-muted mb-4">
+                    Array.Length returns the total number of elements in an array.
+                </p>
+
+                <h5 class="fw-bold">5. What is a multidimensional array?</h5>
+                <p class="text-muted">
+                    A multidimensional array stores data in multiple dimensions,
+                    such as rows and columns.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Arrays Summary
+                </h2>
+
+                <ul class="text-muted">
+                    <li>An array stores multiple values of the same data type.</li>
+                    <li>Array indexing starts from 0.</li>
+                    <li>The Length property returns the number of elements.</li>
+                    <li>Arrays can be processed using for and foreach loops.</li>
+                    <li>Array.Sort() can be used for sorting.</li>
+                    <li>Array.IndexOf() can be used for searching.</li>
+                    <li>C# supports multidimensional and jagged arrays.</li>
+                    <li>Arrays have a fixed size.</li>
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE QUESTIONS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Create an integer array and print all elements.</li>
+                    <li>Find the largest number from an array.</li>
+                    <li>Find the smallest number from an array.</li>
+                    <li>Calculate the sum of all array elements.</li>
+                    <li>Calculate the average of array elements.</li>
+                    <li>Reverse an array.</li>
+                    <li>Sort an array in ascending order.</li>
+                    <li>Search for an element in an array.</li>
+                    <li>Create a multidimensional array and display its values.</li>
+                    <li>Create a jagged array and display its elements.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- TOPIC NAVIGATION -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="/CSharp/OOPC/Interfaces"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="/CSharp/DataStructuresCollection/Strings"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+
+            <script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

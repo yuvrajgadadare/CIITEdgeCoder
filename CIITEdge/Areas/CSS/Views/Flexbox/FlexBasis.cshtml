@@ -1,0 +1,871 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Flex Basis";
+}
+
+<style>
+
+    #css-flex-basis-page {
+        color: #212529;
+    }
+
+    #css-flex-basis-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-flex-basis-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-basis-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-basis-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-flex-basis-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* Code */
+
+    #css-flex-basis-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-flex-basis-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* Explanation */
+
+    #css-flex-basis-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-flex-basis-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Diagram */
+
+    #css-flex-basis-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flex-basis-page .diagram-container {
+        display: flex;
+        gap: 12px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flex-basis-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 18px;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #css-flex-basis-page .basis-small {
+        flex-basis: 120px;
+    }
+
+    #css-flex-basis-page .basis-medium {
+        flex-basis: 220px;
+    }
+
+    #css-flex-basis-page .basis-large {
+        flex-basis: 320px;
+    }
+
+    /* Output */
+
+    #css-flex-basis-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-flex-basis-page .output-container {
+        display: flex;
+        gap: 12px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flex-basis-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 20px;
+        text-align: center;
+        font-weight: 700;
+        box-sizing: border-box;
+    }
+
+    #css-flex-basis-page .output-small {
+        flex-basis: 120px;
+    }
+
+    #css-flex-basis-page .output-medium {
+        flex-basis: 220px;
+    }
+
+    #css-flex-basis-page .output-large {
+        flex-basis: 320px;
+    }
+
+    #css-flex-basis-page .equal-item {
+        flex-basis: 200px;
+    }
+
+    /* Property Cards */
+
+    #css-flex-basis-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-flex-basis-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-basis-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Note */
+
+    #css-flex-basis-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* Summary */
+
+    #css-flex-basis-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-flex-basis-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-basis-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+</style>
+
+
+<div id="css-flex-basis-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- Title -->
+
+                <h1>
+                    CSS Flex Basis
+                </h1>
+
+                <p>
+                    The CSS <strong>flex-basis</strong> property
+                    defines the initial size of a Flex Item along
+                    the container's main axis.
+                </p>
+
+                <p>
+                    It is one of the important Flexbox properties
+                    used together with <strong>flex-grow</strong>
+                    and <strong>flex-shrink</strong> to control
+                    how Flex Items are sized and distributed.
+                </p>
+
+
+                <!-- What Is Flex Basis -->
+
+                <h2>
+                    What Is Flex Basis?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        <strong>flex-basis</strong> specifies the
+                        initial main size of a Flex Item before
+                        the remaining available space is distributed.
+                    </p>
+
+                    <p>
+                        When the Flex Direction is
+                        <strong>row</strong>, flex-basis generally
+                        controls the initial width of the item.
+                    </p>
+
+                    <p>
+                        When the Flex Direction is
+                        <strong>column</strong>, flex-basis generally
+                        controls the initial height of the item.
+                    </p>
+
+                </div>
+
+
+                <!-- Syntax -->
+
+                <h2>
+                    Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    flex-basis: value;
+}</code></pre>
+
+                </div>
+
+
+                <!-- Common Values -->
+
+                <h2>
+                    Common Flex Basis Values
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Value</th>
+                                <th>Meaning</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>auto</strong>
+                                </td>
+
+                                <td>
+                                    Uses the item's main-size
+                                    property such as width.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>100px</strong>
+                                </td>
+
+                                <td>
+                                    Sets an initial size of
+                                    100 pixels.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>50%</strong>
+                                </td>
+
+                                <td>
+                                    Uses 50 percent of the
+                                    available main-axis size.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>0</strong>
+                                </td>
+
+                                <td>
+                                    Starts the item from a
+                                    zero basis before flexing.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Flex Basis Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-container">
+
+                        <div class="diagram-item basis-small">
+                            120px
+                        </div>
+
+                        <div class="diagram-item basis-medium">
+                            220px
+                        </div>
+
+                        <div class="diagram-item basis-large">
+                            320px
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        Different flex-basis values create different
+                        initial sizes for Flex Items.
+                    </p>
+
+                </div>
+
+
+                <!-- Example 1 -->
+
+                <h2>
+                    Example 1: Fixed Flex Basis
+                </h2>
+
+                <p>
+                    A fixed pixel value can be used to define the
+                    initial size of a Flex Item.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    flex-basis: 200px;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container">
+
+                        <div class="output-item equal-item">
+                            Item 1
+                        </div>
+
+                        <div class="output-item equal-item">
+                            Item 2
+                        </div>
+
+                        <div class="output-item equal-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="mt-3">
+                    Each item starts with a flex basis of
+                    <strong>200px</strong>.
+                </p>
+
+
+                <!-- Example 2 -->
+
+                <h2>
+                    Example 2: Different Flex Basis Values
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.small {
+    flex-basis: 120px;
+}
+
+.medium {
+    flex-basis: 220px;
+}
+
+.large {
+    flex-basis: 320px;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container">
+
+                        <div class="output-item output-small">
+                            120px
+                        </div>
+
+                        <div class="output-item output-medium">
+                            220px
+                        </div>
+
+                        <div class="output-item output-large">
+                            320px
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="mt-3">
+                    The three items have different initial main-axis
+                    sizes because their flex-basis values are
+                    different.
+                </p>
+
+
+                <!-- Example 3 -->
+
+                <h2>
+                    Example 3: Percentage Flex Basis
+                </h2>
+
+                <p>
+                    Flex basis can also use percentage values.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    flex-basis: 50%;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        With a row-based Flex Container, a
+                        <strong>50%</strong> flex basis gives the
+                        item a preferred starting width based on
+                        the container's main size.
+                    </p>
+
+                </div>
+
+
+                <!-- Example 4 -->
+
+                <h2>
+                    Example 4: Flex Basis with Grow
+                </h2>
+
+                <p>
+                    Flex basis works together with
+                    <strong>flex-grow</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    flex-basis: 200px;
+    flex-grow: 1;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The item starts with a preferred basis of
+                        <strong>200px</strong>.
+                    </p>
+
+                    <p>
+                        If additional space is available,
+                        <strong>flex-grow: 1</strong> allows the
+                        item to grow and use some of that space.
+                    </p>
+
+                </div>
+
+
+                <!-- Example 5 -->
+
+                <h2>
+                    Example 5: Flex Basis with Shrink
+                </h2>
+
+                <p>
+                    Flex basis can also work together with
+                    <strong>flex-shrink</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    flex-basis: 300px;
+    flex-shrink: 1;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The item's preferred starting size is
+                        <strong>300px</strong>.
+                    </p>
+
+                    <p>
+                        If the container does not have enough
+                        space, <strong>flex-shrink: 1</strong>
+                        allows the item to become smaller.
+                    </p>
+
+                </div>
+
+
+                <!-- Flex Basis vs Width -->
+
+                <h2>
+                    Flex Basis vs Width
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Property</th>
+                                <th>Purpose</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>width</strong>
+                                </td>
+
+                                <td>
+                                    Sets the width of an element.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>flex-basis</strong>
+                                </td>
+
+                                <td>
+                                    Defines the initial size of a
+                                    Flex Item along its main axis.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        In a row-based Flex Container,
+                        <strong>flex-basis</strong> generally
+                        influences the initial width.
+                    </p>
+
+                    <p>
+                        In a column-based Flex Container,
+                        <strong>flex-basis</strong> generally
+                        influences the initial height.
+                    </p>
+
+                </div>
+
+
+                <!-- Flex Shorthand -->
+
+                <h2>
+                    Flex Shorthand
+                </h2>
+
+                <p>
+                    The <strong>flex</strong> shorthand can combine
+                    <strong>flex-grow</strong>,
+                    <strong>flex-shrink</strong>, and
+                    <strong>flex-basis</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    flex: 1 1 200px;
+}</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    This represents:
+                </p>
+
+                <div class="code-box">
+
+<pre><code>flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 200px;</code></pre>
+
+                </div>
+
+
+                <!-- Real World -->
+
+                <h2>
+                    Example 🤓🌍
+                </h2>
+
+                <p>
+                    Flex basis is commonly used for responsive
+                    course cards, pricing cards, dashboard panels,
+                    navigation items, and product layouts.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.course-card {
+    flex: 1 1 280px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The course card starts with a preferred size
+                        of <strong>280px</strong>.
+                    </p>
+
+                    <p>
+                        It can grow when extra space is available
+                        and shrink when the container becomes
+                        smaller.
+                    </p>
+
+                </div>
+
+
+                <!-- Relationship -->
+
+                <h2>
+                    Flex Grow, Flex Shrink and Flex Basis
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Flex Basis
+                            </h3>
+
+                            <p>
+                                Defines the preferred initial
+                                main-axis size of the Flex Item.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Flex Grow
+                            </h3>
+
+                            <p>
+                                Controls how the item uses
+                                extra available space.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Flex Shrink
+                            </h3>
+
+                            <p>
+                                Controls how the item reduces
+                                its size when space is insufficient.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Important Note -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    <strong>flex-basis</strong> defines the initial
+                    main-axis size of a Flex Item. Its final size
+                    can be affected by available container space,
+                    <strong>flex-grow</strong>,
+                    <strong>flex-shrink</strong>, gaps, padding,
+                    borders, and other Flexbox rules.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>flex-basis</strong> property
+                        defines the initial main-axis size of a
+                        Flex Item. It can use values such as
+                        pixels, percentages, or auto. It works
+                        closely with <strong>flex-grow</strong>
+                        and <strong>flex-shrink</strong> to create
+                        flexible and responsive layouts. The
+                        shorthand <strong>flex</strong> can combine
+                        all three properties.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("FlexShrink", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Flex Shrink
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Index", "Grid", new { area = "CSS" })">
+
+                            Next: CSS Grid →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

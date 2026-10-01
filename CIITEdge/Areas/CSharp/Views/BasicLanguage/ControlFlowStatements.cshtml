@@ -1,0 +1,779 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Control Flow Statements";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+    .try-it-btn:hover 
+    {
+        background: #157347;
+        color: #fff;
+    }
+
+</style>
+
+
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Control Flow Statements
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Decision Making in programming is similar to decision making in real life.
+                    In programming too, a certain block of code needs to be executed when some
+                    condition is fulfilled. A programming language uses control statements to
+                    control the flow of execution of program based on certain conditions.
+                    Below are some decision-making statements.
+                </p>
+
+                <!-- Decision Making -->
+                <h3 class="h3 fw-bold text-dark mt-4 mb-4">
+                    Decision Making Statements
+                </h3>
+
+                <ol>
+
+                    <!-- IF -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            if Statement
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            The if statement checks the given condition. If the condition evaluates
+                            to be true then the block of code/statements will execute otherwise not.
+                        </p>
+
+                        <h6 class="fw-bold text-primary mb-2">Syntax</h6>
+
+                        <div class="code-block mb-4 shadow-sm">
+                            <div class="code-lang-tag">C#</div>
+                            <pre class="mb-0"><code>if (condition)
+{
+    // code to be executed
+}</code></pre>
+                        </div>
+
+                        <p class="text-muted mb-4">
+                            <b>Note:</b> If the curly brackets { } are not used with if statements
+                            then the statement just next to it is only considered associated with
+                            the if statement.
+                        </p>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+<pre class="mb-0"><code>using System;
+ 
+string name = "CIIT";
+
+// Using if statement
+if (name == "CIIT")
+{
+    Console.WriteLine("Welcome to CIIT Training Institute ❤️👨‍🏫..!");
+}</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+                                </button>
+                            </div>
+
+                        <div class="alert alert-info">
+                            <strong>When to use:</strong>
+                            Use an <code>if</code> statement when you want to execute code
+                            only when a particular condition is true.
+                        </div>
+                    </li>
+
+                    <!-- IF ELSE -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            if-else Statement
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            Use this when we want one action to happen if the condition is true,
+                            and an alternative action to happen if it is false.
+                        </p>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+                            <div class="try-it-example">
+
+                                <div class="code-block shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        C#
+                                    </div>
+
+ <pre class="mb-0"><code>using System;
+ 
+int num = 20;
+
+if (num % 2 == 0)
+{
+    Console.WriteLine($"The number {num} is an even.");
+}
+else
+{
+    Console.WriteLine($"The number {num} is an odd.");
+}</code></pre>
+
+                                </div>
+
+                                <div class="text-end mt-2 mb-3">
+                                    <button type="button"
+                                            class="try-it-btn"
+                                            onclick="tryItYourself(this)">
+                                        <i class="bi bi-play-fill me-1"></i>
+                                        Try It
+                                    </button>
+                                </div>
+
+                        <div class="alert alert-info">
+                            <strong>Real-World Example:</strong>
+                            An application can use <code>if-else</code> to check whether
+                            a candidate is eligible or not eligible based on their age or marks.
+                        </div>
+                    </li>
+
+                    <!-- ELSE IF -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            else if Statement (Multiple Conditions)
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            If you need to test multiple distinct conditions, you can chain them
+                            using <b>else if</b>. The computer checks them in order and runs the
+                            code for the <b>first</b> condition that evaluates to <b>true</b>.
+                        </p>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+                                <div class="try-it-example">
+
+                                    <div class="code-block shadow-sm">
+
+                                        <div class="code-lang-tag">
+                                            C#
+                                        </div>
+
+<pre class="mb-0"><code>using System;
+ 
+int percentage = 85;
+
+if (percentage &gt;= 80)
+{
+    Console.WriteLine("Grade: Excellent");
+}
+else if (percentage &gt;= 60)
+{
+    Console.WriteLine("Grade: Good"); // This will execute
+}
+else if (percentage &gt;= 40)
+{
+    Console.WriteLine("Grade: Average");
+}
+else
+{
+    Console.WriteLine("Grade: Poor"); // Fail if no conditions match
+}</code></pre>
+
+                                    </div>
+
+                                    <div class="text-end mt-2 mb-3">
+                                        <button type="button"
+                                                class="try-it-btn"
+                                                onclick="tryItYourself(this)">
+                                            <i class="bi bi-play-fill me-1"></i>
+                                            Try It
+                                        </button>
+                                    </div>
+
+                        <div class="alert alert-warning">
+                            <strong>Important:</strong>
+                            The conditions are checked from top to bottom.
+                            Once a condition becomes true, its block executes and the remaining
+                            <code>else if</code> conditions are skipped.
+                        </div>
+                    </li>
+
+                    <!-- LOGICAL CONDITIONS -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            Combining Conditions with Logical Operators
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            We can check multiple conditions inside a single if statement using
+                            logical operators:
+                        </p>
+
+                        <ul class="text-muted mb-4">
+                            <li>
+                                <b>&amp;&amp; (AND):</b> Both conditions must be true.
+                            </li>
+                            <li>
+                                <b>|| (OR):</b> At least one condition must be true.
+                            </li>
+                            <li>
+                                <b>! (NOT):</b> Reverses the truth of the condition.
+                            </li>
+                        </ul>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+                                    <div class="try-it-example">
+
+                                        <div class="code-block shadow-sm">
+
+                                            <div class="code-lang-tag">
+                                                C#
+                                            </div>
+
+<pre class="mb-0"><code>using System;
+ 
+int a = 10;
+int b = 20;
+int c = 30;
+
+if (a &gt; b &amp;&amp; a &gt; c)
+{
+    Console.WriteLine($"{a} is greatest");
+}
+else if (b &gt; a &amp;&amp; b &gt; c)
+{
+    Console.WriteLine($"{b} is greatest");
+}
+else if (a == b &amp;&amp; b &gt; c &amp;&amp; c == a)
+{
+    Console.WriteLine("all are equal");
+}
+else
+{
+    Console.WriteLine($"{c} is greatest");
+}</code></pre>
+
+                                        </div>
+
+                                        <div class="text-end mt-2 mb-3">
+                                            <button type="button"
+                                                    class="try-it-btn"
+                                                    onclick="tryItYourself(this)">
+                                                <i class="bi bi-play-fill me-1"></i>
+                                                Try It
+                                            </button>
+                                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Example:</strong>
+                            Logical operators are useful when a decision depends on more than
+                            one condition.
+                        </div>
+                    </li>
+
+                </ol>
+
+                <!-- SWITCH -->
+                <h3 class="h3 fw-bold text-dark mt-5 mb-4">
+                    Switch Case Statement
+                </h3>
+
+                <p class="text-muted mb-4">
+                    In C#, the <b>switch statement</b> is a control flow structure used to execute
+                    a specific block of code out of multiple choices. It is a cleaner, more
+                    readable alternative to an if-else if ladder when you are comparing
+                    <b>one variable against a list of concrete values</b>.
+                </p>
+
+                <!-- Traditional Switch -->
+                <h4 class="h4 fw-bold text-dark mt-4 mb-4">
+                    Traditional <b>switch</b> Statement
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The traditional switch evaluates a variable (the expression) and matches it
+                    against various case labels.
+                </p>
+
+                <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+                                <div class="try-it-example">
+
+                                    <div class="code-block shadow-sm">
+
+                                        <div class="code-lang-tag">
+                                            C#
+                                        </div>
+
+<pre class="mb-0"><code>using System;
+ 
+string priority = "High";
+
+switch (priority)
+{
+    case "Low":
+        Console.WriteLine("Fix within 7 days.");
+        break; // Exits the switch block
+
+    case "Medium":
+        Console.WriteLine("Fix within 48 hours.");
+        break;
+
+    case "High":
+        Console.WriteLine("Fix immediately!");
+        break;
+
+    default:
+        Console.WriteLine("Unknown priority level.");
+        break;
+}</code></pre>
+
+                                    </div>
+
+                                    <div class="text-end mt-2 mb-3">
+                                        <button type="button"
+                                                class="try-it-btn"
+                                                onclick="tryItYourself(this)">
+                                            <i class="bi bi-play-fill me-1"></i>
+                                            Try It
+                                        </button>
+                                    </div>
+
+                <div class="alert alert-info">
+                    <strong>Important:</strong>
+                    The <code>break</code> statement exits the switch block after a matching
+                    case is executed.
+                </div>
+
+                <!-- Grouping Cases -->
+                <h4 class="h4 fw-bold text-dark mt-4 mb-4">
+                    Grouping Multiple Cases
+                </h4>
+
+                <p class="text-muted mb-4">
+                    If multiple cases share the <b>exact same code</b>, you can stack them
+                    together without a break between them.
+                </p>
+
+                <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+
+
+                                    <div class="try-it-example">
+
+                                        <div class="code-block shadow-sm">
+
+                                            <div class="code-lang-tag">
+                                                C#
+                                            </div>
+
+<pre class="mb-0"><code>using System;
+ 
+char grade = 'B';
+
+switch (grade)
+{
+    case 'A':
+    case 'B':
+    case 'C':
+        Console.WriteLine("You passed!");
+        break;
+
+    case 'D':
+    case 'F':
+        Console.WriteLine("You failed.");
+        break;
+
+    default:
+        Console.WriteLine("Invalid grade.");
+        break;
+}</code></pre>
+
+                                        </div>
+
+                                        <div class="text-end mt-2 mb-3">
+                                            <button type="button"
+                                                    class="try-it-btn"
+                                                    onclick="tryItYourself(this)">
+                                                <i class="bi bi-play-fill me-1"></i>
+                                                Try It
+                                            </button>
+                                        </div>
+
+
+                <!-- Modern Switch -->
+                <h4 class="h4 fw-bold text-dark mt-4 mb-4">
+                    Modern C# <b>switch</b> Expressions
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Introduced in C# 8.0, the switch expression provides a much cleaner,
+                    more compact syntax when you want to return a value from the switch block.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Instead of case and break, it uses the lambda arrow (=&gt;), and replacing
+                    default is the discard underscore (_).
+                </p>
+
+                <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+
+                                        <div class="try-it-example">
+
+                                            <div class="code-block shadow-sm">
+
+                                                <div class="code-lang-tag">
+                                                    C#
+                                                </div>
+
+<pre class="mb-0"><code>using System;
+ 
+int dayNumber = 3;
+
+// Elegant, single-statement evaluation
+string dayName = dayNumber switch
+{
+    1 =&gt; "Monday",
+    2 =&gt; "Tuesday",
+    3 =&gt; "Wednesday",
+    4 =&gt; "Thursday",
+    5 =&gt; "Friday",
+    _ =&gt; "Weekend / Unknown" // The discard pattern (default)
+};
+
+Console.WriteLine(dayName); // Outputs: Wednesday</code></pre>
+
+                                            </div>
+
+                                            <div class="text-end mt-2 mb-3">
+                                                <button type="button"
+                                                        class="try-it-btn"
+                                                        onclick="tryItYourself(this)">
+                                                    <i class="bi bi-play-fill me-1"></i>
+                                                    Try It
+                                                </button>
+                                            </div>
+
+                <!-- Advanced Switch -->
+                <h4 class="h4 fw-bold text-dark mt-4 mb-4">
+                    Advanced Switch with Type Checking (is Pattern)
+                </h4>
+
+                <p class="text-muted mb-4">
+                    You can use switch to inspect the <b>type</b> of an object, combining
+                    the logic of the is operator with branching.
+                </p>
+
+                <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+
+                                            <div class="try-it-example">
+
+                                                <div class="code-block shadow-sm">
+
+                                                    <div class="code-lang-tag">
+                                                        C#
+                                                    </div>
+
+<pre class="mb-0"><code>using System;
+ 
+class Circle
+{
+    public double Radius { get; set; }
+
+    public Circle(double radius)
+    {
+        Radius = radius;
+    }
+}
+
+class Rectangle
+{
+    public double Width { get; set; }
+    public double Height { get; set; }
+
+    public Rectangle(double width, double height)
+    {
+        Width = width;
+        Height = height;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        object shape = new Circle(5);
+
+        switch (shape)
+        {
+            case Circle c:
+                Console.WriteLine($"Circle with radius {c.Radius}");
+                break;
+
+            case Rectangle r:
+                Console.WriteLine($"Rectangle of {r.Width}x{r.Height}");
+                break;
+
+            case null:
+                Console.WriteLine("Shape is null.");
+                break;
+        }
+    }
+}</code></pre>
+
+                                                </div>
+
+                                                <div class="text-end mt-2 mb-3">
+                                                    <button type="button"
+                                                            class="try-it-btn"
+                                                            onclick="tryItYourself(this)">
+                                                        <i class="bi bi-play-fill me-1"></i>
+                                                        Try It
+                                                    </button>
+                                                </div>
+
+                <!-- Real World Example -->
+                <div class="mt-5">
+                    <h4 class="fw-bold text-dark mb-3">
+                       Example 🤓🌍
+                    </h4>
+
+                    <p class="text-muted mb-4">
+                        Control flow statements are commonly used in real-world applications
+                        for login validation, student grading, employee eligibility,
+                        order processing, menu selection, and business rules.
+                    </p>
+
+<div class="try-it-example">
+    <div class="code-block shadow-sm">
+
+    <div class="code-lang-tag">
+        C#
+    </div>
+
+<pre class="mb-0"><code>using System;
+int marks = 75;
+
+if (marks &gt;= 80)
+{
+    Console.WriteLine("Grade: A");
+}
+else if (marks &gt;= 60)
+{
+    Console.WriteLine("Grade: B");
+}
+else if (marks &gt;= 40)
+{
+    Console.WriteLine("Grade: C");
+}
+else
+{
+    Console.WriteLine("Fail");
+}</code></pre>
+
+</div>
+
+    <div class="text-end mt-2 mb-3">
+        <button type="button"
+          class="try-it-btn"
+              onclick="tryItYourself(this)">
+                 <i class="bi bi-play-fill me-1"></i>
+                         Try It
+              </button>
+            </div>
+ </div>
+
+                <!-- Common Mistakes -->
+                <div class="mt-5">
+                    <h4 class="fw-bold text-dark mb-3">
+                        Common Mistakes to Avoid
+                    </h4>
+
+                    <ul class="text-muted">
+                        <li class="mb-2">
+                            Do not confuse <code>=</code> with <code>==</code>.
+                        </li>
+
+                        <li class="mb-2">
+                            Make sure conditions are written in the correct order
+                            when using multiple <code>else if</code> statements.
+                        </li>
+
+                        <li class="mb-2">
+                            Use curly braces to make blocks clear and avoid accidental
+                            execution of only one statement.
+                        </li>
+
+                        <li class="mb-2">
+                            Remember to use <code>break</code> in traditional switch cases
+                            where required.
+                        </li>
+
+                        <li class="mb-2">
+                            Use switch when comparing one expression against multiple
+                            clear values.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Summary -->
+                <div class="alert alert-success mt-5">
+                    <h5 class="fw-bold">Summary</h5>
+
+                    <p class="mb-0">
+                        Control flow statements control the execution path of a C# program
+                        based on conditions. The <code>if</code>, <code>if-else</code>,
+                        and <code>else if</code> statements are useful for decision making,
+                        while the <code>switch</code> statement is useful when selecting
+                        between multiple choices. Logical operators can also be combined
+                        with conditions to create more powerful decisions.
+                    </p>
+                </div>
+
+                <!-- Practice Questions -->
+                <div class="mt-5">
+                    <h4 class="fw-bold text-dark mb-3">
+                        Practice Questions
+                    </h4>
+
+                    <ol class="text-muted">
+                        <li class="mb-2">
+                            Write a program to check whether a number is positive or negative.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program to check whether a number is even or odd.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program to find the greatest of three numbers.
+                        </li>
+
+                        <li class="mb-2">
+                            Write a program to calculate grades using <code>else if</code>.
+                        </li>
+
+                        <li class="mb-2">
+                            Create a menu-driven program using a traditional
+                            <code>switch</code> statement.
+                        </li>
+
+                        <li class="mb-2">
+                            Create a program using a modern C# switch expression.
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Next Topic -->
+                <div class="d-flex justify-content-between align-items-center mb-5">
+
+                    <a href="/CSharp/BasicLanguage/Operators"
+                       class="btn btn-outline-secondary">
+                        ← Previous Topic
+                    </a>
+
+                    <a href="/CSharp/BasicLanguage/Loops"
+                       class="btn btn-primary">
+                        Next Topic →
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<script>
+
+    function tryItYourself(button) {
+
+        // Find the code example containing this button
+        const example = button.closest(".try-it-example");
+
+        if (!example) {
+            alert("Code example not found.");
+            return;
+        }
+
+        // Find only this example's code
+        const codeElement = example.querySelector("pre code");
+
+        if (!codeElement) {
+            alert("Tutorial code not found.");
+            return;
+        }
+
+        // Get exact code and preserve indentation/new lines
+        const code = codeElement.textContent.trim();
+
+        // Create temporary form
+        const form = document.createElement("form");
+
+        form.method = "POST";
+
+        form.action =
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+        // IMPORTANT: Open compiler in new tab
+        form.target = "_blank";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
+        document.body.removeChild(form);
+    }
+
+</script>

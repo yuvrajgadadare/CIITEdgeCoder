@@ -1,0 +1,686 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Delegates & Events";
+}
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <!-- DELEGATES & EVENTS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Delegates &amp; Events
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Delegates and Events are important features of C# used to implement
+                    flexible, reusable, and event-driven programming. Delegates provide
+                    a way to reference methods, while events are used to notify other
+                    parts of an application when something happens.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    A delegate is a type-safe reference to a method.
+                    An event is a mechanism used to notify subscribers when an action occurs.
+                </div>
+
+
+                <!-- DELEGATES -->
+                <h3 class="fw-bold text-dark mt-4 mb-3">
+                    What is a Delegate?
+                </h3>
+
+                <p class="text-muted">
+                    A delegate is a type that can hold a reference to a method.
+                    The method assigned to a delegate must have a compatible
+                    signature with the delegate.
+                </p>
+
+                <p class="text-muted">
+                    Delegates are commonly used for callbacks, event handling,
+                    notifications, and passing methods as parameters.
+                </p>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Delegate Syntax
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>delegate returnType DelegateName(parameters);</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Simple Delegate Example
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>delegate void MessageDelegate();
+
+class Program
+{
+    static void ShowMessage()
+    {
+        Console.WriteLine("Welcome to CIIT Training Institute 👨‍🏫❤️...!");
+    }
+
+    static void Main()
+    {
+        MessageDelegate message = ShowMessage;
+
+        message();
+    }
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Welcome to CIIT Training Institute 👨‍🏫❤️...!</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Delegate with Parameters
+                </h4>
+
+                <p class="text-muted">
+                    A delegate can also reference a method that accepts parameters.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>delegate void CalculateDelegate(int a, int b);
+
+class Program
+{
+    static void Add(int a, int b)
+    {
+        Console.WriteLine(a + b);
+    }
+
+    static void Main()
+    {
+        CalculateDelegate calculate = Add;
+
+        calculate(10, 20);
+    }
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Delegate with Return Value
+                </h4>
+
+                <p class="text-muted">
+                    A delegate can reference a method that returns a value.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>delegate int CalculateDelegate(int a, int b);
+
+class Program
+{
+    static int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    static void Main()
+    {
+        CalculateDelegate calculate = Add;
+
+        int result = calculate(10, 20);
+
+        Console.WriteLine(result);
+    }
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Multicast Delegate
+                </h4>
+
+                <p class="text-muted">
+                    A multicast delegate can reference more than one method.
+                    The methods are executed in the order in which they are added.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>delegate void MessageDelegate();
+
+class Program
+{
+    static void FirstMessage()
+    {
+        Console.WriteLine("First Message");
+    }
+
+    static void SecondMessage()
+    {
+        Console.WriteLine("Second Message");
+    }
+
+    static void Main()
+    {
+        MessageDelegate message = FirstMessage;
+
+        message += SecondMessage;
+
+        message();
+    }
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>First Message
+Second Message</code></pre>
+                </div>
+
+
+                <!-- ACTION -->
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Action Delegate
+                </h4>
+
+                <p class="text-muted">
+                    Action is a built-in generic delegate that can reference a method
+                    returning void.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>Action message = () =&gt;
+{
+    Console.WriteLine("Hello from Action");
+};
+
+message();</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Hello from Action</code></pre>
+                </div>
+
+
+                <!-- FUNC -->
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Func Delegate
+                </h4>
+
+                <p class="text-muted">
+                    Func is a built-in generic delegate used when a method
+                    returns a value.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>Func&lt;int, int, int&gt; add =
+    (a, b) =&gt; a + b;
+
+int result = add(10, 20);
+
+Console.WriteLine(result);</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30</code></pre>
+                </div>
+
+
+                <!-- EVENTS -->
+                <h2 class="h2 fw-bold text-dark mt-5 mb-4">
+                    Events in C#
+                </h2>
+
+                <p class="text-muted">
+                    An event is used to notify other parts of an application
+                    when a particular action occurs.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Real-World Examples:</strong>
+                    Button clicks, order placement, payment completion,
+                    registration completion, and notification systems.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Creating an Event
+                </h4>
+
+                <p class="text-muted">
+                    Events are commonly declared using a delegate type.
+                    Other objects can subscribe to the event and receive
+                    notifications.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>class Order
+{
+    public event Action OrderPlaced;
+
+    public void PlaceOrder()
+    {
+        Console.WriteLine("Order placed.");
+
+        OrderPlaced?.Invoke();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Order order = new Order();
+
+        order.OrderPlaced += SendNotification;
+
+        order.PlaceOrder();
+    }
+
+    static void SendNotification()
+    {
+        Console.WriteLine("Notification sent.");
+    }
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Order placed.
+Notification sent.</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Event Subscription
+                </h4>
+
+                <p class="text-muted">
+                    The <strong>+=</strong> operator is used to subscribe a method
+                    to an event.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>order.OrderPlaced += SendNotification;</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    The method will be called when the event is raised.
+                </p>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Removing an Event Handler
+                </h4>
+
+                <p class="text-muted">
+                    The <strong>-=</strong> operator is used to unsubscribe
+                    a method from an event.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>order.OrderPlaced -= SendNotification;</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Event with Custom Event Arguments
+                </h4>
+
+                <p class="text-muted">
+                    Events can pass additional information using EventArgs-derived
+                    classes.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>class OrderEventArgs : EventArgs
+{
+    public int OrderId { get; set; }
+}
+
+class Order
+{
+    public event EventHandler&lt;OrderEventArgs&gt; OrderPlaced;
+
+    public void PlaceOrder(int orderId)
+    {
+        Console.WriteLine("Order placed.");
+
+        OrderPlaced?.Invoke(
+            this,
+            new OrderEventArgs
+            {
+                OrderId = orderId
+            });
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Order order = new Order();
+
+        order.OrderPlaced += HandleOrderPlaced;
+
+        order.PlaceOrder(101);
+    }
+
+    static void HandleOrderPlaced(
+        object sender,
+        OrderEventArgs e)
+    {
+        Console.WriteLine(
+            "Order ID: " + e.OrderId);
+    }
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Order placed.
+Order ID: 101</code></pre>
+                </div>
+
+
+                <!-- DELEGATE VS EVENT -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Delegate vs Event
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Delegate</th>
+                                <th>Event</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Purpose</td>
+                                <td>References methods</td>
+                                <td>Provides notifications</td>
+                            </tr>
+                            <tr>
+                                <td>Invocation</td>
+                                <td>Can be invoked by its holder</td>
+                                <td>Normally raised by its declaring type</td>
+                            </tr>
+                            <tr>
+                                <td>Common Usage</td>
+                                <td>Callbacks</td>
+                                <td>Event-driven programming</td>
+                            </tr>
+                            <tr>
+                                <td>Example</td>
+                                <td>Action, Func</td>
+                                <td>Button click, order placed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- REAL WORLD -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                   Example ❤️👨‍🏫
+                </h3>
+
+                <p class="text-muted">
+                    Consider an e-commerce application. When a customer places an order,
+                    multiple actions may need to happen, such as sending a notification,
+                    updating inventory, and creating an invoice.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>class OrderService
+{
+    public event Action OrderPlaced;
+
+    public void PlaceOrder()
+    {
+        Console.WriteLine("Order created.");
+
+        OrderPlaced?.Invoke();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        OrderService service = new OrderService();
+
+        service.OrderPlaced += SendEmail;
+        service.OrderPlaced += UpdateInventory;
+
+        service.PlaceOrder();
+    }
+
+    static void SendEmail()
+    {
+        Console.WriteLine("Email notification sent.");
+    }
+
+    static void UpdateInventory()
+    {
+        Console.WriteLine("Inventory updated.");
+    }
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Order created.
+Email notification sent.
+Inventory updated.</code></pre>
+                </div>
+
+
+                <div class="alert alert-success">
+                    <strong>CIIT Practical Point:</strong>
+                    Delegates and Events are important in .NET applications for
+                    callbacks, notifications, event-driven programming, UI events,
+                    messaging systems, and loosely coupled application components.
+                </div>
+
+
+                <!-- COMMON MISTAKES -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Common Mistakes
+                </h3>
+
+                <ul class="text-muted">
+                    <li>Using a delegate with an incompatible method signature.</li>
+                    <li>Forgetting to subscribe to an event.</li>
+                    <li>Forgetting to unsubscribe event handlers when required.</li>
+                    <li>Raising an event without checking whether it has subscribers.</li>
+                    <li>Using delegates when a simpler method call would be enough.</li>
+                    <li>Confusing the purpose of delegates and events.</li>
+                </ul>
+
+
+                <!-- INTERVIEW -->
+                <h3 class="fw-bold text-dark mt-5 mb-4">
+                    Interview Questions
+                </h3>
+
+                <h5 class="fw-bold">
+                    1. What is a delegate in C#?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    A delegate is a type-safe reference to a method.
+                </p>
+
+                <h5 class="fw-bold">
+                    2. What is a multicast delegate?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    A multicast delegate can reference multiple methods and invoke
+                    them together.
+                </p>
+
+                <h5 class="fw-bold">
+                    3. What is an event?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    An event is a mechanism used to notify subscribers when
+                    something happens in an application.
+                </p>
+
+                <h5 class="fw-bold">
+                    4. What is the difference between delegate and event?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    A delegate is primarily used to reference and invoke methods,
+                    while an event provides controlled notification to subscribers.
+                </p>
+
+                <h5 class="fw-bold">
+                    5. What are Action and Func?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    Action represents a delegate that returns void, while Func
+                    represents a delegate that returns a value.
+                </p>
+
+                <h5 class="fw-bold">
+                    6. What is the use of += with events?
+                </h5>
+
+                <p class="text-muted">
+                    The += operator subscribes a method to an event.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    Delegates provide a type-safe way to reference methods and are
+                    commonly used for callbacks and flexible method execution.
+                </p>
+
+                <p class="mb-3">
+                    You also learned about multicast delegates, built-in
+                    <strong>Action</strong> and <strong>Func</strong> delegates,
+                    and how multiple methods can be associated with a delegate.
+                </p>
+
+                <p class="mb-3">
+                    Events provide a controlled way to notify subscribers when
+                    an action occurs. They are widely used in event-driven
+                    applications and notification systems.
+                </p>
+
+                <p class="mb-0">
+                    Understanding Delegates and Events is important for developing
+                    flexible and maintainable <strong>.NET and ASP.NET Core</strong>
+                    applications.
+                </p>
+
+            </div>
+
+
+            <!-- PRACTICE QUESTIONS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Create a delegate that references a simple method.</li>
+                    <li>Create a delegate with two integer parameters.</li>
+                    <li>Create a delegate that returns an integer value.</li>
+                    <li>Create a multicast delegate with two methods.</li>
+                    <li>Demonstrate the Action delegate.</li>
+                    <li>Demonstrate the Func delegate.</li>
+                    <li>Create an event for an order placement operation.</li>
+                    <li>Subscribe a method to an event.</li>
+                    <li>Unsubscribe a method from an event.</li>
+                    <li>Create an event using EventHandler and custom EventArgs.</li>
+                    <li>Explain the difference between delegates and events.</li>
+                    <li>Explain real-world applications of delegates and events.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- TOPIC NAVIGATION -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="/CSharp/AdvanceFeature/ExceptionHandling"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="/CSharp/AdvanceFeature/LambdaExpressions"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>

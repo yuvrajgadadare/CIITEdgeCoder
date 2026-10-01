@@ -1,0 +1,604 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Web Fonts";
+}
+
+<div class="container-fluid py-4" id="css-web-fonts-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <aside class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <main class="col-lg-9">
+
+            <!-- PAGE HEADER -->
+            <div class="content-section mb-4">
+
+                <h1 class="display-6 fw-bold">
+                    Web Fonts
+                </h1>
+
+                <p class="lead">
+                    Web fonts allow you to use custom fonts on a website
+                    instead of depending only on fonts installed on the user's computer.
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- DIAGRAM -->
+            <!-- ================================================= -->
+
+            <div class="diagram-box mb-4">
+
+                <div class="diagram-step">
+                    Google Font
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-step">
+                    CSS @@import
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-step">
+                    Apply Font
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="diagram-step">
+                    Styled CIIT Web Page
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 1 -->
+            <!-- ================================================= -->
+
+            <div class="content-section mb-4">
+
+                <h2 class="h4">
+                    1. Using a Google Font
+                </h2>
+
+                <p>
+                    Google Fonts provides many ready-to-use web fonts.
+                    The font can be imported using CSS.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>@@import url('https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}</code></pre>
+
+                </div>
+
+                <div class="simple-explanation">
+
+                    <strong>Simple Explanation:</strong>
+
+                    <p class="mb-0">
+                        The <code>@@import</code> rule loads the Poppins font.
+                        The <code>font-family</code> property applies Poppins
+                        to the webpage.
+                    </p>
+
+                </div>
+
+                <h3 class="output-title">
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="poppins-demo">
+
+                        <h2>
+                            Welcome to CIIT Training Institute
+                        </h2>
+
+                        <p>
+                            Learn CSS with practical examples.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 2 -->
+            <!-- ================================================= -->
+
+            <div class="content-section mb-4">
+
+                <h2 class="h4">
+                    2. Applying a Web Font to a Heading
+                </h2>
+
+                <p>
+                    A web font can be applied only to selected elements
+                    such as headings.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>@@import url('https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap');
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+}</code></pre>
+
+                </div>
+
+                <div class="simple-explanation">
+
+                    <strong>Simple Explanation:</strong>
+
+                    <p class="mb-0">
+                        Here, the Roboto font is applied specifically
+                        to the <code>h2</code> element.
+                    </p>
+
+                </div>
+
+                <h3 class="output-title">
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <h2 class="roboto-demo">
+                        CIIT Training Institute
+                    </h2>
+
+                    <p>
+                        Master CSS step by step.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 3 -->
+            <!-- ================================================= -->
+
+            <div class="content-section mb-4">
+
+                <h2 class="h4">
+                    3. Using a Font Fallback
+                </h2>
+
+                <p>
+                    A fallback font can be specified in case the web font
+                    cannot be loaded.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>@@import url('https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap');
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+}</code></pre>
+
+                </div>
+
+                <div class="simple-explanation">
+
+                    <strong>Simple Explanation:</strong>
+
+                    <p class="mb-0">
+                        The browser first tries to use Poppins.
+                        If Poppins is unavailable, it uses Arial.
+                        If Arial is also unavailable, it uses a generic
+                        sans-serif font.
+                    </p>
+
+                </div>
+
+                <h3 class="output-title">
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <p class="fallback-demo">
+                        Learn Web Development at CIIT Training Institute.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- COMMON WEB FONT PROPERTIES -->
+            <!-- ================================================= -->
+
+            <div class="content-section mb-4">
+
+                <h2 class="h4">
+                    Common Web Font Properties
+                </h2>
+
+                <table class="table table-bordered">
+
+                    <thead class="table-light">
+
+                        <tr>
+                            <th>Property</th>
+                            <th>Purpose</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>font-family</code></td>
+                            <td>Specifies the font to use.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>@@import</code></td>
+                            <td>Imports an external font stylesheet.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>font-size</code></td>
+                            <td>Controls the size of the text.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>font-weight</code></td>
+                            <td>Controls the thickness of the text.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>font-style</code></td>
+                            <td>Controls normal, italic or oblique text.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY -->
+            <!-- ================================================= -->
+
+            <div class="summary-box">
+
+                <h2 class="h4">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    Web fonts allow websites to use custom fonts.
+                    CSS can import fonts from services such as Google Fonts
+                    and apply them using the <code>font-family</code> property.
+                    A fallback font should also be provided for better reliability.
+                </p>
+
+            </div>
+
+            <!-- ================================================= -->
+            <!-- NAVIGATION -->
+            <!-- ================================================= -->
+
+            <div class="row mt-5">
+
+                <div class="col-md-6">
+
+                    <a class="btn btn-outline-secondary w-100"
+                       href="@Url.Action("FontWeight", "TextFonts", new { area = "CSS" })">
+
+                        ← Previous: Font Weight
+
+                    </a>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <a class="btn btn-primary w-100"
+                       href="@Url.Action("Index", "BoxModel", new { area = "CSS" })">
+
+                        Next: CSS Box Model →
+
+                    </a>
+
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+</div>
+
+
+<style>
+
+    /* ========================================================= */
+    /* PAGE */
+    /* ========================================================= */
+
+    #css-web-fonts-page .content-section > h1,
+    #css-web-fonts-page .content-section > h2,
+    #css-web-fonts-page .content-section > h3 {
+        color: #212529;
+    }
+
+
+    /* ========================================================= */
+    /* DIAGRAM */
+    /* ========================================================= */
+
+    #css-web-fonts-page .diagram-box {
+
+        background-color: #f8f9fa;
+
+        border: 1px solid #dee2e6;
+
+        border-radius: 10px;
+
+        padding: 25px;
+
+        text-align: center;
+
+    }
+
+    #css-web-fonts-page .diagram-step {
+
+        display: inline-block;
+
+        background-color: #e0f2fe;
+
+        border: 1px solid #7dd3fc;
+
+        color: #075985;
+
+        border-radius: 8px;
+
+        padding: 12px 22px;
+
+        font-weight: 600;
+
+    }
+
+    #css-web-fonts-page .diagram-arrow {
+
+        font-size: 24px;
+
+        font-weight: 700;
+
+        color: #2563eb;
+
+        margin: 6px 0;
+
+    }
+
+
+    /* ========================================================= */
+    /* CODE */
+    /* ========================================================= */
+
+    #css-web-fonts-page .code-box {
+
+        background-color: #212529;
+
+        border-radius: 8px;
+
+        padding: 18px;
+
+        margin-top: 15px;
+
+        overflow-x: auto;
+
+    }
+
+    #css-web-fonts-page .code-box pre {
+
+        margin: 0;
+
+    }
+
+    #css-web-fonts-page .code-box code {
+
+        color: #f8f9fa;
+
+        font-size: 14px;
+
+        line-height: 1.6;
+
+    }
+
+
+    /* ========================================================= */
+    /* EXPLANATION */
+    /* ========================================================= */
+
+    #css-web-fonts-page .simple-explanation {
+
+        background-color: #f8f9fa;
+
+        border-left: 4px solid #2563eb;
+
+        padding: 15px 18px;
+
+        margin-top: 15px;
+
+        border-radius: 4px;
+
+    }
+
+
+    /* ========================================================= */
+    /* OUTPUT */
+    /* ========================================================= */
+
+    #css-web-fonts-page .output-title {
+
+        margin-top: 20px;
+
+        margin-bottom: 10px;
+
+        font-size: 18px;
+
+        font-weight: 700;
+
+    }
+
+    #css-web-fonts-page .browser-output {
+
+        background-color: #ffffff;
+
+        border: 1px solid #dee2e6;
+
+        border-radius: 8px;
+
+        padding: 25px;
+
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+    }
+
+
+    /* ========================================================= */
+    /* FONT DEMOS */
+    /* ========================================================= */
+
+    #css-web-fonts-page .poppins-demo {
+
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+    #css-web-fonts-page .poppins-demo h2 {
+
+        margin: 0 0 10px 0;
+
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+    #css-web-fonts-page .poppins-demo p {
+
+        margin: 0;
+
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+    #css-web-fonts-page .roboto-demo {
+
+        margin: 0;
+
+        font-family: 'Roboto', sans-serif;
+
+    }
+
+    #css-web-fonts-page .fallback-demo {
+
+        margin: 0;
+
+        font-family: 'Poppins', Arial, sans-serif;
+
+    }
+
+
+    /* ========================================================= */
+    /* SUMMARY */
+    /* ========================================================= */
+
+    #css-web-fonts-page .summary-box {
+
+        background-color: #e0f7fa;
+
+        border: 1px solid #90e0ef;
+
+        border-radius: 6px;
+
+        padding: 18px 20px;
+
+        margin-top: 30px;
+
+    }
+
+    #css-web-fonts-page .summary-box h2 {
+
+        color: #075985;
+
+        font-weight: 700;
+
+        margin-bottom: 10px;
+
+    }
+
+    #css-web-fonts-page .summary-box p {
+
+        color: #075985;
+
+        margin-bottom: 0;
+
+        line-height: 1.6;
+
+    }
+
+
+    /* ========================================================= */
+    /* MOBILE */
+    /* ========================================================= */
+
+    @@media (max-width: 991px) {
+
+        #css-web-fonts-page .diagram-step {
+
+            display: block;
+
+            width: 100%;
+
+        }
+
+    }
+
+</style>

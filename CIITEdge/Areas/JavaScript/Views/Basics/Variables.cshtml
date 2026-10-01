@@ -1,0 +1,956 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Variables";
+}
+
+<style>
+
+    #javascript-variables-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-variables-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-variables-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-variables-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-variables-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-variables-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       INFO BOX
+       ========================================================= */
+
+    #javascript-variables-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-variables-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-variables-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       IMAGE
+       ========================================================= */
+
+    #javascript-variables-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-variables-page .variables-image {
+        width: 100%;
+        max-height: 430px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-variables-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       VARIABLE CARDS
+       ========================================================= */
+
+    #javascript-variables-page .variable-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-variables-page .variable-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-variables-page .variable-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-variables-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-variables-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-variables-page .diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-variables-page .diagram-item {
+        min-width: 130px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-variables-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-variables-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-variables-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-variables-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-variables-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-variables-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-variables-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-variables-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-variables-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-variables-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-variables-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-variables-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-variables-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-variables-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-variables-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-variables-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-variables-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-variables-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Variables
+                </h1>
+
+                <p class="lead-text">
+                    Learn how to store, change, and use values in
+                    JavaScript programs with variables.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS A VARIABLE?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is a Variable?
+                </h2>
+
+                <p class="section-text">
+                    A variable is a named place used to store a value.
+                    That value can be used later in your program.
+                </p>
+
+                <p class="section-text">
+                    For example, we can store a student's name,
+                    course name, or marks inside variables.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://miro.medium.com/v2/resize%3Afit%3A1200/1%2AytIIw37oOr3PIAH63Ekwdg.png"
+                         alt="JavaScript var let const comparison"
+                         class="variables-image" />
+
+                    <p class="image-caption">
+                        Comparison of JavaScript variable declaration keywords.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     WHY VARIABLES?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Why Do We Need Variables?
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Idea
+                    </h5>
+
+                    <p>
+                        Instead of writing the same value again and again,
+                        we can store it in a variable and use the variable
+                        whenever we need the value.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     VARIABLE KEYWORDS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript Variable Keywords
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="variable-card">
+
+                            <h5>
+                                let
+                            </h5>
+
+                            <p>
+                                Use <strong>let</strong> when a variable
+                                may need to be assigned a new value.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="variable-card">
+
+                            <h5>
+                                const
+                            </h5>
+
+                            <p>
+                                Use <strong>const</strong> when the variable
+                                should not be reassigned.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="variable-card">
+
+                            <h5>
+                                var
+                            </h5>
+
+                            <p>
+                                <strong>var</strong> is the older variable
+                                declaration style and is generally avoided
+                                in modern JavaScript code.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     SIMPLE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How a Variable Works
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Variable → Value
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            Variable Name
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Stored Value
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Program Uses It
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Creating Variables
+                </h2>
+
+                <p class="section-text">
+                    We can create variables using
+                    <strong>let</strong> and <strong>const</strong>.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let studentName = "Samadhan";
+let course = "JavaScript";
+const institute = "CIIT Training Institute";
+
+console.log("Welcome to " + institute + " ❤️🧑‍🎓.....!");
+console.log("Student:", studentName);
+console.log("Course:", course);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryVariablesExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Welcome to CIIT Training Institute ❤️🧑‍🎓.....!<br />
+                    Student: Samadhan<br />
+                    Course: JavaScript
+
+                </div>
+
+
+                <!-- =================================================
+                     REASSIGNMENT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Changing a Variable Value
+                </h2>
+
+                <p class="section-text">
+                    A variable created using <strong>let</strong> can
+                    be assigned a new value later.
+                </p>
+
+
+                <!-- EXAMPLE 2 -->
+
+                <h2 class="section-title">
+                    Example 2: Reassigning a Variable
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let course = "HTML";
+
+console.log("Current Course:", course);
+
+course = "JavaScript";
+
+console.log("Updated Course:", course);
+console.log("Learning at CIIT Training Institute ❤️.....!");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryReassignmentExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Current Course: HTML<br />
+                    Updated Course: JavaScript<br />
+                    Learning at CIIT Training Institute ❤️.....!
+
+                </div>
+
+
+                <!-- =================================================
+                     CONST
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Using const
+                </h2>
+
+                <p class="section-text">
+                    A <strong>const</strong> variable must be initialized
+                    when it is created and cannot be reassigned later.
+                </p>
+
+
+                <!-- EXAMPLE 3 -->
+
+                <h2 class="section-title">
+                    Example 3: const Variable
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const institute = "CIIT Training Institute";
+const course = "JavaScript";
+
+console.log("Institute:", institute);
+console.log("Course:", course);
+console.log("Welcome to CIIT ❤️🧑‍🎓.....!");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryConstExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Institute: CIIT Training Institute<br />
+                    Course: JavaScript<br />
+                    Welcome to CIIT ❤️🧑‍🎓.....!
+
+                </div>
+
+
+                <!-- =================================================
+                     NAMING RULES
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Variable Naming Rules
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Good Variable Names
+                    </h5>
+
+                    <p class="mb-2">
+                        • Use meaningful names.
+                    </p>
+
+                    <p class="mb-2">
+                        • Use letters, numbers, underscore, or dollar sign.
+                    </p>
+
+                    <p class="mb-2">
+                        • Do not start a variable name with a number.
+                    </p>
+
+                    <p class="mb-2">
+                        • JavaScript variable names are case-sensitive.
+                    </p>
+
+                    <p class="mb-0">
+                        • Prefer clear names such as
+                        <strong>studentName</strong> instead of
+                        <strong>x</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     CIIT REAL WORLD EXAMPLE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Real-World Example
+                </h2>
+
+                <p class="section-text">
+                    A training website can store information such as
+                    institute name, course name, and student count
+                    using variables.
+                </p>
+
+
+                <!-- EXAMPLE 4 -->
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const institute = "CIIT Training Institute";
+const course = "JavaScript";
+let students = 150;
+
+console.log("Institute:", institute);
+console.log("Course:", course);
+console.log("Students:", students);
+console.log("Keep Learning ❤️🧑‍🎓.....!");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryRealWorldExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Institute: CIIT Training Institute<br />
+                    Course: JavaScript<br />
+                    Students: 150<br />
+                    Keep Learning ❤️🧑‍🎓.....!
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Variables are used to store values in JavaScript.
+                        Modern JavaScript mainly uses <strong>let</strong>
+                        and <strong>const</strong>. Use <strong>let</strong>
+                        when a value may change and <strong>const</strong>
+                        when reassignment is not required. Meaningful
+                        variable names make programs easier to understand.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Index", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>←</span>
+
+                        <span>
+                            Previous: JavaScript Basics
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("DataTypes", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Data Types
+                        </span>
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryVariablesExample() {
+
+        const code =
+            'let studentName = "Samadhan";\n' +
+            'let course = "JavaScript";\n' +
+            'const institute = "CIIT Training Institute";\n' +
+            '\n' +
+            'console.log("Welcome to " + institute + " ❤️🧑‍🎓.....!");\n' +
+            'console.log("Student:", studentName);\n' +
+            'console.log("Course:", course);';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryReassignmentExample() {
+
+        const code =
+            'let course = "HTML";\n' +
+            '\n' +
+            'console.log("Current Course:", course);\n' +
+            '\n' +
+            'course = "JavaScript";\n' +
+            '\n' +
+            'console.log("Updated Course:", course);\n' +
+            'console.log("Learning at CIIT Training Institute ❤️.....!");';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryConstExample() {
+
+        const code =
+            'const institute = "CIIT Training Institute";\n' +
+            'const course = "JavaScript";\n' +
+            '\n' +
+            'console.log("Institute:", institute);\n' +
+            'console.log("Course:", course);\n' +
+            'console.log("Welcome to CIIT ❤️🧑‍🎓.....!");';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryRealWorldExample() {
+
+        const code =
+            'const institute = "CIIT Training Institute";\n' +
+            'const course = "JavaScript";\n' +
+            'let students = 150;\n' +
+            '\n' +
+            'console.log("Institute:", institute);\n' +
+            'console.log("Course:", course);\n' +
+            'console.log("Students:", students);\n' +
+            'console.log("Keep Learning ❤️🧑‍🎓.....!");';
+
+        openCompiler(code);
+
+    }
+
+</script>

@@ -1,0 +1,960 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Transforms";
+}
+
+<div id="css-transforms-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">CSS Transforms</h1>
+
+                <p class="lead">
+                    CSS transforms allow you to move, rotate, scale, and skew
+                    HTML elements without changing the normal document flow.
+                </p>
+
+                <hr />
+
+                <!-- What are Transforms -->
+                <h2 class="h4 mt-4">What is CSS Transform?</h2>
+
+                <p>
+                    The CSS <code>transform</code> property is used to visually
+                    modify an element by changing its position, size, angle,
+                    or shape.
+                </p>
+
+                <p>
+                    Transforms are commonly used for buttons, cards, images,
+                    menus, animations, hover effects, and interactive components.
+                </p>
+
+                <!-- Interactive Image -->
+                <h2 class="h4 mt-4">Interactive Transform Image</h2>
+
+                <p>
+                    Move your mouse over the image to see the CSS transform
+                    effect. The image will scale and rotate smoothly.
+                </p>
+
+                <div class="interactive-image-box">
+
+                    <div class="interactive-image">
+                        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1000&q=80"
+                             alt="Web development workspace"
+                             tabindex="0" />
+                    </div>
+
+                    <p class="image-caption">
+                        Hover or focus on the image to see
+                        <code>scale()</code> and <code>rotate()</code>
+                        working together.
+                    </p>
+
+                </div>
+
+                <!-- Syntax -->
+                <h2 class="h4 mt-4">Transform Syntax</h2>
+
+                <pre class="code-box"><code>selector {
+    transform: function(value);
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p class="mb-0">
+                        The <code>transform</code> property is used with
+                        transform functions such as
+                        <code>translate()</code>,
+                        <code>rotate()</code>,
+                        <code>scale()</code>, and
+                        <code>skew()</code>.
+                    </p>
+
+                </div>
+
+                <!-- Diagram -->
+                <h2 class="h4 mt-4">How CSS Transforms Work</h2>
+
+                <div class="transform-diagram">
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Original Element
+                        </div>
+
+                        <div class="diagram-box normal-transform">
+                            BOX
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Transform
+                        </div>
+
+                        <div class="diagram-function">
+                            rotate()
+                            scale()
+                            translate()
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Transformed Element
+                        </div>
+
+                        <div class="diagram-box rotated-transform">
+                            BOX
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Translate -->
+                <h2 class="h4 mt-4">1. translate()</h2>
+
+                <p>
+                    The <code>translate()</code> function moves an element
+                    from its original position.
+                </p>
+
+                <pre class="code-box"><code>.translate-box {
+    transform: translate(40px, 20px);
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Meaning</h3>
+
+                    <p class="mb-0">
+                        <code>40px</code> moves the element horizontally and
+                        <code>20px</code> moves it vertically.
+                    </p>
+
+                </div>
+
+                <!-- Translate Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="transform-output-area">
+
+                        <div class="small-transform-box original-box">
+                            Original
+                        </div>
+
+                        <div class="small-transform-box translate-box">
+                            Moved
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Rotate -->
+                <h2 class="h4 mt-4">2. rotate()</h2>
+
+                <p>
+                    The <code>rotate()</code> function rotates an element
+                    around its center.
+                </p>
+
+                <pre class="code-box"><code>.rotate-box {
+    transform: rotate(15deg);
+}</code></pre>
+
+                <!-- Rotate Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box rotate-output">
+
+                    <div class="rotate-box">
+                        Rotated
+                    </div>
+
+                </div>
+
+                <!-- Scale -->
+                <h2 class="h4 mt-4">3. scale()</h2>
+
+                <p>
+                    The <code>scale()</code> function increases or decreases
+                    the size of an element.
+                </p>
+
+                <pre class="code-box"><code>.scale-box {
+    transform: scale(1.3);
+}</code></pre>
+
+                <!-- Scale Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box scale-output">
+
+                    <div class="scale-box">
+                        Scaled
+                    </div>
+
+                </div>
+
+                <!-- Skew -->
+                <h2 class="h4 mt-4">4. skew()</h2>
+
+                <p>
+                    The <code>skew()</code> function tilts or slants an element
+                    along the horizontal or vertical direction.
+                </p>
+
+                <pre class="code-box"><code>.skew-box {
+    transform: skew(15deg);
+}</code></pre>
+
+                <!-- Skew Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box skew-output">
+
+                    <div class="skew-box">
+                        Skewed
+                    </div>
+
+                </div>
+
+                <!-- ScaleX -->
+                <h2 class="h4 mt-4">5. scaleX() and scaleY()</h2>
+
+                <p>
+                    You can scale an element separately on the X-axis
+                    or Y-axis.
+                </p>
+
+                <pre class="code-box"><code>.scale-x {
+    transform: scaleX(1.5);
+}
+
+.scale-y {
+    transform: scaleY(1.4);
+}</code></pre>
+
+                <!-- Combined -->
+                <h2 class="h4 mt-4">6. Combining Transform Functions</h2>
+
+                <p>
+                    Multiple transform functions can be combined in a single
+                    <code>transform</code> declaration.
+                </p>
+
+                <pre class="code-box"><code>.combined-box {
+    transform: translate(20px, 10px)
+               rotate(10deg)
+               scale(1.1);
+}</code></pre>
+
+                <!-- Combined Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box combined-output">
+
+                    <div class="combined-box">
+                        Combined
+                    </div>
+
+                </div>
+
+                <!-- Transform Origin -->
+                <h2 class="h4 mt-4">7. transform-origin</h2>
+
+                <p>
+                    The <code>transform-origin</code> property defines the
+                    point from which a transformation starts.
+                </p>
+
+                <pre class="code-box"><code>.origin-box {
+    transform-origin: top left;
+    transform: rotate(15deg);
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Default Origin</h3>
+
+                    <p class="mb-0">
+                        By default, the transformation origin is approximately
+                        the center of the element.
+                    </p>
+
+                </div>
+
+                <!-- Common Transform Functions -->
+                <h2 class="h4 mt-4">Common Transform Functions</h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><code>translate()</code></td>
+                                <td>Moves an element</td>
+                                <td><code>translate(20px, 10px)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>rotate()</code></td>
+                                <td>Rotates an element</td>
+                                <td><code>rotate(15deg)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>scale()</code></td>
+                                <td>Changes size</td>
+                                <td><code>scale(1.2)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>skew()</code></td>
+                                <td>Slants an element</td>
+                                <td><code>skew(15deg)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>scaleX()</code></td>
+                                <td>Scales horizontally</td>
+                                <td><code>scaleX(1.5)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>scaleY()</code></td>
+                                <td>Scales vertically</td>
+                                <td><code>scaleY(1.4)</code></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Practical Card -->
+                <h2 class="h4 mt-4">Practical Example: Hover Card</h2>
+
+                <p>
+                    Transforms are frequently combined with hover states
+                    to create interactive cards.
+                </p>
+
+                <pre class="code-box"><code>.course-card {
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}</code></pre>
+
+                <!-- Card Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="course-card">
+
+                        <div class="course-card-icon">
+                            CSS
+                        </div>
+
+                        <h3>
+                            CSS Course
+                        </h3>
+
+                        <p>
+                            Learn modern CSS concepts with practical examples.
+                        </p>
+
+                    </div>
+
+                    <p class="output-note">
+                        Hover over the card to see the transform effect.
+                    </p>
+
+                </div>
+
+                <!-- Transform and Transition -->
+                <h2 class="h4 mt-4">Transform + Transition</h2>
+
+                <p>
+                    A transform changes the visual state immediately unless
+                    a transition is added. Combining both creates a smooth effect.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    transition: transform 0.3s ease;
+}
+
+.box:hover {
+    transform: scale(1.1);
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Why combine them?</h3>
+
+                    <p class="mb-0">
+                        <code>transform</code> defines the visual change,
+                        while <code>transition</code> controls how smoothly
+                        the change happens.
+                    </p>
+
+                </div>
+
+                <!-- Important -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        Transforms visually modify an element without normally
+                        changing the space reserved for that element in the
+                        document layout.
+                    </p>
+
+                </div>
+
+                <!-- Best Practices -->
+                <h2 class="h4 mt-4">Best Practices</h2>
+
+                <ul>
+
+                    <li>
+                        Use transforms for visual movement and interaction.
+                    </li>
+
+                    <li>
+                        Combine transforms with transitions for smoother effects.
+                    </li>
+
+                    <li>
+                        Avoid excessive rotation or movement that distracts users.
+                    </li>
+
+                    <li>
+                        Keep hover effects subtle and consistent.
+                    </li>
+
+                    <li>
+                        Test transformed elements on mobile devices.
+                    </li>
+
+                </ul>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS transforms allow elements to be moved, rotated,
+                        scaled, and skewed. Important functions include
+                        <code>translate()</code>, <code>rotate()</code>,
+                        <code>scale()</code>, and <code>skew()</code>.
+                        Transforms are commonly combined with
+                        <code>transition</code> and pseudo-classes such as
+                        <code>:hover</code> to create interactive effects.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("PseudoElements", "AdvancedCSS", new { area = "CSS" })">
+
+                            ← Previous: CSS Pseudo-Elements
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Transitions", "AdvancedCSS", new { area = "CSS" })">
+
+                            Next: CSS Transitions →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-transforms-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-transforms-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-transforms-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-transforms-page .content-section p,
+        #css-transforms-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Interactive Image */
+    #css-transforms-page .interactive-image-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 15px;
+        overflow: hidden;
+    }
+
+    #css-transforms-page .interactive-image {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+        #css-transforms-page .interactive-image img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+
+            #css-transforms-page .interactive-image:hover img,
+            #css-transforms-page .interactive-image img:focus {
+                transform: scale(1.08) rotate(2deg);
+            }
+
+    #css-transforms-page .image-caption {
+        margin: 14px 5px 0;
+        color: #6c757d !important;
+        font-size: 14px;
+    }
+
+    /* Code */
+    #css-transforms-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Explanation */
+    #css-transforms-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-transforms-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Diagram */
+    #css-transforms-page .transform-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-transforms-page .diagram-card {
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+        min-width: 180px;
+    }
+
+    #css-transforms-page .diagram-title {
+        color: #2563eb;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #css-transforms-page .diagram-arrow {
+        color: #2563eb;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    #css-transforms-page .diagram-box {
+        width: 90px;
+        height: 55px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 700;
+        background-color: #2563eb;
+    }
+
+    #css-transforms-page .normal-transform {
+        background-color: #2563eb;
+    }
+
+    #css-transforms-page .rotated-transform {
+        background-color: #7c3aed;
+        transform: rotate(12deg);
+    }
+
+    #css-transforms-page .diagram-function {
+        background-color: #e0f2fe;
+        color: #075985;
+        border-radius: 6px;
+        padding: 10px;
+        font-family: monospace;
+        line-height: 1.7;
+    }
+
+    /* Property Cards */
+    #css-transforms-page .property-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+        #css-transforms-page .property-card h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    /* Output */
+    #css-transforms-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-transforms-page .transform-output-area {
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 45px;
+    }
+
+    #css-transforms-page .small-transform-box {
+        width: 110px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    #css-transforms-page .original-box {
+        background-color: #2563eb;
+    }
+
+    #css-transforms-page .translate-box {
+        background-color: #7c3aed;
+        transform: translate(40px, 20px);
+    }
+
+    #css-transforms-page .rotate-output {
+        min-height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #css-transforms-page .rotate-box {
+        width: 130px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 8px;
+        font-weight: 700;
+        transform: rotate(15deg);
+    }
+
+    #css-transforms-page .scale-output {
+        min-height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #css-transforms-page .scale-box {
+        width: 120px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #7c3aed;
+        color: #ffffff;
+        border-radius: 8px;
+        font-weight: 700;
+        transform: scale(1.3);
+    }
+
+    #css-transforms-page .skew-output {
+        min-height: 170px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #css-transforms-page .skew-box {
+        width: 130px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0f766e;
+        color: #ffffff;
+        border-radius: 8px;
+        font-weight: 700;
+        transform: skew(15deg);
+    }
+
+    #css-transforms-page .combined-output {
+        min-height: 190px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #css-transforms-page .combined-box {
+        width: 140px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 8px;
+        font-weight: 700;
+        transform: translate(20px, 10px) rotate(10deg) scale(1.1);
+    }
+
+    /* Course Card */
+    #css-transforms-page .course-card {
+        max-width: 420px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+        #css-transforms-page .course-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+    #css-transforms-page .course-card-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        background-color: #2563eb;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+    #css-transforms-page .course-card h3 {
+        color: #212529;
+        font-weight: 700;
+    }
+
+    #css-transforms-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        color: #6c757d !important;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Note */
+    #css-transforms-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-transforms-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-transforms-page .note-box p {
+            color: #78350f;
+        }
+
+    /* Summary */
+    #css-transforms-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-transforms-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-transforms-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    @@media (max-width: 768px) {
+
+        #css-transforms-page .content-section {
+            padding: 20px;
+        }
+
+        #css-transforms-page .interactive-image img {
+            height: 280px;
+        }
+
+        #css-transforms-page .transform-diagram {
+            flex-direction: column;
+        }
+
+        #css-transforms-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-transforms-page .transform-output-area {
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        #css-transforms-page .translate-box {
+            transform: translate(20px, 10px);
+        }
+
+        #css-transforms-page .combined-box {
+            transform: translate(10px, 5px) rotate(10deg) scale(1.05);
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        #css-transforms-page .content-section {
+            padding: 16px;
+        }
+
+        #css-transforms-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-transforms-page .interactive-image img {
+            height: 220px;
+        }
+    }
+
+</style>

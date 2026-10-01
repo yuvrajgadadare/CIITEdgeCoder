@@ -1,0 +1,410 @@
+﻿@{
+    var currentController =
+        ViewContext.RouteData.Values["controller"]?.ToString();
+
+    var currentAction =
+        ViewContext.RouteData.Values["action"]?.ToString();
+
+    bool IsActive(string controller, string action)
+    {
+        return string.Equals(
+                   currentController,
+                   controller,
+                   StringComparison.OrdinalIgnoreCase)
+               &&
+               string.Equals(
+                   currentAction,
+                   action,
+                   StringComparison.OrdinalIgnoreCase);
+    }
+}
+
+<style>
+
+    /* =========================================================
+               COURSE SYLLABUS CARD - STICKY SIDEBAR
+               ========================================================= */
+
+    .csharp-syllabus-card {
+        border: 0;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* COURSE SYLLABUS HEADER */
+
+    .csharp-syllabus-header {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        padding: 14px 18px !important;
+        font-size: 15px;
+        font-weight: 700;
+        display: block !important;
+        visibility: visible !important;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+        .csharp-syllabus-header span {
+            color: #ffffff !important;
+        }
+
+    /* MODULE TITLES */
+
+    .module-title {
+        background-color: #f8f9fa;
+        font-weight: 700;
+        color: #212529;
+        padding: 12px 16px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    /* TOPIC LINKS */
+
+    .topic-link {
+        padding: 10px 16px 10px 28px;
+        font-size: 14px;
+        color: #495057;
+        text-decoration: none;
+        border: 0;
+        border-bottom: 1px solid #f1f1f1;
+        background-color: #ffffff;
+    }
+
+        .topic-link:hover {
+            background-color: #f1f3f5 !important;
+            color: #212529 !important;
+        }
+
+        /* NO BLACK ACTIVE HIGHLIGHT */
+
+        .topic-link.active {
+            background-color: #ffffff !important;
+            color: #495057 !important;
+            font-weight: 400 !important;
+        }
+
+            .topic-link.active:hover {
+                background-color: #f1f3f5 !important;
+                color: #212529 !important;
+            }
+
+    /* SCROLLBAR */
+
+    .csharp-syllabus-card::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .csharp-syllabus-card::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .csharp-syllabus-card::-webkit-scrollbar-thumb {
+        background: #c8c8c8;
+        border-radius: 10px;
+    }
+
+        .csharp-syllabus-card::-webkit-scrollbar-thumb:hover {
+            background: #aaaaaa;
+        }
+
+    /* MOBILE */
+
+    @@media (max-width: 991px) {
+
+        .csharp-syllabus-card {
+            position: relative;
+            top: auto;
+            max-height: none;
+            overflow: hidden;
+        }
+
+        .csharp-syllabus-header {
+            position: relative;
+        }
+    }
+
+</style>
+
+
+<div class="card csharp-syllabus-card">
+
+    <!-- COURSE SYLLABUS HEADER -->
+
+    <div class="card-header csharp-syllabus-header">
+        <span>COURSE SYLLABUS</span>
+    </div>
+
+    <div class="list-group list-group-flush">
+
+        <!-- =========================================================
+             MODULE 1
+             ========================================================= -->
+
+        <div class="list-group-item module-title">
+            1. Introduction & Environment Setup
+        </div>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Introduction", new { area = "CSharp" })">
+            Introduction to C#
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction", "DevelopmentTools") ? "active" : "")"
+           href="@Url.Action("DevelopmentTools", "Introduction", new { area = "CSharp" })">
+            Development Tools
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction", "FirstProgram") ? "active" : "")"
+           href="@Url.Action("FirstProgram", "Introduction", new { area = "CSharp" })">
+            Your First Program
+        </a>
+
+
+        <!-- =========================================================
+             MODULE 2
+             ========================================================= -->
+
+        <div class="list-group-item module-title">
+            2. C# Language Basics
+        </div>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("BasicLanguage", "VariableAndDataTypes") ? "active" : "")"
+           href="@Url.Action("VariableAndDataTypes", "BasicLanguage", new { area = "CSharp" })">
+            Variables & Data Types
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("BasicLanguage", "TypeConversion") ? "active" : "")"
+           href="@Url.Action("TypeConversion", "BasicLanguage", new { area = "CSharp" })">
+            Type Conversion
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("BasicLanguage", "Operators") ? "active" : "")"
+           href="@Url.Action("Operators", "BasicLanguage", new { area = "CSharp" })">
+            Operators
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("BasicLanguage", "ControlFlowStatements") ? "active" : "")"
+           href="@Url.Action("ControlFlowStatements", "BasicLanguage", new { area = "CSharp" })">
+            Control Flow Statements
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("BasicLanguage", "Loops") ? "active" : "")"
+           href="@Url.Action("Loops", "BasicLanguage", new { area = "CSharp" })">
+            Loops
+        </a>
+
+
+        <!-- =========================================================
+             MODULE 3
+             ========================================================= -->
+
+        <div class="list-group-item module-title">
+            3. Methods & Memory Management
+        </div>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("MethodsMemoryManagement", "Methods") ? "active" : "")"
+           href="@Url.Action("Methods", "MethodsMemoryManagement", new { area = "CSharp" })">
+            Methods
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("MethodsMemoryManagement", "MethodOverloading") ? "active" : "")"
+           href="@Url.Action("MethodOverloading", "MethodsMemoryManagement", new { area = "CSharp" })">
+            Method Overloading
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("MethodsMemoryManagement", "MemoryBasics") ? "active" : "")"
+           href="@Url.Action("MemoryBasics", "MethodsMemoryManagement", new { area = "CSharp" })">
+            Memory Basics
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("MethodsMemoryManagement", "GarbageCollection") ? "active" : "")"
+           href="@Url.Action("GarbageCollection", "MethodsMemoryManagement", new { area = "CSharp" })">
+            Garbage Collection
+        </a>
+
+
+        <!-- =========================================================
+             MODULE 4
+             ========================================================= -->
+
+        <div class="list-group-item module-title">
+            4. Object-Oriented Programming (OOP)
+        </div>
+
+        <!-- FIXED: Classes & Objects -->
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("OOPC", "ClassesObjects") ? "active" : "")"
+           href="@Url.Action("ClassesObjects", "OOPC", new { area = "CSharp" })">
+            Classes & Objects
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("OOPC", "Constructors") ? "active" : "")"
+           href="@Url.Action("Constructors", "OOPC", new { area = "CSharp" })">
+            Constructors
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("OOPC", "Encapsulation") ? "active" : "")"
+           href="@Url.Action("Encapsulation", "OOPC", new { area = "CSharp" })">
+            Encapsulation
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("OOPC", "Inheritance") ? "active" : "")"
+           href="@Url.Action("Inheritance", "OOPC", new { area = "CSharp" })">
+            Inheritance
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("OOPC", "Polymorphism") ? "active" : "")"
+           href="@Url.Action("Polymorphism", "OOPC", new { area = "CSharp" })">
+            Polymorphism
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("OOPC", "Interfaces") ? "active" : "")"
+           href="@Url.Action("Interfaces", "OOPC", new { area = "CSharp" })">
+            Interfaces
+        </a>
+
+
+        <!-- =========================================================
+             MODULE 5
+             ========================================================= -->
+
+        <div class="list-group-item module-title">
+            5. Data Structures & Collections
+        </div>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("DataStructuresCollection", "Arrays") ? "active" : "")"
+           href="@Url.Action("Arrays", "DataStructuresCollection", new { area = "CSharp" })">
+            Arrays
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("DataStructuresCollection", "Strings") ? "active" : "")"
+           href="@Url.Action("Strings", "DataStructuresCollection", new { area = "CSharp" })">
+            Strings
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("DataStructuresCollection", "Generics") ? "active" : "")"
+           href="@Url.Action("Generics", "DataStructuresCollection", new { area = "CSharp" })">
+            Generics
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("DataStructuresCollection", "Collections") ? "active" : "")"
+           href="@Url.Action("Collections", "DataStructuresCollection", new { area = "CSharp" })">
+            Collections
+        </a>
+
+
+        <!-- =========================================================
+             MODULE 6
+             ========================================================= -->
+
+        <div class="list-group-item module-title">
+            6. Advanced C# Features
+        </div>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("AdvanceFeature", "ExceptionHandling") ? "active" : "")"
+           href="@Url.Action("ExceptionHandling", "AdvanceFeature", new { area = "CSharp" })">
+            Exception Handling
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("AdvanceFeature", "DelegatesEvents") ? "active" : "")"
+           href="@Url.Action("DelegatesEvents", "AdvanceFeature", new { area = "CSharp" })">
+            Delegates & Events
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("AdvanceFeature", "LambdaExpressions") ? "active" : "")"
+           href="@Url.Action("LambdaExpressions", "AdvanceFeature", new { area = "CSharp" })">
+            Lambda Expressions
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("AdvanceFeature", "ExtensionMethods") ? "active" : "")"
+           href="@Url.Action("ExtensionMethods", "AdvanceFeature", new { area = "CSharp" })">
+            Extension Methods
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("AdvanceFeature", "LINQ") ? "active" : "")"
+           href="@Url.Action("LINQ", "AdvanceFeature", new { area = "CSharp" })">
+            LINQ (Language Integrated Query)
+        </a>
+
+
+        <!-- =========================================================
+             MODULE 7
+             ========================================================= -->
+
+        <div class="list-group-item module-title">
+            7. Asynchronous & Parallel Programming
+        </div>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("AsynchronousParallelProgramming", "AsynchronousProgramming") ? "active" : "")"
+           href="@Url.Action("AsynchronousProgramming", "AsynchronousParallelProgramming", new { area = "CSharp" })">
+            Asynchronous Programming
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("AsynchronousParallelProgramming", "Multithreading") ? "active" : "")"
+           href="@Url.Action("Multithreading", "AsynchronousParallelProgramming", new { area = "CSharp" })">
+            Multithreading
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("AsynchronousParallelProgramming", "ParallelProcessing") ? "active" : "")"
+           href="@Url.Action("ParallelProcessing", "AsynchronousParallelProgramming", new { area = "CSharp" })">
+            Parallel Processing
+        </a>
+
+
+        <!-- =========================================================
+             MODULE 8
+             ========================================================= -->
+
+        <div class="list-group-item module-title">
+            8. File I/O & Serialization
+        </div>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("FileIO", "FileSystem") ? "active" : "")"
+           href="@Url.Action("FileSystem", "FileIO", new { area = "CSharp" })">
+            File System
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("FileIO", "Serialization") ? "active" : "")"
+           href="@Url.Action("Serialization", "FileIO", new { area = "CSharp" })">
+            Serialization
+        </a>
+
+
+        <!-- =========================================================
+             MODULE 9
+             ========================================================= -->
+
+        <div class="list-group-item module-title">
+            9. Modern C# Concepts (C# 10 to C# 13+)
+        </div>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("ModernCSharp", "RecordTypes") ? "active" : "")"
+           href="@Url.Action("RecordTypes", "ModernCSharp", new { area = "CSharp" })">
+            Record Types
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("ModernCSharp", "PatternMatching") ? "active" : "")"
+           href="@Url.Action("PatternMatching", "ModernCSharp", new { area = "CSharp" })">
+            Pattern Matching
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("ModernCSharp", "TopLevelStatements") ? "active" : "")"
+           href="@Url.Action("TopLevelStatements", "ModernCSharp", new { area = "CSharp" })">
+            Top-Level Statements
+        </a>
+
+        <a class="list-group-item list-group-item-action topic-link @(IsActive("ModernCSharp", "NullableReferenceTypes") ? "active" : "")"
+           href="@Url.Action("NullableReferenceTypes", "ModernCSharp", new { area = "CSharp" })">
+            Nullable Reference Types
+        </a>
+
+    </div>
+
+</div>

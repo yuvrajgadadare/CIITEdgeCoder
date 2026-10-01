@@ -1,0 +1,768 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Checkboxes";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #4f46e5;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+        .demo-box label {
+            margin-left: 6px;
+            margin-right: 18px;
+            cursor: pointer;
+        }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML Checkboxes</h1>
+
+            <p>
+                Checkboxes allow users to select <strong>one or more options</strong>
+                from a group of choices. They are commonly used for selecting skills,
+                hobbies, terms and conditions, preferences, and multiple features.
+            </p>
+
+            <div class="info-box">
+                <strong>Key Point:</strong>
+                Unlike radio buttons, checkboxes allow multiple selections.
+            </div>
+
+            <h2>1. What is a Checkbox?</h2>
+
+            <p>
+                A checkbox is created using the
+                <code>&lt;input&gt;</code> element with
+                <code>type="checkbox"</code>.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"&gt; HTML</code></pre>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <input type="checkbox" id="html-demo">
+                <label for="html-demo">HTML</label>
+            </div>
+
+            <h2>2. Basic Checkbox Example</h2>
+
+            <pre><code>&lt;input type="checkbox" name="skill" value="html"&gt;
+&lt;label&gt;HTML&lt;/label&gt;
+
+&lt;input type="checkbox" name="skill" value="css"&gt;
+&lt;label&gt;CSS&lt;/label&gt;
+
+&lt;input type="checkbox" name="skill" value="javascript"&gt;
+&lt;label&gt;JavaScript&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <input type="checkbox" id="skill-html-demo" name="skills-demo" value="html">
+                <label for="skill-html-demo">HTML</label>
+
+                <input type="checkbox" id="skill-css-demo" name="skills-demo" value="css">
+                <label for="skill-css-demo">CSS</label>
+
+                <input type="checkbox" id="skill-js-demo" name="skills-demo" value="javascript">
+                <label for="skill-js-demo">JavaScript</label>
+            </div>
+
+            <h2>3. The type Attribute</h2>
+
+            <p>
+                The <code>type</code> attribute determines the type of input control.
+                For a checkbox, use:
+            </p>
+
+            <pre><code>type="checkbox"</code></pre>
+
+            <p>
+                This tells the browser to display a checkbox control.
+            </p>
+
+            <h2>4. The name Attribute</h2>
+
+            <p>
+                The <code>name</code> attribute identifies the form field when the form is submitted.
+                Multiple checkboxes can use the same name when they represent related choices.
+            </p>
+
+            <pre><code>&lt;input type="checkbox" name="skills" value="html"&gt;
+&lt;input type="checkbox" name="skills" value="css"&gt;
+&lt;input type="checkbox" name="skills" value="javascript"&gt;</code></pre>
+
+            <div class="info-box">
+                The important difference from radio buttons is that the same
+                <code>name</code> does not prevent multiple checkboxes from being selected.
+            </div>
+
+            <h2>5. The value Attribute</h2>
+
+            <p>
+                The <code>value</code> attribute represents the value associated with the checkbox.
+                When a checked checkbox is submitted, its value is sent with the form.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       name="skill"
+       value="dotnet"&gt;
+
+&lt;label&gt;.NET&lt;/label&gt;</code></pre>
+
+            <p>
+                Here the submitted value is <code>dotnet</code> when the checkbox is checked.
+            </p>
+
+            <h2>6. Checkbox with Label</h2>
+
+            <p>
+                Connecting a checkbox with a label improves usability.
+                The label's <code>for</code> attribute should match the checkbox's <code>id</code>.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="terms"
+       name="terms"
+       value="accepted"&gt;
+
+&lt;label for="terms"&gt;
+    I agree to the terms and conditions
+&lt;/label&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <input type="checkbox"
+                       id="terms-demo"
+                       name="terms-demo"
+                       value="accepted">
+
+                <label for="terms-demo">
+                    I agree to the terms and conditions
+                </label>
+            </div>
+
+            <h2>7. Checked Checkbox</h2>
+
+            <p>
+                Add the <code>checked</code> attribute when a checkbox should be selected by default.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="newsletter"
+       name="newsletter"
+       value="yes"
+       checked&gt;
+
+&lt;label for="newsletter"&gt;
+    Subscribe to newsletter
+&lt;/label&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <input type="checkbox"
+                       id="newsletter-demo"
+                       name="newsletter-demo"
+                       value="yes"
+                       checked>
+
+                <label for="newsletter-demo">
+                    Subscribe to newsletter
+                </label>
+            </div>
+
+            <h2>8. Required Checkbox</h2>
+
+            <p>
+                Use the <code>required</code> attribute when the user must check a checkbox
+                before submitting the form.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="agreement"
+       name="agreement"
+       value="yes"
+       required&gt;
+
+&lt;label for="agreement"&gt;
+    I agree to the terms
+&lt;/label&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <p>
+                The browser will prevent form submission until the checkbox is selected.
+            </p>
+
+            <h2>9. Disabled Checkbox</h2>
+
+            <p>
+                Use the <code>disabled</code> attribute to prevent the user from selecting a checkbox.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="premium"
+       name="plan"
+       value="premium"
+       disabled&gt;
+
+&lt;label for="premium"&gt;
+    Premium Features
+&lt;/label&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <input type="checkbox"
+                       id="premium-demo"
+                       name="plan-demo"
+                       value="premium"
+                       disabled>
+
+                <label for="premium-demo">
+                    Premium Features
+                </label>
+            </div>
+
+            <h2>10. Multiple Checkbox Selections</h2>
+
+            <p>
+                Multiple checkboxes can be selected independently.
+            </p>
+
+            <pre><code>&lt;p&gt;Select your skills:&lt;/p&gt;
+
+&lt;input type="checkbox"
+       id="html"
+       name="skills"
+       value="html"&gt;
+&lt;label for="html"&gt;HTML&lt;/label&gt;
+
+&lt;input type="checkbox"
+       id="css"
+       name="skills"
+       value="css"&gt;
+&lt;label for="css"&gt;CSS&lt;/label&gt;
+
+&lt;input type="checkbox"
+       id="javascript"
+       name="skills"
+       value="javascript"&gt;
+&lt;label for="javascript"&gt;JavaScript&lt;/label&gt;
+
+&lt;input type="checkbox"
+       id="bootstrap"
+       name="skills"
+       value="bootstrap"&gt;
+&lt;label for="bootstrap"&gt;Bootstrap&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <p class="fw-semibold">Select your skills:</p>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="skill-html-2" name="skill-demo-2" value="html">
+                    <label for="skill-html-2">HTML</label>
+                </div>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="skill-css-2" name="skill-demo-2" value="css">
+                    <label for="skill-css-2">CSS</label>
+                </div>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="skill-js-2" name="skill-demo-2" value="javascript">
+                    <label for="skill-js-2">JavaScript</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="skill-bootstrap-2" name="skill-demo-2" value="bootstrap">
+                    <label for="skill-bootstrap-2">Bootstrap</label>
+                </div>
+            </div>
+
+            <h2>11. Checkbox Inside a Form</h2>
+
+            <p>
+                Checkboxes are frequently used inside forms to collect multiple user selections.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;p&gt;Select your preferred technologies:&lt;/p&gt;
+
+    &lt;input type="checkbox"
+           id="technology-csharp"
+           name="technology"
+           value="csharp"&gt;
+    &lt;label for="technology-csharp"&gt;C#&lt;/label&gt;
+
+    &lt;input type="checkbox"
+           id="technology-java"
+           name="technology"
+           value="java"&gt;
+    &lt;label for="technology-java"&gt;Java&lt;/label&gt;
+
+    &lt;input type="checkbox"
+           id="technology-python"
+           name="technology"
+           value="python"&gt;
+    &lt;label for="technology-python"&gt;Python&lt;/label&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>12. Example: Selecting Hobbies</h2>
+
+            <pre><code>&lt;p&gt;Select your hobbies:&lt;/p&gt;
+
+&lt;input type="checkbox"
+       id="reading"
+       name="hobby"
+       value="reading"&gt;
+&lt;label for="reading"&gt;Reading&lt;/label&gt;
+
+&lt;input type="checkbox"
+       id="music"
+       name="hobby"
+       value="music"&gt;
+&lt;label for="music"&gt;Music&lt;/label&gt;
+
+&lt;input type="checkbox"
+       id="travel"
+       name="hobby"
+       value="travel"&gt;
+&lt;label for="travel"&gt;Travel&lt;/label&gt;
+
+&lt;input type="checkbox"
+       id="gaming"
+       name="hobby"
+       value="gaming"&gt;
+&lt;label for="gaming"&gt;Gaming&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <p class="fw-semibold">Select your hobbies:</p>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="reading-demo" name="hobby-demo" value="reading">
+                    <label for="reading-demo">Reading</label>
+                </div>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="music-demo" name="hobby-demo" value="music">
+                    <label for="music-demo">Music</label>
+                </div>
+
+                <div class="mb-2">
+                    <input type="checkbox" id="travel-demo" name="hobby-demo" value="travel">
+                    <label for="travel-demo">Travel</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="gaming-demo" name="hobby-demo" value="gaming">
+                    <label for="gaming-demo">Gaming</label>
+                </div>
+            </div>
+
+            <h2>13. Checkbox for Terms and Conditions</h2>
+
+            <p>
+                A checkbox is commonly used when the user must confirm an agreement before continuing.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;input type="checkbox"
+           id="terms-condition"
+           name="terms"
+           value="accepted"
+           required&gt;
+
+    &lt;label for="terms-condition"&gt;
+        I agree to the Terms and Conditions
+    &lt;/label&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;Register&lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>14. Using fieldset and legend</h2>
+
+            <p>
+                The <code>&lt;fieldset&gt;</code> element can group related checkboxes,
+                while <code>&lt;legend&gt;</code> provides a descriptive title.
+            </p>
+
+            <pre><code>&lt;fieldset&gt;
+
+    &lt;legend&gt;Select Skills&lt;/legend&gt;
+
+    &lt;input type="checkbox"
+           id="skill-csharp"
+           name="skills"
+           value="csharp"&gt;
+    &lt;label for="skill-csharp"&gt;C#&lt;/label&gt;
+
+    &lt;input type="checkbox"
+           id="skill-sql"
+           name="skills"
+           value="sql"&gt;
+    &lt;label for="skill-sql"&gt;SQL&lt;/label&gt;
+
+    &lt;input type="checkbox"
+           id="skill-angular"
+           name="skills"
+           value="angular"&gt;
+    &lt;label for="skill-angular"&gt;Angular&lt;/label&gt;
+
+&lt;/fieldset&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>15. Checkbox vs Radio Button</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Checkbox</th>
+                            <th>Radio Button</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Selection</td>
+                            <td>One or more options</td>
+                            <td>Usually one option</td>
+                        </tr>
+                        <tr>
+                            <td>Input Type</td>
+                            <td><code>checkbox</code></td>
+                            <td><code>radio</code></td>
+                        </tr>
+                        <tr>
+                            <td>Example</td>
+                            <td>Select multiple skills</td>
+                            <td>Select one payment method</td>
+                        </tr>
+                        <tr>
+                            <td>Multiple selections</td>
+                            <td>Allowed</td>
+                            <td>Not within the same group</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>16. Common Checkbox Attributes</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>type</code></td>
+                            <td>Defines the control as a checkbox.</td>
+                        </tr>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>Identifies the form field.</td>
+                        </tr>
+                        <tr>
+                            <td><code>value</code></td>
+                            <td>Defines the value submitted when checked.</td>
+                        </tr>
+                        <tr>
+                            <td><code>id</code></td>
+                            <td>Uniquely identifies the checkbox.</td>
+                        </tr>
+                        <tr>
+                            <td><code>checked</code></td>
+                            <td>Selects the checkbox by default.</td>
+                        </tr>
+                        <tr>
+                            <td><code>required</code></td>
+                            <td>Requires the checkbox to be selected.</td>
+                        </tr>
+                        <tr>
+                            <td><code>disabled</code></td>
+                            <td>Prevents the checkbox from being selected.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>17. Common Mistakes</h2>
+
+            <h3>Mistake 1: Forgetting type="checkbox"</h3>
+
+            <pre><code>&lt;input&gt;</code></pre>
+
+            <p>
+                Without <code>type="checkbox"</code>, the browser does not create a checkbox.
+            </p>
+
+            <h3>Mistake 2: Missing label</h3>
+
+            <pre><code>&lt;input type="checkbox" name="skill" value="html"&gt;</code></pre>
+
+            <p>
+                Always provide a descriptive label when the checkbox represents a user-facing choice.
+            </p>
+
+            <h3>Mistake 3: Missing value</h3>
+
+            <pre><code>&lt;input type="checkbox" name="skill"&gt;</code></pre>
+
+            <p>
+                Use a meaningful <code>value</code> when the selected checkbox must be identified during form submission.
+            </p>
+
+            <h2>18. Best Practices</h2>
+
+            <ul>
+                <li>Use checkboxes when multiple choices are allowed.</li>
+                <li>Use clear and descriptive labels.</li>
+                <li>Provide meaningful <code>name</code> and <code>value</code> attributes.</li>
+                <li>Connect labels using matching <code>id</code> and <code>for</code> values.</li>
+                <li>Use <code>required</code> when a selection is mandatory.</li>
+                <li>Use <code>fieldset</code> and <code>legend</code> for logically related checkbox groups.</li>
+            </ul>
+
+            <h2>19. Practice Example</h2>
+
+            <p>
+                Create a form that allows the user to select multiple preferred technologies.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;fieldset&gt;
+
+        &lt;legend&gt;Preferred Technologies&lt;/legend&gt;
+
+        &lt;input type="checkbox"
+               id="tech-html"
+               name="technology"
+               value="html"&gt;
+        &lt;label for="tech-html"&gt;HTML&lt;/label&gt;
+
+        &lt;input type="checkbox"
+               id="tech-css"
+               name="technology"
+               value="css"&gt;
+        &lt;label for="tech-css"&gt;CSS&lt;/label&gt;
+
+        &lt;input type="checkbox"
+               id="tech-javascript"
+               name="technology"
+               value="javascript"&gt;
+        &lt;label for="tech-javascript"&gt;JavaScript&lt;/label&gt;
+
+        &lt;input type="checkbox"
+               id="tech-bootstrap"
+               name="technology"
+               value="bootstrap"&gt;
+        &lt;label for="tech-bootstrap"&gt;Bootstrap&lt;/label&gt;
+
+    &lt;/fieldset&gt;
+
+    &lt;br&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML checkboxes are created using
+                    <code>&lt;input type="checkbox"&gt;</code> and allow users to select
+                    one or more options. Use meaningful <code>name</code> and
+                    <code>value</code> attributes, connect labels using <code>id</code>
+                    and <code>for</code>, and use attributes such as
+                    <code>checked</code>, <code>required</code>, and <code>disabled</code>
+                    when required.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("RadioButtons", "Forms", new { area = "HTML" })">
+                    ← Previous: Radio Buttons
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Buttons", "Forms", new { area = "HTML" })">
+                    Next: Buttons →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

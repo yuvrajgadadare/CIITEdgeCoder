@@ -1,0 +1,689 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Asynchronous & Parallel Programming";
+}
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <!-- MODULE INTRODUCTION -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Module 7: Asynchronous &amp; Parallel Programming
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Learn how to build responsive and efficient C# applications
+                    using Asynchronous Programming, Multithreading, and Parallel Processing.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Module Objective:</strong>
+                    Understand how asynchronous and parallel programming can improve
+                    application responsiveness, performance, and resource utilization.
+                </div>
+
+            </div>
+
+
+            <!-- ================= ASYNCHRONOUS PROGRAMMING ================= -->
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4" id="asynchronous-programming">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    1. Asynchronous Programming
+                </h2>
+
+                <p class="text-muted">
+                    Asynchronous programming allows a program to start a task and
+                    continue performing other work while waiting for that task to complete.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    Asynchronous programming allows long-running operations to execute
+                    without blocking the main flow of the application.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Why Do We Need Asynchronous Programming?
+                </h4>
+
+                <ul class="text-muted">
+                    <li>Improves application responsiveness.</li>
+                    <li>Prevents unnecessary blocking.</li>
+                    <li>Works well with I/O operations.</li>
+                    <li>Improves scalability in web applications.</li>
+                    <li>Useful for database and API operations.</li>
+                    <li>Allows applications to handle multiple operations efficiently.</li>
+                </ul>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    async and await Keywords
+                </h4>
+
+                <p class="text-muted">
+                    The <strong>async</strong> keyword is used to define an asynchronous
+                    method. The <strong>await</strong> keyword waits for an asynchronous
+                    operation to complete without blocking the calling thread.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>static async Task GetDataAsync()
+{
+    await Task.Delay(2000);
+
+    Console.WriteLine("Data received.");
+}
+
+static async Task Main()
+{
+    Console.WriteLine("Starting...");
+
+    await GetDataAsync();
+
+    Console.WriteLine("Completed.");
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Starting...
+Data received.
+Completed.</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Task in C#
+                </h4>
+
+                <p class="text-muted">
+                    Task represents an asynchronous operation.
+                    It is commonly used with async and await.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>static async Task&lt;int&gt; CalculateAsync()
+{
+    await Task.Delay(1000);
+
+    return 100;
+}
+
+static async Task Main()
+{
+    int result = await CalculateAsync();
+
+    Console.WriteLine(result);
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>100</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Async Method with Return Value
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>static async Task&lt;string&gt; GetMessageAsync()
+{
+    await Task.Delay(1000);
+
+    return "Hello from asynchronous method.";
+}
+
+static async Task Main()
+{
+    string message = await GetMessageAsync();
+
+    Console.WriteLine(message);
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Hello from asynchronous method.</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Running Multiple Async Operations
+                </h4>
+
+                <p class="text-muted">
+                    Multiple asynchronous operations can be started and then awaited
+                    together using Task.WhenAll().
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>static async Task TaskOne()
+{
+    await Task.Delay(1000);
+    Console.WriteLine("Task One Completed");
+}
+
+static async Task TaskTwo()
+{
+    await Task.Delay(1000);
+    Console.WriteLine("Task Two Completed");
+}
+
+static async Task Main()
+{
+    Task task1 = TaskOne();
+    Task task2 = TaskTwo();
+
+    await Task.WhenAll(task1, task2);
+
+    Console.WriteLine("All Tasks Completed");
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Task One Completed
+Task Two Completed
+All Tasks Completed</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Asynchronous Programming in ASP.NET Core
+                </h4>
+
+                <p class="text-muted">
+                    ASP.NET Core applications commonly use asynchronous methods
+                    for database calls, API calls, file operations, and other
+                    I/O-bound operations.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>public async Task&lt;IActionResult&gt; GetStudents()
+{
+    var students = await _studentService.GetStudentsAsync();
+
+    return View(students);
+}</code></pre>
+                </div>
+
+
+                <div class="alert alert-success">
+                    <strong>CIIT Practical Point:</strong>
+                    async and await are very important in ASP.NET Core development,
+                    especially when working with Entity Framework Core, Web APIs,
+                    HTTP requests, database queries, and file operations.
+                </div>
+
+            </div>
+
+
+            <!-- ================= MULTITHREADING ================= -->
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4" id="multithreading">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    2. Multithreading
+                </h2>
+
+                <p class="text-muted">
+                    Multithreading allows a program to execute multiple threads
+                    concurrently. A thread represents an independent path of execution.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    Multithreading allows different tasks to execute concurrently
+                    within an application.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    What is a Thread?
+                </h4>
+
+                <p class="text-muted">
+                    A thread is the smallest unit of execution within a process.
+                    An application can contain multiple threads.
+                </p>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Creating a Thread
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System.Threading;
+
+class Program
+{
+    static void PrintMessage()
+    {
+        Console.WriteLine("Thread is running.");
+    }
+
+    static void Main()
+    {
+        Thread thread = new Thread(PrintMessage);
+
+        thread.Start();
+
+        Console.WriteLine("Main thread is running.");
+    }
+}</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    The exact order of the two output lines can vary because
+                    both threads may execute concurrently.
+                </p>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Thread with Parameter
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System.Threading;
+
+class Program
+{
+    static void PrintNumber(object number)
+    {
+        Console.WriteLine("Number: " + number);
+    }
+
+    static void Main()
+    {
+        Thread thread =
+            new Thread(PrintNumber);
+
+        thread.Start(100);
+    }
+}</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Number: 100</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Thread.Sleep()
+                </h4>
+
+                <p class="text-muted">
+                    Thread.Sleep() pauses the current thread for a specified
+                    amount of time.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System.Threading;
+
+Console.WriteLine("Start");
+
+Thread.Sleep(2000);
+
+Console.WriteLine("End");</code></pre>
+                </div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Start
+End</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Thread Synchronization
+                </h4>
+
+                <p class="text-muted">
+                    When multiple threads access shared data, synchronization
+                    may be required to prevent unexpected results.
+                </p>
+
+                <p class="text-muted">
+                    The <strong>lock</strong> keyword is commonly used to ensure
+                    that only one thread accesses a critical section at a time.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>class Counter
+{
+    private int count = 0;
+
+    private readonly object lockObject = new object();
+
+    public void Increment()
+    {
+        lock (lockObject)
+        {
+            count++;
+        }
+    }
+
+    public int GetCount()
+    {
+        return count;
+    }
+}</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Thread vs Task
+                </h4>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Thread</th>
+                                <th>Task</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Abstraction</td>
+                                <td>Lower-level</td>
+                                <td>Higher-level</td>
+                            </tr>
+                            <tr>
+                                <td>Management</td>
+                                <td>Manual</td>
+                                <td>Managed by Task infrastructure</td>
+                            </tr>
+                            <tr>
+                                <td>Modern .NET Usage</td>
+                                <td>Less common for general async work</td>
+                                <td>Common</td>
+                            </tr>
+                            <tr>
+                                <td>Common Use</td>
+                                <td>Specific threading scenarios</td>
+                                <td>Async and parallel operations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="alert alert-success">
+                    <strong>CIIT Practical Point:</strong>
+                    Multithreading concepts are useful when developing
+                    background processing, concurrent services, desktop applications,
+                    and performance-sensitive applications.
+                </div>
+
+            </div>
+
+
+            <!-- ================= PARALLEL PROCESSING ================= -->
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4" id="parallel-processing">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    3. Parallel Processing
+                </h2>
+
+                <p class="text-muted">
+                    Parallel processing divides work into multiple parts so that
+                    several operations can execute at the same time.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    Parallel processing is useful when independent operations
+                    can be executed simultaneously to improve performance.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Parallel.For
+                </h4>
+
+                <p class="text-muted">
+                    Parallel.For executes iterations of a loop concurrently.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>Parallel.For(1, 6, i =&gt;
+{
+    Console.WriteLine("Processing: " + i);
+});</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    The order of the output is not guaranteed because
+                    iterations may execute concurrently.
+                </p>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Parallel.ForEach
+                </h4>
+
+                <p class="text-muted">
+                    Parallel.ForEach is useful for processing each item in a collection
+                    concurrently.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>List&lt;string&gt; courses =
+    new List&lt;string&gt;
+    {
+        "C#",
+        ".NET",
+        "ASP.NET Core",
+        "SQL"
+    };
+
+Parallel.ForEach(courses, course =&gt;
+{
+    Console.WriteLine("Processing: " + course);
+});</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Parallel.Invoke
+                </h4>
+
+                <p class="text-muted">
+                    Parallel.Invoke executes multiple independent actions in parallel.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>Parallel.Invoke(
+    () =&gt; Console.WriteLine("Task 1"),
+    () =&gt; Console.WriteLine("Task 2"),
+    () =&gt; Console.WriteLine("Task 3")
+);</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    The order in which the tasks print can vary.
+                </p>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Async vs Multithreading vs Parallel Processing
+                </h4>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Concept</th>
+                                <th>Main Purpose</th>
+                                <th>Common Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Asynchronous Programming</td>
+                                <td>Non-blocking operations</td>
+                                <td>API or database call</td>
+                            </tr>
+                            <tr>
+                                <td>Multithreading</td>
+                                <td>Concurrent execution using threads</td>
+                                <td>Background processing</td>
+                            </tr>
+                            <tr>
+                                <td>Parallel Processing</td>
+                                <td>Execute independent work simultaneously</td>
+                                <td>Large data processing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    When Should We Use Parallel Processing?
+                </h4>
+
+                <ul class="text-muted">
+                    <li>Large data processing.</li>
+                    <li>Independent calculations.</li>
+                    <li>Image processing.</li>
+                    <li>Batch processing.</li>
+                    <li>CPU-intensive operations.</li>
+                    <li>Operations that can safely execute independently.</li>
+                </ul>
+
+
+                <div class="alert alert-warning">
+                    <strong>Important:</strong>
+                    Parallel processing is not automatically faster for every problem.
+                    For small operations, the overhead of parallel execution may provide
+                    little or no performance benefit.
+                </div>
+
+
+                <div class="alert alert-success">
+                    <strong>CIIT Practical Point:</strong>
+                    Parallel processing is useful for CPU-intensive workloads,
+                    batch operations, data processing, and applications where
+                    independent work can safely execute concurrently.
+                </div>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    In this module, you learned how <strong>Asynchronous Programming</strong>
+                    allows applications to perform non-blocking operations using
+                    <strong>async</strong>, <strong>await</strong>, and <strong>Task</strong>.
+                </p>
+
+                <p class="mb-3">
+                    You also learned how <strong>Multithreading</strong> allows multiple
+                    threads to execute concurrently and how synchronization can be used
+                    when working with shared data.
+                </p>
+
+                <p class="mb-3">
+                    <strong>Parallel Processing</strong> allows independent operations
+                    to execute concurrently using features such as
+                    <strong>Parallel.For</strong>, <strong>Parallel.ForEach</strong>,
+                    and <strong>Parallel.Invoke</strong>.
+                </p>
+
+                <p class="mb-0">
+                    Understanding these concepts is important for building responsive,
+                    scalable, and performance-oriented <strong>.NET and ASP.NET Core</strong>
+                    applications.
+                </p>
+
+            </div>
+
+
+            <!-- PRACTICE QUESTIONS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Create an asynchronous method using async and await.</li>
+                    <li>Create a method that returns Task&lt;int&gt;.</li>
+                    <li>Use Task.Delay() in an asynchronous program.</li>
+                    <li>Create two asynchronous operations and execute them using Task.WhenAll().</li>
+                    <li>Create a Thread and execute a method.</li>
+                    <li>Demonstrate Thread.Sleep().</li>
+                    <li>Explain the difference between Thread and Task.</li>
+                    <li>Create a program using the lock keyword.</li>
+                    <li>Use Parallel.For to process numbers from 1 to 10.</li>
+                    <li>Use Parallel.ForEach to process a List of strings.</li>
+                    <li>Use Parallel.Invoke to execute three independent methods.</li>
+                    <li>Explain the difference between asynchronous programming and parallel processing.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- MODULE NAVIGATION -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="/CSharp/AdvanceFeature/ExceptionHandling"
+                   class="btn btn-outline-secondary">
+                    ← Previous Module
+                </a>
+
+                <a href="/CSharp/BasicLanguage/ModernCSharp"
+                   class="btn btn-primary">
+                    Next Module →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>

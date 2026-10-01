@@ -1,0 +1,997 @@
+﻿@{
+    ViewData["Title"] = "Record Classes in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-2">Record Classes in Java</h1>
+                <p class="text-muted mb-0">
+                    Learn Java records for creating concise immutable data-carrier classes.
+                </p>
+            </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Introduction -->
+        <h2 class="fw-bold">1. What is a Record?</h2>
+
+        <p>
+            A <strong>record</strong> is a special kind of Java class designed primarily
+            to model immutable data.
+        </p>
+
+        <p>
+            Records reduce the amount of boilerplate code required for classes that mainly
+            store data.
+        </p>
+
+        <div class="alert alert-info">
+            <strong>Key idea:</strong>
+            A record automatically provides useful members such as a constructor,
+            accessors, <code>equals()</code>, <code>hashCode()</code>, and
+            <code>toString()</code>.
+        </div>
+
+        <!-- Traditional class -->
+        <h2 class="fw-bold mt-5">2. Traditional Data Class</h2>
+
+        <p>
+            A normal data class can require many lines of repetitive code.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public final class Person {
+
+    private final String name;
+    private final int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public int age() {
+        return age;
+    }
+}</code></pre>
+        </div>
+
+        <!-- Basic record -->
+        <h2 class="fw-bold mt-5">3. Basic Record Syntax</h2>
+
+        <p>
+            The same basic data model can be represented much more concisely with a record.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record Person(
+    String name,
+    int age
+) {
+}</code></pre>
+        </div>
+
+        <p>
+            The components <code>name</code> and <code>age</code> become part of the
+            record's state.
+        </p>
+
+        <!-- Creating record -->
+        <h2 class="fw-bold mt-5">4. Creating a Record Object</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Person person =
+    new Person("Rohit", 25);
+
+System.out.println(person.name());
+System.out.println(person.age());</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Rohit
+25</code></pre>
+</div>
+        <div class="alert alert-success">
+            <strong>Notice:</strong>
+            Record accessors use the component name directly, such as
+            <code>person.name()</code>, rather than a traditional
+            <code>getName()</code> method.
+        </div>
+
+        <!-- Constructor -->
+        <h2 class="fw-bold mt-5">5. Automatically Generated Constructor</h2>
+
+        <p>
+            A record automatically receives a canonical constructor corresponding
+            to its declared components.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record Employee(
+    String name,
+    int id
+) {
+}</code></pre>
+        </div>
+
+        <p>
+            Java effectively provides a constructor equivalent to:
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>new Employee(
+    "Samiksha",
+    101
+);</code></pre>
+        </div>
+
+        <!-- Accessors -->
+        <h2 class="fw-bold mt-5">6. Record Accessor Methods</h2>
+
+        <p>
+            Each record component automatically gets an accessor method with
+            the same name as the component.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>record Product(
+    String name,
+    double price
+) {
+}
+
+Product product =
+    new Product("Laptop", 55000.0);
+
+System.out.println(product.name());
+System.out.println(product.price());</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Laptop
+55000.0</code></pre>
+</div>
+        <!-- toString -->
+        <h2 class="fw-bold mt-5">7. toString()</h2>
+
+        <p>
+            Records automatically provide a useful <code>toString()</code>
+            implementation containing the record name and component values.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>record Student(
+    String name,
+    int marks
+) {
+}
+
+Student student =
+    new Student("Sejl", 85);
+
+System.out.println(student);</code></pre>
+        </div>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Example Output</span>
+            <pre class="mb-0"><code>Student[name=Sejl, marks=85]</code></pre>
+        </div>
+
+        <!-- equals -->
+        <h2 class="fw-bold mt-5">8. equals() and hashCode()</h2>
+
+        <p>
+            Records automatically implement value-based <code>equals()</code>
+            and <code>hashCode()</code> behavior using their components.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>record Point(
+    int x,
+    int y
+) {
+}
+
+Point first =
+    new Point(10, 20);
+
+Point second =
+    new Point(10, 20);
+
+System.out.println(
+    first.equals(second)
+);</code></pre>
+        </div>
+    <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>true</code></pre>
+</div>
+        <div class="alert alert-success">
+            The two records are considered equal because their component values are equal.
+        </div>
+
+        <!-- Immutable -->
+        <h2 class="fw-bold mt-5">9. Records are Shallowly Immutable</h2>
+
+        <p>
+            Record components are final, so their references or primitive values
+            cannot be reassigned after construction.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>record Person(
+    String name,
+    int age
+) {
+}
+
+Person person =
+    new Person("Samadhan", 22);
+
+// person.age = 20;
+// Invalid because record components cannot be reassigned.</code></pre>
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>Important:</strong>
+            Records provide shallow immutability. If a component refers to a mutable
+            object, that referenced object can still be changed unless it is protected
+            separately.
+        </div>
+
+        <!-- Compact constructor -->
+        <h2 class="fw-bold mt-5">10. Compact Constructor</h2>
+
+        <p>
+            A record can define a compact constructor to validate or normalize
+            its component values.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record Person(
+    String name,
+    int age
+) {
+
+    public Person {
+
+        if (age &lt; 0) {
+            throw new IllegalArgumentException(
+                "Age cannot be negative"
+            );
+        }
+    }
+}</code></pre>
+        </div>
+
+        <p>
+            In a compact constructor, Java handles the assignment of constructor
+            parameters to record components automatically.
+        </p>
+
+        <!-- Canonical constructor -->
+        <h2 class="fw-bold mt-5">11. Canonical Constructor</h2>
+
+        <p>
+            You can also explicitly declare the canonical constructor when you need
+            complete control over its implementation.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record Employee(
+    String name,
+    int salary
+) {
+
+    public Employee(
+        String name,
+        int salary
+    ) {
+
+        if (salary &lt; 0) {
+            throw new IllegalArgumentException(
+                "Salary cannot be negative"
+            );
+        }
+
+        this.name = name;
+        this.salary = salary;
+    }
+}</code></pre>
+        </div>
+
+        <!-- Methods -->
+        <h2 class="fw-bold mt-5">12. Custom Methods in Records</h2>
+
+        <p>
+            Records can contain custom instance methods just like normal classes.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record Rectangle(
+    double width,
+    double height
+) {
+
+    public double area() {
+        return width * height;
+    }
+}
+
+Rectangle rectangle =
+    new Rectangle(10, 5);
+
+System.out.println(
+    rectangle.area()
+);</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>50.0</code></pre>
+</div>
+
+        <!-- Static -->
+        <h2 class="fw-bold mt-5">13. Static Members</h2>
+
+        <p>
+            Records can also contain static fields and static methods.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record User(
+    String username
+) {
+
+    public static String type() {
+        return "Application User";
+    }
+}
+
+System.out.println(
+    User.type()
+);</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Application User</code></pre>
+</div>
+        <!-- Restrictions -->
+        <h2 class="fw-bold mt-5">14. Record Restrictions</h2>
+
+        <p>
+            Records have several restrictions because they are specifically designed
+            for data-centric modeling.
+        </p>
+
+        <ul>
+            <li>A record cannot extend another class.</li>
+            <li>A record is implicitly final.</li>
+            <li>Record components cannot be reassigned.</li>
+            <li>Instance fields cannot be declared independently of record components.</li>
+            <li>Records can implement interfaces.</li>
+        </ul>
+
+        <!-- Interface -->
+        <h2 class="fw-bold mt-5">15. Records Implementing Interfaces</h2>
+
+        <p>
+            A record can implement one or more interfaces.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Printable {
+
+    void print();
+}
+
+record Employee(
+    String name,
+    int id
+) implements Printable {
+
+    public void print() {
+        System.out.println(
+            name + " - " + id
+        );
+    }
+}
+
+Employee employee =
+    new Employee("Sejl", 101);
+
+employee.print();</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Sejl - 101</code></pre>
+</div>
+        <!-- Record vs class -->
+        <h2 class="fw-bold mt-5">16. Record vs Class</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Record</th>
+                        <th>Normal Class</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Designed for data carriers</td>
+                        <td>General-purpose object modeling</td>
+                    </tr>
+                    <tr>
+                        <td>Compact syntax</td>
+                        <td>More boilerplate may be required</td>
+                    </tr>
+                    <tr>
+                        <td>Components are final</td>
+                        <td>Fields can be mutable or immutable</td>
+                    </tr>
+                    <tr>
+                        <td>Automatically provides accessors</td>
+                        <td>Accessors must usually be written manually</td>
+                    </tr>
+                    <tr>
+                        <td>Automatically provides value-oriented equals/hashCode</td>
+                        <td>Must be implemented when required</td>
+                    </tr>
+                    <tr>
+                        <td>Implicitly final</td>
+                        <td>Can be designed for inheritance</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Record and inheritance -->
+        <h2 class="fw-bold mt-5">17. Records and Inheritance</h2>
+
+        <p>
+            Records cannot extend user-defined classes because every record already
+            extends <code>java.lang.Record</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record Person(
+    String name
+) {
+}
+
+// A record cannot extend another class.
+// public record Student(...) extends Person { }</code></pre>
+        </div>
+
+        <p>
+            However, records can implement interfaces.
+        </p>
+
+        <!-- Generic record -->
+        <h2 class="fw-bold mt-5">18. Generic Records</h2>
+
+        <p>
+            Records can be generic, allowing them to represent different types of data.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record Box&lt;T&gt;(
+    T value
+) {
+}
+
+Box&lt;String&gt; text =
+    new Box&lt;&gt;("Java");
+
+Box&lt;Integer&gt; number =
+    new Box&lt;&gt;(100);
+
+System.out.println(text.value());
+System.out.println(number.value());</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Java
+100</code></pre>
+</div>
+        <!-- Nested record -->
+        <h2 class="fw-bold mt-5">19. Nested Records</h2>
+
+        <p>
+            Records can be declared inside other classes when they belong naturally
+            to a larger domain model.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class OrderService {
+
+    record Order(
+        int id,
+        double amount
+    ) {
+    }
+
+    public static void main(String[] args) {
+
+        Order order =
+            new Order(101, 2500.0);
+
+        System.out.println(order);
+    }
+}</code></pre>
+        </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Order[id=101, amount=2500.0]</code></pre>
+</div>
+
+        <!-- DTO -->
+        <h2 class="fw-bold mt-5">20. Records as DTOs</h2>
+
+        <p>
+            Records are particularly useful for simple Data Transfer Objects,
+            API request objects, response objects, and projection models.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record UserResponse(
+    Long id,
+    String name,
+    String email
+) {
+}</code></pre>
+        </div>
+
+        <p>
+            A controller or service can return this record as a response model
+            without creating repetitive getter and setter code.
+        </p>
+
+        <!-- Validation -->
+        <h2 class="fw-bold mt-5">21. Validation in Records</h2>
+
+        <p>
+            Compact constructors are useful for enforcing invariants.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record Account(
+    String username,
+    String email
+) {
+
+    public Account {
+
+        if (username == null ||
+            username.isBlank()) {
+
+            throw new IllegalArgumentException(
+                "Username is required"
+            );
+        }
+
+        if (email == null ||
+            email.isBlank()) {
+
+            throw new IllegalArgumentException(
+                "Email is required"
+            );
+        }
+    }
+}</code></pre>
+        </div>
+
+        <!-- Real World -->
+        <h2 class="fw-bold mt-5">22. Example 🌍🫠</h2>
+
+        <p>
+            Consider a payment application that needs to transfer payment information
+            between layers.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record PaymentRequest(
+    String customerId,
+    double amount,
+    String currency
+) {
+
+    public PaymentRequest {
+
+        if (amount &lt;= 0) {
+
+            throw new IllegalArgumentException(
+                "Amount must be greater than zero"
+            );
+        }
+    }
+}</code></pre>
+        </div>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>PaymentRequest request =
+    new PaymentRequest(
+        "CUST-101",
+        2500.0,
+        "INR"
+    );
+
+System.out.println(
+    request.customerId()
+);
+
+System.out.println(
+    request.amount()
+);
+
+System.out.println(
+    request.currency()
+);</code></pre>
+        </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>CUST-101
+2500.0
+INR</code></pre>
+</div>
+
+        <!-- Serialization -->
+        <h2 class="fw-bold mt-5">23. Records and Serialization</h2>
+
+        <p>
+            Records can be used with many Java libraries that work with Java objects,
+            including JSON serialization libraries, provided the library supports records.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public record ProductResponse(
+    Long id,
+    String name,
+    double price
+) {
+}</code></pre>
+        </div>
+
+        <p>
+            This makes records convenient for API response models in modern Java
+            applications.
+        </p>
+
+        <!-- Java version -->
+        <h2 class="fw-bold mt-5">24. Java Version</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Java Version</th>
+                        <th>Record Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Java 14</td>
+                        <td>First preview</td>
+                    </tr>
+                    <tr>
+                        <td>Java 15</td>
+                        <td>Second preview</td>
+                    </tr>
+                    <tr>
+                        <td>Java 16</td>
+                        <td>Standard feature</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Advantages -->
+        <h2 class="fw-bold mt-5">25. Advantages of Records</h2>
+
+        <ul>
+            <li>Very concise syntax.</li>
+            <li>Less boilerplate code.</li>
+            <li>Built-in accessors.</li>
+            <li>Built-in equals and hashCode.</li>
+            <li>Useful toString implementation.</li>
+            <li>Good fit for immutable data carriers.</li>
+            <li>Excellent for DTOs and API models.</li>
+            <li>Can implement interfaces.</li>
+            <li>Can contain validation and business-related helper methods.</li>
+        </ul>
+
+        <!-- Limitations -->
+        <h2 class="fw-bold mt-5">26. Limitations of Records</h2>
+
+        <ul>
+            <li>Cannot extend another class.</li>
+            <li>Are implicitly final.</li>
+            <li>Not suitable for highly mutable domain objects.</li>
+            <li>Provide shallow rather than deep immutability.</li>
+            <li>Should not be used merely because they are shorter.</li>
+        </ul>
+
+        <!-- Best practices -->
+        <h2 class="fw-bold mt-5">27. Best Practices</h2>
+
+        <ul>
+            <li>Use records for data-centric models.</li>
+            <li>Use compact constructors for validation.</li>
+            <li>Keep record methods focused and simple.</li>
+            <li>Use normal classes when the object requires mutable state or inheritance.</li>
+            <li>Use records for DTOs when the application architecture benefits from immutable data.</li>
+            <li>Remember that referenced mutable objects are not automatically deeply immutable.</li>
+        </ul>
+
+        <!-- Interview -->
+        <h2 class="fw-bold mt-5">28. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="recordQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#recordQuestionOne">
+                        What is a record in Java?
+                    </button>
+                </h2>
+
+                <div id="recordQuestionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#recordQuestions">
+
+                    <div class="accordion-body">
+                        A record is a special Java class designed primarily for
+                        representing immutable data with less boilerplate.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#recordQuestionTwo">
+                        Which Java version made records standard?
+                    </button>
+                </h2>
+
+                <div id="recordQuestionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#recordQuestions">
+
+                    <div class="accordion-body">
+                        Records became a standard language feature in Java 16.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#recordQuestionThree">
+                        Are records mutable?
+                    </button>
+                </h2>
+
+                <div id="recordQuestionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#recordQuestions">
+
+                    <div class="accordion-body">
+                        Record components are final, so their references or primitive
+                        values cannot be reassigned. However, records provide only
+                        shallow immutability.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#recordQuestionFour">
+                        Can a record extend another class?
+                    </button>
+                </h2>
+
+                <div id="recordQuestionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#recordQuestions">
+
+                    <div class="accordion-body">
+                        No. A record cannot extend a user-defined class.
+                        It implicitly extends <code>java.lang.Record</code>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#recordQuestionFive">
+                        Can records implement interfaces?
+                    </button>
+                </h2>
+
+                <div id="recordQuestionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#recordQuestions">
+
+                    <div class="accordion-body">
+                        Yes. Records can implement one or more interfaces.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#recordQuestionSix">
+                        What is a compact constructor?
+                    </button>
+                </h2>
+
+                <div id="recordQuestionSix"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#recordQuestions">
+
+                    <div class="accordion-body">
+                        A compact constructor is a concise constructor form used
+                        mainly for validation and normalization of record components.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="alert alert-success mt-5">
+            <h4 class="fw-bold">Summary</h4>
+
+            <p class="mb-2">
+                In this lesson, you learned:
+            </p>
+
+            <ul class="mb-0">
+                <li>What Java records are</li>
+                <li>Record syntax</li>
+                <li>Automatic constructors and accessors</li>
+                <li>equals(), hashCode(), and toString()</li>
+                <li>Shallow immutability</li>
+                <li>Compact constructors</li>
+                <li>Custom methods and static members</li>
+                <li>Records implementing interfaces</li>
+                <li>Generic records</li>
+                <li>Records as DTOs</li>
+                <li>Validation inside records</li>
+                <li>Advantages and limitations</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("TextBlocks", "ModernJava", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("SealedClasses", "ModernJava", new { area = "CoreJava" })">
+                Next: Topic →
+            </a>
+
+        </div>
+
+    </div>
+</div>

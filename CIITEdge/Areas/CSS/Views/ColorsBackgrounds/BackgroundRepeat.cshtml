@@ -1,0 +1,550 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Background Repeat";
+}
+
+<div class="container-fluid py-4" id="css-background-repeat-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/CSS/Views/Shared/CSSTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <!-- Page Title -->
+            <div class="content-section mb-4">
+
+                <h1 class="fw-bold mb-3">
+                    Background Repeat
+                </h1>
+
+                <p class="lead">
+                    The <strong>background-repeat</strong> property controls whether
+                    a background image should repeat inside an HTML element.
+                </p>
+
+                <p>
+                    By default, a background image may repeat horizontally and
+                    vertically. CSS provides different values to control this behavior.
+                </p>
+
+            </div>
+
+
+            <!-- Diagram -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-4">
+                        Background Repeat Flow
+                    </h4>
+
+                    <div class="repeat-diagram">
+
+                        <div class="diagram-box">
+                            Background Image
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-box">
+                            background-repeat
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-box">
+                            Browser Output
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Example 1 -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        Example 1: No Repeat
+                    </h4>
+
+                    <p>
+                        The <strong>no-repeat</strong> value displays the background
+                        image only once.
+                    </p>
+
+                    <h6 class="fw-bold mt-3">
+                        CSS Code
+                    </h6>
+
+                    <pre class="code-box"><code>div {
+    background-image: url("https://ciitinstitute.com/assets/mainlogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: #ffffff;
+    min-height: 260px;
+}</code></pre>
+
+                    <h6 class="fw-bold mt-4">
+                        Output
+                    </h6>
+
+                    <div class="repeat-output no-repeat-demo">
+                        <span>Image appears only once</span>
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        <strong>no-repeat</strong> prevents the image from repeating.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Example 2 -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        Example 2: Repeat
+                    </h4>
+
+                    <p>
+                        The <strong>repeat</strong> value repeats the background image
+                        horizontally and vertically.
+                    </p>
+
+                    <h6 class="fw-bold mt-3">
+                        CSS Code
+                    </h6>
+
+                    <pre class="code-box"><code>div {
+    background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=300&amp;q=80");
+    background-repeat: repeat;
+    background-size: 180px 120px;
+    min-height: 300px;
+}</code></pre>
+
+                    <h6 class="fw-bold mt-4">
+                        Output
+                    </h6>
+
+                    <div class="repeat-output repeat-demo">
+                        <div class="repeat-label">
+                            Repeated Background
+                        </div>
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        The image is repeated in both horizontal and vertical directions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Example 3 -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        Example 3: Repeat-X
+                    </h4>
+
+                    <p>
+                        The <strong>repeat-x</strong> value repeats the image only
+                        horizontally.
+                    </p>
+
+                    <h6 class="fw-bold mt-3">
+                        CSS Code
+                    </h6>
+
+                    <pre class="code-box"><code>div {
+    background-image: url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=300&amp;q=80");
+    background-repeat: repeat-x;
+    background-size: 180px 120px;
+    background-position: top left;
+    min-height: 260px;
+}</code></pre>
+
+                    <h6 class="fw-bold mt-4">
+                        Output
+                    </h6>
+
+                    <div class="repeat-output repeat-x-demo">
+                        <div class="repeat-label">
+                            Horizontal Repeat
+                        </div>
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        The image repeats from left to right.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Example 4 -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        Example 4: Repeat-Y
+                    </h4>
+
+                    <p>
+                        The <strong>repeat-y</strong> value repeats the image only
+                        vertically.
+                    </p>
+
+                    <h6 class="fw-bold mt-3">
+                        CSS Code
+                    </h6>
+
+                    <pre class="code-box"><code>div {
+    background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=300&amp;q=80");
+    background-repeat: repeat-y;
+    background-size: 180px 120px;
+    background-position: top left;
+    min-height: 300px;
+}</code></pre>
+
+                    <h6 class="fw-bold mt-4">
+                        Output
+                    </h6>
+
+                    <div class="repeat-output repeat-y-demo">
+                        <div class="repeat-label">
+                            Vertical Repeat
+                        </div>
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        The image repeats from top to bottom.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Comparison Table -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-3">
+                        Background Repeat Values
+                    </h4>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered align-middle">
+
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Behavior</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td><code>repeat</code></td>
+                                    <td>Repeats horizontally and vertically</td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>no-repeat</code></td>
+                                    <td>Displays the image only once</td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>repeat-x</code></td>
+                                    <td>Repeats horizontally</td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>repeat-y</code></td>
+                                    <td>Repeats vertically</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Simple Explanation -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-3">
+                        Simple Explanation
+                    </h4>
+
+                    <div class="explanation-box">
+
+                        <p>
+                            <strong>repeat</strong>
+                            → Repeats the image in both directions.
+                        </p>
+
+                        <p>
+                            <strong>no-repeat</strong>
+                            → Shows the image only once.
+                        </p>
+
+                        <p>
+                            <strong>repeat-x</strong>
+                            → Repeats the image horizontally.
+                        </p>
+
+                        <p class="mb-0">
+                            <strong>repeat-y</strong>
+                            → Repeats the image vertically.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Summary -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-3">
+                        Summary
+                    </h4>
+
+                    <ul class="mb-0">
+
+                        <li>
+                            Use <code>background-repeat</code> to control image repetition.
+                        </li>
+
+                        <li>
+                            <code>no-repeat</code> displays the image once.
+                        </li>
+
+                        <li>
+                            <code>repeat-x</code> repeats the image horizontally.
+                        </li>
+
+                        <li>
+                            <code>repeat-y</code> repeats the image vertically.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- Navigation -->
+            <div class="row g-3 mt-4 mb-5">
+
+                <div class="col-md-6">
+
+                    <a class="btn btn-outline-secondary w-100"
+                       href="@Url.Action("BackgroundImage", "ColorsBackgrounds", new { area = "CSS" })">
+
+                        ← Previous: Background Image
+
+                    </a>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <a class="btn btn-primary w-100"
+                       href="@Url.Action("BackgroundAttachment", "ColorsBackgrounds", new { area = "CSS" })">
+
+                        Next: Background Attachment →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+
+    #css-background-repeat-page .content-section h1,
+    #css-background-repeat-page .content-section h2,
+    #css-background-repeat-page .content-section h3,
+    #css-background-repeat-page .content-section h4 {
+        color: #212529;
+    }
+
+    #css-background-repeat-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+        #css-background-repeat-page .code-box code {
+            color: #f8f9fa;
+        }
+
+    #css-background-repeat-page .repeat-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    #css-background-repeat-page .diagram-box {
+        padding: 16px 22px;
+        background: #f1f3f5;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    #css-background-repeat-page .diagram-arrow {
+        font-size: 26px;
+        font-weight: 700;
+        color: #2563eb;
+    }
+
+    #css-background-repeat-page .repeat-output {
+        min-height: 260px;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+    }
+
+    #css-background-repeat-page .no-repeat-demo {
+        background-image: url("https://ciitinstitute.com/assets/mainlogo.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-color: #ffffff;
+        min-height: 260px;
+    }
+
+    #css-background-repeat-page .repeat-demo {
+        background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=300&q=80");
+        background-repeat: repeat;
+        background-size: 180px 120px;
+        min-height: 300px;
+    }
+
+    #css-background-repeat-page .repeat-x-demo {
+        background-image: url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&q=80");
+        background-repeat: repeat-x;
+        background-size: 180px 120px;
+        background-position: top left;
+        min-height: 260px;
+    }
+
+    #css-background-repeat-page .repeat-y-demo {
+        background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=300&q=80");
+        background-repeat: repeat-y;
+        background-size: 180px 120px;
+        background-position: top left;
+        min-height: 300px;
+    }
+
+    #css-background-repeat-page .repeat-label {
+        background: rgba(0, 0, 0, 0.72);
+        color: #ffffff;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    #css-background-repeat-page .explanation-box {
+        background: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        padding: 18px 20px;
+        border-radius: 6px;
+    }
+
+        #css-background-repeat-page .explanation-box p {
+            margin-bottom: 10px;
+        }
+
+    #css-background-repeat-page code {
+        color: #b02a37;
+    }
+
+    #css-background-repeat-page .code-box code {
+        color: #f8f9fa;
+    }
+
+    @@media (max-width: 767px) {
+
+        #css-background-repeat-page .repeat-diagram {
+            flex-direction: column;
+        }
+
+        #css-background-repeat-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-background-repeat-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-background-repeat-page .repeat-output {
+            min-height: 230px;
+        }
+    }
+
+</style>

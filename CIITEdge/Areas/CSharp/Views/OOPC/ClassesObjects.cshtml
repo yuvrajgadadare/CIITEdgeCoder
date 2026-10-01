@@ -1,0 +1,1420 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+    .try-it-btn:hover {
+        background: #157347;
+        color: #fff;
+    }
+
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- ===================================================== -->
+                <!-- PAGE HEADER -->
+                <!-- ===================================================== -->
+
+                <h2 class="h1 fw-bold text-dark mb-3">
+                    Classes & Objects in C#
+                </h2>
+
+                <p class="text-muted mb-4">
+                    <b>Classes and Objects</b> are fundamental concepts of
+                    Object-Oriented Programming (OOP) in C#. A class defines
+                    the structure and behavior of an object, while an object
+                    is an actual instance created from that class.
+                </p>
+
+                <p class="text-muted mb-4">
+                    In simple words, a <b>class</b> can be considered a blueprint,
+                    and an <b>object</b> is a real instance created using that
+                    blueprint.
+                </p>
+
+                <div class="alert alert-info border-0 shadow-sm mb-4">
+                    <strong>Beginner Tip:</strong>
+                    Think about a house blueprint. The blueprint describes how
+                    the house should look, but the actual house is the real thing
+                    built from that blueprint. In C#, the <b>class is the blueprint</b>
+                    and the <b>object is the actual instance</b>.
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- WHAT IS A CLASS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    What is a Class?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A <b>class</b> is a user-defined type that groups related
+                    data and behavior together. Data can be represented using
+                    fields or properties, while behavior can be represented
+                    using methods.
+                </p>
+
+                <p class="text-muted mb-4">
+                    A class does not represent one specific object. Instead,
+                    it defines what information an object should contain and
+                    what operations that object can perform.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Age;<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">DisplayDetails</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">$"Name: {Name}"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">$"Age: {Age}"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    In this example, <b>Student</b> is a class. It contains
+                    <b>Name</b> and <b>Age</b> as data members and
+                    <b>DisplayDetails()</b> as a method.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- WHAT IS OBJECT -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    What is an Object?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    An <b>object</b> is an instance of a class. When an object
+                    is created, memory is allocated for that object and it can
+                    store its own values for the data defined by the class.
+                </p>
+
+                <p class="text-muted mb-3">
+                    An object is generally created using the <b>new</b> keyword.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">Student</span> student1 =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <b>student1</b> is a reference variable that refers to
+                    an object of the <b>Student</b> class.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- CLASS VS OBJECT -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Class vs Object
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Class</th>
+                                <th>Object</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    A blueprint or definition.
+                                </td>
+
+                                <td>
+                                    An actual instance of a class.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Defines data and behavior.
+                                </td>
+
+                                <td>
+                                    Contains actual values and uses the
+                                    defined behavior.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Does not represent one specific entity.
+                                </td>
+
+                                <td>
+                                    Represents a specific entity.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Example: <b>Student</b>
+                                </td>
+
+                                <td>
+                                    Example: <b>student1</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- BASIC CLASS SYNTAX -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Basic Class Syntax
+                </h3>
+
+                <p class="text-muted mb-3">
+                    The general syntax for creating a class is:
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">ClassName</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Fields</span><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Properties</span><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Methods</span><br>
+                    }
+                </div>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Part</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td><b>class</b></td>
+                                <td>
+                                    Keyword used to declare a class.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>ClassName</b></td>
+                                <td>
+                                    Name of the class.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Fields</b></td>
+                                <td>
+                                    Variables used to store data.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Properties</b></td>
+                                <td>
+                                    Members commonly used to expose and
+                                    control access to data.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Methods</b></td>
+                                <td>
+                                    Define actions or behavior.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- FIELDS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Fields in a Class
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A <b>field</b> is a variable declared inside a class.
+                    Fields can store information related to an object.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Employee</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> EmployeeId;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">double</span> Salary;<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <b>EmployeeId</b>, <b>Name</b>, and <b>Salary</b>
+                    are fields of the <b>Employee</b> class.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- PROPERTIES -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Properties in a Class
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Properties provide a controlled way to expose data from
+                    a class. In modern C# applications, properties are commonly
+                    preferred over public fields.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Id { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Course { get; set; }<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    The <b>get</b> accessor is used to retrieve a value and the
+                    <b>set</b> accessor is used to assign a value.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- METHOD INSIDE CLASS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Methods Inside a Class
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A class can contain methods that define the behavior of
+                    its objects.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">Study</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">$"{Name} is studying C#."</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- CREATING OBJECT -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Creating an Object
+                </h3>
+
+                <p class="text-muted mb-3">
+                    To create an object, use the class name followed by the
+                    object variable and the <b>new</b> keyword.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();
+                </div>
+
+                <p class="text-muted mb-4">
+                    This statement creates a new object of the
+                    <b>Student</b> class.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- COMPLETE EXAMPLE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Complete Class & Object Example
+                </h3>
+
+                <p class="text-muted mb-3">
+                    Let's create a complete example using a
+                    <b>Student</b> class.
+                </p>
+
+                @* <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Id { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">string</span> Course { get; set; }<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">DisplayDetails</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">$"Student Id: {Id}"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">$"Student Name: {Name}"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">$"Course: {Course}"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Program</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">Main</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    student.Id = 101;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    student.Name =
+                    <span class="string-lit">"Rahul"</span>;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    student.Course =
+                    <span class="string-lit">"C# Full Stack"</span>;<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    student.DisplayDetails();<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div> *@
+
+    <div class="try-it-example">
+
+        <div class="code-block shadow-sm">
+
+           <div class="code-lang-tag">
+               C#
+           </div>
+
+             <pre class="mb-0"><code>using System;
+ 
+public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Course { get; set; }
+
+    public void DisplayDetails()
+    {
+         Console.WriteLine( $"Student Id: {Id}");
+         Console.WriteLine( $"Student Name: {Name}");
+         Console.WriteLine( $"Course: {Course}");
+    }
+}
+
+class Program
+{
+    public static void Main()
+    {
+         Student student = new Student();
+
+         student.Id = 101;
+         student.Name = "Rahul";
+         student.Course = "C# Full Stack";
+
+         student.DisplayDetails();
+    }
+}</code></pre>
+
+</div>
+
+<div class="text-end mt-2 mb-3">
+        <button type="button"
+             class="try-it-btn"
+                  onclick="tryItYourself(this)">
+                   <i class="bi bi-play-fill me-1"></i>
+                     Try It
+        </button>
+</div>
+
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+
+                    Student Id: 101<br>
+                    Student Name: Rahul<br>
+                    Course: C# Full Stack
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- EXPLANATION -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Understanding the Example
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Code</th>
+                                <th>Explanation</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td><b>class Student</b></td>
+                                <td>
+                                    Defines a class named Student.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Id</b></td>
+                                <td>
+                                    Property used to store student ID.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Name</b></td>
+                                <td>
+                                    Property used to store student name.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Course</b></td>
+                                <td>
+                                    Property used to store the course name.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>DisplayDetails()</b></td>
+                                <td>
+                                    Method that displays student information.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>new Student()</b></td>
+                                <td>
+                                    Creates an object of the Student class.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>student.Name</b></td>
+                                <td>
+                                    Accesses the Name property of the object.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>student.DisplayDetails()</b></td>
+                                <td>
+                                    Calls the method using the object.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- MULTIPLE OBJECTS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Creating Multiple Objects
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A single class can be used to create multiple objects.
+                    Each object can contain its own data.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">Student</span> student1 =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();<br>
+
+                    student1.Id = 101;<br>
+                    student1.Name =
+                    <span class="string-lit">"Rahul"</span>;<br>
+                    student1.Course =
+                    <span class="string-lit">"C#"</span>;<br><br>
+
+
+                    <span class="class-name">Student</span> student2 =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();<br>
+
+                    student2.Id = 102;<br>
+                    student2.Name =
+                    <span class="string-lit">"Priya"</span>;<br>
+                    student2.Course =
+                    <span class="string-lit">"Java"</span>;<br><br>
+
+
+                    student1.DisplayDetails();<br>
+                    student2.DisplayDetails();
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <b>student1</b> and <b>student2</b> are two different
+                    objects of the same <b>Student</b> class. Each object has
+                    its own values.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- MODIFY OBJECT -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Modifying Object Data
+                </h3>
+
+                <p class="text-muted mb-4">
+                    After creating an object, its properties can be changed
+                    when the properties allow assignment.
+                </p>
+
+                @* <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();<br><br>
+
+                    student.Name =
+                    <span class="string-lit">"Rahul"</span>;<br><br>
+
+                    student.Name =
+                    <span class="string-lit">"Amit"</span>;<br><br>
+
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    student.Name);
+                </div> *@
+
+                    <div class="try-it-example">
+
+                        <div class="code-block shadow-sm">
+
+                            <div class="code-lang-tag">
+                                C#
+                            </div>
+
+                            <pre class="mb-0"><code>using System;
+ 
+Console.WriteLine("Hello, World 🌍...!");</code></pre>
+
+                        </div>
+
+                        <div class="text-end mt-2 mb-3">
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryItYourself(this)">
+                                <i class="bi bi-play-fill me-1"></i>
+                                Try It
+                            </button>
+                        </div>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+
+                    Amit
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- OBJECT MEMBER ACCESS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Accessing Class Members
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The dot <b>.</b> operator is used to access properties,
+                    fields, and methods through an object.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    student.Name<br>
+                    student.Id<br>
+                    student.DisplayDetails();
+                </div>
+
+                <p class="text-muted mb-4">
+                    In these examples, the dot operator is used to access
+                    members belonging to the <b>student</b> object.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- REAL WORLD EXAMPLE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Real-World Example: Employee
+                </h3>
+
+                <p class="text-muted mb-4">
+                    In a real-world application, we can create an
+                    <b>Employee</b> class containing employee information
+                    and behavior.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Employee</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Id { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">string</span> Department { get; set; }<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">DisplayEmployee</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">$"Employee: {Name}"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">$"Department: {Department}"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    The same concept is used in enterprise applications.
+                    For example, an application may contain classes such as
+                    <b>Customer</b>, <b>Product</b>, <b>Order</b>,
+                    <b>Employee</b>, and <b>Payment</b>.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- CLASS CONTAINS DATA AND BEHAVIOR -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Class Contains Data and Behavior
+                </h3>
+
+                <p class="text-muted mb-4">
+                    One of the important ideas of OOP is combining related
+                    data and behavior inside a class.
+                </p>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Component</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Data</td>
+                                <td>Name, Id, Salary</td>
+                            </tr>
+
+                            <tr>
+                                <td>Properties</td>
+                                <td>Name { get; set; }</td>
+                            </tr>
+
+                            <tr>
+                                <td>Behavior</td>
+                                <td>DisplayDetails(), CalculateSalary()</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- INSTANCE MEMBERS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Instance Members
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Members that belong to a particular object are called
+                    <b>instance members</b>. Each object can have its own
+                    values for instance properties and fields.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br>
+                    }<br><br>
+
+                    <span class="class-name">Student</span> s1 =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();<br>
+
+                    <span class="class-name">Student</span> s2 =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();<br><br>
+
+                    s1.Name =
+                    <span class="string-lit">"Rahul"</span>;<br>
+
+                    s2.Name =
+                    <span class="string-lit">"Priya"</span>;
+                </div>
+
+                <p class="text-muted mb-4">
+                    <b>s1</b> and <b>s2</b> are different objects, so each
+                    object has its own <b>Name</b> value.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- STATIC BASIC -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Instance vs Static Members
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Instance members are accessed through an object, while
+                    static members belong to the class itself.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Calculator</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span>
+                    <span class="method-name">Add</span>(
+                    <span class="keyword">int</span> a,
+                    <span class="keyword">int</span> b)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">return</span> a + b;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">static</span>
+                    <span class="keyword">int</span>
+                    <span class="method-name">Multiply</span>(
+                    <span class="keyword">int</span> a,
+                    <span class="keyword">int</span> b)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">return</span> a * b;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+                    <span class="class-name">Calculator</span> calculator =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Calculator</span>();<br><br>
+
+                    <span class="keyword">int</span> result1 =
+                    calculator.Add(10, 20);<br>
+
+                    <span class="keyword">int</span> result2 =
+                    <span class="class-name">Calculator</span>.Multiply(10, 20);
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <b>Add()</b> is an instance method and requires an
+                    object. <b>Multiply()</b> is static and can be called
+                    using the class name.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- OBJECT LIFETIME -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Object Lifetime
+                </h3>
+
+                <p class="text-muted mb-4">
+                    An object exists while it is reachable by the application.
+                    When an object is no longer needed and becomes unreachable,
+                    it can eventually become eligible for Garbage Collection.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();<br><br>
+
+                    student.Name =
+                    <span class="string-lit">"Rahul"</span>;<br><br>
+
+                    student = <span class="keyword">null</span>;
+                </div>
+
+                <p class="text-muted mb-4">
+                    After the reference is set to <b>null</b>, if no other
+                    references point to the object, that object can become
+                    eligible for garbage collection.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- NAMING CONVENTIONS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    C# Naming Best Practices
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Use <b>PascalCase</b> for class names.
+                        Example: <b>StudentDetails</b>
+                    </li>
+
+                    <li class="mb-2">
+                        Use meaningful names that clearly describe the purpose
+                        of the class.
+                    </li>
+
+                    <li class="mb-2">
+                        Use meaningful property and method names.
+                    </li>
+
+                    <li class="mb-2">
+                        Keep a class focused on a clear responsibility.
+                    </li>
+
+                    <li class="mb-2">
+                        Avoid unnecessarily large classes containing unrelated
+                        responsibilities.
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- COMMON MISTAKES -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Common Beginner Mistakes
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Confusing a class with an object.
+                    </li>
+
+                    <li class="mb-2">
+                        Forgetting to use the <b>new</b> keyword when creating
+                        a normal class object.
+                    </li>
+
+                    <li class="mb-2">
+                        Trying to access instance members directly through
+                        the class name.
+                    </li>
+
+                    <li class="mb-2">
+                        Creating public fields when a property would be more
+                        appropriate.
+                    </li>
+
+                    <li class="mb-2">
+                        Giving classes unclear or meaningless names.
+                    </li>
+
+                    <li class="mb-2">
+                        Putting unrelated responsibilities into one class.
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- REAL WORLD APPLICATION -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    How Classes & Objects Are Used in Real Applications
+                </h3>
+
+                <p class="text-muted mb-4">
+                    In real-world C# and ASP.NET Core applications, classes
+                    are used everywhere. Developers create classes to represent
+                    business entities, services, models, repositories,
+                    controllers, and other components.
+                </p>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Class</th>
+                                <th>Possible Responsibility</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td><b>Student</b></td>
+                                <td>
+                                    Student information and operations.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Employee</b></td>
+                                <td>
+                                    Employee details and related operations.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Product</b></td>
+                                <td>
+                                    Product information and pricing.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Order</b></td>
+                                <td>
+                                    Customer order information.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Customer</b></td>
+                                <td>
+                                    Customer details and related behavior.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- CIIT PRACTICAL POINT -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    CIIT Practical Point
+                </h3>
+
+                <div class="alert alert-success border-0 shadow-sm mb-4">
+
+                    <p class="mb-2">
+                        In professional C# development, understanding classes
+                        and objects is essential because most applications are
+                        designed using object-oriented principles.
+                    </p>
+
+                    <p class="mb-2">
+                        In ASP.NET Core applications, you will work with classes
+                        for models, controllers, services, repositories,
+                        DTOs, and business logic.
+                    </p>
+
+                    <p class="mb-0">
+                        A strong understanding of classes and objects makes it
+                        easier to understand important OOP concepts such as
+                        <b>Encapsulation, Inheritance, Polymorphism, and Interfaces</b>.
+                    </p>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- INTERVIEW POINTS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    CIIT Interview Points
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        What is a class in C#?
+                    </li>
+
+                    <li class="mb-2">
+                        What is an object?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the difference between a class and an object?
+                    </li>
+
+                    <li class="mb-2">
+                        How do you create an object in C#?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the purpose of the <b>new</b> keyword?
+                    </li>
+
+                    <li class="mb-2">
+                        What are fields, properties, and methods?
+                    </li>
+
+                    <li class="mb-2">
+                        What is an instance member?
+                    </li>
+
+                    <li class="mb-2">
+                        What is a static member?
+                    </li>
+
+                    <li class="mb-2">
+                        Can multiple objects be created from one class?
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- SUMMARY -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Summary
+                </h3>
+
+                <div class="alert alert-primary border-0 shadow-sm mb-4">
+
+                    <ul class="mb-0">
+
+                        <li class="mb-2">
+                            A <b>class</b> is a blueprint or definition for objects.
+                        </li>
+
+                        <li class="mb-2">
+                            An <b>object</b> is an instance of a class.
+                        </li>
+
+                        <li class="mb-2">
+                            A class can contain fields, properties, and methods.
+                        </li>
+
+                        <li class="mb-2">
+                            Objects are commonly created using the <b>new</b> keyword.
+                        </li>
+
+                        <li class="mb-2">
+                            Multiple objects can be created from the same class.
+                        </li>
+
+                        <li class="mb-2">
+                            Each object can maintain its own instance data.
+                        </li>
+
+                        <li class="mb-2">
+                            Instance members are accessed through objects.
+                        </li>
+
+                        <li>
+                            Classes and objects form the foundation of
+                            Object-Oriented Programming in C#.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- PRACTICE QUESTIONS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Practice Questions
+                </h3>
+
+                <ol class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Create a class named <b>Student</b>.
+                    </li>
+
+                    <li class="mb-2">
+                        Add Id, Name, and Course properties to the class.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a method named <b>DisplayDetails()</b>.
+                    </li>
+
+                    <li class="mb-2">
+                        Create two Student objects with different values.
+                    </li>
+
+                    <li class="mb-2">
+                        Display the details of both students.
+                    </li>
+
+                    <li class="mb-2">
+                        Create an <b>Employee</b> class with Id, Name,
+                        Department, and Salary.
+                    </li>
+
+                    <li class="mb-2">
+                        Create an object of Employee and display its details.
+                    </li>
+
+                    <li class="mb-2">
+                        Explain the difference between a class and an object.
+                    </li>
+
+                </ol>
+
+
+                <!-- ===================================================== -->
+                <!-- NEXT TOPIC -->
+                <!-- ===================================================== -->
+
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+
+                        <a href="/CSharp/MethodsMemoryManagement/GarbageCollection"
+                           class="btn btn-outline-secondary">
+                            ← Previous Topic
+                        </a>
+
+                        <a href="/CSharp/OOPC/Constructors"
+                           class="btn btn-primary">
+                            Next Topic →
+                        </a>
+
+                    </div>
+
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+    <script>
+
+        function tryItYourself(button) {
+
+            // Find the code example containing this button
+            const example = button.closest(".try-it-example");
+
+            if (!example) {
+                alert("Code example not found.");
+                return;
+            }
+
+            // Find only this example's code
+            const codeElement = example.querySelector("pre code");
+
+            if (!codeElement) {
+                alert("Tutorial code not found.");
+                return;
+            }
+
+            // Get exact code and preserve indentation/new lines
+            const code = codeElement.textContent.trim();
+
+            // Create temporary form
+            const form = document.createElement("form");
+
+            form.method = "POST";
+
+            form.action =
+                '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+            // IMPORTANT: Open compiler in new tab
+            form.target = "_blank";
+
+            const input = document.createElement("input");
+
+            input.type = "hidden";
+            input.name = "code";
+            input.value = code;
+
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+
+            form.submit();
+
+            document.body.removeChild(form);
+        }
+
+    </script>

@@ -1,0 +1,948 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Operators and Control Flow";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-operators-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-operators-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-operators-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-operators-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-operators-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-operators-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-operators-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-operators-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-operators-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGE
+       ========================================================= */
+
+    #javascript-operators-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-operators-page .operator-image {
+        width: 100%;
+        max-height: 380px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+
+    #javascript-operators-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       OPERATOR CARDS
+       ========================================================= */
+
+    #javascript-operators-page .operator-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-operators-page .operator-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 9px;
+    }
+
+    #javascript-operators-page .operator-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-operators-page .operator-symbols {
+        margin-top: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        color: #212529;
+    }
+
+
+    /* =========================================================
+       FLOW DIAGRAM
+       ========================================================= */
+
+    #javascript-operators-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-operators-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-operators-page .diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-operators-page .diagram-item {
+        min-width: 140px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-operators-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-operators-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-operators-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-operators-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-operators-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-operators-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-operators-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-operators-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-operators-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-operators-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-operators-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-operators-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-operators-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-operators-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-operators-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-operators-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-operators-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-operators-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - TUTORIAL CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- =================================================
+                     PAGE TITLE
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    Operators &amp; Control Flow
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript uses operators to calculate,
+                    compare, and combine values, and how control flow
+                    helps a program make decisions.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT ARE OPERATORS?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What are Operators?
+                </h2>
+
+                <p class="section-text">
+                    Operators are symbols used to perform operations
+                    on values. For example, <strong>+</strong> adds
+                    numbers and <strong>&gt;</strong> compares values.
+                </p>
+
+                <p class="section-text">
+                    Operators are used throughout JavaScript programs
+                    for calculations, comparisons, assignments,
+                    and logical decisions.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=80"
+                         alt="JavaScript programming and operators"
+                         class="operator-image" />
+
+                    <p class="image-caption">
+                        JavaScript programming uses operators to work
+                        with values and expressions.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     TYPES OF OPERATORS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Common Types of Operators
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="operator-card">
+
+                            <h5>
+                                Arithmetic Operators
+                            </h5>
+
+                            <p>
+                                Used for mathematical calculations.
+                            </p>
+
+                            <div class="operator-symbols">
+                                + &nbsp; - &nbsp; * &nbsp; / &nbsp; % &nbsp; **
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="operator-card">
+
+                            <h5>
+                                Comparison Operators
+                            </h5>
+
+                            <p>
+                                Compare values and produce true or false.
+                            </p>
+
+                            <div class="operator-symbols">
+                                === &nbsp; !== &nbsp; &gt; &nbsp; &lt; &nbsp; &gt;= &nbsp; &lt;=
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="operator-card">
+
+                            <h5>
+                                Logical Operators
+                            </h5>
+
+                            <p>
+                                Combine or evaluate logical conditions.
+                            </p>
+
+                            <div class="operator-symbols">
+                                &amp;&amp; &nbsp; || &nbsp; !
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="operator-card">
+
+                            <h5>
+                                Assignment Operators
+                            </h5>
+
+                            <p>
+                                Assign or update values stored in variables.
+                            </p>
+
+                            <div class="operator-symbols">
+                                = &nbsp; += &nbsp; -= &nbsp; *=
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OPERATOR FLOW
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How an Operator Works
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Operand → Operator → Result
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            Value 1
+                        </div>
+
+                        <div class="diagram-arrow">
+                            +
+                        </div>
+
+                        <div class="diagram-item">
+                            Value 2
+                        </div>
+
+                        <div class="diagram-arrow">
+                            =
+                        </div>
+
+                        <div class="diagram-item">
+                            Result
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Arithmetic Operators
+                </h2>
+
+                <p class="section-text">
+                    Arithmetic operators are used to perform basic
+                    mathematical calculations.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const students = 25;
+const newStudents = 15;
+
+const totalStudents = students + newStudents;
+const remaining = totalStudents - 5;
+
+console.log("Total Students:", totalStudents);
+console.log("After 5 Students Leave:", remaining);
+console.log("CIIT Training Institute - JavaScript");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryArithmeticExample()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Total Students: 40<br />
+                    After 5 Students Leave: 35<br />
+                    CIIT Training Institute - JavaScript
+
+                </div>
+
+
+                <!-- =================================================
+                     COMPARISON & LOGICAL
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Comparison and Logical Operators
+                </h2>
+
+                <p class="section-text">
+                    Comparison operators check values and return
+                    <strong>true</strong> or <strong>false</strong>.
+                    Logical operators can combine multiple conditions.
+                </p>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Comparison and Logical Operators
+                </h2>
+
+                <p class="section-text">
+                    In this example, we check whether a student's
+                    marks meet the required condition.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const marks = 82;
+const attendance = 90;
+
+const marksPassed = marks >= 40;
+const attendancePassed = attendance >= 75;
+
+const eligible = marksPassed && attendancePassed;
+
+console.log("Marks Passed:", marksPassed);
+console.log("Attendance Passed:", attendancePassed);
+console.log("Eligible:", eligible);
+console.log("Student: Neha");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryComparisonExample()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Marks Passed: true<br />
+                    Attendance Passed: true<br />
+                    Eligible: true<br />
+                    Student: Neha
+
+                </div>
+
+
+                <!-- =================================================
+                     CONTROL FLOW INTRO
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is Control Flow?
+                </h2>
+
+                <p class="section-text">
+                    Control flow means controlling the order in which
+                    statements are executed in a program.
+                </p>
+
+                <p class="section-text">
+                    JavaScript provides statements such as
+                    <strong>if...else</strong>, <strong>switch</strong>,
+                    and loops to control program execution.
+                </p>
+
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Idea
+                    </h5>
+
+                    <p>
+                        Operators help us create conditions, and
+                        control flow decides what the program should
+                        do based on those conditions.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     LEARNING FLOW
+                     ================================================= -->
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Operators + Conditions + Control Flow
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            Values
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Operators
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Condition
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Program Action
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     WHAT YOU WILL LEARN
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What You Will Learn in This Module
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Module Topics
+                    </h5>
+
+                    <p class="mb-2">
+                        • Arithmetic Operators
+                    </p>
+
+                    <p class="mb-2">
+                        • Comparison &amp; Logical Operators
+                    </p>
+
+                    <p class="mb-2">
+                        • If Else
+                    </p>
+
+                    <p class="mb-2">
+                        • Switch
+                    </p>
+
+                    <p class="mb-0">
+                        • Loops
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Operators are used to calculate, compare, assign,
+                        and combine values in JavaScript. Control flow
+                        statements use conditions to control how a
+                        program executes. In the next lessons, you will
+                        learn each operator and control-flow concept
+                        step by step.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("InputOutput", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Input and Output
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("ArithmeticOperators", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Arithmetic Operators
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryArithmeticExample() {
+
+        const code =
+            'const students = 25;\n' +
+            'const newStudents = 15;\n' +
+            '\n' +
+            'const totalStudents = students + newStudents;\n' +
+            'const remaining = totalStudents - 5;\n' +
+            '\n' +
+            'console.log("Total Students:", totalStudents);\n' +
+            'console.log("After 5 Students Leave:", remaining);\n' +
+            'console.log("CIIT Training Institute - JavaScript");';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryComparisonExample() {
+
+        const code =
+            'const marks = 82;\n' +
+            'const attendance = 90;\n' +
+            '\n' +
+            'const marksPassed = marks >= 40;\n' +
+            'const attendancePassed = attendance >= 75;\n' +
+            '\n' +
+            'const eligible = marksPassed && attendancePassed;\n' +
+            '\n' +
+            'console.log("Marks Passed:", marksPassed);\n' +
+            'console.log("Attendance Passed:", attendancePassed);\n' +
+            'console.log("Eligible:", eligible);\n' +
+            'console.log("Student: Neha");';
+
+        openCompiler(code);
+
+    }
+
+</script>

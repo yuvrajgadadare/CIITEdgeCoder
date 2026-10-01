@@ -1,0 +1,809 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Box Shadow";
+}
+
+<style>
+
+    /* ================================================= */
+    /* PAGE */
+    /* ================================================= */
+
+    #css-box-shadow-page {
+        color: #212529;
+    }
+
+    #css-box-shadow-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-box-shadow-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-box-shadow-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-box-shadow-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-box-shadow-page .content-section > p {
+        line-height: 1.7;
+    }
+
+
+    /* ================================================= */
+    /* CODE */
+    /* ================================================= */
+
+    #css-box-shadow-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-box-shadow-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+
+    /* ================================================= */
+    /* DIAGRAM */
+    /* ================================================= */
+
+    #css-box-shadow-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 35px;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    #css-box-shadow-page .shadow-diagram {
+        width: 250px;
+        padding: 35px 20px;
+        margin: 25px auto;
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        box-shadow: 8px 8px 15px gray;
+        font-weight: 700;
+    }
+
+    #css-box-shadow-page .shadow-label {
+        color: #495057;
+        font-weight: 700;
+    }
+
+
+    /* ================================================= */
+    /* EXPLANATION */
+    /* ================================================= */
+
+    #css-box-shadow-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-box-shadow-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* ================================================= */
+    /* OUTPUT */
+    /* ================================================= */
+
+    #css-box-shadow-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 35px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-box-shadow-page .output-basic {
+        background-color: lightblue;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 8px 8px 10px gray;
+    }
+
+    #css-box-shadow-page .output-blur {
+        background-color: lightgreen;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 5px 5px 15px gray;
+    }
+
+    #css-box-shadow-page .output-colored {
+        background-color: lightyellow;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 5px 5px 10px blue;
+    }
+
+    #css-box-shadow-page .output-soft {
+        background-color: #e9d5ff;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 5px 20px gray;
+    }
+
+
+    /* ================================================= */
+    /* PROPERTY CARDS */
+    /* ================================================= */
+
+    #css-box-shadow-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-box-shadow-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-box-shadow-page .property-card p {
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+
+    /* ================================================= */
+    /* NOTE */
+    /* ================================================= */
+
+    #css-box-shadow-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+
+    /* ================================================= */
+    /* SUMMARY */
+    /* ================================================= */
+
+    #css-box-shadow-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-box-shadow-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-box-shadow-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+
+    /* ================================================= */
+    /* RESPONSIVE */
+    /* ================================================= */
+
+    @@media (max-width: 767px) {
+
+        #css-box-shadow-page .content-section {
+            padding: 20px;
+        }
+
+        #css-box-shadow-page .shadow-diagram {
+            width: 100%;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-box-shadow-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS Box Shadow
+                </h1>
+
+                <p>
+                    The CSS <strong>box-shadow</strong> property is used
+                    to add a shadow effect around an HTML element.
+                </p>
+
+                <p>
+                    Shadows are commonly used to make cards, buttons,
+                    containers, navigation elements, and other UI
+                    components look visually separated from the page.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- WHAT IS BOX SHADOW -->
+                <!-- ================================================= -->
+
+                <h2>
+                    What is Box Shadow?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        A box normally appears flat on a web page.
+                    </p>
+
+                    <p>
+                        When you add a shadow around the box, the shadow
+                        creates an impression that the element is slightly
+                        raised above the background.
+                    </p>
+
+                    <p>
+                        The <strong>box-shadow</strong> property controls
+                        the position, blur, spread, and color of this
+                        shadow.
+                    </p>
+
+                    <p>
+                        Box shadows are mainly used for
+                        <strong>visual design</strong>. They do not
+                        change the actual content of the element.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC SYNTAX -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Basic Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>selector {
+    box-shadow: horizontal vertical blur color;
+}</code></pre>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Box Shadow Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="shadow-label">
+                        Element + Shadow
+                    </div>
+
+                    <div class="shadow-diagram">
+
+                        CSS Box
+
+                    </div>
+
+                    <p class="mb-0">
+                        The shadow appears outside the element.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SIMPLE EXPLANATION -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Simple Explanation
+                </h2>
+
+                <p>
+                    The easiest way to understand
+                    <strong>box-shadow</strong> is to think about a
+                    physical card placed on a table.
+                </p>
+
+                <p>
+                    The card itself is the HTML element.
+                    The dark area underneath the card represents its
+                    shadow.
+                </p>
+
+                <p>
+                    CSS allows us to control how far the shadow moves
+                    horizontally and vertically, how soft the shadow is,
+                    and what color it should have.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- SHADOW VALUES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Box Shadow Values
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Value</th>
+                                <th>Meaning</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Horizontal Offset</td>
+                                <td>
+                                    Moves the shadow left or right.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Vertical Offset</td>
+                                <td>
+                                    Moves the shadow up or down.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Blur Radius</td>
+                                <td>
+                                    Controls how soft or sharp the shadow is.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Color</td>
+                                <td>
+                                    Controls the shadow color.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Spread Radius</td>
+                                <td>
+                                    Controls how much the shadow expands.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 1 -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 1: Basic Shadow
+                </h2>
+
+                <p>
+                    Here the shadow is moved
+                    <strong>8px to the right</strong> and
+                    <strong>8px downward</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.box {
+    background-color: lightblue;
+    padding: 30px;
+    box-shadow: 8px 8px 10px gray;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-basic">
+
+                        CIIT Training Institute
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 2 -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 2: Blur Effect
+                </h2>
+
+                <p>
+                    Increasing the blur value makes the shadow softer
+                    and less sharp.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.box {
+    background-color: lightgreen;
+    padding: 30px;
+    box-shadow: 5px 5px 15px gray;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-blur">
+
+                        Soft Shadow Example
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 3 -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 3: Colored Shadow
+                </h2>
+
+                <p>
+                    The shadow color does not have to be gray or black.
+                    You can use other CSS colors as well.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.box {
+    background-color: lightyellow;
+    padding: 30px;
+    box-shadow: 5px 5px 10px blue;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-colored">
+
+                        Colored Shadow
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 4 -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 4: Soft Shadow
+                </h2>
+
+                <p>
+                    A shadow can also be placed directly below an element.
+                    This is commonly used for modern cards.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.card {
+    background-color: #e9d5ff;
+    padding: 30px;
+    box-shadow: 0 5px 20px gray;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-soft">
+
+                        CIIT Course Card
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SPREAD -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Spread Radius
+                </h2>
+
+                <p>
+                    The spread radius controls how much the shadow expands
+                    before the blur effect is applied.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.box {
+    box-shadow: 5px 5px 10px 5px gray;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The first value controls the horizontal position.
+                    </p>
+
+                    <p>
+                        The second value controls the vertical position.
+                    </p>
+
+                    <p>
+                        The third value controls the blur.
+                    </p>
+
+                    <p>
+                        The fourth value controls the spread of the shadow.
+                    </p>
+
+                    <p>
+                        The final value controls the shadow color.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- COMMON PATTERNS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Common Box Shadow Patterns
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Card Shadow
+                            </h3>
+
+                            <p>
+                                A soft shadow can make a card look
+                                slightly elevated from the page.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Button Shadow
+                            </h3>
+
+                            <p>
+                                A small shadow can give buttons a
+                                three-dimensional appearance.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Container Shadow
+                            </h3>
+
+                            <p>
+                                Shadows can visually separate a container
+                                from the page background.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Soft UI Shadow
+                            </h3>
+
+                            <p>
+                                Large blur values can create a soft and
+                                subtle interface effect.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT NOTE -->
+                <!-- ================================================= -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    Box shadow is a visual effect. It does not create
+                    additional layout space around an element in the
+                    same way that margin does.
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        The CSS box-shadow property adds a shadow around
+                        an element. You can control the horizontal offset,
+                        vertical offset, blur, spread, and color of the
+                        shadow. Box shadows are commonly used to create
+                        cards, buttons, containers, and modern UI effects.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- NAVIGATION -->
+                <!-- ================================================= -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("BoxSizing", "BoxModel", new { area = "CSS" })">
+
+                            ← Previous: Box Sizing
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Overflow", "BoxModel", new { area = "CSS" })">
+
+                            Next: Overflow →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

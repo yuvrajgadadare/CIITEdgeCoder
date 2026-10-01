@@ -1,0 +1,883 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Callbacks in JavaScript";
+}
+
+<style>
+
+    #javascript-callbacks-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-callbacks-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    /* ==============================
+       PAGE TITLE
+       ============================== */
+
+    #javascript-callbacks-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-callbacks-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    /* ==============================
+       SECTION
+       ============================== */
+
+    #javascript-callbacks-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-callbacks-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* ==============================
+       CONCEPT BOX
+       ============================== */
+
+    #javascript-callbacks-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-callbacks-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-callbacks-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       CALLBACK FLOW
+       ============================== */
+
+    #javascript-callbacks-page .callback-flow-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-callbacks-page .callback-flow {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 28px;
+    }
+
+    #javascript-callbacks-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 28px;
+    }
+
+    #javascript-callbacks-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-callbacks-page .flow-box {
+        min-width: 160px;
+        padding: 18px 20px;
+        text-align: center;
+        background: #ffffff;
+        border: 2px solid #7042d0;
+        border-radius: 8px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #javascript-callbacks-page .flow-box.main {
+        background: #7042d0;
+        color: #ffffff;
+    }
+
+    #javascript-callbacks-page .flow-box.result {
+        border-color: #198754;
+        color: #198754;
+    }
+
+    #javascript-callbacks-page .flow-arrow {
+        color: #7042d0;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    #javascript-callbacks-page .flow-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       CODE SECTION
+       ============================== */
+
+    #javascript-callbacks-page .code-section {
+        width: 100%;
+    }
+
+    #javascript-callbacks-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        white-space: pre;
+    }
+
+    /* ==============================
+       TRY IT BUTTON - RIGHT SIDE
+       ============================== */
+
+    #javascript-callbacks-page .try-it-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    #javascript-callbacks-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 6px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-callbacks-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    /* ==============================
+       OUTPUT
+       ============================== */
+
+    #javascript-callbacks-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 6px;
+        padding: 14px 16px;
+        margin-top: 5px;
+        margin-bottom: 30px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    /* ==============================
+       SUMMARY
+       ============================== */
+
+    #javascript-callbacks-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 8px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-callbacks-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-callbacks-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       NAVIGATION
+       ============================== */
+
+    #javascript-callbacks-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-callbacks-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+    #javascript-callbacks-page .previous-btn {
+        background-color: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-callbacks-page .next-btn {
+        background-color: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-callbacks-page .previous-btn:hover {
+        background-color: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-callbacks-page .next-btn:hover {
+        background-color: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    /* ==============================
+       RESPONSIVE
+       ============================== */
+
+    @@media (max-width: 768px) {
+
+        #javascript-callbacks-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-callbacks-page .page-title {
+            font-size: 29px;
+        }
+
+        #javascript-callbacks-page .flow-row {
+            flex-direction: column;
+        }
+
+        #javascript-callbacks-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-callbacks-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-callbacks-page .nav-btn {
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+<main id="javascript-callbacks-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDE - COURSE SYLLABUS
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 RIGHT SIDE - CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- =================================================
+                         PAGE HEADER
+                         ================================================= -->
+
+                    <h1 class="page-title">
+                        Callbacks in JavaScript
+                    </h1>
+
+                    <p class="lead-text">
+                        A callback is a function that is passed as an
+                        argument to another function and is executed later
+                        when a particular task is completed.
+                    </p>
+
+
+                    <!-- =================================================
+                         WHAT IS A CALLBACK?
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What is a Callback?
+                    </h2>
+
+                    <p class="section-text">
+                        In JavaScript, a callback function is a function
+                        that is passed to another function as an argument.
+                        The receiving function can execute the callback
+                        when it needs to perform the next action.
+                    </p>
+
+
+                    <!-- =================================================
+                         SIMPLE DEFINITION
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p>
+                            A callback is a function passed to another
+                            function and called after a task is completed.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         CALLBACK FLOW
+                         ================================================= -->
+
+                    <div class="callback-flow-card">
+
+                        <div class="callback-flow">
+
+                            <div class="flow-title">
+                                How a Callback Works
+                            </div>
+
+                            <div class="flow-row">
+
+                                <div class="flow-box main">
+                                    Main Function
+                                </div>
+
+                                <div class="flow-arrow">
+                                    →
+                                </div>
+
+                                <div class="flow-box">
+                                    Callback Function
+                                </div>
+
+                                <div class="flow-arrow">
+                                    →
+                                </div>
+
+                                <div class="flow-box result">
+                                    Result
+                                </div>
+
+                            </div>
+
+                            <p class="flow-caption">
+                                The main function receives a callback
+                                and executes it when required.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Simple Callback
+                    </h2>
+
+                    <p class="section-text">
+                        A callback can be passed to another function
+                        and executed from inside that function.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function greet(callback) {
+
+    callback();
+
+}
+
+function showMessage() {
+
+    console.log("Welcome to JavaScript!");
+
+}
+
+greet(showMessage);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryCallbackExample1()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="output-box">
+                        Welcome to JavaScript!
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Callback with Parameters
+                    </h2>
+
+                    <p class="section-text">
+                        A callback can also receive data from the
+                        function that calls it.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function getStudent(callback) {
+
+    const name = "Rahul";
+
+    callback(name);
+
+}
+
+getStudent(function(name) {
+
+    console.log("Student Name:", name);
+
+});</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryCallbackExample2()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="output-box">
+                        Student Name: Rahul
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Callback after a Task
+                    </h2>
+
+                    <p class="section-text">
+                        Callbacks are commonly used when a task needs
+                        to be completed before another function runs.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function completeTask(callback) {
+
+    console.log("Task completed.");
+
+    callback();
+
+}
+
+completeTask(function() {
+
+    console.log("Callback executed.");
+
+});</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryCallbackExample3()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Task completed.<br />
+                        Callback executed.
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 4
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 4: Callback with Data
+                    </h2>
+
+                    <p class="section-text">
+                        A callback can be used to execute a function
+                        after data is prepared or a task is completed.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function getData(callback) {
+
+    var data = "Data received";
+
+    callback(data);
+
+}
+
+getData(function(result) {
+
+    console.log("Callback executed successfully.");
+    console.log(result);
+
+});</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryCallbackExample4()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Callback executed successfully.<br />
+                        Data received
+
+                    </div>
+
+
+                    <!-- =================================================
+                         WHY CALLBACKS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Why Use Callbacks?
+                    </h2>
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Benefits
+                        </h5>
+
+                        <p>
+                            • Execute one function after another task.
+                        </p>
+
+                        <p>
+                            • Pass functions as values.
+                        </p>
+
+                        <p>
+                            • Handle asynchronous operations.
+                        </p>
+
+                        <p>
+                            • Useful for timers and API operations.
+                        </p>
+
+                        <p>
+                            • Callbacks are an important foundation
+                            for asynchronous JavaScript.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+                            A callback is a function passed to another
+                            function as an argument. The receiving
+                            function can execute the callback when the
+                            required task is completed. Callbacks are
+                            widely used in JavaScript, especially for
+                            asynchronous operations.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("Index", "AsynchronousJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            ← Previous: Asynchronous JavaScript
+
+                        </a>
+
+
+                        <a href="@Url.Action("Promises", "AsynchronousJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            Next: Promises →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       SIMPLE CALLBACK
+       ========================================================= */
+
+    function tryCallbackExample1() {
+
+        var code = `function greet(callback) {
+
+    callback();
+
+}
+
+function showMessage() {
+
+    console.log("Welcome to JavaScript!");
+
+}
+
+greet(showMessage);`;
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       CALLBACK WITH PARAMETERS
+       ========================================================= */
+
+    function tryCallbackExample2() {
+
+        var code = `function getStudent(callback) {
+
+    var name = "Rahul";
+
+    callback(name);
+
+}
+
+getStudent(function(name) {
+
+    console.log("Student Name:", name);
+
+});`;
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       CALLBACK AFTER TASK
+       ========================================================= */
+
+    function tryCallbackExample3() {
+
+        var code = `function completeTask(callback) {
+
+    console.log("Task completed.");
+
+    callback();
+
+}
+
+completeTask(function() {
+
+    console.log("Callback executed.");
+
+});`;
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       CALLBACK WITH DATA
+       Compiler-safe version
+       ========================================================= */
+
+    function tryCallbackExample4() {
+
+        var code = `function getData(callback) {
+
+    var data = "Data received";
+
+    callback(data);
+
+}
+
+getData(function(result) {
+
+    console.log("Callback executed successfully.");
+    console.log(result);
+
+});`;
+
+        openCompiler(code);
+
+    }
+
+</script>

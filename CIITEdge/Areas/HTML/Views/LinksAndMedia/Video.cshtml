@@ -1,0 +1,756 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Video";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+
+    .video-placeholder {
+        width: 100%;
+        max-width: 650px;
+        height: 300px;
+        background-color: #e9ecef;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        text-align: center;
+        color: #495057;
+        font-weight: 600;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Video</h1>
+
+            <p class="lead">
+                HTML provides the <code>&lt;video&gt;</code> element to embed
+                video content directly into a webpage.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. Introduction to HTML Video</h2>
+
+            <p>
+                The <code>&lt;video&gt;</code> element is used to display
+                video files such as tutorials, demonstrations, advertisements,
+                presentations, and other multimedia content.
+            </p>
+
+            <pre><code>&lt;video controls&gt;
+    &lt;source src="video/sample.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">2. Basic Video Syntax</h2>
+
+            <p>
+                A simple video element can be written as:
+            </p>
+
+            <pre><code>&lt;video controls src="video/movie.mp4"&gt;
+    Your browser does not support the video element.
+&lt;/video&gt;</code></pre>
+
+            <p>
+                The <code>controls</code> attribute displays built-in controls
+                such as play, pause, volume, and fullscreen.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">3. The controls Attribute</h2>
+
+            <p>
+                The <code>controls</code> attribute provides the user with
+                video playback controls.
+            </p>
+
+            <pre><code>&lt;video controls&gt;
+    &lt;source src="video/course.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Adding <code>controls</code> is useful because it gives users
+                a visible way to interact with the video.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">4. The src Attribute</h2>
+
+            <p>
+                The <code>src</code> attribute specifies the video file location.
+            </p>
+
+            <pre><code>&lt;video controls src="videos/html-course.mp4"&gt;
+    Your browser does not support the video element.
+&lt;/video&gt;</code></pre>
+
+            <p>
+                A video can also be stored inside a dedicated folder:
+            </p>
+
+            <pre><code>&lt;video controls src="video/lesson1.mp4"&gt;
+    Your browser does not support the video element.
+&lt;/video&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">5. The source Element</h2>
+
+            <p>
+                The <code>&lt;source&gt;</code> element allows multiple video
+                sources to be provided.
+            </p>
+
+            <pre><code>&lt;video controls&gt;
+
+    &lt;source src="video/lesson.mp4" type="video/mp4"&gt;
+    &lt;source src="video/lesson.webm" type="video/webm"&gt;
+
+    Your browser does not support the video element.
+
+&lt;/video&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <p>
+                The browser can select a supported source from the available options.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">6. Common Video Formats</h2>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Format</th>
+                        <th>MIME Type</th>
+                        <th>Common Use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MP4</td>
+                        <td><code>video/mp4</code></td>
+                        <td>General web video</td>
+                    </tr>
+                    <tr>
+                        <td>WebM</td>
+                        <td><code>video/webm</code></td>
+                        <td>Modern web video</td>
+                    </tr>
+                    <tr>
+                        <td>Ogg</td>
+                        <td><code>video/ogg</code></td>
+                        <td>Open multimedia content</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">7. width and height Attributes</h2>
+
+            <p>
+                The <code>width</code> and <code>height</code> attributes can
+                be used to specify the dimensions of the video.
+            </p>
+
+            <pre><code>&lt;video controls width="600" height="350"&gt;
+    &lt;source src="video/course.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="video-placeholder">
+                Video Area<br />
+                Width: 600px | Height: 350px
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">8. poster Attribute</h2>
+
+            <p>
+                The <code>poster</code> attribute specifies an image that is
+                displayed before the video starts playing.
+            </p>
+
+            <pre><code>&lt;video controls
+       poster="images/video-thumbnail.jpg"
+       width="600"&gt;
+
+    &lt;source src="video/course.mp4" type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Use Case:</strong>
+                <p class="mb-0 mt-2">
+                    A poster image can display a thumbnail or preview image
+                    before the user starts the video.
+                </p>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">9. autoplay Attribute</h2>
+
+            <p>
+                The <code>autoplay</code> attribute requests that the browser
+                start the video automatically when possible.
+            </p>
+
+            <pre><code>&lt;video controls autoplay&gt;
+    &lt;source src="video/intro.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                Modern browsers may restrict autoplay, especially when
+                media starts with sound without user interaction.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">10. muted Attribute</h2>
+
+            <p>
+                The <code>muted</code> attribute starts the video without audio.
+            </p>
+
+            <pre><code>&lt;video controls muted&gt;
+    &lt;source src="video/background.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+            <p>
+                Muted video is commonly used for videos that should begin
+                without sound.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">11. loop Attribute</h2>
+
+            <p>
+                The <code>loop</code> attribute causes the video to restart
+                automatically after it finishes.
+            </p>
+
+            <pre><code>&lt;video controls loop&gt;
+    &lt;source src="video/demo.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">12. preload Attribute</h2>
+
+            <p>
+                The <code>preload</code> attribute provides a hint to the browser
+                about how much video data should be loaded before playback.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>none</code></td>
+                        <td>The browser should not preload the video.</td>
+                    </tr>
+                    <tr>
+                        <td><code>metadata</code></td>
+                        <td>Only metadata may be loaded.</td>
+                    </tr>
+                    <tr>
+                        <td><code>auto</code></td>
+                        <td>The browser may load the video automatically.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="h5 fw-bold mt-4">Example</h3>
+
+            <pre><code>&lt;video controls preload="metadata"&gt;
+    &lt;source src="video/tutorial.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">13. Combining Video Attributes</h2>
+
+            <p>
+                Multiple attributes can be used together.
+            </p>
+
+            <pre><code>&lt;video
+    controls
+    width="640"
+    height="360"
+    poster="images/thumbnail.jpg"
+    preload="metadata"&gt;
+
+    &lt;source src="video/tutorial.mp4" type="video/mp4"&gt;
+    &lt;source src="video/tutorial.webm" type="video/webm"&gt;
+
+    Your browser does not support the video element.
+
+&lt;/video&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">14. Video File Folder Structure</h2>
+
+            <p>
+                Video files can be organized inside a dedicated folder.
+            </p>
+
+            <pre><code>MyWebsite/
+│
+├── index.html
+│
+├── video/
+│   ├── lesson1.mp4
+│   ├── lesson2.mp4
+│   └── introduction.webm
+│
+├── images/
+│   └── thumbnail.jpg
+│
+└── css/
+    └── style.css</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">15. Video Fallback Text</h2>
+
+            <p>
+                Text inside the <code>&lt;video&gt;</code> element can provide
+                fallback information.
+            </p>
+
+            <pre><code>&lt;video controls&gt;
+
+    &lt;source src="video/course.mp4" type="video/mp4"&gt;
+
+    Your browser does not support HTML video.
+    Please use a modern browser to watch this video.
+
+&lt;/video&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">16. Responsive Video</h2>
+
+            <p>
+                CSS can be used to make a video responsive so that it fits
+                different screen sizes.
+            </p>
+
+            <pre><code>&lt;video controls
+       style="max-width:100%; height:auto;"&gt;
+
+    &lt;source src="video/course.mp4" type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="example-box">
+                <strong>Benefits of Responsive Video:</strong>
+                <ul class="mt-2 mb-0">
+                    <li>Works better on mobile devices.</li>
+                    <li>Fits different screen sizes.</li>
+                    <li>Helps prevent horizontal scrolling.</li>
+                    <li>Improves the overall page layout.</li>
+                </ul>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">17. Video with CSS Class</h2>
+
+            <p>
+                A CSS class can be used to style multiple video elements consistently.
+            </p>
+
+            <pre><code>&lt;style&gt;
+    .course-video {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        border-radius: 8px;
+    }
+&lt;/style&gt;
+
+&lt;video class="course-video" controls&gt;
+    &lt;source src="video/course.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">18. Video with Poster and Controls</h2>
+
+            <pre><code>&lt;video
+    controls
+    poster="images/html-course-thumbnail.jpg"
+    width="700"&gt;
+
+    &lt;source src="video/html-course.mp4" type="video/mp4"&gt;
+
+    Your browser does not support HTML video.
+
+&lt;/video&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">19. Video Accessibility</h2>
+
+            <p>
+                Video content should be designed so that users can understand
+                and control the content effectively.
+            </p>
+
+            <ul>
+                <li>Provide visible playback controls.</li>
+                <li>Provide captions when appropriate for spoken content.</li>
+                <li>Provide a transcript when useful.</li>
+                <li>Use a descriptive poster image where appropriate.</li>
+                <li>Avoid unexpected audio playback.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">20. Captions Using track</h2>
+
+            <p>
+                The <code>&lt;track&gt;</code> element can be used to provide
+                timed text such as captions for video.
+            </p>
+
+            <pre><code>&lt;video controls width="700"&gt;
+
+    &lt;source src="video/lesson.mp4" type="video/mp4"&gt;
+
+    &lt;track
+        src="captions/lesson-en.vtt"
+        kind="subtitles"
+        srclang="en"
+        label="English"
+        default&gt;
+
+    Your browser does not support HTML video.
+
+&lt;/video&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">21. Video Transcript</h2>
+
+            <p>
+                A transcript can also be provided separately from the video.
+            </p>
+
+            <pre><code>&lt;video controls&gt;
+    &lt;source src="video/html-lesson.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+
+&lt;h2&gt;Transcript&lt;/h2&gt;
+
+&lt;p&gt;
+    Welcome to our HTML video lesson.
+    Today we are learning how to embed videos
+    using the HTML video element.
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">22. Video Attributes Summary</h2>
+
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>controls</code></td>
+                        <td>Displays video controls.</td>
+                        <td><code>controls</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>autoplay</code></td>
+                        <td>Requests automatic playback.</td>
+                        <td><code>autoplay</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>muted</code></td>
+                        <td>Starts video without sound.</td>
+                        <td><code>muted</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>loop</code></td>
+                        <td>Repeats the video.</td>
+                        <td><code>loop</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>width</code></td>
+                        <td>Specifies video width.</td>
+                        <td><code>width="640"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>height</code></td>
+                        <td>Specifies video height.</td>
+                        <td><code>height="360"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>poster</code></td>
+                        <td>Displays an image before playback.</td>
+                        <td><code>poster="thumbnail.jpg"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>preload</code></td>
+                        <td>Provides a loading hint.</td>
+                        <td><code>preload="metadata"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">23. Common Mistakes</h2>
+
+            <ul>
+                <li>Using an incorrect video path.</li>
+                <li>Forgetting the <code>controls</code> attribute.</li>
+                <li>Using only one video format when additional sources are useful.</li>
+                <li>Using autoplay without considering the user experience.</li>
+                <li>Ignoring video responsiveness.</li>
+                <li>Forgetting captions or transcripts for important spoken content.</li>
+                <li>Using unnecessarily large video files.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">24. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML page containing:</strong></p>
+
+                <ol>
+                    <li>A video player with controls.</li>
+                    <li>An MP4 video source.</li>
+                    <li>A second video source using another format.</li>
+                    <li>A poster image.</li>
+                    <li>A responsive video.</li>
+                    <li>A video with captions.</li>
+                    <li>A transcript below the video.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">25. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;HTML Video Lesson&lt;/title&gt;
+
+    &lt;style&gt;
+        .course-video {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 8px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;HTML Video Lesson&lt;/h1&gt;
+
+    &lt;p&gt;
+        Watch the following HTML programming lesson:
+    &lt;/p&gt;
+
+    &lt;video
+        class="course-video"
+        controls
+        poster="images/html-thumbnail.jpg"
+        preload="metadata"&gt;
+
+        &lt;source src="video/html-lesson.mp4"
+                type="video/mp4"&gt;
+
+        &lt;source src="video/html-lesson.webm"
+                type="video/webm"&gt;
+
+        &lt;track
+            src="captions/html-en.vtt"
+            kind="subtitles"
+            srclang="en"
+            label="English"
+            default&gt;
+
+        Your browser does not support HTML video.
+
+    &lt;/video&gt;
+
+    &lt;h2&gt;Transcript&lt;/h2&gt;
+
+    &lt;p&gt;
+        Welcome to our HTML programming lesson.
+        Today we are learning about HTML video.
+    &lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    HTML video is embedded using the <code>&lt;video&gt;</code> element.
+                    The <code>controls</code> attribute provides playback controls,
+                    while <code>&lt;source&gt;</code> allows multiple video formats.
+                    Useful attributes include <code>poster</code>, <code>autoplay</code>,
+                    <code>muted</code>, <code>loop</code>, <code>width</code>,
+                    <code>height</code>, and <code>preload</code>. Captions can be
+                    added using the <code>&lt;track&gt;</code> element.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Audio", "LinksAndMedia", new { area = "HTML" })">
+                    ← Previous: Audio
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Iframes", "LinksAndMedia", new { area = "HTML" })">
+                    Next: Iframes →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

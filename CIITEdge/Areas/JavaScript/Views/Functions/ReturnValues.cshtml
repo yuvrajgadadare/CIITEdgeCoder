@@ -1,0 +1,1134 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Return Values";
+}
+
+<style>
+
+    #javascript-return-values-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-return-values-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-return-values-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-return-values-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-return-values-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-return-values-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-return-values-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-return-values-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-return-values-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-return-values-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       RELATED IMAGE
+       ========================================================= */
+
+    #javascript-return-values-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-return-values-page .function-image {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-return-values-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       PART CARDS
+       ========================================================= */
+
+    #javascript-return-values-page .part-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-return-values-page .part-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-return-values-page .part-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-return-values-page .part-number {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #5b21b6;
+        color: #ffffff;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-return-values-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-return-values-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 24px;
+    }
+
+    #javascript-return-values-page .return-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-return-values-page .diagram-item {
+        min-width: 145px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-return-values-page .diagram-item small {
+        display: block;
+        color: #6c757d;
+        margin-top: 6px;
+        font-weight: 400;
+    }
+
+    #javascript-return-values-page .diagram-highlight {
+        background: #f3ecff;
+        border: 2px solid #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-return-values-page .diagram-result {
+        background: #e8f7ef;
+        border: 2px solid #198754;
+        color: #146c43;
+    }
+
+    #javascript-return-values-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-return-values-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-return-values-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-return-values-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-return-values-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-return-values-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-return-values-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-return-values-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-return-values-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-return-values-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-return-values-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-return-values-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-return-values-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-return-values-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-return-values-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-return-values-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-return-values-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-return-values-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-return-values-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-return-values-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-return-values-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-return-values-page .function-image {
+            height: 220px;
+        }
+
+        #javascript-return-values-page .return-flow {
+            flex-direction: column;
+        }
+
+        #javascript-return-values-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-return-values-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Return Values
+                </h1>
+
+                <p class="lead-text">
+                    Learn how a JavaScript function can return a value,
+                    how the <strong>return</strong> statement works, and
+                    how returned values can be stored and reused.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS RETURN VALUE?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is a Return Value?
+                </h2>
+
+                <p class="section-text">
+                    A return value is the result that a function sends back
+                    to the code that called the function.
+                </p>
+
+                <p class="section-text">
+                    In JavaScript, we use the <strong>return</strong>
+                    keyword when a function needs to give a value back
+                    to the caller.
+                </p>
+
+                <p class="section-text">
+                    The returned value can be stored in a variable,
+                    displayed, or used in another calculation.
+                </p>
+
+
+                <!-- =================================================
+                     RELATED IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://cdn.programiz.com/cdn/farfuture/b4h4Zo5ZYxj-EyfQyao-J5TqbKEefFgqqusPGLWPFS0/mtime:1591786573/sites/tutorial2program/files/javascript-return-statement.png"
+                         alt="JavaScript Return Statement and Return Value"
+                         class="function-image" />
+
+                    <p class="image-caption">
+                        JavaScript function returning a calculated value
+                        back to the function call.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SIMPLE EXPLANATION
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Explanation
+                    </h5>
+
+                    <p>
+                        Think of a function like a calculator.
+                        You give some input to the function, the function
+                        performs a task, and then it gives the result back.
+                    </p>
+
+                    <p>
+                        For example, if a function adds
+                        <strong>10 + 20</strong>, the function can
+                        <strong>return 30</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BASIC STRUCTURE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Basic Structure
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function functionName() {
+    return value;
+}
+
+const result = functionName();</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     PARTS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Parts of a Return Value
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="part-card">
+
+                            <div class="part-number">
+                                1
+                            </div>
+
+                            <h5>
+                                Function
+                            </h5>
+
+                            <p>
+                                The function contains the statements
+                                that perform a particular task.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="part-card">
+
+                            <div class="part-number">
+                                2
+                            </div>
+
+                            <h5>
+                                return Keyword
+                            </h5>
+
+                            <p>
+                                The <strong>return</strong> keyword sends
+                                a value back to the caller.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="part-card">
+
+                            <div class="part-number">
+                                3
+                            </div>
+
+                            <h5>
+                                Returned Value
+                            </h5>
+
+                            <p>
+                                The returned value can be stored and
+                                reused in the program.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How Return Value Works
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Function Call → Execute → Return → Store Result
+                    </div>
+
+                    <div class="return-flow">
+
+                        <div class="diagram-item">
+
+                            Function Call
+
+                            <small>
+                                addNumbers(10, 20)
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+
+                            Function Executes
+
+                            <small>
+                                10 + 20
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item diagram-highlight">
+
+                            return
+
+                            <small>
+                                return 30
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item diagram-result">
+
+                            Result
+
+                            <small>
+                                const result = 30
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Returning a Value
+                </h2>
+
+                <p class="section-text">
+                    The <strong>addNumbers()</strong> function adds two
+                    numbers and returns the result.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function addNumbers(a, b) {
+    return a + b;
+}
+
+const result = addNumbers(10, 20);
+
+console.log(result);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryReturnValuesExample()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    30
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Returning a Calculated Value
+                </h2>
+
+                <p class="section-text">
+                    A function can perform a calculation and return the
+                    calculated result.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function calculateTotal(price, quantity) {
+    return price * quantity;
+}
+
+const total = calculateTotal(500, 3);
+
+console.log("Total:", total);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryReturnValuesExample2()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Total: 1500
+
+                </div>
+
+
+                <!-- =================================================
+                     RETURN VS CONSOLE.LOG
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Return vs console.log()
+                </h2>
+
+                <p class="section-text">
+                    The <strong>return</strong> statement and
+                    <strong>console.log()</strong> have different purposes.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        return
+                    </h5>
+
+                    <p>
+                        The <strong>return</strong> statement sends a value
+                        back to the caller. The returned value can be stored
+                        and used later.
+                    </p>
+
+                    <h5>
+                        console.log()
+                    </h5>
+
+                    <p>
+                        The <strong>console.log()</strong> statement displays
+                        information in the browser console. It does not
+                        send the value back to the caller.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 3: Using the Returned Value
+                </h2>
+
+                <p class="section-text">
+                    A returned value can be stored in a variable and then
+                    used in another calculation.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function square(number) {
+    return number * number;
+}
+
+const result = square(5);
+
+const finalResult = result + 10;
+
+console.log("Result:", result);
+console.log("Final Result:", finalResult);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryReturnValuesExample3()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Result: 25<br />
+                    Final Result: 35
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Note
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Code After return Does Not Execute
+                    </h5>
+
+                    <p>
+                        When JavaScript reaches a
+                        <strong>return</strong> statement, the function
+                        immediately stops executing and sends the value
+                        back to the caller.
+                    </p>
+
+                    <p>
+                        Statements written after the
+                        <strong>return</strong> statement inside the same
+                        function will not execute.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 4
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 4: Returning a String
+                </h2>
+
+                <p class="section-text">
+                    A function can also return a string value.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function getCourseName() {
+    return "JavaScript Full Stack";
+}
+
+const course = getCourseName();
+
+console.log(course);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryReturnValuesExample4()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    JavaScript Full Stack
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        A JavaScript function can return a value using the
+                        <strong>return</strong> keyword. The returned value
+                        can be stored in a variable and reused in another
+                        calculation or expression. Return values make
+                        functions reusable and allow them to produce results
+                        that can be used by other parts of the program.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("ParametersArguments", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Parameters &amp; Arguments
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("ArrowFunctions", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Arrow Functions
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryReturnValuesExample() {
+
+        const code =
+            'function addNumbers(a, b) {\n' +
+            '    return a + b;\n' +
+            '}\n' +
+            '\n' +
+            'const result = addNumbers(10, 20);\n' +
+            '\n' +
+            'console.log(result);';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryReturnValuesExample2() {
+
+        const code =
+            'function calculateTotal(price, quantity) {\n' +
+            '    return price * quantity;\n' +
+            '}\n' +
+            '\n' +
+            'const total = calculateTotal(500, 3);\n' +
+            '\n' +
+            'console.log("Total:", total);';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryReturnValuesExample3() {
+
+        const code =
+            'function square(number) {\n' +
+            '    return number * number;\n' +
+            '}\n' +
+            '\n' +
+            'const result = square(5);\n' +
+            '\n' +
+            'const finalResult = result + 10;\n' +
+            '\n' +
+            'console.log("Result:", result);\n' +
+            'console.log("Final Result:", finalResult);';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryReturnValuesExample4() {
+
+        const code =
+            'function getCourseName() {\n' +
+            '    return "JavaScript Full Stack";\n' +
+            '}\n' +
+            '\n' +
+            'const course = getCourseName();\n' +
+            '\n' +
+            'console.log(course);';
+
+        openCompiler(code);
+
+    }
+
+</script>

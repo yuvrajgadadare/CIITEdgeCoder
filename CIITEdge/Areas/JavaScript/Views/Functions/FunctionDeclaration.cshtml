@@ -1,0 +1,922 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Function Declaration";
+}
+
+<style>
+
+    #javascript-function-declaration-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-function-declaration-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-function-declaration-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-function-declaration-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-function-declaration-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-function-declaration-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-function-declaration-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-function-declaration-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-function-declaration-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-function-declaration-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       IMAGE
+       ========================================================= */
+
+    #javascript-function-declaration-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-function-declaration-page .function-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+
+    #javascript-function-declaration-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       PART CARDS
+       ========================================================= */
+
+    #javascript-function-declaration-page .part-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-function-declaration-page .part-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-function-declaration-page .part-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-function-declaration-page .part-number {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #5b21b6;
+        color: #ffffff;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-function-declaration-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-function-declaration-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 24px;
+    }
+
+    #javascript-function-declaration-page .declaration-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-function-declaration-page .diagram-item {
+        min-width: 145px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-function-declaration-page .diagram-item small {
+        display: block;
+        color: #6c757d;
+        margin-top: 6px;
+        font-weight: 400;
+    }
+
+    #javascript-function-declaration-page .diagram-highlight {
+        background: #f3ecff;
+        border: 2px solid #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-function-declaration-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-function-declaration-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-function-declaration-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-function-declaration-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-function-declaration-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-function-declaration-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-function-declaration-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-function-declaration-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-function-declaration-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-function-declaration-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-function-declaration-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-function-declaration-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-function-declaration-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-function-declaration-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-function-declaration-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-function-declaration-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-function-declaration-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-function-declaration-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-function-declaration-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-function-declaration-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-function-declaration-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-function-declaration-page .function-image {
+            height: 220px;
+        }
+
+        #javascript-function-declaration-page .declaration-flow {
+            flex-direction: column;
+        }
+
+        #javascript-function-declaration-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-function-declaration-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Function Declaration
+                </h1>
+
+                <p class="lead-text">
+                    Learn how to declare a JavaScript function, understand
+                    its parts, and call it to execute reusable code.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS FUNCTION DECLARATION?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is a Function Declaration?
+                </h2>
+
+                <p class="section-text">
+                    A function declaration is a standard way of defining
+                    a named function in JavaScript.
+                </p>
+
+                <p class="section-text">
+                    The declaration specifies the function name, optional
+                    parameters, and the block of code that should execute
+                    when the function is called.
+                </p>
+
+                <p class="section-text">
+                    Once declared, the same function can be called multiple
+                    times whenever the task is required.
+                </p>
+
+
+                <!-- =================================================
+                     RELATED IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=85"
+                         alt="JavaScript function declaration code"
+                         class="function-image" />
+
+                    <p class="image-caption">
+                        A JavaScript function declaration creates a reusable block of code.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BASIC STRUCTURE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Basic Structure
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function functionName(parameter1, parameter2) {
+    // function body
+}
+
+functionName(value1, value2);</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     PARTS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Parts of a Function Declaration
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="part-card">
+
+                            <div class="part-number">
+                                1
+                            </div>
+
+                            <h5>
+                                function Keyword
+                            </h5>
+
+                            <p>
+                                The <strong>function</strong> keyword tells
+                                JavaScript that we are declaring a function.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="part-card">
+
+                            <div class="part-number">
+                                2
+                            </div>
+
+                            <h5>
+                                Function Name
+                            </h5>
+
+                            <p>
+                                The function name identifies the function
+                                and is used when calling it.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="part-card">
+
+                            <div class="part-number">
+                                3
+                            </div>
+
+                            <h5>
+                                Function Body
+                            </h5>
+
+                            <p>
+                                The statements inside curly braces form
+                                the function body.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How Function Declaration Works
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Declare → Call → Execute
+                    </div>
+
+                    <div class="declaration-flow">
+
+                        <div class="diagram-item">
+
+                            Declare Function
+
+                            <small>
+                                function greet() { }
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item diagram-highlight">
+
+                            Call Function
+
+                            <small>
+                                greet()
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+
+                            Execute Body
+
+                            <small>
+                                Run statements
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+
+                            Output
+
+                            <small>
+                                Display result
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Simple Function Declaration
+                </h2>
+
+                <p class="section-text">
+                    Here, the <strong>greetStudent</strong> function is
+                    declared with a name and a simple function body.
+                </p>
+
+                <p class="section-text">
+                    The function is executed by calling
+                    <strong>greetStudent()</strong>.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function greetStudent() {
+    console.log("Welcome to JavaScript!");
+    console.log("Start practicing functions.");
+}
+
+greetStudent();</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryFunctionDeclarationExample()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Welcome to JavaScript!<br />
+                    Start practicing functions.
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Calling a Function Multiple Times
+                </h2>
+
+                <p class="section-text">
+                    One important benefit of a function is reusability.
+                    After declaring a function once, we can call it
+                    multiple times.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function showCourse() {
+    console.log("JavaScript Full Stack");
+}
+
+showCourse();
+showCourse();
+showCourse();</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryFunctionDeclarationExample2()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    JavaScript Full Stack<br />
+                    JavaScript Full Stack<br />
+                    JavaScript Full Stack
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Note
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Function Name Should Be Meaningful
+                    </h5>
+
+                    <p>
+                        Use a clear function name that describes the task
+                        performed by the function.
+                    </p>
+
+                    <p>
+                        Names such as <strong>calculateTotal()</strong>,
+                        <strong>showCourse()</strong>, and
+                        <strong>greetStudent()</strong> make code easier
+                        to understand.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        A function declaration uses the
+                        <strong>function</strong> keyword followed by a
+                        function name, parentheses, and a function body.
+                        The declared function can then be called whenever
+                        its task is required. Function declarations are
+                        useful for creating reusable and organized
+                        JavaScript code.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Index", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Functions
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("ParametersArguments", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Parameters &amp; Arguments
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryFunctionDeclarationExample() {
+
+        const code =
+            'function greetStudent() {\n' +
+            '    console.log("Welcome to JavaScript!");\n' +
+            '    console.log("Start practicing functions.");\n' +
+            '}\n' +
+            '\n' +
+            'greetStudent();';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryFunctionDeclarationExample2() {
+
+        const code =
+            'function showCourse() {\n' +
+            '    console.log("JavaScript Full Stack");\n' +
+            '}\n' +
+            '\n' +
+            'showCourse();\n' +
+            'showCourse();\n' +
+            'showCourse();';
+
+        openCompiler(code);
+
+    }
+
+</script>

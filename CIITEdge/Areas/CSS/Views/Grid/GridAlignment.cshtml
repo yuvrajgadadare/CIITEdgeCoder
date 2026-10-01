@@ -1,0 +1,915 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Grid Alignment";
+}
+
+<style>
+
+    #css-grid-alignment-page {
+        color: #212529;
+    }
+
+    #css-grid-alignment-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-grid-alignment-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-alignment-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-alignment-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-grid-alignment-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    #css-grid-alignment-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-grid-alignment-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    #css-grid-alignment-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-grid-alignment-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    #css-grid-alignment-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-alignment-page .alignment-demo {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 100px);
+        gap: 12px;
+        padding: 20px;
+        background-color: #dbeafe;
+        border: 2px dashed #2563eb;
+    }
+
+    #css-grid-alignment-page .alignment-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        min-height: 45px;
+    }
+
+    #css-grid-alignment-page .align-items-demo {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 150px;
+        gap: 12px;
+        padding: 15px;
+        background-color: #dbeafe;
+        border: 2px solid #2563eb;
+        align-items: center;
+    }
+
+    #css-grid-alignment-page .align-items-demo .alignment-item {
+        height: 50px;
+    }
+
+    #css-grid-alignment-page .justify-items-demo {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 100px;
+        gap: 12px;
+        padding: 15px;
+        background-color: #dbeafe;
+        border: 2px solid #2563eb;
+        justify-items: center;
+    }
+
+    #css-grid-alignment-page .justify-items-demo .alignment-item {
+        width: 70px;
+    }
+
+    #css-grid-alignment-page .place-items-demo {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 120px;
+        gap: 12px;
+        padding: 15px;
+        background-color: #dbeafe;
+        border: 2px solid #2563eb;
+        place-items: center;
+    }
+
+    #css-grid-alignment-page .place-items-demo .alignment-item {
+        width: 70px;
+        height: 50px;
+    }
+
+    #css-grid-alignment-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-alignment-page .output-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 120px;
+        gap: 15px;
+        padding: 20px;
+        background-color: #dbeafe;
+        border: 2px solid #2563eb;
+        align-items: center;
+        justify-items: center;
+    }
+
+    #css-grid-alignment-page .output-item {
+        width: 80px;
+        height: 50px;
+        background-color: orange;
+        border: 2px solid darkorange;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #css-grid-alignment-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-grid-alignment-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-alignment-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    #css-grid-alignment-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    #css-grid-alignment-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-grid-alignment-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-alignment-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+    @@media (max-width: 991px) {
+
+        #css-grid-alignment-page .content-section {
+            padding: 20px;
+        }
+
+        #css-grid-alignment-page .alignment-demo,
+        #css-grid-alignment-page .align-items-demo,
+        #css-grid-alignment-page .justify-items-demo,
+        #css-grid-alignment-page .place-items-demo,
+        #css-grid-alignment-page .output-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-grid-alignment-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1>
+                    CSS Grid Alignment
+                </h1>
+
+                <p>
+                    CSS Grid alignment controls how Grid items and
+                    the complete Grid are positioned inside the
+                    Grid container.
+                </p>
+
+                <p>
+                    CSS Grid provides properties such as
+                    <strong>align-items</strong>,
+                    <strong>justify-items</strong>,
+                    <strong>place-items</strong>,
+                    <strong>align-content</strong>, and
+                    <strong>justify-content</strong> for alignment.
+                </p>
+
+
+                <!-- What is Grid Alignment -->
+
+                <h2>
+                    What is Grid Alignment?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Grid alignment determines the position of
+                        Grid items horizontally and vertically
+                        inside their Grid areas.
+                    </p>
+
+                    <p>
+                        Alignment can be applied to individual items,
+                        all items in the Grid, or the complete Grid
+                        structure.
+                    </p>
+
+                </div>
+
+
+                <!-- align-items -->
+
+                <h2>
+                    align-items
+                </h2>
+
+                <p>
+                    The <strong>align-items</strong> property controls
+                    the vertical alignment of Grid items inside their
+                    Grid cells.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 150px;
+    align-items: center;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The value
+                        <strong>center</strong>
+                        places the Grid items vertically in the
+                        center of their Grid cells.
+                    </p>
+
+                </div>
+
+                <div class="diagram-box">
+
+                    <div class="align-items-demo">
+
+                        <div class="alignment-item">
+                            Item 1
+                        </div>
+
+                        <div class="alignment-item">
+                            Item 2
+                        </div>
+
+                        <div class="alignment-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- justify-items -->
+
+                <h2>
+                    justify-items
+                </h2>
+
+                <p>
+                    The <strong>justify-items</strong> property controls
+                    the horizontal alignment of Grid items inside
+                    their Grid cells.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The value
+                        <strong>center</strong>
+                        places each Grid item horizontally in the
+                        center of its Grid cell.
+                    </p>
+
+                </div>
+
+                <div class="diagram-box">
+
+                    <div class="justify-items-demo">
+
+                        <div class="alignment-item">
+                            Item 1
+                        </div>
+
+                        <div class="alignment-item">
+                            Item 2
+                        </div>
+
+                        <div class="alignment-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- place-items -->
+
+                <h2>
+                    place-items
+                </h2>
+
+                <p>
+                    The <strong>place-items</strong> property is a
+                    shorthand for
+                    <strong>align-items</strong> and
+                    <strong>justify-items</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The value
+                        <strong>center</strong>
+                        centers the items both vertically and
+                        horizontally inside their Grid cells.
+                    </p>
+
+                </div>
+
+                <div class="diagram-box">
+
+                    <div class="place-items-demo">
+
+                        <div class="alignment-item">
+                            Item 1
+                        </div>
+
+                        <div class="alignment-item">
+                            Item 2
+                        </div>
+
+                        <div class="alignment-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- align-content -->
+
+                <h2>
+                    align-content
+                </h2>
+
+                <p>
+                    The <strong>align-content</strong> property
+                    controls the vertical position of the complete
+                    Grid inside the Grid container when extra space
+                    is available.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    align-content: center;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The complete Grid is positioned vertically
+                        in the center of the container.
+                    </p>
+
+                </div>
+
+
+                <!-- justify-content -->
+
+                <h2>
+                    justify-content
+                </h2>
+
+                <p>
+                    The <strong>justify-content</strong> property
+                    controls the horizontal position of the complete
+                    Grid inside the Grid container.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    justify-content: center;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The complete Grid is positioned horizontally
+                        in the center of the container.
+                    </p>
+
+                </div>
+
+
+                <!-- place-content -->
+
+                <h2>
+                    place-content
+                </h2>
+
+                <p>
+                    The <strong>place-content</strong> property is a
+                    shorthand for
+                    <strong>align-content</strong> and
+                    <strong>justify-content</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    place-content: center;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The complete Grid is centered both vertically
+                        and horizontally inside the container.
+                    </p>
+
+                </div>
+
+
+                <!-- Values -->
+
+                <h2>
+                    Common Alignment Values
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                start
+                            </h3>
+
+                            <p>
+                                Places content at the start of the
+                                available alignment area.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                center
+                            </h3>
+
+                            <p>
+                                Places content in the center of the
+                                available alignment area.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                end
+                            </h3>
+
+                            <p>
+                                Places content at the end of the
+                                available alignment area.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                stretch
+                            </h3>
+
+                            <p>
+                                Stretches items to fill the available
+                                alignment space when possible.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                space-between
+                            </h3>
+
+                            <p>
+                                Distributes available space between
+                                Grid tracks.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                space-around
+                            </h3>
+
+                            <p>
+                                Distributes available space around
+                                Grid tracks.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Practical Example -->
+
+                <h2>
+                    Practical Example
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 120px;
+    gap: 15px;
+
+    align-items: center;
+    justify-items: center;
+}
+
+.item {
+    width: 80px;
+    height: 50px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        <strong>align-items: center;</strong>
+                        centers the items vertically.
+                    </p>
+
+                    <p>
+                        <strong>justify-items: center;</strong>
+                        centers the items horizontally.
+                    </p>
+
+                    <p>
+                        Therefore, every item appears in the center
+                        of its Grid cell.
+                    </p>
+
+                </div>
+
+
+                <!-- Output -->
+
+                <h2>
+                    Output
+                </h2>
+
+                <div class="browser-output">
+
+                    <div class="output-grid">
+
+                        <div class="output-item">
+                            Item 1
+                        </div>
+
+                        <div class="output-item">
+                            Item 2
+                        </div>
+
+                        <div class="output-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="mt-3">
+                    The items are centered vertically and horizontally
+                    because the code uses
+                    <strong>align-items: center;</strong> and
+                    <strong>justify-items: center;</strong>.
+                </p>
+
+
+                <!-- Difference -->
+
+                <h2>
+                    Items vs Content Alignment
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Item Alignment
+                            </h3>
+
+                            <p>
+                                <strong>align-items</strong> and
+                                <strong>justify-items</strong>
+                                control the position of Grid items
+                                inside their individual Grid cells.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Content Alignment
+                            </h3>
+
+                            <p>
+                                <strong>align-content</strong> and
+                                <strong>justify-content</strong>
+                                control the position of the complete
+                                Grid inside the container.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Real World Uses -->
+
+                <h2>
+                    Real-World Uses
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Centering dashboard cards
+                    </li>
+
+                    <li>
+                        Aligning product cards
+                    </li>
+
+                    <li>
+                        Creating balanced layouts
+                    </li>
+
+                    <li>
+                        Centering content inside Grid cells
+                    </li>
+
+                    <li>
+                        Aligning application dashboard components
+                    </li>
+
+                    <li>
+                        Building responsive website layouts
+                    </li>
+
+                </ul>
+
+
+                <!-- Note -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    <strong>align-items</strong> and
+                    <strong>justify-items</strong> align items
+                    inside their Grid cells, while
+                    <strong>align-content</strong> and
+                    <strong>justify-content</strong> align the
+                    complete Grid inside the container.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        CSS Grid alignment controls the position of
+                        Grid items and the complete Grid. Use
+                        <strong>align-items</strong> for vertical
+                        item alignment,
+                        <strong>justify-items</strong> for horizontal
+                        item alignment, and
+                        <strong>place-items</strong> as their shorthand.
+                        Use <strong>align-content</strong> and
+                        <strong>justify-content</strong> to position
+                        the complete Grid inside its container.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2 mb-md-0">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("GridArea", "Grid", new { area = "CSS" })">
+
+                            ← Previous: Grid Area
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("ResponsiveGrid", "Grid", new { area = "CSS" })">
+
+                            Next: Responsive Grid →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,747 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JSON in JavaScript";
+}
+
+<style>
+    #json-page {
+        padding: 30px 0 50px;
+    }
+
+    #json-page .content-section {
+        background: #fff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+
+    #json-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #json-page .lead-text,
+    #json-page .section-text {
+        color: #495057;
+        line-height: 1.8;
+        font-size: 16px;
+    }
+
+    #json-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #json-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin: 22px 0 30px;
+    }
+
+    #json-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #json-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* DIAGRAM */
+
+    #json-page .flow-card {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin: 25px 0 30px;
+    }
+
+    #json-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #json-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #json-page .flow-box {
+        min-width: 150px;
+        padding: 15px 20px;
+        border: 2px solid #7c3aed;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+        background: #fff;
+    }
+
+    #json-page .flow-arrow {
+        font-size: 24px;
+        color: #7c3aed;
+        font-weight: bold;
+    }
+
+    /* IMAGE */
+
+    #json-page .image-card {
+        text-align: center;
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 25px 0 30px;
+    }
+
+    #json-page .json-image {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        margin: auto;
+    }
+
+    #json-page .image-caption {
+        color: #6c757d;
+        font-size: 14px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* CODE */
+
+    #json-page .code-box {
+        background: #212529;
+        color: #fff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #json-page .code-box code {
+        color: #fff;
+    }
+
+    /* TRY IT */
+
+    #json-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px 0;
+    }
+
+    #json-page .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 105px;
+        justify-content: center;
+    }
+
+    #json-page .try-it-btn:hover {
+        background: #157347;
+        border-color: #157347;
+    }
+
+    /* OUTPUT */
+
+    #json-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin: 10px 0 28px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        line-height: 1.8;
+    }
+
+    /* NOTE */
+
+    #json-page .note-box {
+        background: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 5px solid #ffb300;
+        border-radius: 8px;
+        padding: 18px;
+        margin: 25px 0;
+        color: #6d4c41;
+        line-height: 1.7;
+    }
+
+    /* NAVIGATION */
+
+    #json-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #json-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    #json-page .previous-btn {
+        background: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #json-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #json-page .next-btn {
+        background: #5b21b6;
+        color: #fff;
+        border: 1px solid #5b21b6;
+    }
+
+    #json-page .next-btn:hover {
+        background: #4c1d95;
+        color: #fff;
+    }
+
+    @@media (max-width: 768px) {
+
+        #json-page .content-section {
+            padding: 20px;
+        }
+
+        #json-page .page-title {
+            font-size: 29px;
+        }
+
+        #json-page .flow-row {
+            flex-direction: column;
+        }
+
+        #json-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #json-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #json-page .nav-btn {
+            justify-content: center;
+        }
+    }
+</style>
+
+
+<main id="json-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- ============================================
+                 COURSE SYLLABUS
+                 ============================================ -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- ============================================
+                 MAIN CONTENT
+                 ============================================ -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- PAGE TITLE -->
+
+                    <h1 class="page-title">
+                        JSON in JavaScript
+                    </h1>
+
+                    <p class="lead-text">
+                        JSON stands for JavaScript Object Notation.
+                        It is a lightweight format commonly used for
+                        storing and exchanging data between applications.
+                    </p>
+
+
+                    <!-- WHAT IS JSON -->
+
+                    <h2 class="section-title">
+                        What is JSON?
+                    </h2>
+
+                    <p class="section-text">
+                        JSON is a text-based data format that represents
+                        information using key-value pairs and arrays.
+                    </p>
+
+                    <p class="section-text">
+                        JSON is widely used when JavaScript applications
+                        communicate with web servers and APIs.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+                            JSON is a lightweight format used to represent
+                            and exchange structured data.
+                        </p>
+
+                    </div>
+
+
+                    <!-- DIAGRAM -->
+
+                    <div class="flow-card">
+
+                        <div class="flow-title">
+                            JSON Data Flow
+                        </div>
+
+                        <div class="flow-row">
+
+                            <div class="flow-box">
+                                JavaScript Object
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                JSON.stringify()
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                JSON Text
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                JSON.parse()
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+
+                    <div class="image-card">
+
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/JSON_vector_logo.svg"
+                             alt="JSON Logo"
+                             class="json-image"
+                             onerror="this.style.display='none';" />
+
+                        <p class="image-caption">
+                            JSON is commonly used for structured data
+                            exchange between applications.
+                        </p>
+
+                    </div>
+
+
+                    <!-- JSON STRUCTURE -->
+
+                    <h2 class="section-title">
+                        JSON Structure
+                    </h2>
+
+                    <p class="section-text">
+                        A JSON object is written using curly braces.
+                        Data is represented using key-value pairs.
+                    </p>
+
+
+                    <pre class="code-box"><code>{
+    "name": "Rahul",
+    "age": 25,
+    "course": "JavaScript"
+}</code></pre>
+
+
+                    <div class="output-box">
+
+                        <strong>JSON Data:</strong>
+                        <br />
+                        name → Rahul
+                        <br />
+                        age → 25
+                        <br />
+                        course → JavaScript
+
+                    </div>
+
+
+                    <!-- ============================================
+                         EXAMPLE 1
+                         ============================================ -->
+
+                    <h2 class="section-title">
+                        Example 1: JSON.stringify()
+                    </h2>
+
+                    <p class="section-text">
+                        The JSON.stringify() method converts a JavaScript
+                        object into a JSON string.
+                    </p>
+
+
+                    <pre class="code-box"><code>var student = {
+    name: "Rahul",
+    age: 25
+};
+
+var jsonData = JSON.stringify(student);
+
+console.log(jsonData);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runExample1()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        {"name":"Rahul","age":25}
+
+                    </div>
+
+
+                    <!-- ============================================
+                         EXAMPLE 2
+                         ============================================ -->
+
+                    <h2 class="section-title">
+                        Example 2: JSON.parse()
+                    </h2>
+
+                    <p class="section-text">
+                        The JSON.parse() method converts a JSON string
+                        into a JavaScript object.
+                    </p>
+
+
+                    <pre class="code-box"><code>var jsonData =
+'{"name":"Rahul","age":25}';
+
+var student = JSON.parse(jsonData);
+
+console.log(student.name);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runExample2()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        Rahul
+
+                    </div>
+
+
+                    <!-- ============================================
+                         EXAMPLE 3
+                         ============================================ -->
+
+                    <h2 class="section-title">
+                        Example 3: JSON Array
+                    </h2>
+
+                    <p class="section-text">
+                        JSON can also represent arrays containing
+                        multiple values.
+                    </p>
+
+
+                    <pre class="code-box"><code>var students = [
+    "Rahul",
+    "Priya",
+    "Amit"
+];
+
+var jsonData = JSON.stringify(students);
+
+console.log(jsonData);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runExample3()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        ["Rahul","Priya","Amit"]
+
+                    </div>
+
+
+                    <!-- IMPORTANT POINTS -->
+
+                    <h2 class="section-title">
+                        Important Points
+                    </h2>
+
+                    <div class="note-box">
+
+                        <p>
+                            • JSON stands for JavaScript Object Notation.
+                        </p>
+
+                        <p>
+                            • JSON is commonly used for data exchange.
+                        </p>
+
+                        <p>
+                            • JSON.stringify() converts an object
+                            into a JSON string.
+                        </p>
+
+                        <p>
+                            • JSON.parse() converts JSON text into
+                            a JavaScript object.
+                        </p>
+
+                        <p class="mb-0">
+                            • JSON supports objects, arrays, strings,
+                            numbers, booleans and null.
+                        </p>
+
+                    </div>
+
+
+                    <!-- SUMMARY -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Summary
+                        </h5>
+
+                        <p class="mb-0">
+                            JSON provides a simple and standard way to
+                            represent structured data. JavaScript provides
+                            JSON.stringify() and JSON.parse() for converting
+                            between JavaScript objects and JSON text.
+                        </p>
+
+                    </div>
+
+
+                    <!-- NAVIGATION -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("SessionStorage", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Session Storage
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("DateTime", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Date & Time
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       JSON.stringify()
+       ========================================================= */
+
+    function runExample1() {
+
+        var code =
+`var student = {
+    name: "Rahul",
+    age: 25
+};
+
+var jsonData = JSON.stringify(student);
+
+console.log(jsonData);`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       JSON.parse()
+       ========================================================= */
+
+    function runExample2() {
+
+        var code =
+`var jsonData = '{"name":"Rahul","age":25}';
+
+var student = JSON.parse(jsonData);
+
+console.log(student.name);`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       JSON ARRAY
+       ========================================================= */
+
+    function runExample3() {
+
+        var code =
+`var students = [
+    "Rahul",
+    "Priya",
+    "Amit"
+];
+
+var jsonData = JSON.stringify(students);
+
+console.log(jsonData);`;
+
+        openCompiler(code);
+    }
+
+</script>

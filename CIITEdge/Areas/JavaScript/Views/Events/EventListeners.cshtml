@@ -1,0 +1,1274 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Event Listeners";
+}
+
+<style>
+
+    #javascript-event-listeners-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-event-listeners-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-event-listeners-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-event-listeners-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-event-listeners-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-event-listeners-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-event-listeners-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-event-listeners-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-event-listeners-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 8px;
+    }
+
+
+    /* =========================================================
+       RELATED VISUAL
+       ========================================================= */
+
+    #javascript-event-listeners-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+
+    #javascript-event-listeners-page .event-visual {
+        width: 100%;
+        min-height: 330px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    #javascript-event-listeners-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       EVENT LISTENER DIAGRAM
+       ========================================================= */
+
+    #javascript-event-listeners-page .event-diagram {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 30px 20px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #javascript-event-listeners-page .diagram-title {
+        font-size: 21px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 25px;
+    }
+
+    #javascript-event-listeners-page .diagram-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-event-listeners-page .diagram-box {
+        min-width: 150px;
+        padding: 18px 15px;
+        border-radius: 9px;
+        background: #ffffff;
+        border: 2px solid #7c3aed;
+        color: #212529;
+        font-weight: 600;
+    }
+
+    #javascript-event-listeners-page .diagram-box.primary {
+        background: #6d3fc0;
+        color: #ffffff;
+        border-color: #6d3fc0;
+    }
+
+    #javascript-event-listeners-page .diagram-box.success {
+        background: #eefbf3;
+        border-color: #198754;
+        color: #198754;
+    }
+
+    #javascript-event-listeners-page .diagram-arrow {
+        font-size: 25px;
+        color: #6d3fc0;
+        font-weight: 700;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-event-listeners-page .code-section {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-event-listeners-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 22px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-event-listeners-page .code-box code {
+        color: #f8f9fa;
+    }
+
+
+    /* =========================================================
+       TRY IT BUTTON
+       ========================================================= */
+
+    #javascript-event-listeners-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 22px;
+    }
+
+    #javascript-event-listeners-page .try-it-btn {
+        background: #198754;
+        border: 1px solid #198754;
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #javascript-event-listeners-page .try-it-btn:hover {
+        background: #157347;
+        border-color: #157347;
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-event-listeners-page .output-box {
+        background: #212529;
+        color: #ffffff;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 18px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-event-listeners-page .summary-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-event-listeners-page .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-event-listeners-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-event-listeners-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    #javascript-event-listeners-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    #javascript-event-listeners-page .previous-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    #javascript-event-listeners-page .next-btn {
+        background: #5b21b6;
+        border: 1px solid #5b21b6;
+        color: #ffffff;
+    }
+
+    #javascript-event-listeners-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-event-listeners-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @@media (max-width: 768px) {
+
+        #javascript-event-listeners-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-event-listeners-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-event-listeners-page .section-title {
+            font-size: 23px;
+        }
+
+        #javascript-event-listeners-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-event-listeners-page .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        #javascript-event-listeners-page .diagram-row {
+            flex-direction: column;
+        }
+
+        #javascript-event-listeners-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+</style>
+
+
+<main id="javascript-event-listeners-page">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3 mb-4">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- =================================================
+                         HEADER
+                         ================================================= -->
+
+                    <h1 class="page-title">
+                        Event Listeners
+                    </h1>
+
+                    <p class="lead-text">
+                        JavaScript event listeners allow us to execute
+                        a function when a specific event happens on an
+                        HTML element.
+                    </p>
+
+
+                    <!-- =================================================
+                         INTRODUCTION
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What are Event Listeners?
+                    </h2>
+
+                    <p class="section-text">
+
+                        An event listener waits for a particular event
+                        to occur and then executes a function when that
+                        event happens.
+
+                    </p>
+
+                    <p class="section-text">
+
+                        JavaScript commonly uses
+                        <strong>addEventListener()</strong>
+                        to attach an event handler to an element.
+
+                    </p>
+
+
+                    <!-- =================================================
+                         SIMPLE DEFINITION
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+
+                            <strong>
+                                Element → Event Listener → Event Occurs
+                                → Function Executes
+                            </strong>
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RELATED VISUAL
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <div class="event-visual">
+
+                            <svg width="100%"
+                                 height="330"
+                                 viewBox="0 0 900 330"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                                <!-- Background -->
+
+                                <rect x="0"
+                                      y="0"
+                                      width="900"
+                                      height="330"
+                                      fill="#f8f9fa" />
+
+                                <!-- Title -->
+
+                                <text x="450"
+                                      y="42"
+                                      text-anchor="middle"
+                                      font-size="25"
+                                      font-weight="700"
+                                      fill="#212529">
+
+                                    JavaScript Event Listener
+
+                                </text>
+
+
+                                <!-- HTML Element -->
+
+                                <rect x="75"
+                                      y="115"
+                                      width="190"
+                                      height="90"
+                                      rx="12"
+                                      fill="#ffffff"
+                                      stroke="#6d3fc0"
+                                      stroke-width="3" />
+
+                                <text x="170"
+                                      y="150"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      font-weight="700"
+                                      fill="#5b21b6">
+
+                                    HTML Element
+
+                                </text>
+
+                                <text x="170"
+                                      y="178"
+                                      text-anchor="middle"
+                                      font-size="14"
+                                      fill="#6c757d">
+
+                                    Button
+
+                                </text>
+
+
+                                <!-- Arrow -->
+
+                                <text x="285"
+                                      y="170"
+                                      font-size="32"
+                                      font-weight="700"
+                                      fill="#6d3fc0">
+
+                                    →
+
+                                </text>
+
+
+                                <!-- Listener -->
+
+                                <rect x="350"
+                                      y="115"
+                                      width="205"
+                                      height="90"
+                                      rx="12"
+                                      fill="#6d3fc0" />
+
+                                <text x="452"
+                                      y="150"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      font-weight="700"
+                                      fill="#ffffff">
+
+                                    addEventListener()
+
+                                </text>
+
+                                <text x="452"
+                                      y="178"
+                                      text-anchor="middle"
+                                      font-size="14"
+                                      fill="#ffffff">
+
+                                    "click"
+
+                                </text>
+
+
+                                <!-- Arrow -->
+
+                                <text x="575"
+                                      y="170"
+                                      font-size="32"
+                                      font-weight="700"
+                                      fill="#6d3fc0">
+
+                                    →
+
+                                </text>
+
+
+                                <!-- Function -->
+
+                                <rect x="635"
+                                      y="115"
+                                      width="190"
+                                      height="90"
+                                      rx="12"
+                                      fill="#eefbf3"
+                                      stroke="#198754"
+                                      stroke-width="3" />
+
+                                <text x="730"
+                                      y="150"
+                                      text-anchor="middle"
+                                      font-size="18"
+                                      font-weight="700"
+                                      fill="#198754">
+
+                                    Function
+
+                                </text>
+
+                                <text x="730"
+                                      y="178"
+                                      text-anchor="middle"
+                                      font-size="14"
+                                      fill="#198754">
+
+                                    Executes
+
+                                </text>
+
+
+                                <!-- Bottom explanation -->
+
+                                <text x="450"
+                                      y="265"
+                                      text-anchor="middle"
+                                      font-size="16"
+                                      fill="#495057">
+
+                                    User Action → Event → Listener → Response
+
+                                </text>
+
+                            </svg>
+
+                        </div>
+
+                        <p class="image-caption">
+
+                            Event listener flow:
+                            an event occurs on an element and the
+                            registered function responds to it.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SYNTAX
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        addEventListener() Syntax
+                    </h2>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>element.addEventListener("event", function);</code></pre>
+
+                    </div>
+
+
+                    <p class="section-text">
+
+                        The first argument specifies the event type,
+                        while the second argument specifies the function
+                        that should execute when the event occurs.
+
+                    </p>
+
+
+                    <!-- =================================================
+                         EVENT FLOW
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Event Listener Flow
+                    </h2>
+
+                    <div class="event-diagram">
+
+                        <div class="diagram-title">
+                            How addEventListener() Works
+                        </div>
+
+                        <div class="diagram-row">
+
+                            <div class="diagram-box primary">
+
+                                HTML Element
+
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-box">
+
+                                Event Listener
+
+                                <br />
+
+                                <small>
+                                    addEventListener()
+                                </small>
+
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-box">
+
+                                Event
+
+                                <br />
+
+                                <small>
+                                    click / input
+                                </small>
+
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-box success">
+
+                                Function
+
+                                <br />
+
+                                Executes
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Click Event Listener
+                    </h2>
+
+                    <p class="section-text">
+
+                        The following example represents a click event
+                        listener. The CIIT compiler example uses an
+                        object to demonstrate the event information,
+                        because the compiler executes JavaScript
+                        console code.
+
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const listener = {
+    element: "Button",
+    event: "click",
+    action: "Button clicked"
+};
+
+console.log("Element:", listener.element);
+console.log("Event:", listener.event);
+console.log("Action:", listener.action);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryEventListenersExample1()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Element: Button
+                        <br />
+
+                        Event: click
+                        <br />
+
+                        Action: Button clicked
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Input Event Listener
+                    </h2>
+
+                    <p class="section-text">
+
+                        An event listener can also respond when the
+                        value of an input field changes.
+
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const listener = {
+    element: "Name Input",
+    event: "input",
+    value: "Rahul"
+};
+
+console.log("Element:", listener.element);
+console.log("Event:", listener.event);
+console.log("Value:", listener.value);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryEventListenersExample2()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Element: Name Input
+                        <br />
+
+                        Event: input
+                        <br />
+
+                        Value: Rahul
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Multiple Event Listeners
+                    </h2>
+
+                    <p class="section-text">
+
+                        Multiple event listeners can be associated
+                        with different events.
+
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const listeners = [
+    {
+        event: "click",
+        action: "Button clicked"
+    },
+    {
+        event: "input",
+        action: "Text entered"
+    },
+    {
+        event: "change",
+        action: "Value changed"
+    }
+];
+
+console.log("Event 1:", listeners[0].event);
+console.log("Event 2:", listeners[1].event);
+console.log("Event 3:", listeners[2].event);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryEventListenersExample3()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Event 1: click
+                        <br />
+
+                        Event 2: input
+                        <br />
+
+                        Event 3: change
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 4
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 4: Event Listener with Function
+                    </h2>
+
+                    <p class="section-text">
+
+                        The listener can call a function when the
+                        event occurs.
+
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function showMessage() {
+    return "Welcome to CIIT Training Institute!";
+}
+
+const listener = {
+    event: "click",
+    functionName: "showMessage"
+};
+
+console.log("Event:", listener.event);
+console.log("Function:", listener.functionName);
+console.log("Message:", showMessage());</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryEventListenersExample4()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Event: click
+                        <br />
+
+                        Function: showMessage
+                        <br />
+
+                        Message: Welcome to CIIT Training Institute!
+
+                    </div>
+
+
+                    <!-- =================================================
+                         REAL WORLD EXAMPLE
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 🌍🤓
+                    </h2>
+
+                    <p class="section-text">
+
+                        Event listeners are widely used in login forms,
+                        registration forms, buttons, menus, search boxes,
+                        validation, and interactive web applications.
+
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const loginButton = {
+    element: "Login Button",
+    event: "click",
+    action: "Validate Login"
+};
+
+console.log("Element:", loginButton.element);
+console.log("Event:", loginButton.event);
+console.log("Action:", loginButton.action);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryEventListenersExample5()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Element: Login Button
+                        <br />
+
+                        Event: click
+                        <br />
+
+                        Action: Validate Login
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT NOTE
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Note
+                        </h5>
+
+                        <p>
+
+                            <strong>addEventListener()</strong> is normally
+                            used with browser DOM elements such as buttons,
+                            input fields, forms, links, and other HTML
+                            elements.
+
+                        </p>
+
+                        <p class="mb-0">
+
+                            The CIIT JavaScript compiler is console-based,
+                            so the Try It examples above use JavaScript
+                            objects and functions to demonstrate the same
+                            event-listener concept without depending on
+                            <strong>document</strong> or browser DOM APIs.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+
+                            JavaScript event listeners allow us to respond
+                            to user actions and other events. The
+                            <strong>addEventListener()</strong> method is
+                            commonly used to register a function for an
+                            event such as <strong>click</strong>,
+                            <strong>input</strong>, or
+                            <strong>change</strong>.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("FormEvents", "Events", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Form Events
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("Index", "ModernJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Modern JavaScript
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+
+    /* =========================================================
+       CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        // Convert escaped \n into actual new lines
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       Click Event Listener
+       ========================================================= */
+
+    function tryEventListenersExample1() {
+
+        const code =
+            'const listener = {\\n' +
+            '    element: "Button",\\n' +
+            '    event: "click",\\n' +
+            '    action: "Button clicked"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Element:", listener.element);\\n' +
+            'console.log("Event:", listener.event);\\n' +
+            'console.log("Action:", listener.action);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       Input Event Listener
+       ========================================================= */
+
+    function tryEventListenersExample2() {
+
+        const code =
+            'const listener = {\\n' +
+            '    element: "Name Input",\\n' +
+            '    event: "input",\\n' +
+            '    value: "Rahul"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Element:", listener.element);\\n' +
+            'console.log("Event:", listener.event);\\n' +
+            'console.log("Value:", listener.value);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       Multiple Event Listeners
+       ========================================================= */
+
+    function tryEventListenersExample3() {
+
+        const code =
+            'const listeners = [\\n' +
+            '    {\\n' +
+            '        event: "click",\\n' +
+            '        action: "Button clicked"\\n' +
+            '    },\\n' +
+            '    {\\n' +
+            '        event: "input",\\n' +
+            '        action: "Text entered"\\n' +
+            '    },\\n' +
+            '    {\\n' +
+            '        event: "change",\\n' +
+            '        action: "Value changed"\\n' +
+            '    }\\n' +
+            '];\\n' +
+            '\\n' +
+            'console.log("Event 1:", listeners[0].event);\\n' +
+            'console.log("Event 2:", listeners[1].event);\\n' +
+            'console.log("Event 3:", listeners[2].event);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       Event Listener with Function
+       ========================================================= */
+
+    function tryEventListenersExample4() {
+
+        const code =
+            'function showMessage() {\\n' +
+            '    return "Welcome to CIIT Training Institute!";\\n' +
+            '}\\n' +
+            '\\n' +
+            'const listener = {\\n' +
+            '    event: "click",\\n' +
+            '    functionName: "showMessage"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Event:", listener.event);\\n' +
+            'console.log("Function:", listener.functionName);\\n' +
+            'console.log("Message:", showMessage());';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       REAL WORLD EXAMPLE
+       ========================================================= */
+
+    function tryEventListenersExample5() {
+
+        const code =
+            'const loginButton = {\\n' +
+            '    element: "Login Button",\\n' +
+            '    event: "click",\\n' +
+            '    action: "Validate Login"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Element:", loginButton.element);\\n' +
+            'console.log("Event:", loginButton.event);\\n' +
+            'console.log("Action:", loginButton.action);';
+
+        openCompiler(code);
+    }
+
+</script>

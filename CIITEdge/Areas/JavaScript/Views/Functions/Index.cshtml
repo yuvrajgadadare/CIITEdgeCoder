@@ -1,0 +1,1060 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Functions";
+}
+
+<style>
+
+    #javascript-functions-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-functions-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-functions-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-functions-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-functions-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-functions-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       INFO BOX
+       ========================================================= */
+
+    #javascript-functions-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-functions-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-functions-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-functions-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       FUNCTION CARDS
+       ========================================================= */
+
+    #javascript-functions-page .function-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-functions-page .function-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-functions-page .function-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-functions-page .function-icon {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #5b21b6;
+        color: #ffffff;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       SYNTAX BOX
+       ========================================================= */
+
+    #javascript-functions-page .syntax-box {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-functions-page .syntax-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    #javascript-functions-page .syntax-item:last-child {
+        margin-bottom: 0;
+    }
+
+    #javascript-functions-page .syntax-number {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #5b21b6;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    #javascript-functions-page .syntax-item p {
+        margin: 0;
+        color: #495057;
+        line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-functions-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-functions-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-functions-page .function-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-functions-page .diagram-item {
+        min-width: 145px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-functions-page .diagram-item small {
+        display: block;
+        color: #6c757d;
+        margin-top: 5px;
+        font-weight: 400;
+    }
+
+    #javascript-functions-page .diagram-highlight {
+        background: #f3ecff;
+        border: 2px solid #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-functions-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-functions-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-functions-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-functions-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-functions-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-functions-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-functions-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-functions-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-functions-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-functions-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-functions-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-functions-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-functions-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-functions-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-functions-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-functions-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-functions-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-functions-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-functions-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-functions-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-functions-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-functions-page .function-flow {
+            flex-direction: column;
+        }
+
+        #javascript-functions-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-functions-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Functions
+                </h1>
+
+                <p class="lead-text">
+                    Learn how to create reusable blocks of code and organize
+                    JavaScript programs using functions.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS A FUNCTION?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is a Function?
+                </h2>
+
+                <p class="section-text">
+                    A function is a reusable block of code that performs
+                    a specific task.
+                </p>
+
+                <p class="section-text">
+                    When the same task is required multiple times in a
+                    program, we can place that logic inside a function
+                    and call the function whenever needed.
+                </p>
+
+                <p class="section-text">
+                    This makes the program easier to organize and reduces
+                    repeated code.
+                </p>
+
+
+                <!-- =================================================
+                     WHY FUNCTIONS?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Why Do We Use Functions?
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="function-card">
+
+                            <div class="function-icon">
+                                R
+                            </div>
+
+                            <h5>
+                                Reusability
+                            </h5>
+
+                            <p>
+                                Write a task once and call the same function
+                                whenever you need it.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="function-card">
+
+                            <div class="function-icon">
+                                O
+                            </div>
+
+                            <h5>
+                                Organization
+                            </h5>
+
+                            <p>
+                                Divide a large program into smaller,
+                                meaningful blocks of code.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="function-card">
+
+                            <div class="function-icon">
+                                M
+                            </div>
+
+                            <h5>
+                                Maintainability
+                            </h5>
+
+                            <p>
+                                Keep related logic together so it is
+                                easier to update and understand.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     BASIC SYNTAX
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Basic Function Syntax
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function functionName() {
+    // code to execute
+}
+
+functionName();</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     UNDERSTANDING SYNTAX
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Understanding the Syntax
+                </h2>
+
+                <div class="syntax-box">
+
+                    <div class="syntax-item">
+
+                        <div class="syntax-number">
+                            1
+                        </div>
+
+                        <p>
+                            <strong>function</strong> is the keyword used
+                            to create a function.
+                        </p>
+
+                    </div>
+
+
+                    <div class="syntax-item">
+
+                        <div class="syntax-number">
+                            2
+                        </div>
+
+                        <p>
+                            <strong>functionName</strong> is the name
+                            given to the function.
+                        </p>
+
+                    </div>
+
+
+                    <div class="syntax-item">
+
+                        <div class="syntax-number">
+                            3
+                        </div>
+
+                        <p>
+                            Parentheses <strong>()</strong> are used for
+                            parameters. They can be empty.
+                        </p>
+
+                    </div>
+
+
+                    <div class="syntax-item">
+
+                        <div class="syntax-number">
+                            4
+                        </div>
+
+                        <p>
+                            Curly braces <strong>{ }</strong> contain the
+                            statements that execute when the function runs.
+                        </p>
+
+                    </div>
+
+
+                    <div class="syntax-item">
+
+                        <div class="syntax-number">
+                            5
+                        </div>
+
+                        <p>
+                            <strong>functionName()</strong> calls the
+                            function and executes its code.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How a Function Works
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Define Function → Call Function → Execute Code → Result
+                    </div>
+
+                    <div class="function-flow">
+
+                        <div class="diagram-item">
+
+                            Define Function
+
+                            <small>
+                                Create reusable code
+                            </small>
+
+                        </div>
+
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+
+                        <div class="diagram-item diagram-highlight">
+
+                            Call Function
+
+                            <small>
+                                functionName()
+                            </small>
+
+                        </div>
+
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+
+                        <div class="diagram-item">
+
+                            Execute Code
+
+                            <small>
+                                Run the function body
+                            </small>
+
+                        </div>
+
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+
+                        <div class="diagram-item">
+
+                            Result
+
+                            <small>
+                                Output or returned value
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Creating and Calling a Function
+                </h2>
+
+                <p class="section-text">
+                    In this example, we create a function named
+                    <strong>showWelcome</strong>.
+                </p>
+
+                <p class="section-text">
+                    The code inside the function runs when we call
+                    <strong>showWelcome()</strong>.
+                </p>
+
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function showWelcome() {
+    console.log("Welcome to CIIT Training Institute!");
+    console.log("Start learning JavaScript.");
+}
+
+showWelcome();</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryFunctionExample()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Welcome to CIIT Training Institute!<br />
+                    Start learning JavaScript.
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Function with a Parameter
+                </h2>
+
+                <p class="section-text">
+                    A function can accept information through parameters.
+                    A parameter works like a variable inside the function.
+                </p>
+
+                <p class="section-text">
+                    Here, <strong>studentName</strong> receives the value
+                    <strong>"Gauri"</strong> when the function is called.
+                </p>
+
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function greetStudent(studentName) {
+    console.log("Hello, " + studentName);
+    console.log("Welcome to JavaScript!");
+}
+
+greetStudent("Gauri");</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryFunctionExample2()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Hello, Gauri<br />
+                    Welcome to JavaScript!
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Note
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Function Definition vs Function Call
+                    </h5>
+
+                    <p>
+                        Defining a function creates the reusable block
+                        of code.
+                    </p>
+
+                    <p>
+                        Calling the function executes the statements
+                        inside that function.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     WHAT YOU WILL LEARN NEXT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Function Topics
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Function Declaration
+                    </h5>
+
+                    <p>
+                        Learn how to declare and call traditional
+                        JavaScript functions.
+                    </p>
+
+
+                    <h5>
+                        Parameters &amp; Arguments
+                    </h5>
+
+                    <p>
+                        Learn how functions receive input values.
+                    </p>
+
+
+                    <h5>
+                        Return Values
+                    </h5>
+
+                    <p>
+                        Learn how a function can return a result.
+                    </p>
+
+
+                    <h5>
+                        Arrow Functions
+                    </h5>
+
+                    <p>
+                        Learn the shorter syntax for writing functions.
+                    </p>
+
+
+                    <h5>
+                        Callback Functions
+                    </h5>
+
+                    <p>
+                        Learn how functions can be passed to other functions.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        A function is a reusable block of JavaScript code
+                        designed to perform a specific task. Functions help
+                        reduce repeated code and make programs easier to
+                        organize and maintain. A function can be called
+                        whenever its task is required and can also receive
+                        parameters or return values.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Loops", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Loops
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("FunctionDeclaration", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Function Declaration
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryFunctionExample() {
+
+        const code =
+            'function showWelcome() {\n' +
+            '    console.log("Welcome to CIIT Training Institute!");\n' +
+            '    console.log("Start learning JavaScript.");\n' +
+            '}\n' +
+            '\n' +
+            'showWelcome();';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryFunctionExample2() {
+
+        const code =
+            'function greetStudent(studentName) {\n' +
+            '    console.log("Hello, " + studentName);\n' +
+            '    console.log("Welcome to JavaScript!");\n' +
+            '}\n' +
+            '\n' +
+            'greetStudent("Gauri");';
+
+        openCompiler(code);
+
+    }
+
+</script>

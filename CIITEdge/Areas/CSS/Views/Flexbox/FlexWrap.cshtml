@@ -1,0 +1,647 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Flex Wrap";
+}
+
+<style>
+
+    #css-flex-wrap-page {
+        color: #212529;
+    }
+
+    #css-flex-wrap-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-flex-wrap-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-wrap-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-wrap-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-flex-wrap-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* Code */
+
+    #css-flex-wrap-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-flex-wrap-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* Diagram */
+
+    #css-flex-wrap-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flex-wrap-page .diagram-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flex-wrap-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 18px 25px;
+        min-width: 130px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* Explanation */
+
+    #css-flex-wrap-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-flex-wrap-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Output */
+
+    #css-flex-wrap-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flex-wrap-page .output-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flex-wrap-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 20px;
+        min-width: 140px;
+        flex: 1 1 140px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* Cards */
+
+    #css-flex-wrap-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-flex-wrap-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-wrap-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Note */
+
+    #css-flex-wrap-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* Summary */
+
+    #css-flex-wrap-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-flex-wrap-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-wrap-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+</style>
+
+
+<div id="css-flex-wrap-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- Title -->
+
+                <h1>
+                    CSS Flex Wrap
+                </h1>
+
+                <p>
+                    The CSS <strong>flex-wrap</strong> property controls
+                    whether Flex Items should remain on one line or move
+                    onto multiple lines when there is not enough space.
+                </p>
+
+                <p>
+                    Flexbox normally tries to keep all items on a single
+                    line. Using <strong>flex-wrap</strong>, we can allow
+                    the items to move to another line.
+                </p>
+
+
+                <!-- Syntax -->
+
+                <h2>
+                    Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: value;
+}</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    The value determines whether the Flex Items are
+                    allowed to wrap onto multiple lines.
+                </p>
+
+
+                <!-- Values -->
+
+                <h2>
+                    Values of flex-wrap
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Value</th>
+                                <th>Description</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>nowrap</strong>
+                                </td>
+
+                                <td>
+                                    Keeps all Flex Items on a single line.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>wrap</strong>
+                                </td>
+
+                                <td>
+                                    Allows Flex Items to move onto
+                                    multiple lines.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>wrap-reverse</strong>
+                                </td>
+
+                                <td>
+                                    Allows wrapping, but places the
+                                    additional lines in the reverse
+                                    cross-axis direction.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Flex Wrap Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-container">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 4
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 5
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        When the available width becomes smaller,
+                        Flex Items can move to another line.
+                    </p>
+
+                </div>
+
+
+                <!-- Nowrap -->
+
+                <h2>
+                    1. flex-wrap: nowrap
+                </h2>
+
+                <p>
+                    <strong>nowrap</strong> is the default value.
+                    It keeps the Flex Items on a single line.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: nowrap;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        With <strong>nowrap</strong>, Flexbox does not
+                        create additional lines for the Flex Items.
+                    </p>
+
+                    <p>
+                        If the items require more space than the
+                        container has available, the items may shrink
+                        or overflow depending on the other Flexbox
+                        properties being used.
+                    </p>
+
+                </div>
+
+
+                <!-- Wrap -->
+
+                <h2>
+                    2. flex-wrap: wrap
+                </h2>
+
+                <p>
+                    The <strong>wrap</strong> value allows Flex Items
+                    to move onto another line when the available
+                    space is insufficient.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-wrap">
+
+                        <div class="output-item">
+                            C#
+                        </div>
+
+                        <div class="output-item">
+                            Java
+                        </div>
+
+                        <div class="output-item">
+                            Python
+                        </div>
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Wrap Reverse -->
+
+                <h2>
+                    3. flex-wrap: wrap-reverse
+                </h2>
+
+                <p>
+                    The <strong>wrap-reverse</strong> value allows items
+                    to wrap, but the wrapped lines are placed in the
+                    reverse cross-axis direction.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The items still wrap when there is not enough
+                        horizontal space.
+                    </p>
+
+                    <p>
+                        The difference is that the additional flex lines
+                        are placed in the opposite direction of the
+                        cross axis.
+                    </p>
+
+                </div>
+
+
+                <!-- Practical Example -->
+
+                <h2>
+                    Practical Example: Course Cards
+                </h2>
+
+                <p>
+                    Suppose a training website displays several course
+                    cards. On a large screen, several cards may fit in
+                    one row. On a smaller screen, the cards can move to
+                    the next row.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.course {
+    flex: 1 1 200px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        <strong>display: flex;</strong> creates the
+                        Flex Container.
+                    </p>
+
+                    <p>
+                        <strong>flex-wrap: wrap;</strong> allows the
+                        course cards to move to another line.
+                    </p>
+
+                    <p>
+                        <strong>gap: 15px;</strong> creates space
+                        between the cards.
+                    </p>
+
+                    <p>
+                        <strong>flex: 1 1 200px;</strong> allows each
+                        course card to flex while maintaining an
+                        initial size of approximately 200 pixels.
+                    </p>
+
+                </div>
+
+
+                <!-- Comparison -->
+
+                <h2>
+                    nowrap vs wrap
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Feature</th>
+                                <th>nowrap</th>
+                                <th>wrap</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Multiple Lines</td>
+                                <td>No</td>
+                                <td>Yes</td>
+                            </tr>
+
+                            <tr>
+                                <td>Responsive Layout</td>
+                                <td>Limited</td>
+                                <td>More Flexible</td>
+                            </tr>
+
+                            <tr>
+                                <td>Default Value</td>
+                                <td>Yes</td>
+                                <td>No</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Important -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    The default value of
+                    <strong>flex-wrap</strong> is
+                    <strong>nowrap</strong>. For responsive layouts
+                    containing multiple cards or items, using
+                    <strong>wrap</strong> can allow the items to move
+                    naturally onto additional lines.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>flex-wrap</strong> property controls
+                        whether Flex Items stay on one line or move onto
+                        multiple lines. Its main values are
+                        <strong>nowrap</strong>,
+                        <strong>wrap</strong>, and
+                        <strong>wrap-reverse</strong>.
+                        The default value is <strong>nowrap</strong>.
+                        The <strong>wrap</strong> value is especially
+                        useful when creating flexible layouts containing
+                        multiple cards or components.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("FlexDirection", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Flex Direction
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("JustifyContent", "Flexbox", new { area = "CSS" })">
+
+                            Next: Justify Content →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

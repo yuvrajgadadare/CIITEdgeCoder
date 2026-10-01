@@ -1,0 +1,1067 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Form Attributes";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+
+    .form-demo {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Form Attributes</h1>
+
+            <p class="lead">
+                HTML form attributes control how forms submit data, where the submitted
+                data goes, how it is encoded, and how browsers handle form controls.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. Introduction</h2>
+
+            <p>
+                The <code>&lt;form&gt;</code> element provides several attributes
+                that control form submission and browser behavior.
+            </p>
+
+            <p>Common form attributes include:</p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>action</code></td>
+                        <td>Specifies where the form data is submitted.</td>
+                    </tr>
+                    <tr>
+                        <td><code>method</code></td>
+                        <td>Specifies the HTTP method used to submit the data.</td>
+                    </tr>
+                    <tr>
+                        <td><code>target</code></td>
+                        <td>Specifies where the response is displayed.</td>
+                    </tr>
+                    <tr>
+                        <td><code>autocomplete</code></td>
+                        <td>Controls browser autocomplete behavior.</td>
+                    </tr>
+                    <tr>
+                        <td><code>enctype</code></td>
+                        <td>Specifies how form data is encoded.</td>
+                    </tr>
+                    <tr>
+                        <td><code>novalidate</code></td>
+                        <td>Disables built-in browser validation during submission.</td>
+                    </tr>
+                    <tr>
+                        <td><code>accept-charset</code></td>
+                        <td>Specifies character encodings accepted for submission.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">2. action Attribute</h2>
+
+            <p>
+                The <code>action</code> attribute specifies the URL or endpoint
+                that receives the submitted form data.
+            </p>
+
+            <pre><code>&lt;form action="/register"&gt;
+
+    &lt;input type="text"
+           name="username"&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <p>
+                When the form is submitted, the browser sends the form data
+                toward the address specified by <code>action</code>.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">3. action with an Absolute URL</h2>
+
+            <p>
+                The action can also specify a complete URL.
+            </p>
+
+            <pre><code>&lt;form action="https://example.com/register"
+      method="post"&gt;
+
+    &lt;input type="text"
+           name="username"&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">4. method Attribute</h2>
+
+            <p>
+                The <code>method</code> attribute specifies the HTTP method
+                used when the form is submitted.
+            </p>
+
+            <pre><code>&lt;form action="/search"
+      method="get"&gt;
+
+    &lt;input type="text"
+           name="query"&gt;
+
+    &lt;button type="submit"&gt;
+        Search
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <p>
+                Common form methods are <code>GET</code> and <code>POST</code>.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">5. method="get"</h2>
+
+            <p>
+                With the <code>GET</code> method, form data is generally encoded
+                into the request URL as query parameters.
+            </p>
+
+            <pre><code>&lt;form action="/search"
+      method="get"&gt;
+
+    &lt;label for="query"&gt;
+        Search:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="query"
+           name="query"&gt;
+
+    &lt;button type="submit"&gt;
+        Search
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Common Use:</strong>
+                GET is commonly used for searches and other operations where
+                query parameters are appropriate.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">6. method="post"</h2>
+
+            <p>
+                With the <code>POST</code> method, form data is sent in the
+                request body.
+            </p>
+
+            <pre><code>&lt;form action="/register"
+      method="post"&gt;
+
+    &lt;label for="name"&gt;
+        Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">7. target Attribute</h2>
+
+            <p>
+                The <code>target</code> attribute specifies where the response
+                from the submitted form should be displayed.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Value</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>_self</code></td>
+                        <td>Displays the response in the current browsing context.</td>
+                    </tr>
+                    <tr>
+                        <td><code>_blank</code></td>
+                        <td>Displays the response in a new browsing context.</td>
+                    </tr>
+                    <tr>
+                        <td><code>_parent</code></td>
+                        <td>Displays the response in the parent browsing context.</td>
+                    </tr>
+                    <tr>
+                        <td><code>_top</code></td>
+                        <td>Displays the response in the top-level browsing context.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="h5 fw-bold mt-4">Example</h3>
+
+            <pre><code>&lt;form action="/search"
+      method="get"
+      target="_blank"&gt;
+
+    &lt;input type="text"
+           name="query"&gt;
+
+    &lt;button type="submit"&gt;
+        Search
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">8. autocomplete Attribute</h2>
+
+            <p>
+                The <code>autocomplete</code> attribute controls whether the
+                browser can provide previously entered or stored values.
+            </p>
+
+            <pre><code>&lt;form autocomplete="on"&gt;
+
+    &lt;label for="name"&gt;
+        Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"
+           autocomplete="name"&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <p>
+                The attribute can be set to <code>on</code> or <code>off</code>
+                on a form, while controls can also use more specific
+                autocomplete tokens.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">9. autocomplete="off"</h2>
+
+            <pre><code>&lt;form autocomplete="off"&gt;
+
+    &lt;label for="code"&gt;
+        Verification Code:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="code"
+           name="code"&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                Browser behavior around autocomplete can vary depending on
+                the browser and the type of information being entered.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">10. enctype Attribute</h2>
+
+            <p>
+                The <code>enctype</code> attribute specifies how form data
+                is encoded when using the <code>POST</code> method.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Value</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>application/x-www-form-urlencoded</code></td>
+                        <td>Default encoding for most forms.</td>
+                    </tr>
+                    <tr>
+                        <td><code>multipart/form-data</code></td>
+                        <td>Used when the form includes file uploads.</td>
+                    </tr>
+                    <tr>
+                        <td><code>text/plain</code></td>
+                        <td>Submits data in a simple text representation.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">11. application/x-www-form-urlencoded</h2>
+
+            <p>
+                This is the default encoding for a normal form submission.
+            </p>
+
+            <pre><code>&lt;form action="/register"
+      method="post"
+      enctype="application/x-www-form-urlencoded"&gt;
+
+    &lt;input type="text"
+           name="name"&gt;
+
+    &lt;input type="email"
+           name="email"&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">12. multipart/form-data</h2>
+
+            <p>
+                Use <code>multipart/form-data</code> when a form uploads files.
+            </p>
+
+            <pre><code>&lt;form action="/upload"
+      method="post"
+      enctype="multipart/form-data"&gt;
+
+    &lt;label for="resume"&gt;
+        Resume:
+    &lt;/label&gt;
+
+    &lt;input type="file"
+           id="resume"
+           name="resume"&gt;
+
+    &lt;button type="submit"&gt;
+        Upload
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                When uploading files through a standard HTML form,
+                <code>multipart/form-data</code> is commonly required.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">13. text/plain</h2>
+
+            <p>
+                The <code>text/plain</code> value submits form data as plain text.
+            </p>
+
+            <pre><code>&lt;form action="/submit"
+      method="post"
+      enctype="text/plain"&gt;
+
+    &lt;input type="text"
+           name="name"&gt;
+
+    &lt;input type="email"
+           name="email"&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">14. novalidate Attribute</h2>
+
+            <p>
+                The <code>novalidate</code> attribute tells the browser not
+                to perform its built-in form validation when submitting the form.
+            </p>
+
+            <pre><code>&lt;form action="/submit"
+      method="post"
+      novalidate&gt;
+
+    &lt;input type="email"
+           name="email"
+           required&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Disabling browser validation does not remove the need for
+                server-side validation and appropriate application-level checks.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">15. accept-charset Attribute</h2>
+
+            <p>
+                The <code>accept-charset</code> attribute indicates the
+                character encodings accepted for form submission.
+            </p>
+
+            <pre><code>&lt;form action="/submit"
+      method="post"
+      accept-charset="UTF-8"&gt;
+
+    &lt;input type="text"
+           name="name"&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">16. Form Attribute Example</h2>
+
+            <pre><code>&lt;form
+    action="/register"
+    method="post"
+    target="_self"
+    autocomplete="on"
+    accept-charset="UTF-8"&gt;
+
+    &lt;label for="name"&gt;
+        Full Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"
+           autocomplete="name"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">17. Form Attribute with File Upload</h2>
+
+            <pre><code>&lt;form
+    action="/upload"
+    method="post"
+    enctype="multipart/form-data"&gt;
+
+    &lt;label for="resume"&gt;
+        Upload Resume:
+    &lt;/label&gt;
+
+    &lt;input type="file"
+           id="resume"
+           name="resume"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Upload Resume
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">18. Form Attribute with Search</h2>
+
+            <pre><code>&lt;form
+    action="/search"
+    method="get"
+    autocomplete="off"&gt;
+
+    &lt;label for="search"&gt;
+        Search:
+    &lt;/label&gt;
+
+    &lt;input type="search"
+           id="search"
+           name="query"
+           placeholder="Search courses"&gt;
+
+    &lt;button type="submit"&gt;
+        Search
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2 class="h3 fw-bold mt-5">19. Form Attribute with Registration</h2>
+
+            <pre><code>&lt;form
+    action="/register"
+    method="post"
+    autocomplete="on"&gt;
+
+    &lt;label for="username"&gt;
+        Username:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="username"
+           name="username"
+           autocomplete="username"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;
+        Email:
+    &lt;/label&gt;
+
+    &lt;input type="email"
+           id="email"
+           name="email"
+           autocomplete="email"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Create Account
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2 class="h3 fw-bold mt-5">20. Form Attribute vs Input Attribute</h2>
+
+            <p>
+                Some attributes belong to the <code>&lt;form&gt;</code> itself,
+                while others belong to individual controls.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Form-Level Attribute</th>
+                        <th>Control-Level Attribute</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>action</code></td>
+                        <td><code>name</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>method</code></td>
+                        <td><code>value</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>target</code></td>
+                        <td><code>placeholder</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>enctype</code></td>
+                        <td><code>required</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>novalidate</code></td>
+                        <td><code>readonly</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>autocomplete</code></td>
+                        <td><code>disabled</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">21. Form Submission Example</h2>
+
+            <pre><code>&lt;form
+    action="/contact"
+    method="post"
+    enctype="application/x-www-form-urlencoded"&gt;
+
+    &lt;label for="name"&gt;
+        Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="message"&gt;
+        Message:
+    &lt;/label&gt;
+
+    &lt;br&gt;
+
+    &lt;textarea
+        id="message"
+        name="message"
+        rows="5"
+        required&gt;
+    &lt;/textarea&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Send Message
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2 class="h3 fw-bold mt-5">22. Form Controls and Names</h2>
+
+            <p>
+                Form controls that should contribute data to the submission
+                normally need a useful <code>name</code> attribute.
+            </p>
+
+            <pre><code>&lt;form action="/login"
+      method="post"&gt;
+
+    &lt;input type="text"
+           name="username"&gt;
+
+    &lt;input type="password"
+           name="password"&gt;
+
+    &lt;button type="submit"&gt;
+        Login
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2 class="h3 fw-bold mt-5">23. Form Attribute and Validation</h2>
+
+            <p>
+                Form-level and control-level attributes can work together
+                to create a predictable submission process.
+            </p>
+
+            <pre><code>&lt;form
+    action="/register"
+    method="post"&gt;
+
+    &lt;input type="text"
+           name="username"
+           minlength="5"
+           maxlength="20"
+           required&gt;
+
+    &lt;input type="email"
+           name="email"
+           required&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">24. Accessibility Considerations</h2>
+
+            <p>
+                Form attributes should support clear, predictable, and accessible
+                interaction.
+            </p>
+
+            <ul>
+                <li>Use meaningful labels and control names.</li>
+                <li>Do not rely only on placeholders.</li>
+                <li>Use appropriate autocomplete values.</li>
+                <li>Provide clear validation feedback.</li>
+                <li>Use suitable submission methods for the operation.</li>
+                <li>Use file upload encoding correctly.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">25. Common Mistakes</h2>
+
+            <ul>
+                <li>Forgetting the <code>action</code> when a specific endpoint is required.</li>
+                <li>Using an unsuitable <code>method</code>.</li>
+                <li>Forgetting <code>multipart/form-data</code> for file uploads.</li>
+                <li>Using <code>novalidate</code> without implementing appropriate validation elsewhere.</li>
+                <li>Using unclear or missing <code>name</code> attributes.</li>
+                <li>Using inappropriate autocomplete settings.</li>
+                <li>Assuming client-side validation is sufficient for application security.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">26. Best Practices</h2>
+
+            <ul>
+                <li>Choose the form action and method according to the operation.</li>
+                <li>Use POST when submitting data that should be sent in the request body.</li>
+                <li>Use GET for search and query-style interactions when appropriate.</li>
+                <li>Use <code>multipart/form-data</code> for file uploads.</li>
+                <li>Use meaningful control names.</li>
+                <li>Use appropriate autocomplete hints.</li>
+                <li>Do not rely only on browser validation.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">27. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create the following forms:</strong></p>
+
+                <ol>
+                    <li>A search form using <code>GET</code>.</li>
+                    <li>A registration form using <code>POST</code>.</li>
+                    <li>A form that opens the response in a new browsing context.</li>
+                    <li>A file upload form using <code>multipart/form-data</code>.</li>
+                    <li>A form using <code>autocomplete</code>.</li>
+                    <li>A form using <code>novalidate</code>.</li>
+                    <li>A form using <code>accept-charset="UTF-8"</code>.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">28. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;Form Attributes Example&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Student Registration&lt;/h1&gt;
+
+    &lt;form
+        action="/register"
+        method="post"
+        autocomplete="on"
+        accept-charset="UTF-8"&gt;
+
+        &lt;fieldset&gt;
+
+            &lt;legend&gt;
+                Account Information
+            &lt;/legend&gt;
+
+            &lt;label for="username"&gt;
+                Username:
+            &lt;/label&gt;
+
+            &lt;input
+                type="text"
+                id="username"
+                name="username"
+                autocomplete="username"
+                required&gt;
+
+            &lt;br&gt;&lt;br&gt;
+
+            &lt;label for="email"&gt;
+                Email:
+            &lt;/label&gt;
+
+            &lt;input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                required&gt;
+
+            &lt;br&gt;&lt;br&gt;
+
+            &lt;label for="resume"&gt;
+                Resume:
+            &lt;/label&gt;
+
+            &lt;input
+                type="file"
+                id="resume"
+                name="resume"&gt;
+
+            &lt;br&gt;&lt;br&gt;
+
+            &lt;button type="submit"&gt;
+                Register
+            &lt;/button&gt;
+
+        &lt;/fieldset&gt;
+
+    &lt;/form&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    HTML form attributes control how forms submit and handle data.
+                    The most important attributes include <code>action</code>,
+                    <code>method</code>, <code>target</code>,
+                    <code>autocomplete</code>, <code>enctype</code>,
+                    <code>novalidate</code>, and <code>accept-charset</code>.
+                    <code>GET</code> is commonly used for query-style operations,
+                    while <code>POST</code> sends form data in the request body.
+                    For file uploads, <code>multipart/form-data</code> is commonly
+                    used.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("FormBasics", "Forms", new { area = "HTML" })">
+                    ← Previous: Form Basics
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("InputTypes", "Forms", new { area = "HTML" })">
+                    Next: Input Types →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

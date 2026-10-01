@@ -1,0 +1,643 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Link Attributes";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Link Attributes</h1>
+
+            <p class="lead">
+                HTML link attributes control how hyperlinks behave, where they open,
+                what information they provide, and how users interact with them.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. Introduction</h2>
+
+            <p>
+                The HTML <code>&lt;a&gt;</code> element creates hyperlinks.
+                Attributes are added inside the opening <code>&lt;a&gt;</code> tag
+                to control the behavior and additional information of the link.
+            </p>
+
+            <pre><code>&lt;a href="https://www.example.com"&gt;Visit Example&lt;/a&gt;</code></pre>
+
+            <p>
+                The most commonly used link attributes are:
+                <code>href</code>, <code>target</code>, <code>title</code>,
+                <code>download</code>, <code>rel</code>, and <code>id</code>.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">2. href Attribute</h2>
+
+            <p>
+                The <code>href</code> attribute specifies the destination URL of a hyperlink.
+                It is the most important attribute of the <code>&lt;a&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;a href="https://www.google.com"&gt;Open Google&lt;/a&gt;</code></pre>
+            
+            
+            <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+                <strong>Result:</strong>
+                <br />
+                A link named <a href="https://www.google.com" target="_blank">Open Google</a>
+                is displayed.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">3. target Attribute</h2>
+
+            <p>
+                The <code>target</code> attribute specifies where the linked document
+                should open.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>_self</code></td>
+                        <td>Opens the link in the current tab. This is the default.</td>
+                    </tr>
+                    <tr>
+                        <td><code>_blank</code></td>
+                        <td>Opens the link in a new tab or window.</td>
+                    </tr>
+                    <tr>
+                        <td><code>_parent</code></td>
+                        <td>Opens the link in the parent browsing context.</td>
+                    </tr>
+                    <tr>
+                        <td><code>_top</code></td>
+                        <td>Opens the link in the full browser window.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="h5 fw-bold mt-4">Example</h3>
+
+            <pre><code>&lt;a href="https://www.example.com" target="_blank"&gt;
+    Open Example
+&lt;/a&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+                <strong>Result:</strong>
+                <br />
+                <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">
+                    Open Example
+                </a>
+            </div>
+
+            <div class="note-box mt-3">
+                <strong>Note:</strong>
+                When using <code>target="_blank"</code>, using
+                <code>rel="noopener noreferrer"</code> is a common security practice.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">4. title Attribute</h2>
+
+            <p>
+                The <code>title</code> attribute provides additional information about
+                a link. Browsers commonly display its value as a tooltip when the user
+                moves the mouse over the link.
+            </p>
+
+            <pre><code>&lt;a href="https://www.example.com"
+   title="Visit Example Website"&gt;
+    Example Website
+&lt;/a&gt;</code></pre>
+
+
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+                <strong>Result:</strong>
+                <br />
+                <a href="https://www.example.com"
+                   target="_blank"
+                   title="Visit Example Website">
+                    Example Website
+                </a>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">5. rel Attribute</h2>
+
+            <p>
+                The <code>rel</code> attribute defines the relationship between
+                the current page and the linked resource.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Value</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>noopener</code></td>
+                        <td>Prevents the new page from accessing the original window through JavaScript.</td>
+                    </tr>
+                    <tr>
+                        <td><code>noreferrer</code></td>
+                        <td>Prevents the browser from sending the referrer information.</td>
+                    </tr>
+                    <tr>
+                        <td><code>nofollow</code></td>
+                        <td>Provides a hint to search engines not to pass ranking signals through the link.</td>
+                    </tr>
+                    <tr>
+                        <td><code>external</code></td>
+                        <td>Indicates that the linked resource is external to the current site.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="h5 fw-bold mt-4">Example</h3>
+
+            <pre><code>&lt;a href="https://www.example.com"
+   target="_blank"
+   rel="noopener noreferrer"&gt;
+    External Website
+&lt;/a&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">6. download Attribute</h2>
+
+            <p>
+                The <code>download</code> attribute tells the browser that the linked
+                resource should be downloaded instead of simply opened.
+            </p>
+
+            <pre><code>&lt;a href="files/resume.pdf" download&gt;
+    Download Resume
+&lt;/a&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="example-box">
+                <strong>Use Case:</strong>
+                <p class="mb-0 mt-2">
+                    The download attribute is commonly used for PDFs, documents,
+                    images, reports, and other downloadable resources.
+                </p>
+            </div>
+
+            <h3 class="h5 fw-bold mt-4">Custom Download Filename</h3>
+
+            <pre><code>&lt;a href="files/resume.pdf" download="MyResume.pdf"&gt;
+    Download Resume
+&lt;/a&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <p>
+                The value of the <code>download</code> attribute can suggest a filename
+                for the downloaded resource.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">7. id Attribute for Page Sections</h2>
+
+            <p>
+                The <code>id</code> attribute can be used on an element to create
+                a target for a same-page link.
+            </p>
+
+            <pre><code>&lt;h2 id="contact"&gt;Contact Us&lt;/h2&gt;
+
+&lt;a href="#contact"&gt;Go to Contact Section&lt;/a&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <p>
+                The <code>#contact</code> part of the URL points to the element
+                having <code>id="contact"</code>.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">8. Linking to Another Page in the Same Website</h2>
+
+            <p>
+                A relative URL can be used when linking to another page within
+                the same website.
+            </p>
+
+            <pre><code>&lt;a href="about.html"&gt;About Us&lt;/a&gt;
+
+&lt;a href="contact.html"&gt;Contact Us&lt;/a&gt;</code></pre>
+
+            <div class="example-box">
+                <p class="mb-2"><strong>Common Examples:</strong></p>
+                <ul class="mb-0">
+                    <li>about.html</li>
+                    <li>contact.html</li>
+                    <li>products.html</li>
+                    <li>services.html</li>
+                </ul>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">9. Linking to a Specific Section</h2>
+
+            <p>
+                You can combine <code>href</code> and an element's
+                <code>id</code> to navigate directly to a specific section.
+            </p>
+
+            <pre><code>&lt;a href="#services"&gt;View Services&lt;/a&gt;
+
+&lt;h2 id="services"&gt;Our Services&lt;/h2&gt;
+
+&lt;p&gt;We provide web development services.&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">10. Email Link</h2>
+
+            <p>
+                The <code>mailto:</code> scheme opens the user's default email application.
+            </p>
+
+            <pre><code>&lt;a href="mailto:info@example.com"&gt;
+    Email Us
+&lt;/a&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+                <strong>Example:</strong>
+                <br />
+                <a href="mailto:info@example.com">Email Us</a>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">11. Telephone Link</h2>
+
+            <p>
+                The <code>tel:</code> scheme can be used to create a clickable
+                telephone number, especially useful on mobile devices.
+            </p>
+
+            <pre><code>&lt;a href="tel:+919999999999"&gt;
+    Call Us
+&lt;/a&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+                <strong>Example:</strong>
+                <br />
+                <a href="tel:+919999999999">Call Us</a>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">12. Complete Link Example</h2>
+
+            <p>
+                Multiple link attributes can be used together.
+            </p>
+
+            <pre><code>&lt;a href="https://www.example.com"
+   target="_blank"
+   rel="noopener noreferrer"
+   title="Visit Example Website"&gt;
+    Visit Example
+&lt;/a&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+                <strong>Result:</strong>
+                <br />
+                <a href="https://www.example.com"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   title="Visit Example Website">
+                    Visit Example
+                </a>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">13. Common Link Attributes Summary</h2>
+
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>href</code></td>
+                        <td>Specifies the destination</td>
+                        <td><code>href="about.html"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>target</code></td>
+                        <td>Specifies where to open the link</td>
+                        <td><code>target="_blank"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>title</code></td>
+                        <td>Provides additional information</td>
+                        <td><code>title="About Us"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>rel</code></td>
+                        <td>Defines the relationship with the linked resource</td>
+                        <td><code>rel="noopener"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>download</code></td>
+                        <td>Requests download of the resource</td>
+                        <td><code>download</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>id</code></td>
+                        <td>Creates an anchor target</td>
+                        <td><code>id="contact"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">14. Accessibility Considerations</h2>
+
+            <p>
+                Link text should clearly describe where the link leads.
+                Avoid vague text such as "Click Here" when possible.
+            </p>
+
+            <pre><code>&lt;!-- Less descriptive --&gt;
+&lt;a href="courses.html"&gt;Click Here&lt;/a&gt;
+
+&lt;!-- More descriptive --&gt;
+&lt;a href="courses.html"&gt;View HTML Courses&lt;/a&gt;</code></pre>
+
+            <p>
+                Descriptive link text helps users understand the purpose of a link,
+                including users who navigate websites with assistive technologies.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">15. Common Mistakes</h2>
+
+            <ul>
+                <li>Forgetting the <code>href</code> attribute.</li>
+                <li>Using incorrect or broken URLs.</li>
+                <li>Using unclear link text.</li>
+                <li>Using <code>target="_blank"</code> without considering <code>rel</code>.</li>
+                <li>Using unnecessary attributes.</li>
+                <li>Forgetting to use matching <code>id</code> values for page anchors.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">16. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML page containing:</strong></p>
+
+                <ol>
+                    <li>A link to Google.</li>
+                    <li>A link that opens in a new tab.</li>
+                    <li>A link with a tooltip using the <code>title</code> attribute.</li>
+                    <li>A downloadable PDF link.</li>
+                    <li>An email link.</li>
+                    <li>A telephone link.</li>
+                    <li>A same-page link using an element <code>id</code>.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">17. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;HTML Link Attributes&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Link Examples&lt;/h1&gt;
+
+    &lt;a href="https://www.google.com"
+       target="_blank"
+       rel="noopener noreferrer"&gt;
+        Open Google
+    &lt;/a&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;a href="files/sample.pdf" download&gt;
+        Download PDF
+    &lt;/a&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;a href="mailto:info@example.com"&gt;
+        Email Us
+    &lt;/a&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;a href="tel:+919999999999"&gt;
+        Call Us
+    &lt;/a&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;a href="#contact"&gt;
+        Go to Contact
+    &lt;/a&gt;
+
+    &lt;h2 id="contact"&gt;Contact Section&lt;/h2&gt;
+
+    &lt;p&gt;Thank you for visiting our website.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML link attributes control how hyperlinks work and provide additional
+                    information about linked resources. The most commonly used attributes are
+                    <code>href</code>, <code>target</code>, <code>title</code>, <code>rel</code>,
+                    <code>download</code>, and <code>id</code>. Understanding these attributes
+                    helps you create useful, accessible, and well-structured navigation in HTML pages.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Hyperlinks", "LinksAndMedia", new { area = "HTML" })">
+                    ← Previous: Hyperlinks
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Images", "LinksAndMedia", new { area = "HTML" })">
+                    Next: Images →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CIIT Stack Lab | Learn JavaScript Step-by-Step</title>
+
+    <script type="importmap"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Site CSS -->
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <!-- Project CSS -->
+    <link rel="stylesheet"
+          href="~/CIITEdge.styles.css"
+          asp-append-version="true" />
+
+
+    <style>
+
+            /* =====================================================
+                       JAVASCRIPT COURSE THEME
+                       ===================================================== */
+
+            :root {
+                --brand-purple: #4c1d95;
+                --brand-purple-dark: #2e1065;
+                --javascript-yellow: #f7df1e;
+            }
+
+
+            /* =====================================================
+                       HERO
+                       ===================================================== */
+
+            .javascript-brand-gradient {
+                background: linear-gradient( 135deg, var(--brand-purple-dark) 0%, #312e81 100% );
+            }
+
+
+            /* =====================================================
+                       BODY
+                       ===================================================== */
+
+            .javascript-course-body {
+                background-color: #f8f9fa;
+                color: #212529;
+            }
+
+
+            /* =====================================================
+                       NAVBAR
+                       ===================================================== */
+
+            .javascript-navbar {
+                background-color: var(--brand-purple-dark) !important;
+            }
+
+                .javascript-navbar .navbar-brand {
+                    color: #ffffff !important;
+                    font-weight: 700;
+                }
+
+                    .javascript-navbar .navbar-brand .brand-highlight {
+                        color: #c084fc;
+                        font-weight: 900;
+                    }
+
+                .javascript-navbar .nav-link {
+                    color: rgba(255, 255, 255, 0.88) !important;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    font-weight: 600;
+                }
+
+                    .javascript-navbar .nav-link:hover {
+                        color: #ffffff !important;
+                    }
+
+
+            /* =====================================================
+                       HERO TEXT
+                       ===================================================== */
+
+            .javascript-hero-title {
+                font-size: 3.3rem;
+                font-weight: 700;
+                line-height: 1.2;
+            }
+
+            .javascript-hero-subtitle {
+                color: rgba(255, 255, 255, 0.75);
+                font-size: 1.1rem;
+            }
+
+
+            /* =====================================================
+                       MAIN CONTENT
+                       ===================================================== */
+
+            .javascript-main-content {
+                background-color: #f8f9fa;
+            }
+
+
+            /* =====================================================
+                       FOOTER
+                       ===================================================== */
+
+            .javascript-footer {
+                background-color: #212529;
+                min-height: 80px;
+            }
+
+
+            /* =====================================================
+                       RESPONSIVE
+                       ===================================================== */
+
+            @@media (max-width: 768px) {
+
+                .javascript-hero-title {
+                    font-size: 2.3rem;
+                }
+
+                .javascript-hero-subtitle {
+                    font-size: 1rem;
+                }
+            }
+
+    </style>
+
+</head>
+
+
+<body class="javascript-course-body">
+
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    @Html.Partial("~/Views/Shared/Menus/MenusWithDropdown.cshtml")
+    @Html.Partial("~/Views/Shared/Menus/ProgrammingMenus.cshtml")
+
+    <!-- =====================================================
+         JAVASCRIPT HERO
+         ===================================================== -->
+
+    <header class="javascript-brand-gradient text-white text-center py-5">
+
+        <div class="container py-4">
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-9">
+
+                    <h1 class="javascript-hero-title mb-3">
+
+                        Master JavaScript Programming From Scratch
+
+                    </h1>
+
+
+                    <p class="javascript-hero-subtitle mb-0">
+
+                        Clear, interactive, and structured JavaScript
+                        lessons designed for absolute beginners.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main id="tutorials"
+          class="javascript-main-content container py-4">
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="javascript-footer mt-5">
+
+        <div class="container">
+        </div>
+
+    </footer>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

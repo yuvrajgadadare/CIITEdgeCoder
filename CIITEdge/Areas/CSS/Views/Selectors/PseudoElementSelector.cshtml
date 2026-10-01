@@ -1,0 +1,478 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Pseudo-Element Selector";
+}
+
+<style>
+
+    .content-section > h1,
+    .content-section > h2,
+    .content-section > h3 {
+        color: #212529;
+        font-weight: 700;
+    }
+
+    .code-box {
+        background: #0f172a;
+        color: #f8fafc;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        background: #f8f9fa;
+        text-align: center;
+    }
+
+    .diagram-item {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 15px;
+        font-weight: 600;
+    }
+
+    .diagram-arrow {
+        font-size: 28px;
+        font-weight: 700;
+        color: #6f42c1;
+        margin: 8px 0;
+    }
+
+    .output-box {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .example-card {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .first-letter-demo::first-letter {
+        color: red;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .first-line-demo::first-line {
+        color: blue;
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ================================================= -->
+        <!-- LEFT SIDEBAR -->
+        <!-- ================================================= -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <section class="col-lg-9 content-section">
+
+            <!-- ================================================= -->
+            <!-- PAGE TITLE -->
+            <!-- ================================================= -->
+
+            <h1 class="mb-3">
+                Pseudo-Element Selector
+            </h1>
+
+            <p class="lead">
+                A pseudo-element selector is used to style a specific
+                part of an HTML element.
+            </p>
+
+
+            <!-- ================================================= -->
+            <!-- WHAT IS PSEUDO-ELEMENT -->
+            <!-- ================================================= -->
+
+            <h2>
+                What is a Pseudo-Element Selector?
+            </h2>
+
+            <p>
+                Pseudo-elements allow CSS to style a specific part
+                of an element without adding an extra HTML element.
+            </p>
+
+            <p>
+                Pseudo-elements are commonly written using
+                double colons <code>::</code>.
+            </p>
+
+
+            <!-- ================================================= -->
+            <!-- DIAGRAM -->
+            <!-- ================================================= -->
+
+            <h2>
+                Pseudo-Element Selector Flow
+            </h2>
+
+            <div class="diagram-box">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="diagram-item">
+                            HTML Element
+                            <br />
+                            <code>&lt;p&gt;</code>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="diagram-item">
+                            Pseudo-Element
+                            <br />
+                            <code>::first-letter</code>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="diagram-item">
+                            Style Specific Part
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- BASIC SYNTAX -->
+            <!-- ================================================= -->
+
+            <h2>
+                Basic Syntax
+            </h2>
+
+            <div class="code-box mb-3">
+
+                <pre style="margin:0;">selector::pseudo-element {
+    property: value;
+}</pre>
+
+            </div>
+
+            <p>
+                The double colon <code>::</code> is commonly used
+                before the pseudo-element name.
+            </p>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 1 -->
+            <!-- ================================================= -->
+
+            <div class="example-card">
+
+                <h2>
+                    Example 1: First Letter
+                </h2>
+
+                <p>
+                    The <code>::first-letter</code> pseudo-element
+                    styles the first letter of a paragraph.
+                </p>
+
+                <div class="code-box mb-3">
+
+                    <pre style="margin:0;">p::first-letter {
+    color: red;
+    font-size: 32px;
+}</pre>
+
+                </div>
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <p class="first-letter-demo mb-0">
+                        Learn CIIT Inatitute step by step with practical examples.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 2 -->
+            <!-- ================================================= -->
+
+            <div class="example-card">
+
+                <h2>
+                    Example 2: First Line
+                </h2>
+
+                <p>
+                    The <code>::first-line</code> pseudo-element
+                    styles the first line of text.
+                </p>
+
+                <div class="code-box mb-3">
+
+                    <pre style="margin:0;">p::first-line {
+    color: blue;
+}</pre>
+
+                </div>
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <p class="first-line-demo mb-0">
+                        Learn CSS with simple examples and practical
+                        exercises for beginners.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 3 -->
+            <!-- ================================================= -->
+
+            <div class="example-card">
+
+                <h2>
+                    Example 3: Before
+                </h2>
+
+                <p>
+                    The <code>::before</code> pseudo-element can add
+                    content before an element.
+                </p>
+
+                <div class="code-box mb-3">
+
+                    <pre style="margin:0;">p::before {
+    content: "Note: ";
+    color: red;
+}</pre>
+
+                </div>
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <p style="margin-bottom: 0;">
+                        <span style="color: red;">Note: </span>
+                        CSS makes web pages visually attractive.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- COMMON PSEUDO-ELEMENTS -->
+            <!-- ================================================= -->
+
+            <h2>
+                Common Pseudo-Elements
+            </h2>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+
+                    <thead class="table-light">
+
+                        <tr>
+                            <th>Pseudo-Element</th>
+                            <th>Purpose</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>::before</code></td>
+                            <td>Adds content before an element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>::after</code></td>
+                            <td>Adds content after an element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>::first-letter</code></td>
+                            <td>Styles the first letter of text.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>::first-line</code></td>
+                            <td>Styles the first line of text.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- IMPORTANT POINTS -->
+            <!-- ================================================= -->
+
+            <h2>
+                Important Points
+            </h2>
+
+            <ul>
+
+                <li class="mb-2">
+                    Pseudo-elements commonly use the
+                    <code>::</code> syntax.
+                </li>
+
+                <li class="mb-2">
+                    They style specific parts of an HTML element.
+                </li>
+
+                <li class="mb-2">
+                    Common examples include
+                    <code>::before</code>,
+                    <code>::after</code>,
+                    <code>::first-letter</code>, and
+                    <code>::first-line</code>.
+                </li>
+
+                <li>
+                    Pseudo-elements can add visual effects without
+                    changing the HTML structure.
+                </li>
+
+            </ul>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY -->
+            <!-- ================================================= -->
+
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    Pseudo-element selectors allow CSS to style
+                    specific parts of HTML elements. They commonly
+                    use double colons and are useful for effects
+                    such as adding content and styling the first
+                    letter or first line.
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- NAVIGATION -->
+            <!-- ================================================= -->
+
+            <div class="topic-navigation mt-4">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("PseudoClassSelector", "Selectors", new { area = "CSS" })">
+
+                            ← Previous: Pseudo-Class Selector
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Index", "ColorsBackgrounds", new { area = "CSS" })">
+
+                            Next: Colors &amp; Backgrounds →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>

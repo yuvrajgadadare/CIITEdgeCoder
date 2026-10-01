@@ -1,0 +1,1440 @@
+﻿@{
+    ViewData["Title"] = "Asynchronous Programming in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <!-- HEADER -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">
+                Asynchronous Programming in Java
+            </h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how Java applications perform work without unnecessarily
+                blocking the calling thread using CompletableFuture,
+                asynchronous tasks, executors, composition, exception handling,
+                and asynchronous pipelines.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                What is Asynchronous Programming?
+            </h3>
+
+            <p>
+                Asynchronous programming allows an application to start an
+                operation and continue doing other work instead of waiting
+                synchronously for that operation to finish.
+            </p>
+
+            <p>
+                Java provides several concurrency APIs. For asynchronous
+                workflows, <code>CompletableFuture</code> is one of the most
+                important APIs.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>Start Task
+    ↓
+Continue Other Work
+    ↓
+Task Completes
+    ↓
+Process Result</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- SYNCHRONOUS VS ASYNC -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Synchronous vs Asynchronous
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Synchronous</th>
+                            <th>Asynchronous</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Caller waits for the operation.</td>
+                            <td>Caller can continue other work.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Execution is sequential from the caller's perspective.</td>
+                            <td>Work may complete later.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Simple for straightforward operations.</td>
+                            <td>Useful for composing independent or delayed tasks.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPLETABLE FUTURE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                CompletableFuture
+            </h3>
+
+            <p>
+                <code>CompletableFuture</code> represents a future result that
+                can be completed and composed with other asynchronous
+                operations.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.concurrent.CompletableFuture;
+
+CompletableFuture&lt;String&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; "Welcome CIIT Institute👀"
+    );
+
+System.out.println(
+    future.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Welcome CIIT Institute👀</code></pre>
+</div>
+        </section>
+
+
+        <!-- RUN ASYNC -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                runAsync()
+            </h3>
+
+            <p>
+                Use <code>runAsync()</code> when the asynchronous operation does
+                not produce a result.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;Void&gt; future =
+    CompletableFuture.runAsync(
+        () -&gt; {
+            System.out.println(
+                "Task is running"
+            );
+        }
+    );
+
+future.join();</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Task is running</code></pre>
+</div>
+        </section>
+
+
+        <!-- SUPPLY ASYNC -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                supplyAsync()
+            </h3>
+
+            <p>
+                Use <code>supplyAsync()</code> when the asynchronous operation
+                returns a result.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;Integer&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; 10 + 20
+    );
+
+System.out.println(
+    future.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30</code></pre>
+</div>
+        </section>
+
+
+        <!-- THEN APPLY -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                thenApply()
+            </h3>
+
+            <p>
+                <code>thenApply()</code> transforms the result of a completed
+                asynchronous stage.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;Integer&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; 10
+    );
+
+CompletableFuture&lt;Integer&gt; result =
+    future.thenApply(
+        value -&gt; value * 2
+    );
+
+System.out.println(
+    result.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>20</code></pre>
+</div>
+        </section>
+
+
+        <!-- THEN ACCEPT -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                thenAccept()
+            </h3>
+
+            <p>
+                <code>thenAccept()</code> consumes the result without producing
+                another result.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture
+    .supplyAsync(
+        () -&gt; "Core Java"
+    )
+    .thenAccept(
+        value -&gt;
+            System.out.println(value)
+    )
+    .join();</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Core Java</code></pre>
+</div>
+        </section>
+
+
+        <!-- THEN RUN -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                thenRun()
+            </h3>
+
+            <p>
+                <code>thenRun()</code> executes an action after a previous
+                stage completes but does not receive its result.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture
+    .supplyAsync(
+        () -&gt; "Task completed"
+    )
+    .thenRun(
+        () -&gt;
+            System.out.println(
+                "Next action"
+            )
+    )
+    .join();</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Next action</code></pre>
+</div>
+        </section>
+
+
+        <!-- THEN COMBINE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                thenCombine()
+            </h3>
+
+            <p>
+                <code>thenCombine()</code> combines the results of two
+                independent stages.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;Integer&gt; first =
+    CompletableFuture.supplyAsync(
+        () -&gt; 10
+    );
+
+CompletableFuture&lt;Integer&gt; second =
+    CompletableFuture.supplyAsync(
+        () -&gt; 20
+    );
+
+CompletableFuture&lt;Integer&gt; result =
+    first.thenCombine(
+        second,
+        (a, b) -&gt; a + b
+    );
+
+System.out.println(
+    result.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30</code></pre>
+</div>
+        </section>
+
+
+        <!-- THEN COMPOSE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                thenCompose()
+            </h3>
+
+            <p>
+                <code>thenCompose()</code> is useful when the next asynchronous
+                operation depends on the result of the previous one.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;String&gt; first =
+    CompletableFuture.supplyAsync(
+        () -&gt; "User"
+    );
+
+CompletableFuture&lt;String&gt; result =
+    first.thenCompose(
+        value -&gt;
+            CompletableFuture.supplyAsync(
+                () -&gt;
+                    value + " Details"
+            )
+    );
+
+System.out.println(
+    result.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>User Details</code></pre>
+</div>
+        </section>
+
+
+        <!-- ALL OF -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                allOf()
+            </h3>
+
+            <p>
+                <code>allOf()</code> creates a CompletableFuture that completes
+                when all supplied futures complete.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;String&gt; one =
+    CompletableFuture.supplyAsync(
+        () -&gt; "One"
+    );
+
+CompletableFuture&lt;String&gt; two =
+    CompletableFuture.supplyAsync(
+        () -&gt; "Two"
+    );
+
+CompletableFuture.allOf(
+    one,
+    two
+).join();
+
+System.out.println(
+    one.join()
+);
+
+System.out.println(
+    two.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>One
+Two</code></pre>
+</div>
+        </section>
+
+
+        <!-- ANY OF -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                anyOf()
+            </h3>
+
+            <p>
+                <code>anyOf()</code> completes when any one of the supplied
+                futures completes.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;String&gt; first =
+    CompletableFuture.supplyAsync(
+        () -&gt; "First"
+    );
+
+CompletableFuture&lt;String&gt; second =
+    CompletableFuture.supplyAsync(
+        () -&gt; "Second"
+    );
+
+Object result =
+    CompletableFuture.anyOf(
+        first,
+        second
+    ).join();
+
+System.out.println(result);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- EXCEPTIONALLY -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                exceptionally()
+            </h3>
+
+            <p>
+                <code>exceptionally()</code> provides a fallback result when
+                the asynchronous computation completes exceptionally.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;Integer&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; {
+            throw new RuntimeException(
+                "Something went wrong"
+            );
+        }
+    )
+    .exceptionally(
+        error -&gt; 0
+    );
+
+System.out.println(
+    future.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>0</code></pre>
+</div>
+        </section>
+
+
+        <!-- HANDLE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                handle()
+            </h3>
+
+            <p>
+                <code>handle()</code> receives both the successful result and
+                possible exception and can transform either case.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;Integer&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; 100
+    );
+
+CompletableFuture&lt;String&gt; result =
+    future.handle(
+        (value, error) -&gt; {
+
+            if (error != null) {
+                return "Failed";
+            }
+
+            return "Value: " + value;
+        }
+    );
+
+System.out.println(
+    result.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Value: 100</code></pre>
+</div>
+        </section>
+
+
+        <!-- WHEN COMPLETE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                whenComplete()
+            </h3>
+
+            <p>
+                <code>whenComplete()</code> can be used to observe completion
+                and inspect the result or exception.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;String&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; "Success"
+    );
+
+future.whenComplete(
+    (value, error) -&gt; {
+
+        if (error != null) {
+
+            System.out.println(
+                "Error: " + error
+            );
+
+        } else {
+
+            System.out.println(
+                "Result: " + value
+            );
+
+        }
+
+    }
+).join();</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Result: Success</code></pre>
+</div>
+        </section>
+
+
+        <!-- ASYNC VARIANTS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Async Variants
+            </h3>
+
+            <p>
+                Many CompletableFuture methods have an
+                <code>Async</code> variant, such as
+                <code>thenApplyAsync()</code> and
+                <code>thenAcceptAsync()</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;Integer&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; 10
+    );
+
+CompletableFuture&lt;Integer&gt; result =
+    future.thenApplyAsync(
+        value -&gt; value * 5
+    );
+
+System.out.println(
+    result.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>50</code></pre>
+</div>
+        </section>
+
+
+        <!-- EXECUTOR -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Using an Executor
+            </h3>
+
+            <p>
+                An explicit Executor can be supplied when you need control over
+                the execution environment.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>ExecutorService executor =
+    Executors.newFixedThreadPool(4);
+
+CompletableFuture&lt;String&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; "Running in executor",
+        executor
+    );
+
+System.out.println(
+    future.join()
+);
+
+executor.shutdown();</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Running in executor</code></pre>
+</div>
+        </section>
+
+
+        <!-- DELAY -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Delayed Completion
+            </h3>
+
+            <p>
+                Modern Java provides APIs such as
+                <code>CompletableFuture.delayedExecutor()</code> for delayed
+                execution scenarios.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Executor delayed =
+    CompletableFuture.delayedExecutor(
+        2,
+        TimeUnit.SECONDS
+    );
+
+CompletableFuture&lt;String&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; "Completed later",
+        delayed
+    );
+
+System.out.println(
+    future.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Completed later</code></pre>
+</div>
+        </section>
+
+
+        <!-- ASYNC PIPELINE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Building an Asynchronous Pipeline
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;String&gt; result =
+    CompletableFuture.supplyAsync(
+        () -&gt; "java"
+    )
+    .thenApply(
+        String::toUpperCase
+    )
+    .thenApply(
+        value -&gt;
+            "Language: " + value
+    );
+
+System.out.println(
+    result.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Language: JAVA</code></pre>
+</div>
+        </section>
+
+
+        <!-- NON BLOCKING -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Non-Blocking Composition
+            </h3>
+
+            <p>
+                Asynchronous APIs are most useful when operations are composed
+                instead of repeatedly blocking the current thread waiting for
+                every intermediate result.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;String&gt; user =
+    getUserAsync();
+
+CompletableFuture&lt;String&gt; result =
+    user.thenCompose(
+        this::getUserDetailsAsync
+    );
+
+result.thenAccept(
+    System.out::println
+);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- JOIN VS GET -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                join() vs get()
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Method</th>
+                            <th>Behavior</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>join()</code></td>
+                            <td>
+                                Waits for completion and wraps failures in an
+                                unchecked CompletionException.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><code>get()</code></td>
+                            <td>
+                                Waits for completion and uses checked
+                                exceptions such as ExecutionException.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ASYNC EXCEPTIONS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Exception Handling in Async Code
+            </h3>
+
+            <p>
+                Exceptions occurring during asynchronous computation are
+                represented in the completion stage and can be handled using
+                methods such as <code>exceptionally()</code>,
+                <code>handle()</code>, and <code>whenComplete()</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;String&gt; future =
+    CompletableFuture.supplyAsync(
+        () -&gt; {
+
+            if (true) {
+                throw new RuntimeException(
+                    "Database error"
+                );
+            }
+
+            return "Success";
+        }
+    )
+    .exceptionally(
+        error -&gt; "Fallback"
+    );
+
+System.out.println(
+    future.join()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Fallback</code></pre>
+</div>
+        </section>
+
+
+        <!-- REAL WORLD -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Real-World Example
+            </h3>
+
+            <p>
+                Consider an application that retrieves a user and then loads
+                that user's orders.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CompletableFuture&lt;User&gt; userFuture =
+    getUserAsync(101);
+
+CompletableFuture&lt;List&lt;Order&gt;&gt; ordersFuture =
+    userFuture.thenCompose(
+        user -&gt;
+            getOrdersAsync(
+                user.getId()
+            )
+    );
+
+ordersFuture.thenAccept(
+    orders -&gt;
+        System.out.println(
+            "Orders: " + orders.size()
+        )
+);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Asynchronous Programming Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Prefer composition over unnecessary blocking.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>thenApply()</code> for synchronous transformation
+                    of a stage result.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>thenCompose()</code> when the next operation
+                    itself returns a CompletableFuture.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>thenCombine()</code> for independent operations
+                    whose results need to be combined.
+                </li>
+
+                <li class="mb-2">
+                    Handle asynchronous failures explicitly.
+                </li>
+
+                <li class="mb-2">
+                    Use a suitable Executor when the default execution model
+                    is not appropriate.
+                </li>
+
+                <li>
+                    Avoid blocking operations inside shared or latency-sensitive
+                    executor threads.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- COMMON MISTAKES -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Common Mistakes
+            </h3>
+
+            <div class="alert alert-warning">
+
+                <ul class="mb-0">
+
+                    <li class="mb-2">
+                        Calling <code>join()</code> or <code>get()</code>
+                        immediately after starting every task, which can
+                        remove much of the benefit of asynchronous composition.
+                    </li>
+
+                    <li class="mb-2">
+                        Ignoring exceptions from asynchronous operations.
+                    </li>
+
+                    <li class="mb-2">
+                        Using an inappropriate executor for blocking work.
+                    </li>
+
+                    <li>
+                        Sharing mutable state between asynchronous tasks
+                        without proper synchronization.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="asyncQuestions">
+
+                <!-- Q1 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#asyncQuestionOne">
+
+                            What is asynchronous programming?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="asyncQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#asyncQuestions">
+
+                        <div class="accordion-body">
+
+                            Asynchronous programming allows work to be started
+                            without requiring the caller to wait synchronously
+                            for that work to finish.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q2 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#asyncQuestionTwo">
+
+                            What is CompletableFuture?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="asyncQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#asyncQuestions">
+
+                        <div class="accordion-body">
+
+                            CompletableFuture represents a future result and
+                            provides APIs for composing asynchronous stages,
+                            handling results, and handling failures.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q3 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#asyncQuestionThree">
+
+                            What is the difference between runAsync() and supplyAsync()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="asyncQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#asyncQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>runAsync()</code> performs an asynchronous
+                            action without returning a result, while
+                            <code>supplyAsync()</code> returns a result.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q4 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-parent="#asyncQuestions"
+                                data-bs-target="#asyncQuestionFour">
+
+                            What is thenCompose()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="asyncQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#asyncQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>thenCompose()</code> chains dependent
+                            asynchronous operations and avoids creating a
+                            nested CompletableFuture.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q5 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#asyncQuestionFive">
+
+                            What is thenCombine()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="asyncQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#asyncQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>thenCombine()</code> combines the results of
+                            two independent CompletionStage computations.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q6 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#asyncQuestionSix">
+
+                            How do you handle exceptions in CompletableFuture?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="asyncQuestionSix"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#asyncQuestions">
+
+                        <div class="accordion-body">
+
+                            Common methods include
+                            <code>exceptionally()</code>,
+                            <code>handle()</code>, and
+                            <code>whenComplete()</code>.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q7 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#asyncQuestionSeven">
+
+                            What is the difference between join() and get()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="asyncQuestionSeven"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#asyncQuestions">
+
+                        <div class="accordion-body">
+
+                            Both wait for completion. <code>get()</code> uses
+                            checked exceptions, while <code>join()</code>
+                            reports failures using unchecked completion
+                            exceptions.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q8 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#asyncQuestionEight">
+
+                            What is allOf()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="asyncQuestionEight"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#asyncQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>allOf()</code> creates a completion stage
+                            that completes when all supplied futures have
+                            completed.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">
+                    Summary
+                </h5>
+
+                <p class="mb-0">
+                    Java asynchronous programming provides APIs for starting,
+                    composing, combining, and handling asynchronous tasks.
+                    CompletableFuture is central to this model, with methods
+                    such as runAsync, supplyAsync, thenApply, thenCompose,
+                    thenCombine, allOf, anyOf, exceptionally, handle, and
+                    whenComplete.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "DateAndTimeAPI",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+
+            <a href="@Url.Action(
+                               "Multithreading",
+                               "AsynchronousParallelProgramming",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+</div>

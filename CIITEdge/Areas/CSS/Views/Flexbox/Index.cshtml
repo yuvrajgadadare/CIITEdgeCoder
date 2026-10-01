@@ -1,0 +1,787 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Flexbox";
+}
+
+<style>
+
+    /* ================================================= */
+    /* PAGE */
+    /* ================================================= */
+
+    #css-flexbox-page {
+        color: #212529;
+    }
+
+    #css-flexbox-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-flexbox-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-flexbox-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-flexbox-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-flexbox-page .content-section > p {
+        line-height: 1.7;
+    }
+
+
+    /* ================================================= */
+    /* CODE */
+    /* ================================================= */
+
+    #css-flexbox-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-flexbox-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+
+    /* ================================================= */
+    /* DIAGRAM */
+    /* ================================================= */
+
+    #css-flexbox-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flexbox-page .flex-diagram {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 25px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flexbox-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 18px 25px;
+        border-radius: 6px;
+        font-weight: 700;
+    }
+
+
+    /* ================================================= */
+    /* EXPLANATION */
+    /* ================================================= */
+
+    #css-flexbox-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-flexbox-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* ================================================= */
+    /* OUTPUT */
+    /* ================================================= */
+
+    #css-flexbox-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-flexbox-page .output-flex-container {
+        display: flex;
+        gap: 15px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flexbox-page .output-flex-item {
+        flex: 1;
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 20px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+
+    /* ================================================= */
+    /* PROPERTY CARDS */
+    /* ================================================= */
+
+    #css-flexbox-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-flexbox-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flexbox-page .property-card p {
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+
+    /* ================================================= */
+    /* NOTE */
+    /* ================================================= */
+
+    #css-flexbox-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+
+    /* ================================================= */
+    /* SUMMARY */
+    /* ================================================= */
+
+    #css-flexbox-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-flexbox-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flexbox-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+
+    /* ================================================= */
+    /* RESPONSIVE */
+    /* ================================================= */
+
+    @@media (max-width: 767px) {
+
+        #css-flexbox-page .content-section {
+            padding: 20px;
+        }
+
+        #css-flexbox-page .output-flex-container {
+            flex-direction: column;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-flexbox-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS Flexbox
+                </h1>
+
+                <p>
+                    CSS <strong>Flexbox</strong>, also called the
+                    Flexible Box Layout, is a CSS layout system used
+                    to arrange elements inside a container.
+                </p>
+
+                <p>
+                    Flexbox makes it easier to control the position,
+                    alignment, spacing, and direction of elements.
+                    It is especially useful when building responsive
+                    layouts.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- WHY FLEXBOX -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Why Use Flexbox?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Before Flexbox, developers often used floats,
+                        inline-block elements, or complicated positioning
+                        techniques to arrange elements.
+                    </p>
+
+                    <p>
+                        Flexbox provides a simpler way to arrange elements
+                        horizontally or vertically.
+                    </p>
+
+                    <p>
+                        For example, a navigation bar may contain a logo,
+                        menu items, and a button. Flexbox can arrange these
+                        elements in a single row and control the spacing
+                        between them.
+                    </p>
+
+                    <p>
+                        Flexbox is also useful when the available screen
+                        size changes because the items can adjust according
+                        to the available space.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC SYNTAX -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Basic Syntax
+                </h2>
+
+                <p>
+                    To create a Flexbox container, apply
+                    <strong>display: flex;</strong> to the parent element.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+}</code></pre>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Flexbox Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="flex-diagram">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        Parent = Flex Container
+                        &nbsp; | &nbsp;
+                        Children = Flex Items
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FLEX CONTAINER -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Flex Container and Flex Items
+                </h2>
+
+                <p>
+                    Flexbox has two important concepts:
+                    the <strong>flex container</strong> and
+                    the <strong>flex items</strong>.
+                </p>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Flex Container
+                            </h3>
+
+                            <p>
+                                The parent element on which
+                                <strong>display: flex;</strong> is applied.
+                                It controls the layout of its child items.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Flex Items
+                            </h3>
+
+                            <p>
+                                The direct child elements inside a
+                                flex container are called flex items.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example: Creating a Flex Container
+                </h2>
+
+                <p>
+                    In this example, three elements are placed inside
+                    one parent container. Applying
+                    <strong>display: flex</strong> arranges them in a row
+                    by default.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+}
+
+.item {
+    background-color: lightblue;
+    border: 2px solid blue;
+    padding: 20px;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-flex-container">
+
+                        <div class="output-flex-item">
+                            HTML
+                        </div>
+
+                        <div class="output-flex-item">
+                            CSS
+                        </div>
+
+                        <div class="output-flex-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DEFAULT DIRECTION -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Default Flex Direction
+                </h2>
+
+                <p>
+                    By default, Flexbox places flex items in a
+                    <strong>row</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The default value of
+                        <strong>flex-direction</strong> is
+                        <strong>row</strong>.
+                    </p>
+
+                    <p>
+                        This means the child elements are placed from
+                        left to right in a horizontal line.
+                    </p>
+
+                    <p>
+                        You can change this behavior using the
+                        <strong>flex-direction</strong> property.
+                        This will be covered in the next topics.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT PROPERTIES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Important Flexbox Properties
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Property</th>
+                                <th>Purpose</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>display</td>
+                                <td>
+                                    Creates the Flexbox container using
+                                    display: flex.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>flex-direction</td>
+                                <td>
+                                    Controls the direction of flex items.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>flex-wrap</td>
+                                <td>
+                                    Controls whether items wrap onto
+                                    multiple lines.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>justify-content</td>
+                                <td>
+                                    Controls alignment along the main axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>align-items</td>
+                                <td>
+                                    Controls alignment along the
+                                    cross axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>gap</td>
+                                <td>
+                                    Creates space between flex items.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FLEXBOX ADVANTAGES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Advantages of Flexbox
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Easy Alignment
+                            </h3>
+
+                            <p>
+                                Flexbox provides simple properties for
+                                horizontal and vertical alignment.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Flexible Layout
+                            </h3>
+
+                            <p>
+                                Flex items can grow, shrink, and adjust
+                                according to the available space.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Responsive Design
+                            </h3>
+
+                            <p>
+                                Flexbox helps layouts adapt to different
+                                screen sizes.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Less Code
+                            </h3>
+
+                            <p>
+                                Many common layout problems can be solved
+                                with a few Flexbox properties.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- WHERE USED -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Where is Flexbox Used?
+                </h2>
+
+                <p>
+                    Flexbox is commonly used for navigation bars,
+                    menus, cards, buttons, form layouts, headers,
+                    footers, and many other interface components.
+                </p>
+
+                <div class="explanation-box">
+
+                    <p>
+                        For example, a course website can use Flexbox
+                        to place course cards next to each other.
+                    </p>
+
+                    <p>
+                        A navigation bar can use Flexbox to arrange
+                        the logo, menu links, and action buttons.
+                    </p>
+
+                    <p>
+                        A login form can also use Flexbox to align
+                        labels, inputs, and buttons in a clean layout.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT NOTE -->
+                <!-- ================================================= -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    Flexbox works with a parent-child relationship.
+                    The parent becomes the flex container, and its
+                    direct children become flex items.
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        Flexbox is a CSS layout system designed to arrange
+                        and align elements efficiently. A parent element
+                        becomes a flex container when
+                        <strong>display: flex;</strong> is applied.
+                        Its direct children become flex items. Flexbox
+                        provides properties for direction, wrapping,
+                        alignment, spacing, and flexible sizing, making
+                        it very useful for responsive web layouts.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- NAVIGATION -->
+                <!-- ================================================= -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("Overflow", "BoxModel", new { area = "CSS" })">
+
+                            ← Previous: Overflow
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("FlexContainer", "Flexbox", new { area = "CSS" })">
+
+                            Next: Flex Container →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

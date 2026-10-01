@@ -1,0 +1,1019 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Template Literals";
+}
+
+<style>
+
+    #template-literals-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #template-literals-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #template-literals-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #template-literals-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #template-literals-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #template-literals-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+    .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* VISUAL */
+
+    .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .template-visual {
+        width: 100%;
+        background: #f8f9fa;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .image-caption {
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* DIAGRAM */
+
+    .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    .diagram-title {
+        font-size: 21px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 22px;
+    }
+
+    .diagram-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .diagram-item {
+        background: #ffffff;
+        border: 2px solid #6d3fc0;
+        border-radius: 9px;
+        padding: 16px 22px;
+        font-weight: 600;
+        color: #212529;
+    }
+
+    .diagram-item.main {
+        background: #6d3fc0;
+        color: #ffffff;
+    }
+
+    .diagram-item.green {
+        border-color: #198754;
+        color: #198754;
+    }
+
+    .diagram-arrow {
+        font-size: 25px;
+        font-weight: 700;
+        color: #6d3fc0;
+    }
+
+    /* CODE */
+
+    .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 22px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    .code-box code {
+        color: #f8f9fa;
+    }
+
+    /* TRY IT */
+
+    .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 22px;
+    }
+
+    .try-it-btn {
+        background: #198754;
+        border: 1px solid #198754;
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .try-it-btn:hover {
+        background: #157347;
+        border-color: #157347;
+    }
+
+    /* OUTPUT */
+
+    .output-box {
+        background: #212529;
+        color: #ffffff;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 18px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    /* SUMMARY */
+
+    .summary-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* NAVIGATION */
+
+    .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .previous-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    .next-btn {
+        background: #5b21b6;
+        border: 1px solid #5b21b6;
+        color: #ffffff;
+    }
+
+    .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    @@media (max-width: 768px) {
+
+        #template-literals-page .content-section {
+            padding: 20px;
+        }
+
+        #template-literals-page .page-title {
+            font-size: 30px;
+        }
+
+        #template-literals-page .section-title {
+            font-size: 23px;
+        }
+
+        .bottom-navigation {
+            flex-direction: column;
+        }
+
+        .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .diagram-row {
+            flex-direction: column;
+        }
+
+        .diagram-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+</style>
+
+
+<main id="template-literals-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- HEADER -->
+
+                    <h1 class="page-title">
+                        Template Literals
+                    </h1>
+
+                    <p class="lead-text">
+
+                        Template literals provide an easier and cleaner
+                        way to create strings and insert variables
+                        directly inside a string.
+
+                    </p>
+
+
+                    <!-- INTRODUCTION -->
+
+                    <h2 class="section-title">
+                        What are Template Literals?
+                    </h2>
+
+                    <p class="section-text">
+
+                        Template literals are modern JavaScript strings
+                        written using <strong>backticks (`)</strong>
+                        instead of single or double quotes.
+
+                    </p>
+
+                    <p class="section-text">
+
+                        They allow us to insert variables and expressions
+                        directly inside a string using
+                        <strong>${}</strong>.
+
+                    </p>
+
+
+                    <!-- CONCEPT -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+
+                            Template literals make it easy to combine
+                            normal text, variables and expressions
+                            inside one string.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMAGE / VISUAL
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <div class="template-visual">
+
+                            <svg width="100%"
+                                 height="330"
+                                 viewBox="0 0 900 330"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                                <rect width="900"
+                                      height="330"
+                                      fill="#f8f9fa" />
+
+                                <text x="450"
+                                      y="45"
+                                      text-anchor="middle"
+                                      font-size="27"
+                                      font-weight="700"
+                                      fill="#212529">
+
+                                    Template Literals
+
+                                </text>
+
+
+                                <rect x="80"
+                                      y="90"
+                                      width="220"
+                                      height="130"
+                                      rx="12"
+                                      fill="#ffffff"
+                                      stroke="#6d3fc0"
+                                      stroke-width="3" />
+
+                                <text x="190"
+                                      y="130"
+                                      text-anchor="middle"
+                                      font-size="22"
+                                      font-weight="700"
+                                      fill="#5b21b6">
+
+                                    Backticks
+
+                                </text>
+
+                                <text x="190"
+                                      y="170"
+                                      text-anchor="middle"
+                                      font-size="25"
+                                      fill="#198754">
+
+                                    `Hello`
+
+                                </text>
+
+                                <text x="190"
+                                      y="200"
+                                      text-anchor="middle"
+                                      font-size="15"
+                                      fill="#495057">
+
+                                    String syntax
+
+                                </text>
+
+
+                                <text x="325"
+                                      y="165"
+                                      text-anchor="middle"
+                                      font-size="30"
+                                      font-weight="700"
+                                      fill="#6d3fc0">
+
+                                    +
+
+                                </text>
+
+
+                                <rect x="355"
+                                      y="90"
+                                      width="220"
+                                      height="130"
+                                      rx="12"
+                                      fill="#ffffff"
+                                      stroke="#198754"
+                                      stroke-width="3" />
+
+                                <text x="465"
+                                      y="130"
+                                      text-anchor="middle"
+                                      font-size="22"
+                                      font-weight="700"
+                                      fill="#198754">
+
+                                    ${}
+
+                                </text>
+
+                                <text x="465"
+                                      y="170"
+                                      text-anchor="middle"
+                                      font-size="22"
+                                      fill="#495057">
+
+                                    ${name}
+
+                                </text>
+
+                                <text x="465"
+                                      y="200"
+                                      text-anchor="middle"
+                                      font-size="15"
+                                      fill="#495057">
+
+                                    Variable insertion
+
+                                </text>
+
+
+                                <text x="600"
+                                      y="165"
+                                      text-anchor="middle"
+                                      font-size="30"
+                                      font-weight="700"
+                                      fill="#6d3fc0">
+
+                                    =
+
+                                </text>
+
+
+                                <rect x="630"
+                                      y="90"
+                                      width="190"
+                                      height="130"
+                                      rx="12"
+                                      fill="#6d3fc0" />
+
+                                <text x="725"
+                                      y="130"
+                                      text-anchor="middle"
+                                      font-size="19"
+                                      font-weight="700"
+                                      fill="#ffffff">
+
+                                    Final String
+
+                                </text>
+
+                                <text x="725"
+                                      y="170"
+                                      text-anchor="middle"
+                                      font-size="17"
+                                      fill="#ffffff">
+
+                                    Hello Rahul
+
+                                </text>
+
+                                <text x="725"
+                                      y="200"
+                                      text-anchor="middle"
+                                      font-size="15"
+                                      fill="#ffffff">
+
+                                    Dynamic Text
+
+                                </text>
+
+
+                                <text x="450"
+                                      y="275"
+                                      text-anchor="middle"
+                                      font-size="17"
+                                      font-weight="600"
+                                      fill="#495057">
+
+                                    `Hello ${name}` → Hello Rahul
+
+                                </text>
+
+                            </svg>
+
+                        </div>
+
+                        <p class="image-caption">
+
+                            Template literals combine text and variables
+                            using backticks and ${}.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DIAGRAM
+                         ================================================= -->
+
+                    <div class="diagram-box">
+
+                        <div class="diagram-title">
+                            How Template Literals Work
+                        </div>
+
+                        <div class="diagram-row">
+
+                            <div class="diagram-item main">
+                                Backticks
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-item">
+                                ${ Variable }
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-item green">
+                                Final String
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Basic Template Literal
+                    </h2>
+
+                    <p class="section-text">
+
+                        A template literal is written using backticks.
+
+                    </p>
+
+                    <pre class="code-box"><code>let message = `Welcome to JavaScript`;
+
+console.log(message);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryTemplateExample1()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Welcome to JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Insert a Variable
+                    </h2>
+
+                    <p class="section-text">
+
+                        We can insert a variable using
+                        <strong>${}</strong>.
+
+                    </p>
+
+                    <pre class="code-box"><code>let name = "Rahul";
+
+let message = `Hello ${name}`;
+
+console.log(message);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryTemplateExample2()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Hello Rahul
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Multiple Variables
+                    </h2>
+
+                    <pre class="code-box"><code>let name = "Amit";
+let course = "JavaScript";
+
+let message = `Hello ${name}, Welcome to ${course}`;
+
+console.log(message);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryTemplateExample3()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Hello Amit, Welcome to JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 4
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 4: Expressions
+                    </h2>
+
+                    <p class="section-text">
+
+                        Template literals can also contain JavaScript
+                        expressions.
+
+                    </p>
+
+                    <pre class="code-box"><code>let a = 10;
+let b = 20;
+
+let result = `Total = ${a + b}`;
+
+console.log(result);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryTemplateExample4()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Total = 30
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 5
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 5: Multi-line String
+                    </h2>
+
+                    <p class="section-text">
+
+                        Template literals can easily create
+                        multi-line strings.
+
+                    </p>
+
+                    <pre class="code-box"><code>let message = `Welcome to CIIT
+Training Institute
+Learn JavaScript`;
+
+console.log(message);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryTemplateExample5()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Welcome to CIIT
+                        <br />
+                        Training Institute
+                        <br />
+                        Learn JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT POINTS
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Points
+                        </h5>
+
+                        <p>
+                            • Template literals use backticks.
+                        </p>
+
+                        <p>
+                            • Variables are inserted using ${}.
+                        </p>
+
+                        <p>
+                            • Expressions can be written inside ${}.
+                        </p>
+
+                        <p class="mb-0">
+                            • Multi-line strings are supported.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+
+                            Template literals are a modern JavaScript
+                            feature used to create dynamic strings.
+                            They use backticks and allow variables and
+                            expressions to be inserted using
+                            <strong>${}</strong>. They also make
+                            multi-line strings easier to write.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("LetConst", "ModernJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: let and const
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("SpreadRest", "ModernJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Spread & Rest Operators
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       EXISTING CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function tryTemplateExample1() {
+
+        const code =
+            'let message = `Welcome to JavaScript`;\\n' +
+            '\\n' +
+            'console.log(message);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function tryTemplateExample2() {
+
+        const code =
+            'let name = "Rahul";\\n' +
+            '\\n' +
+            'let message = `Hello ${name}`;\\n' +
+            '\\n' +
+            'console.log(message);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function tryTemplateExample3() {
+
+        const code =
+            'let name = "Amit";\\n' +
+            'let course = "JavaScript";\\n' +
+            '\\n' +
+            'let message = `Hello ${name}, Welcome to ${course}`;\\n' +
+            '\\n' +
+            'console.log(message);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       ========================================================= */
+
+    function tryTemplateExample4() {
+
+        const code =
+            'let a = 10;\\n' +
+            'let b = 20;\\n' +
+            '\\n' +
+            'let result = `Total = ${a + b}`;\\n' +
+            '\\n' +
+            'console.log(result);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 5
+       ========================================================= */
+
+    function tryTemplateExample5() {
+
+        const code =
+            'let message = `Welcome to CIIT\\n' +
+            'Training Institute\\n' +
+            'Learn JavaScript`;\\n' +
+            '\\n' +
+            'console.log(message);';
+
+        openCompiler(code);
+    }
+
+</script>

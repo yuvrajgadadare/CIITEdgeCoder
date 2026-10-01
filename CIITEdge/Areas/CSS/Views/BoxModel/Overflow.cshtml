@@ -1,0 +1,971 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Overflow";
+}
+
+<style>
+
+    /* ================================================= */
+    /* PAGE */
+    /* ================================================= */
+
+    #css-overflow-page {
+        color: #212529;
+    }
+
+    #css-overflow-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-overflow-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-overflow-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-overflow-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-overflow-page .content-section > p {
+        line-height: 1.7;
+    }
+
+
+    /* ================================================= */
+    /* CODE */
+    /* ================================================= */
+
+    #css-overflow-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-overflow-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+
+    /* ================================================= */
+    /* DIAGRAM */
+    /* ================================================= */
+
+    #css-overflow-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 30px;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    #css-overflow-page .diagram-container {
+        width: 300px;
+        height: 150px;
+        margin: 20px auto;
+        border: 4px solid #2563eb;
+        background-color: #dbeafe;
+        padding: 15px;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    #css-overflow-page .diagram-content {
+        width: 450px;
+        height: 220px;
+        background-color: #bfdbfe;
+        padding: 15px;
+        font-weight: 600;
+    }
+
+
+    /* ================================================= */
+    /* EXPLANATION */
+    /* ================================================= */
+
+    #css-overflow-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-overflow-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* ================================================= */
+    /* OUTPUT */
+    /* ================================================= */
+
+    #css-overflow-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-overflow-page .output-box {
+        width: 300px;
+        height: 120px;
+        margin: 0 auto;
+        padding: 15px;
+        border: 3px solid blue;
+        background-color: lightblue;
+        overflow: visible;
+    }
+
+    #css-overflow-page .output-hidden {
+        width: 300px;
+        height: 120px;
+        margin: 0 auto;
+        padding: 15px;
+        border: 3px solid green;
+        background-color: lightgreen;
+        overflow: hidden;
+    }
+
+    #css-overflow-page .output-scroll {
+        width: 300px;
+        height: 120px;
+        margin: 0 auto;
+        padding: 15px;
+        border: 3px solid orange;
+        background-color: lightyellow;
+        overflow: scroll;
+    }
+
+    #css-overflow-page .output-auto {
+        width: 300px;
+        height: 120px;
+        margin: 0 auto;
+        padding: 15px;
+        border: 3px solid purple;
+        background-color: #e9d5ff;
+        overflow: auto;
+    }
+
+    #css-overflow-page .long-content {
+        width: 500px;
+        line-height: 1.8;
+    }
+
+
+    /* ================================================= */
+    /* PROPERTY CARDS */
+    /* ================================================= */
+
+    #css-overflow-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-overflow-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-overflow-page .property-card p {
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+
+    /* ================================================= */
+    /* NOTE */
+    /* ================================================= */
+
+    #css-overflow-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+
+    /* ================================================= */
+    /* SUMMARY */
+    /* ================================================= */
+
+    #css-overflow-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-overflow-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-overflow-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+
+    /* ================================================= */
+    /* RESPONSIVE */
+    /* ================================================= */
+
+    @@media (max-width: 767px) {
+
+        #css-overflow-page .content-section {
+            padding: 20px;
+        }
+
+        #css-overflow-page .diagram-container {
+            width: 100%;
+        }
+
+        #css-overflow-page .output-box,
+        #css-overflow-page .output-hidden,
+        #css-overflow-page .output-scroll,
+        #css-overflow-page .output-auto {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-overflow-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS Overflow
+                </h1>
+
+                <p>
+                    The CSS <strong>overflow</strong> property controls
+                    what happens when the content inside an element is
+                    larger than the element's defined width or height.
+                </p>
+
+                <p>
+                    For example, imagine a box with a fixed height of
+                    <strong>120px</strong>. If the content inside that box
+                    needs more than 120px of vertical space, the content
+                    may extend outside the box.
+                </p>
+
+                <p>
+                    The <strong>overflow</strong> property tells the browser
+                    how to handle that extra content.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC SYNTAX -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Basic Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>selector {
+    overflow: value;
+}</code></pre>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Overflow Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <p>
+                        Content is larger than the container:
+                    </p>
+
+                    <div class="diagram-container">
+
+                        <div class="diagram-content">
+
+                            This content is larger than the
+                            container. The overflow property
+                            decides what the browser should do
+                            with the extra content.
+
+                        </div>
+
+                    </div>
+
+                    <p class="mb-0">
+                        The container controls how the extra content
+                        is displayed.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SIMPLE EXPLANATION -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Simple Explanation
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Think of a small box containing a large amount
+                        of text.
+                    </p>
+
+                    <p>
+                        If the text does not fit inside the box, the
+                        extra content is called <strong>overflow</strong>.
+                    </p>
+
+                    <p>
+                        CSS provides different ways to handle this
+                        extra content.
+                    </p>
+
+                    <p>
+                        You can allow the content to remain visible,
+                        hide it, always show scrollbars, or let the
+                        browser decide whether scrolling is necessary.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- OVERFLOW VALUES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Main Overflow Values
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                visible
+                            </h3>
+
+                            <p>
+                                Extra content remains visible outside
+                                the element.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                hidden
+                            </h3>
+
+                            <p>
+                                Extra content is clipped and is not
+                                visible outside the element.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                scroll
+                            </h3>
+
+                            <p>
+                                Scrollbars are provided so the user
+                                can access the overflowing content.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                auto
+                            </h3>
+
+                            <p>
+                                The browser adds scrollbars when they
+                                are required.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 1 -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 1: overflow: visible
+                </h2>
+
+                <p>
+                    The <strong>visible</strong> value allows content
+                    to continue outside the element when it does not fit.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.box {
+    width: 300px;
+    height: 120px;
+    padding: 15px;
+    border: 3px solid blue;
+    background-color: lightblue;
+
+    overflow: visible;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-box">
+
+                        <div class="long-content">
+
+                            This is a long content example. Because
+                            overflow is set to visible, the content
+                            can continue outside the fixed-height box
+                            when there is not enough space.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 2 -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 2: overflow: hidden
+                </h2>
+
+                <p>
+                    The <strong>hidden</strong> value clips content that
+                    does not fit inside the element.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.box {
+    width: 300px;
+    height: 120px;
+    padding: 15px;
+    border: 3px solid green;
+    background-color: lightgreen;
+
+    overflow: hidden;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-hidden">
+
+                        <div class="long-content">
+
+                            This is a long content example. The box has
+                            limited height, so the remaining content is
+                            clipped because overflow is hidden.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="explanation-box">
+
+                    <p>
+                        With <strong>overflow: hidden</strong>, the content
+                        still exists in the HTML, but the part that goes
+                        outside the container is not visible.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 3 -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 3: overflow: scroll
+                </h2>
+
+                <p>
+                    The <strong>scroll</strong> value adds scrollbars
+                    so the user can access content that does not fit.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.box {
+    width: 300px;
+    height: 120px;
+    padding: 15px;
+    border: 3px solid orange;
+    background-color: lightyellow;
+
+    overflow: scroll;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-scroll">
+
+                        <div class="long-content">
+
+                            This is a long content example. The content
+                            is larger than the container, so scrollbars
+                            allow the user to move through the content.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 4 -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 4: overflow: auto
+                </h2>
+
+                <p>
+                    The <strong>auto</strong> value allows the browser
+                    to add scrollbars when the content actually
+                    overflows the element.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.box {
+    width: 300px;
+    height: 120px;
+    padding: 15px;
+    border: 3px solid purple;
+    background-color: #e9d5ff;
+
+    overflow: auto;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-auto">
+
+                        <div class="long-content">
+
+                            This is a long content example. The browser
+                            manages the overflowing content automatically
+                            when overflow is set to auto.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- OVERFLOW-X AND OVERFLOW-Y -->
+                <!-- ================================================= -->
+
+                <h2>
+                    overflow-x and overflow-y
+                </h2>
+
+                <p>
+                    Sometimes you may want to control horizontal and
+                    vertical overflow separately.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.box {
+    overflow-x: auto;
+    overflow-y: hidden;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        <strong>overflow-x</strong> controls content
+                        that overflows horizontally.
+                    </p>
+
+                    <p>
+                        <strong>overflow-y</strong> controls content
+                        that overflows vertically.
+                    </p>
+
+                    <p>
+                        This is useful when you want horizontal scrolling
+                        but do not want vertical scrolling.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- COMPARISON TABLE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Overflow Values Comparison
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Value</th>
+                                <th>What Happens?</th>
+                                <th>Scrollbar</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>visible</td>
+                                <td>
+                                    Extra content remains visible.
+                                </td>
+                                <td>
+                                    No automatic scrollbar.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>hidden</td>
+                                <td>
+                                    Extra content is clipped.
+                                </td>
+                                <td>
+                                    No.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>scroll</td>
+                                <td>
+                                    Extra content can be accessed
+                                    by scrolling.
+                                </td>
+                                <td>
+                                    Yes.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>auto</td>
+                                <td>
+                                    Browser decides when scrolling
+                                    is required.
+                                </td>
+                                <td>
+                                    When required.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PRACTICAL USE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Where is Overflow Used?
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Long Text
+                            </h3>
+
+                            <p>
+                                Useful when a container has limited
+                                height but may contain a large amount
+                                of text.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Scrollable Panels
+                            </h3>
+
+                            <p>
+                                Useful for creating panels where users
+                                can scroll through additional content.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Images
+                            </h3>
+
+                            <p>
+                                Overflow can help control images or
+                                other elements that are larger than
+                                their containers.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Responsive Layouts
+                            </h3>
+
+                            <p>
+                                Horizontal overflow can be controlled
+                                when content does not fit smaller screens.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT NOTE -->
+                <!-- ================================================= -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    Use <strong>overflow: hidden</strong> carefully.
+                    It can hide content that users need to see.
+                    When content must remain accessible, consider
+                    <strong>auto</strong> or <strong>scroll</strong>
+                    when appropriate.
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        The CSS overflow property controls what happens
+                        when content is larger than its container.
+                        The main values are visible, hidden, scroll,
+                        and auto. You can also control horizontal and
+                        vertical overflow separately using overflow-x
+                        and overflow-y. Understanding overflow is
+                        important when creating fixed-size containers,
+                        scrollable sections, and responsive layouts.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- NAVIGATION -->
+                <!-- ================================================= -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("BoxShadow", "BoxModel", new { area = "CSS" })">
+
+                            ← Previous: Box Shadow
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Index", "Flexbox", new { area = "CSS" })">
+
+                            Next: Flexbox →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

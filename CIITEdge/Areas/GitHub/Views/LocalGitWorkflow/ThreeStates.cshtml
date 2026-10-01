@@ -1,0 +1,140 @@
+﻿@{
+    Layout = "~/Areas/GitHub/Views/Shared/GithubLayout.cshtml";
+    ViewData["Title"] = "Three States";
+}
+<style>
+    ul.no-bullets {
+        list-style-type: none; /* Removes the bullet points */
+    }
+</style>
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <!-- HEADER -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Tracking Changes</h2>
+            <p class="mb-2">
+                To manage your project effectively, you need to understand how Git handles tracking changes inside your working directory. Git views every file in your project folder as either Tracked or Untracked.
+            </p>
+            <p>
+                Below is how Git monitors your files and how you can manage them.
+            </p>
+        </div>
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+            <div class="mb-3">
+                <h4>Tracked vs. Untracked Files</h4>
+                <div class="mb-3">
+                    
+                   
+                    <ul>
+                        <li>
+                            <p>
+                                <b>Untracked Files:</b> Any new file you create that Git has never seen before. Git will not include it in any snapshots until you explicitly tell it to.
+
+                            </p>
+                        </li>
+                        <li>
+                             <p>
+                                <b>Tracked Files:</b> Files that were included in your last commit. Git knows about them and monitors them for three specific lifecycle changes:
+                             </p>
+                             <ul>
+                                 <li>
+                                    <p><b>Unmodified:</b> The file has not changed since your last commit.</p>
+                                 </li>
+                                <li>
+                                    <p><b>Modified:</b> You have edited the file since your last commit.</p>
+                                </li>
+                                <li>
+                                    <p><b>Staged:</b> You edited the file and ran <b>git add</b> to prepare it for your next snapshot.</p>
+                                </li>
+                             </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="mb-3">
+                <h4>2. The Staging Area / Index (Staged State)</h4>
+                <div class="mb-3">
+                    <p>
+                        The staging area is a hidden file that stores information about what changes will go into your next commit. You move files here using the git add command.
+                    </p>
+
+                    <ul>
+                        <li>
+                            <p><b>State: Staged:</b> The changes are marked in their current version to go into your next history snapshot.</p>
+                        </li>
+                        <li>
+                            <p class="mb-5"><b>Analogy:</b>  A shipping box. You are packing specific items into the box, but you haven't taped it shut or shipped it yet.</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="mb-3">
+                <h4>3. The Git Directory / Repository (Committed State)</h4>
+                <div class="mb-3">
+                    <p>
+                        This is where Git permanently stores your project's metadata and object database (the hidden .git folder). When you use git commit, everything in your staging area is safely locked into the project's history.
+                    </p>
+                    <ul>
+                        <li>
+                            <p><b>State: Committed:</b> The data is securely stored in your local database.</p>
+                        </li>
+                        <li>
+                            <p class="mb-5"><b>Analogy:</b>  The shipping box is taped, labeled, and securely stored in the warehouse.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mb-3">
+                <h4 class="mb-3">The Workflow in Action</h4>
+                <div class="mb-3">
+                 <table class="table">
+                     <thead>
+                         <tr>
+                                <th>Step</th>
+                                <th>Command</th>
+                                <th>What it does</th>
+                                <th>State Change</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                                <td>Edit</td>
+                                <td>Modify code in your editor</td>
+                                <td>Changes files on your computer.</td>
+                                <td>Working Directory → <b>Modified</b></td>
+                         </tr>
+                         <tr>
+                                <td>Stage</td>
+                                <td>git add {filename}</td>
+                                <td>Prepares specific changes for a snapshot.</td>
+                                <td>Working Directory → <b>Staging Area</b></td>
+                         </tr>
+                            <tr>
+                                <td>Commit</td>
+                                <td>git commit -m "Message"</td>
+                                <td>Permanently saves the staged snapshot.</td>
+                                <td>Staging Area → <b>Git Directory</b></td>
+                            </tr>
+                     </tbody>
+                 </table>
+                </div>
+
+            </div>
+            <div class="mb-3">
+                <h4 class="mb-3">Checking Your Current States</h4>
+                <p>You can see which files are in which state at any time by running:</p>
+                <div class="code-block mb-4 shadow-sm">
+                    git status
+                </div>
+                <ul>
+                    <li><b>Red text</b> means files are in your Working Directory (Modified/Untracked).</li>
+                    <li><b>Green text</b> means files are in your Staging Area (Staged and ready to commit).</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>

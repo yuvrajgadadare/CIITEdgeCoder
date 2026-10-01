@@ -1,0 +1,648 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Document Structure";
+}
+
+<style>
+    #html-document-structure-page pre {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        #html-document-structure-page pre code {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+    #html-document-structure-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 24px;
+    }
+
+    #html-document-structure-page .info-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 18px;
+        height: 100%;
+    }
+
+        #html-document-structure-page .info-card h5 {
+            color: #5b21b6;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+    #html-document-structure-page .structure-box {
+        background: #ffffff;
+        border: 2px solid #6f42c1;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+        #html-document-structure-page .structure-box h5 {
+            color: #5b21b6;
+            font-weight: 700;
+        }
+
+    #html-document-structure-page .example-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+</style>
+
+<main id="html-document-structure-page"
+      class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/HTML/Views/Shared/HTMLTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <section class="col-lg-9">
+
+            <!-- PAGE TITLE -->
+            <div class="mb-4">
+
+                <h1 class="fw-bold">
+                    HTML Document Structure
+                </h1>
+
+                <p class="lead">
+                    Understand the standard structure of an HTML document and
+                    learn the purpose of each major HTML element.
+                </p>
+
+            </div>
+
+
+            <!-- INTRODUCTION -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    What is HTML Document Structure?
+                </h2>
+
+                <p>
+                    An HTML document follows a standard structure that helps the
+                    browser understand how the web page is organized.
+                </p>
+
+                <p>
+                    A typical HTML document contains a document type declaration,
+                    an HTML root element, a head section, and a body section.
+                </p>
+
+                <div class="alert alert-info">
+
+                    <strong>Simple Definition:</strong>
+
+                    The HTML document structure is the basic arrangement of
+                    HTML elements used to create a web page.
+
+                </div>
+
+            </div>
+
+
+            <!-- BASIC STRUCTURE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Basic HTML Document Structure
+                </h2>
+
+                <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;My Web Page&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+
+    &lt;p&gt;Welcome to my web page.&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+            </div>
+            <div class="try-it-container">
+    <button class="try-it-btn" onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <!-- STRUCTURE ELEMENTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Main Parts of an HTML Document
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                &lt;!DOCTYPE html&gt;
+                            </h5>
+
+                            <p class="mb-0">
+                                Declares that the document uses HTML and helps
+                                the browser render the page using standards mode.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                &lt;html&gt;
+                            </h5>
+
+                            <p class="mb-0">
+                                This is the root element of the HTML document.
+                                All other HTML content is placed inside it.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                &lt;head&gt;
+                            </h5>
+
+                            <p class="mb-0">
+                                Contains document information such as the title,
+                                metadata, linked CSS files, and other resources.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                &lt;body&gt;
+                            </h5>
+
+                            <p class="mb-0">
+                                Contains the visible content of the web page such
+                                as headings, paragraphs, images, links, and forms.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DOCTYPE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    1. DOCTYPE Declaration
+                </h2>
+
+                <p>
+                    The first line of a modern HTML document is usually:
+                </p>
+
+                <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+
+                <p>
+                    This declaration tells the browser that the document should
+                    be interpreted as an HTML document using modern standards.
+                </p>
+
+                <div class="alert alert-warning">
+
+                    <strong>Important:</strong>
+                    The DOCTYPE declaration is not an HTML element.
+                    It is a declaration placed at the beginning of the document.
+
+                </div>
+
+            </div>
+
+
+            <!-- HTML ROOT -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    2. HTML Root Element
+                </h2>
+
+                <pre><code>&lt;html&gt;
+
+    ...
+
+&lt;/html&gt;</code></pre>
+
+                <p>
+                    The <code>&lt;html&gt;</code> element is the root element
+                    of the page. All the other HTML elements are placed inside it.
+                </p>
+
+                <p>
+                    A language attribute can also be specified.
+                </p>
+
+                <pre><code>&lt;html lang="en"&gt;</code></pre>
+
+                <p>
+                    The <code>lang</code> attribute identifies the primary
+                    language of the document.
+                </p>
+
+            </div>
+
+
+            <!-- HEAD -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    3. Head Section
+                </h2>
+
+                <p>
+                    The <code>&lt;head&gt;</code> section contains information
+                    about the HTML document.
+                </p>
+
+                <pre><code>&lt;head&gt;
+
+    &lt;title&gt;My Web Page&lt;/title&gt;
+
+&lt;/head&gt;</code></pre>
+
+                <p>
+                    Information inside the head is generally not displayed as
+                    normal page content.
+                </p>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Common Elements Inside Head
+                </h3>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Element</th>
+                                <th>Purpose</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><code>&lt;title&gt;</code></td>
+                                <td>Defines the browser tab title.</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>&lt;meta&gt;</code></td>
+                                <td>Provides metadata about the document.</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>&lt;link&gt;</code></td>
+                                <td>Links external resources such as CSS.</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>&lt;style&gt;</code></td>
+                                <td>Contains CSS styles.</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>&lt;script&gt;</code></td>
+                                <td>Can contain or reference JavaScript.</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- TITLE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    4. Title Element
+                </h2>
+
+                <p>
+                    The <code>&lt;title&gt;</code> element defines the title
+                    displayed in the browser tab.
+                </p>
+
+                <pre><code>&lt;title&gt;CIIT Institute&lt;/title&gt;</code></pre>
+
+                <div class="example-box">
+
+                    <strong>Browser Tab:</strong>
+
+                    <div class="mt-2">
+                        CIIT Institute
+                    </div>
+
+                </div>
+
+                <div class="alert alert-info mt-3">
+
+                    <strong>Tip:</strong>
+                    A meaningful page title helps users understand which page
+                    they are viewing.
+
+                </div>
+
+            </div>
+
+
+            <!-- BODY -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    5. Body Section
+                </h2>
+
+                <p>
+                    The <code>&lt;body&gt;</code> element contains the main
+                    visible content of the web page.
+                </p>
+
+                <pre><code>&lt;body&gt;
+
+    &lt;h1&gt;Welcome to CIIT Institute&lt;/h1&gt;
+
+    &lt;p&gt;
+        Learn HTML step-by-step.
+    &lt;/p&gt;
+
+&lt;/body&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Common Body Elements
+                </h3>
+
+                <ul>
+
+                    <li class="mb-2">
+                        Headings
+                    </li>
+
+                    <li class="mb-2">
+                        Paragraphs
+                    </li>
+
+                    <li class="mb-2">
+                        Links
+                    </li>
+
+                    <li class="mb-2">
+                        Images
+                    </li>
+
+                    <li class="mb-2">
+                        Lists
+                    </li>
+
+                    <li class="mb-2">
+                        Tables
+                    </li>
+
+                    <li class="mb-2">
+                        Forms
+                    </li>
+
+                    <li>
+                        Multimedia content
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- COMPLETE STRUCTURE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Complete HTML Document
+                </h2>
+
+                <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta name="viewport"
+          content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Welcome to CIIT Institute&lt;/h1&gt;
+
+    &lt;p&gt;
+        Learn HTML step-by-step.
+    &lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+            </div>
+            <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <!-- STRUCTURE FLOW -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Document Structure Flow
+                </h2>
+
+                <div class="concept-box">
+
+                    <div class="alert alert-dark mb-3">
+                        <strong>&lt;!DOCTYPE html&gt;</strong>
+                        → HTML Document Declaration
+                    </div>
+
+                    <div class="alert alert-primary mb-3">
+                        <strong>&lt;html&gt;</strong>
+                        → Root Element
+                    </div>
+
+                    <div class="alert alert-secondary mb-3">
+                        <strong>&lt;head&gt;</strong>
+                        → Document Information
+                    </div>
+
+                    <div class="alert alert-success mb-0">
+                        <strong>&lt;body&gt;</strong>
+                        → Visible Page Content
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRACTICE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Practice Exercise
+                </h2>
+
+                <ol>
+
+                    <li class="mb-2">
+                        Create a file named <code>index.html</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Add the <code>&lt;!DOCTYPE html&gt;</code> declaration.
+                    </li>
+
+                    <li class="mb-2">
+                        Add the <code>&lt;html&gt;</code> element.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a <code>&lt;head&gt;</code> section.
+                    </li>
+
+                    <li class="mb-2">
+                        Add a <code>&lt;title&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a <code>&lt;body&gt;</code> section.
+                    </li>
+
+                    <li>
+                        Add one heading and one paragraph.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    A basic HTML document contains the DOCTYPE declaration,
+                    the HTML root element, the head section, and the body section.
+                    The head contains document information and resources, while
+                    the body contains the visible content of the web page.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Index", "Introduction", new { area = "HTML" })">
+
+                    ← Previous: Introduction to HTML
+
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("HowHTMLWorks", "Introduction", new { area = "HTML" })">
+
+                    Next: How HTML Works →
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>

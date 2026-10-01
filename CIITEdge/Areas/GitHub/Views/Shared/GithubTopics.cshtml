@@ -1,0 +1,880 @@
+﻿@{
+    // Current controller name.
+    var currentController =
+        ViewContext.RouteData.Values["controller"]?.ToString();
+
+    // Current action name.
+    var currentAction =
+        ViewContext.RouteData.Values["action"]?.ToString();
+
+    // Checks whether the current topic is active.
+    bool IsActive(string controller, string action)
+    {
+        return string.Equals(
+                   currentController,
+                   controller,
+                   StringComparison.OrdinalIgnoreCase)
+               &&
+               string.Equals(
+                   currentAction,
+                   action,
+                   StringComparison.OrdinalIgnoreCase);
+    }
+}
+
+<style>
+
+    /* =========================================================
+           COURSE SYLLABUS CARD - STICKY SIDEBAR
+           Same behavior as C# sidebar
+           ========================================================= */
+
+    .python-syllabus-card {
+        border: 0;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+    /* =========================================================
+           COURSE SYLLABUS HEADER
+           ========================================================= */
+
+    .python-syllabus-header {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        padding: 14px 18px !important;
+        font-size: 15px;
+        font-weight: 700;
+        display: block !important;
+        visibility: visible !important;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+
+        .python-syllabus-header span {
+            color: #ffffff !important;
+        }
+
+
+    /* =========================================================
+           MODULE TITLES
+           ========================================================= */
+
+    .python-module-title {
+        background-color: #f8f9fa !important;
+        font-weight: 700 !important;
+        color: #212529 !important;
+        padding: 12px 16px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+
+    /* =========================================================
+           TOPIC LINKS
+           ========================================================= */
+
+    .python-topic-link {
+        display: block;
+        padding: 10px 16px 10px 28px;
+        font-size: 14px;
+        color: #495057 !important;
+        text-decoration: none !important;
+        border: 0 !important;
+        border-bottom: 1px solid #f1f1f1 !important;
+        background-color: #ffffff !important;
+    }
+
+
+        /* =========================================================
+           TOPIC HOVER
+           ========================================================= */
+
+        .python-topic-link:hover {
+            background-color: #f1f3f5 !important;
+            color: #212529 !important;
+        }
+
+        /* =========================================================
+       ACTIVE TOPIC
+       Current topic = white background + blue underline
+       ========================================================= */
+
+        .python-topic-link.active,
+        .python-topic-link.active:hover,
+        .python-topic-link.active:focus {
+            background-color: #ffffff !important;
+            color: #495057 !important;
+            font-weight: 400 !important;
+            border-top: 0 !important;
+            border-left: 0 !important;
+            border-right: 0 !important;
+            border-bottom: 2px solid #2563eb !important;
+            box-shadow: none !important;
+        }
+
+    /* =========================================================
+           SIDEBAR SCROLLBAR
+           ========================================================= */
+
+    .python-syllabus-card::-webkit-scrollbar {
+        width: 6px;
+    }
+
+
+    .python-syllabus-card::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+
+    .python-syllabus-card::-webkit-scrollbar-thumb {
+        background: #c8c8c8;
+        border-radius: 10px;
+    }
+
+
+        .python-syllabus-card::-webkit-scrollbar-thumb:hover {
+            background: #aaaaaa;
+        }
+
+
+    /* =========================================================
+           MOBILE
+           ========================================================= */
+
+    @@media (max-width: 991px) {
+
+        .python-syllabus-card {
+            position: relative;
+            top: auto;
+            max-height: none;
+            overflow: hidden;
+        }
+
+
+        .python-syllabus-header {
+            position: relative;
+        }
+    }
+
+</style>
+
+
+<!-- =========================================================
+     PYTHON COURSE SYLLABUS
+     ========================================================= -->
+
+<div class="card python-syllabus-card">
+
+
+    <!-- =====================================================
+         COURSE SYLLABUS HEADER
+         ===================================================== -->
+
+    <div class="card-header python-syllabus-header">
+
+        <span>COURSE SYLLABUS</span>
+
+    </div>
+
+
+    <div class="list-group list-group-flush">
+
+
+        <!-- =====================================================
+             MODULE 1
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            1. Introduction &amp; Environment Setup
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Introduction", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Introduction", new { area = "Python" })">
+
+            Introduction to Python
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Introduction", "Installation") ? "active" : "")"
+           href="@Url.Action("Installation", "Introduction", new { area = "Python" })">
+
+            Python Installation
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Introduction", "DevelopmentTools") ? "active" : "")"
+           href="@Url.Action("DevelopmentTools", "Introduction", new { area = "Python" })">
+
+            Development Tools
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Introduction", "FirstProgram") ? "active" : "")"
+           href="@Url.Action("FirstProgram", "Introduction", new { area = "Python" })">
+
+            First Python Program
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 2
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            2. Python Language Basics
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("PythonBasics", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "PythonBasics", new { area = "Python" })">
+
+            Python Basics
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("PythonBasics", "Variables") ? "active" : "")"
+           href="@Url.Action("Variables", "PythonBasics", new { area = "Python" })">
+
+            Variables
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("PythonBasics", "DataTypes") ? "active" : "")"
+           href="@Url.Action("DataTypes", "PythonBasics", new { area = "Python" })">
+
+            Data Types
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("PythonBasics", "TypeConversion") ? "active" : "")"
+           href="@Url.Action("TypeConversion", "PythonBasics", new { area = "Python" })">
+
+            Type Conversion
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("PythonBasics", "Operators") ? "active" : "")"
+           href="@Url.Action("Operators", "PythonBasics", new { area = "Python" })">
+
+            Operators
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("PythonBasics", "Strings") ? "active" : "")"
+           href="@Url.Action("Strings", "PythonBasics", new { area = "Python" })">
+
+            Strings
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("PythonBasics", "InputOutput") ? "active" : "")"
+           href="@Url.Action("InputOutput", "PythonBasics", new { area = "Python" })">
+
+            Input &amp; Output
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 3
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            3. Control Flow
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ControlFlow", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "ControlFlow", new { area = "Python" })">
+
+            Control Flow
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ControlFlow", "ConditionalStatements") ? "active" : "")"
+           href="@Url.Action("ConditionalStatements", "ControlFlow", new { area = "Python" })">
+
+            Conditional Statements
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ControlFlow", "ForLoop") ? "active" : "")"
+           href="@Url.Action("ForLoop", "ControlFlow", new { area = "Python" })">
+
+            For Loop
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ControlFlow", "WhileLoop") ? "active" : "")"
+           href="@Url.Action("WhileLoop", "ControlFlow", new { area = "Python" })">
+
+            While Loop
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ControlFlow", "BreakContinuePass") ? "active" : "")"
+           href="@Url.Action("BreakContinuePass", "ControlFlow", new { area = "Python" })">
+
+            Break, Continue &amp; Pass
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 4
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            4. Functions
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Functions", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Functions", new { area = "Python" })">
+
+            Functions
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Functions", "DefiningCallingFunctions") ? "active" : "")"
+           href="@Url.Action("DefiningCallingFunctions", "Functions", new { area = "Python" })">
+
+            Defining &amp; Calling Functions
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Functions", "ParametersArguments") ? "active" : "")"
+           href="@Url.Action("ParametersArguments", "Functions", new { area = "Python" })">
+
+            Parameters &amp; Arguments
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Functions", "ReturnValues") ? "active" : "")"
+           href="@Url.Action("ReturnValues", "Functions", new { area = "Python" })">
+
+            Return Values
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Functions", "Scope") ? "active" : "")"
+           href="@Url.Action("Scope", "Functions", new { area = "Python" })">
+
+            Scope
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Functions", "Recursion") ? "active" : "")"
+           href="@Url.Action("Recursion", "Functions", new { area = "Python" })">
+
+            Recursion
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("Functions", "LambdaFunctions") ? "active" : "")"
+           href="@Url.Action("LambdaFunctions", "Functions", new { area = "Python" })">
+
+            Lambda Functions
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 5
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            5. Data Structures
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DataStructures", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "DataStructures", new { area = "Python" })">
+
+            Data Structures
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DataStructures", "Lists") ? "active" : "")"
+           href="@Url.Action("Lists", "DataStructures", new { area = "Python" })">
+
+            Lists
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DataStructures", "Tuples") ? "active" : "")"
+           href="@Url.Action("Tuples", "DataStructures", new { area = "Python" })">
+
+            Tuples
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DataStructures", "Sets") ? "active" : "")"
+           href="@Url.Action("Sets", "DataStructures", new { area = "Python" })">
+
+            Sets
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DataStructures", "Dictionaries") ? "active" : "")"
+           href="@Url.Action("Dictionaries", "DataStructures", new { area = "Python" })">
+
+            Dictionaries
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DataStructures", "Comprehensions") ? "active" : "")"
+           href="@Url.Action("Comprehensions", "DataStructures", new { area = "Python" })">
+
+            Comprehensions
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 6
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            6. Object-Oriented Programming
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("OOPs", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "OOPs", new { area = "Python" })">
+
+            OOPs
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("OOPs", "ClassesObjects") ? "active" : "")"
+           href="@Url.Action("ClassesObjects", "OOPs", new { area = "Python" })">
+
+            Classes &amp; Objects
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("OOPs", "Constructors") ? "active" : "")"
+           href="@Url.Action("Constructors", "OOPs", new { area = "Python" })">
+
+            Constructors
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("OOPs", "Encapsulation") ? "active" : "")"
+           href="@Url.Action("Encapsulation", "OOPs", new { area = "Python" })">
+
+            Encapsulation
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("OOPs", "Inheritance") ? "active" : "")"
+           href="@Url.Action("Inheritance", "OOPs", new { area = "Python" })">
+
+            Inheritance
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("OOPs", "Polymorphism") ? "active" : "")"
+           href="@Url.Action("Polymorphism", "OOPs", new { area = "Python" })">
+
+            Polymorphism
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("OOPs", "Abstraction") ? "active" : "")"
+           href="@Url.Action("Abstraction", "OOPs", new { area = "Python" })">
+
+            Abstraction
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 7
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            7. Modules &amp; Packages
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ModulesPackages", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "ModulesPackages", new { area = "Python" })">
+
+            Modules &amp; Packages
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ModulesPackages", "ImportStatement") ? "active" : "")"
+           href="@Url.Action("ImportStatement", "ModulesPackages", new { area = "Python" })">
+
+            Import Statement
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ModulesPackages", "BuiltInModules") ? "active" : "")"
+           href="@Url.Action("BuiltInModules", "ModulesPackages", new { area = "Python" })">
+
+            Built-in Modules
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ModulesPackages", "PipPackages") ? "active" : "")"
+           href="@Url.Action("PipPackages", "ModulesPackages", new { area = "Python" })">
+
+            pip &amp; Packages
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ModulesPackages", "CreatingPackages") ? "active" : "")"
+           href="@Url.Action("CreatingPackages", "ModulesPackages", new { area = "Python" })">
+
+            Creating Packages
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ModulesPackages", "VirtualEnvironments") ? "active" : "")"
+           href="@Url.Action("VirtualEnvironments", "ModulesPackages", new { area = "Python" })">
+
+            Virtual Environments
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 8
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            8. File Handling
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("FileHandling", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "FileHandling", new { area = "Python" })">
+
+            File Handling
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("FileHandling", "ReadingFiles") ? "active" : "")"
+           href="@Url.Action("ReadingFiles", "FileHandling", new { area = "Python" })">
+
+            Reading Files
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("FileHandling", "WritingFiles") ? "active" : "")"
+           href="@Url.Action("WritingFiles", "FileHandling", new { area = "Python" })">
+
+            Writing Files
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("FileHandling", "FileDirectories") ? "active" : "")"
+           href="@Url.Action("FileDirectories", "FileHandling", new { area = "Python" })">
+
+            Files &amp; Directories
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("FileHandling", "CSVFiles") ? "active" : "")"
+           href="@Url.Action("CSVFiles", "FileHandling", new { area = "Python" })">
+
+            CSV Files
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("FileHandling", "JSONFiles") ? "active" : "")"
+           href="@Url.Action("JSONFiles", "FileHandling", new { area = "Python" })">
+
+            JSON Files
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 9
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            9. Exception Handling
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ExceptionHandling", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "ExceptionHandling", new { area = "Python" })">
+
+            Exception Handling
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ExceptionHandling", "TryExcept") ? "active" : "")"
+           href="@Url.Action("TryExcept", "ExceptionHandling", new { area = "Python" })">
+
+            try &amp; except
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ExceptionHandling", "MultipleExceptions") ? "active" : "")"
+           href="@Url.Action("MultipleExceptions", "ExceptionHandling", new { area = "Python" })">
+
+            Multiple Exceptions
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ExceptionHandling", "Finally") ? "active" : "")"
+           href="@Url.Action("Finally", "ExceptionHandling", new { area = "Python" })">
+
+            finally
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ExceptionHandling", "RaiseException") ? "active" : "")"
+           href="@Url.Action("RaiseException", "ExceptionHandling", new { area = "Python" })">
+
+            raise Exception
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("ExceptionHandling", "CustomExceptions") ? "active" : "")"
+           href="@Url.Action("CustomExceptions", "ExceptionHandling", new { area = "Python" })">
+
+            Custom Exceptions
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 10
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            10. Advanced Python
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("AdvancedPython", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "AdvancedPython", new { area = "Python" })">
+
+            Advanced Python
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("AdvancedPython", "Iterators") ? "active" : "")"
+           href="@Url.Action("Iterators", "AdvancedPython", new { area = "Python" })">
+
+            Iterators
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("AdvancedPython", "Generators") ? "active" : "")"
+           href="@Url.Action("Generators", "AdvancedPython", new { area = "Python" })">
+
+            Generators
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("AdvancedPython", "Decorators") ? "active" : "")"
+           href="@Url.Action("Decorators", "AdvancedPython", new { area = "Python" })">
+
+            Decorators
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("AdvancedPython", "ContextManagers") ? "active" : "")"
+           href="@Url.Action("ContextManagers", "AdvancedPython", new { area = "Python" })">
+
+            Context Managers
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("AdvancedPython", "RegularExpressions") ? "active" : "")"
+           href="@Url.Action("RegularExpressions", "AdvancedPython", new { area = "Python" })">
+
+            Regular Expressions
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 11
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            11. Database Programming
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DatabaseProgramming", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "DatabaseProgramming", new { area = "Python" })">
+
+            Database Programming
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DatabaseProgramming", "SQLite") ? "active" : "")"
+           href="@Url.Action("SQLite", "DatabaseProgramming", new { area = "Python" })">
+
+            SQLite
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DatabaseProgramming", "DatabaseConnectivity") ? "active" : "")"
+           href="@Url.Action("DatabaseConnectivity", "DatabaseProgramming", new { area = "Python" })">
+
+            Database Connectivity
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DatabaseProgramming", "CRUDOperations") ? "active" : "")"
+           href="@Url.Action("CRUDOperations", "DatabaseProgramming", new { area = "Python" })">
+
+            CRUD Operations
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("DatabaseProgramming", "SQLWithPython") ? "active" : "")"
+           href="@Url.Action("SQLWithPython", "DatabaseProgramming", new { area = "Python" })">
+
+            SQL with Python
+
+        </a>
+
+
+
+        <!-- =====================================================
+             MODULE 12
+             ===================================================== -->
+
+        <div class="list-group-item python-module-title">
+            12. Web Development
+        </div>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("WebDevelopment", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "WebDevelopment", new { area = "Python" })">
+
+            Web Development
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("WebDevelopment", "FlaskBasics") ? "active" : "")"
+           href="@Url.Action("FlaskBasics", "WebDevelopment", new { area = "Python" })">
+
+            Flask Basics
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("WebDevelopment", "FastAPIBasics") ? "active" : "")"
+           href="@Url.Action("FastAPIBasics", "WebDevelopment", new { area = "Python" })">
+
+            FastAPI Basics
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("WebDevelopment", "WebRoutes") ? "active" : "")"
+           href="@Url.Action("WebRoutes", "WebDevelopment", new { area = "Python" })">
+
+            Web Routes
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("WebDevelopment", "RESTAPIs") ? "active" : "")"
+           href="@Url.Action("RESTAPIs", "WebDevelopment", new { area = "Python" })">
+
+            REST APIs
+
+        </a>
+
+
+        <a class="list-group-item list-group-item-action python-topic-link @(IsActive("WebDevelopment", "APIRequests") ? "active" : "")"
+           href="@Url.Action("APIRequests", "WebDevelopment", new { area = "Python" })">
+
+            API Requests
+
+        </a>
+
+
+    </div>
+
+</div>

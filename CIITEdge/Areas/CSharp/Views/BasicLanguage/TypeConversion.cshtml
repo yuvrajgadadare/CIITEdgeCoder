@@ -1,0 +1,595 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Type Conversion";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+    .try-it-btn:hover 
+    {
+        background: #157347;
+        color: #fff;
+    }
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- PAGE TITLE -->
+                <h1 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Type Conversion
+                </h1>
+
+                <h2 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Type Conversion / Casting in C#
+                </h2>
+
+                <p class="text-muted mb-4">
+                    C# supports four primary categories of type conversion.
+                    Type conversion is the process of converting a value from one
+                    data type to another data type.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- IMPLICIT CONVERSION -->
+                <!-- ===================================================== -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-3">
+                    Implicit Conversions (Automatic)
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Implicit conversion happens automatically when you convert a
+                    smaller data type into a larger data type, or a derived class
+                    into a base class. This process is type-safe, and normally no
+                    data is lost during the operation.
+                </p>
+
+                <p class="text-muted mb-4">
+                    <img height="200" src="~/Images/CSharp/2.png" />
+                </p>
+
+                <h5 class="fw-bold text-dark mt-3 mb-2">
+                    Example
+                </h5>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+int x = 10;
+double d = x;     // implicit conversion
+
+Console.WriteLine(d);</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, the <code>int</code> value is automatically converted
+                    into a <code>double</code> value.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- EXPLICIT CASTING -->
+                <!-- ===================================================== -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-3">
+                    Explicit Type Casting
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Explicit conversion is a manual step required when converting
+                    a larger data type to a smaller data type (narrowing), or when
+                    a specific cast is required. This is done using a cast operator
+                    (the target type in parentheses). This conversion may result
+                    in data loss or truncation.
+                </p>
+
+                <p class="text-muted mb-4">
+                    <img height="200" src="~/Images/CSharp/3.png" />
+                </p>
+
+                <h5 class="fw-bold text-dark mt-3 mb-2">
+                    Example
+                </h5>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+double d = 9.8;
+
+// explicit casting
+int x = (int)d;
+
+Console.WriteLine(x);</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+                <p class="text-muted mb-4">
+                    The output will be <b>9</b> because the decimal part is
+                    removed during explicit casting.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- INVALID IMPLICIT CONVERSION -->
+                <!-- ===================================================== -->
+
+                <h5 class="h5 fw-bold text-dark mt-3 mb-3">
+                    Invalid Implicit Conversion
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <pre class="mb-0"><code>int a = 10;
+double d = 5.8;
+
+// Error
+a = d;
+
+// Error: Cannot implicitly convert double to int.</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    A <code>double</code> value cannot be automatically assigned
+                    to an <code>int</code> because the conversion may cause data loss.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- PARSING -->
+                <!-- ===================================================== -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-3">
+                    Parsing (String to Numeric)
+                </h3>
+
+                <p class="text-muted mb-4">
+                    When dealing with incompatible types, such as converting a
+                    string to a number, direct casting will not work. Instead,
+                    you must use parsing methods.
+                </p>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        <b>.Parse():</b>
+                        Throws a runtime exception if the string cannot be
+                        successfully converted.
+                    </li>
+
+                    <li class="mb-2">
+                        <b>.TryParse():</b>
+                        Safely attempts the conversion, returning a boolean
+                        indicating success or failure without crashing the program.
+                    </li>
+
+                </ul>
+
+                <h5 class="fw-bold text-dark mt-3 mb-2">
+                    Example
+                </h5>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+string textAge = "25";
+
+// Using Parse
+int age1 = int.Parse(textAge);
+
+// Using TryParse
+bool success = int.TryParse(textAge, out int age2);
+
+Console.WriteLine(age1);
+Console.WriteLine(age2);
+Console.WriteLine(success);</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- CONVERSION CLASS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-3">
+                    Conversion Classes
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The built-in <code>System.Convert</code> utility class provides
+                    a broad set of static methods to convert between basic data
+                    types. It is useful when converting values such as strings,
+                    numbers, and other compatible types.
+                </p>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+string textValue = "456";
+
+int number = Convert.ToInt32(textValue);
+
+double exactPrice = 19.99;
+int roundedPrice = Convert.ToInt32(exactPrice);
+
+Console.WriteLine(number);
+Console.WriteLine(roundedPrice);</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+                <p class="text-muted mb-4">
+                    <code>Convert.ToInt32()</code> converts the value into a
+                    32-bit integer. For <code>19.99</code>, the result is
+                    <b>20</b>.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- COMPARISON -->
+                <!-- ===================================================== -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-4">
+                    Direct Comparison: Parse vs TryParse vs Convert
+                </h3>
+
+                <div class="table-responsive mb-4">
+
+                    <table class="table table-bordered text-muted">
+
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>int.Parse(str)</th>
+                                <th>int.TryParse(str, out val)</th>
+                                <th>Convert.ToInt32(obj)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Input Type</td>
+                                <td>String only</td>
+                                <td>String only</td>
+                                <td>
+                                    Supports multiple compatible types
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>If Input is null</td>
+                                <td>Throws ArgumentNullException</td>
+                                <td>Returns false</td>
+                                <td>Returns 0 for a null reference</td>
+                            </tr>
+
+                            <tr>
+                                <td>Best Used For</td>
+                                <td>Guaranteed valid strings</td>
+                                <td>User inputs / unpredictable strings</td>
+                                <td>General type conversion</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- SAFE REFERENCE TYPE CONVERSION -->
+                <!-- ===================================================== -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-3">
+                    Safe Reference Type Conversions (as and is)
+                </h3>
+
+                <p class="text-muted mb-3">
+                    When dealing with objects and inheritance, C# provides
+                    <code>is</code> and <code>as</code> keywords for safe
+                    reference type conversions.
+                </p>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        <b>is keyword:</b>
+                        Checks if an object is compatible with a given type
+                        and returns a boolean result.
+                    </li>
+
+                    <li class="mb-2">
+                        <b>as keyword:</b>
+                        Attempts a conversion and returns <code>null</code>
+                        if the conversion is not possible.
+                    </li>
+
+                </ul>
+
+                <h5 class="fw-bold text-dark mt-3 mb-2">
+                    Example
+                </h5>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+object greeting = "Hello World";
+
+// Using 'is'
+if (greeting is string text)
+{
+    Console.WriteLine(text.Length);
+}
+
+// Using 'as'
+string text2 = greeting as string;</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- SUMMARY -->
+                <!-- ===================================================== -->
+
+                <div class="alert alert-primary mt-4">
+
+                    <h5 class="fw-bold">
+                        Summary
+                    </h5>
+
+                    <ul class="mb-0">
+
+                        <li>
+                            Implicit conversion happens automatically.
+                        </li>
+
+                        <li>
+                            Explicit casting is performed manually.
+                        </li>
+
+                        <li>
+                            <code>Parse()</code> converts valid strings into
+                            numeric values.
+                        </li>
+
+                        <li>
+                            <code>TryParse()</code> safely handles invalid
+                            user input.
+                        </li>
+
+                        <li>
+                            <code>Convert</code> provides convenient conversion
+                            methods.
+                        </li>
+
+                        <li>
+                            <code>is</code> checks type compatibility.
+                        </li>
+
+                        <li>
+                            <code>as</code> safely attempts reference conversion.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- NEXT TOPIC -->
+                <!-- ===================================================== -->
+
+                <div class="d-flex justify-content-between align-items-center mb-5">
+
+                    <a href="/CSharp/BasicLanguage/VariableAndDataTypes"
+                       class="btn btn-outline-secondary">
+                        ← Previous Topic
+                    </a>
+
+                    <a href="/CSharp/BasicLanguage/Operators"
+                       class="btn btn-primary">
+                        Next Topic →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+<script>
+
+    function tryItYourself(button) {
+
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+
+        // Create temporary form
+
+        const form = document.createElement("form");
+
+        form.method = "POST";
+
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
+        document.body.removeChild(form);
+
+    }
+
+</script>
+
+ 

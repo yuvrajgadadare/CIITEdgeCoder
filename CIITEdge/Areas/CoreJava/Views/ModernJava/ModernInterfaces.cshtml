@@ -1,0 +1,911 @@
+﻿@{
+    ViewData["Title"] = "Interfaces in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-2">Modern Interfaces in Java</h1>
+                <p class="text-muted mb-0">
+                    Learn default methods, static methods, private interface methods,
+                    functional interfaces, and modern interface design.
+                </p>
+            </div>
+
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- 1. Introduction -->
+        <h2 class="fw-bold">1. What is an Interface?</h2>
+
+        <p>
+            An interface in Java defines a contract that classes can implement.
+            Interfaces are mainly used for abstraction, loose coupling, and
+            multiple inheritance of type.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface CiitCourse {
+
+    void registerStudent();
+}
+
+class JavaCourse implements CiitCourse {
+
+    public void registerStudent() {
+        System.out.println("Successfully enrolled in the CIIT Java Full Stack Developer program 😁👨‍🏫..!");
+    }
+}</code></pre>
+        </div>
+
+        <p>
+            The class implementing an interface must provide implementations for
+            its required abstract methods.
+        </p>
+
+        <!-- 2. Default Methods -->
+        <h2 class="fw-bold mt-5">2. Default Methods</h2>
+
+        <p>
+            A default method is a method inside an interface that contains an
+            implementation.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Vehicle {
+
+    void start();
+
+    default void stop() {
+        System.out.println("Vehicle stopped");
+    }
+}
+
+class Car implements Vehicle {
+
+    public void start() {
+        System.out.println("Car started");
+    }
+}</code></pre>
+        </div>
+
+        <p>
+            The implementing class automatically gets the default implementation
+            unless it provides its own implementation.
+        </p>
+
+        <!-- 3. Why Default Methods -->
+        <h2 class="fw-bold mt-5">3. Why Were Default Methods Introduced?</h2>
+
+        <p>
+            Default methods allow existing interfaces to evolve by adding new
+            behavior without requiring every existing implementation to
+            immediately implement the new method.
+        </p>
+
+        <div class="alert alert-info">
+            <strong>Key point:</strong>
+            Default methods were especially important for evolving Java APIs
+            while maintaining compatibility with existing implementations.
+        </div>
+
+        <!-- 4. Override -->
+        <h2 class="fw-bold mt-5">4. Overriding a Default Method</h2>
+
+        <p>
+            A class can provide its own implementation of a default interface
+            method.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Vehicle {
+
+    default void display() {
+        System.out.println("Vehicle");
+    }
+}
+
+class Car implements Vehicle {
+
+    public void display() {
+        System.out.println("Car");
+    }
+}</code></pre>
+        </div>
+
+        <!-- 5. Calling Default -->
+        <h2 class="fw-bold mt-5">5. Calling the Interface Default Method</h2>
+
+        <p>
+            When a class overrides a default method, it can still explicitly
+            call the interface implementation using
+            <code>InterfaceName.super.methodName()</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Vehicle {
+
+    default void display() {
+        System.out.println("Vehicle");
+    }
+}
+
+class Car implements Vehicle {
+
+    public void display() {
+
+        Vehicle.super.display();
+
+        System.out.println("Car");
+    }
+}</code></pre>
+        </div>
+
+        <!-- 6. Static Methods -->
+        <h2 class="fw-bold mt-5">6. Static Methods in Interfaces</h2>
+
+        <p>
+            Interfaces can contain static methods. These methods belong to the
+            interface itself and are called using the interface name.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface MathUtility {
+
+    static int square(int number) {
+        return number * number;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        int result =
+            MathUtility.square(5);
+
+        System.out.println(result);
+    }
+}</code></pre>
+        </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>25</code></pre>
+</div>
+
+        <div class="alert alert-success">
+            <strong>Important:</strong>
+            Static interface methods are accessed using the interface name.
+        </div>
+
+        <!-- 7. Private Methods -->
+        <h2 class="fw-bold mt-5">7. Private Methods in Interfaces</h2>
+
+        <p>
+            Java 9 introduced private methods in interfaces. They are useful for
+            sharing common implementation logic between default methods.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Logger {
+
+    default void logInfo(String message) {
+
+        String formatted =
+            format(message);
+
+        System.out.println(formatted);
+    }
+
+    default void logError(String message) {
+
+        String formatted =
+            format(message);
+
+        System.out.println(formatted);
+    }
+
+    private String format(String message) {
+
+        return "[LOG] " + message;
+    }
+}</code></pre>
+        </div>
+
+        <p>
+            The private method is available only inside the interface.
+            Implementing classes cannot directly call it.
+        </p>
+
+        <!-- 8. Private Static -->
+        <h2 class="fw-bold mt-5">8. Private Static Methods</h2>
+
+        <p>
+            Interfaces can also contain private static methods.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Validator {
+
+    static boolean isValid(String value) {
+
+        return isNotEmpty(value)
+            &amp;&amp; hasMinimumLength(value);
+    }
+
+    private static boolean isNotEmpty(
+        String value
+    ) {
+
+        return value != null
+            &amp;&amp; !value.isBlank();
+    }
+
+    private static boolean hasMinimumLength(
+        String value
+    ) {
+
+        return value.length() &gt;= 3;
+    }
+}</code></pre>
+        </div>
+
+        <!-- 9. Interface Fields -->
+        <h2 class="fw-bold mt-5">9. Variables in Interfaces</h2>
+
+        <p>
+            Fields declared inside an interface are implicitly
+            <code>public</code>, <code>static</code>, and <code>final</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Configuration {
+
+    int MAX_USERS = 100;
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println(
+            Configuration.MAX_USERS
+        );
+    }
+}</code></pre>
+        </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>100</code></pre>
+</div>
+
+        <!-- 10. Functional Interface -->
+        <h2 class="fw-bold mt-5">10. Functional Interfaces</h2>
+
+        <p>
+            A functional interface contains exactly one abstract method.
+            Functional interfaces are commonly used with lambda expressions
+            and method references.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Calculator {
+
+    int calculate(int a, int b);
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Calculator add =
+            (a, b) -&gt; a + b;
+
+        System.out.println(
+            add.calculate(10, 20)
+        );
+    }
+}</code></pre>
+        </div>
+            
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30</code></pre>
+</div>
+        <p>
+            Java also provides the <code>FunctionalInterface</code> annotation
+            as an optional compile-time check for functional interfaces.
+        </p>
+
+        <!-- 11. Multiple Interfaces -->
+        <h2 class="fw-bold mt-5">11. Multiple Interface Implementation</h2>
+
+        <p>
+            A Java class can implement more than one interface.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Printable {
+
+    void print();
+}
+
+interface Showable {
+
+    void show();
+}
+
+class Document
+    implements Printable, Showable {
+
+    public void print() {
+        System.out.println("Printing");
+    }
+
+    public void show() {
+        System.out.println("Showing");
+    }
+}</code></pre>
+        </div>
+
+        <!-- 12. Default Conflict -->
+        <h2 class="fw-bold mt-5">12. Default Method Conflict</h2>
+
+        <p>
+            If two interfaces provide default methods with the same signature,
+            the implementing class must resolve the conflict.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface A {
+
+    default void display() {
+        System.out.println("A");
+    }
+}
+
+interface B {
+
+    default void display() {
+        System.out.println("B");
+    }
+}
+
+class Test implements A, B {
+
+    public void display() {
+
+        A.super.display();
+
+        B.super.display();
+    }
+}</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>A
+B</code></pre>
+</div>
+
+        <!-- 13. Abstract Priority -->
+        <h2 class="fw-bold mt-5">13. Abstract Method and Default Method Conflict</h2>
+
+        <p>
+            If one interface declares an abstract method and another interface
+            provides a default method with the same signature, the implementing
+            class must provide its own implementation.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface A {
+
+    void display();
+}
+
+interface B {
+
+    default void display() {
+        System.out.println("B");
+    }
+}
+
+class Test implements A, B {
+
+    public void display() {
+        System.out.println("Test");
+    }
+}</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Test</code></pre>
+</div>
+
+        <!-- 14. Interface Extension -->
+        <h2 class="fw-bold mt-5">14. Interface Extending Another Interface</h2>
+
+        <p>
+            An interface can extend another interface.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Animal {
+
+    void eat();
+}
+
+interface Dog extends Animal {
+
+    void bark();
+}
+
+class Labrador implements Dog {
+
+    public void eat() {
+        System.out.println("Eating");
+    }
+
+    public void bark() {
+        System.out.println("Barking");
+    }
+}</code></pre>
+        </div>
+
+        <!-- 15. Multiple Interface Extension -->
+        <h2 class="fw-bold mt-5">15. Interface Extending Multiple Interfaces</h2>
+
+        <p>
+            An interface can extend multiple interfaces.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Printable {
+
+    void print();
+}
+
+interface Scannable {
+
+    void scan();
+}
+
+interface MultiFunctionDevice
+    extends Printable, Scannable {
+}
+
+class Printer
+    implements MultiFunctionDevice {
+
+    public void print() {
+        System.out.println("Printing");
+    }
+
+    public void scan() {
+        System.out.println("Scanning");
+    }
+}</code></pre>
+        </div>
+
+        <!-- 16. Private Rules -->
+        <h2 class="fw-bold mt-5">16. Rules for Private Interface Methods</h2>
+
+        <ul>
+            <li>Private interface methods are implementation helpers.</li>
+            <li>They cannot be accessed by implementing classes.</li>
+            <li>They can be called from methods inside the same interface.</li>
+            <li>They can reduce duplicated logic.</li>
+            <li>They can be instance methods or static methods.</li>
+        </ul>
+
+        <!-- 17. Modern Design -->
+        <h2 class="fw-bold mt-5">17. Modern Interface Design</h2>
+
+        <p>
+            A modern interface can contain abstract methods, default methods,
+            static methods, and private helper methods.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface ReportService {
+
+    void generate();
+
+    default void printReport() {
+
+        String report =
+            createReport();
+
+        System.out.println(report);
+    }
+
+    private String createReport() {
+
+        return "Report generated";
+    }
+
+    static String version() {
+
+        return "1.0";
+    }
+}</code></pre>
+        </div>
+
+        <!-- 18. Real World -->
+        <h2 class="fw-bold mt-5">18. Example: Notification Service 🧑‍💻📩</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface NotificationService {
+
+    void send(String message);
+
+    default void sendWelcomeMessage(
+        String user
+    ) {
+
+        send(
+            formatWelcomeMessage(user)
+        );
+    }
+
+    private String formatWelcomeMessage(
+        String user
+    ) {
+
+        return "Welcome, " + user;
+    }
+}
+
+class EmailNotification
+    implements NotificationService {
+
+    public void send(String message) {
+
+        System.out.println(
+            "Email: " + message
+        );
+    }
+}</code></pre>
+        </div>
+
+        <!-- 19. API Evolution -->
+        <h2 class="fw-bold mt-5">19. Interface Evolution</h2>
+
+        <p>
+            Default methods make it possible to evolve interfaces while
+            providing existing implementations with default behavior.
+        </p>
+
+        <p>
+            This is particularly useful in libraries and frameworks where many
+            classes may already implement an interface.
+        </p>
+
+        <!-- 20. Interface vs Abstract -->
+        <h2 class="fw-bold mt-5">20. Interface vs Abstract Class</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Feature</th>
+                        <th>Interface</th>
+                        <th>Abstract Class</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Multiple implementation</td>
+                        <td>Yes</td>
+                        <td>No, one direct superclass</td>
+                    </tr>
+
+                    <tr>
+                        <td>Abstract methods</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Default methods</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                    </tr>
+
+                    <tr>
+                        <td>Static methods</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Private methods</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Instance fields</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Constructors</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 21. Advantages -->
+        <h2 class="fw-bold mt-5">21. Advantages of Modern Interfaces</h2>
+
+        <ul>
+            <li>Provides abstraction.</li>
+            <li>Encourages loose coupling.</li>
+            <li>Supports multiple interface implementation.</li>
+            <li>Default methods allow interface evolution.</li>
+            <li>Private methods reduce duplicated implementation logic.</li>
+            <li>Static methods provide interface-specific utilities.</li>
+            <li>Works well with lambda expressions.</li>
+            <li>Useful for API and library design.</li>
+        </ul>
+
+        <!-- 22. Limitations -->
+        <h2 class="fw-bold mt-5">22. Limitations</h2>
+
+        <ul>
+            <li>Interfaces cannot maintain normal per-object instance state.</li>
+            <li>Too many default methods can make an interface difficult to understand.</li>
+            <li>Default method conflicts may require explicit resolution.</li>
+            <li>Interfaces are not a replacement for every abstract-class use case.</li>
+        </ul>
+
+        <!-- 23. Best Practices -->
+        <h2 class="fw-bold mt-5">23. Best Practices</h2>
+
+        <ul>
+            <li>Keep interfaces focused on a clear responsibility.</li>
+            <li>Use default methods for sensible reusable behavior.</li>
+            <li>Use private methods to remove duplicated interface logic.</li>
+            <li>Use static methods for interface-related utilities.</li>
+            <li>Avoid putting excessive business logic into interfaces.</li>
+            <li>Use functional interfaces for small behavior contracts.</li>
+            <li>Follow interface segregation principles.</li>
+        </ul>
+
+        <!-- 24. Interview -->
+        <h2 class="fw-bold mt-5">24. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="modernInterfaceQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#interfaceQuestionOne">
+                        What is a default method in Java?
+                    </button>
+                </h2>
+
+                <div id="interfaceQuestionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernInterfaceQuestions">
+
+                    <div class="accordion-body">
+                        A default method is an interface method that contains a
+                        concrete implementation using the <code>default</code>
+                        keyword.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#interfaceQuestionTwo">
+                        When were private interface methods introduced?
+                    </button>
+                </h2>
+
+                <div id="interfaceQuestionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernInterfaceQuestions">
+
+                    <div class="accordion-body">
+                        Private methods in interfaces were introduced in Java 9.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#interfaceQuestionThree">
+                        Can an interface have static methods?
+                    </button>
+                </h2>
+
+                <div id="interfaceQuestionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernInterfaceQuestions">
+
+                    <div class="accordion-body">
+                        Yes. Static interface methods are called using the
+                        interface name.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#interfaceQuestionFour">
+                        Can a class override a static interface method?
+                    </button>
+                </h2>
+
+                <div id="interfaceQuestionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernInterfaceQuestions">
+
+                    <div class="accordion-body">
+                        No. Static interface methods belong to the interface and
+                        are not inherited as overridable instance methods.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#interfaceQuestionFive">
+                        Why are private methods useful in interfaces?
+                    </button>
+                </h2>
+
+                <div id="interfaceQuestionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernInterfaceQuestions">
+
+                    <div class="accordion-body">
+                        They allow common implementation logic to be reused by
+                        default and static methods without exposing helper methods
+                        to implementing classes.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#interfaceQuestionSix">
+                        Can a class implement multiple interfaces?
+                    </button>
+                </h2>
+
+                <div id="interfaceQuestionSix"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernInterfaceQuestions">
+
+                    <div class="accordion-body">
+                        Yes. A Java class can implement multiple interfaces.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="alert alert-success mt-5">
+
+            <h4 class="fw-bold">Summary</h4>
+
+            <p class="mb-2">
+                In this lesson, you learned:
+            </p>
+
+            <ul class="mb-0">
+                <li>Modern Java interfaces</li>
+                <li>Default methods</li>
+                <li>Static methods</li>
+                <li>Private interface methods</li>
+                <li>Private static methods</li>
+                <li>Functional interfaces</li>
+                <li>Multiple interface implementation</li>
+                <li>Default method conflicts</li>
+                <li>Interface inheritance</li>
+                <li>Interface evolution</li>
+                <li>Modern interface design</li>
+                <li>Real-world interface usage</li>
+            </ul>
+
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("SealedClasses", "ModernJava", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("ModernJavaFeatures", "ModernJava", new { area = "CoreJava" })">
+                Next: Topic →
+            </a>
+
+        </div>
+
+    </div>
+</div>

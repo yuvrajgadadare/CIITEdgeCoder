@@ -1,0 +1,964 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Switch";
+}
+
+<style>
+
+    #javascript-switch-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-switch-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-switch-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-switch-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-switch-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-switch-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       INFO BOX
+       ========================================================= */
+
+    #javascript-switch-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-switch-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-switch-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-switch-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       RELATED IMAGE
+       ========================================================= */
+
+    #javascript-switch-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-switch-page .switch-image {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+
+    #javascript-switch-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       SWITCH PARTS
+       ========================================================= */
+
+    #javascript-switch-page .switch-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-switch-page .switch-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-switch-page .switch-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-switch-page .switch-icon {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #5b21b6;
+        color: #ffffff;
+        border-radius: 8px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-switch-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-switch-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 24px;
+    }
+
+    #javascript-switch-page .switch-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-switch-page .diagram-item {
+        min-width: 145px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-switch-page .diagram-item small {
+        display: block;
+        color: #6c757d;
+        margin-top: 6px;
+        font-weight: 400;
+    }
+
+    #javascript-switch-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+    #javascript-switch-page .case-group {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    #javascript-switch-page .case-box {
+        min-width: 110px;
+        padding: 14px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #javascript-switch-page .case-box span {
+        display: block;
+        color: #5b21b6;
+        margin-bottom: 4px;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-switch-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-switch-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-switch-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-switch-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-switch-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-switch-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-switch-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-switch-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-switch-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-switch-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-switch-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-switch-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-switch-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-switch-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-switch-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-switch-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-switch-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-switch-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-switch-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-switch-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-switch-page .switch-image {
+            height: 260px;
+        }
+
+        #javascript-switch-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-switch-page .switch-flow {
+            flex-direction: column;
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-switch-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+                    
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Switch
+                </h1>
+
+                <p class="lead-text">
+                    Learn how to select one block of code from multiple
+                    possible options using the JavaScript switch statement.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS SWITCH?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is switch?
+                </h2>
+
+                <p class="section-text">
+                    The <strong>switch</strong> statement evaluates an expression
+                    and compares its value with different <strong>case</strong>
+                    values.
+                </p>
+
+                <p class="section-text">
+                    When a matching case is found, its code executes.
+                    The <strong>break</strong> statement normally stops execution
+                    from continuing into the next case.
+                </p>
+
+
+                <!-- =================================================
+                     RELATED IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85"
+                         alt="Decision and code concept"
+                         class="switch-image" />
+
+                    <p class="image-caption">
+                        A switch statement helps a program choose from multiple options.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SWITCH PARTS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Main Parts of switch
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="switch-card">
+
+                            <div class="switch-icon">
+                                S
+                            </div>
+
+                            <h5>switch</h5>
+
+                            <p>
+                                Contains the expression whose value
+                                needs to be checked.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="switch-card">
+
+                            <div class="switch-icon">
+                                C
+                            </div>
+
+                            <h5>case</h5>
+
+                            <p>
+                                Defines a value that can match the
+                                switch expression.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="switch-card">
+
+                            <div class="switch-icon">
+                                D
+                            </div>
+
+                            <h5>default</h5>
+
+                            <p>
+                                Runs when none of the case values match.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     BASIC SYNTAX
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Basic Syntax
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>switch (expression) {
+    case value1:
+        // code
+        break;
+
+    case value2:
+        // code
+        break;
+
+    default:
+        // code
+}</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How switch Works
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Expression → Match Case → Execute Code
+                    </div>
+
+                    <div class="switch-flow">
+
+                        <div class="diagram-item">
+                            Expression
+                            <small>Example: day = 2</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Compare Cases
+                            <small>1, 2, 3, 4...</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Matching Case
+                            <small>case 2</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Execute
+                            <small>Run matching code</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="case-group">
+
+                        <div class="case-box">
+                            <span>case 1</span>
+                            Monday
+                        </div>
+
+                        <div class="case-box">
+                            <span>case 2</span>
+                            Tuesday
+                        </div>
+
+                        <div class="case-box">
+                            <span>case 3</span>
+                            Wednesday
+                        </div>
+
+                        <div class="case-box">
+                            <span>default</span>
+                            Other Day
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Days of the Week
+                </h2>
+
+                <p class="section-text">
+                    In this example, the switch statement checks a number
+                    and prints the corresponding day.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const day = 2;
+
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+
+    case 2:
+        console.log("Tuesday");
+        break;
+
+    case 3:
+        console.log("Wednesday");
+        break;
+
+    default:
+        console.log("Invalid Day");
+}</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="trySwitchExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Tuesday
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Course Selection
+                </h2>
+
+                <p class="section-text">
+                    A switch statement can also be used to select an action
+                    based on a course code.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const courseCode = "JS";
+
+switch (courseCode) {
+    case "JAVA":
+        console.log("Java Full Stack");
+        break;
+
+    case "DOTNET":
+        console.log(".NET Full Stack");
+        break;
+
+    case "JS":
+        console.log("JavaScript Full Stack");
+        break;
+
+    default:
+        console.log("Course Not Found");
+}</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="trySwitchExample2()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    JavaScript Full Stack
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Note
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Why use break?
+                    </h5>
+
+                    <p>
+                        The <strong>break</strong> statement stops the switch
+                        after the matching case has executed.
+                    </p>
+
+                    <p>
+                        Without <strong>break</strong>, JavaScript can continue
+                        executing statements in subsequent cases.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>switch</strong> statement is useful when
+                        one expression needs to be compared with multiple
+                        possible values. A <strong>case</strong> defines a
+                        possible match, <strong>break</strong> stops further
+                        case execution, and <strong>default</strong> handles
+                        the situation when no case matches.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("IfElse", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>←</span>
+
+                        <span>
+                            Previous: If Else
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Loops", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Loops
+                        </span>
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function trySwitchExample() {
+
+        const code =
+            'const day = 2;\n' +
+            '\n' +
+            'switch (day) {\n' +
+            '    case 1:\n' +
+            '        console.log("Monday");\n' +
+            '        break;\n' +
+            '\n' +
+            '    case 2:\n' +
+            '        console.log("Tuesday");\n' +
+            '        break;\n' +
+            '\n' +
+            '    case 3:\n' +
+            '        console.log("Wednesday");\n' +
+            '        break;\n' +
+            '\n' +
+            '    default:\n' +
+            '        console.log("Invalid Day");\n' +
+            '}';
+
+        openCompiler(code);
+
+    }
+
+
+    function trySwitchExample2() {
+
+        const code =
+            'const courseCode = "JS";\n' +
+            '\n' +
+            'switch (courseCode) {\n' +
+            '    case "JAVA":\n' +
+            '        console.log("Java Full Stack");\n' +
+            '        break;\n' +
+            '\n' +
+            '    case "DOTNET":\n' +
+            '        console.log(".NET Full Stack");\n' +
+            '        break;\n' +
+            '\n' +
+            '    case "JS":\n' +
+            '        console.log("JavaScript Full Stack");\n' +
+            '        break;\n' +
+            '\n' +
+            '    default:\n' +
+            '        console.log("Course Not Found");\n' +
+            '}';
+
+        openCompiler(code);
+
+    }
+
+</script>

@@ -1,0 +1,767 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Order";
+}
+
+<style>
+
+    #css-order-page {
+        color: #212529;
+    }
+
+    #css-order-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-order-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-order-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-order-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-order-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* Code */
+
+    #css-order-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-order-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* Explanation */
+
+    #css-order-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-order-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Diagram */
+
+    #css-order-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-order-page .diagram-container {
+        display: flex;
+        gap: 15px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-order-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 18px 25px;
+        border-radius: 6px;
+        flex: 1;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* Output */
+
+    #css-order-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-order-page .output-container {
+        display: flex;
+        gap: 15px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-order-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 20px;
+        text-align: center;
+        font-weight: 700;
+        flex: 1;
+    }
+
+    /* Property Cards */
+
+    #css-order-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-order-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-order-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Note */
+
+    #css-order-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* Summary */
+
+    #css-order-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-order-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-order-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+</style>
+
+
+<div id="css-order-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- Title -->
+
+                <h1>
+                    CSS Order
+                </h1>
+
+                <p>
+                    The CSS <strong>order</strong> property controls
+                    the visual order of Flex Items inside a
+                    Flex Container.
+                </p>
+
+                <p>
+                    By default, Flex Items appear in the same order
+                    as they are written in the HTML. The
+                    <strong>order</strong> property allows us to
+                    change their visual position without changing
+                    the HTML structure.
+                </p>
+
+
+                <!-- Basic Concept -->
+
+                <h2>
+                    What Does Order Do?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The <strong>order</strong> property changes
+                        where a Flex Item appears visually inside
+                        a Flex Container.
+                    </p>
+
+                    <p>
+                        It does not change the actual order of the
+                        elements in the HTML source.
+                    </p>
+
+                    <p>
+                        Flex Items are arranged according to their
+                        numeric order values. Items with lower values
+                        appear before items with higher values.
+                    </p>
+
+                </div>
+
+
+                <!-- Syntax -->
+
+                <h2>
+                    Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    order: number;
+}</code></pre>
+
+                </div>
+
+
+                <!-- Default -->
+
+                <h2>
+                    Default Order
+                </h2>
+
+                <p>
+                    The default value of the
+                    <strong>order</strong> property is
+                    <strong>0</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    order: 0;
+}</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    When all Flex Items have the same order value,
+                    they appear according to their original order
+                    in the HTML.
+                </p>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Order Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-container">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        Default visual order follows the HTML order.
+                    </p>
+
+                </div>
+
+
+                <!-- Example 1 -->
+
+                <h2>
+                    Example 1: Changing the Order
+                </h2>
+
+                <p>
+                    Suppose the HTML contains three items in this order:
+                    HTML, CSS, and JavaScript.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.html-item {
+    order: 3;
+}
+
+.css-item {
+    order: 1;
+}
+
+.js-item {
+    order: 2;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The HTML item has order
+                        <strong>3</strong>.
+                    </p>
+
+                    <p>
+                        The CSS item has order
+                        <strong>1</strong>.
+                    </p>
+
+                    <p>
+                        The JavaScript item has order
+                        <strong>2</strong>.
+                    </p>
+
+                    <p>
+                        Therefore, the visual order becomes:
+                        <strong>CSS → JavaScript → HTML</strong>.
+                    </p>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container">
+
+                        <div class="output-item"
+                             style="order:3;">
+                            HTML
+                        </div>
+
+                        <div class="output-item"
+                             style="order:1;">
+                            CSS
+                        </div>
+
+                        <div class="output-item"
+                             style="order:2;">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Example 2 -->
+
+                <h2>
+                    Example 2: Negative Order Values
+                </h2>
+
+                <p>
+                    The <strong>order</strong> property can also use
+                    negative numbers.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item1 {
+    order: 0;
+}
+
+.item2 {
+    order: -1;
+}
+
+.item3 {
+    order: 1;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The item with
+                        <strong>order: -1;</strong>
+                        appears before the items with order
+                        <strong>0</strong> and
+                        <strong>1</strong>.
+                    </p>
+
+                    <p>
+                        Therefore, negative values can be used to
+                        move an item toward the beginning of the
+                        Flex Container.
+                    </p>
+
+                </div>
+
+
+                <!-- Example 3 -->
+
+                <h2>
+                    Example 3: Same Order Values
+                </h2>
+
+                <p>
+                    Multiple Flex Items can have the same order value.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item1 {
+    order: 1;
+}
+
+.item2 {
+    order: 1;
+}
+
+.item3 {
+    order: 2;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Item 1 and Item 2 both have
+                        <strong>order: 1;</strong>.
+                    </p>
+
+                    <p>
+                        Item 3 has <strong>order: 2;</strong>.
+                    </p>
+
+                    <p>
+                        Therefore, Item 1 and Item 2 appear before
+                        Item 3. Items having the same order retain
+                        their relative source order.
+                    </p>
+
+                </div>
+
+
+                <!-- Values -->
+
+                <h2>
+                    Order Values
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Order Value</th>
+                                <th>Meaning</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>-1</strong>
+                                </td>
+
+                                <td>
+                                    Appears before items with
+                                    order 0.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>0</strong>
+                                </td>
+
+                                <td>
+                                    Default order value.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>1</strong>
+                                </td>
+
+                                <td>
+                                    Appears after items with
+                                    lower order values.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>2</strong>
+                                </td>
+
+                                <td>
+                                    Appears after items with
+                                    order 0 and 1.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Important Rule -->
+
+                <h2>
+                    How the Order Property Works
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Lower Value
+                            </h3>
+
+                            <p>
+                                A lower order value appears
+                                earlier.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Higher Value
+                            </h3>
+
+                            <p>
+                                A higher order value appears
+                                later.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Same Value
+                            </h3>
+
+                            <p>
+                                Items with the same value maintain
+                                their relative source order.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Real World -->
+
+                <h2>
+                   Example 🤓
+                </h2>
+
+                <p>
+                    Consider a course website where the HTML structure
+                    contains several course cards.
+                </p>
+
+                <p>
+                    On a particular layout, you may want the
+                    <strong>.NET</strong> course card to appear first
+                    visually even though it is not the first element
+                    in the HTML.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.java-course {
+    order: 2;
+}
+
+.dotnet-course {
+    order: 1;
+}
+
+.python-course {
+    order: 3;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The visual order will be:
+                    </p>
+
+                    <p>
+                        <strong>.NET → Java → Python</strong>
+                    </p>
+
+                    <p>
+                        The HTML source order does not need to be
+                        changed to achieve this visual arrangement.
+                    </p>
+
+                </div>
+
+
+                <!-- Accessibility -->
+
+                <h2>
+                    Important Accessibility Consideration
+                </h2>
+
+                <p>
+                    The <strong>order</strong> property changes the
+                    visual presentation, but it does not generally
+                    change the underlying HTML source order.
+                </p>
+
+                <p>
+                    Therefore, the logical HTML structure should still
+                    make sense for keyboard navigation, screen readers,
+                    and other assistive technologies.
+                </p>
+
+
+                <!-- Note -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    The <strong>order</strong> property changes the
+                    visual order of Flex Items, not the actual order
+                    of elements in the HTML source. Use it carefully
+                    when the reading or interaction order is important.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>order</strong> property controls
+                        the visual order of Flex Items. The default
+                        value is <strong>0</strong>. Items with lower
+                        order values appear before items with higher
+                        values. Negative values are also allowed.
+                        Items with the same order value maintain their
+                        relative source order.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("FlexItems", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Flex Items
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("FlexGrow", "Flexbox", new { area = "CSS" })">
+
+                            Next: Flex Grow →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

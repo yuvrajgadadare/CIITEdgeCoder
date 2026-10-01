@@ -1,0 +1,1050 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Record Types";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- =================================================
+                     INTRODUCTION
+                     ================================================= -->
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Record Types
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Record types are a modern C# feature designed for working
+                    with data-focused objects. They provide built-in support
+                    for value-based equality and make it easier to create
+                    immutable data models.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Records are particularly useful when the main purpose of
+                    a type is to represent and transfer data rather than
+                    contain complex mutable behavior.
+                </p>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Key Idea:</strong>
+                    A class normally compares objects by reference, while a
+                    record can compare objects based on their data values.
+                </div>
+
+
+                <!-- =================================================
+                     BASIC RECORD
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Creating a Record
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A record can be declared using the
+                    <code>record</code> keyword.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>public record Student
+{
+    public int Id { get; init; }
+
+    public string Name { get; init; }
+
+    public string Course { get; init; }
+}</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    The <code>init</code> accessor allows a property to be set
+                    during object initialization but prevents normal
+                    modification afterward.
+                </p>
+
+
+                <!-- =================================================
+                     RECORD CREATION
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Creating a Record Object
+                </h3>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Course { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student student = new Student
+        {
+            Id = 101,
+            Name = "Pradnya",
+            Course = "Dot.Net Full Stack"
+        };
+
+        Console.WriteLine(student.Name);
+        Console.WriteLine(student.Course);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Pradnya
+Dot.Net Full Stack</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     POSITIONAL RECORD
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Positional Records
+                </h3>
+
+                <p class="text-muted mb-4">
+                    C# also provides a shorter syntax called a positional
+                    record. Properties are declared directly in the record
+                    declaration.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+public record Student(
+    int Id,
+    string Name,
+    string Course
+);
+
+class Program
+{
+    static void Main()
+    {
+        Student student =
+            new Student(101, "Pradnya", "Dot.Net Full Stack");
+
+        Console.WriteLine(student.Id);
+        Console.WriteLine(student.Name);
+        Console.WriteLine(student.Course);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>101
+Pradnya
+Dot.Net Full Stack</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     VALUE EQUALITY
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Value-Based Equality
+                </h3>
+
+                <p class="text-muted mb-4">
+                    One of the important features of records is
+                    value-based equality. Two record objects containing the
+                    same values are considered equal.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+public record Student(
+    int Id,
+    string Name
+);
+
+class Program
+{
+    static void Main()
+    {
+        Student student1 =
+            new Student(101, "Rahul");
+
+        Student student2 =
+            new Student(101, "Rahul");
+
+        Console.WriteLine(student1 == student2);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h4 class="fw-bold text-dark mt-1 mb-1">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>True</code></pre>
+                </div>
+
+                <div class="alert alert-success mb-4">
+                    <strong>Important:</strong>
+                    Records compare their data values rather than simply
+                    checking whether two variables refer to the same object.
+                </div>
+
+
+                <!-- =================================================
+                     CLASS VS RECORD
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Class vs Record
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Class</th>
+                                <th>Record</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Primary Purpose</td>
+                                <td>General-purpose objects</td>
+                                <td>Data-focused objects</td>
+                            </tr>
+                            <tr>
+                                <td>Equality</td>
+                                <td>Reference-based by default</td>
+                                <td>Value-based by default</td>
+                            </tr>
+                            <tr>
+                                <td>Immutable Style</td>
+                                <td>Must be designed manually</td>
+                                <td>Supported naturally with init properties</td>
+                            </tr>
+                            <tr>
+                                <td>Syntax</td>
+                                <td>More verbose</td>
+                                <td>Can be concise</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =================================================
+                     WITH EXPRESSION
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    with Expression
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>with</code> expression creates a new record
+                    object based on an existing record while changing one or
+                    more values.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+public record Student(
+    int Id,
+    string Name,
+    string Course
+);
+
+class Program
+{
+    static void Main()
+    {
+        Student student1 =
+            new Student(101, "Rahul", "Java");
+
+        Student student2 =
+            student1 with
+            {
+                Course = "C# Full Stack"
+            };
+
+        Console.WriteLine(student1.Course);
+        Console.WriteLine(student2.Course);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-2 mb-1">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Java
+C# Full Stack</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    The original record remains unchanged, while
+                    <code>student2</code> contains the modified value.
+                </p>
+
+
+                <!-- =================================================
+                     TOSTRING
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    ToString() with Records
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Records provide a useful generated
+                    <code>ToString()</code> implementation that displays
+                    the record type and its values.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+public record Student(
+    int Id,
+    string Name,
+    string Course
+);
+
+class Program
+{
+    static void Main()
+    {
+        Student student =
+            new Student(101, "Rahul", "C# Full Stack");
+
+        Console.WriteLine(student);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Student { Id = 101, Name = Rahul, Course = C# Full Stack }</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     IMMUTABILITY
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Immutability
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Records are commonly used with immutable data. Once an
+                    object has been initialized, its values can be kept
+                    unchanged.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+public record Employee(
+    int Id,
+    string Name
+);
+
+class Program
+{
+    static void Main()
+    {
+        Employee employee =
+            new Employee(1, "Amit");
+
+        // employee.Name = "Rahul";  // Not allowed
+
+        Console.WriteLine(employee.Name);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Amit</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     RECORD IN WEB API
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Records in ASP.NET Core Web API
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Records are useful for DTOs
+                    (<strong>Data Transfer Objects</strong>) in ASP.NET Core
+                    applications.
+                </p>
+
+                <p class="text-muted mb-4">
+                    A DTO represents the data that should be transferred
+                    between the client and server.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>public record StudentDto(
+    int Id,
+    string Name,
+    string Course
+);</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    A controller can return the record as an API response.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>[HttpGet]
+public IActionResult GetStudent()
+{
+    StudentDto student =
+        new StudentDto(
+            101,
+            "Rahul",
+            "C# Full Stack"
+        );
+
+    return Ok(student);
+}</code></pre>
+                </div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    JSON Response
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">JSON</div>
+                    <pre class="mb-0"><code>{
+  "id": 101,
+  "name": "Rahul",
+  "course": "C# Full Stack"
+}</code></pre>
+                </div>
+
+                <div class="alert alert-success mb-4">
+                    <strong>CIIT Practical Point:</strong>
+                    Records are especially useful for DTOs, API request models,
+                    API response models, configuration-style data, and other
+                    situations where the main purpose of a type is to carry
+                    data.
+                </div>
+
+
+                <!-- =================================================
+                     RECORD STRUCT
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Record Class and Record Struct
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A record can be a reference type or a value type.
+                    <code>record</code> creates a record class, while
+                    <code>record struct</code> creates a record value type.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>public record class Student(
+    int Id,
+    string Name
+);
+
+public record struct Point(
+    int X,
+    int Y
+);</code></pre>
+                </div>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>record class</td>
+                                <td>Reference type</td>
+                            </tr>
+                            <tr>
+                                <td>record struct</td>
+                                <td>Value type</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =================================================
+                     WHEN TO USE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    When Should You Use Records?
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li class="mb-2">
+                        When the type mainly represents data.
+                    </li>
+
+                    <li class="mb-2">
+                        When value-based equality is useful.
+                    </li>
+
+                    <li class="mb-2">
+                        When immutable data is preferred.
+                    </li>
+
+                    <li class="mb-2">
+                        When creating DTOs for Web APIs.
+                    </li>
+
+                    <li class="mb-2">
+                        When concise data model syntax improves readability.
+                    </li>
+                </ul>
+
+
+                <!-- =================================================
+                     WHEN NOT TO USE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    When Should You Prefer a Class?
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li class="mb-2">
+                        When the object has significant mutable state.
+                    </li>
+
+                    <li class="mb-2">
+                        When identity is more important than value equality.
+                    </li>
+
+                    <li class="mb-2">
+                        When the type represents a complex domain entity.
+                    </li>
+
+                    <li class="mb-2">
+                        When object behavior is the primary focus.
+                    </li>
+                </ul>
+
+
+                <!-- =================================================
+                     COMMON MISTAKES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Common Mistakes
+                </h3>
+
+                <ol class="text-muted mb-4">
+                    <li class="mb-2">
+                        Assuming records are completely immutable in every
+                        possible design.
+                    </li>
+
+                    <li class="mb-2">
+                        Using records for every class in an application.
+                    </li>
+
+                    <li class="mb-2">
+                        Confusing value equality with reference identity.
+                    </li>
+
+                    <li class="mb-2">
+                        Modifying data directly when immutable design is
+                        intended.
+                    </li>
+
+                    <li class="mb-2">
+                        Using a record where entity identity and lifecycle
+                        are more important.
+                    </li>
+                </ol>
+
+
+                <!-- =================================================
+                     BEST PRACTICES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Best Practices
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li class="mb-2">
+                        Use records primarily for data-oriented types.
+                    </li>
+
+                    <li class="mb-2">
+                        Prefer immutable properties when appropriate.
+                    </li>
+
+                    <li class="mb-2">
+                        Use records for DTOs where value semantics are useful.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>with</code> expressions when creating modified
+                        copies of records.
+                    </li>
+
+                    <li class="mb-2">
+                        Choose classes when object identity and mutable behavior
+                        are central to the design.
+                    </li>
+                </ul>
+
+
+                <!-- =================================================
+                     INTERVIEW QUESTIONS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-4">
+                    Interview Questions
+                </h3>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        1. What is a record in C#?
+                    </h5>
+
+                    <p class="text-muted">
+                        A record is a data-oriented type that provides
+                        value-based equality and convenient syntax for
+                        immutable-style objects.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        2. What is the main difference between a class and a record?
+                    </h5>
+
+                    <p class="text-muted">
+                        A class uses reference-based equality by default,
+                        while a record provides value-based equality.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        3. What is a positional record?
+                    </h5>
+
+                    <p class="text-muted">
+                        A positional record is a concise record declaration in
+                        which its primary data properties are declared directly
+                        in the record header.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        4. What is the with expression?
+                    </h5>
+
+                    <p class="text-muted">
+                        The with expression creates a new record based on an
+                        existing record while allowing selected values to be
+                        changed.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        5. What is value-based equality?
+                    </h5>
+
+                    <p class="text-muted">
+                        Value-based equality means objects are considered equal
+                        when their relevant data values are equal.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        6. What is a record struct?
+                    </h5>
+
+                    <p class="text-muted">
+                        A record struct is a value-type record that combines
+                        record-style value equality with struct semantics.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        7. Why are records useful in ASP.NET Core?
+                    </h5>
+
+                    <p class="text-muted">
+                        Records are useful for representing DTOs and other
+                        data-transfer models where value-based semantics and
+                        concise immutable-style definitions are beneficial.
+                    </p>
+                </div>
+
+
+                <!-- =================================================
+                     PRACTICE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Practice Programs
+                </h3>
+
+                <ol class="text-muted mb-4">
+                    <li class="mb-2">
+                        Create a Student positional record.
+                    </li>
+
+                    <li class="mb-2">
+                        Create two records with the same values and compare them.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a new record using the with expression.
+                    </li>
+
+                    <li class="mb-2">
+                        Create an Employee record with Id, Name, and Department.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a Product record and display it using ToString().
+                    </li>
+
+                    <li class="mb-2">
+                        Create a record DTO and return it from an ASP.NET Core
+                        Web API controller.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a record struct representing a Point with X and Y.
+                    </li>
+                </ol>
+
+            </div>
+
+
+            <!-- =========================================================
+                 SUMMARY
+                 ========================================================= -->
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    Record types are designed for data-focused objects and
+                    provide value-based equality by default.
+                </p>
+
+                <p class="mb-3">
+                    You learned standard records, positional records,
+                    value-based equality, immutable-style properties,
+                    <strong>with expressions</strong>, and generated
+                    <strong>ToString()</strong> behavior.
+                </p>
+
+                <p class="mb-3">
+                    You also learned the difference between
+                    <strong>record class</strong> and
+                    <strong>record struct</strong>.
+                </p>
+
+                <p class="mb-0">
+                    Records are especially useful for DTOs and data-transfer
+                    models in modern C# and ASP.NET Core applications.
+                </p>
+
+            </div>
+
+
+            <!-- =========================================================
+                 NAVIGATION
+                 ========================================================= -->
+            <div class="d-flex justify-content-between align-items-center mt-4 mb-5">
+
+                <a href="@Url.Action("FileSystem", "FileIO", new { area = "CSharp" })"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="@Url.Action("PatternMatching", "ModernCSharp", new { area = "CSharp" })"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+
+<script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

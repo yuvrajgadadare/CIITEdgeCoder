@@ -1,0 +1,1280 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Labels";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+
+    .form-demo {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    .demo-label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Labels</h1>
+
+            <p class="lead">
+                The HTML <code>&lt;label&gt;</code> element provides a descriptive
+                name for a form control and helps users understand what information
+                should be entered or selected.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. What is a Label?</h2>
+
+            <p>
+                A label identifies the purpose of a form control such as an input,
+                checkbox, radio button, or other supported form element.
+            </p>
+
+            <pre><code>&lt;label&gt;
+    Full Name:
+&lt;/label&gt;</code></pre>
+
+            <p>
+                A label becomes especially useful when it is explicitly connected
+                to a form control.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">2. Basic Label Syntax</h2>
+
+            <pre><code>&lt;label for="username"&gt;
+    Username:
+&lt;/label&gt;
+
+&lt;input type="text"
+       id="username"
+       name="username"&gt;</code></pre>
+       
+       
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+
+                    <label for="demoUsername"
+                           class="demo-label">
+                        Username:
+                    </label>
+
+                    <input type="text"
+                           id="demoUsername"
+                           class="form-control"
+                           placeholder="Enter username" />
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">3. The for Attribute</h2>
+
+            <p>
+                The <code>for</code> attribute identifies the form control
+                that the label belongs to.
+            </p>
+
+            <pre><code>&lt;label for="email"&gt;
+    Email Address:
+&lt;/label&gt;</code></pre>
+
+            <p>
+                The value of the <code>for</code> attribute should match
+                the <code>id</code> of the related control.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">4. Matching for and id</h2>
+
+            <p>
+                A correct label-control relationship looks like this:
+            </p>
+
+            <pre><code>&lt;label for="fullName"&gt;
+    Full Name:
+&lt;/label&gt;
+
+&lt;input type="text"
+       id="fullName"
+       name="fullName"&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                The label's <code>for</code> value must match the form control's
+                <code>id</code> value exactly.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">5. Label with Text Input</h2>
+
+            <pre><code>&lt;label for="name"&gt;
+    Full Name:
+&lt;/label&gt;
+
+&lt;input type="text"
+       id="name"
+       name="name"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">6. Label with Email Input</h2>
+
+            <pre><code>&lt;label for="email"&gt;
+    Email:
+&lt;/label&gt;
+
+&lt;input type="email"
+       id="email"
+       name="email"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">7. Label with Password Input</h2>
+
+            <pre><code>&lt;label for="password"&gt;
+    Password:
+&lt;/label&gt;
+
+&lt;input type="password"
+       id="password"
+       name="password"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">8. Label with Number Input</h2>
+
+            <pre><code>&lt;label for="age"&gt;
+    Age:
+&lt;/label&gt;
+
+&lt;input type="number"
+       id="age"
+       name="age"
+       min="18"
+       max="60"&gt;</code></pre>
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">9. Label with Date Input</h2>
+
+            <pre><code>&lt;label for="dob"&gt;
+    Date of Birth:
+&lt;/label&gt;
+
+&lt;input type="date"
+       id="dob"
+       name="dob"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">10. Label with File Input</h2>
+
+            <pre><code>&lt;label for="resume"&gt;
+    Upload Resume:
+&lt;/label&gt;
+
+&lt;input type="file"
+       id="resume"
+       name="resume"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">11. Label with Textarea</h2>
+
+            <pre><code>&lt;label for="message"&gt;
+    Message:
+&lt;/label&gt;
+
+&lt;textarea
+    id="message"
+    name="message"
+    rows="5"&gt;
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+
+                    <label for="demoMessage"
+                           class="demo-label">
+                        Message:
+                    </label>
+
+                    <textarea id="demoMessage"
+                              class="form-control"
+                              rows="4"
+                              placeholder="Enter message"></textarea>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">12. Label with Select</h2>
+
+            <pre><code>&lt;label for="course"&gt;
+    Select Course:
+&lt;/label&gt;
+
+&lt;select id="course"
+        name="course"&gt;
+
+    &lt;option value="html"&gt;
+        HTML
+    &lt;/option&gt;
+
+    &lt;option value="css"&gt;
+        CSS
+    &lt;/option&gt;
+
+&lt;/select&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+
+            <h2 class="h3 fw-bold mt-5">13. Label with Checkbox</h2>
+
+            <p>
+                A checkbox can be directly associated with a label.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="html"
+       name="skills"
+       value="html"&gt;
+
+&lt;label for="html"&gt;
+    HTML
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                <div class="form-demo">
+                    <input type="checkbox"
+                           id="demoHtml"
+                           name="skills"
+                           value="html" />
+
+                    <label for="demoHtml"
+                           class="ms-2">
+                        HTML
+                    </label>
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">14. Label with Radio Button</h2>
+
+            <p>
+                Radio buttons can also be associated with labels.
+            </p>
+
+            <pre><code>&lt;input type="radio"
+       id="online"
+       name="mode"
+       value="online"&gt;
+
+&lt;label for="online"&gt;
+    Online
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">15. Multiple Radio Buttons with Labels</h2>
+
+            <pre><code>&lt;input type="radio"
+       id="online"
+       name="mode"
+       value="online"&gt;
+
+&lt;label for="online"&gt;
+    Online
+&lt;/label&gt;
+
+&lt;input type="radio"
+       id="offline"
+       name="mode"
+       value="offline"&gt;
+
+&lt;label for="offline"&gt;
+    Offline
+&lt;/label&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+
+                <div class="form-demo">
+
+                    <div class="form-check">
+                        <input type="radio"
+                               id="demoOnline"
+                               name="demoMode"
+                               class="form-check-input"
+                               value="online" />
+
+                        <label for="demoOnline"
+                               class="form-check-label">
+                            Online
+                        </label>
+                    </div>
+
+                    <div class="form-check mt-2">
+                        <input type="radio"
+                               id="demoOffline"
+                               name="demoMode"
+                               class="form-check-input"
+                               value="offline" />
+
+                        <label for="demoOffline"
+                               class="form-check-label">
+                            Offline
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">16. Explicit Label Association</h2>
+
+            <p>
+                The most common explicit association uses
+                <code>for</code> on the label and <code>id</code> on the control.
+            </p>
+
+            <pre><code>&lt;label for="phone"&gt;
+    Phone Number:
+&lt;/label&gt;
+
+&lt;input type="tel"
+       id="phone"
+       name="phone"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">17. Implicit Label Association</h2>
+
+            <p>
+                A form control can also be placed directly inside its
+                <code>&lt;label&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;label&gt;
+
+    Full Name:
+
+    &lt;input type="text"
+           name="name"&gt;
+
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                Explicit association using <code>for</code> and <code>id</code>
+                is often easier to read and maintain, especially in larger forms.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">18. Label with Nested Input</h2>
+
+            <pre><code>&lt;label&gt;
+
+    Email:
+
+    &lt;input type="email"
+           name="email"&gt;
+
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">19. Label and Placeholder</h2>
+
+            <p>
+                Labels and placeholders serve different purposes.
+            </p>
+
+            <pre><code>&lt;label for="username"&gt;
+    Username:
+&lt;/label&gt;
+
+&lt;input type="text"
+       id="username"
+       name="username"
+       placeholder="Enter your username"&gt;</code></pre>
+
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="note-box">
+                <strong>Remember:</strong>
+                The label identifies the control, while the placeholder provides
+                a temporary hint about expected input.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">20. Label with Required Input</h2>
+
+            <pre><code>&lt;label for="email"&gt;
+    Email:
+&lt;/label&gt;
+
+&lt;input type="email"
+       id="email"
+       name="email"
+       required&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">21. Labels in a Registration Form</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="name"&gt;
+        Full Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;
+        Email:
+    &lt;/label&gt;
+
+    &lt;input type="email"
+           id="email"
+           name="email"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="password"&gt;
+        Password:
+    &lt;/label&gt;
+
+    &lt;input type="password"
+           id="password"
+           name="password"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">22. Labels in a Contact Form</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="name"&gt;
+        Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;
+        Email:
+    &lt;/label&gt;
+
+    &lt;input type="email"
+           id="email"
+           name="email"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="message"&gt;
+        Message:
+    &lt;/label&gt;
+
+    &lt;br&gt;
+
+    &lt;textarea
+        id="message"
+        name="message"
+        rows="5"&gt;
+    &lt;/textarea&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">23. Labels for Checkbox Groups</h2>
+
+            <p>
+                Each checkbox should have a clear label describing its option.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="html"
+       name="skills"
+       value="html"&gt;
+
+&lt;label for="html"&gt;
+    HTML
+&lt;/label&gt;
+
+&lt;input type="checkbox"
+       id="css"
+       name="skills"
+       value="css"&gt;
+
+&lt;label for="css"&gt;
+    CSS
+&lt;/label&gt;
+
+&lt;input type="checkbox"
+       id="javascript"
+       name="skills"
+       value="javascript"&gt;
+
+&lt;label for="javascript"&gt;
+    JavaScript
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">24. Labels for Radio Groups</h2>
+
+            <p>
+                Each radio button should have its own label.
+            </p>
+
+            <pre><code>&lt;input type="radio"
+       id="beginner"
+       name="level"
+       value="beginner"&gt;
+
+&lt;label for="beginner"&gt;
+    Beginner
+&lt;/label&gt;
+
+&lt;input type="radio"
+       id="advanced"
+       name="level"
+       value="advanced"&gt;
+
+&lt;label for="advanced"&gt;
+    Advanced
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">25. Label Click Behavior</h2>
+
+            <p>
+                An explicitly associated label can be activated to interact
+                with its related control.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="terms"
+       name="terms"&gt;
+
+&lt;label for="terms"&gt;
+    I agree to the terms and conditions.
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="note-box">
+                <strong>Practical Benefit:</strong>
+                Clicking the text of the label can activate the associated
+                checkbox or other supported control.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">26. Label Styling with CSS</h2>
+
+            <p>
+                CSS can be used to control the appearance of labels.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    .form-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+
+&lt;/style&gt;
+
+&lt;label class="form-label"
+       for="name"&gt;
+    Full Name:
+&lt;/label&gt;
+
+&lt;input type="text"
+       id="name"
+       name="name"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">27. Label with Block Layout</h2>
+
+            <pre><code>&lt;style&gt;
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <p>
+                Setting labels to <code>display: block</code> is a common
+                approach for stacked form layouts.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">28. Label and Input Layout</h2>
+
+            <pre><code>&lt;div&gt;
+
+    &lt;label for="firstName"&gt;
+        First Name
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="firstName"
+           name="firstName"&gt;
+
+&lt;/div&gt;
+
+&lt;div&gt;
+
+    &lt;label for="lastName"&gt;
+        Last Name
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="lastName"
+           name="lastName"&gt;
+
+&lt;/div&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">29. Labels with Fieldset</h2>
+
+            <p>
+                Labels can be used inside a <code>&lt;fieldset&gt;</code>
+                to group related form controls.
+            </p>
+
+            <pre><code>&lt;fieldset&gt;
+
+    &lt;legend&gt;
+        Personal Information
+    &lt;/legend&gt;
+
+    &lt;label for="name"&gt;
+        Full Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;
+        Email:
+    &lt;/label&gt;
+
+    &lt;input type="email"
+           id="email"
+           name="email"&gt;
+
+&lt;/fieldset&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">30. Labels and Accessibility</h2>
+
+            <p>
+                Proper labels improve form accessibility because users can
+                understand what each control represents.
+            </p>
+
+            <ul>
+                <li>Use a meaningful label for each important control.</li>
+                <li>Associate labels explicitly when possible.</li>
+                <li>Keep label text clear and concise.</li>
+                <li>Do not use placeholder text as the only label.</li>
+                <li>Ensure every label points to the correct control.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">31. Common Label Mistakes</h2>
+
+            <ul>
+                <li>Using a <code>for</code> value that does not match the input <code>id</code>.</li>
+                <li>Forgetting labels for form controls.</li>
+                <li>Using duplicate <code>id</code> values.</li>
+                <li>Using vague label text.</li>
+                <li>Using placeholders instead of labels.</li>
+                <li>Applying the label to the wrong control.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">32. Correct vs Incorrect Association</h2>
+
+            <h3 class="h5 fw-bold mt-4">Correct</h3>
+
+            <pre><code>&lt;label for="email"&gt;
+    Email:
+&lt;/label&gt;
+
+&lt;input type="email"
+       id="email"
+       name="email"&gt;</code></pre>
+
+            <h3 class="h5 fw-bold mt-4">Incorrect</h3>
+
+            <pre><code>&lt;label for="emailAddress"&gt;
+    Email:
+&lt;/label&gt;
+
+&lt;input type="email"
+       id="email"
+       name="email"&gt;</code></pre>
+
+            <p>
+                In the incorrect example, the label's <code>for</code> value
+                does not match the input's <code>id</code>.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">33. Complete Form with Proper Labels</h2>
+
+            <pre><code>&lt;form action="/register"
+      method="post"&gt;
+
+    &lt;fieldset&gt;
+
+        &lt;legend&gt;
+            Student Registration
+        &lt;/legend&gt;
+
+        &lt;label for="fullName"&gt;
+            Full Name:
+        &lt;/label&gt;
+
+        &lt;input type="text"
+               id="fullName"
+               name="fullName"
+               required&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="email"&gt;
+            Email:
+        &lt;/label&gt;
+
+        &lt;input type="email"
+               id="email"
+               name="email"
+               required&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="phone"&gt;
+            Phone:
+        &lt;/label&gt;
+
+        &lt;input type="tel"
+               id="phone"
+               name="phone"&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="course"&gt;
+            Course:
+        &lt;/label&gt;
+
+        &lt;select id="course"
+                name="course"&gt;
+
+            &lt;option value="html"&gt;
+                HTML
+            &lt;/option&gt;
+
+            &lt;option value="css"&gt;
+                CSS
+            &lt;/option&gt;
+
+            &lt;option value="javascript"&gt;
+                JavaScript
+            &lt;/option&gt;
+
+        &lt;/select&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="message"&gt;
+            Message:
+        &lt;/label&gt;
+
+        &lt;br&gt;
+
+        &lt;textarea
+            id="message"
+            name="message"
+            rows="5"&gt;
+        &lt;/textarea&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;button type="submit"&gt;
+            Register
+        &lt;/button&gt;
+
+    &lt;/fieldset&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">34. Best Practices</h2>
+
+            <ul>
+                <li>Use labels for meaningful form controls.</li>
+                <li>Match <code>for</code> and <code>id</code> correctly.</li>
+                <li>Use unique <code>id</code> values.</li>
+                <li>Keep labels descriptive.</li>
+                <li>Use fieldsets for related groups when appropriate.</li>
+                <li>Do not depend only on placeholder text.</li>
+                <li>Keep form labels consistent across the application.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">35. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create a form with properly associated labels for:</strong></p>
+
+                <ol>
+                    <li>Full Name</li>
+                    <li>Email</li>
+                    <li>Password</li>
+                    <li>Phone Number</li>
+                    <li>Date of Birth</li>
+                    <li>Course dropdown</li>
+                    <li>Gender radio buttons</li>
+                    <li>Skills checkboxes</li>
+                    <li>Address textarea</li>
+                    <li>Resume file input</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">36. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;HTML Labels Example&lt;/title&gt;
+
+    &lt;style&gt;
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Student Registration&lt;/h1&gt;
+
+    &lt;form action="/register"
+          method="post"&gt;
+
+        &lt;div class="form-group"&gt;
+
+            &lt;label for="name"&gt;
+                Full Name:
+            &lt;/label&gt;
+
+            &lt;input type="text"
+                   id="name"
+                   name="name"
+                   required&gt;
+
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+
+            &lt;label for="email"&gt;
+                Email:
+            &lt;/label&gt;
+
+            &lt;input type="email"
+                   id="email"
+                   name="email"
+                   required&gt;
+
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+
+            &lt;label for="phone"&gt;
+                Phone:
+            &lt;/label&gt;
+
+            &lt;input type="tel"
+                   id="phone"
+                   name="phone"&gt;
+
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+
+            &lt;label for="course"&gt;
+                Course:
+            &lt;/label&gt;
+
+            &lt;select id="course"
+                    name="course"&gt;
+
+                &lt;option value="html"&gt;
+                    HTML
+                &lt;/option&gt;
+
+                &lt;option value="css"&gt;
+                    CSS
+                &lt;/option&gt;
+
+                &lt;option value="javascript"&gt;
+                    JavaScript
+                &lt;/option&gt;
+
+            &lt;/select&gt;
+
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+
+            &lt;label for="address"&gt;
+                Address:
+            &lt;/label&gt;
+
+            &lt;textarea
+                id="address"
+                name="address"
+                rows="5"&gt;
+            &lt;/textarea&gt;
+
+        &lt;/div&gt;
+
+        &lt;button type="submit"&gt;
+            Register
+        &lt;/button&gt;
+
+    &lt;/form&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+    
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    The HTML <code>&lt;label&gt;</code> element identifies form
+                    controls and improves usability and accessibility. The most
+                    common approach is to connect a label's <code>for</code>
+                    attribute with the control's <code>id</code>. Labels can be
+                    associated with text inputs, email fields, passwords,
+                    textareas, dropdowns, radio buttons, checkboxes, dates, files,
+                    and other form controls. Proper label associations make forms
+                    clearer and easier to use.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("InputTypes", "Forms", new { area = "HTML" })">
+                    ← Previous: Input Types
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("TextArea", "Forms", new { area = "HTML" })">
+                    Next: TextArea →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

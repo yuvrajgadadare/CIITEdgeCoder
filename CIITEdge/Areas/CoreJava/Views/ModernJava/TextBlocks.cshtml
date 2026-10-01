@@ -1,0 +1,714 @@
+﻿@{
+    ViewData["Title"] = "Text Blocks in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-2">Text Blocks in Java</h1>
+                <p class="text-muted mb-0">
+                    Learn how Java text blocks simplify multi-line strings and formatted text.
+                </p>
+            </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Introduction -->
+        <h2 class="fw-bold">1. What are Text Blocks?</h2>
+
+        <p>
+            A <strong>text block</strong> is a multi-line string literal introduced
+            as a preview feature in Java 13 and standardized in Java 15.
+        </p>
+
+        <p>
+            Text blocks make it easier to write multi-line text such as:
+        </p>
+
+        <ul>
+            <li>HTML</li>
+            <li>JSON</li>
+            <li>SQL</li>
+            <li>XML</li>
+            <li>Formatted messages</li>
+            <li>Multi-line documentation</li>
+        </ul>
+
+        <div class="alert alert-info">
+            <strong>Key idea:</strong>
+            Text blocks reduce the need for repeated quotation marks,
+            newline escape sequences, and string concatenation.
+        </div>
+
+        <!-- Traditional -->
+        <h2 class="fw-bold mt-5">2. Traditional Multi-Line String</h2>
+
+        <p>
+            Before text blocks, multi-line strings often required explicit
+            newline characters and string concatenation.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String message =
+    "Hello Java\n"
+    + "Welcome to CIIT Institute\n"
+    + "Learn modern Java features";</code></pre>
+        </div>
+
+        <!-- Text block -->
+        <h2 class="fw-bold mt-5">3. Basic Text Block</h2>
+
+        <p>
+            A text block starts and ends with three double quotation marks.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String message = """
+        Hello Java
+        Welcome to CIIT Institute
+        Learn modern Java features
+        """;</code></pre>
+        </div>
+
+        <p>
+            The text is much easier to read because the source code resembles
+            the resulting multi-line string.
+        </p>
+
+        <!-- Syntax -->
+        <h2 class="fw-bold mt-5">4. Text Block Syntax</h2>
+
+        <p>
+            The opening delimiter is normally followed by a line break.
+            The closing delimiter ends the text block.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String text = """
+        First line
+        Second line
+        Third line
+        """;</code></pre>
+        </div>
+
+        <!-- Newline -->
+        <h2 class="fw-bold mt-5">5. Newline Characters</h2>
+
+        <p>
+            Each line in a text block normally contributes a line terminator
+            to the resulting string.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String text = """
+        Java
+        Spring
+        Hibernate
+        """;</code>
+
+</pre>
+        </div>
+
+        <p>
+            Conceptually, the resulting value contains:
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Output</span>
+            <pre class="mb-0"><code>Java
+Spring
+Hibernate</code></pre>
+        </div>
+
+        <!-- Indentation -->
+        <h2 class="fw-bold mt-5">6. Automatic Indentation</h2>
+
+        <p>
+            Java processes incidental indentation in text blocks so that the
+            indentation used only to format source code does not unnecessarily
+            become part of the resulting string.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String text = """
+        Java
+        Spring
+        SQL
+        """;</code></pre>
+        </div>
+
+        <p>
+            This allows developers to indent the text block together with
+            the surrounding Java code while keeping the resulting content clean.
+        </p>
+
+        <!-- HTML -->
+        <h2 class="fw-bold mt-5">7. Text Blocks with HTML</h2>
+
+        <p>
+            Text blocks are especially useful when embedding HTML.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String html = """
+        &lt;html&gt;
+            &lt;body&gt;
+                &lt;h1&gt;CIIT 🌍👨‍🏫&lt;/h1&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+        """;</code></pre>
+        </div>
+
+        <div class="alert alert-success">
+            <strong>Benefit:</strong>
+            HTML structure remains readable without excessive escape sequences.
+        </div>
+
+        <!-- JSON -->
+        <h2 class="fw-bold mt-5">8. Text Blocks with JSON</h2>
+
+        <p>
+            JSON data can also be represented cleanly with text blocks.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String json = """
+        {
+            "name": "Pradnya",
+            "role": "Java Developer",
+            "experience": "Fresher"
+        }
+        """;</code></pre>
+        </div>
+
+        <!-- SQL -->
+        <h2 class="fw-bold mt-5">9. Text Blocks with SQL</h2>
+
+        <p>
+            SQL queries become easier to format and maintain.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String sql = """
+        SELECT id, name, email
+        FROM users
+        WHERE active = true
+        ORDER BY name
+        """;</code></pre>
+        </div>
+
+        <!-- Escape -->
+        <h2 class="fw-bold mt-5">10. Escape Sequences</h2>
+
+        <p>
+            Text blocks still support Java escape sequences when they are required.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String text = """
+        First line
+        Second line
+        """;</code></pre>
+        </div>
+
+        <p>
+            Common escape sequences include:
+        </p>
+
+        <ul>
+            <li><code>\n</code> - New line</li>
+            <li><code>\t</code> - Tab</li>
+            <li><code>\"</code> - Double quote</li>
+            <li><code>\\</code> - Backslash</li>
+        </ul>
+
+        <!-- Explicit quote -->
+        <h2 class="fw-bold mt-5">11. Double Quotes Inside Text Blocks</h2>
+
+        <p>
+            Double quotes can usually be written directly inside a text block
+            without escaping each quote.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String message = """
+        He said "Hello Sam"
+        and started learning.
+        """;</code></pre>
+        </div>
+
+        <!-- String methods -->
+        <h2 class="fw-bold mt-5">12. Text Blocks are Strings</h2>
+
+        <p>
+            A text block produces a normal Java <code>String</code>.
+            Therefore, normal String methods can be used.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String text = """
+        Java
+        Spring
+        """;
+
+System.out.println(
+    text.length()
+);
+
+System.out.println(
+    text.contains("CIIT🌍❤️")
+);
+
+System.out.println(
+    text.toUpperCase()
+);</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>13
+false
+JAVA
+SPRING</code></pre>
+</div>
+        <!-- formatted -->
+        <h2 class="fw-bold mt-5">13. Formatted Text Blocks</h2>
+
+        <p>
+            Text blocks can be combined with String formatting methods.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String name = "Samadhan";
+int age = 22;
+
+String profile = """
+        Name: %s
+        Age: %d
+        """.formatted(name, age);
+
+System.out.println(profile);</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Name: Samadhan
+Age: 22</code></pre>
+</div>
+        <div class="alert alert-info">
+            <strong>Modern Java:</strong>
+            The <code>formatted()</code> method provides a convenient way
+            to insert values into a text block.
+        </div>
+
+        <!-- String.format -->
+        <h2 class="fw-bold mt-5">14. String.format with Text Blocks</h2>
+
+        <p>
+            You can also use <code>String.format()</code> with a text block.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String name = "CIIT Institute";
+
+String message = String.format(
+    """
+    Learning language: %s
+    """,
+    name
+);
+
+System.out.println(message);</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Name: Samadhan
+Age: 22</code></pre>
+</div>
+        <!-- Incidental whitespace -->
+        <h2 class="fw-bold mt-5">15. Incidental Whitespace</h2>
+
+        <p>
+            Text blocks distinguish between indentation introduced only by
+            source formatting and whitespace that is intentionally part of
+            the content.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String text = """
+        Java
+          Spring
+            Boot
+        """;</code></pre>
+        </div>
+
+        <p>
+            Relative indentation inside the text can be preserved when it
+            represents meaningful content.
+        </p>
+
+        <!-- Trailing spaces -->
+        <h2 class="fw-bold mt-5">16. Trailing Spaces</h2>
+
+        <p>
+            Trailing whitespace can be controlled explicitly when necessary.
+            Java provides the <code>\s</code> escape sequence for preserving
+            trailing spaces at the end of a line.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String text = """
+        Java\s
+        Spring
+        """;</code></pre>
+        </div>
+
+        <!-- Line continuation -->
+        <h2 class="fw-bold mt-5">17. Line Continuation</h2>
+
+        <p>
+            The backslash escape can be used to prevent a source line break
+            from becoming a line break in the resulting string.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String text = """
+        Java \
+        Spring \
+        Boot
+        """;</code></pre>
+        </div>
+
+        <p>
+            This can be useful when source formatting should not introduce
+            additional newline characters.
+        </p>
+
+        <!-- Text block conversion -->
+        <h2 class="fw-bold mt-5">18. Converting Existing Strings</h2>
+
+        <p>
+            Text blocks are most useful when existing concatenated strings become
+            difficult to read or maintain.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Before</span>
+            <pre class="mb-0"><code>String html =
+    "&lt;html&gt;\n"
+    + "    &lt;body&gt;\n"
+    + "        &lt;h1&gt;WelCome CIIT Training Institute🌍👀&lt;/h1&gt;\n"
+    + "    &lt;/body&gt;\n"
+    + "&lt;/html&gt;";</code></pre>
+        </div>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">After</span>
+            <pre class="mb-0"><code>String html = """
+        &lt;html&gt;
+            &lt;body&gt;
+                &lt;h1&gt;WelCome CIIT Training Institute🌍👀&lt;/h1&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+        """;</code></pre>
+        </div>
+
+        <!-- Version -->
+        <h2 class="fw-bold mt-5">19. Java Version</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Java Version</th>
+                        <th>Text Blocks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Java 13</td>
+                        <td>Introduced as preview</td>
+                    </tr>
+                    <tr>
+                        <td>Java 14</td>
+                        <td>Second preview</td>
+                    </tr>
+                    <tr>
+                        <td>Java 15</td>
+                        <td>Standard feature</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Advantages -->
+        <h2 class="fw-bold mt-5">20. Advantages of Text Blocks</h2>
+
+        <ul>
+            <li>Improves readability of multi-line strings.</li>
+            <li>Reduces repeated string concatenation.</li>
+            <li>Reduces unnecessary newline escape sequences.</li>
+            <li>Makes HTML and JSON easier to maintain.</li>
+            <li>Makes SQL queries easier to read.</li>
+            <li>Works with normal String APIs.</li>
+            <li>Supports String formatting.</li>
+        </ul>
+
+        <!-- Limitations -->
+        <h2 class="fw-bold mt-5">21. Limitations</h2>
+
+        <ul>
+            <li>Requires Java 15 or later as a standard feature.</li>
+            <li>Whitespace behavior should be understood when formatting important text.</li>
+            <li>Text blocks are not a separate runtime data type; they produce Strings.</li>
+            <li>Very short strings are usually clearer with ordinary string literals.</li>
+        </ul>
+
+        <!-- Real world -->
+        <h2 class="fw-bold mt-5">22. Example 🌍🫠</h2>
+
+        <p>
+            Suppose a Java application needs to generate an email template.
+            A text block makes the template much easier to maintain.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String customerName = "Samiksha";
+
+String email = """
+        Dear %s,
+
+        Welcome to CIIT Institute.
+
+        We are happy to have you
+        learning Java with us.
+
+        Regards,
+        CIIT Institute
+        """.formatted(customerName);
+
+System.out.println(email);</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Dear Samiksha,
+
+Welcome to CIIT Institute.
+
+We are happy to have you
+learning Java with us.
+
+Regards,
+CIIT Institute</code></pre>
+</div>
+        <!-- Best practices -->
+        <h2 class="fw-bold mt-5">23. Best Practices</h2>
+
+        <ul>
+            <li>Use text blocks for genuinely multi-line content.</li>
+            <li>Use normal strings for short single-line values.</li>
+            <li>Keep indentation consistent.</li>
+            <li>Use <code>formatted()</code> for readable value substitution.</li>
+            <li>Be careful when whitespace has semantic meaning.</li>
+            <li>Use the Java version required by the project.</li>
+        </ul>
+
+        <!-- Interview -->
+        <h2 class="fw-bold mt-5">24. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="textBlockQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#textQuestionOne">
+                        What are text blocks in Java?
+                    </button>
+                </h2>
+
+                <div id="textQuestionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#textBlockQuestions">
+
+                    <div class="accordion-body">
+                        Text blocks are multi-line String literals designed to make
+                        multi-line text easier to write and read.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#textQuestionTwo">
+                        Which Java version standardized text blocks?
+                    </button>
+                </h2>
+
+                <div id="textQuestionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#textBlockQuestions">
+
+                    <div class="accordion-body">
+                        Text blocks became a standard feature in Java 15.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#textQuestionThree">
+                        What type does a text block produce?
+                    </button>
+                </h2>
+
+                <div id="textQuestionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#textBlockQuestions">
+
+                    <div class="accordion-body">
+                        A text block produces a normal Java <code>String</code>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#textQuestionFour">
+                        Where are text blocks useful?
+                    </button>
+                </h2>
+
+                <div id="textQuestionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#textBlockQuestions">
+
+                    <div class="accordion-body">
+                        They are useful for HTML, JSON, SQL, XML, email templates,
+                        configuration content, and other multi-line strings.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#textQuestionFive">
+                        What is formatted() used for?
+                    </button>
+                </h2>
+
+                <div id="textQuestionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#textBlockQuestions">
+
+                    <div class="accordion-body">
+                        <code>formatted()</code> allows values to be inserted into
+                        a String using format specifiers such as <code>%s</code>
+                        and <code>%d</code>.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="alert alert-success mt-5">
+            <h4 class="fw-bold">Summary</h4>
+
+            <p class="mb-2">
+                In this lesson, you learned:
+            </p>
+
+            <ul class="mb-0">
+                <li>What Java text blocks are</li>
+                <li>Text block syntax</li>
+                <li>Automatic indentation</li>
+                <li>Multi-line HTML and JSON</li>
+                <li>Multi-line SQL</li>
+                <li>Escape sequences</li>
+                <li>String formatting with text blocks</li>
+                <li>Whitespace and line continuation</li>
+                <li>Advantages and limitations</li>
+                <li>Real-world text block usage</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("PatternMatching", "ModernJava", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("RecordClasses", "ModernJava", new { area = "CoreJava" })">
+                Next: Topic →
+            </a>
+
+        </div>
+
+    </div>
+</div>

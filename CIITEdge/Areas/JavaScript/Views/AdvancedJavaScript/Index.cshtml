@@ -1,0 +1,785 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Advanced JavaScript";
+}
+
+<style>
+
+    #advanced-javascript-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #advanced-javascript-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    /* ==============================
+       PAGE TITLE
+       ============================== */
+
+    #advanced-javascript-page .page-title {
+        font-size: 34px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #advanced-javascript-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 28px;
+    }
+
+    /* ==============================
+       SECTION
+       ============================== */
+
+    #advanced-javascript-page .section-title {
+        color: #212529;
+        font-size: 26px;
+        font-weight: 700;
+        margin-top: 30px;
+        margin-bottom: 14px;
+    }
+
+    #advanced-javascript-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* ==============================
+       SIMPLE DEFINITION
+       ============================== */
+
+    #advanced-javascript-page .concept-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+
+    #advanced-javascript-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #advanced-javascript-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       DIAGRAM
+       ============================== */
+
+    #advanced-javascript-page .flow-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+    }
+
+    #advanced-javascript-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #advanced-javascript-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #advanced-javascript-page .flow-box {
+        min-width: 145px;
+        padding: 16px 20px;
+        background-color: #ffffff;
+        border: 2px solid #7042d0;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #advanced-javascript-page .flow-box.start {
+        background-color: #7042d0;
+        color: #ffffff;
+    }
+
+    #advanced-javascript-page .flow-box.result {
+        border-color: #198754;
+        color: #198754;
+    }
+
+    #advanced-javascript-page .flow-arrow {
+        font-size: 25px;
+        color: #7042d0;
+        font-weight: 700;
+    }
+
+    /* ==============================
+       EXAMPLE
+       ============================== */
+
+    #advanced-javascript-page .example-title {
+        color: #212529;
+        font-size: 23px;
+        font-weight: 700;
+        margin-top: 30px;
+        margin-bottom: 12px;
+    }
+
+    /* ==============================
+       CODE BOX
+       ============================== */
+
+    #advanced-javascript-page .code-box {
+        background-color: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        white-space: pre;
+    }
+
+    #advanced-javascript-page .code-box code {
+        color: #ffffff;
+    }
+
+    /* ==============================
+       TRY IT
+       ============================== */
+
+    #advanced-javascript-page .try-it-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #advanced-javascript-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 6px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    #advanced-javascript-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    /* ==============================
+       OUTPUT
+       ============================== */
+
+    #advanced-javascript-page .output-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 6px;
+        padding: 14px 16px;
+        margin-top: 8px;
+        margin-bottom: 28px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    /* ==============================
+       NOTE
+       ============================== */
+
+    #advanced-javascript-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 5px solid #ffb300;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        color: #6d4c41;
+        line-height: 1.7;
+    }
+
+    /* ==============================
+       SUMMARY
+       ============================== */
+
+    #advanced-javascript-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    #advanced-javascript-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #advanced-javascript-page .summary-box p {
+        color: #075985;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       NAVIGATION
+       ============================== */
+
+    #advanced-javascript-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #advanced-javascript-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+    #advanced-javascript-page .previous-btn {
+        background-color: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #advanced-javascript-page .previous-btn:hover {
+        background-color: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #advanced-javascript-page .next-btn {
+        background-color: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #advanced-javascript-page .next-btn:hover {
+        background-color: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    /* ==============================
+       RESPONSIVE
+       ============================== */
+
+    @@media (max-width: 768px) {
+
+        #advanced-javascript-page .content-section {
+            padding: 20px;
+        }
+
+        #advanced-javascript-page .page-title {
+            font-size: 29px;
+        }
+
+        #advanced-javascript-page .flow-row {
+            flex-direction: column;
+        }
+
+        #advanced-javascript-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #advanced-javascript-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #advanced-javascript-page .nav-btn {
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+<main id="advanced-javascript-page" class="container-fluid">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - MAIN CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Advanced JavaScript
+                </h1>
+
+                <p class="lead-text">
+                    Advanced JavaScript concepts help developers write
+                    powerful, reusable and maintainable JavaScript
+                    applications.
+                </p>
+
+
+                <!-- ==============================
+                     WHAT IS ADVANCED JAVASCRIPT
+                     ============================== -->
+
+                <h2 class="section-title">
+                    What is Advanced JavaScript?
+                </h2>
+
+                <p class="section-text">
+                    Advanced JavaScript refers to concepts that go beyond
+                    basic variables, functions, loops and objects.
+                    These concepts help developers understand how JavaScript
+                    works internally and how to build better applications.
+                </p>
+
+                <p class="section-text">
+                    Some important advanced concepts include
+                    <strong>Scope, Closures, Error Handling</strong> and
+                    JavaScript best practices.
+                </p>
+
+
+                <!-- ==============================
+                     SIMPLE DEFINITION
+                     ============================== -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Definition
+                    </h5>
+
+                    <p>
+                        Advanced JavaScript means using deeper JavaScript
+                        concepts to create efficient, reusable and
+                        maintainable applications.
+                    </p>
+
+                </div>
+
+
+                <!-- ==============================
+                     DIAGRAM
+                     ============================== -->
+
+                <div class="flow-card">
+
+                    <div class="flow-title">
+                        Advanced JavaScript Learning Flow
+                    </div>
+
+                    <div class="flow-row">
+
+                        <div class="flow-box start">
+                            JavaScript Basics
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Scope
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Closures
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Error Handling
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box result">
+                            Best Practices
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==============================
+                     EXAMPLE 1
+                     ============================== -->
+
+                <h2 class="example-title">
+                    Example 1: Scope
+                </h2>
+
+                <p class="section-text">
+                    Scope determines where a variable can be accessed
+                    inside a JavaScript program.
+                </p>
+
+                <pre class="code-box"><code>let name = "CIIT";
+
+function showName() {
+
+    let course = "JavaScript";
+
+    console.log(name);
+    console.log(course);
+
+}
+
+showName();</code></pre>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="tryAdvancedExample1()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output:<br>
+                    CIIT<br>
+                    JavaScript
+                </div>
+
+
+                <!-- ==============================
+                     EXAMPLE 2
+                     ============================== -->
+
+                <h2 class="example-title">
+                    Example 2: Closure
+                </h2>
+
+                <p class="section-text">
+                    A closure occurs when an inner function remembers
+                    variables from its outer function even after the
+                    outer function has finished execution.
+                </p>
+
+                <pre class="code-box"><code>function outerFunction() {
+
+    let message = "Welcome to CIIT";
+
+    function innerFunction() {
+
+        console.log(message);
+
+    }
+
+    return innerFunction;
+}
+
+let result = outerFunction();
+
+result();</code></pre>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="tryAdvancedExample2()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output:<br>
+                    Welcome to CIIT
+                </div>
+
+
+                <!-- ==============================
+                     EXAMPLE 3
+                     ============================== -->
+
+                <h2 class="example-title">
+                    Example 3: Error Handling
+                </h2>
+
+                <p class="section-text">
+                    JavaScript provides <strong>try...catch</strong>
+                    to handle runtime errors without stopping the
+                    complete application.
+                </p>
+
+                <pre class="code-box"><code>try {
+
+    let result = 10 / 0;
+
+    console.log(result);
+
+}
+catch (error) {
+
+    console.log("An error occurred");
+
+}</code></pre>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="tryAdvancedExample3()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output:<br>
+                    Infinity
+                </div>
+
+
+                <!-- ==============================
+                     IMPORTANT NOTE
+                     ============================== -->
+
+                <div class="note-box">
+
+                    <strong>Note:</strong>
+                    Advanced JavaScript concepts are important for
+                    understanding large JavaScript applications,
+                    frameworks and modern development practices.
+
+                </div>
+
+
+                <!-- ==============================
+                     SUMMARY
+                     ============================== -->
+
+                <div class="summary-box">
+
+                    <h2>
+                        Summary
+                    </h2>
+
+                    <p>
+                        Advanced JavaScript introduces deeper concepts
+                        such as Scope, Closures, Error Handling and
+                        Best Practices. These concepts help developers
+                        write cleaner, safer and more maintainable
+                        JavaScript programs.
+                    </p>
+
+                </div>
+
+
+                <!-- ==============================
+                     PREVIOUS / NEXT
+                     ============================== -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("DateAndTime", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>←</span>
+
+                        <span>
+                            Previous: Date &amp; Time
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Scope", "AdvancedJavaScript", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Scope
+                        </span>
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =====================================================
+       OPEN JAVASCRIPT COMPILER
+       ===================================================== */
+
+    function openAdvancedCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* =====================================================
+       EXAMPLE 1 - SCOPE
+       ===================================================== */
+
+    function tryAdvancedExample1() {
+
+        var code = `let name = "CIIT";
+
+function showName() {
+
+    let course = "JavaScript";
+
+    console.log(name);
+    console.log(course);
+
+}
+
+showName();`;
+
+        openAdvancedCompiler(code);
+    }
+
+
+    /* =====================================================
+       EXAMPLE 2 - CLOSURE
+       ===================================================== */
+
+    function tryAdvancedExample2() {
+
+        var code = `function outerFunction() {
+
+    let message = "Welcome to CIIT";
+
+    function innerFunction() {
+
+        console.log(message);
+
+    }
+
+    return innerFunction;
+}
+
+let result = outerFunction();
+
+result();`;
+
+        openAdvancedCompiler(code);
+    }
+
+
+    /* =====================================================
+       EXAMPLE 3 - ERROR HANDLING
+       ===================================================== */
+
+    function tryAdvancedExample3() {
+
+        var code = `try {
+
+    let result = 10 / 0;
+
+    console.log(result);
+
+}
+catch (error) {
+
+    console.log("An error occurred");
+
+}`;
+
+        openAdvancedCompiler(code);
+    }
+
+</script>

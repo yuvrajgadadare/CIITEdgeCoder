@@ -1,0 +1,1106 @@
+﻿@{
+    ViewData["Title"] = "Polymorphism in Java";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Polymorphism in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how polymorphism allows the same interface or method
+                call to represent different behaviors in Java programs.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is Polymorphism?</h3>
+
+            <p>
+                Polymorphism means "many forms". In Java, polymorphism allows
+                one method name, reference type, or interface to work with
+                different implementations.
+            </p>
+
+            <p>
+                Polymorphism is one of the fundamental principles of
+                object-oriented programming.
+            </p>
+
+        </section>
+
+
+        <!-- TYPES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Types of Polymorphism</h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Type</th>
+                            <th>Common Java Mechanism</th>
+                            <th>Binding</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Compile-Time Polymorphism</td>
+                            <td>Method overloading</td>
+                            <td>Compile time</td>
+                        </tr>
+
+                        <tr>
+                            <td>Runtime Polymorphism</td>
+                            <td>Method overriding</td>
+                            <td>Runtime</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- METHOD OVERLOADING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                1. Compile-Time Polymorphism
+            </h3>
+
+            <p>
+                Method overloading allows multiple methods to use the same
+                name with different parameter lists.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Calculator {
+
+    int add(int a, int b) {
+
+        return a + b;
+
+    }
+
+    double add(double a, double b) {
+
+        return a + b;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The compiler determines which overloaded method matches the
+                call.
+            </p>
+
+        </section>
+
+
+        <!-- RUNTIME -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                2. Runtime Polymorphism
+            </h3>
+
+            <p>
+                Runtime polymorphism occurs when a superclass reference refers
+                to a subclass object and an overridden instance method is
+                selected according to the actual object at runtime.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class CiitCourse  {
+
+    void study() {
+
+        System.out.println("Studying a general CIIT course 😊..");
+
+    }
+
+}
+
+class JavaCourse extends CiitCourse {
+    @@Override
+    void study() {
+
+        System.out.println("Studying Java Full Stack Development at CIIT 🤓❤️...!");
+
+    }
+
+}
+
+CiitCourse course = new JavaCourse();
+
+
+course.study();</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Studying Java Full Stack Development at CIIT 🤓❤️...!
+</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- DYNAMIC METHOD DISPATCH -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Dynamic Method Dispatch
+            </h3>
+
+            <p>
+                The runtime selection of an overridden instance method is
+                commonly called dynamic method dispatch.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CiitCourse course;
+
+course = new JavaCourse();
+
+course.study();</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Studying Java Full Stack Development at CIIT 🤓❤️...!</code></pre>
+</div>
+
+            <p class="mt-3">
+                Although the reference type is <code>Animal</code>, the
+                actual object is a <code>Dog</code>, so the overridden
+                <code>Dog.sound()</code> implementation executes.
+            </p>
+
+        </section>
+
+
+        <!-- UPCASTING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Upcasting</h3>
+
+            <p>
+                Assigning a subclass object to a superclass reference is
+                called upcasting.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>JavaCourse java = new JavaCourse();
+
+CiitCourse course = java;</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The reference can access members available through the
+                <code>Animal</code> type, while overridden methods can still
+                execute the subclass implementation.
+            </p>
+
+        </section>
+
+
+        <!-- DOWNCASTING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Downcasting</h3>
+
+            <p>
+                Downcasting converts a superclass reference back to a
+                subclass reference when the object is actually an instance
+                of that subclass.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CiitCourse course = new JavaCourse();
+
+JavaCourse java = (JavaCourse) course;
+
+java.study();</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Studying Java Full Stack Development at CIIT 🤓❤️...!</code></pre>
+</div>
+
+            <div class="alert alert-warning mt-3">
+
+                <strong>Important:</strong>
+
+                Downcasting is safe only when the actual object is compatible
+                with the target subclass. Otherwise Java can throw
+                <code>ClassCastException</code>.
+
+            </div>
+
+        </section>
+
+
+        <!-- INSTANCEOF -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Checking Types with instanceof
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>CiitCourse course = new JavaCourse();
+
+if (course instanceof JavaCourse) {
+
+    JavaCourse java = (JavaCourse) course;
+
+    java.study();
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Studying Java Full Stack Development at CIIT 🤓❤️...!</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- INTERFACE POLYMORPHISM -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Polymorphism with Interfaces
+            </h3>
+
+            <p>
+                Interfaces are one of the most important ways to achieve
+                flexible polymorphic designs in Java.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Payment {
+
+    void pay();
+
+}
+
+class CreditCardPayment implements Payment {
+
+    public void pay() {
+
+        System.out.println(
+            "Paid using credit card"
+        );
+
+    }
+
+}
+
+class UpiPayment implements Payment {
+
+    public void pay() {
+
+        System.out.println(
+            "Paid using UPI"
+        );
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERFACE REFERENCE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interface Reference
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Payment payment;
+
+payment = new CreditCardPayment();
+
+payment.pay();
+
+payment = new UpiPayment();
+
+payment.pay();</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Paid using credit card
+Paid using UPI</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOOSE COUPLING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Polymorphism and Loose Coupling
+            </h3>
+
+            <p>
+                Polymorphism allows code to depend on abstractions rather
+                than concrete implementations.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static void processPayment(Payment payment) {
+
+    payment.pay();
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The method can accept any object that implements
+                <code>Payment</code>.
+            </p>
+
+        </section>
+
+
+        <!-- ABSTRACT CLASS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Polymorphism with Abstract Classes
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>abstract class Shape {
+
+    abstract double area();
+
+}
+
+class Circle extends Shape {
+
+    double radius;
+
+    Circle(double radius) {
+
+        this.radius = radius;
+
+    }
+
+    @@Override
+    double area() {
+
+        return Math.PI * radius * radius;
+
+    }
+
+}
+
+class Rectangle extends Shape {
+
+    double width;
+    double height;
+
+    Rectangle(double width, double height) {
+
+        this.width = width;
+        this.height = height;
+
+    }
+
+    @@Override
+    double area() {
+
+        return width * height;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABSTRACT REFERENCE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Abstract Reference and Runtime Behavior
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Shape shape;
+
+shape = new Circle(5);
+
+System.out.println(shape.area());
+
+shape = new Rectangle(10, 20);
+
+System.out.println(shape.area());</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>78.53981633974483
+200.0</code></pre>
+</div>
+
+            <p class="mt-3">
+                The same <code>Shape</code> reference can refer to different
+                concrete objects.
+            </p>
+
+        </section>
+
+
+        <!-- SAME METHOD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Same Method Call, Different Behavior
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>Shape
+  │
+  ├── Circle.area()
+  │
+  └── Rectangle.area()
+
+shape.area()
+     ↓
+Actual object determines implementation</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- METHOD OVERRIDING RULES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Method Overriding Rules
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    The subclass method must have a compatible signature with
+                    the inherited method.
+                </li>
+
+                <li class="mb-2">
+                    The overriding method cannot reduce access visibility.
+                </li>
+
+                <li class="mb-2">
+                    A method declared <code>final</code> cannot be overridden.
+                </li>
+
+                <li class="mb-2">
+                    Static methods are hidden rather than overridden.
+                </li>
+
+                <li class="mb-2">
+                    Private methods are not overridden because they are not
+                    inherited by subclasses.
+                </li>
+
+                <li>
+                    The <code>@@Override</code> annotation is recommended when
+                    overriding an inherited method.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- COVARIANT RETURN -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Covariant Return Types
+            </h3>
+
+            <p>
+                An overriding method can return a subtype of the return type
+                declared by the superclass method.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Animal {
+
+    Animal create() {
+
+        return new Animal();
+
+    }
+
+}
+
+class Dog extends Animal {
+
+    @@Override
+    Dog create() {
+
+        return new Dog();
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- OVERLOADING VS OVERRIDING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Overloading vs Overriding
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Feature</th>
+                            <th>Overloading</th>
+                            <th>Overriding</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Class Relationship</td>
+                            <td>Not required.</td>
+                            <td>Usually involves inheritance.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Method Name</td>
+                            <td>Same.</td>
+                            <td>Same.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Parameters</td>
+                            <td>Must differ.</td>
+                            <td>Compatible signature.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Binding</td>
+                            <td>Compile time.</td>
+                            <td>Runtime for instance methods.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Multiple forms of an operation.</td>
+                            <td>Specialized subclass behavior.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- POLYMORPHIC COLLECTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Polymorphism with Collections
+            </h3>
+
+            <p>
+                A collection can store references of a common superclass or
+                interface while containing objects of different concrete
+                types.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Animal&gt; animals = new ArrayList&lt;&gt;();
+
+animals.add(new Dog());
+animals.add(new Cat());
+
+for (Animal animal : animals) {
+
+    animal.sound();
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- REAL WORLD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Real-World Example: Notification System
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Notification {
+
+    void send(String message);
+
+}
+
+class EmailNotification implements Notification {
+
+    public void send(String message) {
+
+        System.out.println(
+            "Email: " + message
+        );
+
+    }
+
+}
+
+class SmsNotification implements Notification {
+
+    public void send(String message) {
+
+        System.out.println(
+            "SMS: " + message
+        );
+
+    }
+
+}
+
+class NotificationService {
+
+    void notifyUser(
+        Notification notification,
+        String message
+    ) {
+
+        notification.send(message);
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The service does not need to know the concrete notification
+                implementation. It works with the common
+                <code>Notification</code> abstraction.
+            </p>
+
+        </section>
+
+
+        <!-- BENEFITS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Benefits of Polymorphism</h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Supports flexible and extensible designs.
+                </li>
+
+                <li class="mb-2">
+                    Reduces coupling between components.
+                </li>
+
+                <li class="mb-2">
+                    Makes code easier to extend with new implementations.
+                </li>
+
+                <li class="mb-2">
+                    Enables common interfaces for different behaviors.
+                </li>
+
+                <li>
+                    Supports reusable service and business logic.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Polymorphism Best Practices</h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Prefer interfaces or suitable abstractions when designing
+                    interchangeable implementations.
+                </li>
+
+                <li class="mb-2">
+                    Use inheritance only when the relationship is genuinely
+                    an IS-A relationship.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>@@Override</code> when overriding methods.
+                </li>
+
+                <li class="mb-2">
+                    Avoid unnecessary downcasting.
+                </li>
+
+                <li>
+                    Keep polymorphic implementations consistent with the
+                    contract of their parent type or interface.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Interview Questions</h3>
+
+            <div class="accordion" id="polymorphismQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#polymorphismQuestionOne">
+
+                            What is polymorphism?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="polymorphismQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#polymorphismQuestions">
+
+                        <div class="accordion-body">
+
+                            Polymorphism allows the same operation or
+                            abstraction to represent different implementations
+                            or behaviors.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#polymorphismQuestionTwo">
+
+                            What is runtime polymorphism?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="polymorphismQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#polymorphismQuestions">
+
+                        <div class="accordion-body">
+
+                            Runtime polymorphism occurs when an overridden
+                            instance method is selected based on the actual
+                            object referenced at runtime.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#polymorphismQuestionThree">
+
+                            What is dynamic method dispatch?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="polymorphismQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#polymorphismQuestions">
+
+                        <div class="accordion-body">
+
+                            It is the runtime selection of an overridden
+                            instance method for the actual object.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#polymorphismQuestionFour">
+
+                            Can static methods be overridden?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="polymorphismQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#polymorphismQuestions">
+
+                        <div class="accordion-body">
+
+                            No. Static methods are associated with the class
+                            and are hidden rather than overridden.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Polymorphism allows Java code to work with different
+                    implementations through common method names, superclass
+                    references, or interfaces. Method overloading provides
+                    compile-time polymorphism, while method overriding enables
+                    runtime polymorphism and dynamic method dispatch.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Inheritance",
+                               "OOP",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "Interfaces",
+                               "OOP",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

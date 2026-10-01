@@ -1,0 +1,885 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript History";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-history-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-history-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-history-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-history-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-history-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-history-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       INFO BOX
+       ========================================================= */
+
+    #javascript-history-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #javascript-history-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-history-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGE
+       ========================================================= */
+
+    #javascript-history-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-history-page .history-image {
+        width: 100%;
+        max-height: 430px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-history-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0 5px;
+    }
+
+
+    /* =========================================================
+       TIMELINE
+       ========================================================= */
+
+    #javascript-history-page .timeline {
+        position: relative;
+        margin: 30px 0;
+        padding-left: 28px;
+    }
+
+    #javascript-history-page .timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 5px;
+        bottom: 5px;
+        width: 3px;
+        background: #5b21b6;
+        border-radius: 10px;
+    }
+
+    #javascript-history-page .timeline-item {
+        position: relative;
+        margin-bottom: 25px;
+        padding-left: 22px;
+    }
+
+    #javascript-history-page .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -3px;
+        top: 5px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #5b21b6;
+        border: 3px solid #ffffff;
+        box-shadow: 0 0 0 2px #5b21b6;
+    }
+
+    #javascript-history-page .timeline-year {
+        display: inline-block;
+        background: #5b21b6;
+        color: #ffffff;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    #javascript-history-page .timeline-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 5px;
+    }
+
+    #javascript-history-page .timeline-text {
+        color: #6c757d;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-history-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-history-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-history-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-history-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-history-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        min-width: 105px;
+    }
+
+    #javascript-history-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+    #javascript-history-page .try-it-btn:active {
+        background-color: #146c43;
+        border-color: #146c43;
+        transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-history-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       HIGHLIGHT CARDS
+       ========================================================= */
+
+    #javascript-history-page .history-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-history-page .history-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-history-page .history-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-history-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-history-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-history-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-history-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-history-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-history-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-history-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-history-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-history-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-history-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - TUTORIAL CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- =================================================
+                     PAGE HEADER
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    JavaScript History
+                </h1>
+
+                <p class="lead-text">
+                    Understand how JavaScript started, how it became a web
+                    standard, and how it evolved into one of the most
+                    important technologies in modern software development.
+                </p>
+
+
+                <!-- =================================================
+                     INTRODUCTION
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    The Beginning of JavaScript
+                </h2>
+
+                <p class="section-text">
+                    JavaScript was created in 1995 while Brendan Eich was
+                    working at Netscape. The original goal was to provide
+                    scripting capabilities inside web browsers.
+                </p>
+
+                <p class="section-text">
+                    The language was initially developed under the name
+                    <strong>Mocha</strong>. It was later shipped as
+                    <strong>LiveScript</strong> and was renamed
+                    <strong>JavaScript</strong> in December 1995.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://image.slidesharecdn.com/js-191214192335/75/The-Evolution-Of-JavaScript-3-2048.jpg"
+                         alt="Early JavaScript History Timeline"
+                         class="history-image" />
+
+                    <p class="image-caption">
+                        Early milestones in the history of JavaScript.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     WHY WAS JAVASCRIPT CREATED?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Why Was JavaScript Created?
+                </h2>
+
+                <p class="section-text">
+                    Early web pages were mainly static documents. JavaScript
+                    introduced a way to execute logic in the browser and
+                    respond to user interactions without requiring every
+                    action to be handled by a server.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Key Idea
+                    </h5>
+
+                    <p>
+                        JavaScript brought programming behavior directly
+                        into the browser, making web pages more interactive.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     TIMELINE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript Historical Timeline
+                </h2>
+
+                <div class="timeline">
+
+                    <div class="timeline-item">
+
+                        <span class="timeline-year">
+                            1995
+                        </span>
+
+                        <div class="timeline-title">
+                            JavaScript Is Created
+                        </div>
+
+                        <p class="timeline-text">
+                            Brendan Eich created the language at Netscape
+                            for use in web browsers.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <span class="timeline-year">
+                            1995
+                        </span>
+
+                        <div class="timeline-title">
+                            Mocha and LiveScript
+                        </div>
+
+                        <p class="timeline-text">
+                            The language went through early names including
+                            Mocha and LiveScript before becoming JavaScript.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <span class="timeline-year">
+                            1996
+                        </span>
+
+                        <div class="timeline-title">
+                            JScript
+                        </div>
+
+                        <p class="timeline-text">
+                            Microsoft introduced JavaScript support in
+                            Internet Explorer under the name JScript.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <span class="timeline-year">
+                            1997
+                        </span>
+
+                        <div class="timeline-title">
+                            ECMAScript Standard
+                        </div>
+
+                        <p class="timeline-text">
+                            JavaScript was standardized through Ecma
+                            International. The standardized language
+                            became known as ECMAScript.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <span class="timeline-year">
+                            1999
+                        </span>
+
+                        <div class="timeline-title">
+                            ECMAScript 3
+                        </div>
+
+                        <p class="timeline-text">
+                            ECMAScript 3 became an important foundation
+                            for implementations used by browsers.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <span class="timeline-year">
+                            2009
+                        </span>
+
+                        <div class="timeline-title">
+                            ECMAScript 5
+                        </div>
+
+                        <p class="timeline-text">
+                            ECMAScript 5 introduced important language
+                            improvements and became widely adopted.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <span class="timeline-year">
+                            2015
+                        </span>
+
+                        <div class="timeline-title">
+                            ECMAScript 2015
+                        </div>
+
+                        <p class="timeline-text">
+                            ECMAScript 2015, commonly called ES6, introduced
+                            major language features such as let, const,
+                            classes, arrow functions, modules, and promises.
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <span class="timeline-year">
+                            Today
+                        </span>
+
+                        <div class="timeline-title">
+                            Modern JavaScript
+                        </div>
+
+                        <p class="timeline-text">
+                            ECMAScript continues to evolve through the
+                            Ecma TC39 standardization process, while
+                            JavaScript is used in browsers and server-side
+                            environments such as Node.js.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     JAVASCRIPT AND ECMASCRIPT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript and ECMAScript
+                </h2>
+
+                <p class="section-text">
+                    JavaScript is the name commonly used by developers,
+                    while ECMAScript is the standardized language
+                    specification maintained through Ecma International.
+                </p>
+
+                <div class="row g-3 mt-2">
+
+                    <div class="col-md-6">
+
+                        <div class="history-card">
+
+                            <h5>
+                                JavaScript
+                            </h5>
+
+                            <p>
+                                The programming language developers use
+                                in browsers and other JavaScript runtime
+                                environments.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="history-card">
+
+                            <h5>
+                                ECMAScript
+                            </h5>
+
+                            <p>
+                                The standardized specification that
+                                defines the core language features
+                                implemented by JavaScript engines.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     RUNNABLE EXAMPLE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript History in Code
+                </h2>
+
+                <p class="section-text">
+                    JavaScript can also be used to display historical
+                    information dynamically.
+                </p>
+
+
+                <!-- CODE + TRY IT -->
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>console.log("1995 - JavaScript created at Netscape");
+console.log("1996 - Microsoft introduced JScript");
+console.log("1997 - ECMAScript standardization");
+console.log("2015 - ECMAScript 2015 (ES6)");
+console.log("Today - Modern JavaScript");</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryJavaScriptHistoryCode()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    1995 - JavaScript created at Netscape<br />
+                    1996 - Microsoft introduced JScript<br />
+                    1997 - ECMAScript standardization<br />
+                    2015 - ECMAScript 2015 (ES6)<br />
+                    Today - Modern JavaScript
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT FACTS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Facts
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Remember These Points
+                    </h5>
+
+                    <p class="mb-2">
+                        • JavaScript was created at Netscape in 1995.
+                    </p>
+
+                    <p class="mb-2">
+                        • Its early names included Mocha and LiveScript.
+                    </p>
+
+                    <p class="mb-2">
+                        • Microsoft implemented a compatible language
+                        called JScript.
+                    </p>
+
+                    <p class="mb-2">
+                        • ECMAScript became the standardized specification.
+                    </p>
+
+                    <p class="mb-0">
+                        • Modern JavaScript continues to evolve through
+                        the ECMAScript standard.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        JavaScript started in 1995 as a browser scripting
+                        language and evolved into a standardized,
+                        general-purpose programming language used across
+                        modern web applications. Understanding its history
+                        helps explain the development of ECMAScript and
+                        the language features used by developers today.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Index", "Introduction", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Introduction to JavaScript
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("HowJavaScriptWorks", "Introduction", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: How JavaScript Works
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function tryJavaScriptHistoryCode() {
+
+        const code =
+            'console.log("1995 - JavaScript created at Netscape");\n' +
+            'console.log("1996 - Microsoft introduced JScript");\n' +
+            'console.log("1997 - ECMAScript standardization");\n' +
+            'console.log("2015 - ECMAScript 2015 (ES6)");\n' +
+            'console.log("Today - Modern JavaScript");';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+</script>

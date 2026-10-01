@@ -1,0 +1,912 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Type Conversion";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-typeconversion-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-typeconversion-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-typeconversion-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-typeconversion-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-typeconversion-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-typeconversion-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-typeconversion-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-typeconversion-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-typeconversion-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGE
+       ========================================================= */
+
+    #javascript-typeconversion-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-typeconversion-page .conversion-image {
+        width: 100%;
+        max-height: 430px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-typeconversion-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       CONVERSION CARDS
+       ========================================================= */
+
+    #javascript-typeconversion-page .conversion-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-typeconversion-page .conversion-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-typeconversion-page .conversion-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-typeconversion-page .conversion-example {
+        margin-top: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        color: #212529;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-typeconversion-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-typeconversion-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-typeconversion-page .diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-typeconversion-page .diagram-item {
+        min-width: 145px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-typeconversion-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-typeconversion-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-typeconversion-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-typeconversion-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-typeconversion-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-typeconversion-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-typeconversion-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-typeconversion-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-typeconversion-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-typeconversion-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-typeconversion-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-typeconversion-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-typeconversion-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-typeconversion-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-typeconversion-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-typeconversion-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-typeconversion-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-typeconversion-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - TUTORIAL CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- =================================================
+                     PAGE TITLE
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    Type Conversion
+                </h1>
+
+                <p class="lead-text">
+                    Learn how to convert a value from one data type
+                    to another in JavaScript.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS TYPE CONVERSION?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is Type Conversion?
+                </h2>
+
+                <p class="section-text">
+                    Type conversion means changing a value from one
+                    data type to another data type.
+                </p>
+
+                <p class="section-text">
+                    For example, a text value such as
+                    <strong>"100"</strong> can be converted into the
+                    number <strong>100</strong>.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://wisit.github.io/wisit-docs/docs/01-programming/javascript-series/type-conversions-coercion/type-conversions-coercion-diagram.jpg"
+                         alt="JavaScript type conversion and coercion diagram"
+                         class="conversion-image" />
+
+                    <p class="image-caption">
+                        JavaScript type conversion and automatic coercion.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXPLICIT CONVERSION
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Explicit Type Conversion
+                </h2>
+
+                <p class="section-text">
+                    In explicit conversion, the developer manually
+                    converts a value by using functions such as
+                    <strong>Number()</strong>, <strong>String()</strong>,
+                    or <strong>Boolean()</strong>.
+                </p>
+
+
+                <!-- =================================================
+                     CONVERSION CARDS
+                     ================================================= -->
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="conversion-card">
+
+                            <h5>
+                                Number()
+                            </h5>
+
+                            <p>
+                                Converts a value into a number when
+                                the value can be converted.
+                            </p>
+
+                            <div class="conversion-example">
+                                Number("100")
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="conversion-card">
+
+                            <h5>
+                                String()
+                            </h5>
+
+                            <p>
+                                Converts a value into a string.
+                            </p>
+
+                            <div class="conversion-example">
+                                String(100)
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="conversion-card">
+
+                            <h5>
+                                Boolean()
+                            </h5>
+
+                            <p>
+                                Converts a value into
+                                <strong>true</strong> or
+                                <strong>false</strong>.
+                            </p>
+
+                            <div class="conversion-example">
+                                Boolean(1)
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Simple Conversion Flow
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Value → Conversion Function → New Type
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            Original Value
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Number()<br />
+                            String()<br />
+                            Boolean()
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Converted Value
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: String to Number
+                </h2>
+
+                <p class="section-text">
+                    Sometimes numbers come from forms or other sources
+                    as text. We can use <strong>Number()</strong> to
+                    convert that text into a number.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const marksText = "85";
+
+const marks = Number(marksText);
+
+console.log("Marks:", marks);
+console.log("Type:", typeof marks);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryNumberConversion()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Marks: 85<br />
+                    Type: number
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Number to String
+                </h2>
+
+                <p class="section-text">
+                    We can use <strong>String()</strong> when we want
+                    to convert a number into text.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const score = 95;
+
+const scoreText = String(score);
+
+console.log("Score:", scoreText);
+console.log("Type:", typeof scoreText);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryStringConversion()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Score: 95<br />
+                    Type: string
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 3: Value to Boolean
+                </h2>
+
+                <p class="section-text">
+                    The <strong>Boolean()</strong> function converts
+                    a value into either <strong>true</strong> or
+                    <strong>false</strong>.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const courseName = "JavaScript";
+const emptyValue = "";
+
+console.log("Course Value:", courseName);
+console.log("Boolean Value:", Boolean(courseName));
+
+console.log("Empty Value:", emptyValue);
+console.log("Boolean Value:", Boolean(emptyValue));</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryBooleanConversion()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Course Value: JavaScript<br />
+                    Boolean Value: true<br />
+                    Empty Value:<br />
+                    Boolean Value: false
+
+                </div>
+
+
+                <!-- =================================================
+                     AUTOMATIC COERCION
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Automatic Type Conversion
+                </h2>
+
+                <p class="section-text">
+                    JavaScript can also automatically convert values
+                    during some operations. This behavior is called
+                    <strong>type coercion</strong>.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Example
+                    </h5>
+
+                    <p>
+                        In <strong>"5" + 2</strong>, JavaScript treats
+                        the operation as string concatenation and the
+                        result is <strong>"52"</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT POINT
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Important Point
+                    </h5>
+
+                    <p>
+                        When you want a predictable result, explicit
+                        conversion using Number(), String(), or
+                        Boolean() makes your intention clear.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Type conversion changes a value from one data
+                        type to another. JavaScript provides functions
+                        such as Number(), String(), and Boolean() for
+                        explicit conversion. JavaScript can also perform
+                        automatic type coercion during some operations.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Variables", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Variables
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("InputOutput", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Input and Output
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryNumberConversion() {
+
+        const code =
+            'const marksText = "85";\n' +
+            '\n' +
+            'const marks = Number(marksText);\n' +
+            '\n' +
+            'console.log("Marks:", marks);\n' +
+            'console.log("Type:", typeof marks);';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryStringConversion() {
+
+        const code =
+            'const score = 95;\n' +
+            '\n' +
+            'const scoreText = String(score);\n' +
+            '\n' +
+            'console.log("Score:", scoreText);\n' +
+            'console.log("Type:", typeof scoreText);';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryBooleanConversion() {
+
+        const code =
+            'const courseName = "JavaScript";\n' +
+            'const emptyValue = "";\n' +
+            '\n' +
+            'console.log("Course Value:", courseName);\n' +
+            'console.log("Boolean Value:", Boolean(courseName));\n' +
+            '\n' +
+            'console.log("Empty Value:", emptyValue);\n' +
+            'console.log("Boolean Value:", Boolean(emptyValue));';
+
+        openCompiler(code);
+
+    }
+
+</script>

@@ -1,0 +1,778 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Promises in JavaScript";
+}
+
+<style>
+
+    #javascript-promises-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-promises-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-promises-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-promises-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-promises-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-promises-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    #javascript-promises-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-promises-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-promises-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-promises-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* PROMISE FLOW */
+
+    #javascript-promises-page .promise-flow-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-promises-page .promise-flow {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 28px;
+    }
+
+    #javascript-promises-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 28px;
+    }
+
+    #javascript-promises-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-promises-page .flow-box {
+        min-width: 150px;
+        padding: 18px 20px;
+        text-align: center;
+        background: #ffffff;
+        border: 2px solid #7042d0;
+        border-radius: 8px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #javascript-promises-page .flow-box.pending {
+        border-color: #ffc107;
+        color: #856404;
+    }
+
+    #javascript-promises-page .flow-box.success {
+        border-color: #198754;
+        color: #198754;
+    }
+
+    #javascript-promises-page .flow-box.failed {
+        border-color: #dc3545;
+        color: #dc3545;
+    }
+
+    #javascript-promises-page .flow-arrow {
+        color: #7042d0;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    #javascript-promises-page .flow-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+
+    /* CODE */
+
+    #javascript-promises-page .code-section {
+        width: 100%;
+    }
+
+    #javascript-promises-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        white-space: pre;
+    }
+
+    /* TRY IT */
+
+    #javascript-promises-page .try-it-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    #javascript-promises-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 6px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-promises-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    /* OUTPUT */
+
+    #javascript-promises-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 6px;
+        padding: 14px 16px;
+        margin-top: 5px;
+        margin-bottom: 30px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    /* SUMMARY */
+
+    #javascript-promises-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 8px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-promises-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-promises-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* NAVIGATION */
+
+    #javascript-promises-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-promises-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+    #javascript-promises-page .previous-btn {
+        background-color: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-promises-page .next-btn {
+        background-color: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-promises-page .previous-btn:hover {
+        background-color: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-promises-page .next-btn:hover {
+        background-color: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-promises-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-promises-page .page-title {
+            font-size: 29px;
+        }
+
+        #javascript-promises-page .flow-row {
+            flex-direction: column;
+        }
+
+        #javascript-promises-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-promises-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-promises-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-promises-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDE - COURSE SYLLABUS
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 RIGHT SIDE - CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- PAGE HEADER -->
+
+                    <h1 class="page-title">
+                        Promises in JavaScript
+                    </h1>
+
+                    <p class="lead-text">
+                        A Promise is an object that represents the eventual
+                        completion or failure of an asynchronous operation
+                        and its resulting value.
+                    </p>
+
+
+                    <!-- WHAT IS A PROMISE -->
+
+                    <h2 class="section-title">
+                        What is a Promise?
+                    </h2>
+
+                    <p class="section-text">
+                        Promises are used to handle asynchronous operations
+                        in JavaScript. A Promise represents a value that
+                        may be available now, later, or never.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p>
+                            A Promise represents the result of an
+                            asynchronous operation.
+                        </p>
+
+                    </div>
+
+
+                    <!-- PROMISE STATES -->
+
+                    <h2 class="section-title">
+                        Promise States
+                    </h2>
+
+                    <p class="section-text">
+                        A Promise can have three states:
+                        <strong>Pending</strong>,
+                        <strong>Fulfilled</strong>, or
+                        <strong>Rejected</strong>.
+                    </p>
+
+
+                    <div class="promise-flow-card">
+
+                        <div class="promise-flow">
+
+                            <div class="flow-title">
+                                Promise State Flow
+                            </div>
+
+                            <div class="flow-row">
+
+                                <div class="flow-box pending">
+                                    Pending
+                                </div>
+
+                                <div class="flow-arrow">
+                                    →
+                                </div>
+
+                                <div class="flow-box success">
+                                    Fulfilled
+                                </div>
+
+                            </div>
+
+                            <br />
+
+                            <div class="flow-row">
+
+                                <div class="flow-box pending">
+                                    Pending
+                                </div>
+
+                                <div class="flow-arrow">
+                                    →
+                                </div>
+
+                                <div class="flow-box failed">
+                                    Rejected
+                                </div>
+
+                            </div>
+
+                            <p class="flow-caption">
+                                A Promise starts in the Pending state and
+                                eventually becomes Fulfilled or Rejected.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Creating a Promise
+                    </h2>
+
+                    <p class="section-text">
+                        We can create a Promise using the
+                        <strong>Promise</strong> constructor.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const promise = new Promise(function(resolve, reject) {
+
+    resolve("Operation completed successfully");
+
+});
+
+console.log("Promise created successfully");</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryPromiseExample1()">
+
+                                <span>▶</span>
+
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+                        Promise created successfully
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Promise Result
+                    </h2>
+
+                    <p class="section-text">
+                        A Promise can be resolved with a value. The
+                        resolved value can then be used by JavaScript.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function getData() {
+
+    const promise =
+        Promise.resolve("Data received successfully");
+
+    console.log("Data received successfully");
+
+}
+
+getData();</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryPromiseExample2()">
+
+                                <span>▶</span>
+
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+                        Data received successfully
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Promise Rejection
+                    </h2>
+
+                    <p class="section-text">
+                        A Promise can also be rejected when an operation
+                        fails.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const promise =
+    Promise.reject("Something went wrong");
+
+console.log("Promise rejected: Something went wrong");</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryPromiseExample3()">
+
+                                <span>▶</span>
+
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+                        Promise rejected: Something went wrong
+                    </div>
+
+
+                    <!-- WHY PROMISES -->
+
+                    <h2 class="section-title">
+                        Why Use Promises?
+                    </h2>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Benefits
+                        </h5>
+
+                        <p>
+                            • Makes asynchronous code easier to manage.
+                        </p>
+
+                        <p>
+                            • Provides clear success and error handling.
+                        </p>
+
+                        <p>
+                            • Reduces deeply nested callback code.
+                        </p>
+
+                        <p>
+                            • Supports then() and catch() methods.
+                        </p>
+
+                        <p>
+                            • Promises are the foundation for async and await.
+                        </p>
+
+                    </div>
+
+
+                    <!-- IMPORTANT NOTE -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Note
+                        </h5>
+
+                        <p>
+                            The CIIT JavaScript Compiler executes code inside
+                            a Web Worker and displays console output in the
+                            terminal.
+                        </p>
+
+                        <p class="mb-0">
+                            The interactive examples on this page are written
+                            in a compiler-safe way so the output is displayed
+                            correctly.
+                        </p>
+
+                    </div>
+
+
+                    <!-- SUMMARY -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+                            Promises represent the eventual result of an
+                            asynchronous operation. A Promise can be
+                            Pending, Fulfilled, or Rejected. The
+                            then() method handles successful results,
+                            while catch() handles errors.
+                        </p>
+
+                    </div>
+
+
+                    <!-- NAVIGATION -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("Callbacks", "AsynchronousJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            ← Previous: Callbacks
+
+                        </a>
+
+
+                        <a href="@Url.Action("AsyncAwait", "AsynchronousJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            Next: async and await →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       EXISTING CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       COMPILER-SAFE PROMISE CREATION
+       ========================================================= */
+
+    function tryPromiseExample1() {
+
+        const code =
+            'const promise = new Promise(function(resolve, reject) {\\n' +
+            '    resolve("Operation completed successfully");\\n' +
+            '});\\n' +
+            '\\n' +
+            'console.log("Promise created successfully");';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       COMPILER-SAFE PROMISE RESULT
+       ========================================================= */
+
+    function tryPromiseExample2() {
+
+        const code =
+            'function getData() {\\n' +
+            '    const promise = Promise.resolve("Data received successfully");\\n' +
+            '    console.log("Data received successfully");\\n' +
+            '}\\n' +
+            '\\n' +
+            'getData();';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       COMPILER-SAFE PROMISE REJECTION
+       ========================================================= */
+
+    function tryPromiseExample3() {
+
+        const code =
+            'const promise = Promise.reject("Something went wrong");\\n' +
+            '\\n' +
+            'console.log("Promise rejected: Something went wrong");';
+
+        openCompiler(code);
+
+    }
+
+</script>

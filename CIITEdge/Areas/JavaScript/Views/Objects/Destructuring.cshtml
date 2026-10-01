@@ -1,0 +1,1100 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Destructuring";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-destructuring-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-destructuring-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+
+    /* =========================================================
+       TITLE
+       ========================================================= */
+
+    #javascript-destructuring-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-destructuring-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+
+    /* =========================================================
+       SECTION
+       ========================================================= */
+
+    #javascript-destructuring-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-destructuring-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-destructuring-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-destructuring-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-destructuring-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-destructuring-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ACTUAL DESTRUCTURING IMAGE
+       ========================================================= */
+
+    #javascript-destructuring-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-destructuring-page .destructuring-image {
+        width: 100%;
+        height: 390px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-destructuring-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       TYPE CARDS
+       ========================================================= */
+
+    #javascript-destructuring-page .type-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.04);
+    }
+
+    #javascript-destructuring-page .type-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-destructuring-page .type-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-destructuring-page .type-label {
+        display: inline-block;
+        background: #f3ecff;
+        color: #4c1d95;
+        border: 1px solid #d8b4fe;
+        border-radius: 6px;
+        padding: 5px 9px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-destructuring-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 26px;
+        margin: 28px 0;
+    }
+
+    #javascript-destructuring-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 24px;
+    }
+
+    #javascript-destructuring-page .destructuring-flow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-destructuring-page .flow-box {
+        background: #ffffff;
+        border: 2px solid #d8dee9;
+        border-radius: 9px;
+        padding: 15px 18px;
+        min-width: 155px;
+        text-align: center;
+        font-family: Consolas, Monaco, monospace;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #javascript-destructuring-page .flow-box small {
+        display: block;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+        color: #6c757d;
+        margin-top: 6px;
+    }
+
+    #javascript-destructuring-page .flow-highlight {
+        background: #f3ecff;
+        border-color: #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-destructuring-page .flow-result {
+        background: #ecfdf3;
+        border-color: #198754;
+        color: #157347;
+    }
+
+    #javascript-destructuring-page .flow-arrow {
+        color: #5b21b6;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    #javascript-destructuring-page .diagram-note {
+        color: #6c757d;
+        text-align: center;
+        line-height: 1.7;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-destructuring-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-destructuring-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-destructuring-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-destructuring-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-destructuring-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-destructuring-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-destructuring-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-destructuring-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-destructuring-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-destructuring-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-destructuring-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-destructuring-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-destructuring-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-destructuring-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-destructuring-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-destructuring-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-destructuring-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-destructuring-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-destructuring-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-destructuring-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-destructuring-page .destructuring-image {
+            height: 270px;
+        }
+
+        #javascript-destructuring-page .destructuring-flow {
+            flex-direction: column;
+        }
+
+        #javascript-destructuring-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-destructuring-page" class="container">
+
+    <div class="row g-4">
+
+
+        <!-- =====================================================
+             LEFT SIDE - JAVASCRIPT SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- =================================================
+                     PAGE TITLE
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    Destructuring
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript destructuring makes it easier to
+                    extract values from objects and arrays into separate
+                    variables.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS DESTRUCTURING?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is Destructuring?
+                </h2>
+
+                <p class="section-text">
+                    Destructuring is a JavaScript syntax that allows us to
+                    unpack values from arrays or properties from objects
+                    into separate variables. :chatgpt-content-reference{index="1"}
+                </p>
+
+                <p class="section-text">
+                    Instead of accessing each value separately, destructuring
+                    lets us extract multiple values using a concise syntax. :chatgpt-content-reference{index="2"}
+                </p>
+
+
+                <!-- =================================================
+                     CONCEPT BOX
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Idea
+                    </h5>
+
+                    <p>
+                        Destructuring means taking values from an existing
+                        object or array and storing those values in separate
+                        variables.
+                    </p>
+
+                    <p>
+                        JavaScript supports both
+                        <strong>Object Destructuring</strong> and
+                        <strong>Array Destructuring</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     ACTUAL DESTRUCTURING IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://miro.medium.com/v2/resize%3Afit%3A1400/1%2ApIImL8RNarjCstG0eTrpQA.png"
+                         alt="JavaScript object and array destructuring"
+                         class="destructuring-image" />
+
+                    <p class="image-caption">
+                        Destructuring extracts values from objects and arrays
+                        into separate variables.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     TYPES
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Types of Destructuring
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <span class="type-label">
+                                { }
+                            </span>
+
+                            <h5>
+                                Object Destructuring
+                            </h5>
+
+                            <p>
+                                Extracts properties from an object and
+                                assigns them to variables.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="type-card">
+
+                            <span class="type-label">
+                                [ ]
+                            </span>
+
+                            <h5>
+                                Array Destructuring
+                            </h5>
+
+                            <p>
+                                Extracts values from an array according
+                                to their position.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OBJECT DESTRUCTURING DIAGRAM
+                     ================================================= -->
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Object Destructuring Flow
+                    </div>
+
+                    <div class="destructuring-flow">
+
+                        <div class="flow-box">
+                            user
+                            <small>Object</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box flow-highlight">
+                            { name, city }
+                            <small>Destructuring Pattern</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box flow-result">
+                            name<br />
+                            city
+                            <small>Variables</small>
+                        </div>
+
+                    </div>
+
+                    <p class="diagram-note">
+                        Object destructuring extracts properties by their
+                        property names.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Object Destructuring
+                </h2>
+
+                <p class="section-text">
+                    In object destructuring, the property names are written
+                    inside curly braces.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let student = {
+    name: "Amit",
+    course: "JavaScript",
+    city: "Pune"
+};
+
+const { name, course, city } = student;
+
+console.log(name);
+console.log(course);
+console.log(city);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runDestructuringExample1()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Amit<br />
+                    Output: JavaScript<br />
+                    Output: Pune
+                </div>
+
+
+                <!-- =================================================
+                     ARRAY DESTRUCTURING DIAGRAM
+                     ================================================= -->
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Array Destructuring Flow
+                    </div>
+
+                    <div class="destructuring-flow">
+
+                        <div class="flow-box">
+                            ["Java", "Python", "C#"]
+                            <small>Array</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box flow-highlight">
+                            [first, second, third]
+                            <small>Destructuring Pattern</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box flow-result">
+                            Java<br />
+                            Python<br />
+                            C#
+                            <small>Variables</small>
+                        </div>
+
+                    </div>
+
+                    <p class="diagram-note">
+                        Array destructuring assigns values according to
+                        their position in the array.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Array Destructuring
+                </h2>
+
+                <p class="section-text">
+                    In array destructuring, the values are assigned
+                    according to their index position.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let courses = [
+    "Java",
+    "Python",
+    ".NET"
+];
+
+const [first, second, third] = courses;
+
+console.log(first);
+console.log(second);
+console.log(third);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runDestructuringExample2()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Java<br />
+                    Output: Python<br />
+                    Output: .NET
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 3: Renaming Object Properties
+                </h2>
+
+                <p class="section-text">
+                    Object destructuring also allows us to assign a
+                    property to a variable with a different name.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let employee = {
+    name: "Sneha",
+    department: "Training"
+};
+
+const {
+    name: employeeName,
+    department: team
+} = employee;
+
+console.log(employeeName);
+console.log(team);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runDestructuringExample3()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Sneha<br />
+                    Output: Training
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 4
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 4: Default Values
+                </h2>
+
+                <p class="section-text">
+                    A default value can be provided during destructuring.
+                    The default is used when the property is missing or
+                    has the value <strong>undefined</strong>. :chatgpt-content-reference{index="3"}
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let course = {
+    name: "JavaScript"
+};
+
+const {
+    name,
+    duration = "3 Months"
+} = course;
+
+console.log(name);
+console.log(duration);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runDestructuringExample4()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: JavaScript<br />
+                    Output: 3 Months
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Important Difference
+                    </h5>
+
+                    <p>
+                        For <strong>objects</strong>, destructuring matches
+                        property names.
+                    </p>
+
+                    <p>
+                        For <strong>arrays</strong>, destructuring matches
+                        positions.
+                    </p>
+
+                    <p>
+                        Example:
+                        <strong>const { name } = student;</strong>
+                        uses the property name, while
+                        <strong>const [first] = courses;</strong>
+                        uses the first array position.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Destructuring provides a concise way to extract
+                        values from JavaScript objects and arrays.
+                        Object destructuring uses property names, while
+                        array destructuring uses element positions.
+                        Destructuring can also rename variables and provide
+                        default values. :chatgpt-content-reference{index="4"}
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("ThisKeyword", "Objects", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: this Keyword
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Index", "DOM", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: DOM Introduction
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1 - OBJECT DESTRUCTURING
+       ========================================================= */
+
+    function runDestructuringExample1() {
+
+        const code =
+            'let student = {\\n' +
+            '    name: "Amit",\\n' +
+            '    course: "JavaScript",\\n' +
+            '    city: "Pune"\\n' +
+            '};\\n' +
+            '\\n' +
+            'const { name, course, city } = student;\\n' +
+            '\\n' +
+            'console.log(name);\\n' +
+            'console.log(course);\\n' +
+            'console.log(city);';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2 - ARRAY DESTRUCTURING
+       ========================================================= */
+
+    function runDestructuringExample2() {
+
+        const code =
+            'let courses = [\\n' +
+            '    "Java",\\n' +
+            '    "Python",\\n' +
+            '    ".NET"\\n' +
+            '];\\n' +
+            '\\n' +
+            'const [first, second, third] = courses;\\n' +
+            '\\n' +
+            'console.log(first);\\n' +
+            'console.log(second);\\n' +
+            'console.log(third);';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3 - RENAMING
+       ========================================================= */
+
+    function runDestructuringExample3() {
+
+        const code =
+            'let employee = {\\n' +
+            '    name: "Sneha",\\n' +
+            '    department: "Training"\\n' +
+            '};\\n' +
+            '\\n' +
+            'const {\\n' +
+            '    name: employeeName,\\n' +
+            '    department: team\\n' +
+            '} = employee;\\n' +
+            '\\n' +
+            'console.log(employeeName);\\n' +
+            'console.log(team);';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4 - DEFAULT VALUES
+       ========================================================= */
+
+    function runDestructuringExample4() {
+
+        const code =
+            'let course = {\\n' +
+            '    name: "JavaScript"\\n' +
+            '};\\n' +
+            '\\n' +
+            'const {\\n' +
+            '    name,\\n' +
+            '    duration = "3 Months"\\n' +
+            '} = course;\\n' +
+            '\\n' +
+            'console.log(name);\\n' +
+            'console.log(duration);';
+
+        openCompiler(code);
+
+    }
+
+</script>

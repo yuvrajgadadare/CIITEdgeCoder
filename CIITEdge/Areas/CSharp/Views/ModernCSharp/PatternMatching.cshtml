@@ -1,0 +1,1222 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Pattern Matching";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <section class="col-lg-9">
+
+            <!-- Introduction -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">Pattern Matching</h2>
+
+                <p class="text-muted mb-4">
+                    Pattern matching is a modern C# feature that allows you to check
+                    whether a value matches a specific type, value, property, relationship,
+                    or structure.
+                </p>
+
+                <p class="text-muted mb-4">
+                    It makes conditional logic easier to read and is especially useful
+                    when working with objects, APIs, validation, business rules, and
+                    different types of data.
+                </p>
+
+                <div class="alert alert-info mb-4"
+                     style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+                    <strong>Key Idea:</strong>
+                    Pattern matching allows you to ask questions about data in a clean
+                    and readable way instead of writing multiple type checks and casts.
+                </div>
+            </div>
+
+
+            <!-- What is Pattern Matching -->   
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">What is Pattern Matching?</h3>
+
+                <p class="text-muted mb-4">
+                    Pattern matching means comparing a value against a pattern and
+                    executing code when the value matches that pattern.
+                </p>
+
+                <p class="text-muted mb-4">
+                    C# provides several types of patterns including type patterns,
+                    constant patterns, relational patterns, logical patterns,
+                    property patterns, positional patterns, tuple patterns,
+                    and list patterns.
+                </p>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Basic Syntax</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>if (value is pattern)
+{
+    // Code executes when pattern matches
+}</code></pre>
+                </div>
+            </div>
+
+
+            <!-- is Type Pattern -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">1. Type Pattern with is</h3>
+
+                <p class="text-muted mb-4">
+                    The <code>is</code> keyword can check whether an object is of
+                    a particular type.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+object value = "CIIT Training Institute";
+
+if (value is string)
+{
+    Console.WriteLine("The value is a string.");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>The value is a string.</code></pre>
+                </div>
+            </div>
+
+
+            <!-- Declaration Pattern -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">2. Declaration Pattern</h3>
+
+                <p class="text-muted mb-4">
+                    A declaration pattern checks the type and also creates a variable
+                    containing the converted value.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+object value = "C# Programming";
+
+if (value is string text)
+{
+    Console.WriteLine(text);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>C# Programming</code></pre>
+                </div>
+
+                <p class="text-muted mb-0">
+                    Here, <code>value is string text</code> checks the type and
+                    creates the variable <code>text</code>.
+                </p>
+            </div>
+
+
+            <!-- Constant Pattern -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">3. Constant Pattern</h3>
+
+                <p class="text-muted mb-4">
+                    A constant pattern checks whether a value is equal to a specific
+                    constant value.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int status = 200;
+
+if (status is 200)
+{
+    Console.WriteLine("Request successful.");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Request successful.</code></pre>
+                </div>
+            </div>
+
+
+            <!-- Relational Patterns -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">4. Relational Patterns</h3>
+
+                <p class="text-muted mb-4">
+                    Relational patterns allow you to compare a value using operators
+                    such as <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>,
+                    and <code>&lt;=</code>.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int marks = 85;
+
+if (marks is &gt;= 75)
+{
+    Console.WriteLine("Distinction");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Distinction</code></pre>
+                </div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Range Example</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+int age = 25;
+
+if (age is &gt;= 18 and &lt;= 60)
+{
+    Console.WriteLine("Working age group.");
+}</code></pre>
+                </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+            </div>
+            
+
+            
+ 
+
+                
+            <!-- Logical Patterns -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">5. Logical Patterns</h3>
+
+                <p class="text-muted mb-4">
+                    Logical patterns combine multiple conditions using
+                    <code>and</code>, <code>or</code>, and <code>not</code>.
+                </p>
+
+                <h4 class="fw-bold text-dark mb-3">and Pattern</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+int marks = 82;
+
+if (marks is &gt;= 75 and &lt;= 100)
+{
+    Console.WriteLine("Excellent result.");
+}</code></pre>
+                </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+                <h4 class="fw-bold text-dark mb-3">or Pattern</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+int day = 6;
+
+if (day is 6 or 7)
+{
+    Console.WriteLine("Weekend");
+}</code></pre>
+                </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+                <h4 class="fw-bold text-dark mb-3">not Pattern</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+string? name = null;
+
+if (name is not null)
+{
+    Console.WriteLine(name);
+}</code></pre>
+                </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+            </div>
+
+
+            <!-- Property Pattern -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">6. Property Pattern</h3>
+
+                <p class="text-muted mb-4">
+                    Property patterns allow you to check the properties of an object
+                    directly without manually accessing each property in separate
+                    conditions.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+class Student
+{
+    public string Name { get; set; }
+    public int Marks { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student student = new Student
+        {
+            Name = "Rahul",
+            Marks = 88
+        };
+
+        if (student is { Marks: >= 75 })
+        {
+            Console.WriteLine("Student passed with distinction.");
+        }
+    }
+
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Student passed with distinction.</code></pre>
+                </div>
+            </div>
+
+
+            <!-- Property + Type Pattern -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">7. Combining Type and Property Patterns</h3>
+
+                <p class="text-muted mb-4">
+                    Type and property patterns can be combined to check both the
+                    object's type and its property values.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+class Student
+{
+    public string Name { get; set; }
+    public int Marks { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student student = new Student
+        {
+            Name = "Priya",
+            Marks = 92
+        };
+
+        if (student is Student { Marks: >= 90 } s)
+        {
+            Console.WriteLine(
+                $"{s.Name} achieved an excellent score."
+            );
+        }
+    }
+
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Priya achieved an excellent score.</code></pre>
+                </div>
+            </div>
+
+
+            <!-- Switch Statement -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">8. Pattern Matching with switch</h3>
+
+                <p class="text-muted mb-4">
+                    Pattern matching becomes especially powerful when used with
+                    <code>switch</code>.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+object value = 100;
+
+switch (value)
+{
+    case int number:
+        Console.WriteLine($"Integer: {number}");
+        break;
+
+    case string text:
+        Console.WriteLine($"String: {text}");
+        break;
+
+    default:
+        Console.WriteLine("Unknown type");
+        break;
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Integer: 100</code></pre>
+                </div>
+            </div>
+
+
+            <!-- Switch Expression -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">9. Switch Expression</h3>
+
+                <p class="text-muted mb-4">
+                    A switch expression is a shorter and more expressive way to
+                    return a value based on a pattern.
+                </p>
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int marks = 82;
+
+string grade = marks switch
+{
+    &gt;= 90 =&gt; "A+",
+    &gt;= 75 =&gt; "A",
+    &gt;= 60 =&gt; "B",
+    &gt;= 50 =&gt; "C",
+    _ =&gt; "Fail"
+};
+
+Console.WriteLine(grade);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>A</code></pre>
+                </div>
+            </div>
+
+
+            <!-- When Guard -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">10. Pattern Matching with when</h3>
+
+                <p class="text-muted mb-4">
+                    The <code>when</code> keyword allows an additional condition
+                    to be applied after a pattern matches.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int marks = 85;
+
+string result = marks switch
+{
+    int score when score &gt;= 75 =&gt; "Distinction",
+    int score when score &gt;= 50 =&gt; "Pass",
+    _ =&gt; "Fail"
+};
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Distinction</code></pre>
+                </div>
+            </div>
+
+
+            <!-- Positional Pattern -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">11. Positional Pattern</h3>
+
+                <p class="text-muted mb-4">
+                    Positional patterns can be used with types that expose
+                    positional data, such as records and tuples.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ var student = ("Rahul", 85);
+
+if (student is ("Rahul", &gt;= 75))
+{
+    Console.WriteLine("Rahul passed with good marks.");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Rahul passed with good marks.</code></pre>
+                </div>
+            </div>
+
+
+            <!-- Tuple Pattern -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">12. Tuple Pattern</h3>
+
+                <p class="text-muted mb-4">
+                    Tuple patterns are useful when multiple values need to be
+                    checked together.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int marks = 85;
+bool attendance = true;
+
+string result = (marks, attendance) switch
+{
+    (&gt;= 75, true) =&gt; "Eligible for placement support",
+    (&gt;= 50, true) =&gt; "Eligible for final assessment",
+    _ =&gt; "Needs improvement"
+};
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Eligible for placement support</code></pre>
+                </div>
+            </div>
+
+
+            <!-- List Pattern -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">13. List Patterns</h3>
+
+                <p class="text-muted mb-4">
+                    List patterns allow modern C# applications to match the structure
+                    and contents of arrays or collections.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] numbers = { 1, 2, 3 };
+
+if (numbers is [1, 2, 3])
+{
+    Console.WriteLine("Exact sequence matched.");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Exact sequence matched.</code></pre>
+                </div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Discard Pattern in Lists</h4>
+
+            <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int[] numbers = { 10, 20, 30, 40 };
+
+if (numbers is [10, ..])
+{
+    Console.WriteLine("List starts with 10.");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+            </div>
+
+
+            <!-- Real World Example -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">14. Example: API Response 🤓🌍</h3>
+
+                <p class="text-muted mb-4">
+                    Pattern matching is useful when an application receives different
+                    types of responses and needs to process them differently.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+object response = 200;
+
+string message = response switch
+{
+    200 =&gt; "Request completed successfully.",
+    400 =&gt; "Bad request.",
+    401 =&gt; "Unauthorized request.",
+    404 =&gt; "Resource not found.",
+    &gt;= 500 =&gt; "Server error.",
+    _ =&gt; "Unknown response."
+};
+
+Console.WriteLine(message);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Request completed successfully.</code></pre>
+                </div>
+
+                <div class="alert alert-success mb-0">
+                    <strong>CIIT Practical Point:</strong>
+                    Pattern matching is commonly useful in ASP.NET Core applications
+                    for processing API responses, validating models, checking object
+                    types, handling business rules, and simplifying conditional logic.
+                </div>
+            </div>
+
+
+            <!-- Traditional vs Pattern -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">Traditional Conditions vs Pattern Matching</h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>Traditional Approach</th>
+                                <th>Pattern Matching</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Multiple if conditions</td>
+                                <td>Clear pattern-based conditions</td>
+                            </tr>
+                            <tr>
+                                <td>Manual type casting</td>
+                                <td>Type checking and variable creation together</td>
+                            </tr>
+                            <tr>
+                                <td>Long conditional logic</td>
+                                <td>Concise switch expressions</td>
+                            </tr>
+                            <tr>
+                                <td>Separate property checks</td>
+                                <td>Property patterns</td>
+                            </tr>
+                            <tr>
+                                <td>Complex range conditions</td>
+                                <td>Relational and logical patterns</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- When to Use -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">When Should You Use Pattern Matching?</h3>
+
+                <ul class="text-muted">
+                    <li class="mb-2">When checking the type of an object.</li>
+                    <li class="mb-2">When validating values against ranges.</li>
+                    <li class="mb-2">When multiple conditions depend on the same value.</li>
+                    <li class="mb-2">When processing different object types.</li>
+                    <li class="mb-2">When working with API responses.</li>
+                    <li class="mb-2">When implementing business rules.</li>
+                    <li class="mb-2">When switch logic becomes complex.</li>
+                    <li class="mb-2">When working with modern C# records and collections.</li>
+                </ul>
+            </div>
+
+
+            <!-- Common Mistakes -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">Common Mistakes</h3>
+
+                <div class="alert alert-warning mb-4">
+                    <ul class="mb-0">
+                        <li class="mb-2">
+                            Using complicated patterns when a simple condition is enough.
+                        </li>
+                        <li class="mb-2">
+                            Forgetting the discard pattern <code>_</code> in switch expressions.
+                        </li>
+                        <li class="mb-2">
+                            Writing overlapping switch patterns in the wrong order.
+                        </li>
+                        <li class="mb-2">
+                            Mixing too many conditions into a single pattern.
+                        </li>
+                        <li>
+                            Using pattern matching without understanding the underlying data type.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- Best Practices -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">Best Practices</h3>
+
+                <ul class="text-muted">
+                    <li class="mb-2">Keep patterns simple and readable.</li>
+                    <li class="mb-2">Use switch expressions when they improve clarity.</li>
+                    <li class="mb-2">Use property patterns for object validation.</li>
+                    <li class="mb-2">Use relational patterns for ranges.</li>
+                    <li class="mb-2">Use logical patterns instead of deeply nested conditions.</li>
+                    <li class="mb-2">Keep the most specific patterns before general patterns.</li>
+                    <li>Use the discard pattern for unexpected or default cases.</li>
+                </ul>
+            </div>
+
+
+            <!-- Interview Questions -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">Interview Questions</h3>
+
+                <ol class="text-muted">
+                    <li class="mb-3">What is pattern matching in C#?</li>
+                    <li class="mb-3">What is the difference between <code>is</code> and <code>as</code>?</li>
+                    <li class="mb-3">What is a declaration pattern?</li>
+                    <li class="mb-3">What are relational patterns?</li>
+                    <li class="mb-3">Explain <code>and</code>, <code>or</code>, and <code>not</code> patterns.</li>
+                    <li class="mb-3">What is a property pattern?</li>
+                    <li class="mb-3">What is a switch expression?</li>
+                    <li class="mb-3">What is the purpose of the discard pattern <code>_</code>?</li>
+                    <li class="mb-3">What are positional and tuple patterns?</li>
+                    <li>What are list patterns in modern C#?</li>
+                </ol>
+            </div>
+
+
+            <!-- Practice -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+                <h3 class="h3 fw-bold text-dark mb-3">Practice Programs</h3>
+
+                <ol class="text-muted">
+                    <li class="mb-3">
+                        Create a program that checks whether an object contains a string,
+                        integer, or double value.
+                    </li>
+                    <li class="mb-3">
+                        Create a grade calculator using relational patterns.
+                    </li>
+                    <li class="mb-3">
+                        Create a switch expression for HTTP status codes.
+                    </li>
+                    <li class="mb-3">
+                        Create a Student class and validate its properties using a property pattern.
+                    </li>
+                    <li class="mb-3">
+                        Create a program using tuple patterns to evaluate marks and attendance.
+                    </li>
+                    <li>
+                        Create a program that checks an integer array using a list pattern.
+                    </li>
+                </ol>
+            </div>
+
+
+            <!-- Summary -->
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+                <h2 class="h3 fw-bold mb-3">Summary</h2>
+
+                <ul class="mb-0">
+                    <li class="mb-2">
+                        Pattern matching provides a clean way to check values and objects.
+                    </li>
+                    <li class="mb-2">
+                        The <code>is</code> keyword can perform type and declaration matching.
+                    </li>
+                    <li class="mb-2">
+                        Constant patterns compare values directly.
+                    </li>
+                    <li class="mb-2">
+                        Relational patterns handle ranges and comparisons.
+                    </li>
+                    <li class="mb-2">
+                        Logical patterns combine conditions using <code>and</code>,
+                        <code>or</code>, and <code>not</code>.
+                    </li>
+                    <li class="mb-2">
+                        Property patterns validate object properties.
+                    </li>
+                    <li class="mb-2">
+                        Switch expressions make conditional result selection concise.
+                    </li>
+                    <li class="mb-2">
+                        Positional, tuple, and list patterns support structured data matching.
+                    </li>
+                    <li>
+                        Pattern matching is an important modern C# feature for clean,
+                        maintainable application code.
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <a href="/CSharp/ModernCSharp/RecordTypes"
+                   class="btn btn-outline-primary">
+                    ← Previous Topic
+                </a>
+
+                <a href="/CSharp/ModernCSharp/TopLevelStatements"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+            </div>
+
+        </section>
+    </div>
+</main>
+<script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>
+
+
+
+
+
+
+
+

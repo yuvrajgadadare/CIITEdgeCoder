@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Areas/GitHub/Views/Shared/GithubLayout.cshtml";
+    ViewData["Title"] = "Initial Configuration";
+}
+<style>
+    ul.no-bullets {
+        list-style-type: none; /* Removes the bullet points */
+       
+    }
+</style>
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <!-- HEADER -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Initial Configuration</h2>
+
+            <p class="mb-0">
+                To configure Git and connect it to your GitHub account for the first time, you need to set up your identity globally and configure your default settings. This process ensures your local code changes are correctly attributed to your GitHub profile when you push them.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+            <div class="mb-3">
+                <h4>1. Set Your Identity (Required)</h4>
+                <p class="mb-3">
+                    Open your terminal (Mac/Linux) or Git Bash (Windows) and type the following commands. Make sure the email matches the one registered to your GitHub Account.
+                    <ul>
+                        <li>
+                            <p>Set your name:</p>
+                            <div class="code-block mb-4 shadow-sm">
+                                git config --global user.name "your_name"
+                            </div>
+                        </li>
+                        <li>
+                            <p>Set your email:</p>
+                            <div class="code-block mb-5 shadow-sm">
+                                git config --global user.email "your_email@example.com"
+                            </div>
+                        </li>
+                    </ul>
+                </p>
+                <h4>2. Set the Default Branch Name</h4>
+                <p class="mb-3">
+                    GitHub defaults to using main as the primary branch for all new repositories. Match this convention locally by changing your default initial branch name:
+                    <ul class="no-bullets">
+                        <li>
+                           
+                            <div class="code-block mb-5 shadow-sm">
+                                git config --global init.defaultBranch main
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </p>
+                <h4>3. Verify Your Settings</h4>
+                <p class="mb-3">
+                    You can confirm that your global configurations were saved properly by listing them:
+                    <ul class="no-bullets">
+                        <li>
+
+                            <div class="code-block mb-5 shadow-sm">
+                                git config --list
+                            </div>
+                        </li>
+
+                    </ul>
+                </p>
+                <h4>4. Connect a Local Project to GitHub</h4>
+                <p class="mb-3">
+                    Once your identity is configured, you can initialize a local folder and push it to a new, empty repository on GitHub.
+                    <ul class="no-bullets">
+                        <li>
+
+                            <div class="mb-5">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Step</th>
+                                            <th>Command / Action</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Initialize</td>
+                                            <td>git init</td>
+                                            <td>Turns your current local directory into a Git repository.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stage Files</td>
+                                            <td>git add .</td>
+                                            <td>Tracks and prepares all files in the directory for your commit.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Commit</td>
+                                            <td>git commit -m "Initial commit"</td>
+                                            <td>Saves a snapshot of your staged files locally.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Link Remote</td>
+                                            <td>git remote add origin @Html.Raw("<URL>")</td>
+                                            <td>Connects your local project to your remote GitHub repository URL.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Push</td>
+                                            <td>git push -u origin main</td>
+                                            <td>Pushes your local main branch code up to GitHub.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+
+                    </ul>
+                </p>
+            </div>
+        </section>
+</div>
+</div>

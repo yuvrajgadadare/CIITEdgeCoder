@@ -1,0 +1,743 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Buttons";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML Buttons</h1>
+
+            <p>
+                Buttons are used to perform actions such as submitting forms,
+                resetting form fields, triggering JavaScript functions, or performing
+                other user interactions.
+            </p>
+
+            <div class="info-box">
+                <strong>Key Point:</strong>
+                HTML provides both the <code>&lt;button&gt;</code> element and the
+                <code>&lt;input&gt;</code> element for creating buttons.
+                The <code>&lt;button&gt;</code> element is more flexible because it can contain text,
+                icons, and other inline content.
+            </div>
+
+            <h2>1. Basic Button</h2>
+
+            <p>
+                The <code>&lt;button&gt;</code> element creates a clickable button.
+            </p>
+
+            <pre><code>&lt;button&gt;Click Me&lt;/button&gt;</code></pre>
+
+            <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <button type="button">Click Me</button>
+            </div>
+
+            <h2>2. Button with type Attribute</h2>
+
+            <p>
+                The <code>type</code> attribute defines how the button behaves.
+                The main button types are:
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>submit</code></td>
+                            <td>Submits a form.</td>
+                        </tr>
+                        <tr>
+                            <td><code>reset</code></td>
+                            <td>Resets form controls to their initial values.</td>
+                        </tr>
+                        <tr>
+                            <td><code>button</code></td>
+                            <td>A general-purpose button with no default form action.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>3. Submit Button</h2>
+
+            <p>
+                Use <code>type="submit"</code> when the button should submit a form.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;input type="text" name="username"&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <form>
+                    <div class="mb-3">
+                        <label for="username-demo" class="form-label">Username</label>
+                        <input type="text" id="username-demo" name="username" class="form-control">
+                    </div>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <h2>4. Reset Button</h2>
+
+            <p>
+                A reset button restores form controls to their initial values.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;input type="text" name="username"&gt;
+
+    &lt;button type="reset"&gt;
+        Reset
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <form>
+                    <div class="mb-3">
+                        <label for="reset-name-demo" class="form-label">Name</label>
+                        <input type="text"
+                               id="reset-name-demo"
+                               name="name"
+                               class="form-control"
+                               value="Sample Name">
+                    </div>
+
+                    <button type="reset">Reset</button>
+                </form>
+            </div>
+
+            <h2>5. Normal Button</h2>
+
+            <p>
+                A button with <code>type="button"</code> does not submit or reset the form.
+                It is commonly used with JavaScript.
+            </p>
+
+            <pre><code>&lt;button type="button"&gt;
+    Click Here
+&lt;/button&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+
+            <div class="demo-box">
+                <button type="button">Click Here</button>
+            </div>
+
+            <h2>6. Button with JavaScript</h2>
+
+            <p>
+                A normal button can trigger JavaScript when the user clicks it.
+            </p>
+
+            <pre><code>&lt;button type="button" onclick="showMessage()"&gt;
+    Show Message
+&lt;/button&gt;
+
+&lt;script&gt;
+    function showMessage() {
+        alert("Button clicked!");
+    }
+&lt;/script&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <button type="button"
+                        onclick="alert('Button clicked!')">
+                    Show Message
+                </button>
+            </div>
+
+            <h2>7. Button with Disabled Attribute</h2>
+
+            <p>
+                The <code>disabled</code> attribute prevents the user from interacting with the button.
+            </p>
+
+            <pre><code>&lt;button type="button" disabled&gt;
+    Submit
+&lt;/button&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <button type="button" disabled>Submit</button>
+            </div>
+
+            <h2>8. Button with Name and Value</h2>
+
+            <p>
+                Buttons can have <code>name</code> and <code>value</code> attributes.
+                This is useful when multiple submit buttons perform different actions.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;button type="submit"
+            name="action"
+            value="save"&gt;
+        Save
+    &lt;/button&gt;
+
+    &lt;button type="submit"
+            name="action"
+            value="publish"&gt;
+        Publish
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <p>
+                The selected submit button contributes its name and value when the form is submitted.
+            </p>
+
+            <h2>9. Multiple Submit Buttons</h2>
+
+            <p>
+                A form can contain multiple submit buttons for different actions.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;input type="text" name="title"&gt;
+
+    &lt;button type="submit"
+            name="action"
+            value="save"&gt;
+        Save Draft
+    &lt;/button&gt;
+
+    &lt;button type="submit"
+            name="action"
+            value="publish"&gt;
+        Publish
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2>10. Button Element vs Input Button</h2>
+
+            <p>
+                HTML also supports buttons using the <code>&lt;input&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;input type="button" value="Click Me"&gt;</code></pre>
+
+            <p>
+                A more flexible alternative is:
+            </p>
+
+            <pre><code>&lt;button type="button"&gt;
+    Click Me
+&lt;/button&gt;</code></pre>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>&lt;button&gt;</th>
+                            <th>&lt;input&gt;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Text</td>
+                            <td>Flexible content</td>
+                            <td>Uses the <code>value</code> attribute</td>
+                        </tr>
+                        <tr>
+                            <td>Icons</td>
+                            <td>Can contain icons or other inline content</td>
+                            <td>Limited</td>
+                        </tr>
+                        <tr>
+                            <td>Styling</td>
+                            <td>Highly flexible</td>
+                            <td>Can also be styled with CSS</td>
+                        </tr>
+                        <tr>
+                            <td>Common Use</td>
+                            <td>General button element</td>
+                            <td>Simple input-based buttons</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>11. Input Submit Button</h2>
+
+            <p>
+                An <code>input</code> element with <code>type="submit"</code>
+                creates a form submission button.
+            </p>
+
+            <pre><code>&lt;input type="submit" value="Submit Form"&gt;</code></pre>
+
+            <div class="demo-box">
+                <input type="submit" value="Submit Form">
+            </div>
+
+            <h2>12. Input Reset Button</h2>
+
+            <p>
+                An <code>input</code> element with <code>type="reset"</code>
+                creates a reset button.
+            </p>
+
+            <pre><code>&lt;input type="reset" value="Reset Form"&gt;</code></pre>
+
+            <div class="demo-box">
+                <input type="reset" value="Reset Form">
+            </div>
+
+            <h2>13. Button with Form Example</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="student-name"&gt;Student Name:&lt;/label&gt;
+    &lt;input type="text"
+           id="student-name"
+           name="studentName"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="student-email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email"
+           id="student-email"
+           name="email"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+    &lt;button type="reset"&gt;
+        Clear
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2>14. Button with CSS Class</h2>
+
+            <p>
+                CSS classes can be used to customize the appearance of buttons.
+            </p>
+
+            <pre><code>&lt;button type="button" class="primary-button"&gt;
+    Save
+&lt;/button&gt;
+
+&lt;style&gt;
+    .primary-button {
+        background-color: #4f46e5;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+    }
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+                <h3>Output</h3>
+            <div class="demo-box">
+                <button type="button" class="btn btn-primary">
+                    Save
+                </button>
+            </div>
+
+            
+
+
+            <h2>15. Button with Icon</h2>
+
+            <p>
+                The <code>&lt;button&gt;</code> element can contain other inline content,
+                such as an icon and text.
+            </p>
+
+            <pre><code>&lt;button type="button"&gt;
+    Save
+&lt;/button&gt;</code></pre>
+
+            <p>
+                A button can also contain an image or icon element when required.
+            </p>
+
+            <pre><code>&lt;button type="button"&gt;
+    &lt;span&gt;Save&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2>16. Button with Form Action</h2>
+
+            <p>
+                A submit button can specify a different form action using
+                <code>formaction</code>.
+            </p>
+
+            <pre><code>&lt;form action="/save"&gt;
+
+    &lt;input type="text" name="name"&gt;
+
+    &lt;button type="submit"&gt;
+        Save
+    &lt;/button&gt;
+
+    &lt;button type="submit"
+            formaction="/publish"&gt;
+        Publish
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="info-box">
+                <strong>Note:</strong>
+                The <code>formaction</code> attribute can override the form's normal
+                <code>action</code> for a particular submit button.
+            </div>
+
+            <h2>17. Useful Button Attributes</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>type</code></td>
+                            <td>Defines the button behavior.</td>
+                        </tr>
+                        <tr>
+                            <td><code>name</code></td>
+                            <td>Provides a name for the button.</td>
+                        </tr>
+                        <tr>
+                            <td><code>value</code></td>
+                            <td>Provides a value submitted with the button.</td>
+                        </tr>
+                        <tr>
+                            <td><code>disabled</code></td>
+                            <td>Prevents user interaction.</td>
+                        </tr>
+                        <tr>
+                            <td><code>formaction</code></td>
+                            <td>Overrides the form's action URL for a submit button.</td>
+                        </tr>
+                        <tr>
+                            <td><code>formmethod</code></td>
+                            <td>Specifies the HTTP method for the button's form submission.</td>
+                        </tr>
+                        <tr>
+                            <td><code>formtarget</code></td>
+                            <td>Specifies where the submitted response should be displayed.</td>
+                        </tr>
+                        <tr>
+                            <td><code>formnovalidate</code></td>
+                            <td>Prevents built-in form validation for that submission.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>18. Common Mistake: Missing Button Type</h2>
+
+            <p>
+                Inside a form, it is a good practice to explicitly specify the
+                button <code>type</code>.
+            </p>
+
+            <pre><code>&lt;button&gt;Save&lt;/button&gt;</code></pre>
+
+            <p>
+                Prefer:
+            </p>
+
+            <pre><code>&lt;button type="submit"&gt;
+    Save
+&lt;/button&gt;</code></pre>
+
+            <p>
+                Or for a button that should not submit the form:
+            </p>
+
+            <pre><code>&lt;button type="button"&gt;
+    Open Menu
+&lt;/button&gt;</code></pre>
+
+            <h2>19. Button Best Practices</h2>
+
+            <ul>
+                <li>Always specify the button <code>type</code> when the button is inside a form.</li>
+                <li>Use <code>submit</code> for form submission.</li>
+                <li>Use <code>reset</code> only when resetting the form is useful.</li>
+                <li>Use <code>button</code> for JavaScript-driven actions that should not submit the form.</li>
+                <li>Use clear and descriptive button text.</li>
+                <li>Disable buttons when the related action should not currently be available.</li>
+                <li>Keep button behavior consistent with what the label communicates.</li>
+            </ul>
+
+            <h2>20. Practice Example</h2>
+
+            <p>
+                Create a registration form with Submit and Reset buttons.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="full-name"&gt;Full Name:&lt;/label&gt;
+    &lt;input type="text"
+           id="full-name"
+           name="fullName"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email"
+           id="email"
+           name="email"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+    &lt;button type="reset"&gt;
+        Clear
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML buttons are used to perform actions and interact with forms.
+                    The <code>&lt;button&gt;</code> element supports
+                    <code>submit</code>, <code>reset</code>, and general-purpose
+                    <code>button</code> types. Use appropriate attributes such as
+                    <code>disabled</code>, <code>name</code>, <code>value</code>,
+                    and form-related attributes when required.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("CheckBoxes", "Forms", new { area = "HTML" })">
+                    ← Previous: Checkboxes
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("FormValidation", "Forms", new { area = "HTML" })">
+                    Next: Form Validation →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,742 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Color Values";
+}
+
+<style>
+
+    #css-color-values-page {
+        color: #212529;
+    }
+
+        #css-color-values-page > .row h1,
+        #css-color-values-page > .row h2,
+        #css-color-values-page > .row h3 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           CODE BOX
+           ========================================================= */
+
+        #css-color-values-page .code-box {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+            #css-color-values-page .code-box pre {
+                margin: 0;
+                color: #f8fafc;
+                font-family: Consolas, Monaco, monospace;
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+        /* =========================================================
+           DIAGRAM
+           ========================================================= */
+
+        #css-color-values-page .diagram-container {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        #css-color-values-page .diagram-box {
+            background-color: #ffffff;
+            border: 2px solid #6f42c1;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            height: 100%;
+        }
+
+            #css-color-values-page .diagram-box h5 {
+                color: #5b21b6;
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+
+            #css-color-values-page .diagram-box p {
+                color: #495057;
+                font-size: 14px;
+                margin-bottom: 0;
+            }
+
+        #css-color-values-page .diagram-arrow {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+            color: #6f42c1;
+        }
+
+        /* =========================================================
+           OUTPUT
+           ========================================================= */
+
+        #css-color-values-page .output-box {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        #css-color-values-page .browser-window {
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        #css-color-values-page .browser-header {
+            background-color: #e9ecef;
+            padding: 8px 12px;
+            border-bottom: 1px solid #ced4da;
+            font-size: 13px;
+            color: #495057;
+        }
+
+        #css-color-values-page .browser-content {
+            padding: 25px;
+            min-height: 100px;
+        }
+
+        /* =========================================================
+           COLOR CARDS
+           ========================================================= */
+
+        #css-color-values-page .color-card {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #ffffff;
+            height: 100%;
+        }
+
+        #css-color-values-page .color-preview {
+            width: 100%;
+            height: 70px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+        }
+
+        #css-color-values-page .color-card h5 {
+            color: #5b21b6;
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           SUMMARY
+           ========================================================= */
+
+        #css-color-values-page .summary-box {
+            background-color: #eaf4ff;
+            border-left: 5px solid #2563eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+</style>
+
+
+<main id="css-color-values-page"
+      class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- ================================================= -->
+        <!-- LEFT SIDEBAR -->
+        <!-- ================================================= -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <section class="col-lg-9">
+
+
+            <!-- ================================================= -->
+            <!-- PAGE TITLE -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h1>
+                    CSS Color Values
+                </h1>
+
+                <p class="lead">
+                    Learn different ways to define colors in CSS
+                    using color names, HEX, RGB, and RGBA values.
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- INTRODUCTION -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    What are CSS Color Values?
+                </h2>
+
+                <p>
+                    CSS allows us to define colors in different formats.
+                    These values can be used with properties such as
+                    <code>color</code> and
+                    <code>background-color</code>.
+                </p>
+
+                <p>
+                    The most common color formats are:
+                    <strong>Color Names, HEX, RGB, and RGBA.</strong>
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- DIAGRAM -->
+            <!-- ================================================= -->
+
+            <div class="diagram-container">
+
+                <h2 class="h4 mb-4">
+                    How CSS Color Values Work
+                </h2>
+
+                <div class="row g-3 align-items-center">
+
+                    <div class="col-md-3">
+
+                        <div class="diagram-box">
+
+                            <h5>HTML Element</h5>
+
+                            <p>
+                                h1, p, div
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-1 diagram-arrow">
+                        →
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="diagram-box">
+
+                            <h5>CSS Color Value</h5>
+
+                            <p>
+                                red<br />
+                                #ff0000<br />
+                                rgb(255, 0, 0)<br />
+                                rgba(255, 0, 0, 0.5)
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-1 diagram-arrow">
+                        →
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <div class="diagram-box">
+
+                            <h5>Browser</h5>
+
+                            <p>
+                                Displays the selected color
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- 1. COLOR NAME -->
+            <!-- ================================================= -->
+
+            <div class="mb-5">
+
+                <h2 class="h4">
+                    1. Color Name
+                </h2>
+
+                <p>
+                    CSS provides predefined color names such as
+                    <code>red</code>, <code>blue</code>,
+                    <code>green</code>, and <code>orange</code>.
+                </p>
+
+
+                <div class="code-box">
+
+                    <pre><code>h1 {
+    color: red;
+}</code></pre>
+
+                </div>
+
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <div class="browser-window">
+
+                        <div class="browser-header">
+                            Browser Output
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h2 style="color: red; margin: 0;">
+                                WELCOME TO CIIT TRAINING INSTITUTE 🌍🤓..!
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- 2. HEX COLOR -->
+            <!-- ================================================= -->
+
+            <div class="mb-5">
+
+                <h2 class="h4">
+                    2. HEX Color
+                </h2>
+
+                <p>
+                    HEX represents a color using hexadecimal values.
+                    A HEX color normally starts with <code>#</code>.
+                </p>
+
+                <p>
+                    For example,
+                    <code>#ff0000</code> represents red.
+                </p>
+
+
+                <div class="code-box">
+
+                    <pre><code>h1 {
+    color: #ff0000;
+}</code></pre>
+
+                </div>
+
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <div class="browser-window">
+
+                        <div class="browser-header">
+                            Browser Output
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h2 style="color: #ff0000; margin: 0;">
+                                HEX Color Example
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- 3. RGB COLOR -->
+            <!-- ================================================= -->
+
+            <div class="mb-5">
+
+                <h2 class="h4">
+                    3. RGB Color
+                </h2>
+
+                <p>
+                    RGB stands for
+                    <strong>Red, Green, Blue</strong>.
+                </p>
+
+                <p>
+                    Each value normally ranges from
+                    <code>0</code> to <code>255</code>.
+                </p>
+
+
+                <div class="code-box">
+
+                    <pre><code>h1 {
+    color: rgb(0, 128, 0);
+}</code></pre>
+
+                </div>
+
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <div class="browser-window">
+
+                        <div class="browser-header">
+                            Browser Output
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h2 style="color: rgb(0, 128, 0); margin: 0;">
+                                RGB Color Example
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- 4. RGBA COLOR -->
+            <!-- ================================================= -->
+
+            <div class="mb-5">
+
+                <h2 class="h4">
+                    4. RGBA Color
+                </h2>
+
+                <p>
+                    RGBA is similar to RGB, but it also supports
+                    transparency using the Alpha value.
+                </p>
+
+                <p>
+                    The Alpha value ranges from
+                    <code>0</code> to <code>1</code>.
+                </p>
+
+                <ul>
+
+                    <li>
+                        <code>0</code> = completely transparent
+                    </li>
+
+                    <li>
+                        <code>0.5</code> = 50% transparent
+                    </li>
+
+                    <li>
+                        <code>1</code> = completely visible
+                    </li>
+
+                </ul>
+
+
+                <div class="code-box">
+
+                    <pre><code>div {
+    background-color: rgba(255, 0, 0, 0.5);
+    padding: 20px;
+}</code></pre>
+
+                </div>
+
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <div class="browser-window">
+
+                        <div class="browser-header">
+                            Browser Output
+                        </div>
+
+                        <div class="browser-content"
+                             style="background-color: rgba(255, 0, 0, 0.5);">
+
+                            <strong>
+                                50% Transparent Red Background
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- COLOR COMPARISON -->
+            <!-- ================================================= -->
+
+            <div class="mb-5">
+
+                <h2 class="h4">
+                    Common CSS Color Formats
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <!-- COLOR NAME -->
+
+                    <div class="col-md-6">
+
+                        <div class="color-card">
+
+                            <div class="color-preview"
+                                 style="background-color: red;">
+                            </div>
+
+                            <h5>
+                                Color Name
+                            </h5>
+
+                            <p class="mb-1">
+                                <code>red</code>
+                            </p>
+
+                            <p class="mb-0">
+                                Uses a predefined CSS color name.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- HEX -->
+
+                    <div class="col-md-6">
+
+                        <div class="color-card">
+
+                            <div class="color-preview"
+                                 style="background-color: #ff0000;">
+                            </div>
+
+                            <h5>
+                                HEX
+                            </h5>
+
+                            <p class="mb-1">
+                                <code>#ff0000</code>
+                            </p>
+
+                            <p class="mb-0">
+                                Represents the same red color
+                                using hexadecimal notation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RGB -->
+
+                    <div class="col-md-6">
+
+                        <div class="color-card">
+
+                            <div class="color-preview"
+                                 style="background-color: rgb(255, 0, 0);">
+                            </div>
+
+                            <h5>
+                                RGB
+                            </h5>
+
+                            <p class="mb-1">
+                                <code>rgb(255, 0, 0)</code>
+                            </p>
+
+                            <p class="mb-0">
+                                Defines red, green and blue values.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RGBA -->
+
+                    <div class="col-md-6">
+
+                        <div class="color-card">
+
+                            <div class="color-preview"
+                                 style="background-color: rgba(255, 0, 0, 0.5);">
+                            </div>
+
+                            <h5>
+                                RGBA
+                            </h5>
+
+                            <p class="mb-1">
+                                <code>rgba(255, 0, 0, 0.5)</code>
+                            </p>
+
+                            <p class="mb-0">
+                                Adds transparency using Alpha.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- IMPORTANT NOTE -->
+            <!-- ================================================= -->
+
+            <div class="alert alert-info">
+
+                <strong>Beginner Tip:</strong>
+
+                <p class="mb-0 mt-2">
+
+                    Color Name, HEX, and RGB can represent the same
+                    color in different formats. RGBA additionally
+                    allows you to control transparency.
+
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY -->
+            <!-- ================================================= -->
+
+            <div class="summary-box">
+
+                <h2 class="h4">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    CSS color values can be defined using color names,
+                    HEX values, RGB values, and RGBA values. Each method
+                    provides a different way to specify colors in CSS.
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- NAVIGATION -->
+            <!-- ================================================= -->
+
+            <div class="topic-navigation mt-4">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("Index", "ColorsBackgrounds", new { area = "CSS" })">
+
+                            ← Previous: Colors &amp; Backgrounds
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("BackgroundColor", "ColorsBackgrounds", new { area = "CSS" })">
+
+                            Next: Background Color →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>

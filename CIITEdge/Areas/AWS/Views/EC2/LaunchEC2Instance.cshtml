@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Launch an EC2 Instance";
+    Layout = "~/Areas/AWS/Views/Shared/AWSLayout.cshtml";
+}
+
+<div class="row g-4 aws-content">
+    <div class="col-lg-3">
+        @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSTopics.cshtml")
+    </div>
+    <div class="col-lg-9">
+        @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSDeepTheory.cshtml")
+        @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSContentStyles.cshtml")
+<div class="card border-0 shadow-sm mb-4"><div class="card-body p-4 p-lg-5">
+            <h3 class="fw-bold mb-3">Core Concept</h3>
+            <p>Choose an AMI → choose instance type → configure networking → choose storage → configure security group → review and launch.</p>
+            <p>After launch, connect using the supported access method and keep the instance updated.</p>
+            <svg class="aws-diagram" viewBox="0 0 800 210"><rect x="40" y="60" width="150" height="90" rx="14" fill="#fff3df" stroke="#0d6efd"/><text x="115" y="95" text-anchor="middle" font-weight="700">AMI</text><text x="115" y="122" text-anchor="middle">OS + software</text><path d="M190 105H290" stroke="#212529" stroke-width="4"/><polygon points="290,105 275,97 275,113" fill="#212529"/><rect x="310" y="45" width="180" height="120" rx="14" fill="#eef6ff" stroke="#0d6efd"/><text x="400" y="82" text-anchor="middle" font-weight="700">EC2 Instance</text><text x="400" y="110" text-anchor="middle">Compute</text><text x="400" y="138" text-anchor="middle">Network + Storage</text><path d="M490 105H590" stroke="#212529" stroke-width="4"/><polygon points="590,105 575,97 575,113" fill="#212529"/><rect x="610" y="60" width="150" height="90" rx="14" fill="#ecfdf5" stroke="#10b981"/><text x="685" y="95" text-anchor="middle" font-weight="700">Application</text><text x="685" y="122" text-anchor="middle">Spring Boot</text></svg>
+            <h3 class="fw-bold mt-5 mb-3">What you should remember</h3>
+            <div class="row g-3"><div class="col-md-6"><div class="aws-card p-4"><div class="icon mb-3"><i class="bi bi-check2-circle"></i></div><h5 class="fw-bold">Key idea</h5><p class="text-muted mb-0">Choose an AMI → choose instance type → configure networking → choose storage → configure security group → review and launch.</p></div></div><div class="col-md-6"><div class="aws-card p-4"><div class="icon mb-3"><i class="bi bi-check2-circle"></i></div><h5 class="fw-bold">Key idea</h5><p class="text-muted mb-0">After launch, connect using the supported access method and keep the instance updated.</p></div></div></div>
+            <div class="aws-example mt-4"><h5 class="fw-bold"><i class="bi bi-lightbulb text-warning me-2"></i>Real-world example</h5><p class="mb-2">Use a realistic cloud workload and focus on the responsibility of this AWS service.</p><div class="aws-code">User → AWS service → application → data / response</div><p class="text-muted mt-3 mb-0">Choose the service that matches the responsibility instead of forcing every workload into one resource.</p></div>
+            <div class="aws-code mt-3"># Conceptual workflow
+aws-service --resource example
+# Verify configuration → test → monitor → clean up</div>
+            <div class="aws-callout mt-4"><strong>Practice tip:</strong> Build the smallest possible lab, verify the result, then remove resources you no longer need.</div>
+            @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSConsoleWalkthrough.cshtml")
+            @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSMiniTest.cshtml")
+            <div class="mt-4"><a class="btn btn-outline-secondary" href="@Url.Action("EC2InstanceTypes", "EC2", new { area = "AWS" })">← Previous</a><a class="btn btn-primary fw-semibold ms-2" href="@Url.Action("SecurityGroups", "EC2", new { area = "AWS" })">Next →</a></div>
+        </div></div>
+    </div>
+</div>

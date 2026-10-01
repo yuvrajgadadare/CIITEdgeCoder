@@ -1,0 +1,1003 @@
+﻿@{
+
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+
+    ViewData["Title"] = "Nullable Reference Types";
+
+}
+ 
+<style>
+
+    .try-it-btn {
+
+        background: #198754;
+
+        color: #fff;
+
+        border: none;
+
+        border-radius: 5px;
+
+        padding: 6px 12px;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+        transition: all 0.2s ease;
+
+    }
+ 
+        .try-it-btn:hover {
+
+            background: #157347;
+
+            color: #fff;
+
+        }
+</style>
+ 
+<main id="tutorials" class="container py-5">
+<div class="row g-4">
+ 
+        <aside class="col-lg-3">
+
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+</aside>
+ 
+        <section class="col-lg-9">
+ 
+            <!-- Introduction -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h2 class="h1 fw-bold text-dark mt-1 mb-4">Nullable Reference Types</h2>
+ 
+                <p class="text-muted mb-4">
+
+                    Nullable Reference Types are a modern C# feature that helps developers
+
+                    identify and prevent possible <code>null</code> reference problems
+
+                    during development.
+</p>
+ 
+                <p class="text-muted mb-4">
+
+                    A reference type can normally contain a reference to an object or
+
+                    the value <code>null</code>. Nullable Reference Types allow you to
+
+                    explicitly communicate whether a reference is expected to contain
+
+                    a value or may be null.
+</p>
+ 
+                <div class="alert alert-info mb-0"
+
+                     style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+<strong>Key Idea:</strong>
+
+                    Nullable Reference Types improve code safety by making possible
+
+                    null values visible to the compiler and developer.
+</div>
+</div>
+ 
+ 
+            <!-- What is Null -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">What is null?</h3>
+ 
+                <p class="text-muted mb-4">
+
+                    The value <code>null</code> means that a reference does not currently
+
+                    point to an object.
+</p>
+ 
+                <div class="code-block mb-4 shadow-sm">
+<div class="code-lang-tag">C#</div>
+<pre class="mb-0"><code>string name = null;</code></pre>
+</div>
+ 
+                <p class="text-muted mb-0">
+
+                    In projects with nullable reference types enabled, the compiler
+
+                    can warn that assigning <code>null</code> to a non-nullable
+
+                    reference may cause a problem.
+</p>
+</div>
+ 
+ 
+            <!-- Enable -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Enabling Nullable Reference Types</h3>
+ 
+                <p class="text-muted mb-4">
+
+                    Nullable reference type analysis can be enabled in a project file
+
+                    using the <code>Nullable</code> setting.
+</p>
+ 
+                <div class="code-block mb-4 shadow-sm">
+<div class="code-lang-tag">XML</div>
+<pre class="mb-0"><code>&lt;PropertyGroup&gt;
+&lt;Nullable&gt;enable&lt;/Nullable&gt;
+&lt;/PropertyGroup&gt;</code></pre>
+</div>
+ 
+                <p class="text-muted mb-0">
+
+                    Modern .NET project templates commonly enable nullable analysis
+
+                    by default.
+</p>
+</div>
+ 
+ 
+            <!-- Non Nullable -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Non-Nullable Reference Type</h3>
+ 
+                <p class="text-muted mb-4">
+
+                    A reference type declared without <code>?</code> is treated as
+
+                    non-nullable. The compiler expects it to contain a valid reference.
+</p>
+ 
+
+ 
+                <div class="try-it-example">
+ 
+                    <div class="code-block shadow-sm">
+ 
+                        <div class="code-lang-tag">
+
+                            C#
+</div>
+ 
+<pre class="mb-0"><code>using System;
+
+string name = "Rahul";
+ 
+Console.WriteLine(name.Length);</code></pre>
+ 
+                    </div>
+ 
+                    <div class="text-end mt-2 mb-3">
+<button type="button"
+
+                                class="try-it-btn"
+
+                                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+
+                            Try It
+</button>
+</div>
+ 
+                </div>
+ 
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+ 
+                <div class="code-block mb-0 shadow-sm">
+<div class="code-lang-tag">Output</div>
+<pre class="mb-0"><code>5</code></pre>
+</div>
+</div>
+ 
+ 
+            <!-- Nullable Reference -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Nullable Reference Type using ?</h3>
+ 
+                <p class="text-muted mb-4">
+
+                    Adding <code>?</code> after a reference type explicitly indicates
+
+                    that the reference is allowed to contain <code>null</code>.
+</p>
+ 
+                <div class="code-block mb-4 shadow-sm">
+<div class="code-lang-tag">C#</div>
+<pre class="mb-0"><code>string? name = null;</code></pre>
+</div>
+ 
+                <p class="text-muted mb-0">
+
+                    Here, <code>name</code> is intentionally allowed to be null.
+</p>
+</div>
+ 
+ 
+            <!-- Null Check -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Checking for null</h3>
+ 
+                <p class="text-muted mb-4">
+
+                    Before using a nullable reference, check whether it contains a value.
+</p>
+ 
+ 
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+<code>string? name = null;
+ 
+if (name is not null)
+
+{
+
+    Console.WriteLine(name.Length);
+
+}
+
+else
+
+{
+
+    Console.WriteLine("Name is not available.");
+
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+ 
+                <div class="code-block mb-0 shadow-sm">
+<div class="code-lang-tag">Output</div>
+<pre class="mb-0"><code>Name is not available.</code></pre>
+</div>
+</div>
+ 
+ 
+            <!-- Null Conditional -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Null-Conditional Operator ?.</h3>
+ 
+                <p class="text-muted mb-4">
+
+                    The null-conditional operator <code>?.</code> allows you to access
+
+                    a member only when the object is not null.
+</p>
+ 
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string? name = null;
+ 
+int? length = name?.Length;
+ 
+Console.WriteLine(length);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+ 
+ 
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+ 
+                <div class="code-block mb-0 shadow-sm">
+<div class="code-lang-tag">Output</div>
+<pre class="mb-0"><code></code></pre>
+</div>
+ 
+                <p class="text-muted mt-3 mb-0">
+
+                    The result of <code>name?.Length</code> is null because
+<code>name</code> is null.
+</p>
+</div>
+ 
+ 
+            <!-- Null Coalescing -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Null-Coalescing Operator ??</h3>
+ 
+                <p class="text-muted mb-4">
+
+                    The <code>??</code> operator provides a default value when the
+
+                    expression on the left side is null.
+</p>
+ 
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ string? name = null;
+ 
+string displayName = name ?? "Guest";
+ 
+Console.WriteLine(displayName);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+ 
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+ 
+                <div class="code-block mb-0 shadow-sm">
+<div class="code-lang-tag">Output</div>
+<pre class="mb-0"><code>Guest</code></pre>
+</div>
+</div>
+ 
+ 
+            <!-- Null Coalescing Assignment -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Null-Coalescing Assignment ??=</h3>
+ 
+                <p class="text-muted mb-4">
+
+                    The <code>??=</code> operator assigns a value only when the
+
+                    variable currently contains null.
+</p>
+ 
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string? name = null;
+ 
+name ??= "CIIT Student";
+ 
+Console.WriteLine(name);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+ 
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+ 
+                <div class="code-block mb-0 shadow-sm">
+<div class="code-lang-tag">Output</div>
+<pre class="mb-0"><code>CIIT Student</code></pre>
+</div>
+</div>
+ 
+ 
+            <!-- Null Forgiving -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Null-Forgiving Operator !</h3>
+ 
+                <p class="text-muted mb-4">
+
+                    The null-forgiving operator <code>!</code> tells the compiler that
+
+                    you believe an expression will not be null at that point.
+</p>
+ 
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string? name = GetName();
+ 
+Console.WriteLine(name!.Length);
+ 
+string? GetName()
+
+{
+
+    return "Rahul";
+
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+<div class="alert alert-warning mb-0"><strong>Important:</strong>                    The <code>!</code> operator does not perform a null check and does
+
+                    not make a null value non-null at runtime. It only changes compiler
+
+                    null-state analysis.
+
+                </div></div><!-- Method Parameters --><div class="card shadow-sm p-4 p-md-5 mb-4"><h3 class="h3 fw-bold text-dark mb-3">Nullable Method Parameters</h3><p class="text-muted mb-4">                    You can clearly indicate whether a method parameter accepts null.
+
+                </p>
+                
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+void PrintName(string? name)
+{
+    if (name is null)
+
+    {
+        Console.WriteLine("Name is missing.");
+        return;
+    }
+    
+    Console.WriteLine($"Name: {name}");
+}
+PrintName(null);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+<h4 class="fw-bold text-dark mb-3">Output</h4><div class="code-block mb-0 shadow-sm"><div class="code-lang-tag">Output</div><pre class="mb-0"><code>Name is missing.</code></pre></div></div><!-- Return Values --><div class="card shadow-sm p-4 p-md-5 mb-4"><h3 class="h3 fw-bold text-dark mb-3">Nullable Return Values</h3><p class="text-muted mb-4">                    A method can use <code>string?</code> as its return type when
+
+                    it may return null.
+
+                </p>
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string? FindStudentName(int id)
+{
+    if (id == 1)
+
+    {
+        return "Amit";
+
+    }
+       return null;
+}
+string? name = FindStudentName(10);
+
+Console.WriteLine(name ?? "Student not found.");</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+<h4 class="fw-bold text-dark mb-3">Output</h4><div class="code-block mb-0 shadow-sm"><div class="code-lang-tag">Output</div><pre class="mb-0"><code>Student not found.</code></pre></div></div><!-- Nullable Properties --><div class="card shadow-sm p-4 p-md-5 mb-4"><h3 class="h3 fw-bold text-dark mb-3">Nullable Properties</h3><p class="text-muted mb-4">                    Model properties can also be marked nullable when a value may
+
+                    legitimately be absent.
+
+                </p>
+                
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+namespace n1
+{
+    public class Student
+    {
+        public string Name { get; set; } = "";
+        public string? Email { get; set; }
+    }
+    public class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            Student student = new Student
+            {
+                Name = "Priya",
+                Email = null
+            };
+
+            Console.WriteLine(student.Email ?? "Email not provided.");
+        }
+
+    }
+
+}
+</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+<h4 class="fw-bold text-dark mb-3">Output</h4><div class="code-block mb-0 shadow-sm"><div class="code-lang-tag">Output</div><pre class="mb-0"><code>Email not provided.</code></pre></div></div><!-- ASP.NET Core --><div class="card shadow-sm p-4 p-md-5 mb-4"><h3 class="h3 fw-bold text-dark mb-3">Nullable Reference Types in ASP.NET Core</h3><p class="text-muted mb-4">                    Nullable reference types are particularly useful in ASP.NET Core
+
+                    applications because API models, database queries, request values,
+
+                    and external data can sometimes contain missing values.
+
+                </p><div class="code-block mb-4 shadow-sm"><div class="code-lang-tag">C#</div><pre class="mb-0"><code>public class StudentDto
+
+{
+
+    public string Name { get; set; } = "";
+
+    public string? PhoneNumber { get; set; }
+
+    public string? Email { get; set; }
+
+}</code></pre></div><p class="text-muted mb-4">                    Here, <code>Name</code> is expected to contain a value, while
+
+                    <code>PhoneNumber</code> and <code>Email</code> are allowed
+
+                    to be null.
+
+                </p>
+
+                <div class="alert alert-success mb-0">
+<strong>CIIT Practical Point:</strong>
+                    In real ASP.NET Core projects, nullable reference types help
+                    developers identify possible null-related issues in DTOs,
+                    services, controllers, database results, and API responses
+                    before they become runtime errors.
+</div>
+</div>
+ 
+ 
+            <!-- Database Example -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Example: Database Data 👀🫥</h3>
+ 
+                <p class="text-muted mb-4">
+                    Suppose a database contains a student whose phone number is optional.
+                    The application can represent this correctly using a nullable reference.
+</p>
+ 
+
+ 
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string? phoneNumber = GetPhoneNumber();
+ 
+if (phoneNumber is null)
+{
+    Console.WriteLine("Phone number is not available.");
+}
+else
+{
+    Console.WriteLine($"Phone: {phoneNumber}");
+}
+ 
+string? GetPhoneNumber()
+{
+    return null;
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h4 class="fw-bold text-dark mb-3">Output</h4>
+ 
+                <div class="code-block mb-0 shadow-sm">
+<div class="code-lang-tag">Output</div>
+<pre class="mb-0"><code>Phone number is not available.</code></pre>
+</div>
+</div>
+ 
+ 
+            <!-- Nullable Value Types Difference -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Nullable Reference Types vs Nullable Value Types</h3>
+ 
+                <p class="text-muted mb-4">
+                    Nullable reference types and nullable value types are related to
+                    null handling but work with different categories of types.
+</p>
+ 
+                <div class="table-responsive">
+<table class="table table-bordered align-middle">
+<thead>
+<tr>
+<th>Nullable Reference Type</th>
+<th>Nullable Value Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string?</code></td>
+<td><code>int?</code></td>
+</tr>
+<tr>
+<td>Works with reference types</td>
+<td>Works with value types</td>
+</tr>
+<tr>
+<td>Uses nullable analysis</td>
+<td>Uses <code>Nullable&lt;T&gt;</code></td>
+</tr>
+<tr>
+<td>Helps detect possible null references</td>
+<td>Allows value types to represent null</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+ 
+ 
+            <!-- Best Practices -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Best Practices</h3>
+ 
+                <ul class="text-muted">
+<li class="mb-2">
+                        Enable nullable reference type analysis for modern projects.
+</li>
+<li class="mb-2">
+                        Use <code>?</code> when a reference is intentionally allowed to be null.
+</li>
+<li class="mb-2">
+                        Check nullable values before accessing their members.
+</li>
+<li class="mb-2">
+                        Use <code>??</code> when a sensible default value is available.
+</li>
+<li class="mb-2">
+                        Use <code>?.</code> for safe member access when appropriate.
+</li>
+<li class="mb-2">
+                        Avoid using <code>!</code> simply to suppress warnings without
+                        understanding why the value is safe.
+</li>
+<li>
+                        Design method parameters and return types to accurately communicate
+                        whether null is allowed.
+</li>
+</ul>
+</div>
+ 
+ 
+            <!-- Common Mistakes -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Common Mistakes</h3>
+ 
+                <div class="alert alert-warning mb-0">
+<ul class="mb-0">
+<li class="mb-2">
+                            Ignoring nullable warnings instead of understanding their cause.
+</li>
+<li class="mb-2">
+                            Using the null-forgiving operator <code>!</code> everywhere.
+</li>
+<li class="mb-2">
+                            Assuming nullable reference types automatically prevent
+                            null values at runtime.
+</li>
+<li class="mb-2">
+                            Forgetting to handle null values received from external systems.
+</li>
+<li>
+                            Marking every reference as nullable even when the value
+                            should always exist.
+</li>
+</ul>
+</div>
+</div>
+ 
+ 
+            <!-- Interview Questions -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Interview Questions</h3>
+ 
+                <ol class="text-muted">
+<li class="mb-3">What are Nullable Reference Types in C#?</li>
+<li class="mb-3">Why were Nullable Reference Types introduced?</li>
+<li class="mb-3">How do you declare a nullable reference type?</li>
+<li class="mb-3">What is the difference between <code>string</code> and <code>string?</code>?</li>
+<li class="mb-3">What is the purpose of the null-forgiving operator <code>!</code>?</li>
+<li class="mb-3">What is the difference between <code>?.</code> and <code>??</code>?</li>
+<li class="mb-3">What does <code>??=</code> do?</li>
+<li class="mb-3">Do Nullable Reference Types provide runtime protection?</li>
+<li class="mb-3">How are Nullable Reference Types useful in ASP.NET Core?</li>
+<li>What is the difference between nullable reference types and nullable value types?</li>
+</ol>
+</div>
+ 
+ 
+            <!-- Practice -->
+<div class="card shadow-sm p-4 p-md-5 mb-4">
+<h3 class="h3 fw-bold text-dark mb-3">Practice Programs</h3>
+ 
+                <ol class="text-muted">
+<li class="mb-3">
+                        Create a program using <code>string?</code> and safely check a name.
+</li>
+<li class="mb-3">
+                        Create a student class with nullable Email and PhoneNumber properties.
+</li>
+<li class="mb-3">
+                        Use the <code>??</code> operator to provide a default student name.
+</li>
+<li class="mb-3">
+                        Use the <code>?.</code> operator to safely access a nullable object's property.
+</li>
+<li class="mb-3">
+                        Create a method that may return a nullable student name.
+</li>
+<li>
+                        Create an ASP.NET Core DTO containing both required and optional properties.
+</li>
+</ol>
+</div>
+ 
+ 
+            <!-- Summary -->
+<div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+<h2 class="h3 fw-bold mb-3">Summary</h2>
+ 
+                <ul class="mb-0">
+<li class="mb-2">
+                        Nullable Reference Types help identify possible null reference problems.
+</li>
+<li class="mb-2">
+                        A non-nullable reference type indicates that null is not expected.
+</li>
+<li class="mb-2">
+                        A nullable reference type uses <code>?</code>.
+</li>
+<li class="mb-2">
+                        The <code>?.</code> operator provides safe member access.
+</li>
+<li class="mb-2">
+                        The <code>??</code> operator provides a fallback value.
+</li>
+<li class="mb-2">
+                        The <code>??=</code> operator assigns a value only when the
+                        current value is null.
+</li>
+<li class="mb-2">
+                        The <code>!</code> operator suppresses nullable warnings but
+                        does not perform a runtime null check.
+</li>
+<li class="mb-2">
+                        Nullable Reference Types are especially useful in modern
+                        ASP.NET Core applications.
+</li>
+<li>
+                        Correct null handling makes applications safer and easier to maintain.
+</li>
+</ul>
+</div>
+ 
+ 
+            <!-- Navigation -->
+<div class="d-flex justify-content-between align-items-center mt-4">
+<a href="/CSharp/ModernCSharp/TopLevelStatements"
+                   class="btn btn-outline-primary">
+                    ← Previous Topic
+</a>
+ 
+                <a href="/CSharp/ModernCSharp/NullableReferenceTypes"
+                   class="btn btn-primary disabled"
+                   aria-disabled="true">
+                    Course Complete ✓
+</a>
+</div>
+ 
+        </section>
+</div>
+</main>
+ 
+<script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+ 
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+ 
+            alert("Code example not found.");
+ 
+            return;
+ 
+        }
+ 
+        // Find only this example's code
+ 
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+ 
+            alert("Tutorial code not found.");
+ 
+            return;
+ 
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+ 
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+ 
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+ 
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+ 
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+ 
+        input.name = "code";
+ 
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+ 
+    }
+ 
+</script>
+ 

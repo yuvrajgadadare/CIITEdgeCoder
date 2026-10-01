@@ -1,0 +1,800 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "External CSS";
+}
+
+<style>
+
+    /* =========================================================
+           MAIN CONTENT
+        ========================================================= */
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        .content-section > h1,
+        .content-section > h2,
+        .content-section > h3 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        .content-section > h1 {
+            margin-bottom: 12px;
+        }
+
+        .content-section > h2 {
+            margin-top: 30px;
+            margin-bottom: 14px;
+        }
+
+        .content-section > h3 {
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+
+    /* =========================================================
+           CODE BOX
+        ========================================================= */
+
+    .code-box {
+        background: #111827;
+        color: #f8fafc;
+        padding: 18px 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+        .code-box pre {
+            margin: 0;
+        }
+
+        .code-box code {
+            color: #f8fafc;
+        }
+
+
+    /* =========================================================
+           DIAGRAM
+        ========================================================= */
+
+    .css-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 28px 0;
+    }
+
+    .diagram-box {
+        min-width: 170px;
+        padding: 18px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .html-box {
+        background: #fff3cd;
+        border: 1px solid #ffe69c;
+    }
+
+    .css-box {
+        background: #e0e7ff;
+        border: 1px solid #c7d2fe;
+    }
+
+    .browser-box {
+        background: #d1fae5;
+        border: 1px solid #a7f3d0;
+    }
+
+    .diagram-box strong {
+        display: block;
+        color: #212529;
+        margin-bottom: 5px;
+    }
+
+    .diagram-box span {
+        color: #495057;
+        font-size: 13px;
+    }
+
+    .arrow {
+        font-size: 26px;
+        font-weight: bold;
+        color: #495057;
+    }
+
+
+    /* =========================================================
+           OUTPUT
+        ========================================================= */
+
+    .output-title {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .browser-window {
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #ffffff;
+    }
+
+    .browser-bar {
+        background: #f1f3f5;
+        padding: 9px 14px;
+        border-bottom: 1px solid #dee2e6;
+        color: #6c757d;
+        font-size: 13px;
+    }
+
+    .browser-content {
+        padding: 30px;
+        min-height: 120px;
+    }
+
+
+    /* =========================================================
+           EXAMPLE OUTPUT STYLES
+        ========================================================= */
+
+    .example1-heading {
+        color: blue;
+        font-size: 30px;
+        margin: 0;
+    }
+
+    .example2-heading {
+        color: blue;
+        margin: 0;
+    }
+
+    .example2-text {
+        color: green;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .example3-box {
+        background-color: lightgray;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+        .example3-box h3 {
+            color: red;
+            margin: 0;
+        }
+
+
+    /* =========================================================
+           INFO BOX
+        ========================================================= */
+
+    .info-box {
+        background: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        padding: 16px 18px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+
+    /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+    .topic-navigation {
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 24px;
+    }
+
+        .topic-navigation .btn {
+            min-height: 42px;
+            font-weight: 500;
+        }
+
+        .topic-navigation .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+            .topic-navigation .btn-primary:hover {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+
+    /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .css-diagram {
+            flex-direction: column;
+        }
+
+        .arrow {
+            transform: rotate(90deg);
+        }
+
+        .diagram-box {
+            width: 100%;
+            max-width: 280px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- =====================================================
+             LEFT SIDE - SYLLABUS
+        ====================================================== -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+        ====================================================== -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- PAGE TITLE -->
+
+                <h1>
+                    External CSS
+                </h1>
+
+                <p class="lead text-muted">
+                    Learn how to connect an external CSS file
+                    with an HTML document.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS EXTERNAL CSS
+                ================================================== -->
+
+                <h2>
+                    What is External CSS?
+                </h2>
+
+                <p>
+                    External CSS means writing CSS rules in a separate
+                    <strong>.css</strong> file and connecting that file
+                    to an HTML document.
+                </p>
+
+                <p>
+                    This method is useful when the same styles need to
+                    be used across multiple HTML pages.
+                </p>
+
+
+                <!-- =================================================
+                     DIAGRAM
+                ================================================== -->
+
+                <h2>
+                    External CSS Diagram
+                </h2>
+
+                <div class="css-diagram">
+
+                    <div class="diagram-box html-box">
+
+                        <strong>
+                            HTML File
+                        </strong>
+
+                        <span>
+                            index.html
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-box css-box">
+
+                        <strong>
+                            CSS File
+                        </strong>
+
+                        <span>
+                            style.css
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-box browser-box">
+
+                        <strong>
+                            Browser
+                        </strong>
+
+                        <span>
+                            Styled Page
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     FILE STRUCTURE
+                ================================================== -->
+
+                <h2>
+                    File Structure
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>Project
+│
+├── index.html
+│
+└── style.css</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    The HTML file contains the page structure and the
+                    CSS file contains the styling rules.
+                </p>
+
+
+                <!-- =================================================
+                     STEP 1
+                ================================================== -->
+
+                <h2>
+                    Step 1: Create CSS File
+                </h2>
+
+                <h3>
+                    Code in <strong>style.css</strong>
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>h1 {
+    color: blue;
+    font-size: 30px;
+}
+
+p {
+    color: green;
+    font-size: 18px;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    The CSS file contains the styling rules for
+                    the HTML elements.
+                </p>
+
+
+                <!-- =================================================
+                     STEP 2
+                ================================================== -->
+
+                <h2>
+                    Step 2: Connect CSS File
+                </h2>
+
+                <h3>
+                    Code in <strong>index.html</strong>
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;
+        Welcome to External CSS
+    &lt;/h1&gt;
+
+    &lt;p&gt;
+        Learn CIIT Institute step by step 👀.
+    &lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+                </div>
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    The
+                    <strong>&lt;link&gt;</strong>
+                    element connects the HTML file with the external
+                    CSS file.
+                </p>
+
+                <p>
+                    The
+                    <strong>href</strong>
+                    attribute specifies the location of the CSS file.
+                </p>
+
+
+                <!-- =================================================
+                     OUTPUT
+                ================================================== -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h1 class="example1-heading">
+                                Welcome to External CSS
+                            </h1>
+
+                            <p class="example2-text">
+                                Learn CIIT Institute step by step 👀.
+                            </p>
+                                           
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                ================================================== -->
+
+                <h2>
+                    Example 2: Reuse the Same CSS
+                </h2>
+
+                <h3>
+                    style.css
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>h1 {
+    color: blue;
+}
+
+p {
+    color: green;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Page 1
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;h1&gt;
+    Home Page
+&lt;/h1&gt;
+
+&lt;p&gt;
+    Welcome to our website.
+&lt;/p&gt;</code></pre>
+
+                </div>
+
+                <h3>
+                    Page 2
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;h1&gt;
+    About Page
+&lt;/h1&gt;
+
+&lt;p&gt;
+    Learn more about us.
+&lt;/p&gt;</code></pre>
+
+                </div>
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    The same external CSS file can be connected to
+                    multiple HTML pages.
+                </p>
+
+
+                <!-- =================================================
+                     OUTPUT
+                ================================================== -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Home Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h1 class="example2-heading">
+                                Home Page
+                            </h1>
+
+                            <p class="example2-text">
+                                Welcome to our website.
+                            </p>
+
+                            <hr>
+
+                            <h1 class="example2-heading">
+                                About Page
+                            </h1>
+
+                            <p class="example2-text">
+                                Learn more about us.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     LINK ELEMENT
+                ================================================== -->
+
+                <h2>
+                    The &lt;link&gt; Element
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+
+                </div>
+
+                <ul>
+
+                    <li>
+                        <strong>link</strong> connects an external resource.
+                    </li>
+
+                    <li>
+                        <strong>rel="stylesheet"</strong> tells the browser
+                        that the file is a CSS stylesheet.
+                    </li>
+
+                    <li>
+                        <strong>href="style.css"</strong> specifies the CSS
+                        file location.
+                    </li>
+
+                </ul>
+
+
+                <!-- =================================================
+                     ADVANTAGES
+                ================================================== -->
+
+                <h2>
+                    Advantages of External CSS
+                </h2>
+
+                <ul>
+
+                    <li>
+                        CSS can be reused across multiple HTML pages.
+                    </li>
+
+                    <li>
+                        HTML and CSS remain separated.
+                    </li>
+
+                    <li>
+                        Websites become easier to maintain.
+                    </li>
+
+                    <li>
+                        One CSS file can control the design of many pages.
+                    </li>
+
+                </ul>
+
+
+                <!-- =================================================
+                     LIMITATION
+                ================================================== -->
+
+                <h2>
+                    Limitation of External CSS
+                </h2>
+
+                <ul>
+
+                    <li>
+                        The CSS file must be correctly linked to the HTML page.
+                    </li>
+
+                    <li>
+                        If the file path is incorrect, the styles will not load.
+                    </li>
+
+                </ul>
+
+
+                <!-- =================================================
+                     IMPORTANT
+                ================================================== -->
+
+                <div class="info-box">
+
+                    <strong>
+                        Remember:
+                    </strong>
+
+                    <p class="mb-0 mt-2">
+                        External CSS is written in a separate
+                        <strong>.css</strong> file and connected to HTML
+                        using the
+                        <strong>&lt;link&gt;</strong>
+                        element.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                ================================================== -->
+
+                <div class="alert alert-info mt-4">
+
+                    <h2 class="h4 fw-bold">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        External CSS keeps styling in a separate CSS file.
+                        The CSS file is connected to an HTML document using
+                        the <strong>&lt;link&gt;</strong> element. It is
+                        useful for maintaining consistent styles across
+                        multiple web pages.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     NAVIGATION
+                ================================================== -->
+
+                <div class="topic-navigation">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-outline-secondary w-100"
+                               href="@Url.Action("InternalCSS", "CSSBasics", new { area = "CSS" })">
+
+                                ← Previous: Internal CSS
+
+                            </a>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("CSSComments", "CSSBasics", new { area = "CSS" })">
+
+                                Next: CSS Comments →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

@@ -1,0 +1,620 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "Links and Media";
+}
+
+<style>
+
+    #html-links-media-page pre {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        #html-links-media-page pre code {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+    #html-links-media-page .info-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+        #html-links-media-page .info-card h5 {
+            color: #5b21b6;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+    #html-links-media-page .example-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #html-links-media-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 24px;
+    }
+
+    #html-links-media-page .table th {
+        background: #f8f9fa;
+        vertical-align: middle;
+    }
+
+    #html-links-media-page .table td {
+        vertical-align: middle;
+    }
+
+</style>
+
+
+<main id="html-links-media-page"
+      class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/HTML/Views/Shared/HTMLTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <section class="col-lg-9">
+
+
+            <!-- PAGE TITLE -->
+            <div class="mb-4">
+
+                <h1 class="fw-bold">
+                    Links and Media
+                </h1>
+
+                <p class="lead">
+                    Learn how to create hyperlinks and work with images,
+                    audio, video, and embedded content in HTML.
+                </p>
+
+            </div>
+
+
+            <!-- INTRODUCTION -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Introduction to Links and Media
+                </h2>
+
+                <p>
+                    HTML provides elements for connecting web pages,
+                    displaying images, playing multimedia, and embedding
+                    external or other document content.
+                </p>
+
+                <div class="alert alert-info">
+
+                    <strong>In this module:</strong>
+
+                    <div class="mt-2">
+
+                        Hyperlinks,
+                        link attributes,
+                        images,
+                        image attributes,
+                        audio,
+                        video,
+                        and iframes.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HYPERLINKS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Hyperlinks
+                </h2>
+
+                <p>
+                    The <code>&lt;a&gt;</code> element is used to create
+                    hyperlinks in HTML.
+                </p>
+
+                <pre><code>&lt;a href="https://example.com"&gt;
+    Visit Website
+&lt;/a&gt;</code></pre>
+
+                <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <a href="#">
+
+                        Visit Website
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMAGES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Images
+                </h2>
+
+                <p>
+                    The <code>&lt;img&gt;</code> element is used to display
+                    images on a web page.
+                </p>
+
+                <pre><code>&lt;img src="image.jpg"
+     alt="Sample Image"&gt;</code></pre>
+
+                <div class="alert alert-warning">
+
+                    <strong>Important:</strong>
+
+                    Always provide meaningful alternative text using the
+                    <code>alt</code> attribute where appropriate.
+
+                </div>
+
+            </div>
+
+
+            <!-- AUDIO -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Audio
+                </h2>
+
+                <p>
+                    The <code>&lt;audio&gt;</code> element can be used to
+                    embed audio content in a web page.
+                </p>
+
+                <pre><code>&lt;audio controls&gt;
+
+    &lt;source src="audio.mp3"
+            type="audio/mpeg"&gt;
+
+    Your browser does not support the audio element.
+
+&lt;/audio&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="info-card">
+
+                    <h5>
+                        Audio Features
+                    </h5>
+
+                    <p class="mb-0">
+                        The <code>controls</code> attribute allows the browser
+                        to display playback controls for the audio element.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- VIDEO -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Video
+                </h2>
+
+                <p>
+                    The <code>&lt;video&gt;</code> element is used to embed
+                    video content.
+                </p>
+
+                <pre><code>&lt;video controls width="500"&gt;
+
+    &lt;source src="video.mp4"
+            type="video/mp4"&gt;
+
+    Your browser does not support the video element.
+
+&lt;/video&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="info-card">
+
+                    <h5>
+                        Video Features
+                    </h5>
+
+                    <p class="mb-0">
+                        Video elements can include controls, dimensions,
+                        posters, and multiple source formats.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- IFRAME -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Iframes
+                </h2>
+
+                <p>
+                    The <code>&lt;iframe&gt;</code> element is used to embed
+                    another document or resource inside the current page.
+                </p>
+
+                <pre><code>&lt;iframe
+    src="https://example.com"
+    title="Example Website"&gt;
+&lt;/iframe&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+                <div class="alert alert-secondary">
+
+                    <strong>Note:</strong>
+
+                    Whether an external site can be embedded depends on the
+                    target site's security and framing policies.
+
+                </div>
+
+            </div>
+
+
+            <!-- MEDIA OVERVIEW -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Links and Media Elements
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead>
+
+                            <tr>
+                                <th>Element</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;a&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates hyperlinks.
+                                </td>
+
+                                <td>
+                                    <code>&lt;a href="#"&gt;Link&lt;/a&gt;</code>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;img&gt;</code>
+                                </td>
+
+                                <td>
+                                    Displays images.
+                                </td>
+
+                                <td>
+                                    <code>&lt;img src="image.jpg"&gt;</code>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;audio&gt;</code>
+                                </td>
+
+                                <td>
+                                    Embeds audio.
+                                </td>
+
+                                <td>
+                                    <code>&lt;audio controls&gt;</code>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;video&gt;</code>
+                                </td>
+
+                                <td>
+                                    Embeds video.
+                                </td>
+
+                                <td>
+                                    <code>&lt;video controls&gt;</code>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;iframe&gt;</code>
+                                </td>
+
+                                <td>
+                                    Embeds another resource or document.
+                                </td>
+
+                                <td>
+                                    <code>&lt;iframe src="..."&gt;</code>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- REAL WORLD EXAMPLE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Complete Example
+                </h2>
+
+                <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;
+        Links and Media Example
+    &lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;
+        CIIT Institute
+    &lt;/h1&gt;
+
+    &lt;p&gt;
+
+        &lt;a href="#"&gt;
+            Visit HTML Course
+        &lt;/a&gt;
+
+    &lt;/p&gt;
+
+    &lt;img src="student.jpg"
+         alt="Student Learning HTML"
+         width="300"&gt;
+
+    &lt;audio controls&gt;
+
+        &lt;source src="audio.mp3"
+                type="audio/mpeg"&gt;
+
+    &lt;/audio&gt;
+
+    &lt;video controls width="500"&gt;
+
+        &lt;source src="video.mp4"
+                type="video/mp4"&gt;
+
+    &lt;/video&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+            </div>
+            <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <!-- IMPORTANT POINTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Important Points
+                </h2>
+
+                <ul>
+
+                    <li class="mb-2">
+                        Use <code>&lt;a&gt;</code> to create hyperlinks.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>&lt;img&gt;</code> to display images.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>&lt;audio&gt;</code> for audio content.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>&lt;video&gt;</code> for video content.
+                    </li>
+
+                    <li>
+                        Use <code>&lt;iframe&gt;</code> when an external or
+                        separate resource needs to be embedded.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Practice Exercise
+                </h2>
+
+                <ol>
+
+                    <li class="mb-2">
+                        Create a hyperlink to another page.
+                    </li>
+
+                    <li class="mb-2">
+                        Add an image with <code>src</code> and <code>alt</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Add an audio player using <code>&lt;audio&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Add a video player using <code>&lt;video&gt;</code>.
+                    </li>
+
+                    <li>
+                        Add an iframe and give it a meaningful
+                        <code>title</code>.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    HTML provides several elements for linking and multimedia.
+                    The <code>&lt;a&gt;</code> element creates hyperlinks,
+                    <code>&lt;img&gt;</code> displays images,
+                    <code>&lt;audio&gt;</code> embeds audio,
+                    <code>&lt;video&gt;</code> embeds video, and
+                    <code>&lt;iframe&gt;</code> embeds another resource or
+                    document within the page.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("SpecialCharacters", "TextFormatting", new { area = "HTML" })">
+
+                    ← Previous: Special Characters
+
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Hyperlinks", "LinksAndMedia", new { area = "HTML" })">
+
+                    Next: Hyperlinks →
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>

@@ -1,0 +1,897 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Events";
+}
+
+<style>
+    #javascript-events-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-events-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-events-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-events-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-events-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-events-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+    /* CONCEPT */
+
+    #javascript-events-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-events-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-events-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-events-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* IMAGE */
+
+    #javascript-events-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-events-page .events-image {
+        width: 100%;
+        height: 340px;
+        object-fit: contain;
+        display: block;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-events-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 12px 5px 0;
+    }
+
+    /* DIAGRAM */
+
+    #javascript-events-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 26px;
+        margin: 28px 0;
+    }
+
+    #javascript-events-page .diagram-title {
+        text-align: center;
+        font-size: 19px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 25px;
+    }
+
+    #javascript-events-page .event-flow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-events-page .flow-box {
+        background: #ffffff;
+        border: 2px solid #d8dee9;
+        border-radius: 9px;
+        padding: 16px 20px;
+        min-width: 155px;
+        text-align: center;
+        font-family: Consolas, Monaco, monospace;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #javascript-events-page .flow-box small {
+        display: block;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+        color: #6c757d;
+        margin-top: 7px;
+    }
+
+    #javascript-events-page .flow-highlight {
+        background: #f3ecff;
+        border-color: #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-events-page .flow-result {
+        background: #ecfdf3;
+        border-color: #198754;
+        color: #157347;
+    }
+
+    #javascript-events-page .flow-arrow {
+        color: #5b21b6;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    /* EVENT TYPES */
+
+    #javascript-events-page .event-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.04);
+    }
+
+    #javascript-events-page .event-card h5 {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-events-page .event-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    /* CODE */
+
+    #javascript-events-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-events-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-events-page .code-box code {
+        color: #ffffff;
+    }
+
+    /* TRY IT */
+
+    #javascript-events-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-events-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-events-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+    /* OUTPUT */
+
+    #javascript-events-page .output-box {
+        background: #000000;
+        color: #ffffff;
+        border-radius: 7px;
+        padding: 16px 18px;
+        margin-top: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.8;
+    }
+
+    /* SUMMARY */
+
+    #javascript-events-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-events-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-events-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* NAVIGATION */
+
+    #javascript-events-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-events-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-events-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-events-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-events-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-events-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-events-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-events-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-events-page .event-flow {
+            flex-direction: column;
+        }
+
+        #javascript-events-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-events-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-events-page .nav-btn {
+            justify-content: center;
+            width: 100%;
+        }
+    }
+
+</style>
+
+
+<main id="javascript-events-page">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3 mb-4">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- =================================================
+                         PAGE TITLE
+                         ================================================= -->
+
+                    <h1 class="page-title">
+                        JavaScript Events
+                    </h1>
+
+                    <p class="lead-text">
+                        JavaScript Events allow a web page to respond to
+                        actions performed by users or changes that happen
+                        in the browser.
+                    </p>
+
+
+                    <!-- =================================================
+                         INTRODUCTION
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What is an Event?
+                    </h2>
+
+                    <p class="section-text">
+                        An event is an action or occurrence that happens
+                        in the browser. For example, clicking a button,
+                        pressing a keyboard key, submitting a form, or
+                        moving the mouse can generate an event.
+                    </p>
+
+                    <p class="section-text">
+                        JavaScript can detect these events and execute
+                        specific code when they occur.
+                    </p>
+
+
+                    <!-- =================================================
+                         CONCEPT BOX
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p>
+                            <strong>Event</strong> means an action that
+                            JavaScript can detect and respond to.
+                        </p>
+
+                        <p>
+                            Example:
+                            When a user clicks a button, JavaScript can
+                            execute a function.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RELATED IMAGE
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <img
+                            src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events/event-listener.png"
+                            alt="JavaScript Events"
+                            class="events-image"
+                            onerror="this.style.display='none';"
+                        />
+
+                        <p class="image-caption">
+                            JavaScript events connect user actions with
+                            JavaScript code.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EVENT FLOW DIAGRAM
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        How JavaScript Events Work
+                    </h2>
+
+                    <div class="diagram-box">
+
+                        <div class="diagram-title">
+                            JavaScript Event Flow
+                        </div>
+
+                        <div class="event-flow">
+
+                            <div class="flow-box">
+                                User Action
+                                <small>Click / Key / Form</small>
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box flow-highlight">
+                                Event
+                                <small>Browser detects it</small>
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Event Handler
+                                <small>JavaScript function</small>
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box flow-result">
+                                Output
+                                <small>Action performed</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         COMMON EVENTS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Common JavaScript Events
+                    </h2>
+
+                    <div class="row g-3">
+
+
+                        <div class="col-md-6">
+
+                            <div class="event-card">
+
+                                <h5>
+                                    Click Event
+                                </h5>
+
+                                <p>
+                                    Occurs when the user clicks an
+                                    element such as a button.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="event-card">
+
+                                <h5>
+                                    Keyboard Event
+                                </h5>
+
+                                <p>
+                                    Occurs when the user presses or
+                                    releases a keyboard key.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="event-card">
+
+                                <h5>
+                                    Form Event
+                                </h5>
+
+                                <p>
+                                    Events such as submit and change
+                                    can occur while working with forms.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="event-card">
+
+                                <h5>
+                                    Mouse Event
+                                </h5>
+
+                                <p>
+                                    Mouse actions such as moving,
+                                    entering, or leaving an element
+                                    can generate events.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Click Event
+                    </h2>
+
+                    <p class="section-text">
+                        A click event can be used to perform an action
+                        when a user clicks a button.
+                    </p>
+
+                    <div class="code-section">
+
+<pre class="code-box"><code>const button = {
+    text: "Click Me"
+};
+
+function handleClick() {
+    console.log("Button was clicked!");
+}
+
+handleClick();</code></pre>
+
+                    </div>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runClickEventExample()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+                        Button was clicked!
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Keyboard Event
+                    </h2>
+
+                    <p class="section-text">
+                        Keyboard events are generated when users interact
+                        with the keyboard.
+                    </p>
+
+                    <div class="code-section">
+
+<pre class="code-box"><code>const key = "Enter";
+
+function handleKeyPress() {
+    console.log("Key Pressed:", key);
+}
+
+handleKeyPress();</code></pre>
+
+                    </div>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runKeyboardEventExample()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+                        Key Pressed: Enter
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Event Handler
+                    </h2>
+
+                    <p class="section-text">
+                        An event handler is the code that runs when a
+                        particular event occurs.
+                    </p>
+
+                    <div class="code-section">
+
+<pre class="code-box"><code>function handleEvent() {
+    console.log("Event handled successfully!");
+}
+
+handleEvent();</code></pre>
+
+                    </div>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runEventHandlerExample()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+                        Event handled successfully!
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT NOTE
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Note
+                        </h5>
+
+                        <p>
+                            The examples shown in the Try It compiler are
+                            designed to run in the CIIT JavaScript Compiler.
+                        </p>
+
+                        <p>
+                            Browser-specific objects such as
+                            <strong>document</strong> and actual DOM
+                            interaction require a browser environment.
+                            The compiler examples therefore demonstrate
+                            the event logic without depending on the
+                            browser DOM.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+                            JavaScript Events allow programs to respond
+                            to actions such as clicks, keyboard input,
+                            form actions, and mouse interactions.
+                            An event handler contains the code that runs
+                            when the event occurs.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("CreatingElements", "DOM", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            ←
+                            Previous: Creating Elements
+
+                        </a>
+
+
+                        <a href="@Url.Action("ClickEvents", "Events", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            Next: Click Events
+                            →
+
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       CLICK EVENT EXAMPLE
+       ========================================================= */
+
+    function runClickEventExample() {
+
+        const code = `
+const button = {
+    text: "Click Me"
+};
+
+function handleClick() {
+    console.log("Button was clicked!");
+}
+
+handleClick();
+`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       KEYBOARD EVENT EXAMPLE
+       ========================================================= */
+
+    function runKeyboardEventExample() {
+
+        const code = `
+const key = "Enter";
+
+function handleKeyPress() {
+    console.log("Key Pressed:", key);
+}
+
+handleKeyPress();
+`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EVENT HANDLER EXAMPLE
+       ========================================================= */
+
+    function runEventHandlerExample() {
+
+        const code = `
+function handleEvent() {
+    console.log("Event handled successfully!");
+}
+
+handleEvent();
+`;
+
+        openCompiler(code);
+    }
+
+</script>

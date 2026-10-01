@@ -1,0 +1,733 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Element Selector";
+}
+
+<style>
+
+    /* =========================================================
+           PAGE HEADINGS
+           ========================================================= */
+
+    .content-section > h1,
+    .content-section > h2,
+    .content-section > h3 {
+        color: #212529;
+        font-weight: 700;
+    }
+
+
+    /* =========================================================
+           DIAGRAM
+           ========================================================= */
+
+    .selector-diagram {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 20px;
+    }
+
+    .selector-diagram-box {
+        background-color: #ffffff;
+        border: 2px solid #6f42c1;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .selector-diagram-arrow {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        color: #6f42c1;
+        padding: 8px 0;
+    }
+
+
+    /* =========================================================
+           CODE
+           ========================================================= */
+
+    .selector-code {
+        background-color: #0f172a;
+        color: #f1f5f9;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+        .selector-code pre {
+            margin: 0;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+    /* =========================================================
+           OUTPUT
+           ========================================================= */
+
+    .selector-output {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 22px;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+
+
+    /* =========================================================
+           INFO BOX
+           ========================================================= */
+
+    .selector-info {
+        background-color: #f8f9fa;
+        border-left: 4px solid #6f42c1;
+        padding: 18px;
+        border-radius: 6px;
+        margin: 20px 0;
+    }
+
+
+    /* =========================================================
+           TABLE
+           ========================================================= */
+
+    .selector-table th {
+        background-color: #f8f9fa;
+        color: #212529;
+        font-weight: 700;
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ================================================= -->
+        <!-- LEFT SIDEBAR -->
+        <!-- ================================================= -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <section class="col-lg-9 content-section">
+
+
+            <!-- ================================================= -->
+            <!-- PAGE TITLE -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h1>
+                    Element Selector
+                </h1>
+
+                <p class="lead">
+                    Learn how to select HTML elements using their element
+                    names and apply CSS styles to them.
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- WHAT IS ELEMENT SELECTOR -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    What is an Element Selector?
+                </h2>
+
+                <p>
+                    An element selector selects HTML elements based on
+                    their element name.
+                </p>
+
+                <p>
+                    For example, the <code>h1</code> selector selects
+                    all <code>&lt;h1&gt;</code> elements on a page.
+                </p>
+
+                <p>
+                    Similarly, the <code>p</code> selector selects
+                    all paragraph elements.
+                </p>
+
+                <div class="selector-info">
+
+                    <strong>Simple Definition:</strong>
+
+                    <p class="mb-0 mt-2">
+                        An element selector targets HTML elements by
+                        their tag name.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- DIAGRAM -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    How Element Selector Works
+                </h2>
+
+                <div class="selector-diagram">
+
+                    <div class="selector-diagram-box">
+
+                        HTML Element
+
+                        <div class="mt-2">
+                            <code>&lt;h1&gt;</code>
+                        </div>
+
+                    </div>
+
+
+                    <div class="selector-diagram-arrow">
+                        ↓
+                    </div>
+
+
+                    <div class="selector-diagram-box">
+
+                        Element Selector
+
+                        <div class="mt-2">
+                            <code>h1</code>
+                        </div>
+
+                    </div>
+
+
+                    <div class="selector-diagram-arrow">
+                        ↓
+                    </div>
+
+
+                    <div class="selector-diagram-box">
+
+                        CSS Property
+
+                        <div class="mt-2">
+                            <code>color: blue;</code>
+                        </div>
+
+                    </div>
+
+
+                    <div class="selector-diagram-arrow">
+                        ↓
+                    </div>
+
+
+                    <div class="selector-diagram-box">
+
+                        Styled HTML Element
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- SYNTAX -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Element Selector Syntax
+                </h2>
+
+                <div class="selector-code">
+
+                    <pre><code>element {
+    property: value;
+}</code></pre>
+
+                </div>
+
+                <p>
+                    In this syntax, <code>element</code> represents the
+                    HTML element that you want to style.
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 1 -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Example 1: Selecting an h1 Element
+                </h2>
+
+                <p>
+                    Suppose we have an HTML heading:
+                </p>
+
+                <div class="selector-code">
+
+                    <pre><code>&lt;h1&gt;Welcome to CSS&lt;/h1&gt;</code></pre>
+
+                </div>
+
+                <p>
+                    We can use the <code>h1</code> element selector
+                    to change its text color.
+                </p>
+
+                <div class="selector-code">
+
+                    <pre><code>h1 {
+    color: blue;
+}</code></pre>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- OUTPUT 1 -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Output
+                </h2>
+
+                <div class="selector-output">
+
+                    <h1 style="color: blue; margin: 0;">
+                        Welcome to CSS
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 2 -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Example 2: Selecting Paragraphs
+                </h2>
+
+                <p>
+                    The <code>p</code> selector selects all paragraph
+                    elements.
+                </p>
+
+                <div class="selector-code">
+
+                    <pre><code>p {
+    color: green;
+}</code></pre>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- OUTPUT 2 -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Output
+                </h2>
+
+                <div class="selector-output">
+
+                    <p style="color: green; margin-bottom: 10px;">
+                        This is the first paragraph.
+                    </p>
+
+                    <p style="color: green; margin-bottom: 0;">
+                        This is the second paragraph.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 3 -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Example 3: Selecting Buttons
+                </h2>
+
+                <p>
+                    We can also use an element selector to style
+                    all buttons.
+                </p>
+
+                <div class="selector-code">
+
+                    <pre><code>button {
+    background-color: blue;
+    color: white;
+}</code></pre>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- OUTPUT 3 -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Output
+                </h2>
+
+                <div class="selector-output">
+
+                    <button type="button"
+                            style="
+                        background-color: blue;
+                        color: white;
+                        border: none;
+                        padding: 10px 18px;
+                        border-radius: 5px;
+                        ">
+
+                        Click Me
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- MULTIPLE ELEMENTS -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Element Selector Applies to All Matching Elements
+                </h2>
+
+                <p>
+                    If a page contains multiple elements of the same
+                    type, the element selector applies the CSS rule
+                    to all matching elements.
+                </p>
+
+                <div class="selector-code">
+
+                    <pre><code>h2 {
+    color: purple;
+}</code></pre>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- OUTPUT 4 -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Output
+                </h2>
+
+                <div class="selector-output">
+
+                    <h2 style="color: purple; margin-bottom: 10px;">
+                        First Heading
+                    </h2>
+
+                    <h2 style="color: purple; margin-bottom: 0;">
+                        Second Heading
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- COMMON ELEMENT SELECTORS -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Common Element Selectors
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered selector-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Selector
+                                </th>
+
+                                <th>
+                                    HTML Element
+                                </th>
+
+                                <th>
+                                    Purpose
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <code>h1</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;h1&gt;</code>
+                                </td>
+
+                                <td>
+                                    Selects all h1 headings.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>p</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;p&gt;</code>
+                                </td>
+
+                                <td>
+                                    Selects all paragraphs.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>div</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;div&gt;</code>
+                                </td>
+
+                                <td>
+                                    Selects all div elements.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>button</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;button&gt;</code>
+                                </td>
+
+                                <td>
+                                    Selects all buttons.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>img</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;img&gt;</code>
+                                </td>
+
+                                <td>
+                                    Selects all images.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- IMPORTANT POINTS -->
+            <!-- ================================================= -->
+
+            <div class="mb-4">
+
+                <h2 class="h3">
+                    Important Points
+                </h2>
+
+                <ul>
+
+                    <li class="mb-2">
+                        Element selectors use HTML element names.
+                    </li>
+
+                    <li class="mb-2">
+                        The selector applies to all matching elements.
+                    </li>
+
+                    <li class="mb-2">
+                        Element selectors are simple and easy to use.
+                    </li>
+
+                    <li class="mb-2">
+                        They are useful when the same style is required
+                        for every element of a particular type.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY -->
+            <!-- ================================================= -->
+
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+
+                    An element selector selects HTML elements by their
+                    element name. For example, <code>h1</code> selects
+                    all h1 headings and <code>p</code> selects all
+                    paragraphs. The same CSS rule is applied to every
+                    matching element.
+
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- NAVIGATION -->
+            <!-- ================================================= -->
+
+            <div class="topic-navigation mt-4">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("Index", "Selectors", new { area = "CSS" })">
+
+                            ← Previous: CSS Selectors
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("ClassSelector", "Selectors", new { area = "CSS" })">
+
+                            Next: Class Selector →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>

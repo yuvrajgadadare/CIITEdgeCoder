@@ -1,0 +1,760 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Responsive Typography";
+}
+
+<div id="css-responsive-typography-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">Responsive Typography</h1>
+
+                <p class="lead">
+                    Responsive typography means adjusting text size, spacing,
+                    and line height according to the available screen size so
+                    that content remains readable on mobile, tablet, and desktop.
+                </p>
+
+                <hr />
+
+                <!-- What is Responsive Typography -->
+                <h2 class="h4 mt-4">What is Responsive Typography?</h2>
+
+                <p>
+                    Text that looks comfortable on a large desktop may look too
+                    large or too small on a mobile device.
+                    Responsive typography helps text adapt to different
+                    viewport sizes.
+                </p>
+
+                <p>
+                    It can be implemented using media queries, relative units,
+                    and modern CSS functions such as <code>clamp()</code>.
+                </p>
+
+                <!-- Online Image -->
+                <div class="image-section mt-4">
+
+                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1200&q=80"
+                         alt="Responsive typography and web design"
+                         class="typography-image" />
+
+                    <p class="image-caption">
+                        Responsive typography keeps website text readable
+                        across different screen sizes.
+                    </p>
+
+                </div>
+
+                <!-- Diagram -->
+                <h2 class="h4 mt-4">Responsive Typography Flow</h2>
+
+                <div class="typography-diagram">
+
+                    <div class="typography-device">
+                        <div class="device-title">Mobile</div>
+                        <div class="mobile-text-sample">
+                            Heading
+                        </div>
+                        <span>Small Text</span>
+                    </div>
+
+                    <div class="diagram-arrow">→</div>
+
+                    <div class="typography-device">
+                        <div class="device-title">Tablet</div>
+                        <div class="tablet-text-sample">
+                            Heading
+                        </div>
+                        <span>Medium Text</span>
+                    </div>
+
+                    <div class="diagram-arrow">→</div>
+
+                    <div class="typography-device">
+                        <div class="device-title">Desktop</div>
+                        <div class="desktop-text-sample">
+                            Heading
+                        </div>
+                        <span>Large Text</span>
+                    </div>
+
+                </div>
+
+                <!-- Simple Explanation -->
+                <div class="explanation-box">
+
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p>
+                        On a small screen, text generally needs to fit inside
+                        a narrow area. As the screen becomes wider, the text
+                        can become larger while maintaining good readability.
+                    </p>
+
+                    <p class="mb-0">
+                        CSS allows us to control this behavior using media
+                        queries or responsive units.
+                    </p>
+
+                </div>
+
+                <!-- Media Query -->
+                <h2 class="h4 mt-4">Responsive Typography Using Media Queries</h2>
+
+                <p>
+                    One simple approach is to change the font size at different
+                    breakpoints.
+                </p>
+
+                <pre class="code-box"><code>.responsive-heading {
+    font-size: 28px;
+}
+
+@@media (min-width: 768px) {
+
+    .responsive-heading {
+        font-size: 36px;
+    }
+}
+
+@@media (min-width: 992px) {
+
+    .responsive-heading {
+        font-size: 48px;
+    }
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Mobile</h3>
+
+                    <p class="mb-0">
+                        The default heading size is <code>28px</code>.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Tablet</h3>
+
+                    <p class="mb-0">
+                        At <code>768px</code> and above, the heading becomes
+                        <code>36px</code>.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Desktop</h3>
+
+                    <p class="mb-0">
+                        At <code>992px</code> and above, the heading becomes
+                        <code>48px</code>.
+                    </p>
+
+                </div>
+
+                <!-- Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <h3 class="responsive-heading-demo">
+                        Responsive Heading
+                    </h3>
+
+                    <p class="responsive-paragraph-demo">
+                        This paragraph also adapts its size according to the
+                        available screen width.
+                    </p>
+
+                    <p class="output-note">
+                        Resize the browser window to observe the typography changes.
+                    </p>
+
+                </div>
+
+                <!-- Relative Units -->
+                <h2 class="h4 mt-4">Responsive Units for Typography</h2>
+
+                <p>
+                    Relative units such as <code>rem</code>,
+                    <code>em</code>, <code>vw</code>, and
+                    <code>clamp()</code> can be used to create flexible text sizes.
+                </p>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Unit</th>
+                                <th>Meaning</th>
+                                <th>Common Use</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><code>px</code></td>
+                                <td>Fixed pixel size</td>
+                                <td>Precise sizing</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>rem</code></td>
+                                <td>Relative to root font size</td>
+                                <td>Scalable typography</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>em</code></td>
+                                <td>Relative to current element context</td>
+                                <td>Component-based sizing</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>vw</code></td>
+                                <td>Viewport width</td>
+                                <td>Fluid text size</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>clamp()</code></td>
+                                <td>Minimum, preferred, and maximum size</td>
+                                <td>Modern responsive typography</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Rem Example -->
+                <h2 class="h4 mt-4">Using rem for Responsive Typography</h2>
+
+                <pre class="code-box"><code>.heading {
+    font-size: 2rem;
+}
+
+.paragraph {
+    font-size: 1rem;
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Why use rem?</h3>
+
+                    <p class="mb-0">
+                        <code>rem</code> is relative to the root element's
+                        font size, making it useful for scalable and consistent
+                        typography across a website.
+                    </p>
+
+                </div>
+
+                <!-- Clamp -->
+                <h2 class="h4 mt-4">Using clamp()</h2>
+
+                <p>
+                    The <code>clamp()</code> function is a powerful way to create
+                    fluid typography without writing many media queries.
+                </p>
+
+                <pre class="code-box"><code>.fluid-heading {
+    font-size: clamp(28px, 5vw, 52px);
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">How clamp() works</h3>
+
+                    <p class="mb-2">
+                        The syntax is:
+                    </p>
+
+                    <p class="mb-2">
+                        <code>clamp(minimum, preferred, maximum)</code>
+                    </p>
+
+                    <p class="mb-0">
+                        In this example, the font size will not become smaller
+                        than <code>28px</code> or larger than
+                        <code>52px</code>. The preferred value is based on
+                        <code>5vw</code>.
+                    </p>
+
+                </div>
+
+                <!-- Clamp Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <h3 class="fluid-heading-demo">
+                        Fluid Responsive Heading
+                    </h3>
+
+                    <p class="output-note">
+                        The heading smoothly changes as the viewport width changes.
+                    </p>
+
+                </div>
+
+                <!-- Line Height -->
+                <h2 class="h4 mt-4">Responsive Line Height</h2>
+
+                <p>
+                    Font size is not the only property that matters.
+                    Line height also affects readability.
+                </p>
+
+                <pre class="code-box"><code>.responsive-text {
+    font-size: 18px;
+    line-height: 1.6;
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Why line-height matters</h3>
+
+                    <p class="mb-0">
+                        Proper line spacing makes paragraphs easier to read,
+                        especially on small screens where the available text
+                        width is limited.
+                    </p>
+
+                </div>
+
+                <!-- Text Spacing -->
+                <h2 class="h4 mt-4">Responsive Text Spacing</h2>
+
+                <p>
+                    Spacing around headings and paragraphs can also be adjusted
+                    for smaller screens.
+                </p>
+
+                <pre class="code-box"><code>.responsive-section {
+    padding: 40px;
+}
+
+@@media (max-width: 576px) {
+
+    .responsive-section {
+        padding: 20px;
+    }
+}</code></pre>
+
+                <!-- Best Practices -->
+                <h2 class="h4 mt-4">Responsive Typography Best Practices</h2>
+
+                <ul>
+
+                    <li>
+                        Keep body text comfortable to read on mobile devices.
+                    </li>
+
+                    <li>
+                        Use relative units where appropriate.
+                    </li>
+
+                    <li>
+                        Use <code>clamp()</code> for fluid typography when useful.
+                    </li>
+
+                    <li>
+                        Maintain sufficient line height.
+                    </li>
+
+                    <li>
+                        Avoid extremely large headings on small screens.
+                    </li>
+
+                    <li>
+                        Test typography at different viewport widths.
+                    </li>
+
+                </ul>
+
+                <!-- Real World -->
+                <h2 class="h4 mt-4">Real-World Uses</h2>
+
+                <ul>
+
+                    <li>Training institute websites</li>
+                    <li>Landing pages</li>
+                    <li>Blogs and documentation</li>
+                    <li>E-commerce websites</li>
+                    <li>Portfolio websites</li>
+                    <li>Responsive dashboards</li>
+
+                </ul>
+
+                <!-- Important Note -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        Responsive typography should improve readability across
+                        devices. The goal is not simply to make text smaller or
+                        larger, but to maintain a comfortable reading experience.
+                    </p>
+
+                </div>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        Responsive typography allows text to adapt to different
+                        screen sizes. Media queries, relative units such as
+                        <code>rem</code> and <code>vw</code>, and the
+                        <code>clamp()</code> function can be used to create
+                        readable and flexible typography for mobile, tablet,
+                        and desktop devices.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("ResponsiveImages", "ResponsiveDesign", new { area = "CSS" })">
+                            ← Previous: Responsive Images
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Index", "AdvancedCSS", new { area = "CSS" })">
+                            Next: Advanced CSS →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-responsive-typography-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-responsive-typography-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-responsive-typography-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-responsive-typography-page .content-section p,
+        #css-responsive-typography-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Image */
+    #css-responsive-typography-page .image-section {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    #css-responsive-typography-page .typography-image {
+        width: 100%;
+        max-height: 360px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+    }
+
+    #css-responsive-typography-page .image-caption {
+        margin: 12px 5px 0;
+        color: #6c757d !important;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    /* Diagram */
+    #css-responsive-typography-page .typography-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-responsive-typography-page .typography-device {
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 10px;
+        padding: 18px;
+        text-align: center;
+        min-width: 180px;
+    }
+
+    #css-responsive-typography-page .device-title {
+        color: #2563eb;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #css-responsive-typography-page .typography-device span {
+        color: #6c757d;
+        font-size: 14px;
+    }
+
+    #css-responsive-typography-page .mobile-text-sample {
+        font-size: 22px;
+        color: #212529;
+        font-weight: 700;
+    }
+
+    #css-responsive-typography-page .tablet-text-sample {
+        font-size: 30px;
+        color: #212529;
+        font-weight: 700;
+    }
+
+    #css-responsive-typography-page .desktop-text-sample {
+        font-size: 38px;
+        color: #212529;
+        font-weight: 700;
+    }
+
+    #css-responsive-typography-page .diagram-arrow {
+        color: #2563eb;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    /* Explanation */
+    #css-responsive-typography-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-responsive-typography-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Code */
+    #css-responsive-typography-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Property */
+    #css-responsive-typography-page .property-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+        #css-responsive-typography-page .property-card h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    /* Output */
+    #css-responsive-typography-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-responsive-typography-page .responsive-heading-demo {
+        font-size: 28px;
+        color: #2563eb;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-responsive-typography-page .responsive-paragraph-demo {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #495057 !important;
+    }
+
+    #css-responsive-typography-page .fluid-heading-demo {
+        font-size: clamp(28px, 5vw, 52px);
+        color: #7c3aed;
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 10px;
+    }
+
+    #css-responsive-typography-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #6c757d !important;
+        text-align: center;
+    }
+
+    /* Note */
+    #css-responsive-typography-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-responsive-typography-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-responsive-typography-page .note-box p {
+            color: #78350f;
+        }
+
+    /* Summary */
+    #css-responsive-typography-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-responsive-typography-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-responsive-typography-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    @@media (max-width: 991px) {
+
+        #css-responsive-typography-page .responsive-heading-demo {
+            font-size: 36px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+
+        #css-responsive-typography-page .content-section {
+            padding: 20px;
+        }
+
+        #css-responsive-typography-page .typography-diagram {
+            flex-direction: column;
+        }
+
+        #css-responsive-typography-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-responsive-typography-page .typography-device {
+            width: 100%;
+            max-width: 280px;
+        }
+
+        #css-responsive-typography-page .typography-image {
+            max-height: 280px;
+        }
+
+        #css-responsive-typography-page .responsive-heading-demo {
+            font-size: 36px;
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        #css-responsive-typography-page .content-section {
+            padding: 16px;
+        }
+
+        #css-responsive-typography-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-responsive-typography-page .responsive-heading-demo {
+            font-size: 28px;
+        }
+
+        #css-responsive-typography-page .responsive-paragraph-demo {
+            font-size: 15px;
+        }
+
+        #css-responsive-typography-page .mobile-text-sample {
+            font-size: 20px;
+        }
+
+        #css-responsive-typography-page .tablet-text-sample {
+            font-size: 25px;
+        }
+
+        #css-responsive-typography-page .desktop-text-sample {
+            font-size: 30px;
+        }
+    }
+
+</style>

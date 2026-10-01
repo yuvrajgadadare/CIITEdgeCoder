@@ -1,0 +1,799 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Internal CSS";
+}
+
+<style>
+
+    /* =========================================================
+           MAIN CONTENT
+        ========================================================= */
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        /*
+           IMPORTANT:
+           Only the actual page headings are styled here.
+           Example/output headings are NOT overridden.
+        */
+
+        .content-section > h1,
+        .content-section > h2,
+        .content-section > h3 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        .content-section > h1 {
+            margin-bottom: 12px;
+        }
+
+        .content-section > h2 {
+            margin-top: 30px;
+            margin-bottom: 14px;
+        }
+
+        .content-section > h3 {
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+
+    /* =========================================================
+           CODE BOX
+        ========================================================= */
+
+    .code-box {
+        background: #111827;
+        color: #f8fafc;
+        padding: 18px 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+        .code-box pre {
+            margin: 0;
+        }
+
+        .code-box code {
+            color: #f8fafc;
+        }
+
+
+    /* =========================================================
+           DIAGRAM
+        ========================================================= */
+
+    .css-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 28px 0;
+    }
+
+    .diagram-box {
+        min-width: 170px;
+        padding: 18px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .html-box {
+        background: #fff3cd;
+        border: 1px solid #ffe69c;
+    }
+
+    .style-box {
+        background: #e0e7ff;
+        border: 1px solid #c7d2fe;
+    }
+
+    .output-box {
+        background: #d1fae5;
+        border: 1px solid #a7f3d0;
+    }
+
+    .diagram-box strong {
+        display: block;
+        color: #212529;
+        margin-bottom: 5px;
+    }
+
+    .diagram-box span {
+        color: #495057;
+        font-size: 13px;
+    }
+
+    .arrow {
+        font-size: 26px;
+        font-weight: bold;
+        color: #495057;
+    }
+
+
+    /* =========================================================
+           BROWSER OUTPUT
+        ========================================================= */
+
+    .output-title {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .browser-window {
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #ffffff;
+    }
+
+    .browser-bar {
+        background: #f1f3f5;
+        padding: 9px 14px;
+        border-bottom: 1px solid #dee2e6;
+        color: #6c757d;
+        font-size: 13px;
+    }
+
+    .browser-content {
+        padding: 30px;
+        min-height: 120px;
+    }
+
+        /*
+           IMPORTANT:
+           No global h1/h2/h3 styles inside browser-content.
+           Therefore inline CSS from the example works exactly.
+        */
+
+        .browser-content h1,
+        .browser-content h2,
+        .browser-content h3,
+        .browser-content p {
+            margin-bottom: 10px;
+        }
+
+
+    /* =========================================================
+           INFO BOX
+        ========================================================= */
+
+    .info-box {
+        background: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        padding: 16px 18px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+
+    /* =========================================================
+           SUMMARY
+        ========================================================= */
+
+    .summary-box h2 {
+        color: #212529 !important;
+        font-weight: 700;
+    }
+
+
+    /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+    .topic-navigation {
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 24px;
+    }
+
+        .topic-navigation .btn {
+            min-height: 42px;
+            font-weight: 500;
+        }
+
+        .topic-navigation .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+            .topic-navigation .btn-primary:hover {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+
+    /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .css-diagram {
+            flex-direction: column;
+        }
+
+        .arrow {
+            transform: rotate(90deg);
+        }
+
+        .diagram-box {
+            width: 100%;
+            max-width: 280px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- =====================================================
+             LEFT SIDE - SYLLABUS
+        ====================================================== -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+        ====================================================== -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- PAGE TITLE -->
+
+                <h1>
+                    Internal CSS
+                </h1>
+
+                <p class="lead text-muted">
+                    Learn how to write CSS inside an HTML document
+                    using the style element.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS INTERNAL CSS
+                ================================================== -->
+
+                <h2>
+                    What is Internal CSS?
+                </h2>
+
+                <p>
+                    Internal CSS is CSS written inside a
+                    <strong>&lt;style&gt;</strong> element in the
+                    <strong>&lt;head&gt;</strong> section of an HTML page.
+                </p>
+
+                <p>
+                    It is useful when one HTML page needs its own
+                    collection of CSS styles.
+                </p>
+
+
+                <!-- =================================================
+                     DIAGRAM
+                ================================================== -->
+
+                <h2>
+                    Internal CSS Diagram
+                </h2>
+
+                <div class="css-diagram">
+
+                    <div class="diagram-box html-box">
+
+                        <strong>
+                            HTML Page
+                        </strong>
+
+                        <span>
+                            index.html
+                        </span>
+
+                    </div>
+
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+
+                    <div class="diagram-box style-box">
+
+                        <strong>
+                            &lt;style&gt;
+                        </strong>
+
+                        <span>
+                            CSS Rules
+                        </span>
+
+                    </div>
+
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+
+                    <div class="diagram-box output-box">
+
+                        <strong>
+                            Browser
+                        </strong>
+
+                        <span>
+                            Styled Page
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     BASIC STRUCTURE
+                ================================================== -->
+
+                <h2>
+                    Basic Structure
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;html&gt;
+&lt;head&gt;
+
+    &lt;style&gt;
+
+        p {
+            color: blue;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;p&gt;Hello CSS&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    The <strong>&lt;style&gt;</strong> element contains
+                    the CSS rules used to style the HTML elements.
+                </p>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                ================================================== -->
+
+                <h2>
+                    Example 1: Style a Heading
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;style&gt;
+
+    h1 {
+        color: blue;
+        font-size: 30px;
+    }
+
+&lt;/style&gt;
+
+&lt;h1&gt;
+    Welcome CIIT Student 👨‍🏫👀.
+&lt;/h1&gt;</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    The <strong>h1</strong> selector selects the heading.
+                    The CSS changes its color to
+                    <strong>blue</strong> and its font size to
+                    <strong>30px</strong>.
+                </p>
+
+
+                <!-- ACTUAL OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <!--
+                                EXACT CSS FROM EXAMPLE:
+                                color: blue;
+                                font-size: 30px;
+                            -->
+
+                            <h1 style="color: blue; font-size: 30px;">
+                                Welcome CIIT Student 👨‍🏫👀.
+                            </h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                ================================================== -->
+
+                <h2>
+                    Example 2: Style Multiple Elements
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;style&gt;
+
+    h1 {
+        color: blue;
+    }
+
+    p {
+        color: green;
+        font-size: 18px;
+    }
+
+&lt;/style&gt;
+
+&lt;h1&gt;
+    CSS Tutorial
+&lt;/h1&gt;
+
+&lt;p&gt;
+    Learn Student CIIT Institute 👀🤓.
+&lt;/p&gt;</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    Internal CSS can contain multiple CSS rules.
+                    Each selector can style a different HTML element.
+                </p>
+
+
+                <!-- ACTUAL OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <!--
+                                EXACT CSS FROM EXAMPLE:
+                                h1 = blue
+                                p = green
+                                p font-size = 18px
+                            -->
+
+                            <h1 style="color: blue;">
+                                CSS Tutorial
+                            </h1>
+
+                            <p style="color: green; font-size: 18px;">
+                                Learn Student CIIT Institute 👀🤓.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                ================================================== -->
+
+                <h2>
+                    Example 3: Change Background Color
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;style&gt;
+
+    body {
+        background-color: lightgray;
+    }
+
+&lt;/style&gt;
+
+&lt;h1&gt;
+    CSS Background
+&lt;/h1&gt;</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    The
+                    <strong>background-color</strong>
+                    property changes the background color.
+                </p>
+
+
+                <!-- ACTUAL OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content"
+                             style="background-color: lightgray;">
+
+                            <h1>
+                                CSS Background
+                            </h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     WHERE INTERNAL CSS IS WRITTEN
+                ================================================== -->
+
+                <h2>
+                    Where is Internal CSS Written?
+                </h2>
+
+                <p>
+                    Internal CSS is normally written inside the
+                    <strong>&lt;head&gt;</strong> section of the HTML document.
+                </p>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;head&gt;
+
+    &lt;style&gt;
+
+        body {
+            background-color: lightgray;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     ADVANTAGES
+                ================================================== -->
+
+                <h2>
+                    Advantages of Internal CSS
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Easy to use for a single HTML page.
+                    </li>
+
+                    <li>
+                        Page-specific CSS can stay in one place.
+                    </li>
+
+                    <li>
+                        No separate CSS file is required.
+                    </li>
+
+                </ul>
+
+
+                <!-- =================================================
+                     LIMITATIONS
+                ================================================== -->
+
+                <h2>
+                    Limitations of Internal CSS
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Styles cannot be easily shared across many pages.
+                    </li>
+
+                    <li>
+                        Large HTML files can become difficult to maintain.
+                    </li>
+
+                    <li>
+                        Reusing the same styles across multiple pages is harder.
+                    </li>
+
+                </ul>
+
+
+                <!-- =================================================
+                     IMPORTANT
+                ================================================== -->
+
+                <div class="info-box">
+
+                    <strong>
+                        Remember:
+                    </strong>
+
+                    <p class="mb-0 mt-2">
+                        Internal CSS is written inside the
+                        <strong>&lt;style&gt;</strong> element,
+                        usually inside the
+                        <strong>&lt;head&gt;</strong> section.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                ================================================== -->
+
+                <div class="alert alert-info mt-4 summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        Internal CSS is written inside the
+                        <strong>&lt;style&gt;</strong> element of an
+                        HTML document. It allows multiple CSS rules
+                        to style elements on the same page.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     NAVIGATION
+                ================================================== -->
+
+                <div class="topic-navigation">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-outline-secondary w-100"
+                               href="@Url.Action("InlineCSS", "CSSBasics", new { area = "CSS" })">
+
+                                ← Previous: Inline CSS
+
+                            </a>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("ExternalCSS", "CSSBasics", new { area = "CSS" })">
+
+                                Next: External CSS →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

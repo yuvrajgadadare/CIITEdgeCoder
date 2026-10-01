@@ -1,0 +1,791 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Gap";
+}
+
+<style>
+
+    #css-gap-page {
+        color: #212529;
+    }
+
+    #css-gap-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-gap-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-gap-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-gap-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-gap-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* Code */
+
+    #css-gap-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-gap-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* Explanation */
+
+    #css-gap-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-gap-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Diagram */
+
+    #css-gap-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-gap-page .diagram-container {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-gap-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 18px 25px;
+        border-radius: 6px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    /* Output */
+
+    #css-gap-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-gap-page .output-row {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-gap-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 20px;
+        text-align: center;
+        font-weight: 700;
+        flex: 1;
+    }
+
+    /* Cards */
+
+    #css-gap-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-gap-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-gap-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Note */
+
+    #css-gap-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* Summary */
+
+    #css-gap-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-gap-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-gap-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+</style>
+
+
+<div id="css-gap-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- Title -->
+
+                <h1>
+                    CSS Gap
+                </h1>
+
+                <p>
+                    The CSS <strong>gap</strong> property is used to
+                    create space between Flex Items inside a Flex
+                    Container.
+                </p>
+
+                <p>
+                    Instead of adding margins individually to every
+                    item, the <strong>gap</strong> property provides
+                    a simple way to control the spacing between
+                    Flex Items.
+                </p>
+
+
+                <!-- Basic Concept -->
+
+                <h2>
+                    What is Gap?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The <strong>gap</strong> property defines the
+                        amount of space between Flex Items.
+                    </p>
+
+                    <p>
+                        It creates space between the items without
+                        adding extra space around the outside edge
+                        of the Flex Container.
+                    </p>
+
+                    <p>
+                        Gap is especially useful when creating
+                        navigation menus, card layouts, buttons,
+                        forms, and responsive components.
+                    </p>
+
+                </div>
+
+
+                <!-- Syntax -->
+
+                <h2>
+                    Basic Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    gap: 20px;
+}</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    In this example, a <strong>20px</strong> gap is
+                    created between the Flex Items.
+                </p>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Gap Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-container">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        20px space is created between each Flex Item.
+                    </p>
+
+                </div>
+
+
+                <!-- Basic Example -->
+
+                <h2>
+                    Example: gap: 20px
+                </h2>
+
+                <p>
+                    The following example creates a 20px space between
+                    the three Flex Items.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    gap: 20px;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-row">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Different Gap -->
+
+                <h2>
+                    Different Gap Values
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                gap: 5px
+                            </h3>
+
+                            <p>
+                                Creates a small 5px space between
+                                Flex Items.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                gap: 20px
+                            </h3>
+
+                            <p>
+                                Creates a 20px space between
+                                Flex Items.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                gap: 40px
+                            </h3>
+
+                            <p>
+                                Creates a larger 40px space between
+                                Flex Items.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Row and Column Gap -->
+
+                <h2>
+                    Row Gap and Column Gap
+                </h2>
+
+                <p>
+                    When Flexbox contains multiple rows or columns,
+                    you can control horizontal and vertical spacing
+                    separately.
+                </p>
+
+                <p>
+                    CSS provides two properties:
+                    <strong>row-gap</strong> and
+                    <strong>column-gap</strong>.
+                </p>
+
+
+                <!-- Row Gap -->
+
+                <h2>
+                    1. row-gap
+                </h2>
+
+                <p>
+                    The <strong>row-gap</strong> property controls
+                    the space between Flex Lines.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}</code></pre>
+
+                </div>
+
+
+                <!-- Column Gap -->
+
+                <h2>
+                    2. column-gap
+                </h2>
+
+                <p>
+                    The <strong>column-gap</strong> property controls
+                    the space between items along the column direction.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+}</code></pre>
+
+                </div>
+
+
+                <!-- Row + Column -->
+
+                <h2>
+                    Using row-gap and column-gap Together
+                </h2>
+
+                <p>
+                    You can use both properties together when you need
+                    different horizontal and vertical spacing.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 30px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        <strong>row-gap: 20px;</strong> creates
+                        20px of space between Flex Lines.
+                    </p>
+
+                    <p>
+                        <strong>column-gap: 30px;</strong> creates
+                        30px of space between items horizontally.
+                    </p>
+
+                </div>
+
+
+                <!-- Gap Shorthand -->
+
+                <h2>
+                    Gap Shorthand
+                </h2>
+
+                <p>
+                    The <strong>gap</strong> property can also accept
+                    two values.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    gap: 20px 30px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        In the two-value syntax:
+                    </p>
+
+                    <p>
+                        <strong>20px</strong> = row gap
+                    </p>
+
+                    <p>
+                        <strong>30px</strong> = column gap
+                    </p>
+
+                </div>
+
+
+                <!-- Comparison -->
+
+                <h2>
+                    Gap Syntax Comparison
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>CSS</th>
+                                <th>Meaning</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>gap: 20px;</strong>
+                                </td>
+
+                                <td>
+                                    20px gap between rows and columns.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>gap: 20px 30px;</strong>
+                                </td>
+
+                                <td>
+                                    20px row gap and 30px column gap.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>row-gap: 20px;</strong>
+                                </td>
+
+                                <td>
+                                    Controls spacing between rows.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>column-gap: 30px;</strong>
+                                </td>
+
+                                <td>
+                                    Controls spacing between columns.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Gap vs Margin -->
+
+                <h2>
+                    Gap vs Margin
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Gap</th>
+                                <th>Margin</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    Controls space between Flex Items.
+                                </td>
+
+                                <td>
+                                    Controls space around individual
+                                    elements.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Applied to the Flex Container.
+                                </td>
+
+                                <td>
+                                    Applied to individual elements.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Easier for consistent item spacing.
+                                </td>
+
+                                <td>
+                                    Useful when individual element
+                                    spacing is required.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Real World -->
+
+                <h2>
+                    Real-World Example
+                </h2>
+
+                <p>
+                    Suppose CIIT Training Institute displays multiple
+                    technology course cards.
+                </p>
+
+                <p>
+                    Instead of adding margin to every course card,
+                    the parent container can use the
+                    <strong>gap</strong> property.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.course {
+    background-color: lightblue;
+    border: 2px solid blue;
+    padding: 20px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The parent
+                        <strong>.courses</strong> container controls
+                        the spacing between all course cards.
+                    </p>
+
+                    <p>
+                        This keeps the spacing consistent and makes
+                        the layout easier to maintain.
+                    </p>
+
+                </div>
+
+
+                <!-- Important Note -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    The <strong>gap</strong> property creates space
+                    between Flex Items. It does not create the same
+                    kind of outer spacing around the Flex Container
+                    that margin does.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>gap</strong> property creates
+                        consistent spacing between Flex Items.
+                        <strong>row-gap</strong> controls spacing
+                        between Flex Lines, while
+                        <strong>column-gap</strong> controls spacing
+                        between columns. The shorthand
+                        <strong>gap: 20px 30px;</strong> can be used
+                        to define different row and column gaps.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("AlignContent", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Align Content
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("FlexItems", "Flexbox", new { area = "CSS" })">
+
+                            Next: Flex Items →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

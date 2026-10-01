@@ -1,0 +1,1365 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Input Types";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+
+    .form-demo {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Input Types</h1>
+
+            <p class="lead">
+                HTML provides different input types for collecting different kinds
+                of information such as text, email addresses, passwords, numbers,
+                dates, files, colors, and selections.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. What are HTML Input Types?</h2>
+
+            <p>
+                The <code>&lt;input&gt;</code> element changes its behavior based
+                on the value of its <code>type</code> attribute.
+            </p>
+
+            <pre><code>&lt;input type="text"&gt;</code></pre>
+
+            <p>
+                For example, changing <code>type="text"</code> to
+                <code>type="email"</code> creates an email-oriented input.
+            </p>
+
+            <pre><code>&lt;input type="email"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">2. Common HTML Input Types</h2>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Input Type</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>text</code></td>
+                        <td>Single-line text input.</td>
+                    </tr>
+                    <tr>
+                        <td><code>password</code></td>
+                        <td>Password entry.</td>
+                    </tr>
+                    <tr>
+                        <td><code>email</code></td>
+                        <td>Email address input.</td>
+                    </tr>
+                    <tr>
+                        <td><code>number</code></td>
+                        <td>Numeric input.</td>
+                    </tr>
+                    <tr>
+                        <td><code>tel</code></td>
+                        <td>Telephone number input.</td>
+                    </tr>
+                    <tr>
+                        <td><code>url</code></td>
+                        <td>Web address input.</td>
+                    </tr>
+                    <tr>
+                        <td><code>search</code></td>
+                        <td>Search input.</td>
+                    </tr>
+                    <tr>
+                        <td><code>date</code></td>
+                        <td>Date selection.</td>
+                    </tr>
+                    <tr>
+                        <td><code>time</code></td>
+                        <td>Time selection.</td>
+                    </tr>
+                    <tr>
+                        <td><code>datetime-local</code></td>
+                        <td>Local date and time selection.</td>
+                    </tr>
+                    <tr>
+                        <td><code>month</code></td>
+                        <td>Month and year selection.</td>
+                    </tr>
+                    <tr>
+                        <td><code>week</code></td>
+                        <td>Week and year selection.</td>
+                    </tr>
+                    <tr>
+                        <td><code>color</code></td>
+                        <td>Color selection.</td>
+                    </tr>
+                    <tr>
+                        <td><code>file</code></td>
+                        <td>File selection.</td>
+                    </tr>
+                    <tr>
+                        <td><code>checkbox</code></td>
+                        <td>Multiple independent selections.</td>
+                    </tr>
+                    <tr>
+                        <td><code>radio</code></td>
+                        <td>Single selection from a group.</td>
+                    </tr>
+                    <tr>
+                        <td><code>range</code></td>
+                        <td>Select a value from a range.</td>
+                    </tr>
+                    <tr>
+                        <td><code>hidden</code></td>
+                        <td>Stores a value that is not visibly displayed.</td>
+                    </tr>
+                    <tr>
+                        <td><code>submit</code></td>
+                        <td>Submits the form.</td>
+                    </tr>
+                    <tr>
+                        <td><code>reset</code></td>
+                        <td>Resets form controls.</td>
+                    </tr>
+                    <tr>
+                        <td><code>button</code></td>
+                        <td>Creates a general-purpose button.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">3. Text Input</h2>
+
+            <p>
+                The <code>text</code> input is used for single-line text.
+            </p>
+
+            <pre><code>&lt;label for="username"&gt;
+    Username:
+&lt;/label&gt;
+
+&lt;input type="text"
+       id="username"
+       name="username"&gt;</code></pre>
+
+     <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                    <label for="demoUsername"
+                           class="form-label">
+                        Username:
+                    </label>
+
+                    <input type="text"
+                           id="demoUsername"
+                           class="form-control"
+                           placeholder="Enter username" />
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">4. Password Input</h2>
+
+            <p>
+                The <code>password</code> input masks the entered characters.
+            </p>
+
+            <pre><code>&lt;input type="password"
+       name="password"
+       placeholder="Enter password"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">5. Email Input</h2>
+
+            <p>
+                The <code>email</code> input is designed for email addresses
+                and provides browser-level validation hints.
+            </p>
+
+            <pre><code>&lt;input type="email"
+       name="email"
+       placeholder="Enter email"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">6. Number Input</h2>
+
+            <p>
+                The <code>number</code> input is intended for numeric values.
+            </p>
+
+            <pre><code>&lt;input type="number"
+       name="age"&gt;</code></pre>
+
+            <h3 class="h5 fw-bold mt-4">Using min and max</h3>
+
+            <pre><code>&lt;input type="number"
+       name="age"
+       min="18"
+       max="60"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                    <label class="form-label">
+                        Age:
+                    </label>
+
+                    <input type="number"
+                           class="form-control"
+                           min="18"
+                           max="60" />
+                </div>
+
+            <h2 class="h3 fw-bold mt-5">7. Telephone Input</h2>
+
+            <p>
+                The <code>tel</code> input is intended for telephone numbers.
+            </p>
+
+            <pre><code>&lt;label for="phone"&gt;
+    Phone:
+&lt;/label&gt;
+
+&lt;input type="tel"
+       id="phone"
+       name="phone"
+       placeholder="Enter phone number"&gt;</code></pre>
+
+      <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">8. URL Input</h2>
+
+            <p>
+                The <code>url</code> input is intended for web addresses.
+            </p>
+
+            <pre><code>&lt;input type="url"
+       name="website"
+       placeholder="https://example.com"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">9. Search Input</h2>
+
+            <p>
+                The <code>search</code> input is used for search queries.
+            </p>
+
+            <pre><code>&lt;form action="/search"
+      method="get"&gt;
+
+    &lt;input type="search"
+           name="query"
+           placeholder="Search courses"&gt;
+
+    &lt;button type="submit"&gt;
+        Search
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">10. Date Input</h2>
+
+            <p>
+                The <code>date</code> input allows users to select a date.
+            </p>
+
+            <pre><code>&lt;label for="dob"&gt;
+    Date of Birth:
+&lt;/label&gt;
+
+&lt;input type="date"
+       id="dob"
+       name="dob"&gt;</code></pre>
+
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                    <label for="demoDate"
+                           class="form-label">
+                        Date:
+                    </label>
+
+                    <input type="date"
+                           id="demoDate"
+                           class="form-control" />
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">11. Time Input</h2>
+
+            <p>
+                The <code>time</code> input allows the user to select a time.
+            </p>
+
+            <pre><code>&lt;input type="time"
+       name="appointmentTime"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">12. datetime-local Input</h2>
+
+            <p>
+                The <code>datetime-local</code> input allows the user to select
+                a local date and time.
+            </p>
+
+            <pre><code>&lt;input type="datetime-local"
+       name="meeting"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">13. Month Input</h2>
+
+            <p>
+                The <code>month</code> input is used to select a month and year.
+            </p>
+
+            <pre><code>&lt;input type="month"
+       name="joiningMonth"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">14. Week Input</h2>
+
+            <p>
+                The <code>week</code> input allows selection of a week and year.
+            </p>
+
+            <pre><code>&lt;input type="week"
+       name="trainingWeek"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">15. Color Input</h2>
+
+            <p>
+                The <code>color</code> input provides a color selection control
+                in supporting browsers.
+            </p>
+
+            <pre><code>&lt;label for="color"&gt;
+    Select Color:
+&lt;/label&gt;
+
+&lt;input type="color"
+       id="color"
+       name="color"
+       value="#0d6efd"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                <div class="form-demo">
+                    <label for="demoColor"
+                           class="form-label">
+                        Select Color:
+                    </label>
+
+                    <input type="color"
+                           id="demoColor"
+                           value="#0d6efd" />
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">16. File Input</h2>
+
+            <p>
+                The <code>file</code> input allows the user to select a file.
+            </p>
+
+            <pre><code>&lt;label for="resume"&gt;
+    Upload Resume:
+&lt;/label&gt;
+
+&lt;input type="file"
+       id="resume"
+       name="resume"&gt;</code></pre>
+
+            <h3 class="h5 fw-bold mt-4">Accept Specific File Types</h3>
+
+            <pre><code>&lt;input type="file"
+       name="resume"
+       accept=".pdf,.doc,.docx"&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                The <code>accept</code> attribute provides a hint about allowed
+                file types. The server should still validate uploaded files.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">17. Checkbox Input</h2>
+
+            <p>
+                A checkbox represents an independent selection and can be used
+                when multiple options may be selected.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="html"
+       name="skills"
+       value="html"&gt;
+
+&lt;label for="html"&gt;
+    HTML
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">18. Radio Input</h2>
+
+            <p>
+                Radio buttons are used when the user should select one option
+                from a group.
+            </p>
+
+            <pre><code>&lt;input type="radio"
+       id="online"
+       name="mode"
+       value="online"&gt;
+
+&lt;label for="online"&gt;
+    Online
+&lt;/label&gt;
+
+&lt;input type="radio"
+       id="offline"
+       name="mode"
+       value="offline"&gt;
+
+&lt;label for="offline"&gt;
+    Offline
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Radio buttons in the same group should normally use the same
+                <code>name</code> value.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">19. range Input</h2>
+
+            <p>
+                The <code>range</code> input lets the user select a value
+                from a defined range.
+            </p>
+
+            <pre><code>&lt;label for="volume"&gt;
+    Volume:
+&lt;/label&gt;
+
+&lt;input type="range"
+       id="volume"
+       name="volume"
+       min="0"
+       max="100"
+       value="50"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                    <label for="demoRange"
+                           class="form-label">
+                        Volume:
+                    </label>
+
+                    <input type="range"
+                           id="demoRange"
+                           class="form-range"
+                           min="0"
+                           max="100"
+                           value="50" />
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">20. hidden Input</h2>
+
+            <p>
+                The <code>hidden</code> input stores a value that is not displayed
+                as a visible form control.
+            </p>
+
+            <pre><code>&lt;input type="hidden"
+       name="studentId"
+       value="101"&gt;</code></pre>
+
+      
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                A hidden field is not a security mechanism. Do not trust
+                hidden values without validating them on the server.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">21. submit Input</h2>
+
+            <p>
+                The <code>submit</code> input creates a form submission button.
+            </p>
+
+            <pre><code>&lt;input type="submit"
+       value="Submit Form"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                <input type="submit"
+                       value="Submit Form"
+                       class="btn btn-primary" />
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">22. reset Input</h2>
+
+            <p>
+                The <code>reset</code> input creates a button that restores
+                form controls to their initial values.
+            </p>
+
+            <pre><code>&lt;input type="reset"
+       value="Reset Form"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                <input type="reset"
+                       value="Reset Form"
+                       class="btn btn-secondary" />
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">23. button Input</h2>
+
+            <p>
+                The <code>button</code> input creates a general-purpose
+                button that does not submit the form by default.
+            </p>
+
+            <pre><code>&lt;input type="button"
+       value="Click Me"&gt;</code></pre>
+
+
+            <h2 class="h3 fw-bold mt-5">24. Input Size</h2>
+
+            <p>
+                CSS can be used to control the visual width of input controls.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"
+       style="width:300px;"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">25. maxlength</h2>
+
+            <p>
+                The <code>maxlength</code> attribute limits the maximum number
+                of characters that can be entered into supported text controls.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"
+       maxlength="20"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">26. minlength</h2>
+
+            <p>
+                The <code>minlength</code> attribute specifies the minimum
+                number of characters required.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"
+       minlength="5"
+       required&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">27. min and max</h2>
+
+            <p>
+                The <code>min</code> and <code>max</code> attributes define
+                minimum and maximum permitted values for supported controls.
+            </p>
+
+            <pre><code>&lt;input type="number"
+       name="age"
+       min="18"
+       max="60"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">28. step Attribute</h2>
+
+            <p>
+                The <code>step</code> attribute defines the allowed step
+                interval for supported numeric controls.
+            </p>
+
+            <pre><code>&lt;input type="number"
+       name="price"
+       min="0"
+       max="1000"
+       step="0.5"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">29. pattern Attribute</h2>
+
+            <p>
+                The <code>pattern</code> attribute can specify a regular
+                expression pattern for supported text controls.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="studentCode"
+       pattern="[A-Z]{3}[0-9]{3}"
+       required&gt;</code></pre>
+
+
+
+            <div class="note-box">
+                <strong>Example:</strong>
+                The pattern above expects three uppercase letters followed
+                by three digits.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">30. required Attribute with Input Types</h2>
+
+            <p>
+                The <code>required</code> attribute can be used with many
+                input types.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="name"
+       required&gt;
+
+&lt;input type="email"
+       name="email"
+       required&gt;
+
+&lt;input type="date"
+       name="dob"
+       required&gt;
+
+&lt;input type="file"
+       name="resume"
+       required&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">31. autocomplete Attribute</h2>
+
+            <p>
+                The <code>autocomplete</code> attribute provides hints to
+                the browser about previously entered information.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="fullName"
+       autocomplete="name"&gt;
+
+&lt;input type="email"
+       name="email"
+       autocomplete="email"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">32. disabled Input</h2>
+
+            <p>
+                A disabled input cannot be interacted with by the user.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       value="Not Available"
+       disabled&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">33. readonly Input</h2>
+
+            <p>
+                A readonly input cannot be edited by the user but can remain
+                available for normal form processing.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="studentId"
+       value="STU101"
+       readonly&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">34. checked Attribute</h2>
+
+            <p>
+                The <code>checked</code> attribute can mark a checkbox or
+                radio button as selected initially.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       name="skills"
+       value="html"
+       checked&gt;
+
+&lt;label&gt;
+    HTML
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">35. selected Option</h2>
+
+            <p>
+                A default option can be selected in a dropdown.
+            </p>
+
+            <pre><code>&lt;select name="course"&gt;
+
+    &lt;option value="html"&gt;
+        HTML
+    &lt;/option&gt;
+
+    &lt;option value="css"
+            selected&gt;
+        CSS
+    &lt;/option&gt;
+
+    &lt;option value="javascript"&gt;
+        JavaScript
+    &lt;/option&gt;
+
+&lt;/select&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">36. Input Types in a Student Form</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label&gt;
+        Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           name="name"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;
+        Email:
+    &lt;/label&gt;
+
+    &lt;input type="email"
+           name="email"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;
+        Phone:
+    &lt;/label&gt;
+
+    &lt;input type="tel"
+           name="phone"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;
+        Age:
+    &lt;/label&gt;
+
+    &lt;input type="number"
+           name="age"
+           min="18"
+           max="60"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;
+        Date of Birth:
+    &lt;/label&gt;
+
+    &lt;input type="date"
+           name="dob"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;
+        Resume:
+    &lt;/label&gt;
+
+    &lt;input type="file"
+           name="resume"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">37. Practical Comparison of Input Types</h2>
+
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Type</th>
+                        <th>Example Use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>text</code></td>
+                        <td>Name, city, username</td>
+                    </tr>
+                    <tr>
+                        <td><code>email</code></td>
+                        <td>Email address</td>
+                    </tr>
+                    <tr>
+                        <td><code>password</code></td>
+                        <td>Password</td>
+                    </tr>
+                    <tr>
+                        <td><code>number</code></td>
+                        <td>Age, quantity, price</td>
+                    </tr>
+                    <tr>
+                        <td><code>tel</code></td>
+                        <td>Phone number</td>
+                    </tr>
+                    <tr>
+                        <td><code>url</code></td>
+                        <td>Website URL</td>
+                    </tr>
+                    <tr>
+                        <td><code>search</code></td>
+                        <td>Search query</td>
+                    </tr>
+                    <tr>
+                        <td><code>date</code></td>
+                        <td>Date of birth</td>
+                    </tr>
+                    <tr>
+                        <td><code>time</code></td>
+                        <td>Appointment time</td>
+                    </tr>
+                    <tr>
+                        <td><code>file</code></td>
+                        <td>Resume or document</td>
+                    </tr>
+                    <tr>
+                        <td><code>color</code></td>
+                        <td>Theme or color selection</td>
+                    </tr>
+                    <tr>
+                        <td><code>range</code></td>
+                        <td>Volume or rating</td>
+                    </tr>
+                    <tr>
+                        <td><code>hidden</code></td>
+                        <td>Non-visible form value</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">38. Accessibility Best Practices</h2>
+
+            <ul>
+                <li>Use a meaningful label for each important control.</li>
+                <li>Match label <code>for</code> with input <code>id</code>.</li>
+                <li>Use suitable input types for the expected data.</li>
+                <li>Do not depend only on placeholder text.</li>
+                <li>Group related radio buttons and checkboxes logically.</li>
+                <li>Provide useful validation feedback.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">39. Common Mistakes</h2>
+
+            <ul>
+                <li>Using <code>text</code> for every kind of data.</li>
+                <li>Forgetting the correct <code>name</code> attribute.</li>
+                <li>Using the wrong input type for the expected value.</li>
+                <li>Using placeholders instead of labels.</li>
+                <li>Forgetting validation constraints where necessary.</li>
+                <li>Using hidden inputs as if they were secure storage.</li>
+                <li>Forgetting server-side validation of submitted data.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">40. Best Practices</h2>
+
+            <ul>
+                <li>Choose the most appropriate input type.</li>
+                <li>Use semantic labels and meaningful names.</li>
+                <li>Use built-in browser validation where appropriate.</li>
+                <li>Use suitable constraints such as <code>min</code>, <code>max</code>, and <code>required</code>.</li>
+                <li>Use file input restrictions only as a client-side hint.</li>
+                <li>Always validate important data on the server.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">41. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create a registration form using these input types:</strong></p>
+
+                <ol>
+                    <li>Text</li>
+                    <li>Email</li>
+                    <li>Password</li>
+                    <li>Number</li>
+                    <li>Telephone</li>
+                    <li>URL</li>
+                    <li>Date</li>
+                    <li>Time</li>
+                    <li>Radio</li>
+                    <li>Checkbox</li>
+                    <li>Color</li>
+                    <li>File</li>
+                    <li>Range</li>
+                    <li>Submit</li>
+                    <li>Reset</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">42. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;HTML Input Types Example&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Student Registration&lt;/h1&gt;
+
+    &lt;form action="/register"
+          method="post"
+          enctype="multipart/form-data"&gt;
+
+        &lt;label for="name"&gt;
+            Full Name:
+        &lt;/label&gt;
+
+        &lt;input type="text"
+               id="name"
+               name="name"
+               required&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="email"&gt;
+            Email:
+        &lt;/label&gt;
+
+        &lt;input type="email"
+               id="email"
+               name="email"
+               required&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="password"&gt;
+            Password:
+        &lt;/label&gt;
+
+        &lt;input type="password"
+               id="password"
+               name="password"
+               required&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="age"&gt;
+            Age:
+        &lt;/label&gt;
+
+        &lt;input type="number"
+               id="age"
+               name="age"
+               min="18"
+               max="60"&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="phone"&gt;
+            Phone:
+        &lt;/label&gt;
+
+        &lt;input type="tel"
+               id="phone"
+               name="phone"&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="website"&gt;
+            Website:
+        &lt;/label&gt;
+
+        &lt;input type="url"
+               id="website"
+               name="website"
+               placeholder="https://example.com"&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="dob"&gt;
+            Date of Birth:
+        &lt;/label&gt;
+
+        &lt;input type="date"
+               id="dob"
+               name="dob"&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label&gt;
+            Learning Mode:
+        &lt;/label&gt;
+
+        &lt;input type="radio"
+               id="online"
+               name="mode"
+               value="online"&gt;
+
+        &lt;label for="online"&gt;
+            Online
+        &lt;/label&gt;
+
+        &lt;input type="radio"
+               id="offline"
+               name="mode"
+               value="offline"&gt;
+
+        &lt;label for="offline"&gt;
+            Offline
+        &lt;/label&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label&gt;
+            Skills:
+        &lt;/label&gt;
+
+        &lt;input type="checkbox"
+               id="html"
+               name="skills"
+               value="html"&gt;
+
+        &lt;label for="html"&gt;
+            HTML
+        &lt;/label&gt;
+
+        &lt;input type="checkbox"
+               id="css"
+               name="skills"
+               value="css"&gt;
+
+        &lt;label for="css"&gt;
+            CSS
+        &lt;/label&gt;
+
+        &lt;input type="checkbox"
+               id="javascript"
+               name="skills"
+               value="javascript"&gt;
+
+        &lt;label for="javascript"&gt;
+            JavaScript
+        &lt;/label&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="color"&gt;
+            Favorite Color:
+        &lt;/label&gt;
+
+        &lt;input type="color"
+               id="color"
+               name="color"&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="resume"&gt;
+            Upload Resume:
+        &lt;/label&gt;
+
+        &lt;input type="file"
+               id="resume"
+               name="resume"
+               accept=".pdf,.doc,.docx"&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="experience"&gt;
+            Experience:
+        &lt;/label&gt;
+
+        &lt;input type="range"
+               id="experience"
+               name="experience"
+               min="0"
+               max="10"
+               value="0"&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;input type="submit"
+               value="Register"&gt;
+
+        &lt;input type="reset"
+               value="Reset"&gt;
+
+    &lt;/form&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    HTML provides many input types for different kinds of user data.
+                    Common types include <code>text</code>, <code>email</code>,
+                    <code>password</code>, <code>number</code>, <code>tel</code>,
+                    <code>url</code>, <code>date</code>, <code>time</code>,
+                    <code>file</code>, <code>radio</code>, <code>checkbox</code>,
+                    <code>color</code>, <code>range</code>, and hidden inputs.
+                    Using the correct input type improves form behavior,
+                    usability, and built-in browser validation.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("FormAttributes", "Forms", new { area = "HTML" })">
+                    ← Previous: Form Attributes
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Labels", "Forms", new { area = "HTML" })">
+                    Next: Labels →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

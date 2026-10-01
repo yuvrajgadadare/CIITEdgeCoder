@@ -1,0 +1,1072 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Lambda Expressions";
+}
+
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Lambda Expressions
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Lambda Expressions are a concise way of writing anonymous functions
+                    in C#. They are commonly used with delegates, collections, LINQ,
+                    filtering, sorting, and event handling.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    A lambda expression is a short way to write a method or function
+                    without explicitly declaring a separate method.
+                </div>
+
+
+                <!-- WHAT IS LAMBDA -->
+
+                <h3 class="fw-bold text-dark mt-4 mb-3">
+                    What is a Lambda Expression?
+                </h3>
+
+                <p class="text-muted">
+                    A lambda expression allows us to write a small function directly
+                    where it is required. Lambda expressions are especially useful
+                    when the function is short and does not need a separate method.
+                </p>
+
+                <p class="text-muted">
+                    Lambda expressions use the <strong>=&gt;</strong> operator,
+                    which is commonly read as "goes to".
+                </p>
+
+
+                <!-- SYNTAX -->
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Lambda Expression Syntax
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>(parameters) =&gt; expression</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Simple Lambda Example
+                </h4>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Func&lt;int, int&gt; square =
+    number =&gt; number * number;
+
+Console.WriteLine(square(5));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>25</code></pre>
+                </div>
+
+
+                <!-- PARAMETERS -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda Expression with Parameters
+                </h3>
+
+                <p class="text-muted">
+                    A lambda expression can accept one or more parameters.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Func&lt;int, int, int&gt; add =
+    (a, b) =&gt; a + b;
+
+Console.WriteLine(add(10, 20));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30</code></pre>
+                </div>
+
+
+                <!-- NO PARAMETER -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda Expression without Parameters
+                </h3>
+
+                <p class="text-muted">
+                    A lambda expression can also be created without parameters.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Action message = () =&gt;
+{
+    Console.WriteLine("WelCome to CIIT Training Institute 👨‍🏫❤️...!");
+};
+
+message();</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>WelCome to CIIT Training Institute 👨‍🏫❤️...!</code></pre>
+                </div>
+                    
+
+                <!-- MULTIPLE STATEMENTS -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda Expression with Multiple Statements
+                </h3>
+
+                <p class="text-muted">
+                    When a lambda contains multiple statements, curly braces are used.
+                    A return statement can be used when the lambda returns a value.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Func&lt;int, int&gt; calculate = number =&gt;
+{
+    int result = number * 2;
+    return result;
+};
+
+Console.WriteLine(calculate(10));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>20</code></pre>
+                </div>
+
+
+                <!-- ACTION -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda Expression with Action
+                </h3>
+
+                <p class="text-muted">
+                    Action is a built-in delegate used when a lambda expression
+                    does not return a value.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Action&lt;string&gt; greet =
+    name =&gt; Console.WriteLine("Hello " + name);
+
+greet("Rahul");</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Hello Rahul</code></pre>
+                </div>
+
+
+                <!-- FUNC -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda Expression with Func
+                </h3>
+
+                <p class="text-muted">
+                    Func is a built-in delegate used when a lambda expression
+                    returns a value.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Func&lt;int, int&gt; cube =
+    number =&gt; number * number * number;
+
+Console.WriteLine(cube(3));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>27</code></pre>
+                </div>
+
+
+                <!-- LIST -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda with List
+                </h3>
+
+                <p class="text-muted">
+                    Lambda expressions are commonly used with collections such as List.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40, 50 };
+
+numbers.ForEach(number =&gt;
+{
+    Console.WriteLine(number);
+});</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+                </div>
+
+
+                <!-- FILTER -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda for Filtering Data
+                </h3>
+
+                <p class="text-muted">
+                    Lambda expressions are frequently used to filter collection data.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 15, 20, 25, 30 };
+
+var result = numbers.Where(number =&gt; number &gt; 20);
+
+foreach (int number in result)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>25
+30</code></pre>
+                </div>
+
+
+                <!-- FIND -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda with Find()
+                </h3>
+
+                <p class="text-muted">
+                    The Find() method can use a lambda expression to find
+                    the first element that satisfies a condition.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 10, 20, 30, 40 };
+
+int result = numbers.Find(number =&gt; number &gt; 25);
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30</code></pre>
+                </div>
+
+
+                <!-- SORT -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda with Sort()
+                </h3>
+
+                <p class="text-muted">
+                    Lambda expressions can also be used to define custom sorting logic.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers =
+    new List&lt;int&gt; { 50, 20, 40, 10, 30 };
+
+numbers.Sort((a, b) =&gt; a.CompareTo(b));
+
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+                </div>
+
+
+                <!-- LINQ -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda Expressions with LINQ
+                </h3>
+
+                <p class="text-muted">
+                    One of the most important uses of lambda expressions is with LINQ.
+                    LINQ methods such as Where(), Select(), OrderBy(), and Any()
+                    commonly accept lambda expressions.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; marks =
+    new List&lt;int&gt; { 45, 70, 85, 90, 35 };
+
+var passedMarks =
+    marks.Where(mark =&gt; mark &gt;= 50);
+
+foreach (int mark in passedMarks)
+{
+    Console.WriteLine(mark);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>70
+85
+90</code></pre>
+                </div>
+
+
+                <!-- LAMBDA WITH OBJECTS -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Lambda with Objects
+                </h3>
+
+                <p class="text-muted">
+                    Lambda expressions can be used to filter objects based on
+                    their property values.
+                </p>
+
+@*                 <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>class Student
+{
+    public string Name { get; set; }
+    public int Marks { get; set; }
+}
+
+List&lt;Student&gt; students = new List&lt;Student&gt;
+{
+    new Student { Name = "Samadhan", Marks = 80 },
+    new Student { Name = "Omkar", Marks = 45 },
+    new Student { Name = "Samiksha", Marks = 90 }
+};
+
+var result =
+    students.Where(student =&gt; student.Marks &gt;= 50);
+
+foreach (Student student in result)
+{
+    Console.WriteLine(student.Name);
+}</code></pre>
+                </div> *@
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Student
+{
+    public string Name { get; set; }
+    public int Marks { get; set; }
+}
+
+List&lt;Student&gt; students = new List&lt;Student&gt;
+{
+    new Student { Name = "Samadhan", Marks = 80 },
+    new Student { Name = "Omkar", Marks = 45 },
+    new Student { Name = "Samiksha", Marks = 90 }
+};
+
+var result =
+    students.Where(student =&gt; student.Marks &gt;= 50);
+
+foreach (Student student in result)
+{
+    Console.WriteLine(student.Name);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Samadhan
+Samiksha</code></pre>
+                </div>
+
+
+                <!-- EXPRESSION VS STATEMENT -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Expression Lambda vs Statement Lambda
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Expression Lambda</td>
+                                <td>number =&gt; number * 2</td>
+                            </tr>
+                            <tr>
+                                <td>Statement Lambda</td>
+                                <td>number =&gt; { return number * 2; }</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- ADVANTAGES -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Advantages of Lambda Expressions
+                </h3>
+
+                <ul class="text-muted">
+                    <li>Reduces unnecessary code.</li>
+                    <li>Makes short functions easier to read.</li>
+                    <li>Works naturally with delegates.</li>
+                    <li>Widely used with LINQ.</li>
+                    <li>Useful for collection filtering and sorting.</li>
+                    <li>Supports functional-style programming.</li>
+                </ul>
+
+
+                <!-- COMMON MISTAKES -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Common Mistakes
+                </h3>
+
+                <ul class="text-muted">
+                    <li>Using a lambda where a normal named method would be clearer.</li>
+                    <li>Using overly complex lambda expressions.</li>
+                    <li>Forgetting the correct parameter types when type inference is not enough.</li>
+                    <li>Confusing Action and Func.</li>
+                    <li>Writing difficult-to-read nested lambda expressions.</li>
+                </ul>
+
+
+                <!-- REAL WORLD -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Real-World Example
+                </h3>
+
+                <p class="text-muted">
+                    In a student management application, lambda expressions can be
+                    used to find students who have passed an examination.
+                </p>
+
+@*                 <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>List&lt;int&gt; marks =
+    new List&lt;int&gt; { 35, 55, 72, 40, 88 };
+
+var passed =
+    marks.Where(mark =&gt; mark &gt;= 50);
+
+foreach (int mark in passed)
+{
+    Console.WriteLine(mark);
+}</code></pre>
+                </div> *@
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; marks =
+    new List&lt;int&gt; { 35, 55, 72, 40, 88 };
+
+var passed =
+    marks.Where(mark =&gt; mark &gt;= 50);
+
+foreach (int mark in passed)
+{
+    Console.WriteLine(mark);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>55
+72
+88</code></pre>
+                </div>
+
+
+                <!-- CIIT -->
+
+                <div class="alert alert-success mt-4">
+                    <strong>CIIT Practical Point:</strong>
+                    Lambda Expressions are heavily used in modern .NET applications,
+                    especially with LINQ, Entity Framework Core, collections,
+                    delegates, events, filtering, sorting, and data processing.
+                </div>
+
+
+                <!-- INTERVIEW QUESTIONS -->
+
+                <h3 class="fw-bold text-dark mt-5 mb-4">
+                    Interview Questions
+                </h3>
+
+                <h5 class="fw-bold">
+                    1. What is a Lambda Expression?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    A lambda expression is a concise way to represent an anonymous
+                    function in C#.
+                </p>
+
+                <h5 class="fw-bold">
+                    2. Which operator is used in a lambda expression?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    The <strong>=&gt;</strong> operator is used in lambda expressions.
+                </p>
+
+                <h5 class="fw-bold">
+                    3. What is the difference between Action and Func?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    Action represents a delegate that returns no value, while Func
+                    represents a delegate that returns a value.
+                </p>
+
+                <h5 class="fw-bold">
+                    4. Where are lambda expressions commonly used?
+                </h5>
+
+                <p class="text-muted mb-4">
+                    Lambda expressions are commonly used with LINQ, collections,
+                    delegates, events, filtering, sorting, and data processing.
+                </p>
+
+                <h5 class="fw-bold">
+                    5. Can a lambda expression have multiple statements?
+                </h5>
+
+                <p class="text-muted">
+                    Yes. Multiple statements can be written inside curly braces,
+                    and a return statement can be used when a value is required.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    Lambda Expressions provide a concise way to write anonymous
+                    functions in C# using the <strong>=&gt;</strong> operator.
+                </p>
+
+                <p class="mb-3">
+                    You learned how lambda expressions can work with parameters,
+                    <strong>Action</strong>, <strong>Func</strong>, Lists,
+                    filtering, searching, and sorting.
+                </p>
+
+                <p class="mb-3">
+                    Lambda expressions are especially important when working with
+                    <strong>LINQ</strong>, because LINQ methods commonly use lambda
+                    expressions to define filtering and transformation logic.
+                </p>
+
+                <p class="mb-0">
+                    Understanding Lambda Expressions is an important step toward
+                    writing clean, concise, and modern <strong>C# and .NET</strong>
+                    applications.
+                </p>
+
+            </div>
+
+
+            <!-- PRACTICE QUESTIONS -->
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Create a lambda expression to calculate the square of a number.</li>
+                    <li>Create a lambda expression to calculate the cube of a number.</li>
+                    <li>Create a lambda expression that adds two numbers.</li>
+                    <li>Create a lambda expression using Action.</li>
+                    <li>Create a lambda expression using Func.</li>
+                    <li>Use a lambda expression with List.ForEach().</li>
+                    <li>Use a lambda expression to filter numbers greater than 50.</li>
+                    <li>Use a lambda expression with Find().</li>
+                    <li>Use a lambda expression with Sort().</li>
+                    <li>Use a lambda expression with LINQ Where().</li>
+                    <li>Use a lambda expression to filter student objects.</li>
+                    <li>Explain the difference between expression and statement lambdas.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- TOPIC NAVIGATION -->
+
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="/CSharp/AdvanceFeature/DelegatesAndEvents"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="/CSharp/AdvanceFeature/ExtensionMethods"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+<script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

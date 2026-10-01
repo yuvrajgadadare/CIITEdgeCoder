@@ -1,0 +1,709 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Adding CSS";
+}
+
+<style>
+
+    /* ===================================================== */
+    /* CONTENT */
+    /* ===================================================== */
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+        .content-section h1,
+        .content-section h2,
+        .content-section h3 {
+            color: #212529 !important;
+            font-weight: 700;
+        }
+
+        .content-section h1 {
+            margin-bottom: 12px;
+        }
+
+        .content-section h2 {
+            margin-top: 28px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.75;
+        }
+
+
+    /* ===================================================== */
+    /* CODE BLOCK */
+    /* ===================================================== */
+
+    .css-example {
+        background-color: #0f172a;
+        color: #f1f5f9;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 12px;
+    }
+
+
+    /* ===================================================== */
+    /* OUTPUT BOX */
+    /* ===================================================== */
+
+    .output-section {
+        margin-top: 18px;
+        margin-bottom: 10px;
+    }
+
+    .output-label {
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 8px;
+    }
+
+    .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 22px;
+        min-height: 85px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+        .browser-output .output-heading {
+            margin: 0;
+            color: #2563eb;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .browser-output .output-text {
+            margin: 0;
+            color: #2563eb;
+            font-size: 18px;
+        }
+
+        .browser-output .output-internal {
+            color: #7c3aed;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .browser-output .output-external {
+            color: #15803d;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .browser-output .output-button {
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: default;
+        }
+
+
+    /* ===================================================== */
+    /* METHOD CARDS */
+    /* ===================================================== */
+
+    .method-card {
+        border: 1px solid #e9ecef;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 18px;
+        background: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .method-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #e0e7ff;
+        color: #3730a3;
+        font-weight: 700;
+        margin-right: 8px;
+    }
+
+    .method-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+
+    /* ===================================================== */
+    /* DIAGRAM */
+    /* ===================================================== */
+
+    .css-method-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 28px 0;
+    }
+
+    .diagram-box {
+        width: 190px;
+        min-height: 110px;
+        border-radius: 12px;
+        padding: 20px 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .diagram-inline {
+        background: #fff3cd;
+        border: 1px solid #ffe69c;
+    }
+
+    .diagram-internal {
+        background: #e0e7ff;
+        border: 1px solid #c7d2fe;
+    }
+
+    .diagram-external {
+        background: #d1fae5;
+        border: 1px solid #a7f3d0;
+    }
+
+    .diagram-title {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .diagram-text {
+        color: #495057;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .diagram-arrow {
+        font-size: 28px;
+        font-weight: 700;
+        color: #495057;
+    }
+
+
+    /* ===================================================== */
+    /* INFO BOX */
+    /* ===================================================== */
+
+    .info-box {
+        border-left: 4px solid #2563eb;
+        background-color: #f8f9fa;
+        padding: 18px 20px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+    .content-list {
+        padding-left: 22px;
+    }
+
+
+    /* ===================================================== */
+    /* TOPIC NAVIGATION */
+    /* ===================================================== */
+
+    .topic-navigation {
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 24px;
+    }
+
+        .topic-navigation .btn {
+            min-height: 42px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .topic-navigation .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+            .topic-navigation .btn-primary:hover {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+
+    /* ===================================================== */
+    /* RESPONSIVE */
+    /* ===================================================== */
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        .diagram-box {
+            width: 100%;
+            max-width: 280px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- ================================================= -->
+        <!-- LEFT: COURSE SYLLABUS -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- RIGHT: CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    Adding CSS
+                </h1>
+
+                <p class="lead text-muted">
+                    Learn the three common ways to add CSS to an HTML
+                    document: Inline CSS, Internal CSS, and External CSS.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC IDEA -->
+                <!-- ================================================= -->
+
+                <h2>Ways to Add CSS</h2>
+
+                <p>
+                    CSS can be added to an HTML page in three common ways.
+                </p>
+
+                <ul class="content-list">
+
+                    <li>
+                        <strong>Inline CSS</strong> - CSS is written
+                        directly inside an HTML element.
+                    </li>
+
+                    <li>
+                        <strong>Internal CSS</strong> - CSS is written
+                        inside a <strong>&lt;style&gt;</strong> section
+                        in the HTML page.
+                    </li>
+
+                    <li>
+                        <strong>External CSS</strong> - CSS is written
+                        in a separate <strong>.css</strong> file.
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>Three Ways to Add CSS</h2>
+
+                <div class="css-method-diagram">
+
+                    <div class="diagram-box diagram-inline">
+
+                        <div class="diagram-title">
+                            Inline CSS
+                        </div>
+
+                        <p class="diagram-text">
+                            Style directly inside an HTML element
+                        </p>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-box diagram-internal">
+
+                        <div class="diagram-title">
+                            Internal CSS
+                        </div>
+
+                        <p class="diagram-text">
+                            Style inside the HTML page
+                        </p>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-box diagram-external">
+
+                        <div class="diagram-title">
+                            External CSS
+                        </div>
+
+                        <p class="diagram-text">
+                            Style in a separate CSS file
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- INLINE CSS -->
+                <!-- ================================================= -->
+
+                <div class="method-card">
+
+                    <div class="method-title">
+
+                        <span class="method-number">
+                            1
+                        </span>
+
+                        Inline CSS
+
+                    </div>
+
+                    <p class="mt-3">
+                        Inline CSS is written directly inside the
+                        <strong>style</strong> attribute of an HTML element.
+                    </p>
+
+                    <div class="css-example">
+                        <pre class="mb-0">&lt;p style="color: blue;"&gt;
+    WELCOME TO CIIT TRAINING INSTITUTE 🤓🌍..!
+&lt;/p&gt;</pre>
+                    </div>
+
+
+                    <!-- OUTPUT -->
+
+                    <div class="output-section">
+
+                        <div class="output-label">
+                            Output
+                        </div>
+
+                        <div class="browser-output">
+
+                            <p class="output-text">
+                                WELCOME TO CIIT TRAINING INSTITUTE 🤓🌍..!
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        The text appears in blue because the
+                        <strong>color: blue;</strong> style is applied
+                        directly to the paragraph.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- INTERNAL CSS -->
+                <!-- ================================================= -->
+
+                <div class="method-card">
+
+                    <div class="method-title">
+
+                        <span class="method-number">
+                            2
+                        </span>
+
+                        Internal CSS
+
+                    </div>
+
+                    <p class="mt-3">
+                        Internal CSS is written inside a
+                        <strong>&lt;style&gt;</strong> element,
+                        normally inside the HTML document's
+                        <strong>&lt;head&gt;</strong> section.
+                    </p>
+
+                    <div class="css-example">
+                        <pre class="mb-0">&lt;style&gt;
+h1 {
+    color: purple;
+    font-size: 28px;
+}
+&lt;/style&gt;
+
+&lt;h1&gt;WELCOME TO CIIT TRAINING INSTITUTE 🤓🌍..! &lt;/h1&gt;</pre>
+                    </div>
+
+
+                    <!-- OUTPUT -->
+
+                    <div class="output-section">
+
+                        <div class="output-label">
+                            Output
+                        </div>
+
+                        <div class="browser-output">
+
+                            <p class="output-internal">
+                                WELCOME TO CIIT TRAINING INSTITUTE 🤓🌍..!
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        The heading appears purple and larger because
+                        the styles are defined inside the page.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXTERNAL CSS -->
+                <!-- ================================================= -->
+
+                <div class="method-card">
+
+                    <div class="method-title">
+
+                        <span class="method-number">
+                            3
+                        </span>
+
+                        External CSS
+
+                    </div>
+
+                    <p class="mt-3">
+                        External CSS is written in a separate
+                        <strong>.css</strong> file and linked to the
+                        HTML document.
+                    </p>
+
+                    <div class="css-example">
+                        <pre class="mb-0">/* style.css */
+
+h1 {
+    color: green;
+    font-size: 28px;
+}</pre>
+                    </div>
+
+                    <p class="mt-3">
+                        Connect the CSS file to the HTML page:
+                    </p>
+
+                    <div class="css-example">
+                        <pre class="mb-0">&lt;link rel="stylesheet" href="style.css"&gt;</pre>
+                    </div>
+
+                    <div class="css-example mt-3">
+                        <pre class="mb-0">&lt;h1&gt;WELCOME TO CIIT TRAINING INSTITUTE 🤓🌍..! &lt;/h1&gt;</pre>
+                    </div>
+
+
+                    <!-- OUTPUT -->
+
+                    <div class="output-section">
+
+                        <div class="output-label">
+                            Output
+                        </div>
+
+                        <div class="browser-output">
+
+                            <p class="output-external">
+                                WELCOME TO CIIT TRAINING INSTITUTE 🤓🌍..!
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        The heading becomes green because the browser
+                        loads the style from the external CSS file.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- WHEN TO USE -->
+                <!-- ================================================= -->
+
+                <h2>When Can You Use Each Method?</h2>
+
+                <ul class="content-list">
+
+                    <li>
+                        <strong>Inline CSS:</strong>
+                        Useful for a specific element or quick styling.
+                    </li>
+
+                    <li>
+                        <strong>Internal CSS:</strong>
+                        Useful when styles are mainly needed for one page.
+                    </li>
+
+                    <li>
+                        <strong>External CSS:</strong>
+                        Useful when styles need to be reused across
+                        multiple pages.
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT -->
+                <!-- ================================================= -->
+
+                <div class="info-box">
+
+                    <strong>Best practice:</strong>
+
+                    <p class="mb-0 mt-2">
+                        External CSS is commonly preferred for larger
+                        websites because it keeps styling separate from
+                        HTML and makes styles easier to maintain and reuse.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="alert alert-info mt-4">
+
+                    <h2 class="h4 fw-bold">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS can be added using Inline CSS, Internal CSS,
+                        or External CSS. Inline CSS is written inside an
+                        HTML element, Internal CSS is written inside a
+                        style section, and External CSS is stored in a
+                        separate CSS file.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PREVIOUS / NEXT -->
+                <!-- ================================================= -->
+
+                <div class="topic-navigation">
+
+                    <div class="row g-3 align-items-center">
+
+                        <!-- PREVIOUS -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-outline-secondary w-100"
+                               href="@Url.Action("CSSvsHTML", "Introduction", new { area = "CSS" })">
+
+                                ← Previous: CSS vs HTML
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- NEXT -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("Index", "CSSBasics", new { area = "CSS" })">
+
+                                Next: CSS Basics →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

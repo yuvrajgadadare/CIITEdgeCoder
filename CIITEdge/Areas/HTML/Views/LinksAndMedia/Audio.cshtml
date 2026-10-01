@@ -1,0 +1,616 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Audio";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Audio</h1>
+
+            <p class="lead">
+                HTML provides the <code>&lt;audio&gt;</code> element to embed audio
+                content such as music, podcasts, voice recordings, and sound effects
+                directly into a webpage.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. Introduction to HTML Audio</h2>
+
+            <p>
+                The <code>&lt;audio&gt;</code> element is used to add audio content
+                to an HTML page without requiring an external audio player.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio/song.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+            <p>
+                The <code>controls</code> attribute displays built-in audio controls
+                such as play, pause, volume, and progress.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">2. Basic Audio Syntax</h2>
+
+            <p>
+                A simple audio element can be written as:
+            </p>
+
+            <pre><code>&lt;audio controls src="audio/song.mp3"&gt;
+    Your browser does not support the audio element.
+&lt;/audio&gt;</code></pre>
+
+            <div class="example-box">
+                <strong>Basic Structure:</strong>
+                <ol class="mt-2 mb-0">
+                    <li><code>&lt;audio&gt;</code> creates the audio player.</li>
+                    <li><code>controls</code> displays playback controls.</li>
+                    <li><code>src</code> specifies the audio file.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">3. The controls Attribute</h2>
+
+            <p>
+                The <code>controls</code> attribute tells the browser to display
+                the built-in audio controls.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio/music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Without the <code>controls</code> attribute, users may not have
+                a visible way to play or pause the audio.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">4. The src Attribute</h2>
+
+            <p>
+                The <code>src</code> attribute specifies the location of the audio file.
+            </p>
+
+            <pre><code>&lt;audio controls src="music.mp3"&gt;
+    Your browser does not support the audio element.
+&lt;/audio&gt;</code></pre>
+
+            <p>
+                An audio file can also be loaded from a folder:
+            </p>
+
+            <pre><code>&lt;audio controls src="audio/music.mp3"&gt;
+    Your browser does not support the audio element.
+&lt;/audio&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">5. The source Element</h2>
+
+            <p>
+                The <code>&lt;source&gt;</code> element allows you to specify one
+                or more audio files in different formats.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+
+    &lt;source src="audio/music.mp3" type="audio/mpeg"&gt;
+    &lt;source src="audio/music.ogg" type="audio/ogg"&gt;
+
+    Your browser does not support the audio element.
+
+&lt;/audio&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <p>
+                The browser can choose a supported source from the available options.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">6. Common Audio Formats</h2>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Format</th>
+                        <th>MIME Type</th>
+                        <th>Common Use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MP3</td>
+                        <td><code>audio/mpeg</code></td>
+                        <td>Music, podcasts, general web audio</td>
+                    </tr>
+                    <tr>
+                        <td>Ogg</td>
+                        <td><code>audio/ogg</code></td>
+                        <td>Open multimedia content</td>
+                    </tr>
+                    <tr>
+                        <td>WAV</td>
+                        <td><code>audio/wav</code></td>
+                        <td>High-quality or uncompressed audio</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">7. Using Multiple Audio Sources</h2>
+
+            <p>
+                Multiple <code>&lt;source&gt;</code> elements can be used so that
+                the browser can select a supported format.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+
+    &lt;source src="audio/song.mp3" type="audio/mpeg"&gt;
+    &lt;source src="audio/song.ogg" type="audio/ogg"&gt;
+    &lt;source src="audio/song.wav" type="audio/wav"&gt;
+
+    Your browser does not support the audio element.
+
+&lt;/audio&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">8. autoplay Attribute</h2>
+
+            <p>
+                The <code>autoplay</code> attribute tells the browser to start
+                playback automatically when possible.
+            </p>
+
+            <pre><code>&lt;audio controls autoplay&gt;
+    &lt;source src="audio/music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                Modern browsers may restrict autoplay, especially when audio
+                would begin with sound without user interaction.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">9. loop Attribute</h2>
+
+            <p>
+                The <code>loop</code> attribute causes the audio to start again
+                after it finishes.
+            </p>
+
+            <pre><code>&lt;audio controls loop&gt;
+    &lt;source src="audio/background.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+            <p>
+                Looping can be useful for background sounds, demonstrations,
+                or repeated audio clips.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">10. muted Attribute</h2>
+
+            <p>
+                The <code>muted</code> attribute starts the audio in a muted state.
+            </p>
+
+            <pre><code>&lt;audio controls muted&gt;
+    &lt;source src="audio/video-audio.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">11. preload Attribute</h2>
+
+            <p>
+                The <code>preload</code> attribute provides a hint about how much
+                audio data the browser should load before the user starts playback.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>none</code></td>
+                        <td>The browser should not preload the audio.</td>
+                    </tr>
+                    <tr>
+                        <td><code>metadata</code></td>
+                        <td>Only metadata such as duration may be loaded.</td>
+                    </tr>
+                    <tr>
+                        <td><code>auto</code></td>
+                        <td>The browser may load the audio data automatically.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="h5 fw-bold mt-4">Example</h3>
+
+            <pre><code>&lt;audio controls preload="metadata"&gt;
+    &lt;source src="audio/podcast.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">12. Complete Audio Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;HTML Audio Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;My Audio Player&lt;/h1&gt;
+
+    &lt;audio controls&gt;
+
+        &lt;source src="audio/music.mp3" type="audio/mpeg"&gt;
+        &lt;source src="audio/music.ogg" type="audio/ogg"&gt;
+
+        Your browser does not support the audio element.
+
+    &lt;/audio&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+
+            <h2 class="h3 fw-bold mt-5">13. Audio with Multiple Attributes</h2>
+
+            <p>
+                Multiple attributes can be combined in one audio element.
+            </p>
+
+            <pre><code>&lt;audio controls loop preload="metadata"&gt;
+
+    &lt;source src="audio/song.mp3" type="audio/mpeg"&gt;
+    &lt;source src="audio/song.ogg" type="audio/ogg"&gt;
+
+    Your browser does not support the audio element.
+
+&lt;/audio&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">14. Audio File Folder Structure</h2>
+
+            <p>
+                Keeping audio files inside a separate folder makes a project
+                easier to organize.
+            </p>
+
+            <pre><code>MyWebsite/
+│
+├── index.html
+│
+├── audio/
+│   ├── music.mp3
+│   ├── podcast.mp3
+│   └── sound.ogg
+│
+└── images/
+    └── logo.png</code></pre>
+
+            <p>
+                Example:
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio/podcast.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">15. Audio Fallback Text</h2>
+
+            <p>
+                Text placed inside the <code>&lt;audio&gt;</code> element can provide
+                fallback information when the browser does not support the element.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+
+    &lt;source src="audio/music.mp3" type="audio/mpeg"&gt;
+
+    Your browser does not support HTML audio.
+    Please use a modern browser to play this audio.
+
+&lt;/audio&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">16. Linking to an Audio File</h2>
+
+            <p>
+                An audio file can also be provided as a normal hyperlink.
+            </p>
+
+            <pre><code>&lt;a href="audio/podcast.mp3"&gt;
+    Listen to the Podcast
+&lt;/a&gt;</code></pre>
+
+            <p>
+                This allows the user to open or download the audio according
+                to the browser and link behavior.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">17. Download Audio File</h2>
+
+            <p>
+                The <code>download</code> attribute can be used on a link to
+                request downloading the audio file.
+            </p>
+
+            <pre><code>&lt;a href="audio/music.mp3" download&gt;
+    Download Music
+&lt;/a&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">18. Audio Accessibility</h2>
+
+            <p>
+                Audio content should be presented in a way that is usable by
+                different users.
+            </p>
+
+            <ul>
+                <li>Provide visible playback controls.</li>
+                <li>Provide text information about the audio.</li>
+                <li>Provide transcripts for important spoken content when appropriate.</li>
+                <li>Avoid unexpected audio playback.</li>
+                <li>Use clear labels and descriptions.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">19. Audio and Captions</h2>
+
+            <p>
+                The HTML <code>&lt;audio&gt;</code> element does not provide a
+                direct caption track in the same way that the
+                <code>&lt;video&gt;</code> element can use <code>&lt;track&gt;</code>.
+                For important spoken information, a transcript can be provided
+                separately on the page.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio/lesson.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+
+&lt;h2&gt;Transcript&lt;/h2&gt;
+
+&lt;p&gt;
+    Welcome to the HTML audio lesson.
+    In this lesson we will learn how to embed audio.
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">20. Audio Attributes Summary</h2>
+
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>controls</code></td>
+                        <td>Displays audio controls.</td>
+                        <td><code>controls</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>autoplay</code></td>
+                        <td>Requests automatic playback.</td>
+                        <td><code>autoplay</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>loop</code></td>
+                        <td>Repeats the audio.</td>
+                        <td><code>loop</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>muted</code></td>
+                        <td>Starts the audio muted.</td>
+                        <td><code>muted</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>preload</code></td>
+                        <td>Provides a loading hint.</td>
+                        <td><code>preload="metadata"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Specifies the audio source.</td>
+                        <td><code>src="music.mp3"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">21. Common Mistakes</h2>
+
+            <ul>
+                <li>Using an incorrect audio file path.</li>
+                <li>Forgetting the <code>controls</code> attribute.</li>
+                <li>Providing only one format when multiple supported formats are useful.</li>
+                <li>Using autoplay without considering user experience.</li>
+                <li>Forgetting fallback text.</li>
+                <li>Using very large audio files unnecessarily.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">22. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML page containing:</strong></p>
+
+                <ol>
+                    <li>An audio player with controls.</li>
+                    <li>An MP3 audio source.</li>
+                    <li>A second audio source using another format.</li>
+                    <li>An audio player with looping enabled.</li>
+                    <li>An audio player using <code>preload="metadata"</code>.</li>
+                    <li>A download link for an audio file.</li>
+                    <li>A transcript below the audio player.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">23. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Podcast Page&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;HTML Podcast&lt;/h1&gt;
+
+    &lt;p&gt;
+        Listen to our HTML programming lesson:
+    &lt;/p&gt;
+
+    &lt;audio controls preload="metadata"&gt;
+
+        &lt;source src="audio/html-podcast.mp3"
+                type="audio/mpeg"&gt;
+
+        &lt;source src="audio/html-podcast.ogg"
+                type="audio/ogg"&gt;
+
+        Your browser does not support HTML audio.
+
+    &lt;/audio&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;a href="audio/html-podcast.mp3" download&gt;
+        Download Podcast
+    &lt;/a&gt;
+
+    &lt;h2&gt;Transcript&lt;/h2&gt;
+
+    &lt;p&gt;
+        Welcome to our HTML programming lesson.
+        Today we are learning about HTML audio.
+    &lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    HTML audio is added using the <code>&lt;audio&gt;</code> element.
+                    The <code>controls</code> attribute provides playback controls,
+                    while <code>&lt;source&gt;</code> allows multiple audio formats.
+                    Other useful attributes include <code>autoplay</code>,
+                    <code>loop</code>, <code>muted</code>, and <code>preload</code>.
+                    Providing fallback text, accessible information, and a suitable
+                    audio format helps create a better user experience.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("ImageAttributes", "LinksAndMedia", new { area = "HTML" })">
+                    ← Previous: Image Attributes
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Video", "LinksAndMedia", new { area = "HTML" })">
+                    Next: Video →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

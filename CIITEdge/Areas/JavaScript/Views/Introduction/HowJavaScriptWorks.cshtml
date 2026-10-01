@@ -1,0 +1,810 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "How JavaScript Works";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-works-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-works-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-works-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-works-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-works-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-works-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       INFO BOX
+       ========================================================= */
+
+    #javascript-works-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #javascript-works-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-works-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGE
+       ========================================================= */
+
+    #javascript-works-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-works-page .topic-image {
+        width: 100%;
+        max-height: 400px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-works-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0 5px;
+    }
+
+
+    /* =========================================================
+       SIMPLE FLOW DIAGRAM
+       ========================================================= */
+
+    #javascript-works-page .flow-diagram {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-works-page .flow-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-works-page .flow-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-works-page .flow-box {
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        padding: 14px 18px;
+        min-width: 130px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-works-page .flow-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       STEP CARDS
+       ========================================================= */
+
+    #javascript-works-page .step-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-works-page .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #5b21b6;
+        color: #ffffff;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-works-page .step-card h5 {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    #javascript-works-page .step-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-works-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-works-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-works-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-works-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-works-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        min-width: 105px;
+    }
+
+    #javascript-works-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-works-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-works-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-works-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-works-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-works-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-works-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-works-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-works-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-works-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-works-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-works-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    How JavaScript Works
+                </h1>
+
+                <p class="lead-text">
+                    Learn in a simple way how JavaScript code moves from
+                    your program to the browser and finally produces a result.
+                </p>
+
+
+                <!-- =================================================
+                     BASIC IDEA
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    The Basic Idea
+                </h2>
+
+                <p class="section-text">
+                    When you write JavaScript code and open the web page,
+                    the browser receives your code and runs it using a
+                    JavaScript engine.
+                </p>
+
+                <p class="section-text">
+                    The JavaScript engine reads the code, processes it,
+                    and executes the instructions.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE 1
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://media2.dev.to/dynamic/image/width%3D1000%2Cheight%3D420%2Cfit%3Dcover%2Cgravity%3Dauto%2Cformat%3Dauto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fti85yf4519p16sl2on1m.png"
+                         alt="JavaScript Code Browser Engine Execution Flow"
+                         class="topic-image" />
+
+                    <p class="image-caption">
+                        JavaScript code moves from the browser to the
+                        JavaScript engine and then gets executed.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SIMPLE FLOW
+                     ================================================= -->
+
+                <div class="flow-diagram">
+
+                    <div class="flow-title">
+                        Simple JavaScript Execution Flow
+                    </div>
+
+                    <div class="flow-container">
+
+                        <div class="flow-box">
+                            JavaScript Code
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Browser
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            JS Engine
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Result
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     STEP BY STEP
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Step-by-Step Process
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                1
+                            </div>
+
+                            <h5>
+                                Write JavaScript
+                            </h5>
+
+                            <p>
+                                The developer writes JavaScript code
+                                inside an HTML page or an external
+                                JavaScript file.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                2
+                            </div>
+
+                            <h5>
+                                Browser Loads the Code
+                            </h5>
+
+                            <p>
+                                The browser loads the web page and
+                                prepares the JavaScript code for execution.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                3
+                            </div>
+
+                            <h5>
+                                JavaScript Engine Processes It
+                            </h5>
+
+                            <p>
+                                The JavaScript engine parses and processes
+                                the code so that it can be executed.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                4
+                            </div>
+
+                            <h5>
+                                Code Executes
+                            </h5>
+
+                            <p>
+                                The engine executes the instructions and
+                                produces the required result.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     JAVASCRIPT ENGINE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is a JavaScript Engine?
+                </h2>
+
+                <p class="section-text">
+                    A JavaScript engine is the software responsible for
+                    processing and executing JavaScript code.
+                </p>
+
+                <p class="section-text">
+                    Different browsers use different JavaScript engines.
+                    For example, Chrome and Chromium-based browsers use
+                    V8, while Firefox uses SpiderMonkey.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE 2
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://cdn-blog.scalablepath.com/uploads/2023/11/diagram-javascript-engine-1024x693.png"
+                         alt="JavaScript Engine Parser Interpreter Compiler Diagram"
+                         class="topic-image" />
+
+                    <p class="image-caption">
+                        Simplified JavaScript engine processing pipeline.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SIMPLE EXAMPLE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Simple Example
+                </h2>
+
+                <p class="section-text">
+                    Look at this small example. The browser executes the
+                    JavaScript code and displays the value in the console.
+                </p>
+
+
+                <!-- CODE -->
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const number1 = 10;
+const number2 = 20;
+
+const total = number1 + number2;
+
+console.log(total);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryJavaScriptWorksCode()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+                    30
+                </div>
+
+
+                <!-- =================================================
+                     BROWSER + JAVASCRIPT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript and the Browser
+                </h2>
+
+                <p class="section-text">
+                    The browser provides many features that JavaScript
+                    can use. For example, JavaScript can work with the
+                    page content, user events, timers, storage, and
+                    network requests.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Example
+                    </h5>
+
+                    <p>
+                        JavaScript can detect a button click and then
+                        change text on the page without reloading the
+                        entire page.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Point
+                </h2>
+
+                <p class="section-text">
+                    The JavaScript language itself provides the core
+                    programming features. The browser provides additional
+                    Web APIs that allow JavaScript to interact with the
+                    web page and browser environment.
+                </p>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        JavaScript code is loaded by the browser and
+                        processed by a JavaScript engine. The engine
+                        processes and executes the code, while the browser
+                        provides additional APIs for interacting with the
+                        web page and browser environment.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("JavaScriptHistory", "Introduction", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: JavaScript History
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("JavaScriptInBrowser", "Introduction", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: JavaScript in the Browser
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function tryJavaScriptWorksCode() {
+
+        const code =
+            'const number1 = 10;\n' +
+            'const number2 = 20;\n' +
+            '\n' +
+            'const total = number1 + number2;\n' +
+            '\n' +
+            'console.log(total);';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+</script>

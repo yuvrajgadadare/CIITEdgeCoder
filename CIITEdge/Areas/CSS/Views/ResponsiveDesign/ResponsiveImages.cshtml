@@ -1,0 +1,721 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Responsive Images";
+}
+
+<div id="css-responsive-images-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">Responsive Images</h1>
+
+                <p class="lead">
+                    Responsive images automatically adapt to different screen
+                    sizes while maintaining their proportions and fitting
+                    properly inside the available space.
+                </p>
+
+                <hr />
+
+                <!-- What is Responsive Image -->
+                <h2 class="h4 mt-4">What is a Responsive Image?</h2>
+
+                <p>
+                    A responsive image is an image that adjusts its size according
+                    to the width of the screen or the size of its parent container.
+                </p>
+
+                <p>
+                    This is important because a large image that looks good on a
+                    desktop may overflow or become difficult to display on a
+                    mobile screen.
+                </p>
+
+                <!-- Image -->
+                <div class="image-section mt-4">
+
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                         alt="Responsive website displayed on different screen sizes"
+                         class="responsive-demo-image" />
+
+                    <p class="image-caption">
+                        Responsive images resize according to the available screen space.
+                    </p>
+
+                </div>
+
+                <!-- Diagram -->
+                <h2 class="h4 mt-4">Responsive Image Concept</h2>
+
+                <div class="responsive-image-diagram">
+
+                    <div class="device-card">
+                        <div class="device-title">Desktop</div>
+                        <div class="device-screen large-screen">
+                            <div class="fake-image">
+                                IMAGE
+                            </div>
+                        </div>
+                        <div class="device-text">
+                            Large Width
+                        </div>
+                    </div>
+
+                    <div class="diagram-arrow">→</div>
+
+                    <div class="device-card">
+                        <div class="device-title">Tablet</div>
+                        <div class="device-screen medium-screen">
+                            <div class="fake-image">
+                                IMAGE
+                            </div>
+                        </div>
+                        <div class="device-text">
+                            Medium Width
+                        </div>
+                    </div>
+
+                    <div class="diagram-arrow">→</div>
+
+                    <div class="device-card">
+                        <div class="device-title">Mobile</div>
+                        <div class="device-screen small-screen">
+                            <div class="fake-image">
+                                IMAGE
+                            </div>
+                        </div>
+                        <div class="device-text">
+                            Small Width
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Simple Explanation -->
+                <div class="explanation-box">
+
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p>
+                        The same image can be displayed on desktop, tablet,
+                        and mobile devices.
+                    </p>
+
+                    <p class="mb-0">
+                        CSS can make the image shrink or expand according to
+                        the available width without breaking the page layout.
+                    </p>
+
+                </div>
+
+                <!-- Basic Technique -->
+                <h2 class="h4 mt-4">Making an Image Responsive</h2>
+
+                <p>
+                    One of the simplest ways to make an image responsive is to
+                    use <code>max-width: 100%</code> and
+                    <code>height: auto</code>.
+                </p>
+
+                <pre class="code-box"><code>.responsive-image {
+    max-width: 100%;
+    height: auto;
+}</code></pre>
+
+                <!-- Property Explanation -->
+                <div class="property-card">
+
+                    <h3 class="h6">max-width: 100%</h3>
+
+                    <p class="mb-0">
+                        The image cannot become wider than its parent container.
+                        This prevents horizontal overflow.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">height: auto</h3>
+
+                    <p class="mb-0">
+                        The browser automatically adjusts the image height
+                        while maintaining the original aspect ratio.
+                    </p>
+
+                </div>
+
+                <!-- Example -->
+                <h2 class="h4 mt-4">Example: Responsive Image</h2>
+
+                <pre class="code-box"><code>.responsive-image-example {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 8px;
+}</code></pre>
+
+                <!-- Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80"
+                         alt="Laptop showing web development"
+                         class="responsive-output-image" />
+
+                    <p class="output-note">
+                        Resize the browser window to see how the image adapts
+                        to the available width.
+                    </p>
+
+                </div>
+
+                <!-- Width 100 -->
+                <h2 class="h4 mt-4">Using width: 100%</h2>
+
+                <p>
+                    You can also use <code>width: 100%</code> when you want
+                    an image to occupy the full width of its container.
+                </p>
+
+                <pre class="code-box"><code>.full-width-image {
+    width: 100%;
+    height: auto;
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Difference</h3>
+
+                    <p class="mb-0">
+                        <code>width: 100%</code> makes the image fill the
+                        available container width, while
+                        <code>max-width: 100%</code> prevents the image from
+                        becoming larger than its container.
+                    </p>
+
+                </div>
+
+                <!-- Object Fit -->
+                <h2 class="h4 mt-4">Responsive Images with object-fit</h2>
+
+                <p>
+                    The <code>object-fit</code> property controls how an image
+                    fits inside a specific width and height.
+                </p>
+
+                <pre class="code-box"><code>.cover-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}</code></pre>
+
+                <!-- Object fit output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
+                         alt="Modern workspace"
+                         class="cover-image" />
+
+                    <p class="output-note">
+                        <code>object-fit: cover</code> fills the defined area
+                        while keeping the image proportionally cropped.
+                    </p>
+
+                </div>
+
+                <!-- Picture Element -->
+                <h2 class="h4 mt-4">Using the Picture Element</h2>
+
+                <p>
+                    HTML also provides the
+                    <code>&lt;picture&gt;</code> element for serving
+                    different image files depending on screen conditions.
+                </p>
+
+                <pre class="code-box"><code>&lt;picture&gt;
+    &lt;source media="(max-width: 600px)"
+            srcset="mobile-image.jpg"&gt;
+
+    &lt;source media="(max-width: 1000px)"
+            srcset="tablet-image.jpg"&gt;
+
+    &lt;img src="desktop-image.jpg"
+         alt="Responsive example"&gt;
+&lt;/picture&gt;</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Why use picture?</h3>
+
+                    <p class="mb-0">
+                        The <code>&lt;picture&gt;</code> element can allow the
+                        browser to use different image files for different
+                        screen conditions. This can improve control over
+                        responsive images.
+                    </p>
+
+                </div>
+
+                <!-- Responsive Background -->
+                <h2 class="h4 mt-4">Responsive Background Images</h2>
+
+                <p>
+                    Background images can also be adapted using CSS properties
+                    such as <code>background-size: cover</code>.
+                </p>
+
+                <pre class="code-box"><code>.hero-image {
+    width: 100%;
+    min-height: 250px;
+    background-image: url("image.jpg");
+    background-size: cover;
+    background-position: center;
+}</code></pre>
+
+                <!-- Common Properties -->
+                <h2 class="h4 mt-4">Common Properties for Responsive Images</h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><code>width: 100%</code></td>
+                                <td>Makes image fill the container width</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>max-width: 100%</code></td>
+                                <td>Prevents image from overflowing</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>height: auto</code></td>
+                                <td>Maintains image aspect ratio</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>object-fit: cover</code></td>
+                                <td>Fills a defined area while cropping if necessary</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>object-fit: contain</code></td>
+                                <td>Fits the complete image inside the available area</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Best Practices -->
+                <h2 class="h4 mt-4">Responsive Image Best Practices</h2>
+
+                <ul>
+
+                    <li>
+                        Use <code>max-width: 100%</code> for flexible images.
+                    </li>
+
+                    <li>
+                        Use <code>height: auto</code> when maintaining the
+                        original aspect ratio.
+                    </li>
+
+                    <li>
+                        Use appropriate image sizes instead of extremely large files.
+                    </li>
+
+                    <li>
+                        Always provide meaningful <code>alt</code> text.
+                    </li>
+
+                    <li>
+                        Use the <code>&lt;picture&gt;</code> element when
+                        different image sources are required.
+                    </li>
+
+                </ul>
+
+                <!-- Important Note -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        A responsive image should fit the available layout
+                        without causing horizontal scrolling or distortion.
+                    </p>
+
+                </div>
+
+                <!-- Real World Uses -->
+                <h2 class="h4 mt-4">Real-World Uses</h2>
+
+                <ul>
+
+                    <li>Training institute websites</li>
+                    <li>E-commerce product images</li>
+                    <li>Portfolio websites</li>
+                    <li>Blog and news websites</li>
+                    <li>Landing pages</li>
+                    <li>Responsive dashboards</li>
+
+                </ul>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        Responsive images automatically adapt to the available
+                        screen or container size. CSS properties such as
+                        <code>max-width</code>, <code>width</code>,
+                        <code>height</code>, and <code>object-fit</code> help
+                        images display correctly across mobile, tablet, and
+                        desktop devices.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("MobileFirst", "ResponsiveDesign", new { area = "CSS" })">
+                            ← Previous: Mobile First
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("ResponsiveTypography", "ResponsiveDesign", new { area = "CSS" })">
+                            Next: Responsive Typography →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-responsive-images-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-responsive-images-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-responsive-images-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-responsive-images-page .content-section p,
+        #css-responsive-images-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Image Section */
+    #css-responsive-images-page .image-section {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    #css-responsive-images-page .responsive-demo-image {
+        width: 100%;
+        max-height: 380px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+    }
+
+    #css-responsive-images-page .image-caption {
+        margin: 12px 5px 0;
+        color: #6c757d !important;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    /* Diagram */
+    #css-responsive-images-page .responsive-image-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-responsive-images-page .device-card {
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        width: 180px;
+    }
+
+    #css-responsive-images-page .device-title {
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    #css-responsive-images-page .device-screen {
+        background-color: #212529;
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #css-responsive-images-page .large-screen {
+        width: 145px;
+        height: 90px;
+    }
+
+    #css-responsive-images-page .medium-screen {
+        width: 120px;
+        height: 95px;
+    }
+
+    #css-responsive-images-page .small-screen {
+        width: 75px;
+        height: 100px;
+    }
+
+    #css-responsive-images-page .fake-image {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    #css-responsive-images-page .device-text {
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 10px;
+    }
+
+    #css-responsive-images-page .diagram-arrow {
+        color: #2563eb;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    /* Explanation */
+    #css-responsive-images-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-responsive-images-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Property Cards */
+    #css-responsive-images-page .property-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+        #css-responsive-images-page .property-card h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    /* Code */
+    #css-responsive-images-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Output */
+    #css-responsive-images-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    #css-responsive-images-page .responsive-output-image {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+
+    #css-responsive-images-page .cover-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+    }
+
+    #css-responsive-images-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #6c757d !important;
+        text-align: center;
+    }
+
+    /* Note */
+    #css-responsive-images-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-responsive-images-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-responsive-images-page .note-box p {
+            color: #78350f;
+        }
+
+    /* Summary */
+    #css-responsive-images-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-responsive-images-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-responsive-images-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    @@media (max-width: 768px) {
+
+        #css-responsive-images-page .content-section {
+            padding: 20px;
+        }
+
+        #css-responsive-images-page .responsive-image-diagram {
+            flex-direction: column;
+        }
+
+        #css-responsive-images-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-responsive-images-page .device-card {
+            width: 100%;
+            max-width: 260px;
+        }
+
+        #css-responsive-images-page .responsive-demo-image {
+            max-height: 280px;
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        #css-responsive-images-page .content-section {
+            padding: 16px;
+        }
+
+        #css-responsive-images-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-responsive-images-page .cover-image {
+            height: 200px;
+        }
+    }
+
+</style>

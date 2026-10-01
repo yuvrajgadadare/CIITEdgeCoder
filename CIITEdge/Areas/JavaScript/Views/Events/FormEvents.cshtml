@@ -1,0 +1,1219 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Form Events";
+}
+
+<style>
+
+    #javascript-form-events-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-form-events-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-form-events-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-form-events-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-form-events-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-form-events-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       SIMPLE DEFINITION
+       ========================================================= */
+
+    #javascript-form-events-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-form-events-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-form-events-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 8px;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGE
+       ========================================================= */
+
+    #javascript-form-events-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+
+    #javascript-form-events-page .form-image-link {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+    }
+
+    #javascript-form-events-page .form-image {
+        width: 100%;
+        max-width: 900px;
+        height: 360px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-form-events-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       IMAGE FALLBACK
+       ========================================================= */
+
+    #javascript-form-events-page .image-fallback {
+        display: none;
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 25px;
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        text-align: left;
+    }
+
+    #javascript-form-events-page .fallback-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    #javascript-form-events-page .fallback-label {
+        display: block;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 6px;
+    }
+
+    #javascript-form-events-page .fallback-input {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        background: #ffffff;
+        margin-bottom: 15px;
+    }
+
+    #javascript-form-events-page .fallback-button {
+        display: inline-block;
+        background: #198754;
+        color: #ffffff;
+        padding: 10px 22px;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+
+
+    /* =========================================================
+       EVENT FLOW DIAGRAM
+       ========================================================= */
+
+    #javascript-form-events-page .event-diagram {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 30px 20px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #javascript-form-events-page .diagram-title {
+        font-size: 21px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 25px;
+    }
+
+    #javascript-form-events-page .diagram-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-form-events-page .diagram-box {
+        min-width: 150px;
+        padding: 18px 15px;
+        border-radius: 9px;
+        background: #ffffff;
+        border: 2px solid #7c3aed;
+        color: #212529;
+        font-weight: 600;
+    }
+
+    #javascript-form-events-page .diagram-box.primary {
+        background: #6d3fc0;
+        color: #ffffff;
+        border-color: #6d3fc0;
+    }
+
+    #javascript-form-events-page .diagram-box.success {
+        background: #eefbf3;
+        border-color: #198754;
+        color: #198754;
+    }
+
+    #javascript-form-events-page .diagram-arrow {
+        font-size: 25px;
+        color: #6d3fc0;
+        font-weight: 700;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-form-events-page .code-section {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-form-events-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 22px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-form-events-page .code-box code {
+        color: #f8f9fa;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-form-events-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 22px;
+    }
+
+    #javascript-form-events-page .try-it-btn {
+        background: #198754;
+        border: 1px solid #198754;
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #javascript-form-events-page .try-it-btn:hover {
+        background: #157347;
+        border-color: #157347;
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-form-events-page .output-box {
+        background: #212529;
+        color: #ffffff;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 18px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-form-events-page .summary-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-form-events-page .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-form-events-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-form-events-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    #javascript-form-events-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    #javascript-form-events-page .previous-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    #javascript-form-events-page .next-btn {
+        background: #5b21b6;
+        border: 1px solid #5b21b6;
+        color: #ffffff;
+    }
+
+    #javascript-form-events-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-form-events-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @@media (max-width: 768px) {
+
+        #javascript-form-events-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-form-events-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-form-events-page .section-title {
+            font-size: 23px;
+        }
+
+        #javascript-form-events-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-form-events-page .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        #javascript-form-events-page .diagram-row {
+            flex-direction: column;
+        }
+
+        #javascript-form-events-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-form-events-page .form-image {
+            height: auto;
+            max-height: 300px;
+        }
+    }
+
+</style>
+
+
+<main id="javascript-form-events-page">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3 mb-4">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- =================================================
+                         PAGE HEADER
+                         ================================================= -->
+
+                    <h1 class="page-title">
+                        Form Events
+                    </h1>
+
+                    <p class="lead-text">
+                        JavaScript form events allow us to respond when users
+                        interact with HTML forms and their input controls.
+                    </p>
+
+
+                    <!-- =================================================
+                         WHAT ARE FORM EVENTS?
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What are Form Events?
+                    </h2>
+
+                    <p class="section-text">
+                        Form events are triggered when users interact with
+                        HTML forms and their input controls.
+                    </p>
+
+                    <p class="section-text">
+                        Common form-related events include
+                        <strong>input</strong>,
+                        <strong>change</strong>,
+                        <strong>submit</strong>,
+                        <strong>reset</strong>,
+                        <strong>focus</strong>, and
+                        <strong>blur</strong>.
+                    </p>
+
+
+                    <!-- =================================================
+                         SIMPLE DEFINITION
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+
+                            <strong>
+                                User Interaction → Form Event →
+                                JavaScript Handler → Action
+                            </strong>
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ONLINE IMAGE
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <a class="form-image-link"
+                           href="https://commons.wikimedia.org/wiki/File:Sample_web_form.png"
+                           target="_blank"
+                           rel="noopener noreferrer">
+
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Sample_web_form.png"
+                                 alt="HTML Form example"
+                                 class="form-image"
+                                 onerror="showFormImageFallback();" />
+
+                        </a>
+
+
+                        <!-- Fallback if online image is blocked -->
+
+                        <div id="formImageFallback"
+                             class="image-fallback">
+
+                            <div class="fallback-title">
+                                HTML Form Example
+                            </div>
+
+                            <label class="fallback-label">
+                                Name
+                            </label>
+
+                            <div class="fallback-input"></div>
+
+                            <label class="fallback-label">
+                                Email
+                            </label>
+
+                            <div class="fallback-input"></div>
+
+                            <label class="fallback-label">
+                                Course
+                            </label>
+
+                            <div class="fallback-input"></div>
+
+                            <div class="fallback-button">
+                                Submit
+                            </div>
+
+                        </div>
+
+
+                        <p class="image-caption">
+
+                            Example of an HTML form containing
+                            text fields, selection controls,
+                            checkboxes and a submit button.
+
+                            Click the image to open the online reference.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         FORM EVENT FLOW
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Form Event Flow
+                    </h2>
+
+                    <div class="event-diagram">
+
+                        <div class="diagram-title">
+                            How JavaScript Form Events Work
+                        </div>
+
+                        <div class="diagram-row">
+
+                            <div class="diagram-box primary">
+                                User
+                                <br />
+                                Interaction
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-box">
+                                Form Field
+                                <br />
+                                <small>Input / Select</small>
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-box">
+                                Form Event
+                                <br />
+                                <small>input / change</small>
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-box">
+                                JavaScript
+                                <br />
+                                Handler
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-box success">
+                                Action /
+                                <br />
+                                Output
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EVENT TYPES
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Common Form Events
+                    </h2>
+
+                    <p class="section-text">
+                        <strong>input</strong> occurs when the value of an
+                        input field changes.
+                    </p>
+
+                    <p class="section-text">
+                        <strong>change</strong> occurs when a form control
+                        finishes changing its value.
+                    </p>
+
+                    <p class="section-text">
+                        <strong>submit</strong> occurs when a form is
+                        submitted.
+                    </p>
+
+                    <p class="section-text">
+                        <strong>focus</strong> occurs when an input receives
+                        focus.
+                    </p>
+
+                    <p class="section-text">
+                        <strong>blur</strong> occurs when an input loses focus.
+                    </p>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Input Event
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>input</strong> event can be used to
+                        detect changes made by a user in a form field.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const event = {
+    type: "input",
+    field: "Name",
+    value: "Rahul"
+};
+
+console.log("Event Type:", event.type);
+console.log("Field:", event.field);
+console.log("Value:", event.value);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryFormEventsExample1()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Event Type: input
+                        <br />
+
+                        Field: Name
+                        <br />
+
+                        Value: Rahul
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Change Event
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>change</strong> event is commonly used
+                        when the value of a form control changes.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const event = {
+    type: "change",
+    field: "Course",
+    value: "JavaScript"
+};
+
+console.log("Event Type:", event.type);
+console.log("Field:", event.field);
+console.log("Value:", event.value);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryFormEventsExample2()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Event Type: change
+                        <br />
+
+                        Field: Course
+                        <br />
+
+                        Value: JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Submit Event
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>submit</strong> event occurs when a user
+                        submits a form.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const event = {
+    type: "submit",
+    form: "Registration Form",
+    status: "Submitted"
+};
+
+console.log("Event Type:", event.type);
+console.log("Form:", event.form);
+console.log("Status:", event.status);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryFormEventsExample3()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Event Type: submit
+                        <br />
+
+                        Form: Registration Form
+                        <br />
+
+                        Status: Submitted
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 4
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 4: Focus and Blur
+                    </h2>
+
+                    <p class="section-text">
+
+                        The <strong>focus</strong> event occurs when an input
+                        becomes active, while <strong>blur</strong> occurs
+                        when the input loses focus.
+
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const focusEvent = {
+    type: "focus",
+    field: "Email"
+};
+
+const blurEvent = {
+    type: "blur",
+    field: "Email"
+};
+
+console.log("Focus Event:", focusEvent.type);
+console.log("Field:", focusEvent.field);
+
+console.log("Blur Event:", blurEvent.type);
+console.log("Field:", blurEvent.field);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryFormEventsExample4()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Focus Event: focus
+                        <br />
+
+                        Field: Email
+                        <br />
+
+                        Blur Event: blur
+                        <br />
+
+                        Field: Email
+
+                    </div>
+
+
+                    <!-- =================================================
+                         REAL WORLD EXAMPLE
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 🌍🤓
+                    </h2>
+
+                    <p class="section-text">
+
+                        Form events are commonly used in registration,
+                        login, search, feedback, and admission forms.
+
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const registration = {
+    name: "Rahul",
+    course: "JavaScript",
+    event: "submit",
+    status: "Registration Successful"
+};
+
+console.log("Student:", registration.name);
+console.log("Course:", registration.course);
+console.log("Event:", registration.event);
+console.log("Status:", registration.status);</code></pre>
+
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryFormEventsExample5()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Student: Rahul
+                        <br />
+
+                        Course: JavaScript
+                        <br />
+
+                        Event: submit
+                        <br />
+
+                        Status: Registration Successful
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT NOTE
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Note
+                        </h5>
+
+                        <p>
+                            Form events such as
+                            <strong>submit</strong>,
+                            <strong>input</strong>,
+                            <strong>change</strong>,
+                            <strong>focus</strong>, and
+                            <strong>blur</strong>
+                            normally work with HTML elements inside a browser.
+                        </p>
+
+                        <p class="mb-0">
+
+                            The CIIT JavaScript compiler is console-based,
+                            so the Try It examples demonstrate the same
+                            event information using JavaScript objects.
+
+                            This prevents the
+                            <strong>document is not defined</strong>
+                            error in the compiler.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+
+                            JavaScript form events allow web pages to respond
+                            to user interaction with forms. Common events
+                            include <strong>input</strong>,
+                            <strong>change</strong>,
+                            <strong>submit</strong>,
+                            <strong>focus</strong>, and
+                            <strong>blur</strong>.
+
+                            These events are useful for validation,
+                            user feedback, form processing,
+                            and interactive web applications.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("KeyboardEvents", "Events", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Keyboard Events
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("EventListeners", "Events", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Event Listeners
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       ONLINE IMAGE FALLBACK
+       ========================================================= */
+
+    function showFormImageFallback() {
+
+        const image = document.querySelector(
+            "#javascript-form-events-page .form-image"
+        );
+
+        const fallback = document.getElementById(
+            "formImageFallback"
+        );
+
+        if (image) {
+            image.style.display = "none";
+        }
+
+        if (fallback) {
+            fallback.style.display = "block";
+        }
+    }
+
+
+    /* =========================================================
+       CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function tryFormEventsExample1() {
+
+        const code =
+            'const event = {\\n' +
+            '    type: "input",\\n' +
+            '    field: "Name",\\n' +
+            '    value: "Rahul"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Event Type:", event.type);\\n' +
+            'console.log("Field:", event.field);\\n' +
+            'console.log("Value:", event.value);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function tryFormEventsExample2() {
+
+        const code =
+            'const event = {\\n' +
+            '    type: "change",\\n' +
+            '    field: "Course",\\n' +
+            '    value: "JavaScript"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Event Type:", event.type);\\n' +
+            'console.log("Field:", event.field);\\n' +
+            'console.log("Value:", event.value);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function tryFormEventsExample3() {
+
+        const code =
+            'const event = {\\n' +
+            '    type: "submit",\\n' +
+            '    form: "Registration Form",\\n' +
+            '    status: "Submitted"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Event Type:", event.type);\\n' +
+            'console.log("Form:", event.form);\\n' +
+            'console.log("Status:", event.status);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       ========================================================= */
+
+    function tryFormEventsExample4() {
+
+        const code =
+            'const focusEvent = {\\n' +
+            '    type: "focus",\\n' +
+            '    field: "Email"\\n' +
+            '};\\n' +
+            '\\n' +
+            'const blurEvent = {\\n' +
+            '    type: "blur",\\n' +
+            '    field: "Email"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Focus Event:", focusEvent.type);\\n' +
+            'console.log("Field:", focusEvent.field);\\n' +
+            '\\n' +
+            'console.log("Blur Event:", blurEvent.type);\\n' +
+            'console.log("Field:", blurEvent.field);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       REAL WORLD EXAMPLE
+       ========================================================= */
+
+    function tryFormEventsExample5() {
+
+        const code =
+            'const registration = {\\n' +
+            '    name: "Rahul",\\n' +
+            '    course: "JavaScript",\\n' +
+            '    event: "submit",\\n' +
+            '    status: "Registration Successful"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Student:", registration.name);\\n' +
+            'console.log("Course:", registration.course);\\n' +
+            'console.log("Event:", registration.event);\\n' +
+            'console.log("Status:", registration.status);';
+
+        openCompiler(code);
+    }
+
+</script>

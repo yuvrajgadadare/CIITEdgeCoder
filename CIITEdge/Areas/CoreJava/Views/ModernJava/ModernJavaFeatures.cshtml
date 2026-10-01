@@ -1,0 +1,1041 @@
+﻿@{
+    ViewData["Title"] = "Modern Java Features";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-2">Java Features</h1>
+                <p class="text-muted mb-0">
+                    Explore important modern Java features introduced from Java 8
+                    through recent Java releases.
+                </p>
+            </div>
+
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Introduction -->
+        <h2 class="fw-bold">1. Introduction to Java</h2>
+
+        <p>
+            Modern Java has evolved significantly beyond traditional object-oriented
+            programming. New language features and APIs have improved readability,
+            safety, performance, and developer productivity.
+        </p>
+
+        <p>
+            Some of the most important modern Java features include:
+        </p>
+
+        <ul>
+            <li>Lambda Expressions</li>
+            <li>Functional Interfaces</li>
+            <li>Stream API</li>
+            <li>Optional</li>
+            <li>Local variable type inference using <code>var</code></li>
+            <li>Switch expressions</li>
+            <li>Pattern matching</li>
+            <li>Text blocks</li>
+            <li>Records</li>
+            <li>Sealed classes</li>
+            <li>Private interface methods</li>
+            <li>Modern Date and Time API</li>
+        </ul>
+
+        <!-- Java 8 -->
+        <h2 class="fw-bold mt-5">2. Java 8 Features</h2>
+
+        <p>
+            Java 8 was one of the most important releases in Java history.
+            It introduced functional programming capabilities and major API improvements.
+        </p>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Feature</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Lambda Expressions</td>
+                        <td>Write concise function-like behavior.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Functional Interfaces</td>
+                        <td>Represent a single abstract operation.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Stream API</td>
+                        <td>Process collections declaratively.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Optional</td>
+                        <td>Represent potentially absent values.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Default Methods</td>
+                        <td>Add behavior to interfaces.</td>
+                    </tr>
+
+                    <tr>
+                        <td>java.time</td>
+                        <td>Modern date and time handling.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Lambda -->
+        <h2 class="fw-bold mt-5">3. Lambda Expressions</h2>
+
+        <p>
+            Lambda expressions provide a concise way to represent behavior.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of("Amit", "Neha", "Rahul");
+
+names.forEach(
+    name -&gt; System.out.println(name)
+);</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit
+Neha
+Rahul</code></pre>
+</div>
+        <p>
+            Lambda expressions are commonly used with functional interfaces,
+            collections, and streams.
+        </p>
+
+        <!-- Functional interface -->
+        <h2 class="fw-bold mt-5">4. Functional Interfaces</h2>
+
+        <p>
+            A functional interface has exactly one abstract method.
+            Examples include <code>Predicate</code>, <code>Function</code>,
+            <code>Consumer</code>, and <code>Supplier</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Predicate&lt;Integer&gt; positive =
+    number -&gt; number &gt; 0;
+
+System.out.println(
+    positive.test(10)
+);</code></pre>
+        </div>
+    
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>true</code></pre>
+</div>
+
+        <!-- Stream -->
+        <h2 class="fw-bold mt-5">5. Stream API</h2>
+
+        <p>
+            The Stream API allows collections to be processed using a declarative
+            pipeline of operations.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(1, 2, 3, 4, 5, 6);
+
+List&lt;Integer&gt; evenNumbers =
+    numbers.stream()
+           .filter(n -&gt; n % 2 == 0)
+           .toList();
+
+System.out.println(evenNumbers);</code></pre>
+        </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>[2, 4, 6]</code></pre>
+</div>
+
+        <p>
+            Common stream operations include:
+        </p>
+
+        <ul>
+            <li><code>filter()</code></li>
+            <li><code>map()</code></li>
+            <li><code>sorted()</code></li>
+            <li><code>distinct()</code></li>
+            <li><code>limit()</code></li>
+            <li><code>reduce()</code></li>
+            <li><code>collect()</code></li>
+            <li><code>toList()</code></li>
+        </ul>
+
+        <!-- Optional -->
+        <h2 class="fw-bold mt-5">6. Optional</h2>
+
+        <p>
+            <code>Optional</code> represents a value that may or may not be present.
+            It can help make absence explicit and reduce some common null-handling
+            problems.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Optional&lt;String&gt; name =
+    Optional.ofNullable(null);
+
+String result =
+    name.orElse("Unknown");
+
+System.out.println(result);</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Unknown</code></pre>
+</div>
+
+        <div class="alert alert-info">
+            <strong>Best practice:</strong>
+            Optional is primarily intended as a return type for methods where
+            absence is a meaningful result. It should not automatically replace
+            every nullable field or parameter.
+        </div>
+
+        <!-- var -->
+        <h2 class="fw-bold mt-5">7. var - Local Variable Type Inference</h2>
+
+        <p>
+            Java 10 introduced <code>var</code> for local variable type inference.
+            The compiler determines the variable's static type from its initializer.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var name = "Samadhan";
+var age = 22;
+var salary = 85000.50;
+
+System.out.println(name);
+System.out.println(age);
+System.out.println(salary);</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Samadhan
+22
+85000.5</code></pre>
+</div>
+        <p>
+            The variable still has a fixed compile-time type. Java is not becoming
+            dynamically typed.
+        </p>
+
+        <!-- Switch -->
+        <h2 class="fw-bold mt-5">8. Switch Expressions</h2>
+
+        <p>
+            Modern switch expressions can directly produce a value.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>int day = 2;
+
+String result = switch (day) {
+
+    case 1 -&gt; "Monday";
+    case 2 -&gt; "Tuesday";
+    case 3 -&gt; "Wednesday";
+
+    default -&gt; "Other";
+};
+
+System.out.println(result);</code></pre>
+        </div>
+        
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Tuesday</code></pre>
+</div>
+        <p>
+            Switch expressions make many branching operations more concise.
+        </p>
+
+        <!-- Pattern matching -->
+        <h2 class="fw-bold mt-5">9. Pattern Matching</h2>
+
+        <p>
+            Pattern matching simplifies type checks and conditional logic.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Object value = "Java";
+
+if (value instanceof String text
+        &amp;&amp; text.length() &gt; 3) {
+
+    System.out.println(
+        text.toUpperCase()
+    );
+}</code></pre>
+        </div>
+        
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>JAVA</code></pre>
+</div>
+        <p>
+            The variable <code>text</code> is available after the pattern has
+            successfully matched and the condition permits its use.
+        </p>
+
+        <!-- Text Blocks -->
+        <h2 class="fw-bold mt-5">10. Text Blocks</h2>
+
+        <p>
+            Text blocks provide a convenient syntax for multiline string literals.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String json = """
+        {
+            "name": "Java",
+            "version": 21
+        }
+        """;
+
+System.out.println(json);</code></pre>
+        </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>{
+    "name": "Java",
+    "version": 21
+}</code></pre>
+</div>
+        <p>
+            Text blocks are useful for JSON, HTML, SQL, XML, and other multiline text.
+        </p>
+
+        <!-- Records -->
+        <h2 class="fw-bold mt-5">11. Records</h2>
+
+        <p>
+            Records provide a concise way to model data-centric classes.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>record Employee(
+    int id,
+    String name,
+    double salary
+) {
+}
+
+Employee employee =
+    new Employee(101, "Sejl", 50000);
+
+System.out.println(
+    employee.name()
+);</code></pre>
+        </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Sejl</code></pre>
+</div>
+        <p>
+            Records automatically provide important members such as accessors,
+            <code>equals()</code>, <code>hashCode()</code>, and
+            <code>toString()</code>.
+        </p>
+
+        <!-- Sealed -->
+        <h2 class="fw-bold mt-5">12. Sealed Classes</h2>
+
+        <p>
+            Sealed classes and interfaces allow developers to explicitly restrict
+            which types can directly extend or implement a type.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface Payment
+    permits CardPayment, CashPayment {
+}
+
+final class CardPayment
+    implements Payment {
+}
+
+final class CashPayment
+    implements Payment {
+}</code></pre>
+        </div>
+
+        <p>
+            This makes the inheritance hierarchy explicit and controlled.
+        </p>
+
+        <!-- Interface -->
+        <h2 class="fw-bold mt-5">13. Private Interface Methods</h2>
+
+        <p>
+            Java 9 introduced private methods in interfaces.
+            They allow common implementation logic to be shared by default
+            and static methods.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>interface Logger {
+
+    default void info(String message) {
+
+        System.out.println(
+            format(message)
+        );
+    }
+
+    private String format(String message) {
+
+        return "[INFO] " + message;
+    }
+}</code></pre>
+        </div>
+
+        <!-- Date Time -->
+        <h2 class="fw-bold mt-5">14. Modern Date and Time API</h2>
+
+        <p>
+            Java 8 introduced the <code>java.time</code> API, which provides
+            immutable and thread-safe date and time types.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>LocalDate today =
+    LocalDate.now();
+
+LocalDate nextWeek =
+    today.plusWeeks(1);
+
+System.out.println(today);
+System.out.println(nextWeek);</code></pre>
+        </div>
+
+        <p>
+            Common classes include:
+        </p>
+
+        <ul>
+            <li><code>LocalDate</code></li>
+            <li><code>LocalTime</code></li>
+            <li><code>LocalDateTime</code></li>
+            <li><code>ZonedDateTime</code></li>
+            <li><code>Instant</code></li>
+            <li><code>Duration</code></li>
+            <li><code>Period</code></li>
+        </ul>
+
+        <!-- Immutable collections -->
+        <h2 class="fw-bold mt-5">15. Convenient Collection Factory Methods</h2>
+
+        <p>
+            Modern Java provides convenient factory methods for creating
+            unmodifiable collections.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of("Amit", "Neha", "Rahul");
+
+Set&lt;Integer&gt; numbers =
+    Set.of(10, 20, 30);
+
+Map&lt;Integer, String&gt; employees =
+    Map.of(
+        101, "Amit",
+        102, "Neha"
+    );</code></pre>
+        </div>
+
+        <div class="alert alert-warning">
+            These factory methods return unmodifiable collections.
+            Attempts to structurally modify them will result in an exception.
+        </div>
+
+        <!-- HTTP Client -->
+        <h2 class="fw-bold mt-5">16. Modern HTTP Client</h2>
+
+        <p>
+            Java 11 introduced the standard <code>HttpClient</code> API for
+            making HTTP requests.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>HttpClient client =
+    HttpClient.newHttpClient();
+
+HttpRequest request =
+    HttpRequest.newBuilder()
+        .uri(
+            URI.create(
+                "https://example.com"
+            )
+        )
+        .GET()
+        .build();
+
+HttpResponse&lt;String&gt; response =
+    client.send(
+        request,
+        HttpResponse.BodyHandlers.ofString()
+    );
+
+System.out.println(
+    response.statusCode()
+);</code></pre>
+        </div>
+
+        <!-- Files -->
+        <h2 class="fw-bold mt-5">17. Modern File API</h2>
+
+        <p>
+            The NIO.2 API provides modern file and path handling through
+            classes such as <code>Path</code> and <code>Files</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Path path =
+    Path.of("data.txt");
+
+Files.writeString(
+    path,
+    "Hello Java"
+);
+
+String content =
+    Files.readString(path);
+
+System.out.println(content);</code></pre>
+        </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Hello Java</code></pre>
+</div>
+
+        <!-- Stream toList -->
+        <h2 class="fw-bold mt-5">18. Modern Stream Collection</h2>
+
+        <p>
+            Recent Java versions provide convenient terminal operations such as
+            <code>toList()</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>List&lt;String&gt; result =
+    names.stream()
+         .filter(
+             name -&gt; name.length() &gt; 4
+         )
+         .toList();
+
+System.out.println(result);</code></pre>
+        </div>
+
+        <!-- String methods -->
+        <h2 class="fw-bold mt-5">19. Modern String Methods</h2>
+
+        <p>
+            Modern Java versions have added useful methods to the
+            <code>String</code> API.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String text = "Java\nPython\nC#";
+
+text.lines()
+    .forEach(
+        line -&gt; System.out.println(line)
+    );</code></pre>
+        </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Java
+Python
+C#</code></pre>
+</div>
+
+        <p>
+            Other useful APIs include methods such as <code>isBlank()</code>,
+            <code>strip()</code>, <code>stripLeading()</code>,
+            <code>stripTrailing()</code>, and <code>repeat()</code>.
+        </p>
+
+        <!-- Switch Pattern -->
+        <h2 class="fw-bold mt-5">20. Pattern Matching with Switch</h2>
+
+        <p>
+            Modern Java versions have expanded switch to support pattern-based
+            logic.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String describe(Object value) {
+
+    return switch (value) {
+
+        case Integer number
+            -&gt; "Integer: " + number;
+
+        case String text
+            -&gt; "String: " + text;
+
+        case null
+            -&gt; "Null value";
+
+        default
+            -&gt; "Other type";
+    };
+}</code></pre>
+        </div>
+
+        <p>
+            Pattern matching can make complex type-based branching easier to read.
+        </p>
+
+        <!-- Record + sealed -->
+        <h2 class="fw-bold mt-5">21. Combining Modern Features</h2>
+
+        <p>
+            Modern Java features can be combined to create concise and strongly
+            typed domain models.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface Result
+    permits Success, Failure {
+}
+
+record Success(String message)
+    implements Result {
+}
+
+record Failure(String error)
+    implements Result {
+}
+
+static String process(Result result) {
+
+    return switch (result) {
+
+        case Success success
+            -&gt; "Success: "
+                + success.message();
+
+        case Failure failure
+            -&gt; "Failure: "
+                + failure.error();
+    };
+}</code></pre>
+        </div>
+
+        <!-- Version table -->
+        <h2 class="fw-bold mt-5">22. Important Java Feature Timeline</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Java Version</th>
+                        <th>Important Features</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Java 8</td>
+                        <td>Lambda, Stream API, Optional, default methods, java.time</td>
+                    </tr>
+
+                    <tr>
+                        <td>Java 9</td>
+                        <td>Private interface methods, module system</td>
+                    </tr>
+
+                    <tr>
+                        <td>Java 10</td>
+                        <td>Local variable type inference with var</td>
+                    </tr>
+
+                    <tr>
+                        <td>Java 11</td>
+                        <td>Standard HttpClient and additional APIs</td>
+                    </tr>
+
+                    <tr>
+                        <td>Java 14</td>
+                        <td>Switch expressions standardized</td>
+                    </tr>
+
+                    <tr>
+                        <td>Java 15</td>
+                        <td>Text blocks standardized</td>
+                    </tr>
+
+                    <tr>
+                        <td>Java 16</td>
+                        <td>Records and pattern matching for instanceof standardized</td>
+                    </tr>
+
+                    <tr>
+                        <td>Java 17</td>
+                        <td>Sealed classes standardized</td>
+                    </tr>
+
+                    <tr>
+                        <td>Java 21</td>
+                        <td>Pattern matching for switch and record patterns standardized</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Benefits -->
+        <h2 class="fw-bold mt-5">23. Benefits of Modern Java</h2>
+
+        <ul>
+            <li>Cleaner and more readable code.</li>
+            <li>Reduced boilerplate.</li>
+            <li>Better support for functional programming.</li>
+            <li>Improved collection processing.</li>
+            <li>Safer and clearer null handling.</li>
+            <li>Better domain modeling.</li>
+            <li>More expressive control flow.</li>
+            <li>Improved API design.</li>
+            <li>Modern date and time handling.</li>
+            <li>Better support for concurrent and asynchronous programming.</li>
+        </ul>
+
+        <!-- Best practices -->
+        <h2 class="fw-bold mt-5">24. Best Practices</h2>
+
+        <ul>
+            <li>Use modern features when they improve readability.</li>
+            <li>Do not use <code>var</code> when the inferred type is unclear.</li>
+            <li>Use streams when collection processing becomes clearer.</li>
+            <li>Avoid unnecessarily complex stream pipelines.</li>
+            <li>Use records for data-centric immutable models.</li>
+            <li>Use sealed types when a hierarchy should be intentionally restricted.</li>
+            <li>Prefer <code>java.time</code> over legacy date/time classes.</li>
+            <li>Use Optional thoughtfully rather than everywhere.</li>
+            <li>Keep modern code understandable for the team maintaining it.</li>
+        </ul>
+
+        <!-- Interview -->
+        <h2 class="fw-bold mt-5">25. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="modernJavaQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#modernQuestionOne">
+                        What is the main purpose of lambda expressions?
+                    </button>
+                </h2>
+
+                <div id="modernQuestionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernJavaQuestions">
+
+                    <div class="accordion-body">
+                        Lambda expressions provide a concise way to represent behavior
+                        and are commonly used with functional interfaces.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#modernQuestionTwo">
+                        What is the Stream API?
+                    </button>
+                </h2>
+
+                <div id="modernQuestionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernJavaQuestions">
+
+                    <div class="accordion-body">
+                        The Stream API provides a declarative way to process sequences
+                        of data using operations such as filter, map, sorted, and reduce.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#modernQuestionThree">
+                        What is var in Java?
+                    </button>
+                </h2>
+
+                <div id="modernQuestionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernJavaQuestions">
+
+                    <div class="accordion-body">
+                        var enables local variable type inference. The compiler still
+                        assigns the variable a specific static type.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-parent="#modernJavaQuestions"
+                            data-bs-target="#modernQuestionFour">
+                        What is a record?
+                    </button>
+                </h2>
+
+                <div id="modernQuestionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernJavaQuestions">
+
+                    <div class="accordion-body">
+                        A record is a concise Java type designed primarily for
+                        modeling data.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#modernQuestionFive">
+                        What is a sealed class?
+                    </button>
+                </h2>
+
+                <div id="modernQuestionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernJavaQuestions">
+
+                    <div class="accordion-body">
+                        A sealed class restricts which classes are allowed to
+                        directly extend it.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#modernQuestionSix">
+                        Which Java version introduced var?
+                    </button>
+                </h2>
+
+                <div id="modernQuestionSix"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernJavaQuestions">
+
+                    <div class="accordion-body">
+                        Local variable type inference using var was introduced
+                        in Java 10.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#modernQuestionSeven">
+                        Which Java version standardized sealed classes?
+                    </button>
+                </h2>
+
+                <div id="modernQuestionSeven"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#modernJavaQuestions">
+
+                    <div class="accordion-body">
+                        Sealed classes became a standard Java feature in Java 17.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Final summary -->
+        <div class="alert alert-success mt-5">
+
+            <h4 class="fw-bold">Final Module Summary</h4>
+
+            <p>
+                You have now completed the major Modern Java topics:
+            </p>
+
+            <ul>
+                <li>var and local variable type inference</li>
+                <li>Switch expressions</li>
+                <li>Pattern matching</li>
+                <li>Text blocks</li>
+                <li>Records</li>
+                <li>Sealed classes</li>
+                <li>Modern interfaces</li>
+                <li>Modern Java APIs and language features</li>
+            </ul>
+
+            <p class="mb-0">
+                These features help Java developers write cleaner, safer,
+                more expressive, and maintainable applications.
+            </p>
+
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("ModernInterfaces", "ModernJava", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("Index", "Introduction", new { area = "CoreJava" })">
+                Back to Core Java Start →
+            </a>
+
+        </div>
+
+    </div>
+</div>

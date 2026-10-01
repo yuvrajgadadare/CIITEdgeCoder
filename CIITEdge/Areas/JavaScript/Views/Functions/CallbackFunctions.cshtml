@@ -1,0 +1,1162 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Callback Functions";
+}
+
+<style>
+    #javascript-callback-functions-page {
+        padding: 30px 0 50px;
+    }
+
+    #javascript-callback-functions-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    #javascript-callback-functions-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #212529;
+    }
+
+    #javascript-callback-functions-page .lead-text {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #6c757d;
+        margin-bottom: 30px;
+    }
+
+    #javascript-callback-functions-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-callback-functions-page .section-text {
+        font-size: 16px;
+        line-height: 1.85;
+        color: #555;
+    }
+
+    /* =========================
+       CONCEPT BOX
+       ========================= */
+
+    #javascript-callback-functions-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    /* =========================
+       IMAGE
+       ========================= */
+
+    #javascript-callback-functions-page .image-card {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-callback-functions-page .callback-image {
+        width: 100%;
+        height: 300px;
+        display: block;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-callback-functions-page .image-caption {
+        margin: 12px 5px 0;
+        text-align: center;
+        color: #6c757d;
+        font-size: 14px;
+    }
+
+    /* =========================
+       PART CARDS
+       ========================= */
+
+    #javascript-callback-functions-page .part-card {
+        border: 1px solid #e1e5e9;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 15px;
+        background: #ffffff;
+    }
+
+    #javascript-callback-functions-page .part-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #6f42c1;
+        color: #ffffff;
+        font-weight: 700;
+        margin-right: 10px;
+    }
+
+    /* =========================
+       DIAGRAM
+       ========================= */
+
+    #javascript-callback-functions-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #javascript-callback-functions-page .diagram-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #212529;
+    }
+
+    #javascript-callback-functions-page .callback-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-callback-functions-page .diagram-item {
+        background: #ffffff;
+        border: 2px solid #6f42c1;
+        border-radius: 10px;
+        padding: 15px 20px;
+        min-width: 150px;
+        font-weight: 600;
+    }
+
+    #javascript-callback-functions-page .diagram-highlight {
+        background: #6f42c1;
+        color: #ffffff;
+    }
+
+    #javascript-callback-functions-page .diagram-arrow {
+        font-size: 25px;
+        font-weight: bold;
+        color: #6f42c1;
+    }
+
+    /* =========================
+       CODE BOX
+       ========================= */
+
+    #javascript-callback-functions-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 22px;
+        border-radius: 10px;
+        margin: 18px 0 10px;
+        overflow-x: auto;
+    }
+
+    #javascript-callback-functions-page .code-box pre {
+        margin: 0;
+        color: #f8f9fa;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* =========================
+       TRY IT
+       ========================= */
+
+    #javascript-callback-functions-page .try-it-container {
+        text-align: right;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-callback-functions-page .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        border-radius: 7px;
+        padding: 10px 18px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #javascript-callback-functions-page .try-it-btn:hover {
+        opacity: 0.9;
+    }
+
+    /* =========================
+       OUTPUT
+       ========================= */
+
+    #javascript-callback-functions-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 6px;
+        padding: 15px 18px;
+        margin: 15px 0 25px;
+    }
+
+    /* =========================
+       NOTE
+       ========================= */
+
+    #javascript-callback-functions-page .note-box {
+        background: #fff8e1;
+        border-left: 4px solid #ffc107;
+        border-radius: 6px;
+        padding: 18px;
+        margin: 20px 0;
+    }
+
+    /* =========================
+       SUMMARY
+       ========================= */
+
+    #javascript-callback-functions-page .summary-box {
+        background: #e8f7fa;
+        border: 1px solid #8edee9;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    #javascript-callback-functions-page .summary-box h3 {
+        color: #056b87;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-callback-functions-page .summary-box p {
+        color: #056b87;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 0;
+    }
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    #javascript-callback-functions-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 32px;
+        padding-top: 25px;
+        border-top: 1px solid #e5e5e5;
+    }
+
+    #javascript-callback-functions-page .nav-btn {
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 7px;
+        font-weight: 600;
+    }
+
+    #javascript-callback-functions-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-callback-functions-page .next-btn {
+        background: #6f2dbd;
+        color: #ffffff;
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    @@media (max-width: 768px) {
+
+        #javascript-callback-functions-page .content-section {
+            padding: 22px;
+        }
+
+        #javascript-callback-functions-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-callback-functions-page .callback-image {
+            height: 220px;
+        }
+
+        #javascript-callback-functions-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-callback-functions-page .nav-btn {
+            text-align: center;
+        }
+    }
+</style>
+
+
+<main id="javascript-callback-functions-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =========================================
+             LEFT SIDE - COMPLETE SYLLABUS
+             ========================================= -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =========================================
+             RIGHT SIDE
+             ========================================= -->
+
+        <div class="col-lg-9">
+
+            <section class="content-section">
+
+                <!-- TITLE -->
+
+                <h1 class="page-title">
+                    Callback Functions
+                </h1>
+
+                <p class="lead-text">
+                    A Callback Function is a function that is passed as an
+                    argument to another function and is executed later
+                    when it is needed.
+                </p>
+
+
+                <!-- =========================================
+                     RELATED IMAGE
+                     ========================================= -->
+
+                <div class="image-card">
+
+                    <svg class="callback-image"
+                         viewBox="0 0 1200 420"
+                         xmlns="http://www.w3.org/2000/svg">
+
+                        <rect width="1200"
+                              height="420"
+                              rx="15"
+                              fill="#f8f9fa" />
+
+                        <text x="600"
+                              y="60"
+                              text-anchor="middle"
+                              font-size="32"
+                              font-weight="700"
+                              fill="#212529">
+                            JavaScript Callback Function
+                        </text>
+
+
+                        <!-- MAIN FUNCTION -->
+
+                        <rect x="70"
+                              y="130"
+                              width="300"
+                              height="180"
+                              rx="15"
+                              fill="#ffffff"
+                              stroke="#6f42c1"
+                              stroke-width="3" />
+
+                        <text x="220"
+                              y="180"
+                              text-anchor="middle"
+                              font-size="21"
+                              font-weight="700"
+                              fill="#212529">
+                            Main Function
+                        </text>
+
+                        <text x="220"
+                              y="230"
+                              text-anchor="middle"
+                              font-size="22"
+                              font-family="monospace"
+                              fill="#6f42c1">
+                            processData()
+                        </text>
+
+                        <text x="220"
+                              y="270"
+                              text-anchor="middle"
+                              font-size="17"
+                              fill="#6c757d">
+                            Calls another function
+                        </text>
+
+
+                        <!-- ARROW -->
+
+                        <line x1="370"
+                              y1="220"
+                              x2="470"
+                              y2="220"
+                              stroke="#6f42c1"
+                              stroke-width="5" />
+
+                        <polygon points="470,220 450,207 450,233"
+                                 fill="#6f42c1" />
+
+
+                        <!-- CALLBACK -->
+
+                        <rect x="470"
+                              y="130"
+                              width="260"
+                              height="180"
+                              rx="15"
+                              fill="#6f42c1" />
+
+                        <text x="600"
+                              y="180"
+                              text-anchor="middle"
+                              font-size="21"
+                              font-weight="700"
+                              fill="#ffffff">
+                            Callback
+                        </text>
+
+                        <text x="600"
+                              y="230"
+                              text-anchor="middle"
+                              font-size="22"
+                              font-family="monospace"
+                              fill="#ffffff">
+                            displayResult()
+                        </text>
+
+                        <text x="600"
+                              y="270"
+                              text-anchor="middle"
+                              font-size="17"
+                              fill="#ffffff">
+                            Passed as argument
+                        </text>
+
+
+                        <!-- ARROW -->
+
+                        <line x1="730"
+                              y1="220"
+                              x2="830"
+                              y2="220"
+                              stroke="#6f42c1"
+                              stroke-width="5" />
+
+                        <polygon points="830,220 810,207 810,233"
+                                 fill="#6f42c1" />
+
+
+                        <!-- RESULT -->
+
+                        <rect x="830"
+                              y="130"
+                              width="300"
+                              height="180"
+                              rx="15"
+                              fill="#ffffff"
+                              stroke="#198754"
+                              stroke-width="3" />
+
+                        <text x="980"
+                              y="180"
+                              text-anchor="middle"
+                              font-size="21"
+                              font-weight="700"
+                              fill="#212529">
+                            Result
+                        </text>
+
+                        <text x="980"
+                              y="230"
+                              text-anchor="middle"
+                              font-size="23"
+                              font-family="monospace"
+                              fill="#198754">
+                            Output
+                        </text>
+
+                        <text x="980"
+                              y="270"
+                              text-anchor="middle"
+                              font-size="17"
+                              fill="#6c757d">
+                            Callback executes
+                        </text>
+
+                    </svg>
+
+                    <p class="image-caption">
+                        A callback function is passed to another function
+                        and executed when required.
+                    </p>
+
+                </div>
+
+
+                <!-- SIMPLE EXPLANATION -->
+
+                <h2 class="section-title">
+                    Simple Explanation
+                </h2>
+
+                <div class="concept-box">
+
+                    <p class="section-text mb-0">
+
+                        Think of a Callback Function like giving someone
+                        a task to perform after another task is completed.
+
+                        <br /><br />
+
+                        In JavaScript, we can pass a function as an argument
+                        to another function. The receiving function can then
+                        call that function when it needs to.
+
+                        <br /><br />
+
+                        The function passed as an argument is called a
+                        <strong>Callback Function</strong>.
+
+                    </p>
+
+                </div>
+
+
+                <!-- BASIC SYNTAX -->
+
+                <h2 class="section-title">
+                    Basic Syntax
+                </h2>
+
+                <div class="concept-box">
+
+                    <p class="section-text mb-0">
+
+                        The basic idea is:
+
+                        <br /><br />
+
+                        <strong>
+                            Main Function → Callback Function → Result
+                        </strong>
+
+                        <br /><br />
+
+                        A callback is passed as an argument and called
+                        inside the main function.
+
+                    </p>
+
+                </div>
+
+
+                <!-- PARTS -->
+
+                <h2 class="section-title">
+                    Parts of a Callback Function
+                </h2>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        1
+                    </span>
+
+                    <strong>
+                        Main Function
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        This is the function that receives another function
+                        as an argument.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        2
+                    </span>
+
+                    <strong>
+                        Callback Function
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        This function is passed as an argument and executed
+                        by the main function.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        3
+                    </span>
+
+                    <strong>
+                        Function Call
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        The callback is called inside the main function
+                        when it is required.
+                    </p>
+
+                </div>
+
+
+                <!-- DIAGRAM -->
+
+                <h2 class="section-title">
+                    Callback Function Flow
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        How a Callback Function Works
+                    </div>
+
+                    <div class="callback-flow">
+
+                        <div class="diagram-item">
+
+                            Main Function
+
+                            <br />
+
+                            <small>
+                                processData()
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item diagram-highlight">
+
+                            Callback
+
+                            <br />
+
+                            <small>
+                                displayResult()
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+
+                            Execute
+
+                            <br />
+
+                            <small>
+                                callback()
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+
+                            Output
+
+                            <br />
+
+                            <small>
+                                Result
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     EXAMPLE 1
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Simple Callback Function
+                </h2>
+
+                <p class="section-text">
+                    Here, one function is passed to another function
+                    as an argument.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>function greet(name, callback) {
+
+    console.log("Welcome to " + name);
+
+    callback();
+}
+
+function instituteMessage() {
+
+    console.log("CIIT Training Institute");
+
+}
+
+greet("CIIT Training Institute", instituteMessage);</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runCallbackExample1()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    Welcome to CIIT Training Institute
+                    <br />
+
+                    CIIT Training Institute
+
+                </div>
+
+
+                <!-- =========================================
+                     EXAMPLE 2
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Callback with Arrow Function
+                </h2>
+
+                <p class="section-text">
+                    An Arrow Function can also be directly passed as a
+                    callback.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>function displayInstitute(callback) {
+
+    callback();
+
+}
+
+displayInstitute(() =&gt; {
+
+    console.log("CIIT Training Institute");
+
+});</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runCallbackExample2()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    CIIT Training Institute
+
+                </div>
+
+
+                <!-- =========================================
+                     EXAMPLE 3
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Example 3: Callback with Data
+                </h2>
+
+                <p class="section-text">
+                    A callback can also receive data from the main function.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>function getInstituteName(callback) {
+
+    const institute = "CIIT Training Institute";
+
+    callback(institute);
+
+}
+
+function showInstitute(name) {
+
+    console.log("Institute:", name);
+
+}
+
+getInstituteName(showInstitute);</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runCallbackExample3()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    Institute: CIIT Training Institute
+
+                </div>
+
+
+                <!-- =========================================
+                     EXAMPLE 4
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Example 4: Callback After a Task
+                </h2>
+
+                <p class="section-text">
+                    A callback can be executed after the main function
+                    completes its task.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>function completeTraining(callback) {
+
+    console.log("Training Completed");
+
+    callback();
+
+}
+
+completeTraining(() =&gt; {
+
+    console.log("Welcome to CIIT Training Institute");
+
+});</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runCallbackExample4()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    Training Completed
+                    <br />
+
+                    Welcome to CIIT Training Institute
+
+                </div>
+
+
+                <!-- IMPORTANT NOTE -->
+
+                <div class="note-box">
+
+                    <strong>
+                        Important Note:
+                    </strong>
+
+                    <p class="section-text mb-0 mt-2">
+
+                        A Callback Function is passed as an argument to
+                        another function. It runs only when the receiving
+                        function calls it.
+
+                        <br /><br />
+
+                        Passing the function:
+
+                        <strong>
+                            completeTraining(message)
+                        </strong>
+
+                        <br />
+
+                        Calling the callback:
+
+                        <strong>
+                            callback()
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+                <!-- SUMMARY -->
+
+                <div class="summary-box">
+
+                    <h3>
+                        Summary
+                    </h3>
+
+                    <p>
+
+                        A Callback Function is a function passed as an
+                        argument to another function. The receiving function
+                        can execute the callback when required. Callbacks
+                        allow one function to perform another action after
+                        completing its work and are commonly used in
+                        JavaScript programming.
+
+                    </p>
+
+                </div>
+
+
+              <!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
+<div class="bottom-navigation">
+
+    <a href="@Url.Action("ArrowFunctions", "Functions", new { area = "JavaScript" })"
+       class="nav-btn previous-btn">
+
+        ← Previous: Arrow Functions
+
+    </a>
+
+
+    <a href="@Url.Action("Index", "ArraysStrings", new { area = "JavaScript" })"
+       class="nav-btn next-btn">
+
+        Next: Arrays &amp; Strings →
+
+    </a>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+</main>
+
+
+<!-- =========================================
+     TRY IT JAVASCRIPT
+     ========================================= -->
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    // ========================================
+    // EXAMPLE 1
+    // ========================================
+
+    function runCallbackExample1() {
+
+        const code = `
+function greet(name, callback) {
+
+    console.log("Welcome to " + name);
+
+    callback();
+}
+
+function instituteMessage() {
+
+    console.log("CIIT Training Institute");
+
+}
+
+greet("CIIT Training Institute", instituteMessage);
+`;
+
+        openCompiler(code);
+    }
+
+
+    // ========================================
+    // EXAMPLE 2
+    // ========================================
+
+    function runCallbackExample2() {
+
+        const code = `
+function displayInstitute(callback) {
+
+    callback();
+
+}
+
+displayInstitute(() => {
+
+    console.log("CIIT Training Institute");
+
+});
+`;
+
+        openCompiler(code);
+    }
+
+
+    // ========================================
+    // EXAMPLE 3
+    // ========================================
+
+    function runCallbackExample3() {
+
+        const code = `
+function getInstituteName(callback) {
+
+    const institute = "CIIT Training Institute";
+
+    callback(institute);
+
+}
+
+function showInstitute(name) {
+
+    console.log("Institute:", name);
+
+}
+
+getInstituteName(showInstitute);
+`;
+
+        openCompiler(code);
+    }
+
+
+    // ========================================
+    // EXAMPLE 4
+    // ========================================
+
+    function runCallbackExample4() {
+
+        const code = `
+function completeTraining(callback) {
+
+    console.log("Training Completed");
+
+    callback();
+
+}
+
+completeTraining(() => {
+
+    console.log("Welcome to CIIT Training Institute");
+
+});
+`;
+
+        openCompiler(code);
+    }
+
+</script>

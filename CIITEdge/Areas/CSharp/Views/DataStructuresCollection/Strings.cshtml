@@ -1,0 +1,1134 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Strings";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <!-- STRINGS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4" id="strings">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">Strings in C#</h2>
+
+                <p class="text-muted mb-4">
+                    A string is a sequence of characters used to store and manipulate text.
+                    Strings are one of the most commonly used data types in C# and .NET applications.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    A string is used to store text such as names, addresses, email IDs,
+                    messages, usernames, and descriptions.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Creating a String</h4>
+
+                <p class="text-muted">
+                    In C#, the <strong>string</strong> keyword is used to declare a string variable.
+                    String values are written inside double quotation marks.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string name = "Rahul";
+
+Console.WriteLine(name);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Rahul</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">String Declaration</h4>
+
+                <p class="text-muted">
+                    A string can first be declared and then assigned a value.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string firstName;
+
+firstName = "Amit";
+
+Console.WriteLine(firstName);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Amit</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">String Concatenation</h4>
+
+                <p class="text-muted">
+                    String concatenation means joining two or more strings together.
+                    The <strong>+</strong> operator can be used for concatenation.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string firstName = "Rahul";
+string lastName = "Patil";
+
+string fullName = firstName + " " + lastName;
+
+Console.WriteLine(fullName);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Rahul Patil</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">String Interpolation</h4>
+
+                <p class="text-muted">
+                    String interpolation provides a clean and readable way to insert
+                    variables into a string. It uses the <strong>$</strong> symbol.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string name = "Sneha";
+int age = 22;
+
+Console.WriteLine($"My name is {name} and my age is {age}.");</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>My name is Sneha and my age is 22.</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Accessing Characters</h4>
+
+                <p class="text-muted">
+                    Individual characters of a string can be accessed using an index.
+                    String indexing starts from <strong>0</strong>.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        string name = "CIIT";
+
+        Console.WriteLine("Character 1: " + name[0]);
+        Console.WriteLine("Character 2: " + name[1]);
+        Console.WriteLine("Character 3: " + name[2]);
+        Console.WriteLine("Character 4: " + name[3]);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Character 1: C
+Character 2: I
+Character 3: I
+Character 4: T
+</code></pre>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>Important:</strong>
+                    String indexing starts from 0. In the string "CIIT",
+                    C is at index 0 and T is at index 3.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">String Length</h4>
+
+                <p class="text-muted">
+                    The <strong>Length</strong> property returns the total number
+                    of characters in a string.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string text = "Hello";
+
+Console.WriteLine(text.Length);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>5</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">ToUpper()</h4>
+
+                <p class="text-muted">
+                    The ToUpper() method converts all characters in a string to uppercase.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string text = "ciit training";
+
+Console.WriteLine(text.ToUpper());</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>CIIT TRAINING</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">ToLower()</h4>
+
+                <p class="text-muted">
+                    The ToLower() method converts all characters in a string to lowercase.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string text = "CIIT TRAINING";
+
+Console.WriteLine(text.ToLower());</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>ciit training</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Trim()</h4>
+
+                <p class="text-muted">
+                    The Trim() method removes whitespace from the beginning
+                    and end of a string.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string name = "   Rahul   ";
+
+Console.WriteLine(name.Trim());</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Rahul</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Contains()</h4>
+
+                <p class="text-muted">
+                    The Contains() method checks whether a specified value
+                    exists inside a string. It returns true or false.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+string message = "Welcome to CIIT Training Institute";
+
+Console.WriteLine(message.Contains("CIIT"));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>True</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">StartsWith()</h4>
+
+                <p class="text-muted">
+                    The StartsWith() method checks whether a string starts
+                    with a specified value.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string name = "Rahul";
+
+Console.WriteLine(name.StartsWith("Rah"));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>True</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">EndsWith()</h4>
+
+                <p class="text-muted">
+                    The EndsWith() method checks whether a string ends
+                    with a specified value.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string email = "student@gmail.com";
+
+Console.WriteLine(email.EndsWith(".com"));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>True</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Replace()</h4>
+
+                <p class="text-muted">
+                    The Replace() method replaces a specified value with another value.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string message = "Hello Java";
+
+string result = message.Replace("Java", "C#");
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Hello C#</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Substring()</h4>
+
+                <p class="text-muted">
+                    The Substring() method extracts a portion of a string.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string text = "Hello World";
+
+string result = text.Substring(0, 5);
+
+Console.WriteLine(result);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Hello</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Split()</h4>
+
+                <p class="text-muted">
+                    The Split() method divides a string into multiple parts
+                    based on a specified separator.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string data = "Java,C#,Python";
+
+string[] languages = data.Split(',');
+
+foreach (string language in languages)
+{
+    Console.WriteLine(language);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Java
+C#
+Python</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">String Comparison</h4>
+
+                <p class="text-muted">
+                    Strings can be compared using the == operator.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string username1 = "admin";
+string username2 = "admin";
+
+if (username1 == username2)
+{
+    Console.WriteLine("Both strings are same");
+}
+else
+{
+    Console.WriteLine("Strings are different");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Both strings are same</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">String Immutability</h4>
+
+                <p class="text-muted">
+                    Strings in C# are immutable. This means that once a string
+                    object is created, its value cannot be changed directly.
+                    String operations create a new string.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string text = "Hello";
+
+text = text + " World";
+
+Console.WriteLine(text);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Hello World</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Common String Methods
+                </h4>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Method / Property</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Length</td>
+                                <td>Returns the number of characters</td>
+                            </tr>
+                            <tr>
+                                <td>ToUpper()</td>
+                                <td>Converts text to uppercase</td>
+                            </tr>
+                            <tr>
+                                <td>ToLower()</td>
+                                <td>Converts text to lowercase</td>
+                            </tr>
+                            <tr>
+                                <td>Trim()</td>
+                                <td>Removes leading and trailing spaces</td>
+                            </tr>
+                            <tr>
+                                <td>Contains()</td>
+                                <td>Checks whether text exists</td>
+                            </tr>
+                            <tr>
+                                <td>StartsWith()</td>
+                                <td>Checks the beginning of a string</td>
+                            </tr>
+                            <tr>
+                                <td>EndsWith()</td>
+                                <td>Checks the end of a string</td>
+                            </tr>
+                            <tr>
+                                <td>Replace()</td>
+                                <td>Replaces specified text</td>
+                            </tr>
+                            <tr>
+                                <td>Substring()</td>
+                                <td>Extracts part of a string</td>
+                            </tr>
+                            <tr>
+                                <td>Split()</td>
+                                <td>Splits a string into multiple parts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                   Example 🌍❤️
+                </h4>
+
+                <p class="text-muted">
+                    String operations are commonly used in login systems,
+                    registration forms, search functionality and data validation.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+string email = "  student@gmail.com  ";
+
+email = email.Trim();
+
+if (email.EndsWith("@@gmail.com"))
+{   
+    Console.WriteLine("Valid Gmail Address");
+}
+else
+{
+    Console.WriteLine("Invalid Email Address");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Valid Gmail Address</code></pre>
+                </div>
+
+
+                <div class="alert alert-success">
+                    <strong>CIIT Practical Point:</strong>
+                    Strings are heavily used in .NET applications for user registration,
+                    login systems, search functionality, form validation, API requests,
+                    database operations and reports.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Common String Mistakes
+                </h4>
+
+                <ul class="text-muted">
+                    <li>Remember that string indexing starts from 0.</li>
+                    <li>Do not access an invalid string index.</li>
+                    <li>Use Trim() when unwanted spaces may affect validation.</li>
+                    <li>Use Contains() when checking whether specific text exists.</li>
+                    <li>Remember that strings are immutable.</li>
+                    <li>Use string interpolation for readable formatted text.</li>
+                </ul>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Interview Questions
+                </h4>
+
+                <h5 class="fw-bold">1. What is a string in C#?</h5>
+
+                <p class="text-muted mb-4">
+                    A string is a sequence of characters used to represent text.
+                </p>
+
+                <h5 class="fw-bold">2. Are strings mutable or immutable?</h5>
+
+                <p class="text-muted mb-4">
+                    Strings are immutable in C#.
+                </p>
+
+                <h5 class="fw-bold">3. What is string interpolation?</h5>
+
+                <p class="text-muted mb-4">
+                    String interpolation allows variables and expressions to be
+                    inserted directly into a string using the $ symbol.
+                </p>
+
+                <h5 class="fw-bold">4. What does the Length property return?</h5>
+
+                <p class="text-muted mb-4">
+                    It returns the total number of characters in a string.
+                </p>
+
+                <h5 class="fw-bold">5. What is the difference between String and StringBuilder?</h5>
+
+                <p class="text-muted">
+                    String is immutable, while StringBuilder is designed for
+                    efficient modification of strings when many changes are required.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Strings Summary
+                </h2>
+
+                <ul class="text-muted">
+                    <li>Strings are used to store text.</li>
+                    <li>String indexing starts from 0.</li>
+                    <li>The Length property returns the number of characters.</li>
+                    <li>String concatenation joins multiple strings.</li>
+                    <li>String interpolation provides readable formatted strings.</li>
+                    <li>Common methods include Trim(), Contains(), Replace(), Split() and Substring().</li>
+                    <li>Strings are immutable in C#.</li>
+                    <li>Strings are widely used in real-world .NET applications.</li>
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE QUESTIONS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Create a string variable and print its value.</li>
+                    <li>Find the length of a string.</li>
+                    <li>Convert a string to uppercase and lowercase.</li>
+                    <li>Remove unnecessary spaces using Trim().</li>
+                    <li>Check whether a string contains a specific word.</li>
+                    <li>Replace one word with another word.</li>
+                    <li>Extract a portion of a string using Substring().</li>
+                    <li>Split a comma-separated string into multiple values.</li>
+                    <li>Check whether an email ends with ".com".</li>
+                    <li>Reverse a string using a C# program.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- TOPIC NAVIGATION -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="/CSharp/DataStructuresCollection/Arrays"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="/CSharp/DataStructuresCollection/Generics"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+
+            <script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

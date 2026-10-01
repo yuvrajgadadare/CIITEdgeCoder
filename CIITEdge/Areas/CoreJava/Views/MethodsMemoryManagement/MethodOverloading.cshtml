@@ -1,0 +1,886 @@
+﻿@{
+    ViewData["Title"] = "Method Overloading";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Method Overloading in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how Java allows multiple methods to have the same name
+                with different parameter lists.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is Method Overloading?</h3>
+
+            <p>
+                Method overloading means defining multiple methods with the
+                same name in the same class, but with different parameter
+                lists.
+            </p>
+
+            <p>
+                It is an example of <strong>compile-time polymorphism</strong>
+                because the compiler determines which method should be called
+                based on the arguments supplied.
+            </p>
+
+        </section>
+
+
+        <!-- BASIC EXAMPLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Basic Example</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Calculator {
+
+    int add(int a, int b) {
+
+        return a + b;
+
+    }
+
+    int add(int a, int b, int c) {
+
+        return a + b + c;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Both methods are named <code>add</code>, but their parameter
+                lists are different.
+            </p>
+
+        </section>
+
+
+        <!-- CALLING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Calling Overloaded Methods</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Calculator calculator = new Calculator();
+
+System.out.println(
+    calculator.add(10, 20)
+);
+
+System.out.println(
+    calculator.add(10, 20, 30)
+);</code></pre>
+
+            </div>
+
+
+            <h4 class="fw-bold text-dark mb-2">Output</h4>
+           <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>30
+60</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- WAYS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Ways to Overload a Method
+            </h3>
+
+            <p>
+                Methods can be overloaded by changing their parameter list.
+            </p>
+
+            <ul>
+
+                <li class="mb-2">
+                    Changing the number of parameters.
+                </li>
+
+                <li class="mb-2">
+                    Changing the data types of parameters.
+                </li>
+
+                <li>
+                    Changing the order of parameters when their types differ.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- NUMBER OF PARAMETERS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                1. Different Number of Parameters
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static void display(int a) {
+
+    System.out.println(a);
+
+}
+
+static void display(int a, int b) {
+
+    System.out.println(a + " " + b);
+
+}
+
+static void display(int a, int b, int c) {
+
+    System.out.println(a + " " + b + " " + c);
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>10
+10 20
+10 20 30</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- DIFFERENT TYPES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                2. Different Parameter Types
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static void print(int value) {
+
+    System.out.println("Integer: " + value);
+
+}
+
+static void print(double value) {
+
+    System.out.println("Double: " + value);
+
+}
+
+static void print(String value) {
+
+    System.out.println("String: " + value);
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Integer: 10
+Double: 10.5
+String: CIIT</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- ORDER -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                3. Different Order of Parameters
+            </h3>
+
+            <p>
+                The order can also be different when the parameter types are
+                different.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static void display(int number, String text) {
+
+    System.out.println(number + " " + text);
+
+}
+
+static void display(String text, int number) {
+
+    System.out.println(text + " " + number);
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>10 Java
+Java 10</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- RETURN TYPE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Can We Overload Only by Return Type?
+            </h3>
+
+            <p>
+                <strong>No.</strong> Java does not allow methods to be
+                overloaded only by changing the return type.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Invalid</div>
+
+                <pre class="mb-0"><code>int calculate(int a) {
+
+    return a;
+
+}
+
+double calculate(int a) {
+
+    return a;
+
+}</code></pre>
+
+            </div>
+
+            <div class="alert alert-danger mt-3">
+
+                <strong>Important:</strong>
+                The parameter list must be different. Changing only the
+                return type is not sufficient.
+
+            </div>
+
+        </section>
+
+
+        <!-- STATIC -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Static Method Overloading
+            </h3>
+
+            <p>
+                Static methods can also be overloaded.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class MathUtil {
+
+    static int multiply(int a, int b) {
+
+        return a * b;
+
+    }
+
+    static int multiply(int a, int b, int c) {
+
+        return a * b * c;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONSTRUCTOR -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Constructor Overloading
+            </h3>
+
+            <p>
+                Constructors can also be overloaded by providing different
+                parameter lists.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Student {
+
+    String name;
+    int age;
+
+    Student() {
+
+        name = "Unknown";
+        age = 0;
+
+    }
+
+    Student(String name) {
+
+        this.name = name;
+        age = 0;
+
+    }
+
+    Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- AUTOMATIC PROMOTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Method Overloading and Type Promotion
+            </h3>
+
+            <p>
+                Java may perform primitive type widening when looking for a
+                matching overloaded method.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static void show(long value) {
+
+    System.out.println("long");
+
+}
+
+public static void main(String[] args) {
+
+    int number = 10;
+
+    show(number);
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>long</code></pre>
+</div>
+
+            <p class="mt-3">
+                The <code>int</code> value can be widened to
+                <code>long</code>, so the method is valid.
+            </p>
+
+        </section>
+
+
+        <!-- AMBIGUITY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Ambiguous Method Calls
+            </h3>
+
+            <p>
+                Overloaded methods can become ambiguous when more than one
+                method is equally suitable for the supplied argument.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static void show(int value) {
+
+    System.out.println("int");
+
+}
+
+static void show(long value) {
+
+    System.out.println("long");
+
+}
+
+static void show(float value) {
+
+    System.out.println("float");
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Choosing suitable parameter types carefully helps avoid
+                confusing overloaded APIs.
+            </p>
+
+        </section>
+
+
+        <!-- COMPILE TIME -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Compile-Time Polymorphism
+            </h3>
+
+            <p>
+                The compiler selects the appropriate overloaded method based
+                on the method signature and arguments available at compile
+                time.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static int calculate(int a, int b) {
+
+    return a + b;
+
+}
+
+static double calculate(double a, double b) {
+
+    return a + b;
+
+}
+
+public static void main(String[] args) {
+
+    System.out.println(calculate(10, 20));
+
+    System.out.println(calculate(10.5, 20.5));
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30
+31.0</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- OVERLOADING VS OVERRIDING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Overloading vs Overriding
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Feature</th>
+                            <th>Overloading</th>
+                            <th>Overriding</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Same method name with different parameters.</td>
+                            <td>Subclass provides a new implementation.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Parameter List</td>
+                            <td>Must be different.</td>
+                            <td>Normally remains the same.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Binding</td>
+                            <td>Compile time.</td>
+                            <td>Runtime.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Inheritance Required?</td>
+                            <td>No.</td>
+                            <td>Yes, normally.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Polymorphism</td>
+                            <td>Compile-time polymorphism.</td>
+                            <td>Runtime polymorphism.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICAL EXAMPLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Practical Example: Area Calculator
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class AreaCalculator {
+
+    double area(double radius) {
+
+        return Math.PI * radius * radius;
+
+    }
+
+    double area(double length, double width) {
+
+        return length * width;
+
+    }
+
+    double area(int side) {
+
+        return side * side;
+
+    }
+
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        AreaCalculator calculator = new AreaCalculator();
+
+        System.out.println(calculator.area(5));
+
+        System.out.println(calculator.area(10.0, 20.0));
+
+        System.out.println(calculator.area(5.0));
+
+    }
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>78.53981633974483
+200.0
+25.0</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Keep overloaded methods logically related.
+                </li>
+
+                <li class="mb-2">
+                    Use clear and consistent parameter types.
+                </li>
+
+                <li class="mb-2">
+                    Avoid overloads that create confusing or ambiguous calls.
+                </li>
+
+                <li class="mb-2">
+                    Do not overload methods only by changing the return type.
+                </li>
+
+                <li>
+                    Keep method behavior predictable across overloads.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="overloadingQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#questionOne">
+
+                            Can methods be overloaded by return type only?
+
+                        </button>
+                    </h2>
+
+                    <div id="questionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#overloadingQuestions">
+
+                        <div class="accordion-body">
+
+                            No. The parameter list must differ.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#questionTwo">
+
+                            Is method overloading compile-time polymorphism?
+
+                        </button>
+                    </h2>
+
+                    <div id="questionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#overloadingQuestions">
+
+                        <div class="accordion-body">
+
+                            Yes. The compiler determines which overloaded
+                            method matches the call.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-parent="#overloadingQuestions"
+                                data-bs-target="#questionThree">
+
+                            Can constructors be overloaded?
+
+                        </button>
+                    </h2>
+
+                    <div id="questionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#overloadingQuestions">
+
+                        <div class="accordion-body">
+
+                            Yes. Constructors can have different parameter
+                            lists.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Method overloading allows multiple methods to share the
+                    same name while having different parameter lists. It is
+                    a form of compile-time polymorphism and improves API
+                    usability when related operations require different
+                    inputs.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Methods",
+                               "MethodsMemoryManagement",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "MemoryBasics",
+                               "MethodsMemoryManagement",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

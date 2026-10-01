@@ -1,0 +1,992 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "DOM Introduction";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-dom-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-dom-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-dom-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-dom-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-dom-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-dom-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-dom-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-dom-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-dom-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       IMAGE
+       ========================================================= */
+
+    #javascript-dom-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-dom-page .dom-image {
+        width: 100%;
+        max-height: 500px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-dom-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       DOM PART CARDS
+       ========================================================= */
+
+    #javascript-dom-page .dom-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    #javascript-dom-page .dom-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-dom-page .dom-card p {
+        color: #495057;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       DOM TREE DIAGRAM
+       ========================================================= */
+
+    #javascript-dom-page .dom-diagram {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #javascript-dom-page .diagram-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 22px;
+    }
+
+    #javascript-dom-page .tree-node {
+        display: inline-block;
+        min-width: 125px;
+        padding: 10px 18px;
+        margin: 5px;
+        border-radius: 8px;
+        background: #ffffff;
+        border: 2px solid #6f42c1;
+        color: #343a40;
+        font-weight: 600;
+    }
+
+    #javascript-dom-page .tree-node.root {
+        background: #6f42c1;
+        color: #ffffff;
+    }
+
+    #javascript-dom-page .tree-arrow {
+        color: #6f42c1;
+        font-size: 22px;
+        font-weight: 700;
+        margin: 3px 0;
+    }
+
+    #javascript-dom-page .tree-row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    #javascript-dom-page .tree-connector {
+        color: #6c757d;
+        font-size: 20px;
+        margin: 3px 0;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-dom-page .code-section {
+        margin-top: 15px;
+    }
+
+    #javascript-dom-page .code-box {
+        background-color: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       TRY IT BUTTON
+       ========================================================= */
+
+    #javascript-dom-page .try-it-wrapper {
+        text-align: right;
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+
+    #javascript-dom-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 6px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-dom-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-dom-page .output-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-left: 4px solid #198754;
+        border-radius: 8px;
+        padding: 15px 18px;
+        margin-bottom: 25px;
+        color: #343a40;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-dom-page .summary-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 35px;
+    }
+
+    #javascript-dom-page .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-dom-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-dom-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 20px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-dom-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    #javascript-dom-page .previous-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    #javascript-dom-page .next-btn {
+        background: #5b21b6;
+        border: 1px solid #5b21b6;
+        color: #ffffff;
+    }
+
+    #javascript-dom-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-dom-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @@media (max-width: 768px) {
+
+        #javascript-dom-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-dom-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-dom-page .section-title {
+            font-size: 23px;
+        }
+
+        #javascript-dom-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-dom-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-dom-page">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3 mb-4">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- =================================================
+                         PAGE HEADER
+                         ================================================= -->
+
+                    <h1 class="page-title">
+                        DOM Introduction
+                    </h1>
+
+                    <p class="lead-text">
+                        The Document Object Model (DOM) represents an HTML
+                        document as a tree of objects. JavaScript can use
+                        the DOM to access, read, and modify elements on
+                        a web page.
+                    </p>
+
+
+                    <!-- =================================================
+                         WHAT IS DOM?
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What is the DOM?
+                    </h2>
+
+                    <p class="section-text">
+                        DOM stands for
+                        <strong>Document Object Model</strong>.
+                        It is a browser-provided programming interface
+                        that represents the structure of a web page as
+                        objects and nodes.
+                    </p>
+
+                    <p class="section-text">
+                        When the browser loads an HTML document, it creates
+                        a DOM tree in memory. JavaScript can then interact
+                        with this tree to access elements and change the
+                        page structure, content, and styles.
+                    </p>
+
+
+                    <!-- =================================================
+                         CONCEPT
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p>
+                            <strong>HTML</strong> creates the structure,
+                            <strong>CSS</strong> controls the appearance,
+                            and <strong>JavaScript + DOM</strong> can
+                            interact with and dynamically change the page.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ACTUAL DOM IMAGE
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <img src="https://cdn-media-0.freecodecamp.org/2022/05/js-dom-model.png"
+                             alt="JavaScript Document Object Model tree structure"
+                             class="dom-image" />
+
+                        <p class="image-caption">
+                            The DOM represents an HTML document as a
+                            hierarchical tree of nodes.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT DOM PARTS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Important Parts of the DOM
+                    </h2>
+
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+
+                            <div class="dom-card">
+
+                                <h5>
+                                    Document
+                                </h5>
+
+                                <p>
+                                    Represents the complete web page
+                                    loaded in the browser.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="dom-card">
+
+                                <h5>
+                                    Element
+                                </h5>
+
+                                <p>
+                                    Represents HTML elements such as
+                                    <code>&lt;h1&gt;</code>,
+                                    <code>&lt;p&gt;</code>, and
+                                    <code>&lt;div&gt;</code>.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="dom-card">
+
+                                <h5>
+                                    Node
+                                </h5>
+
+                                <p>
+                                    A general item in the DOM tree.
+                                    Elements and text are examples
+                                    of DOM nodes.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DOM TREE DIAGRAM
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        DOM Tree Structure
+                    </h2>
+
+                    <p class="section-text">
+                        The DOM is organized like a tree. A node can have
+                        a parent, children, and siblings. The complete
+                        document starts from the root document node.
+                    </p>
+
+                    <div class="dom-diagram">
+
+                        <div class="diagram-title">
+                            Simple DOM Tree
+                        </div>
+
+                        <div>
+                            <span class="tree-node root">
+                                document
+                            </span>
+                        </div>
+
+                        <div class="tree-arrow">
+                            ↓
+                        </div>
+
+                        <div>
+                            <span class="tree-node">
+                                html
+                            </span>
+                        </div>
+
+                        <div class="tree-arrow">
+                            ↓
+                        </div>
+
+                        <div class="tree-row">
+
+                            <div>
+
+                                <span class="tree-node">
+                                    head
+                                </span>
+
+                                <div class="tree-connector">
+                                    ↓
+                                </div>
+
+                                <span class="tree-node">
+                                    title
+                                </span>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="tree-node">
+                                    body
+                                </span>
+
+                                <div class="tree-connector">
+                                    ↓
+                                </div>
+
+                                <div class="tree-row">
+
+                                    <span class="tree-node">
+                                        h1
+                                    </span>
+
+                                    <span class="tree-node">
+                                        p
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         JAVASCRIPT AND DOM
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        JavaScript and the DOM
+                    </h2>
+
+                    <p class="section-text">
+                        JavaScript itself is a programming language.
+                        The DOM is a Web API provided by the browser.
+                        JavaScript can use DOM APIs to work with the
+                        current web page.
+                    </p>
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Basic Relationship
+                        </h5>
+
+                        <p>
+                            JavaScript
+                            → uses DOM APIs
+                            → accesses HTML elements
+                            → reads or changes the page.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Access the Document
+                    </h2>
+
+                    <p class="section-text">
+                        The <code>document</code> object represents the
+                        current HTML document.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>console.log(document);
+console.log(document.title);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryDomExample1()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Output:
+                        <br />
+                        The browser's document object and the current
+                        page title are displayed.
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Read Document Information
+                    </h2>
+
+                    <p class="section-text">
+                        JavaScript can read information from the
+                        <code>document</code> object.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>console.log("Title:", document.title);
+console.log("URL:", document.URL);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryDomExample2()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Output:
+                        <br />
+                        Title: current page title
+                        <br />
+                        URL: current page URL
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Access the Body
+                    </h2>
+
+                    <p class="section-text">
+                        The <code>document.body</code> property gives
+                        access to the <code>&lt;body&gt;</code> element
+                        of the current document.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>console.log(document.body);
+console.log(document.body.tagName);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryDomExample3()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Output:
+                        <br />
+                        The body element is displayed.
+                        <br />
+                        BODY
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 4
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 4: Change the Page Title
+                    </h2>
+
+                    <p class="section-text">
+                        JavaScript can also modify properties of the
+                        document. For example, the page title can be
+                        changed using <code>document.title</code>.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>document.title = "CIIT JavaScript Course";
+
+console.log(document.title);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryDomExample4()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Output:
+                        <br />
+                        CIIT JavaScript Course
+                    </div>
+
+
+                    <!-- =================================================
+                         WHY DOM IS IMPORTANT
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Why is the DOM Important?
+                    </h2>
+
+                    <p class="section-text">
+                        The DOM allows JavaScript to interact with the
+                        page after it has been loaded. Using DOM APIs,
+                        JavaScript can access elements, change content,
+                        modify styles, create elements, remove elements,
+                        and respond to user interactions.
+                    </p>
+
+                    <div class="concept-box">
+
+                        <h5>
+                            What You Will Learn Next
+                        </h5>
+
+                        <p>
+                            In the upcoming DOM topics, you will learn
+                            how to select elements, change their content,
+                            modify styles, and create new HTML elements
+                            using JavaScript.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+                            The DOM stands for Document Object Model.
+                            It represents an HTML document as a tree of
+                            objects and nodes. The browser creates this
+                            representation when it loads the page.
+                            JavaScript can use the DOM API through objects
+                            such as <code>document</code> to access and
+                            manipulate the web page.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("Destructuring", "Objects", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Destructuring
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("SelectingElements", "DOM", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Selecting Elements
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+<script>
+
+    function openCompiler(code) {
+
+        // Convert literal \n into real new lines
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    function tryDomExample1() {
+
+        const code =
+            'console.log("Document Object Model");\n' +
+            'console.log("document represents the web page");';
+
+        openCompiler(code);
+    }
+
+
+    function tryDomExample2() {
+
+        const code =
+            'const pageTitle = "CIIT JavaScript Course";\n' +
+            'console.log("Title:", pageTitle);';
+
+        openCompiler(code);
+    }
+
+
+    function tryDomExample3() {
+
+        const code =
+            'const bodyElement = "BODY";\n' +
+            'console.log("Element:", bodyElement);';
+
+        openCompiler(code);
+    }
+
+
+    function tryDomExample4() {
+
+        const code =
+            'let title = "JavaScript Course";\n' +
+            'title = "CIIT JavaScript Course";\n' +
+            'console.log(title);';
+
+        openCompiler(code);
+    }
+
+</script>

@@ -1,0 +1,1085 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Interfaces in C#";
+}
+
+<style>
+.try-it-btn {
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease;
+}
+ 
+.try-it-btn:hover {
+    background: #157347;
+    color: #fff;
+}
+
+</style>
+
+
+<main id="tutorials" class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="col-lg-3">
+
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+
+        </aside>
+
+
+        <!-- ================= CONTENT ================= -->
+        <section class="col-lg-9">
+
+            <!-- PAGE HEADER -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    
+
+                    <h1 class="fw-bold text-dark mt-2 mb-3">
+                        Interfaces in C#
+                    </h1>
+
+                    <p class="lead text-muted mb-0">
+                        Learn how interfaces define a common contract and help
+                        build flexible, reusable, and maintainable C# applications.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <!-- ================= WHAT IS INTERFACE ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        What is an Interface?
+                    </h2>
+
+                    <p>
+                        An <strong>interface</strong> in C# is a contract that defines
+                        a set of members that a class or structure must implement.
+                    </p>
+
+                    <p>
+                        An interface describes <strong>what a class should do</strong>
+                        but generally does not define how the class should perform
+                        that operation.
+                    </p>
+
+                    <div class="alert alert-info">
+                        <strong>Simple Example:</strong>
+                        Think of an interface like a rule book. If a class agrees
+                        to follow the rule book, it must provide implementations
+                        for the required members.
+                    </div>
+
+                    <p class="mb-0">
+                        Interfaces are widely used in real-world .NET applications
+                        for loose coupling, dependency injection, testing, and
+                        flexible application design.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <!-- ================= SYNTAX ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Interface Syntax
+                    </h2>
+
+                    <p>
+                        An interface is declared using the
+                        <code>interface</code> keyword.
+                    </p>
+
+                    <div class="code-block mb-4">
+
+                        <pre class="mb-0"><span class="keyword">interface</span> <span class="class-name">IAnimal</span>
+{
+    <span class="keyword">void</span> <span class="method-name">Sound</span>();
+}</pre>
+
+                    </div>
+
+                    <p>
+                        A class can implement the interface by using the
+                        <code>:</code> symbol.
+                    </p>
+
+                    <div class="code-block">
+
+                        <pre class="mb-0"><span class="keyword">class</span> <span class="class-name">Dog</span> : IAnimal
+{
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="method-name">Sound</span>()
+    {
+        Console.WriteLine(<span class="string-lit">"Dog barks"</span>);
+    }
+}</pre>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ================= FIRST PROGRAM ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Simple Interface Example
+                    </h2>
+
+                   <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+interface IAnimal
+{
+    void Sound();
+}
+
+class Dog : IAnimal
+{
+    public void Sound()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Dog dog = new Dog();
+
+        dog.Sound();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block mb-4">
+
+                        <pre class="mb-0">Dog barks</pre>
+
+                    </div>
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Program Explanation
+                    </h3>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered">
+
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Explanation</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>IAnimal</td>
+                                    <td>
+                                        Interface that defines the Sound() contract.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Sound()</td>
+                                    <td>
+                                        Method declared by the interface.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Dog : IAnimal</td>
+                                    <td>
+                                        Dog class implements the IAnimal interface.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>public void Sound()</td>
+                                    <td>
+                                        Dog provides the implementation of Sound().
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+  </div>
+
+            <!-- ================= INTERFACE REFERENCE ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Interface Reference
+                    </h2>
+
+                    <p>
+                        An interface reference can hold an object of a class
+                        that implements that interface.
+                    </p>
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+interface IAnimal
+{
+    void Sound();
+}
+
+class Dog : IAnimal
+{
+    public void Sound()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        IAnimal animal = new Dog();
+
+        animal.Sound();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block">
+
+                        <pre class="mb-0">Dog barks</pre>
+
+                    </div>
+
+                    <div class="alert alert-success mt-4 mb-0">
+                        <strong>Important:</strong>
+                        The interface reference allows the program to work with
+                        the contract rather than depending directly on a specific
+                        implementation.
+                    </div>
+
+                </div>
+            </div>
+         </div>
+
+
+            <!-- ================= MULTIPLE INTERFACES ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Implementing Multiple Interfaces
+                    </h2>
+
+                    <p>
+                        A class can implement more than one interface.
+                        This is one of the important advantages of interfaces in C#.
+                    </p>
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+interface IPrintable
+{
+    void Print();
+}
+
+interface IScannable
+{
+    void Scan();
+}
+
+class Printer : IPrintable, IScannable
+{
+    public void Print()
+    {
+        Console.WriteLine("Printing document");
+    }
+
+    public void Scan()
+    {
+        Console.WriteLine("Scanning document");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Printer printer = new Printer();
+
+        printer.Print();
+        printer.Scan();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block">
+
+                        <pre class="mb-0">Printing document
+Scanning document</pre>
+
+                    </div>
+
+                </div>
+            </div>
+  </div>
+
+            <!-- ================= INTERFACE PROPERTIES ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Interfaces with Properties
+                    </h2>
+
+                    <p>
+                        Interfaces can also define properties that implementing
+                        classes must provide.
+                    </p>
+
+                    <div class="code-block">
+
+                        <pre class="mb-0"><span class="keyword">interface</span> <span class="class-name">IEmployee</span>
+{
+    <span class="keyword">int</span> EmployeeId { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+
+    <span class="keyword">string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}
+
+<span class="keyword">class</span> <span class="class-name">Employee</span> : IEmployee
+{
+    <span class="keyword">public</span> <span class="keyword">int</span> EmployeeId { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+
+    <span class="keyword">public</span> <span class="keyword">string</span> Name { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+}</pre>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ================= REAL WORLD PAYMENT ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Example: Payment System ❤️👨‍🏫
+                    </h2>
+
+                    <p>
+                        Interfaces are commonly used in real-world applications
+                        where multiple classes need to follow the same contract.
+                    </p>
+
+                    <p>
+                        For example, an application can support Credit Card,
+                        UPI, and Cash payments.
+                    </p>
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+interface IPayment
+{
+    void Pay(decimal amount);
+}
+
+class CreditCardPayment : IPayment
+{
+    public void Pay(decimal amount)
+    {
+        Console.WriteLine($"Paid {amount} using Credit Card");
+    }
+}
+
+class UPIPayment : IPayment
+{
+    public void Pay(decimal amount)
+    {
+        Console.WriteLine($"Paid {amount} using UPI");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        IPayment payment;
+
+        payment = new CreditCardPayment();
+        payment.Pay(5000);
+
+        payment = new UPIPayment();
+        payment.Pay(2500);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+                    <h3 class="h5 fw-bold mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block">
+
+                        <pre class="mb-0">Paid 5000 using Credit Card
+Paid 2500 using UPI</pre>
+
+                    </div>
+
+                </div>
+            </div>
+         </div>
+
+
+            <!-- ================= INTERFACE VS ABSTRACT ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Interface vs Abstract Class
+                    </h2>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered">
+
+                            <thead class="table-dark">
+
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Interface</th>
+                                    <th>Abstract Class</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Keyword</td>
+                                    <td>interface</td>
+                                    <td>abstract class</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Purpose</td>
+                                    <td>Defines a contract</td>
+                                    <td>Provides a common base</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Multiple</td>
+                                    <td>Class can implement multiple interfaces</td>
+                                    <td>Class can inherit only one base class</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Implementation</td>
+                                    <td>Implementing class provides required members</td>
+                                    <td>Can contain abstract and implemented members</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Best Use</td>
+                                    <td>Loose coupling and contracts</td>
+                                    <td>Shared base behavior</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ================= POLYMORPHISM WITH INTERFACE ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Interfaces and Polymorphism
+                    </h2>
+
+                    <p>
+                        Interfaces can also be used to achieve polymorphism.
+                        An interface reference can refer to objects of different
+                        implementing classes.
+                    </p>
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+interface IShape
+{
+    void Draw();
+}
+
+class Circle : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine("Drawing Circle");
+    }
+}
+
+class Rectangle : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine("Drawing Rectangle");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        IShape shape;
+
+        shape = new Circle();
+        shape.Draw();
+
+        shape = new Rectangle();
+        shape.Draw();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+                    <h3 class="h5 fw-bold mt-4 mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block">
+
+                        <pre class="mb-0">Drawing Circle
+Drawing Rectangle</pre>
+
+                    </div>
+
+                </div>
+            </div>
+  </div>
+
+            <!-- ================= EXPLICIT IMPLEMENTATION ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Explicit Interface Implementation
+                    </h2>
+
+                    <p>
+                        C# allows a class to implement an interface member explicitly.
+                        This is useful when two interfaces contain methods with the
+                        same name but require different implementations.
+                    </p>
+
+                    <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+interface IPrinter
+{
+    void Print();
+}
+
+interface IScanner
+{
+    void Print();
+}
+
+class Machine : IPrinter, IScanner
+{
+    void IPrinter.Print()
+    {
+        Console.WriteLine("Printer is printing");
+    }
+
+    void IScanner.Print()
+    {
+        Console.WriteLine("Scanner is scanning");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        IPrinter printer = new Machine();
+        IScanner scanner = new Machine();
+
+        printer.Print();
+        scanner.Print();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+  <h3 class="h5 fw-bold mt-4 mb-3">
+                        Output
+                    </h3>
+
+                    <div class="code-block">
+
+                        <pre class="mb-0">Printer is printing
+                            Scanner is scanning</pre>
+
+                    </div>
+
+                </div>
+            </div>
+  </div>
+
+            <!-- ================= BENEFITS ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Advantages of Interfaces
+                    </h2>
+
+                    <ul>
+
+                        <li>
+                            Provides a clear contract between components.
+                        </li>
+
+                        <li>
+                            Supports loose coupling.
+                        </li>
+
+                        <li>
+                            Supports multiple interface implementation.
+                        </li>
+
+                        <li>
+                            Makes applications easier to maintain.
+                        </li>
+
+                        <li>
+                            Makes unit testing easier.
+                        </li>
+
+                        <li>
+                            Supports dependency injection.
+                        </li>
+
+                        <li>
+                            Helps achieve flexible application architecture.
+                        </li>
+
+                        <li>
+                            Encourages reusable and modular code.
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+
+            <!-- ================= CIIT PRACTICAL ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        CIIT Practical Point
+                    </h2>
+
+                    <div class="alert alert-success mb-0">
+
+                        <p class="mb-2">
+                            In real-world ASP.NET Core applications, interfaces are
+                            commonly used with services, repositories, dependency
+                            injection, and unit testing.
+                        </p>
+
+                        <p class="mb-2">
+                            For example, instead of directly depending on a
+                            <code>PaymentService</code> class, an application can
+                            depend on an <code>IPaymentService</code> interface.
+                        </p>
+
+                        <p class="mb-0">
+                            This makes it easier to replace implementations,
+                            test individual components, and maintain large projects.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ================= COMMON MISTAKES ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Common Mistakes
+                    </h2>
+
+                    <ol>
+
+                        <li>
+                            Forgetting to implement all required interface members.
+                        </li>
+
+                        <li>
+                            Trying to create an object directly from an interface.
+                        </li>
+
+                        <li>
+                            Confusing interfaces with inheritance from a base class.
+                        </li>
+
+                        <li>
+                            Creating unnecessary interfaces without a clear purpose.
+                        </li>
+
+                        <li>
+                            Not following meaningful interface naming conventions.
+                        </li>
+
+                    </ol>
+
+                </div>
+            </div>
+
+
+            <!-- ================= INTERVIEW ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Important Interview Points
+                    </h2>
+
+                    <ul>
+
+                        <li>What is an interface in C#?</li>
+
+                        <li>Why do we use interfaces?</li>
+
+                        <li>How do you implement an interface?</li>
+
+                        <li>Can a class implement multiple interfaces?</li>
+
+                        <li>Can an interface inherit another interface?</li>
+
+                        <li>Difference between interface and abstract class?</li>
+
+                        <li>What is explicit interface implementation?</li>
+
+                        <li>Can an interface reference hold a class object?</li>
+
+                        <li>How are interfaces related to polymorphism?</li>
+
+                        <li>How are interfaces used in dependency injection?</li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+
+            <!-- ================= SUMMARY ================= -->
+            <div class="alert alert-primary mb-4">
+
+                <h2 class="h5 fw-bold">
+                    Summary
+                </h2>
+
+                <p>
+                    An interface defines a contract that classes can implement.
+                    It describes what a class should provide without forcing the
+                    class to use a particular implementation.
+                </p>
+
+                <p>
+                    Interfaces support loose coupling, multiple implementations,
+                    polymorphism, dependency injection, and testable application design.
+                </p>
+
+                <p class="mb-0">
+                    Interfaces are an important part of professional
+                    C# and ASP.NET Core development.
+                </p>
+
+            </div>
+
+
+            <!-- ================= PRACTICE ================= -->
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <h2 class="h4 fw-bold mb-3">
+                        Practice Questions
+                    </h2>
+
+                    <ol>
+
+                        <li>
+                            Create an <code>IVehicle</code> interface with
+                            <code>Start()</code> and <code>Stop()</code> methods.
+                        </li>
+
+                        <li>
+                            Implement the interface in <code>Car</code> and
+                            <code>Bike</code> classes.
+                        </li>
+
+                        <li>
+                            Create two interfaces and implement both in a single class.
+                        </li>
+
+                        <li>
+                            Create an <code>IPayment</code> interface and implement
+                            Credit Card and UPI payment classes.
+                        </li>
+
+                        <li>
+                            Create an interface reference and demonstrate polymorphism.
+                        </li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= MODULE COMPLETE ================= -->
+            <div class="alert alert-success mb-4">
+
+                <h2 class="h5 fw-bold">
+                    Module 4 Completed 🎉
+                </h2>
+
+                <p class="mb-0">
+                    You have now covered Classes & Objects, Constructors,
+                    Encapsulation, Inheritance, Polymorphism, and Interfaces.
+                </p>
+
+            </div>
+
+
+            <!-- ================= NEXT MODULE ================= -->
+           <div class="d-flex justify-content-between align-items-center mb-5">
+
+    <a href="/CSharp/OOPC/Polymorphism"
+       class="btn btn-outline-secondary">
+        ← Previous Topic
+    </a>
+
+    <a href="/CSharp/DataStructuresCollection/Arrays"
+       class="btn btn-primary">
+        Next Topic →
+    </a>
+
+</div>
+
+        </section>
+
+    </div>
+
+</main>
+
+                <script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+            alert("Code example not found.");
+            return;
+        }
+ 
+        // Find only this example's code
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+            alert("Tutorial code not found.");
+            return;
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+    }
+ 
+</script>

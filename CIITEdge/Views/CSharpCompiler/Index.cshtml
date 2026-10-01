@@ -1,0 +1,356 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIIT Code Runner - Interactive Playground</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIIT Stack Lab - Build the Stack. Automate the Ops. Scale the Intellect</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+            :root {
+                --ciit-bg-dark: #0f172a;
+                --ciit-editor-bg: #1e293b;
+                --ciit-terminal-bg: #090d16;
+                --ciit-primary: #2563eb;
+                --ciit-accent: #06b6d4;
+            }
+
+            body {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                background-color: var(--ciit-bg-dark);
+                color: #f8fafc;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            .code-font {
+                font-family: 'Fira Code', monospace;
+            }
+
+            /* Top Navigation Header */
+            .compiler-header {
+                background-color: #0b0f19;
+                border-bottom: 1px solid #334155;
+                padding: 0.6rem 1.5rem;
+            }
+
+            /* Workspace Grid */
+            .workspace-container {
+                display: flex;
+                flex: 1;
+                overflow: hidden;
+            }
+
+            /* Left Task / Instructions Sidebar */
+            .task-sidebar {
+                width: 320px;
+                background-color: #111827;
+                border-right: 1px solid #334155;
+                overflow-y: auto;
+            }
+
+            /* Main Code Area */
+            .editor-container {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                background-color: var(--ciit-editor-bg);
+            }
+
+            .editor-header {
+                background-color: #0f172a;
+                border-bottom: 1px solid #334155;
+                padding: 0.5rem 1rem;
+            }
+
+            .code-input-area {
+                flex: 1;
+                background-color: var(--ciit-editor-bg);
+                color: #f8fafc;
+                border: none;
+                outline: none;
+                resize: none;
+                padding: 1rem;
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            /* Bottom Output Terminal */
+            .terminal-container {
+                height: 220px;
+                background-color: var(--ciit-terminal-bg);
+                border-top: 1px solid #334155;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .terminal-header {
+                background-color: #0f172a;
+                padding: 0.4rem 1rem;
+                font-size: 0.85rem;
+                border-bottom: 1px solid #1e293b;
+            }
+
+            .terminal-output {
+                flex: 1;
+                padding: 1rem;
+                overflow-y: auto;
+                font-size: 0.9rem;
+                color: #38bdf8;
+            }
+
+            /* Responsive Adjustments */
+            @Html.Raw("@") media (max-width: 992px) {
+                body {
+                    overflow: auto;
+                    height: auto;
+                }
+
+                .workspace-container {
+                    flex-direction: column;
+                }
+
+                .task-sidebar {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .editor-container {
+                    min-height: 400px;
+                }
+
+                .terminal-container {
+                    height: 200px;
+                }
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary fs-3" href="#">
+                CIIT<span class="text-info">  Stack Lab</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown">Tutorials</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/CoreJava/Introduction"><i class="bi bi-cup-hot text-danger me-2"></i>Core Java</a></li>
+                            <li><a class="dropdown-item" href="#python"><i class="bi bi-filetype-py text-warning me-2"></i>Python</a></li>
+                            <li><a class="dropdown-item" href="#js"><i class="bi bi-filetype-js text-warning me-2"></i>JavaScript</a></li>
+                            <li><a class="dropdown-item" href="/csharp/introduction"><i class="bi bi-hash text-primary me-2"></i>C# (.NET)</a></li>
+                            <li><a class="dropdown-item" href="#angular"><i class="bi bi-filetype-html text-danger me-2"></i>Angular</a></li>
+                            <li><a class="dropdown-item" href="#ts"><i class="bi bi-filetype-tsx text-primary me-2"></i>TypeScript</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/learning-path">Learning Paths</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/CSharpCompiler/Index">Code Runner</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                </ul>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary fw-semibold" type="button">Sign In</button>
+                    <button class="btn btn-primary fw-semibold" type="button">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="compiler-header d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-3">
+            <a class="navbar-brand fw-bold text-primary fs-4 m-0" href="index.html">
+                CIIT<span class="text-info">.eTutorial</span>
+            </a>
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle d-none d-md-inline-block">
+                Interactive Code Sandbox
+            </span>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="d-flex align-items-center gap-2">
+            @* <label class="text-secondary small fw-semibold d-none d-sm-inline">Language:</label> *@
+            @*  <select class="form-select form-select-sm bg-dark text-white border-secondary fw-semibold" id="languageSelect" style="width: auto;" onchange="changeLanguage()">
+            <option value="java" selected>Core Java</option>
+            <option value="python">Python 3</option>
+            <option value="javascript">JavaScript (ES6)</option>
+            <option value="csharp">C# (.NET)</option>
+            <option value="typescript">TypeScript / Angular</option>
+        </select> *@
+
+            <button class="btn btn-success btn-sm fw-bold px-3 ms-2" id="runBtn">
+                <i class="bi bi-play-fill me-1"></i> Run Code
+            </button>
+            <button class="btn btn-outline-secondary btn-sm fw-semibold" onclick="resetCode()">
+                <i class="bi bi-arrow-counterclockwise"></i> Reset
+            </button>
+        </div>
+    </header>
+    <div class="workspace-container">
+
+        <!-- Sidebar: Task Instructions & Hints -->
+        <aside class="task-sidebar p-3">
+            <span class="badge bg-info-subtle text-info fw-bold mb-2">Practice Exercise</span>
+            <h5 class="fw-bold text-white mb-3" id="taskTitle">Java: Array Iteration & Loops</h5>
+
+            <p class="text-secondary small mb-3" id="taskDesc">
+                Write a Java program to store candidate technologies in an array and iterate through them using an enhanced <code>for</code> loop.
+            </p>
+
+            <div class="card bg-dark border-secondary p-3 mb-3">
+                <h6 class="text-warning fw-bold small mb-2"><i class="bi bi-lightbulb me-1"></i> Objective:</h6>
+                <ul class="text-secondary small ps-3 m-0" id="taskTips">
+                    <li>Initialize a String array with course names.</li>
+                    <li>Use <code>System.out.println()</code> for printing output.</li>
+                    <li>Ensure class name matches <code>Main</code>.</li>
+                </ul>
+            </div>
+
+            <h6 class="text-white fw-bold small mb-2">Available Practice Topics:</h6>
+            <div class="list-group list-group-flush bg-transparent small">
+                <button class="list-group-item list-group-item-action bg-transparent text-secondary border-secondary active text-white" onclick="selectExercise(1)">1. Array Loop Counter</button>
+                <button class="list-group-item list-group-item-action bg-transparent text-secondary border-secondary" onclick="selectExercise(2)">2. Check Prime Number</button>
+                <button class="list-group-item list-group-item-action bg-transparent text-secondary border-secondary" onclick="selectExercise(3)">3. String Manipulation</button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Editor & Terminal -->
+        <main class="editor-container">
+
+            <div class="container-fluid mt-2">
+
+                <div class="row">
+                    <!-- Text Editor -->
+                    <div class="col-md-7">
+                        <label class="form-label fw-bold text-muted">Source Code Editor:</label>
+                        <textarea id="codeEditor" name="code" class="form-control font-monospace p-3 text-white bg-dark" rows="20" style="resize: vertical;">@ViewBag.TutorialCode</textarea>
+                        @* using System;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("What is your first name? ");
+        string first = Console.ReadLine();
+
+        Console.Write("What is your last name? ");
+        string last = Console.ReadLine();
+
+        Console.WriteLine($"\nProcessing data for {first} {last}...");
+        
+        Console.Write("Enter your birth year: ");
+        int year = int.Parse(Console.ReadLine());
+        
+        Console.WriteLine($"Result: You are {2026 - year} years old!");
+    }
+}</textarea> *@
+                            @* <button id="runBtn" class="btn btn-success btn-lg w-100 mt-3 shadow-sm">▶ Run Script</button> *@
+                        </div>
+
+                <!-- Real-Time Interactive Console Terminal -->
+            <div class="col-md-5">
+            <label class="form-label fw-bold text-muted">Interactive Console Terminal:</label>
+        <div class="card border-0 shadow bg-black text-light font-monospace">
+    <div class="card-body p-0">
+    <!-- The scrolling console display -->
+    <div id="terminalScreen" class="p-3" style="height: 340px; overflow-y: auto; white-space: pre-wrap; color: #39ff14; font-size: 0.9rem;">
+        Click "Run Script" to initialize terminal session...
+        </div>
+        <!-- Real-Time Input Line -->
+        <div class="input-group border-top border-secondary">
+                        <span class="input-group-text bg-black border-0 text-success fw-bold font-monospace">&gt;</span>
+        <input id="terminalInput" type="text" class="form-control bg-black border-0 text-white font-monospace"
+               placeholder="Type input and press Enter..." disabled autocomplete="off" />
+        </div>
+                </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        </main>
+        </div>
+        <script src="~/js/signalr/dist/browser/signalr.js"></script>
+        <script>
+            // 1. Open live communication channel to host app
+        const connection = new signalR.HubConnectionBuilder()
+                .withUrl("/compilerHub")
+                .build();
+
+            const terminalScreen = document.getElementById("terminalScreen");
+            const terminalInput = document.getElementById("terminalInput");
+        const runBtn = document.getElementById("runBtn");
+
+            connection.start().catch(err => console.error("SignalR Connection Error: ", err));
+
+        // 2. Output stream arrival logic
+            connection.on("ReceiveOutput", function(text) {
+                if (terminalScreen.innerText === 'Click "Run Script" to initialize terminal session...') {
+                    terminalScreen.innerText = '';
+                }
+            terminalScreen.innerText += text;
+                terminalScreen.scrollTop = terminalScreen.scrollHeight; // Auto-scroll down
+            });
+
+        // 3. Submit source file to compilation process
+            runBtn.addEventListener("click", function() {
+                terminalScreen.innerText = "";
+            terminalInput.disabled = false;
+                terminalInput.focus();
+
+                const code = document.getElementById("codeEditor").value;
+                connection.invoke("CompileAndRun", code).catch(err => console.error(err));
+        });
+
+    // 4. Capture line items out of prompt input bar on 'Enter' keypress
+        terminalInput.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            const data = terminalInput.value;
+
+            // Print user input to the screen so it mirrors a genuine shell environment
+            terminalScreen.innerText += data + "\n";
+            terminalScreen.scrollTop = terminalScreen.scrollHeight;
+
+            // Transmit single chunk straight to blocking code thread
+                connection.invoke("SendInputToProgram", data).catch(err => console.error(err));
+
+                terminalInput.value = "";
+                event.preventDefault();
+            }
+        });
+</script>
+</body>
+</html>

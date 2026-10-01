@@ -1,0 +1,801 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Web APIs & Browser Storage";
+}
+
+<style>
+    #javascript-web-api-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-web-api-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    /* PAGE TITLE */
+    #javascript-web-api-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-web-api-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    /* SECTION */
+    #javascript-web-api-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-web-api-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* CONCEPT */
+    #javascript-web-api-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-web-api-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-web-api-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-web-api-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* FLOW DIAGRAM */
+    #javascript-web-api-page .flow-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-web-api-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #javascript-web-api-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-web-api-page .flow-box {
+        min-width: 145px;
+        padding: 15px 20px;
+        border: 2px solid #7c3aed;
+        border-radius: 8px;
+        text-align: center;
+        background: #ffffff;
+        font-weight: 600;
+        color: #212529;
+    }
+
+    #javascript-web-api-page .flow-arrow {
+        font-size: 24px;
+        color: #7c3aed;
+        font-weight: 700;
+    }
+
+    /* IMAGE */
+    #javascript-web-api-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+
+    #javascript-web-api-page .browser-image {
+        width: 100%;
+        max-width: 850px;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        margin: auto;
+    }
+
+    #javascript-web-api-page .image-caption {
+        color: #6c757d;
+        font-size: 14px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* CODE */
+    #javascript-web-api-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-web-api-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-web-api-page .code-box code {
+        color: #ffffff;
+    }
+
+    /* TRY IT */
+    #javascript-web-api-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-web-api-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        min-width: 105px;
+    }
+
+    #javascript-web-api-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+    /* OUTPUT */
+    #javascript-web-api-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 10px;
+        margin-bottom: 28px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    /* NOTE */
+    #javascript-web-api-page .note-box {
+        background: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 5px solid #ffb300;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        color: #6d4c41;
+        line-height: 1.7;
+    }
+
+    /* SUMMARY */
+    #javascript-web-api-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 8px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-web-api-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-web-api-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* NAVIGATION */
+    #javascript-web-api-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-web-api-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+    #javascript-web-api-page .previous-btn {
+        background-color: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-web-api-page .previous-btn:hover {
+        background-color: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-web-api-page .next-btn {
+        background-color: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-web-api-page .next-btn:hover {
+        background-color: #4c1d95;
+        color: #ffffff;
+    }
+
+    /* RESPONSIVE */
+    @@media (max-width: 768px) {
+
+        #javascript-web-api-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-web-api-page .page-title {
+            font-size: 29px;
+        }
+
+        #javascript-web-api-page .flow-row {
+            flex-direction: column;
+        }
+
+        #javascript-web-api-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-web-api-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-web-api-page .nav-btn {
+            justify-content: center;
+        }
+    }
+</style>
+
+
+<main id="javascript-web-api-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDE - COURSE SYLLABUS
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 RIGHT SIDE - CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- PAGE HEADER -->
+
+                    <h1 class="page-title">
+                        Web APIs & Browser Storage
+                    </h1>
+
+                    <p class="lead-text">
+                        Web APIs allow JavaScript to communicate with
+                        browser features, while Browser Storage allows
+                        web applications to store data inside the browser.
+                    </p>
+
+
+                    <!-- INTRODUCTION -->
+
+                    <h2 class="section-title">
+                        What are Web APIs?
+                    </h2>
+
+                    <p class="section-text">
+                        Web APIs are browser-provided interfaces that allow
+                        JavaScript to interact with the browser and perform
+                        different operations such as working with the DOM,
+                        making network requests, accessing storage, and
+                        interacting with other browser features.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+                            Web APIs are browser-provided tools that JavaScript
+                            can use to communicate with and control browser
+                            features.
+                        </p>
+
+                    </div>
+
+
+                    <!-- WEB API FLOW -->
+
+                    <div class="flow-card">
+
+                        <div class="flow-title">
+                            How Web APIs Work
+                        </div>
+
+                        <div class="flow-row">
+
+                            <div class="flow-box">
+                                JavaScript
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Web API
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Browser
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Result
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ONLINE IMAGE -->
+
+                    <div class="image-card">
+
+                        <img src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting/document-window-navigator.png"
+                             alt="JavaScript browser objects"
+                             class="browser-image"
+                             onerror="this.style.display='none';" />
+
+                        <p class="image-caption">
+                            JavaScript can interact with important browser
+                            objects such as Window, Document and Navigator.
+                        </p>
+
+                    </div>
+
+
+                    <!-- COMMON WEB APIS -->
+
+                    <h2 class="section-title">
+                        Common Web APIs
+                    </h2>
+
+                    <div class="concept-box">
+
+                        <p>
+                            • <strong>DOM API</strong> – Used to work with
+                            HTML elements and page content.
+                        </p>
+
+                        <p>
+                            • <strong>Fetch API</strong> – Used to make
+                            HTTP/network requests.
+                        </p>
+
+                        <p>
+                            • <strong>Storage API</strong> – Used to store
+                            information in the browser.
+                        </p>
+
+                        <p>
+                            • <strong>Geolocation API</strong> – Used to
+                            access geographical location with permission.
+                        </p>
+
+                        <p class="mb-0">
+                            • <strong>Console API</strong> – Used for
+                            debugging JavaScript applications.
+                        </p>
+
+                    </div>
+
+
+                    <!-- BROWSER STORAGE -->
+
+                    <h2 class="section-title">
+                        What is Browser Storage?
+                    </h2>
+
+                    <p class="section-text">
+                        Browser Storage allows websites to save small
+                        amounts of data inside the user's browser.
+                        This data can be used to remember preferences,
+                        settings, or other application information.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Main Types of Browser Storage
+                        </h5>
+
+                        <p>
+                            <strong>Local Storage</strong> stores data
+                            in the browser and keeps it even after the
+                            browser is closed.
+                        </p>
+
+                        <p class="mb-0">
+                            <strong>Session Storage</strong> stores data
+                            for the current browser session.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: localStorage
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>setItem()</strong> method is used to
+                        store data in localStorage.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>localStorage.setItem("username", "Rahul");
+
+var username = localStorage.getItem("username");
+
+console.log(username);</code></pre>
+
+                    </div>
+
+
+                    <!-- TRY IT RIGHT SIDE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runLocalStorageExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- OUTPUT UNDER CODE -->
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        Rahul
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: sessionStorage
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>setItem()</strong> method can also be
+                        used with sessionStorage to store data for the
+                        current browser session.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>sessionStorage.setItem("course", "JavaScript");
+
+var course = sessionStorage.getItem("course");
+
+console.log(course);</code></pre>
+
+                    </div>
+
+
+                    <!-- TRY IT RIGHT SIDE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runSessionStorageExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- OUTPUT UNDER CODE -->
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        JavaScript
+
+                    </div>
+
+
+                    <!-- IMPORTANT POINTS -->
+
+                    <h2 class="section-title">
+                        Important Points
+                    </h2>
+
+
+                    <div class="note-box">
+
+                        <p>
+                            • Web APIs are provided by the browser.
+                        </p>
+
+                        <p>
+                            • JavaScript can use Web APIs to interact
+                            with browser features.
+                        </p>
+
+                        <p>
+                            • localStorage stores data permanently
+                            until it is removed.
+                        </p>
+
+                        <p>
+                            • sessionStorage stores data for the current
+                            browser session.
+                        </p>
+
+                        <p class="mb-0">
+                            • Browser Storage works using key-value pairs.
+                        </p>
+
+                    </div>
+
+
+                    <!-- COMPILER NOTE -->
+
+                    <div class="note-box">
+
+                        <strong>Compiler Note:</strong>
+
+                        <br />
+
+                        The CIIT JavaScript Compiler is console-based.
+                        The Try It buttons open the CIIT compiler with
+                        compiler-safe JavaScript code so that the result
+                        appears in the compiler output window.
+
+                    </div>
+
+
+                    <!-- SUMMARY -->
+
+                    <div class="summary-box">
+
+                        <h2>
+                            Summary
+                        </h2>
+
+                        <p>
+                            Web APIs provide browser functionality that
+                            JavaScript applications can use. Browser Storage
+                            allows web applications to store data inside
+                            the browser. Local Storage and Session Storage
+                            are commonly used browser storage mechanisms.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("FetchAPI", "AsynchronousJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Fetch API
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("LocalStorage", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Local Storage
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       LOCAL STORAGE
+       COMPILER-SAFE VERSION
+       ========================================================= */
+
+    function runLocalStorageExample() {
+
+        var code =
+`var localStorage = {};
+
+localStorage["username"] = "Rahul";
+
+var username = localStorage["username"];
+
+console.log(username);`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       SESSION STORAGE
+       COMPILER-SAFE VERSION
+       ========================================================= */
+
+    function runSessionStorageExample() {
+
+        var code =
+`var sessionStorage = {};
+
+sessionStorage["course"] = "JavaScript";
+
+var course = sessionStorage["course"];
+
+console.log(course);`;
+
+        openCompiler(code);
+    }
+
+</script>

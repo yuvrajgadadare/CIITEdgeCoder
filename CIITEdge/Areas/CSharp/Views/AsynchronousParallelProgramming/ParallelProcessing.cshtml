@@ -1,0 +1,1390 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Parallel Processing";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- =========================================================
+             LEFT SIDEBAR
+             ========================================================= -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+
+        <!-- =========================================================
+             MAIN CONTENT
+             ========================================================= -->
+        <section class="col-lg-9">
+
+            <!-- =====================================================
+                 1. INTRODUCTION
+                 ===================================================== -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Parallel Processing
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Parallel processing is a programming technique in which
+                    multiple operations are executed at the same time to
+                    improve performance and reduce the total execution time.
+                </p>
+
+                <p class="text-muted mb-4">
+                    C# provides the
+                    <strong>Task Parallel Library (TPL)</strong>,
+                    <strong>Parallel</strong> class, and other APIs that make
+                    it easier to execute independent operations concurrently.
+                </p>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Key Idea:</strong>
+                    Parallel processing is most useful when a large amount of
+                    independent work can be divided into smaller pieces and
+                    processed simultaneously.
+                </div>
+
+
+                <!-- =================================================
+                     2. WHAT IS PARALLEL PROCESSING?
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    What is Parallel Processing?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Parallel processing means dividing a large operation into
+                    smaller independent operations and allowing multiple
+                    operations to execute concurrently.
+                </p>
+
+                <p class="text-muted mb-4">
+                    For example, suppose an application needs to process
+                    thousands of independent records. Instead of processing
+                    every record one after another, the work can be divided
+                    into smaller parts and processed concurrently.
+                </p>
+
+                <div class="alert alert-success mb-4">
+                    <strong>Real-world Example:</strong>
+                    Image processing, data analysis, report generation,
+                    mathematical calculations, and batch processing can often
+                    benefit from parallel execution.
+                </div>
+
+
+                <!-- =================================================
+                     3. SEQUENTIAL VS PARALLEL
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Sequential Processing vs Parallel Processing
+                </h3>
+
+                <p class="text-muted mb-4">
+                    In sequential processing, operations are performed one
+                    after another. In parallel processing, independent
+                    operations may execute concurrently.
+                </p>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Sequential Processing</th>
+                                <th>Parallel Processing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Execution</td>
+                                <td>One operation after another</td>
+                                <td>Multiple independent operations concurrently</td>
+                            </tr>
+                            <tr>
+                                <td>Performance</td>
+                                <td>May take more time for large workloads</td>
+                                <td>Can reduce execution time for suitable workloads</td>
+                            </tr>
+                            <tr>
+                                <td>CPU Usage</td>
+                                <td>May use less CPU concurrency</td>
+                                <td>Can use multiple CPU cores</td>
+                            </tr>
+                            <tr>
+                                <td>Best For</td>
+                                <td>Dependent operations</td>
+                                <td>Independent CPU-intensive operations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =================================================
+                     4. PARALLEL CLASS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Parallel Class
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>Parallel</code> class is available in
+                    <code>System.Threading.Tasks</code> and provides simple
+                    methods for running iterations or actions concurrently.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Commonly used methods include:
+                </p>
+
+                <ul class="text-muted mb-4">
+                    <li><code>Parallel.For()</code></li>
+                    <li><code>Parallel.ForEach()</code></li>
+                    <li><code>Parallel.Invoke()</code></li>
+                </ul>
+
+
+                <!-- =================================================
+                     5. PARALLEL.FOR
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Parallel.For()
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <code>Parallel.For()</code> executes iterations of a loop
+                    concurrently whenever the runtime determines that
+                    parallel execution is beneficial.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        Parallel.For(1, 6, i =>
+        {
+            Console.WriteLine("Processing: " + i);
+        });
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Possible Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Processing: 3
+Processing: 1
+Processing: 4
+Processing: 2
+Processing: 5</code></pre>
+                </div>
+
+                <div class="alert alert-warning mb-4">
+                    <strong>Important:</strong>
+                    The output order is not guaranteed because the iterations
+                    may execute concurrently.
+                </div>
+
+
+                <!-- =================================================
+                     6. HOW PARALLEL.FOR WORKS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    How Parallel.For() Works
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Instead of waiting for every iteration to finish before
+                    starting the next one, the runtime can divide the work
+                    among available worker threads.
+                </p>
+
+                <div class="parallel-flow-wrapper mb-4">
+
+                    <div class="parallel-flow-box">
+                        <strong>Large Loop</strong>
+                        <span>1 to 1000</span>
+                    </div>
+
+                    <div class="parallel-flow-arrow">
+                        ↓
+                    </div>
+
+                    <div class="parallel-flow-box">
+                        <strong>Work Partitioning</strong>
+                        <span>Divide iterations</span>
+                    </div>
+
+                    <div class="parallel-flow-arrow">
+                        ↓
+                    </div>
+
+                    <div class="parallel-worker-row">
+                        <div class="parallel-worker">
+                            Worker 1
+                        </div>
+
+                        <div class="parallel-worker">
+                            Worker 2
+                        </div>
+
+                        <div class="parallel-worker">
+                            Worker 3
+                        </div>
+
+                        <div class="parallel-worker">
+                            Worker 4
+                        </div>
+                    </div>
+
+                    <div class="parallel-flow-arrow">
+                        ↓
+                    </div>
+
+                    <div class="parallel-flow-box">
+                        <strong>Combined Result</strong>
+                        <span>Processing completed</span>
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     7. PARALLEL.FOREACH
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Parallel.ForEach()
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <code>Parallel.ForEach()</code> is useful when working
+                    with a collection and each item can be processed
+                    independently.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        List&lt;string&gt; students = new List&lt;string&gt;
+        {
+            "Amit",
+            "Priya",
+            "Rahul",
+            "Sneha",
+            "Neha"
+        };
+
+        Parallel.ForEach(students, student =>
+        {
+            Console.WriteLine("Processing: " + student);
+        });
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Possible Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Processing: Rahul
+Processing: Amit
+Processing: Sneha
+Processing: Priya
+Processing: Neha</code></pre>
+                </div>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Remember:</strong>
+                    The order of execution should not be relied upon when
+                    using parallel loops.
+                </div>
+
+
+                <!-- =================================================
+                     8. PARALLEL.INVOKE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Parallel.Invoke()
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <code>Parallel.Invoke()</code> executes multiple independent
+                    actions concurrently.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        Parallel.Invoke(
+            () =&gt; PrintMessage("Task A"),
+            () =&gt; PrintMessage("Task B"),
+            () =&gt; PrintMessage("Task C")
+        );
+    }
+
+    static void PrintMessage(string message)
+    {
+        Console.WriteLine(message);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Possible Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Task B
+Task A
+Task C</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    The three actions are independent, so their execution
+                    order can vary.
+                </p>
+
+
+                <!-- =================================================
+                     9. MAXDEGREEOFPARALLELISM
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Controlling Parallelism
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Sometimes an application should limit how many operations
+                    execute concurrently. This can be useful when the workload
+                    is large or when system resources need to be controlled.
+                </p>
+
+                <p class="text-muted mb-4">
+                    <code>ParallelOptions</code> can be used to configure
+                    parallel execution.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        ParallelOptions options = new ParallelOptions
+        {
+            MaxDegreeOfParallelism = 2
+        };
+
+        Parallel.For(1, 7, options, i =>
+        {
+            Console.WriteLine("Processing item: " + i);
+        });
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Explanation
+                </h4>
+
+                <p class="text-muted mb-4">
+                    In this example, the application allows a maximum of two
+                    parallel operations at a time.
+                </p>
+
+                <div class="alert alert-success mb-4">
+                    <strong>Practical Tip:</strong>
+                    Limiting parallelism can help prevent excessive CPU usage
+                    and resource contention for certain workloads.
+                </div>
+
+
+                <!-- =================================================
+                     10. THREAD-SAFE COLLECTIONS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Parallel Processing and Shared Data
+                </h3>
+
+                <p class="text-muted mb-4">
+                    When multiple operations work concurrently, shared mutable
+                    data can become difficult to manage safely.
+                </p>
+
+                <p class="text-muted mb-4">
+                    For example, multiple parallel operations should not
+                    blindly update the same normal collection without
+                    considering thread safety.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        ConcurrentBag&lt;int&gt; numbers = new ConcurrentBag&lt;int&gt;();
+
+        Parallel.For(1, 6, i =>
+        {
+            numbers.Add(i);
+        });
+
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <p class="text-muted mb-4">
+                    <code>ConcurrentBag&lt;T&gt;</code> is designed for scenarios
+                    where multiple threads may add or remove items
+                    concurrently.
+                </p>
+
+
+                <!-- =================================================
+                     11. PARALLEL LOOP WITH CONDITION
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Parallel.ForEach() with Filtering
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Parallel processing can also be combined with conditions
+                    when only certain items need to be processed.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        List&lt;int&gt; numbers = new List&lt;int>
+        {
+            10, 15, 20, 25, 30
+        };
+
+        Parallel.ForEach(numbers, number =>
+        {
+            if (number % 10 == 0)
+            {
+                Console.WriteLine("Valid: " + number);
+            }
+        });
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Valid: 10
+Valid: 20
+Valid: 30</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     12. PARALLEL PROCESSING EXAMPLE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Example: Processing Student Scores
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Consider an application that needs to process scores for
+                    many students. Each student's calculation is independent,
+                    so the calculations can be performed concurrently.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        List&lt;int&gt; scores = new List&lt;int>
+        {
+            75, 82, 91, 68, 88
+        };
+
+        Parallel.ForEach(scores, score =>
+        {
+            string result = score &gt;= 70 ? "Pass" : "Fail";
+
+            Console.WriteLine(
+                "Score: " + score + " - " + result
+            );
+        });
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Possible Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Score: 91 - Pass
+Score: 75 - Pass
+Score: 68 - Fail
+Score: 88 - Pass
+Score: 82 - Pass</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     13. PARALLEL VS MULTITHREADING
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Parallel Processing vs Multithreading
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Multithreading</th>
+                                <th>Parallel Processing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Main Focus</td>
+                                <td>Managing multiple threads</td>
+                                <td>Executing independent work concurrently</td>
+                            </tr>
+                            <tr>
+                                <td>Abstraction</td>
+                                <td>Lower-level</td>
+                                <td>Higher-level</td>
+                            </tr>
+                            <tr>
+                                <td>Common API</td>
+                                <td>Thread</td>
+                                <td>Parallel, TPL</td>
+                            </tr>
+                            <tr>
+                                <td>Best Use</td>
+                                <td>Explicit thread control</td>
+                                <td>CPU-bound independent workloads</td>
+                            </tr>
+                            <tr>
+                                <td>Complexity</td>
+                                <td>More manual management</td>
+                                <td>Usually simpler for parallel loops</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =================================================
+                     14. PARALLEL PROCESSING VS ASYNC
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Parallel Processing vs Asynchronous Programming
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Parallel processing and asynchronous programming solve
+                    different problems, although they can sometimes be used
+                    together.
+                </p>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Asynchronous Programming</th>
+                                <th>Parallel Processing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Primary Goal</td>
+                                <td>Avoid blocking while waiting</td>
+                                <td>Perform independent work concurrently</td>
+                            </tr>
+                            <tr>
+                                <td>Common Scenario</td>
+                                <td>I/O-bound operations</td>
+                                <td>CPU-bound operations</td>
+                            </tr>
+                            <tr>
+                                <td>Common Keywords/API</td>
+                                <td>async, await, Task</td>
+                                <td>Parallel.For, Parallel.ForEach</td>
+                            </tr>
+                            <tr>
+                                <td>Example</td>
+                                <td>API or database call</td>
+                                <td>Large calculation or data processing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =================================================
+                     15. WHEN TO USE PARALLEL PROCESSING
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    When Should You Use Parallel Processing?
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li>When operations are independent.</li>
+                    <li>When the workload is large enough to benefit from concurrency.</li>
+                    <li>When the work is CPU-intensive.</li>
+                    <li>When multiple CPU cores can be used effectively.</li>
+                    <li>When the overhead of parallel execution is justified.</li>
+                </ul>
+
+                <div class="alert alert-warning mb-4">
+                    <strong>Important:</strong>
+                    Parallel processing does not automatically make every
+                    program faster. For very small workloads, the overhead of
+                    parallel execution can make the program slower.
+                </div>
+
+
+                <!-- =================================================
+                     16. WHEN NOT TO USE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    When Should You Avoid Parallel Processing?
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li>When operations depend heavily on each other.</li>
+                    <li>When the workload is extremely small.</li>
+                    <li>When shared mutable data is difficult to protect.</li>
+                    <li>When ordering is critical.</li>
+                    <li>When parallel execution creates unnecessary resource contention.</li>
+                </ul>
+
+
+                <!-- =================================================
+                     17. EXCEPTION HANDLING
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Exception Handling in Parallel Operations
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Parallel operations can encounter exceptions. These
+                    exceptions need to be handled appropriately by the
+                    application.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            Parallel.For(1, 6, i =>
+            {
+                if (i == 3)
+                {
+                    throw new InvalidOperationException(
+                        "Invalid operation."
+                    );
+                }
+
+                Console.WriteLine("Processing: " + i);
+            });
+        }
+        catch (AggregateException ex)
+        {
+            foreach (Exception error in ex.InnerExceptions)
+            {
+                Console.WriteLine(error.Message);
+            }
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <p class="text-muted mb-4">
+                    Parallel operations may report failures through
+                    <code>AggregateException</code>, which can contain one or
+                    more exceptions produced during the parallel operation.
+                </p>
+
+
+                <!-- =================================================
+                     18. REAL WORLD APPLICATIONS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                   Applications 🌍🤓
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li>Large-scale data processing.</li>
+                    <li>Image and video processing.</li>
+                    <li>Report generation.</li>
+                    <li>Scientific calculations.</li>
+                    <li>Financial calculations.</li>
+                    <li>Batch processing.</li>
+                    <li>Data transformation.</li>
+                    <li>Machine learning preprocessing.</li>
+                </ul>
+
+                <div class="alert alert-success mb-4">
+                    <strong>CIIT Practical Point:</strong>
+                    In real .NET applications, parallel processing can be
+                    useful for CPU-intensive background work, batch data
+                    processing, report generation, and other independent
+                    calculations. Always measure performance before and after
+                    introducing parallelism.
+                </div>
+
+
+                <!-- =================================================
+                     19. COMMON MISTAKES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3"> 
+                    Common Mistakes
+                </h3>
+
+                <ol class="text-muted mb-4">
+                    <li class="mb-2">
+                        Assuming that parallel execution always makes code faster.
+                    </li>
+
+                    <li class="mb-2">
+                        Assuming that parallel loop iterations execute in order.
+                    </li>
+
+                    <li class="mb-2">
+                        Updating shared data without considering thread safety.
+                    </li>
+
+                    <li class="mb-2">
+                        Creating too much parallel work for a small operation.
+                    </li>
+
+                    <li class="mb-2">
+                        Ignoring CPU and memory consumption.
+                    </li>
+
+                    <li class="mb-2">
+                        Using parallel processing for operations that depend on
+                        previous results.
+                    </li>
+                </ol>
+
+
+                <!-- =================================================
+                     20. BEST PRACTICES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Best Practices
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li>Use parallel processing for independent workloads.</li>
+                    <li>Keep parallel operations reasonably small and focused.</li>
+                    <li>Avoid unnecessary shared mutable state.</li>
+                    <li>Use thread-safe collections when required.</li>
+                    <li>Do not depend on execution order.</li>
+                    <li>Control the degree of parallelism when necessary.</li>
+                    <li>Measure performance instead of assuming improvement.</li>
+                </ul>
+
+
+                <!-- =================================================
+                     21. INTERVIEW QUESTIONS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-4">
+                    Interview Questions
+                </h3>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        1. What is parallel processing?
+                    </h5>
+
+                    <p class="text-muted">
+                        Parallel processing is a technique where independent
+                        operations are executed concurrently to improve
+                        performance for suitable workloads.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        2. What is the Parallel class in C#?
+                    </h5>
+
+                    <p class="text-muted">
+                        The Parallel class provides methods such as
+                        Parallel.For(), Parallel.ForEach(), and
+                        Parallel.Invoke() for parallel execution.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        3. What is Parallel.For()?
+                    </h5>
+
+                    <p class="text-muted">
+                        Parallel.For() executes iterations of a loop
+                        concurrently when parallel execution is appropriate.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        4. What is Parallel.ForEach()?
+                    </h5>
+
+                    <p class="text-muted">
+                        Parallel.ForEach() processes elements of a collection
+                        concurrently when the operations are independent.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        5. What is Parallel.Invoke()?
+                    </h5>
+
+                    <p class="text-muted">
+                        Parallel.Invoke() executes multiple independent actions
+                        concurrently.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        6. Does Parallel.For() guarantee execution order?
+                    </h5>
+
+                    <p class="text-muted">
+                        No. The execution order of parallel iterations should
+                        not be relied upon.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        7. When should parallel processing be used?
+                    </h5>
+
+                    <p class="text-muted">
+                        It should be considered when independent,
+                        sufficiently large, and CPU-intensive operations can
+                        benefit from concurrent execution.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        8. What is MaxDegreeOfParallelism?
+                    </h5>
+
+                    <p class="text-muted">
+                        MaxDegreeOfParallelism limits the maximum number of
+                        concurrent operations used by certain parallel APIs.
+                    </p>
+                </div>
+
+
+                <!-- =================================================
+                     22. PRACTICE PROGRAMS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Practice Programs
+                </h3>
+
+                <ol class="text-muted mb-4">
+                    <li class="mb-2">
+                        Use Parallel.For() to print numbers from 1 to 20.
+                    </li>
+
+                    <li class="mb-2">
+                        Use Parallel.ForEach() to process a list of student names.
+                    </li>
+
+                    <li class="mb-2">
+                        Use Parallel.Invoke() to execute three independent methods.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a program that processes 100 numbers in parallel.
+                    </li>
+
+                    <li class="mb-2">
+                        Use ParallelOptions to limit parallelism to two operations.
+                    </li>
+
+                    <li class="mb-2">
+                        Use ConcurrentBag&lt;T&gt; with a parallel loop.
+                    </li>
+
+                    <li class="mb-2">
+                        Compare sequential and parallel processing for a large
+                        calculation.
+                    </li>
+                </ol>
+
+            </div>
+
+
+            <!-- =========================================================
+                 SUMMARY
+                 ========================================================= -->
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    Parallel processing allows independent operations to
+                    execute concurrently and can improve performance for
+                    suitable workloads.
+                </p>
+
+                <p class="mb-3">
+                    You learned important C# parallel programming APIs such as
+                    <strong>
+                        Parallel.For(),
+                        Parallel.ForEach(),
+                        Parallel.Invoke(),
+                        and ParallelOptions
+                    </strong>.
+                </p>
+
+                <p class="mb-3">
+                    You also learned about parallel execution order,
+                    shared data, thread-safe collections, exception handling,
+                    and situations where parallel processing should or should
+                    not be used.
+                </p>
+
+                <p class="mb-0">
+                    Parallel processing should be applied carefully and
+                    performance should be measured rather than assumed.
+                </p>
+
+            </div>
+
+
+            <!-- =========================================================
+                 NAVIGATION
+                 ========================================================= -->
+            <div class="d-flex justify-content-between align-items-center mt-4 mb-5">
+
+                <a href="@Url.Action("Multithreading", "AsynchronousParallelProgramming", new { area = "CSharp" })"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="@Url.Action("FileSystem", "FileIO", new { area = "CSharp" })"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+
+
+<!-- =============================================================
+     PARALLEL PROCESSING DIAGRAM CSS
+     ============================================================= -->
+<style>
+    .parallel-flow-wrapper {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 28px 20px;
+        text-align: center;
+    }
+
+    .parallel-flow-box {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 230px;
+        padding: 16px 22px;
+        border: 1px solid #b6d4fe;
+        border-radius: 8px;
+        background: #cfe2ff;
+        color: #084298;
+    }
+
+        .parallel-flow-box strong {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .parallel-flow-box span {
+            font-size: 14px;
+        }
+
+    .parallel-flow-arrow {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 10px 0;
+        color: #6c757d;
+    }
+
+    .parallel-worker-row {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 10px 0;
+    }
+
+    .parallel-worker {
+        min-width: 125px;
+        padding: 13px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        background: #ffffff;
+        font-weight: 600;
+        color: #343a40;
+    }
+
+    @@media (max-width: 768px) {
+        .parallel-flow-box {
+            min-width: 190px;
+        }
+
+        .parallel-worker-row {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .parallel-worker {
+            width: 80%;
+        }
+    }
+</style>
+
+<script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

@@ -1,0 +1,792 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Introduction to JavaScript";
+}
+
+<style>
+
+    /* =========================================================
+           PAGE
+           ========================================================= */
+
+    #javascript-introduction-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+        #javascript-introduction-page .content-section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =========================================================
+           TITLES
+           ========================================================= */
+
+        #javascript-introduction-page .page-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 12px;
+        }
+
+        #javascript-introduction-page .lead-text {
+            color: #6c757d;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        #javascript-introduction-page .section-title {
+            font-size: 27px;
+            font-weight: 700;
+            color: #212529;
+            margin-top: 32px;
+            margin-bottom: 15px;
+        }
+
+        #javascript-introduction-page .section-text {
+            color: #495057;
+            font-size: 16px;
+            line-height: 1.85;
+            margin-bottom: 14px;
+        }
+
+
+        /* =========================================================
+           CONCEPT BOX
+           ========================================================= */
+
+        #javascript-introduction-page .concept-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+            #javascript-introduction-page .concept-box h5 {
+                color: #5b21b6;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+
+        /* =========================================================
+           ONLINE TUTORIAL IMAGE
+           ========================================================= */
+
+        #javascript-introduction-page .image-card {
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        #javascript-introduction-page .topic-image {
+            width: 100%;
+            max-height: 330px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+
+        #javascript-introduction-page .image-caption {
+            text-align: center;
+            color: #6c757d;
+            font-size: 13px;
+            margin: 12px 5px 0 5px;
+        }
+
+
+        /* =========================================================
+           CODE
+           ========================================================= */
+
+        #javascript-introduction-page .code-section {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        #javascript-introduction-page .code-box {
+            background: #212529;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 18px;
+            overflow-x: auto;
+            margin: 0;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+            #javascript-introduction-page .code-box code {
+                color: #ffffff;
+            }
+
+
+        /* =========================================================
+           TRY IT BUTTON
+           ========================================================= */
+
+        #javascript-introduction-page .try-it-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+            margin-bottom: 28px;
+        }
+
+        #javascript-introduction-page .try-it-btn {
+            background-color: #198754;
+            color: #ffffff;
+            border: 1px solid #198754;
+            border-radius: 7px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            min-width: 105px;
+        }
+
+            #javascript-introduction-page .try-it-btn:hover {
+                background-color: #157347;
+                border-color: #157347;
+                transform: translateY(-1px);
+            }
+
+            #javascript-introduction-page .try-it-btn:active {
+                background-color: #146c43;
+                border-color: #146c43;
+                transform: translateY(0);
+            }
+
+
+        /* =========================================================
+           OUTPUT
+           ========================================================= */
+
+        #javascript-introduction-page .output-box {
+            background: #f8f9fa;
+            border-left: 4px solid #198754;
+            border-radius: 7px;
+            padding: 15px 17px;
+            margin-top: 12px;
+            color: #198754;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           HTML CSS JAVASCRIPT CARDS
+           ========================================================= */
+
+        #javascript-introduction-page .role-card {
+            height: 100%;
+            background: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+            #javascript-introduction-page .role-card h5 {
+                color: #5b21b6;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            #javascript-introduction-page .role-card p {
+                color: #6c757d;
+                line-height: 1.7;
+                margin-bottom: 0;
+            }
+
+
+        /* =========================================================
+           EXECUTION FLOW DIAGRAM
+           ========================================================= */
+
+        #javascript-introduction-page .flow-diagram {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        #javascript-introduction-page .flow-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #5b21b6;
+            margin-bottom: 22px;
+        }
+
+        #javascript-introduction-page .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        #javascript-introduction-page .flow-box {
+            background: #ffffff;
+            border: 1px solid #d8dee9;
+            border-radius: 10px;
+            padding: 14px 18px;
+            min-width: 125px;
+            text-align: center;
+            font-weight: 700;
+            color: #212529;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+        }
+
+        #javascript-introduction-page .flow-arrow {
+            font-size: 24px;
+            font-weight: 700;
+            color: #5b21b6;
+        }
+
+
+        /* =========================================================
+           SUMMARY
+           ========================================================= */
+
+        #javascript-introduction-page .summary-box {
+            background: #e0f7fa;
+            border: 1px solid #90e0ef;
+            border-radius: 10px;
+            padding: 22px;
+            margin-top: 32px;
+        }
+
+            #javascript-introduction-page .summary-box h2 {
+                color: #075985;
+                font-weight: 700;
+                margin-bottom: 12px;
+            }
+
+            #javascript-introduction-page .summary-box p {
+                color: #075985;
+                line-height: 1.8;
+                margin-bottom: 0;
+            }
+
+
+        /* =========================================================
+           BOTTOM NAVIGATION
+           ========================================================= */
+
+        #javascript-introduction-page .bottom-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        #javascript-introduction-page .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        #javascript-introduction-page .previous-btn {
+            background: #f1f3f5;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
+        }
+
+        #javascript-introduction-page .next-btn {
+            background: #5b21b6;
+            color: #ffffff;
+            border: 1px solid #5b21b6;
+        }
+
+            #javascript-introduction-page .next-btn:hover {
+                background: #4c1d95;
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+</style>
+
+
+<main id="javascript-introduction-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - TUTORIAL CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Introduction to JavaScript
+                </h1>
+
+                <p class="lead-text">
+                    Learn what JavaScript is, why it is important, how it works
+                    in the browser, and how it adds behavior and interactivity
+                    to modern web applications.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS JAVASCRIPT?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is JavaScript?
+                </h2>
+
+                <p class="section-text">
+                    JavaScript is a programming language used to add
+                    interactivity, logic, and dynamic behavior to web pages
+                    and web applications.
+                </p>
+
+                <p class="section-text">
+                    JavaScript can respond to user actions, update page
+                    content, validate forms, communicate with servers,
+                    work with browser APIs, and control dynamic application
+                    behavior.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE 1
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://media2.dev.to/dynamic/image/width%3D1000%2Cheight%3D420%2Cfit%3Dcover%2Cgravity%3Dauto%2Cformat%3Dauto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fti85yf4519p16sl2on1m.png"
+                         alt="JavaScript Code Execution Flow"
+                         class="topic-image" />
+
+                    <p class="image-caption">
+                        JavaScript code execution flow in a browser.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SIMPLE DEFINITION
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Definition
+                    </h5>
+
+                    <p class="mb-0">
+                        JavaScript is used to make web pages interactive,
+                        dynamic, and responsive to user actions.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     HTML CSS JAVASCRIPT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    HTML, CSS, and JavaScript
+                </h2>
+
+                <p class="section-text">
+                    Modern websites commonly use HTML, CSS, and JavaScript
+                    together. Each technology has a different responsibility.
+                </p>
+
+                <div class="row g-3 mt-2">
+
+                    <div class="col-md-4">
+
+                        <div class="role-card">
+
+                            <h5>
+                                HTML
+                            </h5>
+
+                            <p>
+                                HTML defines the structure and content
+                                of a web page.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="role-card">
+
+                            <h5>
+                                CSS
+                            </h5>
+
+                            <p>
+                                CSS controls the appearance, layout,
+                                spacing, and visual presentation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="role-card">
+
+                            <h5>
+                                JavaScript
+                            </h5>
+
+                            <p>
+                                JavaScript adds logic, interaction,
+                                and dynamic behavior.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE 2
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://miro.medium.com/v2/resize%3Afit%3A2000/1%2A0eTiTbFihlwbDPB289hXEA.png"
+                         alt="Client Side JavaScript Interaction"
+                         class="topic-image" />
+
+                    <p class="image-caption">
+                        HTML, CSS, and JavaScript working together
+                        inside a web browser.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     FIRST JAVASCRIPT PROGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Your First JavaScript Program
+                </h2>
+
+                <p class="section-text">
+                    The <strong>console.log()</strong> method is commonly
+                    used to display information in the browser console.
+                </p>
+
+
+                <!-- CODE -->
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>console.log("Hello, JavaScript!");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryJavaScriptCode()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+                    Hello, JavaScript!
+                </div>
+
+
+                <!-- =================================================
+                     HOW JAVASCRIPT WORKS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How JavaScript Works
+                </h2>
+
+                <p class="section-text">
+                    When JavaScript code is loaded in a web page,
+                    the browser processes the code using its JavaScript
+                    engine. The engine executes the instructions and
+                    produces the required result.
+                </p>
+
+
+                <!-- =================================================
+                     FLOW DIAGRAM
+                     ================================================= -->
+
+                <div class="flow-diagram">
+
+                    <div class="flow-title">
+                        Basic JavaScript Execution Flow
+                    </div>
+
+                    <div class="flow-container">
+
+                        <div class="flow-box">
+                            JavaScript Code
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Browser
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            JavaScript Engine
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Execution
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Result
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     WHERE JAVASCRIPT IS USED
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Where is JavaScript Used?
+                </h2>
+
+                <p class="section-text">
+                    JavaScript is widely used in modern web development.
+                    It can be used for interactive user interfaces,
+                    form validation, dynamic page updates, browser APIs,
+                    server-side applications, and many other software
+                    solutions.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Common Uses
+                    </h5>
+
+                    <p class="mb-2">
+                        • Interactive web pages
+                    </p>
+
+                    <p class="mb-2">
+                        • Form validation
+                    </p>
+
+                    <p class="mb-2">
+                        • Dynamic content updates
+                    </p>
+
+                    <p class="mb-2">
+                        • Browser APIs
+                    </p>
+
+                    <p class="mb-2">
+                        • Server-side development
+                    </p>
+
+                    <p class="mb-0">
+                        • Modern web applications
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     WHY LEARN JAVASCRIPT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Why Learn JavaScript?
+                </h2>
+
+                <p class="section-text">
+                    JavaScript is one of the core technologies used in
+                    web development. Learning JavaScript provides a strong
+                    foundation for building interactive web applications
+                    and working with modern front-end technologies.
+                </p>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        JavaScript is a programming language used to add
+                        logic, interaction, and dynamic behavior to web pages.
+                        In the upcoming lessons, you will learn JavaScript
+                        history, browser execution, variables, data types,
+                        operators, functions, arrays, objects, DOM
+                        manipulation, events, asynchronous programming,
+                        browser storage, and advanced JavaScript concepts.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <button type="button"
+                            class="nav-btn previous-btn"
+                            disabled>
+
+                        <span>←</span>
+
+                        <span>
+                            Previous
+                        </span>
+
+                    </button>
+
+
+                    <a href="@Url.Action("JavaScriptHistory", "Introduction", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: JavaScript History
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function tryJavaScriptCode() {
+
+        const code =
+            'console.log("Hello, JavaScript!");';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+</script>

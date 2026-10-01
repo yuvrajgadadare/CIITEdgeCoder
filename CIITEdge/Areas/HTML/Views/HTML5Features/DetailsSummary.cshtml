@@ -1,0 +1,681 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML5 Details and Summary";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #ffffff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .details-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 20px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 130px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+        .demo-box details {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+
+        .demo-box summary {
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML5 Details and Summary</h1>
+
+            <p>
+                The HTML5 <code>&lt;details&gt;</code> and
+                <code>&lt;summary&gt;</code> elements are used to create
+                expandable and collapsible content.
+            </p>
+
+            <p>
+                They are useful when some information should remain hidden until
+                the user chooses to open it.
+            </p>
+
+            <div class="info-box">
+                <strong>Easy Way to Remember:</strong><br>
+                <code>&lt;summary&gt;</code> = the visible heading the user clicks.<br>
+                <code>&lt;details&gt;</code> = the complete expandable content.
+            </div>
+
+            <h2>1. How Details and Summary Work</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    Details and Summary Structure
+                </div>
+
+                <div class="details-flow">
+
+                    <div class="flow-item">
+                        &lt;details&gt;
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        &lt;summary&gt;<br>
+                        Visible Title
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Hidden Content
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Open / Close
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>2. What is the details Element?</h2>
+
+            <p>
+                The <code>&lt;details&gt;</code> element creates a disclosure
+                component where additional content can be opened or closed by the user.
+            </p>
+
+            <p>
+                It acts as the main container for the expandable content.
+            </p>
+
+            <h2>3. What is the summary Element?</h2>
+
+            <p>
+                The <code>&lt;summary&gt;</code> element provides the visible
+                label or heading for the details section.
+            </p>
+
+            <p>
+                When the user clicks the summary, the details section can open or close.
+            </p>
+
+            <h2>4. Basic Example</h2>
+
+            <pre><code>&lt;details&gt;
+
+    &lt;summary&gt;
+        What is HTML?
+    &lt;/summary&gt;
+
+    &lt;p&gt;
+        HTML is used to structure web pages.
+    &lt;/p&gt;
+
+&lt;/details&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <details>
+                    <summary>What is HTML?</summary>
+
+                    <p class="mt-3 mb-0">
+                        HTML is used to structure web pages.
+                    </p>
+                </details>
+            </div>
+
+            <h2>5. Open by Default</h2>
+
+            <p>
+                Add the <code>open</code> attribute to the
+                <code>&lt;details&gt;</code> element when the content should
+                be visible when the page first loads.
+            </p>
+
+            <pre><code>&lt;details open&gt;
+
+    &lt;summary&gt;
+        HTML Course
+    &lt;/summary&gt;
+
+    &lt;p&gt;
+        Learn HTML from basic to advanced topics.
+    &lt;/p&gt;
+
+&lt;/details&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+        <h3>Output</h3>
+
+            <div class="demo-box">
+                <details open>
+                    <summary>HTML Course</summary>
+
+                    <p class="mt-3 mb-0">
+                        Learn HTML from basic to advanced topics.
+                    </p>
+                </details>
+            </div>
+
+            <h2>6. Multiple Details Sections</h2>
+
+            <p>
+                Multiple independent details sections can be placed on the same page.
+            </p>
+
+            <pre><code>&lt;details&gt;
+    &lt;summary&gt;HTML&lt;/summary&gt;
+    &lt;p&gt;Learn HTML fundamentals.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;details&gt;
+    &lt;summary&gt;CSS&lt;/summary&gt;
+    &lt;p&gt;Learn CSS fundamentals.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;details&gt;
+    &lt;summary&gt;JavaScript&lt;/summary&gt;
+    &lt;p&gt;Learn JavaScript fundamentals.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+        <h3>Output</h3>
+            <div class="demo-box">
+
+                <details class="mb-3">
+                    <summary>HTML</summary>
+                    <p class="mt-3 mb-0">
+                        Learn HTML fundamentals.
+                    </p>
+                </details>
+
+                <details class="mb-3">
+                    <summary>CSS</summary>
+                    <p class="mt-3 mb-0">
+                        Learn CSS fundamentals.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>JavaScript</summary>
+                    <p class="mt-3 mb-0">
+                        Learn JavaScript fundamentals.
+                    </p>
+                </details>
+
+            </div>
+
+            <h2>7. FAQ Example</h2>
+
+            <p>
+                One common use of details and summary is an FAQ section.
+            </p>
+
+            <pre><code>&lt;details&gt;
+
+    &lt;summary&gt;
+        What is HTML5?
+    &lt;/summary&gt;
+
+    &lt;p&gt;
+        HTML5 is a modern version of HTML.
+    &lt;/p&gt;
+
+&lt;/details&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+        <h3>Output</h3>
+
+            <div class="demo-box">
+
+                <details>
+                    <summary>What is HTML5?</summary>
+
+                    <p class="mt-3 mb-0">
+                        HTML5 is a modern version of HTML that provides
+                        semantic, multimedia, form, and other web features.
+                    </p>
+                </details>
+
+            </div>
+
+            <h2>8. Course Topics Example</h2>
+
+            <p>
+                A tutorial website can use details elements to organize
+                course topics without showing everything at once.
+            </p>
+
+            <pre><code>&lt;details&gt;
+
+    &lt;summary&gt;
+        HTML Forms
+    &lt;/summary&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;Input Types&lt;/li&gt;
+        &lt;li&gt;Labels&lt;/li&gt;
+        &lt;li&gt;Validation&lt;/li&gt;
+    &lt;/ul&gt;
+
+&lt;/details&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>9. Details with Lists</h2>
+
+            <p>
+                The content inside <code>&lt;details&gt;</code> can contain
+                lists, paragraphs, links, images, or other HTML elements.
+            </p>
+
+            <pre><code>&lt;details&gt;
+
+    &lt;summary&gt;
+        HTML Topics
+    &lt;/summary&gt;
+
+    &lt;ul&gt;
+
+        &lt;li&gt;Elements&lt;/li&gt;
+        &lt;li&gt;Attributes&lt;/li&gt;
+        &lt;li&gt;Forms&lt;/li&gt;
+        &lt;li&gt;Tables&lt;/li&gt;
+
+    &lt;/ul&gt;
+
+&lt;/details&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>10. Details with Links</h2>
+
+            <p>
+                Related links can also be displayed inside the expandable area.
+            </p>
+
+            <pre><code>&lt;details&gt;
+
+    &lt;summary&gt;
+        Related Tutorials
+    &lt;/summary&gt;
+
+    &lt;a href="#"&gt;
+        HTML Forms
+    &lt;/a&gt;
+
+    &lt;br&gt;
+
+    &lt;a href="#"&gt;
+        HTML Tables
+    &lt;/a&gt;
+
+&lt;/details&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>11. Details vs Traditional JavaScript</h2>
+
+            <p>
+                A basic expandable section can often be created using
+                <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code>
+                without writing custom JavaScript for the open-and-close behavior.
+            </p>
+
+            <p>
+                This makes the feature simple and useful for common disclosure
+                patterns such as FAQs and additional information.
+            </p>
+
+            <h2>12. Details with FAQ</h2>
+
+            <div class="demo-box">
+
+                <details class="mb-3">
+                    <summary>What is CSS?</summary>
+                    <p class="mt-3 mb-0">
+                        CSS is used to style and control the presentation of web pages.
+                    </p>
+                </details>
+
+                <details class="mb-3">
+                    <summary>What is JavaScript?</summary>
+                    <p class="mt-3 mb-0">
+                        JavaScript is used to add logic and interactivity to web pages.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>What is HTML?</summary>
+                    <p class="mt-3 mb-0">
+                        HTML is used to structure web page content.
+                    </p>
+                </details>
+
+            </div>
+
+            <h2>13. Advantages of Details and Summary</h2>
+
+            <ul>
+                <li>Simple to implement.</li>
+                <li>Useful for expandable information.</li>
+                <li>Does not require custom JavaScript for basic open/close behavior.</li>
+                <li>Helps reduce visual clutter.</li>
+                <li>Useful for FAQs, notes, and additional information.</li>
+            </ul>
+
+            <h2>14. Common Uses</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Use Case</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>FAQ</td>
+                            <td>Question and answer</td>
+                        </tr>
+
+                        <tr>
+                            <td>Course Topics</td>
+                            <td>Expandable module list</td>
+                        </tr>
+
+                        <tr>
+                            <td>Additional Information</td>
+                            <td>Read more content</td>
+                        </tr>
+
+                        <tr>
+                            <td>Help Section</td>
+                            <td>Expandable instructions</td>
+                        </tr>
+
+                        <tr>
+                            <td>Product Details</td>
+                            <td>Additional specifications</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>15. Details vs Accordion</h2>
+
+            <p>
+                A single <code>&lt;details&gt;</code> element creates one
+                expandable area.
+            </p>
+
+            <p>
+                Multiple details elements can be placed together to create an
+                accordion-like interface.
+            </p>
+
+            <p>
+                Whether multiple sections must behave like a strict accordion,
+                where opening one closes others, requires additional behavior.
+            </p>
+
+            <h2>16. Common Mistakes</h2>
+
+            <h3>Mistake 1: Forgetting summary</h3>
+
+            <p>
+                The <code>&lt;summary&gt;</code> element should normally be used
+                as the visible label for the details component.
+            </p>
+
+            <h3>Mistake 2: Putting too much content inside</h3>
+
+            <p>
+                Details should make content easier to manage, not hide large amounts
+                of essential information that users need immediately.
+            </p>
+
+            <h3>Mistake 3: Using it only for visual design</h3>
+
+            <p>
+                Use details when content logically needs to be expandable or collapsible.
+            </p>
+
+            <h2>17. Best Practices</h2>
+
+            <ul>
+                <li>Use clear and descriptive summary text.</li>
+                <li>Keep expandable content related to the summary.</li>
+                <li>Use <code>open</code> when the information should be visible initially.</li>
+                <li>Do not hide essential information unnecessarily.</li>
+                <li>Use details for genuine disclosure patterns such as FAQs and additional information.</li>
+            </ul>
+
+            <h2>18. Practice Example</h2>
+
+            <p>
+                Create a simple FAQ section using three expandable questions.
+            </p>
+
+            <pre><code>&lt;details&gt;
+
+    &lt;summary&gt;
+        What is HTML?
+    &lt;/summary&gt;
+
+    &lt;p&gt;
+        HTML structures web pages.
+    &lt;/p&gt;
+
+&lt;/details&gt;
+
+&lt;details&gt;
+
+    &lt;summary&gt;
+        What is CSS?
+    &lt;/summary&gt;
+
+    &lt;p&gt;
+        CSS styles web pages.
+    &lt;/p&gt;
+
+&lt;/details&gt;
+
+&lt;details&gt;
+
+    &lt;summary&gt;
+        What is JavaScript?
+    &lt;/summary&gt;
+
+    &lt;p&gt;
+        JavaScript adds logic and interactivity.
+    &lt;/p&gt;
+
+&lt;/details&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    The HTML5 <code>&lt;details&gt;</code> element creates an
+                    expandable section, while <code>&lt;summary&gt;</code> provides
+                    the visible title that users click. They are especially useful
+                    for FAQs, course topics, notes, help content, and additional
+                    information. The <code>open</code> attribute can be used when
+                    the content should be visible by default.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("ProgressMeter", "HTML5Features", new { area = "HTML" })">
+                    ← Previous: Progress &amp; Meter
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("DataAttributes", "HTML5Features", new { area = "HTML" })">
+                    Next: Data Attributes →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,971 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Comparison & Logical Operators";
+}
+
+<style>
+
+    #javascript-comparison-logical-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-comparison-logical-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-comparison-logical-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-comparison-logical-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-comparison-logical-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-comparison-logical-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       INFO BOX
+       ========================================================= */
+
+    #javascript-comparison-logical-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-comparison-logical-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-comparison-logical-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-comparison-logical-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       IMAGE
+       ========================================================= */
+
+    #javascript-comparison-logical-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-comparison-logical-page .operators-image {
+        width: 100%;
+        max-height: 430px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-comparison-logical-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       OPERATOR CARDS
+       ========================================================= */
+
+    #javascript-comparison-logical-page .operator-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-comparison-logical-page .operator-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-comparison-logical-page .operator-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-comparison-logical-page .operator-symbol {
+        display: inline-flex;
+        min-width: 46px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        background: #5b21b6;
+        color: #ffffff;
+        border-radius: 7px;
+        padding: 0 10px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-comparison-logical-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-comparison-logical-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-comparison-logical-page .diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-comparison-logical-page .diagram-item {
+        min-width: 135px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-comparison-logical-page .diagram-item small {
+        display: block;
+        color: #6c757d;
+        margin-top: 5px;
+        font-weight: 400;
+    }
+
+    #javascript-comparison-logical-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-comparison-logical-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-comparison-logical-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-comparison-logical-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-comparison-logical-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-comparison-logical-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-comparison-logical-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-comparison-logical-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-comparison-logical-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-comparison-logical-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-comparison-logical-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-comparison-logical-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-comparison-logical-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-comparison-logical-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-comparison-logical-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-comparison-logical-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-comparison-logical-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-comparison-logical-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-comparison-logical-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-comparison-logical-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-comparison-logical-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-comparison-logical-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-comparison-logical-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Comparison &amp; Logical Operators
+                </h1>
+
+                <p class="lead-text">
+                    Learn how to compare values and combine conditions
+                    using comparison and logical operators in JavaScript.
+                </p>
+
+
+                <!-- =================================================
+                     INTRODUCTION
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What are Comparison Operators?
+                </h2>
+
+                <p class="section-text">
+                    Comparison operators compare two values and produce
+                    a Boolean result: <strong>true</strong> or <strong>false</strong>.
+                </p>
+
+                <p class="section-text">
+                    They are commonly used when a program needs to make
+                    a decision based on two values.
+                </p>
+
+
+                <!-- =================================================
+                     RELATED IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://image2.slideserve.com/4316027/javascript-comparison-and-logical-operators-l.jpg"
+                         alt="JavaScript comparison and logical operators"
+                         class="operators-image" />
+
+                    <p class="image-caption">
+                        JavaScript comparison and logical operator reference.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     COMPARISON OPERATORS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Comparison Operators
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="operator-card">
+
+                            <div class="operator-symbol">==</div>
+
+                            <h5>Equal</h5>
+
+                            <p>
+                                Checks whether two values are equal after
+                                type conversion when necessary.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="operator-card">
+
+                            <div class="operator-symbol">===</div>
+
+                            <h5>Strict Equal</h5>
+
+                            <p>
+                                Checks whether both value and type are equal.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="operator-card">
+
+                            <div class="operator-symbol">!=</div>
+
+                            <h5>Not Equal</h5>
+
+                            <p>
+                                Checks whether two values are not equal.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="operator-card">
+
+                            <div class="operator-symbol">!==</div>
+
+                            <h5>Strict Not Equal</h5>
+
+                            <p>
+                                Checks whether value or type is different.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="operator-card">
+
+                            <div class="operator-symbol">&gt;</div>
+
+                            <h5>Greater Than</h5>
+
+                            <p>
+                                Checks whether the left value is greater.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="operator-card">
+
+                            <div class="operator-symbol">&lt;</div>
+
+                            <h5>Less Than</h5>
+
+                            <p>
+                                Checks whether the left value is smaller.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     LOGICAL OPERATORS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Logical Operators
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="operator-card">
+
+                            <div class="operator-symbol">&amp;&amp;</div>
+
+                            <h5>Logical AND</h5>
+
+                            <p>
+                                Returns true when both conditions are true.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="operator-card">
+
+                            <div class="operator-symbol">||</div>
+
+                            <h5>Logical OR</h5>
+
+                            <p>
+                                Returns true when at least one condition is true.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="operator-card">
+
+                            <div class="operator-symbol">!</div>
+
+                            <h5>Logical NOT</h5>
+
+                            <p>
+                                Reverses a Boolean result.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How Comparison and Logical Operators Work
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Values → Comparison → Conditions → Logical Result
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            marks &gt;= 40
+                            <small>Condition 1</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            attendance &gt;= 75
+                            <small>Condition 2</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            &amp;&amp;
+                            <small>Logical AND</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            true / false
+                            <small>Final Result</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Comparison Operators
+                </h2>
+
+                <p class="section-text">
+                    Comparison operators can be used to check marks,
+                    age, price, quantity, or any other values.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const marks = 78;
+const requiredMarks = 40;
+const enteredMarks = "78";
+
+console.log("Marks Passed:", marks &gt;= requiredMarks);
+console.log("Marks Equal:", marks == enteredMarks);
+console.log("Strict Equal:", marks === enteredMarks);
+console.log("Marks Greater Than 90:", marks &gt; 90);
+console.log("Not Equal to 50:", marks != 50);</code></pre>
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryComparisonExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Marks Passed: true<br />
+                    Marks Equal: true<br />
+                    Strict Equal: false<br />
+                    Marks Greater Than 90: false<br />
+                    Not Equal to 50: true
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Logical Operators
+                </h2>
+
+                <p class="section-text">
+                    Logical operators help us combine multiple conditions
+                    into a single expression.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const marks = 82;
+const attendance = 88;
+
+const marksPassed = marks &gt;= 40;
+const attendancePassed = attendance &gt;= 75;
+
+const eligible = marksPassed &amp;&amp; attendancePassed;
+const specialCase = marksPassed || attendance &gt; 90;
+
+console.log("Marks Passed:", marksPassed);
+console.log("Attendance Passed:", attendancePassed);
+console.log("Eligible:", eligible);
+console.log("Special Case:", specialCase);
+console.log("Not Eligible:", !eligible);</code></pre>
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryLogicalExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Marks Passed: true<br />
+                    Attendance Passed: true<br />
+                    Eligible: true<br />
+                    Special Case: true<br />
+                    Not Eligible: false
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Note
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        == vs ===
+                    </h5>
+
+                    <p>
+                        <strong>==</strong> compares values and may perform
+                        type conversion.
+                    </p>
+
+                    <p>
+                        <strong>===</strong> performs a strict comparison,
+                        so both value and type must match.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Comparison operators compare values and return
+                        Boolean results. Common comparison operators include
+                        <strong>==</strong>, <strong>===</strong>,
+                        <strong>!=</strong>, <strong>!==</strong>,
+                        <strong>&gt;</strong> and <strong>&lt;</strong>.
+                        Logical operators such as <strong>&amp;&amp;</strong>,
+                        <strong>||</strong> and <strong>!</strong> are used
+                        to combine or reverse conditions.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("ArithmeticOperators", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>←</span>
+
+                        <span>
+                            Previous: Arithmetic Operators
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("IfElse", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: If Else
+                        </span>
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryComparisonExample() {
+
+        const code =
+            'const marks = 78;\n' +
+            'const requiredMarks = 40;\n' +
+            'const enteredMarks = "78";\n' +
+            '\n' +
+            'console.log("Marks Passed:", marks >= requiredMarks);\n' +
+            'console.log("Marks Equal:", marks == enteredMarks);\n' +
+            'console.log("Strict Equal:", marks === enteredMarks);\n' +
+            'console.log("Marks Greater Than 90:", marks > 90);\n' +
+            'console.log("Not Equal to 50:", marks != 50);';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryLogicalExample() {
+
+        const code =
+            'const marks = 82;\n' +
+            'const attendance = 88;\n' +
+            '\n' +
+            'const marksPassed = marks >= 40;\n' +
+            'const attendancePassed = attendance >= 75;\n' +
+            '\n' +
+            'const eligible = marksPassed && attendancePassed;\n' +
+            'const specialCase = marksPassed || attendance > 90;\n' +
+            '\n' +
+            'console.log("Marks Passed:", marksPassed);\n' +
+            'console.log("Attendance Passed:", attendancePassed);\n' +
+            'console.log("Eligible:", eligible);\n' +
+            'console.log("Special Case:", specialCase);\n' +
+            'console.log("Not Eligible:", !eligible);';
+
+        openCompiler(code);
+
+    }
+
+</script>

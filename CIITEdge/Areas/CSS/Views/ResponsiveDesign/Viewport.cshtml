@@ -1,0 +1,715 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Viewport";
+}
+
+<style>
+
+    #css-viewport-page {
+        color: #212529;
+    }
+
+        #css-viewport-page .content-section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+            #css-viewport-page .content-section > h1 {
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            #css-viewport-page .content-section > h2 {
+                font-weight: 700;
+                margin-top: 35px;
+                margin-bottom: 15px;
+            }
+
+            #css-viewport-page .content-section > h3 {
+                font-weight: 600;
+                margin-top: 25px;
+                margin-bottom: 12px;
+            }
+
+            #css-viewport-page .content-section > p {
+                line-height: 1.7;
+            }
+
+        #css-viewport-page .code-box {
+            background-color: #212529;
+            color: #f8f9fa;
+            border-radius: 6px;
+            padding: 18px;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+
+            #css-viewport-page .code-box pre {
+                margin: 0;
+                white-space: pre-wrap;
+                font-family: Consolas, Monaco, monospace;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+        #css-viewport-page .explanation-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2563eb;
+            border-radius: 4px;
+            padding: 18px 20px;
+            margin-top: 15px;
+        }
+
+            #css-viewport-page .explanation-box p:last-child {
+                margin-bottom: 0;
+            }
+
+        #css-viewport-page .diagram-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        #css-viewport-page .phone {
+            width: 220px;
+            height: 360px;
+            margin: 0 auto;
+            border: 8px solid #212529;
+            border-radius: 25px;
+            background-color: #ffffff;
+            padding: 18px 12px;
+        }
+
+        #css-viewport-page .phone-screen {
+            height: 100%;
+            border: 2px solid #2563eb;
+            background-color: #dbeafe;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        #css-viewport-page .screen-header {
+            background-color: #2563eb;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        #css-viewport-page .screen-content {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        #css-viewport-page .browser-output {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        #css-viewport-page .output-phone {
+            width: 260px;
+            margin: 0 auto;
+            border: 5px solid #212529;
+            border-radius: 20px;
+            padding: 12px;
+            background-color: #ffffff;
+        }
+
+        #css-viewport-page .output-screen {
+            border: 2px solid blue;
+            background-color: lightblue;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+        }
+
+            #css-viewport-page .output-screen h3 {
+                background-color: blue;
+                color: #ffffff;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 12px;
+            }
+
+            #css-viewport-page .output-screen p {
+                background-color: #ffffff;
+                border: 1px solid #ced4da;
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 0;
+            }
+
+        #css-viewport-page .property-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 18px;
+            height: 100%;
+            background-color: #ffffff;
+        }
+
+            #css-viewport-page .property-card h3 {
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            #css-viewport-page .property-card p {
+                line-height: 1.6;
+                margin-bottom: 0;
+            }
+
+        #css-viewport-page .note-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffecb5;
+            border-radius: 6px;
+            padding: 16px 18px;
+            margin-top: 20px;
+        }
+
+        #css-viewport-page .summary-box {
+            background-color: #e0f7fa;
+            border: 1px solid #90e0ef;
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin-top: 30px;
+        }
+
+            #css-viewport-page .summary-box h2 {
+                color: #075985;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            #css-viewport-page .summary-box p {
+                color: #075985;
+                margin-bottom: 0;
+                line-height: 1.6;
+            }
+
+    @@media (max-width: 576px) {
+
+        #css-viewport-page .content-section {
+            padding: 20px;
+        }
+
+        #css-viewport-page .phone {
+            width: 190px;
+            height: 320px;
+        }
+
+        #css-viewport-page .output-phone {
+            width: 220px;
+        }
+    }
+
+</style>
+
+
+<div id="css-viewport-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- Title -->
+
+                <h1>
+                    CSS Viewport
+                </h1>
+
+                <p>
+                    The viewport is the visible area of a web page
+                    displayed inside a browser window or device screen.
+                </p>
+
+                <p>
+                    The viewport is especially important for responsive
+                    websites because mobile devices have much smaller
+                    screen widths than desktop computers.
+                </p>
+
+
+                <!-- What is Viewport -->
+
+                <h2>
+                    What is a Viewport?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The <strong>viewport</strong> is the area of a
+                        webpage that is currently visible to the user.
+                    </p>
+
+                    <p>
+                        On a desktop, the viewport can be wide, while
+                        on a mobile phone it is much narrower.
+                    </p>
+
+                </div>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Viewport Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="phone">
+
+                        <div class="phone-screen">
+
+                            <div class="screen-header">
+                                Viewport
+                            </div>
+
+                            <div class="screen-content">
+
+                                <strong>
+                                    Visible Web Page
+                                </strong>
+
+                                <p class="mt-2 mb-0">
+                                    This area represents the visible
+                                    portion of the webpage.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-4 mb-0">
+                        The viewport represents the visible area
+                        available for displaying a webpage.
+                    </p>
+
+                </div>
+
+
+                <!-- Viewport Meta Tag -->
+
+                <h2>
+                    Viewport Meta Tag
+                </h2>
+
+                <p>
+                    The viewport is commonly configured using the
+                    viewport meta tag inside the
+                    <strong>&lt;head&gt;</strong> section of an HTML
+                    document.
+                </p>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        This tells the browser to use the device's
+                        actual screen width as the viewport width.
+                    </p>
+
+                    <p>
+                        It also sets the initial zoom level to
+                        <strong>1.0</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- width=device-width -->
+
+                <h2>
+                    width=device-width
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;meta name="viewport"
+      content="width=device-width"&gt;</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        <strong>width=device-width</strong> makes the
+                        viewport width equal to the device's screen
+                        width.
+                    </p>
+
+                    <p>
+                        This helps webpages display correctly on
+                        different devices.
+                    </p>
+
+                </div>
+
+
+                <!-- initial-scale -->
+
+                <h2>
+                    initial-scale
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        <strong>initial-scale</strong> defines the
+                        initial zoom level of the webpage.
+                    </p>
+
+                    <p>
+                        A value of
+                        <strong>1.0</strong>
+                        represents the default scale.
+                    </p>
+
+                </div>
+
+
+                <!-- Common Values -->
+
+                <h2>
+                    Common Viewport Properties
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                width
+                            </h3>
+
+                            <p>
+                                Defines the width of the viewport.
+                                The commonly used value is
+                                <strong>device-width</strong>.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                initial-scale
+                            </h3>
+
+                            <p>
+                                Defines the initial zoom level of
+                                the webpage.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                minimum-scale
+                            </h3>
+
+                            <p>
+                                Defines the minimum zoom level that
+                                can be applied to the page.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                maximum-scale
+                            </h3>
+
+                            <p>
+                                Defines the maximum zoom level that
+                                can be applied to the page.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Responsive Example -->
+
+                <h2>
+                    Responsive Viewport Example
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;meta name="viewport"
+          content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;title&gt;Responsive Page&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Responsive Website&lt;/h1&gt;
+
+    &lt;p&gt;
+        This page can adapt to different screen sizes.
+    &lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The viewport meta tag allows the browser to
+                        use the device's actual width when displaying
+                        the webpage.
+                    </p>
+
+                    <p>
+                        This is an important foundation for building
+                        responsive websites.
+                    </p>
+
+                </div>
+
+
+                <!-- Output -->
+
+                <h2>
+                    Output
+                </h2>
+
+                <div class="browser-output">
+
+                    <div class="output-phone">
+
+                        <div class="output-screen">
+
+                            <h3>
+                                Responsive Website
+                            </h3>
+
+                            <p>
+                                This page can adapt to different
+                                screen sizes.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Why Important -->
+
+                <h2>
+                    Why is the Viewport Important?
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Helps webpages adapt to mobile screens.
+                    </li>
+
+                    <li>
+                        Allows the browser to use the device width.
+                    </li>
+
+                    <li>
+                        Provides the foundation for responsive layouts.
+                    </li>
+
+                    <li>
+                        Works together with CSS media queries.
+                    </li>
+
+                    <li>
+                        Helps prevent unwanted scaling on mobile
+                        devices.
+                    </li>
+
+                </ul>
+
+
+                <!-- Real World -->
+
+                <h2>
+                    Real-World Uses
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Mobile-friendly websites
+                    </li>
+
+                    <li>
+                        Responsive web applications
+                    </li>
+
+                    <li>
+                        E-commerce websites
+                    </li>
+
+                    <li>
+                        Training institute websites
+                    </li>
+
+                    <li>
+                        Business websites
+                    </li>
+
+                </ul>
+
+
+                <!-- Note -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    For a responsive webpage, the commonly used
+                    viewport configuration is
+                    <strong>
+                        width=device-width, initial-scale=1.0
+                    </strong>.
+                    It should normally be placed inside the
+                    <strong>&lt;head&gt;</strong> section of the
+                    HTML document.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The viewport represents the visible area of
+                        a webpage. The viewport meta tag allows a
+                        webpage to use the device's actual screen
+                        width and define its initial scale. The
+                        configuration
+                        <strong>
+                            width=device-width, initial-scale=1.0
+                        </strong>
+                        is commonly used as a foundation for
+                        responsive web design.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2 mb-md-0">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("ResponsiveWebDesign", "ResponsiveDesign", new { area = "CSS" })">
+
+                            ← Previous: Responsive Web Design
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("MediaQueries", "ResponsiveDesign", new { area = "CSS" })">
+
+                            Next: Media Queries →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

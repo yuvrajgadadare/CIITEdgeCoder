@@ -1,0 +1,980 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Parameters & Arguments";
+}
+
+<style>
+
+    #javascript-parameters-arguments-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-parameters-arguments-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-parameters-arguments-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-parameters-arguments-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-parameters-arguments-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-parameters-arguments-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-parameters-arguments-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-parameters-arguments-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-parameters-arguments-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       IMAGE
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-parameters-arguments-page .parameters-image {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-parameters-arguments-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       CARDS
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .topic-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-parameters-arguments-page .topic-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-parameters-arguments-page .topic-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-parameters-arguments-page .topic-icon {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #5b21b6;
+        color: #ffffff;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-parameters-arguments-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 24px;
+    }
+
+    #javascript-parameters-arguments-page .parameter-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-parameters-arguments-page .diagram-item {
+        min-width: 145px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-parameters-arguments-page .diagram-item small {
+        display: block;
+        color: #6c757d;
+        margin-top: 6px;
+        font-weight: 400;
+    }
+
+    #javascript-parameters-arguments-page .diagram-highlight {
+        background: #f3ecff;
+        border: 2px solid #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-parameters-arguments-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       COMPARISON
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .comparison-box {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-top: 20px;
+    }
+
+    #javascript-parameters-arguments-page .comparison-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-parameters-arguments-page .comparison-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-parameters-arguments-page .comparison-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 8px;
+    }
+
+    #javascript-parameters-arguments-page .comparison-code {
+        display: inline-block;
+        background: #f1f3f5;
+        padding: 5px 8px;
+        border-radius: 5px;
+        color: #5b21b6;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 13px;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-parameters-arguments-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-parameters-arguments-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-parameters-arguments-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-parameters-arguments-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-parameters-arguments-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-parameters-arguments-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-parameters-arguments-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-parameters-arguments-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-parameters-arguments-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-parameters-arguments-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-parameters-arguments-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-parameters-arguments-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-parameters-arguments-page .comparison-box {
+            grid-template-columns: 1fr;
+        }
+
+        #javascript-parameters-arguments-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-parameters-arguments-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-parameters-arguments-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-parameters-arguments-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-parameters-arguments-page .parameters-image {
+            height: 230px;
+        }
+
+        #javascript-parameters-arguments-page .parameter-flow {
+            flex-direction: column;
+        }
+
+        #javascript-parameters-arguments-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-parameters-arguments-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Parameters &amp; Arguments
+                </h1>
+
+                <p class="lead-text">
+                    Learn how functions receive input values using parameters
+                    and arguments in JavaScript.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT ARE PARAMETERS AND ARGUMENTS?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What are Parameters and Arguments?
+                </h2>
+
+                <p class="section-text">
+                    A function can receive data from the code that calls it.
+                    This allows the same function to work with different values.
+                </p>
+
+                <p class="section-text">
+                    <strong>Parameters</strong> are the variable names written
+                    in the function definition. <strong>Arguments</strong> are
+                    the actual values passed to the function when it is called.
+                </p>
+
+                <p class="section-text">
+                    For example, in
+                    <strong>greetStudent(studentName)</strong>,
+                    <strong>studentName</strong> is a parameter. In
+                    <strong>greetStudent("Gauri")</strong>,
+                    <strong>"Gauri"</strong> is the argument.
+                </p>
+
+
+                <!-- =================================================
+                     RELATED IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://cdn.statically.io/gh/TheOdinProject/curriculum/c53dd9a12f0c9afde0d9229f82a176170f12e120/foundations/javascript_basics/function_basics/imgs/00.png"
+                         alt="JavaScript parameters and arguments"
+                         class="parameters-image" />
+
+                    <p class="image-caption">
+                        Parameters are placeholders in a function definition,
+                        while arguments are the actual values passed during the function call.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     PARAMETERS VS ARGUMENTS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Parameters vs Arguments
+                </h2>
+
+                <div class="comparison-box">
+
+                    <div class="comparison-card">
+
+                        <h5>
+                            Parameters
+                        </h5>
+
+                        <p>
+                            Parameters are variables listed inside the
+                            function definition.
+                        </p>
+
+                        <span class="comparison-code">
+                            function greet(name)
+                        </span>
+
+                    </div>
+
+
+                    <div class="comparison-card">
+
+                        <h5>
+                            Arguments
+                        </h5>
+
+                        <p>
+                            Arguments are the actual values supplied when
+                            the function is called.
+                        </p>
+
+                        <span class="comparison-code">
+                            greet("Gauri")
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     BASIC SYNTAX
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Basic Syntax
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function greetStudent(studentName) {
+    console.log("Hello, " + studentName);
+}
+
+greetStudent("Gauri");</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How Parameters and Arguments Work
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Function Parameter ← Actual Argument
+                    </div>
+
+                    <div class="parameter-flow">
+
+                        <div class="diagram-item">
+
+                            Parameter
+
+                            <small>
+                                studentName
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            ←
+                        </div>
+
+                        <div class="diagram-item diagram-highlight">
+
+                            Argument
+
+                            <small>
+                                "Gauri"
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+
+                        </div>
+
+                        <div class="diagram-item">
+
+                            Function Body
+
+                            <small>
+                                Uses studentName
+                            </small>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+
+                            Output
+
+                            <small>
+                                Hello, Gauri
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Passing One Argument
+                </h2>
+
+                <p class="section-text">
+                    In this example, the parameter
+                    <strong>studentName</strong> is used to receive a name.
+                    When the function is called, the argument
+                    <strong>"Gauri"</strong> is assigned to that parameter.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function greetStudent(studentName) {
+    console.log("Hello, " + studentName);
+    console.log("Welcome to JavaScript!");
+}
+
+greetStudent("Gauri");</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryParametersExample()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Hello, Gauri<br />
+                    Welcome to JavaScript!
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Passing Multiple Arguments
+                </h2>
+
+                <p class="section-text">
+                    A function can have more than one parameter.
+                    Each parameter receives the corresponding argument
+                    supplied during the function call.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>function calculateTotal(price, quantity) {
+    const total = price * quantity;
+
+    console.log("Price:", price);
+    console.log("Quantity:", quantity);
+    console.log("Total:", total);
+}
+
+calculateTotal(500, 3);</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryParametersExample2()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Price: 500<br />
+                    Quantity: 3<br />
+                    Total: 1500
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Note
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Parameter and Argument are not the same
+                    </h5>
+
+                    <p>
+                        A <strong>parameter</strong> is the variable declared
+                        in the function definition.
+                    </p>
+
+                    <p>
+                        An <strong>argument</strong> is the actual value passed
+                        during the function call.
+                    </p>
+
+                    <p>
+                        For example:
+                        <strong>function add(a, b)</strong> contains parameters
+                        <strong>a</strong> and <strong>b</strong>, while
+                        <strong>add(10, 20)</strong> passes the arguments
+                        <strong>10</strong> and <strong>20</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     MORE THAN ONE ARGUMENT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Multiple Parameters
+                </h2>
+
+                <p class="section-text">
+                    JavaScript functions can accept multiple parameters.
+                    The arguments are matched to the parameters according
+                    to their position in the function call.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Example
+                    </h5>
+
+                    <p>
+                        In
+                        <strong>calculateTotal(500, 3)</strong>,
+                        <strong>500</strong> goes to the
+                        <strong>price</strong> parameter and
+                        <strong>3</strong> goes to the
+                        <strong>quantity</strong> parameter.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Parameters are variables defined in a function,
+                        while arguments are the actual values passed when
+                        the function is called. A function can accept one
+                        or multiple parameters, allowing the same function
+                        to work with different input values.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("FunctionDeclaration", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Function Declaration
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("ReturnValues", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Return Values
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryParametersExample() {
+
+        const code =
+            'function greetStudent(studentName) {\n' +
+            '    console.log("Hello, " + studentName);\n' +
+            '    console.log("Welcome to JavaScript!");\n' +
+            '}\n' +
+            '\n' +
+            'greetStudent("Gauri");';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryParametersExample2() {
+
+        const code =
+            'function calculateTotal(price, quantity) {\n' +
+            '    const total = price * quantity;\n' +
+            '\n' +
+            '    console.log("Price:", price);\n' +
+            '    console.log("Quantity:", quantity);\n' +
+            '    console.log("Total:", total);\n' +
+            '}\n' +
+            '\n' +
+            'calculateTotal(500, 3);';
+
+        openCompiler(code);
+
+    }
+
+</script>

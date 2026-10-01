@@ -1,0 +1,29 @@
+@{
+    var c=ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    var a=ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+    string q="What is the main idea of this AWS lesson?"; string[] o={"Understanding the AWS service or concept described on this page","Changing the AWS account password every hour","Deleting all AWS resources","Creating a database for every workload"}; int correct=0; string exp="Review the lesson theory above and focus on the service's responsibility.";
+    var key=c+"/"+a;
+    if(key=="S3/Index"){q="What does S3 stand for?";o=new[]{"Simple Storage Service","Secure Server Service","Scalable Server System","Simple Security Storage"};correct=0;exp="S3 stands for Simple Storage Service and is AWS object storage.";}
+    else if(key=="S3/IntroductionToS3"){q="What is a bucket in S3?";o=new[]{"A container for objects","A virtual machine","A database table","A network firewall"};correct=0;exp="A bucket is the container in which S3 objects are stored.";}
+    else if(key=="S3/S3Objects"){q="What identifies an object within an S3 bucket?";o=new[]{"Its key","Its EC2 instance type","Its VPC route table","Its IAM group"};correct=0;exp="The object key is the unique name used to identify an object within a bucket.";}
+    else if(key=="S3/Versioning"){q="What is a common reason to enable S3 Versioning?";o=new[]{"Recover from accidental overwrite or deletion","Increase EC2 CPU","Create a VPC","Replace IAM policies"};correct=0;exp="Versioning can preserve multiple object versions for recovery.";}
+    else if(key=="IAM/Index"){q="What does IAM primarily control?";o=new[]{"Identity and access","Object storage","Virtual machines","DNS records"};correct=0;exp="IAM manages identities and permissions for AWS resources.";}
+    else if(key=="Introduction/RootVsIAM"){q="Which identity should normally be avoided for routine daily AWS work?";o=new[]{"The root user","An appropriately permissioned IAM identity","An approved IAM role","A service role"};correct=0;exp="AWS recommends protecting the root user and avoiding routine use of root credentials.";}
+    else if(key=="EC2/Index"){q="What is Amazon EC2 mainly used for?";o=new[]{"Virtual compute instances","Object storage","Relational database backups","DNS hosting only"};correct=0;exp="EC2 provides resizable compute capacity in the cloud.";}
+    else if(key=="EC2/SecurityGroups"){q="What is an EC2 security group?";o=new[]{"A stateful virtual firewall","A database engine","An object bucket","A DNS zone"};correct=0;exp="Security groups control allowed network traffic for supported resources.";}
+    else if(key=="VPC/Index"){q="What does VPC stand for?";o=new[]{"Virtual Private Cloud","Virtual Public Computer","Verified Private Connection","Virtual Processing Cluster"};correct=0;exp="VPC stands for Virtual Private Cloud.";}
+    else if(key=="RDS/Index"){q="What is Amazon RDS designed to provide?";o=new[]{"Managed relational databases","Virtual desktops","Object storage","Network routing"};correct=0;exp="RDS is a managed relational database service.";}
+    else if(key=="Lambda/Index"){q="What is AWS Lambda?";o=new[]{"Serverless compute","A block storage volume","A VPC gateway","A relational database"};correct=0;exp="Lambda runs code in response to events without requiring you to manage a server directly.";}
+    else if(key=="CloudWatch/Index"){q="What is CloudWatch mainly used for?";o=new[]{"Monitoring and observability","Creating IAM users only","Hosting relational databases","Registering domain names only"};correct=0;exp="CloudWatch provides monitoring capabilities such as metrics, logs and alarms.";}
+    else if(key=="ElasticLoadBalancing/Index"){q="What is Elastic Load Balancing used for?";o=new[]{"Distributing traffic across targets","Storing files as objects","Creating IAM policies","Running SQL queries"};correct=0;exp="Load balancers distribute incoming traffic across registered targets.";}
+}
+<div class="aws-test" id="aws-test">
+    <div class="d-flex justify-content-between align-items-center mb-3"><h4 class="fw-bold mb-0">Quick Test</h4><span class="badge bg-light text-dark">1 Question</span></div>
+    <p class="fw-semibold">@q</p>
+    @for(int i=0;i<o.Length;i++){<label class="aws-option"><input type="radio" name="awsAnswer" value="@i" class="me-2">@((char)('A'+i)). @o[i]</label>}
+    <button type="button" class="btn btn-primary mt-2" onclick="checkAwsAnswer()">Check Answer</button>
+    <div id="awsFeedback" class="aws-feedback"></div>
+</div>
+<script>
+function checkAwsAnswer(){const selected=document.querySelector('input[name="awsAnswer"]:checked');const box=document.getElementById('awsFeedback');if(!selected){box.className='aws-feedback aws-wrong';box.style.display='block';box.textContent='Please select an option.';return;}const correct=@correct;if(Number(selected.value)===correct){box.className='aws-feedback aws-correct';box.style.display='block';box.innerHTML='<strong>✓ Correct!</strong><br/>@Html.Raw(System.Text.Encodings.Web.HtmlEncoder.Default.Encode(exp))';}else{box.className='aws-feedback aws-wrong';box.style.display='block';box.innerHTML='<strong>✗ Incorrect.</strong><br/>Correct answer: <strong>'+String.fromCharCode(65+correct)+'. @Html.Raw(System.Text.Encodings.Web.HtmlEncoder.Default.Encode(o[correct]))</strong><br/>@Html.Raw(System.Text.Encodings.Web.HtmlEncoder.Default.Encode(exp))';}}
+</script>

@@ -1,0 +1,1240 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Asynchronous Programming";
+}
+
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- =========================================================
+             LEFT SIDEBAR
+             ========================================================= -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+
+        <!-- =========================================================
+             MAIN CONTENT
+             ========================================================= -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- PAGE TITLE -->
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Asynchronous Programming
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Asynchronous programming allows a C# application to start a task
+                    without forcing the application to wait for that task to finish
+                    before continuing with other work.
+                </p>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Key Idea:</strong>
+                    Async programming is especially useful when an application is
+                    waiting for operations such as database calls, API responses,
+                    file operations, network requests, or other I/O work.
+                </div>
+
+
+                <!-- =====================================================
+                     1. WHAT IS ASYNCHRONOUS PROGRAMMING?
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-4 mb-3">
+                    What is Asynchronous Programming?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Asynchronous programming is a programming approach where a
+                    long-running operation can be started and the application can
+                    continue doing other useful work while that operation is in progress.
+                </p>
+
+                <p class="text-muted mb-4">
+                    In C#, asynchronous programming is mainly implemented using
+                    <strong>async</strong> and <strong>await</strong> keywords together
+                    with the <strong>Task</strong> type.
+                </p>
+
+                <div class="alert alert-success mb-4">
+                    <strong>Simple Example:</strong>
+                    Imagine ordering food in a restaurant. You place the order and
+                    instead of standing at the kitchen waiting, you can sit and do
+                    something else. When the food is ready, you continue with it.
+                    This is similar to asynchronous programming.
+                </div>
+
+
+                <!-- =====================================================
+                     2. WHY ASYNC PROGRAMMING?
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Why Do We Need Asynchronous Programming?
+                </h3>
+
+                <p class="text-muted mb-3">
+                    Some operations take time to complete. For example:
+                </p>
+
+                <ul class="text-muted mb-4">
+                    <li>Calling a Web API</li>
+                    <li>Reading data from a database</li>
+                    <li>Writing or reading a file</li>
+                    <li>Downloading data from the internet</li>
+                    <li>Sending an HTTP request</li>
+                    <li>Waiting for an external service</li>
+                </ul>
+
+                <p class="text-muted mb-4">
+                    If these operations are handled synchronously, the current flow
+                    may remain waiting until the operation finishes. With asynchronous
+                    programming, the application can avoid unnecessarily blocking
+                    while waiting for I/O operations.
+                </p>
+
+
+                <!-- =====================================================
+                     3. SYNCHRONOUS VS ASYNCHRONOUS
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Synchronous vs Asynchronous Programming
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Synchronous</th>
+                                <th>Asynchronous</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Execution</td>
+                                <td>Waits for the operation</td>
+                                <td>Can continue while waiting</td>
+                            </tr>
+                            <tr>
+                                <td>Waiting</td>
+                                <td>Current flow may remain blocked</td>
+                                <td>Waiting can be handled asynchronously</td>
+                            </tr>
+                            <tr>
+                                <td>Best suited for</td>
+                                <td>Simple CPU work</td>
+                                <td>I/O-bound operations</td>
+                            </tr>
+                            <tr>
+                                <td>Common examples</td>
+                                <td>Simple calculations</td>
+                                <td>API, database and file operations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =====================================================
+                     4. TASK
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Understanding Task
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A <strong>Task</strong> represents an asynchronous operation.
+                    It can represent work that is currently running, waiting, or
+                    has already completed.
+                </p>
+
+                <p class="text-muted mb-4">
+                    A method that performs asynchronous work commonly returns
+                    <strong>Task</strong> or <strong>Task&lt;T&gt;</strong>.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>Task DoWorkAsync()
+{
+    // asynchronous work
+}</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    When the asynchronous operation does not return a value,
+                    <strong>Task</strong> is generally used.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>Task&lt;int&gt; GetNumberAsync()
+{
+    // returns an integer asynchronously
+}</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    When an asynchronous operation returns a value,
+                    <strong>Task&lt;T&gt;</strong> is used.
+                </p>
+
+
+                <!-- =====================================================
+                     5. ASYNC KEYWORD
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    async Keyword
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <strong>async</strong> keyword tells C# that a method contains
+                    asynchronous operations and may use the <strong>await</strong>
+                    keyword.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>async Task DoWorkAsync()
+{
+    // asynchronous code
+}</code></pre>
+                </div>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Remember:</strong>
+                    <code>async</code> does not automatically create a new thread.
+                    It enables a method to work with asynchronous operations.
+                </div>
+
+
+                <!-- =====================================================
+                     6. AWAIT KEYWORD
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    await Keyword
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <strong>await</strong> keyword is used to asynchronously wait
+                    for a Task to complete.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>await Task.Delay(2000);</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    In this example, the method waits asynchronously for two seconds.
+                    The important point is that this waiting does not require the
+                    method to synchronously block the thread for the entire delay.
+                </p>
+
+
+                <!-- =====================================================
+                     7. FIRST PROGRAM
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Example 1: Basic async and await
+                </h3>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        Console.WriteLine("Program started");
+
+        await Task.Delay(2000);
+
+        Console.WriteLine("Async operation completed");
+
+        Console.WriteLine("Program finished");
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Program started
+Async operation completed
+Program finished</code></pre>
+                </div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Explanation
+                </h4>
+
+                <ol class="text-muted mb-4">
+                    <li>The program prints <strong>Program started</strong>.</li>
+                    <li><code>Task.Delay(2000)</code> represents an asynchronous delay.</li>
+                    <li><code>await</code> waits for the Task to complete.</li>
+                    <li>After two seconds, the next statement executes.</li>
+                    <li>The program prints <strong>Program finished</strong>.</li>
+                </ol>
+
+
+                <!-- =====================================================
+                     8. ASYNC METHOD WITHOUT RETURN VALUE
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Example 2: Async Method Without Return Value
+                </h3>
+
+                <p class="text-muted mb-4">
+                    An asynchronous method that does not return a result normally
+                    uses <strong>Task</strong>.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task ShowMessageAsync()
+    {
+        await Task.Delay(1000);
+
+        Console.WriteLine("Hello from asynchronous method");
+    }
+
+    static async Task Main()
+    {
+        Console.WriteLine("Before method call");
+
+        await ShowMessageAsync();
+
+        Console.WriteLine("After method call");
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Before method call
+Hello from asynchronous method
+After method call</code></pre>
+                </div>
+
+
+                <!-- =====================================================
+                     9. TASK RETURN VALUE
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Example 3: Async Method Returning a Value
+                </h3>
+
+                <p class="text-muted mb-4">
+                    When an asynchronous method returns a value, use
+                    <strong>Task&lt;T&gt;</strong>.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task&lt;int&gt; GetNumberAsync()
+    {
+        await Task.Delay(1000);
+
+        return 100;
+    }
+
+    static async Task Main()
+    {
+        int number = await GetNumberAsync();
+
+        Console.WriteLine("Number = " + number);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Number = 100</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <code>GetNumberAsync()</code> returns
+                    <code>Task&lt;int&gt;</code>. The <code>await</code> keyword gets the
+                    final integer result from the completed Task.
+                </p>
+
+
+                <!-- =====================================================
+                     10. PRACTICAL API EXAMPLE
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Example 4: Calling a Web API Asynchronously
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Calling an external API is one of the most common real-world
+                    uses of asynchronous programming in .NET applications.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        using HttpClient client = new HttpClient();
+
+        string response =
+            await client.GetStringAsync("https://example.com");
+
+        Console.WriteLine(response);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <div class="alert alert-warning mb-4">
+                    <strong>Important:</strong>
+                    In a real application, use the actual API endpoint required by
+                    your project. The example above demonstrates the asynchronous
+                    HTTP request pattern.
+                </div>
+
+                <p class="text-muted mb-4">
+                    The application does not need to synchronously block while
+                    waiting for the network response. Once the response is available,
+                    execution continues after the <code>await</code>.
+                </p>
+
+
+                <!-- =====================================================
+                     11. DATABASE EXAMPLE
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Asynchronous Programming with Database Operations
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Database access can also be performed asynchronously. This is
+                    particularly useful in ASP.NET Core applications where many
+                    requests may be handled at the same time.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>public async Task&lt;List&lt;Student&gt;&gt; GetStudentsAsync()
+{
+    return await _context.Students.ToListAsync();
+}</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, the database operation is asynchronous. The application
+                    can avoid unnecessarily blocking while the database server
+                    processes the request.
+                </p>
+
+
+                <!-- =====================================================
+                     12. MULTIPLE ASYNC OPERATIONS
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Running Multiple Async Operations
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Sometimes an application needs to perform multiple independent
+                    asynchronous operations. In such situations, the Tasks can be
+                    created first and then awaited together.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task&lt;string&gt; GetDataAsync(string name)
+    {
+        await Task.Delay(2000);
+
+        return "Data received from " + name;
+    }
+
+    static async Task Main()
+    {
+        Task&lt;string&gt; task1 = GetDataAsync("Service 1");
+        Task&lt;string&gt; task2 = GetDataAsync("Service 2");
+
+        string result1 = await task1;
+        string result2 = await task2;
+
+        Console.WriteLine(result1);
+        Console.WriteLine(result2);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Data received from Service 1
+                Data received from Service 2</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    Since both operations are started before awaiting their results,
+                    independent asynchronous operations can make progress without
+                    unnecessarily waiting for one to finish before starting the other.
+                </p>
+
+
+                <!-- =====================================================
+                     13. TASK.WHENALL
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Task.WhenAll()
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <strong>Task.WhenAll()</strong> is useful when multiple independent
+                    asynchronous operations need to complete before continuing.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task&lt;string&gt; GetDataAsync(int id)
+    {
+        await Task.Delay(1000);
+
+        return "Data " + id;
+    }
+
+    static async Task Main()
+    {
+        Task&lt;string&gt; task1 = GetDataAsync(1);
+        Task&lt;string&gt; task2 = GetDataAsync(2);
+        Task&lt;string&gt; task3 = GetDataAsync(3);
+
+        string[] results =
+            await Task.WhenAll(task1, task2, task3);
+
+        foreach (string result in results)
+        {
+            Console.WriteLine(result);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Data 1
+Data 2
+Data 3</code></pre>
+                </div>
+
+
+                <!-- =====================================================
+                     14. TASK.WHENANY
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Task.WhenAny()
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <strong>Task.WhenAny()</strong> completes when any one of the
+                    supplied Tasks completes.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+using System.Threading.Tasks;
+
+namespace TaskExample
+{
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            Task task1 = Task.Delay(3000);
+            Task task2 = Task.Delay(1000);
+
+            Task completedTask =
+                await Task.WhenAny(task1, task2);
+
+            Console.WriteLine("One task has completed.");
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+                <p class="text-muted mb-4">
+                    This can be useful when the application needs to continue as soon
+                    as the first available operation finishes.
+                </p>
+
+
+                <!-- =====================================================
+                     15. ERROR HANDLING
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Exception Handling in Async Methods
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Exceptions generated by an asynchronous operation can be handled
+                    using the normal <code>try-catch</code> mechanism around the
+                    awaited operation.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Program
+{
+    static async Task ProcessAsync()
+    {
+        await Task.Delay(500);
+
+        throw new Exception("Something went wrong.");
+    }
+
+    static async Task Main()
+    {
+        try
+        {
+            await ProcessAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Something went wrong.</code></pre>
+                </div>
+
+
+                <!-- =====================================================
+                     16. COMMON MISTAKES
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Common Mistakes in Async Programming
+                </h3>
+
+                <div class="alert alert-warning mb-4">
+                    <h4 class="fw-bold mb-3">
+                        1. Using .Result unnecessarily
+                    </h4>
+
+                    <p class="mb-0">
+                        Avoid unnecessarily converting asynchronous code into
+                        synchronous waiting by using <code>.Result</code> or
+                        <code>.Wait()</code>. Prefer <code>await</code> when working
+                        with asynchronous APIs.
+                    </p>
+                </div>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Avoid</div>
+                    <pre class="mb-0"><code>var result = GetDataAsync().Result;</code></pre>
+                </div>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Prefer</div>
+                    <pre class="mb-0"><code>var result = await GetDataAsync();</code></pre>
+                </div>
+
+
+                <div class="alert alert-warning mb-4">
+                    <h4 class="fw-bold mb-3">
+                        2. Using async without an asynchronous operation
+                    </h4>
+
+                    <p class="mb-0">
+                        Do not add <code>async</code> simply because it looks modern.
+                        The method should have a genuine asynchronous operation or
+                        return an appropriate Task-based result.
+                    </p>
+                </div>
+
+
+                <div class="alert alert-warning mb-4">
+                    <h4 class="fw-bold mb-3">
+                        3. Forgetting await
+                    </h4>
+
+                    <p class="mb-0">
+                        If a Task-returning method is called without awaiting it,
+                        the program may continue before the operation has completed.
+                    </p>
+                </div>
+
+
+                <!-- =====================================================
+                     17. ASYNC DOES NOT MEAN PARALLEL
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Async Does Not Automatically Mean Parallel
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Asynchronous programming and parallel processing are related
+                    concepts, but they are not the same thing.
+                </p>
+
+                <ul class="text-muted mb-4">
+                    <li>
+                        <strong>Asynchronous programming:</strong>
+                        focuses on not unnecessarily blocking while waiting for
+                        operations to complete.
+                    </li>
+                    <li>
+                        <strong>Parallel processing:</strong>
+                        focuses on performing multiple pieces of work at the same
+                        time using available processing resources.
+                    </li>
+                </ul>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Important:</strong>
+                    Multithreading and Parallel Processing are covered separately
+                    in the next topics of Module 7.
+                </div>
+
+
+                <!-- =====================================================
+                     18. ASP.NET CORE PRACTICAL USE
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Async Programming in ASP.NET Core
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Asynchronous programming is widely used in ASP.NET Core
+                    applications for database access, HTTP requests, file operations,
+                    and other I/O-bound work.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>public async Task&lt;IActionResult&gt; GetStudents()
+{
+    var students = await _context.Students.ToListAsync();
+
+    return View(students);
+}</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    In this example, the controller action uses an asynchronous
+                    database operation. This approach is commonly used in real-world
+                    ASP.NET Core applications.
+                </p>
+
+                <div class="alert alert-success mb-4">
+                    <strong>CIIT Practical Point:</strong>
+                    For .NET Full Stack development, students should understand
+                    async/await because database calls, Web API calls and external
+                    service calls are frequently asynchronous in production
+                    applications.
+                </div>
+
+
+                <!-- =====================================================
+                     19. WHEN TO USE
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    When Should You Use Asynchronous Programming?
+                </h3>
+
+                <p class="text-muted mb-3">
+                    Async programming is especially useful for:
+                </p>
+
+                <ul class="text-muted mb-4">
+                    <li>Database operations</li>
+                    <li>HTTP and REST API calls</li>
+                    <li>File input/output</li>
+                    <li>Network operations</li>
+                    <li>Cloud service calls</li>
+                    <li>External service integrations</li>
+                    <li>Other operations where the application spends time waiting</li>
+                </ul>
+
+
+                <!-- =====================================================
+                     20. INTERVIEW QUESTIONS
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Interview Questions
+                </h3>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">1. What is asynchronous programming?</h5>
+                    <p class="text-muted">
+                        Asynchronous programming allows an application to start an
+                        operation and continue execution without unnecessarily blocking
+                        while waiting for that operation to complete.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">2. What is the use of async?</h5>
+                    <p class="text-muted">
+                        The <code>async</code> keyword allows a method to use
+                        <code>await</code> and work with Task-based asynchronous
+                        operations.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">3. What is await?</h5>
+                    <p class="text-muted">
+                        <code>await</code> asynchronously waits for a Task to complete
+                        and then continues execution with the result.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">4. What is Task?</h5>
+                    <p class="text-muted">
+                        Task represents an asynchronous operation.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">5. Difference between Task and Task&lt;T&gt;?</h5>
+                    <p class="text-muted">
+                        <strong>Task</strong> represents an asynchronous operation
+                        without a result, while <strong>Task&lt;T&gt;</strong>
+                        represents an asynchronous operation that returns a value.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">6. Does async create a new thread?</h5>
+                    <p class="text-muted">
+                        No. The async keyword itself does not create a new thread.
+                        Asynchronous programming and multithreading are different
+                        concepts.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">7. What is Task.WhenAll()?</h5>
+                    <p class="text-muted">
+                        Task.WhenAll() allows multiple Tasks to be awaited together
+                        and completes after all supplied Tasks have completed.
+                    </p>
+                </div>
+
+
+                <!-- =====================================================
+                     21. PRACTICE QUESTIONS
+                     ===================================================== -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Practice Programs
+                </h3>
+
+                <ol class="text-muted mb-4">
+                    <li>
+                        Create an async method that waits for 2 seconds and prints
+                        a message.
+                    </li>
+                    <li>
+                        Create an async method that returns the sum of two numbers.
+                    </li>
+                    <li>
+                        Create an async method that returns a student name.
+                    </li>
+                    <li>
+                        Create three asynchronous methods and execute them using
+                        Task.WhenAll().
+                    </li>
+                    <li>
+                        Create an async method that simulates an API call using
+                        Task.Delay().
+                    </li>
+                    <li>
+                        Handle an exception generated inside an async method.
+                    </li>
+                </ol>
+
+
+                <!-- =====================================================
+                     22. SUMMARY
+                     ===================================================== -->
+                <div class="alert alert-info mb-4"
+                     style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                    <h2 class="h3 fw-bold mb-3">
+                        Summary
+                    </h2>
+
+                    <ul class="mb-0">
+                        <li>
+                            Asynchronous programming helps applications handle
+                            waiting operations efficiently.
+                        </li>
+                        <li>
+                            C# uses <strong>async</strong> and <strong>await</strong>
+                            for asynchronous programming.
+                        </li>
+                        <li>
+                            <strong>Task</strong> represents an asynchronous operation.
+                        </li>
+                        <li>
+                            <strong>Task&lt;T&gt;</strong> represents an asynchronous
+                            operation that returns a value.
+                        </li>
+                        <li>
+                            <strong>await</strong> asynchronously waits for a Task
+                            to complete.
+                        </li>
+                        <li>
+                            Async programming is commonly used with APIs, databases,
+                            files and network operations.
+                        </li>
+                        <li>
+                            <strong>Task.WhenAll()</strong> can be used when multiple
+                            asynchronous operations need to complete.
+                        </li>
+                        <li>
+                            Asynchronous programming does not automatically mean
+                            multithreading or parallel processing.
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- =====================================================
+                     NAVIGATION
+                     ===================================================== -->
+                <div class="d-flex justify-content-between align-items-center mb-5">
+
+                    <a href="/CSharp/AdvanceFeature/LINQ"
+                       class="btn btn-outline-secondary">
+                        ← Previous Topic
+                    </a>
+
+                    <a href="/CSharp/AsynchronousParallelProgramming/Multithreading"
+                       class="btn btn-primary">
+                        Next Topic →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+
+                <script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

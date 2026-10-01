@@ -1,0 +1,878 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Justify Content";
+}
+
+<style>
+
+    #css-justify-content-page {
+        color: #212529;
+    }
+
+    #css-justify-content-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-justify-content-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-justify-content-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-justify-content-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-justify-content-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* Code */
+
+    #css-justify-content-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-justify-content-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* Explanation */
+
+    #css-justify-content-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-justify-content-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Diagram */
+
+    #css-justify-content-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-justify-content-page .diagram-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-justify-content-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 15px 22px;
+        border-radius: 6px;
+        font-weight: 700;
+    }
+
+    /* Outputs */
+
+    #css-justify-content-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-justify-content-page .output-container {
+        display: flex;
+        gap: 10px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+        min-height: 100px;
+    }
+
+    #css-justify-content-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 18px 22px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* Property Cards */
+
+    #css-justify-content-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-justify-content-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-justify-content-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Note */
+
+    #css-justify-content-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* Summary */
+
+    #css-justify-content-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-justify-content-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-justify-content-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+</style>
+
+
+<div id="css-justify-content-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- Title -->
+
+                <h1>
+                    CSS Justify Content
+                </h1>
+
+                <p>
+                    The CSS <strong>justify-content</strong> property
+                    controls how Flex Items are positioned along the
+                    <strong>main axis</strong> of a Flex Container.
+                </p>
+
+                <p>
+                    When the Flex Direction is
+                    <strong>row</strong>, the main axis is horizontal.
+                    Therefore, justify-content controls the horizontal
+                    distribution of the Flex Items.
+                </p>
+
+                <p>
+                    When the Flex Direction is
+                    <strong>column</strong>, the main axis becomes
+                    vertical, so justify-content controls the vertical
+                    distribution.
+                </p>
+
+
+                <!-- Syntax -->
+
+                <h2>
+                    Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    justify-content: value;
+}</code></pre>
+
+                </div>
+
+
+                <!-- Main Axis -->
+
+                <h2>
+                    Understanding the Main Axis
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The main axis is the primary direction in which
+                        Flex Items are arranged.
+                    </p>
+
+                    <p>
+                        With
+                        <strong>flex-direction: row;</strong>,
+                        the main axis runs horizontally.
+                    </p>
+
+                    <p>
+                        With
+                        <strong>flex-direction: column;</strong>,
+                        the main axis runs vertically.
+                    </p>
+
+                </div>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Justify Content Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-container">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        justify-content controls the distribution
+                        of items along the main axis.
+                    </p>
+
+                </div>
+
+
+                <!-- Values -->
+
+                <h2>
+                    Values of justify-content
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Value</th>
+                                <th>Purpose</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><strong>flex-start</strong></td>
+                                <td>
+                                    Places items at the beginning
+                                    of the main axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>flex-end</strong></td>
+                                <td>
+                                    Places items at the end
+                                    of the main axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>center</strong></td>
+                                <td>
+                                    Places items in the center
+                                    of the main axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>space-between</strong></td>
+                                <td>
+                                    Places equal space between items.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>space-around</strong></td>
+                                <td>
+                                    Places space around each item.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>space-evenly</strong></td>
+                                <td>
+                                    Creates equal space between items
+                                    and the container edges.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Flex Start -->
+
+                <h2>
+                    1. justify-content: flex-start
+                </h2>
+
+                <p>
+                    <strong>flex-start</strong> places the Flex Items
+                    at the beginning of the main axis.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    justify-content: flex-start;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="justify-content:flex-start;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Flex End -->
+
+                <h2>
+                    2. justify-content: flex-end
+                </h2>
+
+                <p>
+                    <strong>flex-end</strong> places the Flex Items
+                    at the end of the main axis.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    justify-content: flex-end;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="justify-content:flex-end;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Center -->
+
+                <h2>
+                    3. justify-content: center
+                </h2>
+
+                <p>
+                    <strong>center</strong> places the Flex Items
+                    in the center of the main axis.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    justify-content: center;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="justify-content:center;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Space Between -->
+
+                <h2>
+                    4. justify-content: space-between
+                </h2>
+
+                <p>
+                    <strong>space-between</strong> places the first
+                    item at the beginning and the last item at the end.
+                    The remaining space is distributed between the items.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    justify-content: space-between;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="justify-content:space-between;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Space Around -->
+
+                <h2>
+                    5. justify-content: space-around
+                </h2>
+
+                <p>
+                    <strong>space-around</strong> gives each Flex Item
+                    space around it.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    justify-content: space-around;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="justify-content:space-around;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Space Evenly -->
+
+                <h2>
+                    6. justify-content: space-evenly
+                </h2>
+
+                <p>
+                    <strong>space-evenly</strong> distributes equal
+                    space between the Flex Items and the edges
+                    of the container.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    justify-content: space-evenly;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="justify-content:space-evenly;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Comparison -->
+
+                <h2>
+                    Comparing justify-content Values
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex-start
+                            </h3>
+
+                            <p>
+                                Items are grouped at the beginning
+                                of the main axis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex-end
+                            </h3>
+
+                            <p>
+                                Items are grouped at the end
+                                of the main axis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                center
+                            </h3>
+
+                            <p>
+                                Items are grouped in the center
+                                of the main axis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                space-between
+                            </h3>
+
+                            <p>
+                                Equal space is placed between
+                                the items.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                space-around
+                            </h3>
+
+                            <p>
+                                Space is distributed around
+                                each item.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                space-evenly
+                            </h3>
+
+                            <p>
+                                Equal spacing is maintained between
+                                items and container edges.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Real World -->
+
+                <h2>
+                   Example 🌍🤓
+                </h2>
+
+                <p>
+                    A website navigation bar can use
+                    <strong>justify-content</strong> to control the
+                    position of navigation items.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.navbar {
+    display: flex;
+    justify-content: space-between;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        With <strong>space-between</strong>, one group
+                        can stay at the beginning while another group
+                        can stay at the opposite end of the container.
+                    </p>
+
+                    <p>
+                        This is commonly useful for layouts containing
+                        a logo on one side and navigation or action
+                        items on the other side.
+                    </p>
+
+                </div>
+
+
+                <!-- Important -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    <strong>justify-content</strong> works along the
+                    main axis. Therefore, always check the value of
+                    <strong>flex-direction</strong> before deciding
+                    whether the alignment will be horizontal or vertical.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>justify-content</strong> property
+                        controls the distribution of Flex Items along
+                        the main axis. Common values include
+                        <strong>flex-start</strong>,
+                        <strong>flex-end</strong>,
+                        <strong>center</strong>,
+                        <strong>space-between</strong>,
+                        <strong>space-around</strong>, and
+                        <strong>space-evenly</strong>. Its behavior
+                        depends on the direction of the Flex Container.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("FlexWrap", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Flex Wrap
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("AlignItems", "Flexbox", new { area = "CSS" })">
+
+                            Next: Align Items →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

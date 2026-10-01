@@ -1,0 +1,1017 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML TextArea";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+
+    .form-demo {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML TextArea</h1>
+
+            <p class="lead">
+                The HTML <code>&lt;textarea&gt;</code> element is used to collect
+                multi-line text input such as messages, comments, descriptions,
+                addresses, and feedback.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. What is textarea?</h2>
+
+            <p>
+                The <code>&lt;textarea&gt;</code> element creates a multi-line
+                text input control.
+            </p>
+
+            <pre><code>&lt;textarea&gt;&lt;/textarea&gt;</code></pre>
+
+            <p>
+                Unlike a normal text input, a textarea can contain multiple lines
+                of text.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">2. Basic textarea Syntax</h2>
+
+            <pre><code>&lt;textarea&gt;
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+
+                    <textarea class="form-control"
+                              rows="4"></textarea>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">3. rows Attribute</h2>
+
+            <p>
+                The <code>rows</code> attribute specifies the approximate number
+                of visible text lines in the textarea.
+            </p>
+
+            <pre><code>&lt;textarea rows="5"&gt;
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+
+            <div class="example-box">
+
+                    <textarea class="form-control"
+                              rows="5"></textarea>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">4. cols Attribute</h2>
+
+            <p>
+                The <code>cols</code> attribute specifies an approximate
+                visible width of the textarea in character columns.
+            </p>
+
+            <pre><code>&lt;textarea cols="40"
+          rows="5"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">5. rows and cols Together</h2>
+
+            <pre><code>&lt;textarea
+    rows="6"
+    cols="50"&gt;
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+
+            <div class="example-box">
+
+                    <textarea class="form-control"
+                              rows="6"></textarea>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">6. name Attribute</h2>
+
+            <p>
+                The <code>name</code> attribute identifies the textarea value
+                during form submission.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Give the textarea a meaningful <code>name</code> when its
+                value needs to be submitted as part of the form.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">7. id Attribute</h2>
+
+            <p>
+                The <code>id</code> attribute uniquely identifies the textarea
+                and can be used to associate a label with it.
+            </p>
+
+            <pre><code>&lt;textarea
+    id="message"
+    name="message"
+    rows="5"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">8. Label with textarea</h2>
+
+            <p>
+                A label should be associated with the textarea using matching
+                <code>for</code> and <code>id</code> values.
+            </p>
+
+            <pre><code>&lt;label for="message"&gt;
+    Message:
+&lt;/label&gt;
+
+&lt;textarea
+    id="message"
+    name="message"
+    rows="5"&gt;
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+
+                    <label for="demoMessage"
+                           class="form-label">
+                        Message:
+                    </label>
+
+                    <textarea id="demoMessage"
+                              name="message"
+                              class="form-control"
+                              rows="5"
+                              placeholder="Enter your message"></textarea>
+                
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">9. placeholder Attribute</h2>
+
+            <p>
+                The <code>placeholder</code> attribute displays a temporary
+                hint inside an empty textarea.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    placeholder="Enter your message here..."
+    rows="5"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">10. required Attribute</h2>
+
+            <p>
+                The <code>required</code> attribute indicates that the textarea
+                must contain a value before the form can be submitted.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"
+    required&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Example:</strong>
+                This is useful for mandatory fields such as contact messages,
+                feedback, or application descriptions.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">11. maxlength Attribute</h2>
+
+            <p>
+                The <code>maxlength</code> attribute limits the maximum number
+                of characters that can be entered.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"
+    maxlength="500"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">12. minlength Attribute</h2>
+
+            <p>
+                The <code>minlength</code> attribute specifies the minimum
+                number of characters expected.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"
+    minlength="20"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">13. readonly Attribute</h2>
+
+            <p>
+                The <code>readonly</code> attribute prevents the user from
+                editing the textarea content.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="terms"
+    rows="5"
+    readonly&gt;
+These are the terms and conditions.
+&lt;/textarea&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                A readonly textarea can still be displayed and remains
+                different from a disabled control.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">14. disabled Attribute</h2>
+
+            <p>
+                The <code>disabled</code> attribute makes the textarea inactive.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"
+    disabled&gt;
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+
+                    <textarea class="form-control"
+                              rows="4"
+                              disabled>Message is currently unavailable.</textarea>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">15. autofocus Attribute</h2>
+
+            <p>
+                The <code>autofocus</code> attribute requests that the browser
+                focus the textarea when the page loads.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"
+    autofocus&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                Use autofocus carefully because it can move the user's focus
+                unexpectedly when a page loads.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">16. autocomplete Attribute</h2>
+
+            <p>
+                The <code>autocomplete</code> attribute can provide a hint
+                about whether previously entered data may be suggested.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="address"
+    autocomplete="street-address"
+    rows="4"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">17. wrap Attribute</h2>
+
+            <p>
+                The <code>wrap</code> attribute controls how text wrapping
+                is handled when textarea data is submitted.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"
+    wrap="soft"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <p>
+                Common values include <code>soft</code> and <code>hard</code>.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">18. Soft Wrapping</h2>
+
+            <p>
+                With <code>wrap="soft"</code>, visual line wrapping does not
+                necessarily insert line break characters into the submitted value.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"
+    wrap="soft"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">19. Hard Wrapping</h2>
+
+            <p>
+                With <code>wrap="hard"</code>, line wrapping can be reflected
+                in submitted text when the required column configuration is used.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"
+    cols="40"
+    wrap="hard"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">20. cols vs CSS Width</h2>
+
+            <p>
+                The <code>cols</code> attribute provides a character-based
+                sizing hint, while CSS can provide more flexible visual sizing.
+            </p>
+
+            <pre><code>&lt;textarea
+    rows="5"
+    cols="40"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <p>CSS example:</p>
+
+            <pre><code>&lt;textarea
+    rows="5"
+    style="width:100%;"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">21. Responsive textarea</h2>
+
+            <p>
+                CSS can make a textarea fit different screen widths.
+            </p>
+
+            <pre><code>&lt;textarea
+    class="message-box"
+    rows="5"&gt;
+&lt;/textarea&gt;
+
+&lt;style&gt;
+
+    .message-box {
+        width: 100%;
+        max-width: 700px;
+        box-sizing: border-box;
+    }
+
+&lt;/style&gt;</code></pre>
+
+
+
+
+            <h2 class="h3 fw-bold mt-5">22. Styling textarea with CSS</h2>
+
+            <pre><code>&lt;style&gt;
+
+    .custom-textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        resize: vertical;
+    }
+
+&lt;/style&gt;
+
+&lt;textarea
+    class="custom-textarea"
+    rows="5"
+    placeholder="Enter your message"&gt;
+&lt;/textarea&gt;</code></pre>
+
+
+            <h2 class="h3 fw-bold mt-5">23. resize Property</h2>
+
+            <p>
+                CSS allows you to control whether the user can resize a textarea.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    .resize-both {
+        resize: both;
+    }
+
+    .resize-horizontal {
+        resize: horizontal;
+    }
+
+    .resize-vertical {
+        resize: vertical;
+    }
+
+    .resize-none {
+        resize: none;
+    }
+
+&lt;/style&gt;</code></pre>
+
+
+
+
+            <h2 class="h3 fw-bold mt-5">24. Textarea Without Resize</h2>
+
+            <pre><code>&lt;textarea
+    rows="5"
+    style="resize:none;"
+    placeholder="Enter message"&gt;
+&lt;/textarea&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Tip:</strong>
+                Vertical resizing is often useful for message fields because
+                users can adjust the visible height while preserving the width.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">25. Initial Text Content</h2>
+
+            <p>
+                Textarea content is placed between the opening and closing
+                <code>&lt;textarea&gt;</code> tags.
+            </p>
+
+            <pre><code>&lt;textarea
+    name="message"
+    rows="5"&gt;
+Welcome to the HTML course.
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="example-box">
+
+                    <textarea class="form-control"
+                              rows="4">Welcome to the HTML course.</textarea>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">26. Important Difference from input</h2>
+
+            <p>
+                A textarea does not use a <code>value</code> attribute to
+                define its initial text content.
+            </p>
+
+            <h3 class="h5 fw-bold mt-4">textarea</h3>
+
+            <pre><code>&lt;textarea&gt;
+Initial text
+&lt;/textarea&gt;</code></pre>
+
+            <h3 class="h5 fw-bold mt-4">input</h3>
+
+            <pre><code>&lt;input type="text"
+       value="Initial text"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">27. Textarea in a Contact Form</h2>
+
+            <pre><code>&lt;form action="/contact"
+      method="post"&gt;
+
+    &lt;label for="message"&gt;
+        Message:
+    &lt;/label&gt;
+
+    &lt;br&gt;
+
+    &lt;textarea
+        id="message"
+        name="message"
+        rows="6"
+        cols="50"
+        placeholder="Enter your message"
+        required&gt;
+    &lt;/textarea&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Send Message
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">28. Textarea for Address</h2>
+
+            <pre><code>&lt;label for="address"&gt;
+    Address:
+&lt;/label&gt;
+
+&lt;textarea
+    id="address"
+    name="address"
+    rows="4"
+    cols="50"
+    placeholder="Enter complete address"&gt;
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">29. Textarea for Feedback</h2>
+
+            <pre><code>&lt;label for="feedback"&gt;
+    Feedback:
+&lt;/label&gt;
+
+&lt;textarea
+    id="feedback"
+    name="feedback"
+    rows="6"
+    maxlength="500"
+    placeholder="Share your feedback"&gt;
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">30. Textarea for Description</h2>
+
+            <pre><code>&lt;label for="description"&gt;
+    Description:
+&lt;/label&gt;
+
+&lt;textarea
+    id="description"
+    name="description"
+    rows="8"
+    minlength="20"
+    maxlength="1000"
+    required&gt;
+&lt;/textarea&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">31. Textarea with Counter Concept</h2>
+
+            <p>
+                JavaScript can be used to display the current character count
+                while the user types.
+            </p>
+
+            <pre><code>&lt;textarea
+    id="message"
+    maxlength="200"
+    rows="5"
+    oninput="updateCount()"&gt;
+&lt;/textarea&gt;
+
+&lt;p id="counter"&gt;
+    0 / 200
+&lt;/p&gt;
+
+&lt;script&gt;
+
+    function updateCount() {
+
+        const message =
+            document.getElementById("message");
+
+        const counter =
+            document.getElementById("counter");
+
+        counter.textContent =
+            message.value.length + " / 200";
+    }
+
+&lt;/script&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">32. Textarea with Disabled State</h2>
+
+            <pre><code>&lt;textarea
+    rows="5"
+    disabled&gt;
+This field is unavailable.
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">33. Textarea with Readonly State</h2>
+
+            <pre><code>&lt;textarea
+    rows="5"
+    readonly&gt;
+This content can be read but not edited.
+&lt;/textarea&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">34. Textarea with Required Validation</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="feedback"&gt;
+        Feedback:
+    &lt;/label&gt;
+
+    &lt;textarea
+        id="feedback"
+        name="feedback"
+        rows="5"
+        required&gt;
+    &lt;/textarea&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">35. Multiple Textareas in One Form</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="address"&gt;
+        Address:
+    &lt;/label&gt;
+
+    &lt;textarea
+        id="address"
+        name="address"
+        rows="4"&gt;
+    &lt;/textarea&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="comments"&gt;
+        Comments:
+    &lt;/label&gt;
+
+    &lt;textarea
+        id="comments"
+        name="comments"
+        rows="5"&gt;
+    &lt;/textarea&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">36. Textarea Accessibility</h2>
+
+            <p>
+                Textareas should have clear labels and appropriate instructions
+                when necessary.
+            </p>
+
+            <ul>
+                <li>Use a meaningful label.</li>
+                <li>Associate the label using <code>for</code> and <code>id</code>.</li>
+                <li>Use suitable placeholder text as a supplementary hint.</li>
+                <li>Use required and length constraints when appropriate.</li>
+                <li>Provide clear validation messages.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">37. Common Mistakes</h2>
+
+            <ul>
+                <li>Forgetting the closing <code>&lt;/textarea&gt;</code> tag.</li>
+                <li>Using a <code>value</code> attribute to set initial textarea content.</li>
+                <li>Forgetting the <code>name</code> attribute.</li>
+                <li>Using placeholder text as the only label.</li>
+                <li>Using excessive fixed width that breaks responsive layouts.</li>
+                <li>Applying unnecessary restrictions to users.</li>
+                <li>Forgetting server-side validation.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">38. Best Practices</h2>
+
+            <ul>
+                <li>Use textarea for genuinely multi-line input.</li>
+                <li>Use clear labels.</li>
+                <li>Set a reasonable initial size.</li>
+                <li>Use responsive CSS for width.</li>
+                <li>Use <code>maxlength</code> and <code>minlength</code> when appropriate.</li>
+                <li>Allow useful resizing when it improves usability.</li>
+                <li>Validate submitted content on the server.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">39. Complete Contact Form Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;Contact Form&lt;/title&gt;
+
+    &lt;style&gt;
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        textarea {
+            width: 100%;
+            max-width: 700px;
+            box-sizing: border-box;
+            resize: vertical;
+            padding: 10px;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Contact Us&lt;/h1&gt;
+
+    &lt;form action="/contact"
+          method="post"&gt;
+
+        &lt;div class="form-group"&gt;
+
+            &lt;label for="name"&gt;
+                Full Name:
+            &lt;/label&gt;
+
+            &lt;input type="text"
+                   id="name"
+                   name="name"
+                   required&gt;
+
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+
+            &lt;label for="email"&gt;
+                Email:
+            &lt;/label&gt;
+
+            &lt;input type="email"
+                   id="email"
+                   name="email"
+                   required&gt;
+
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+
+            &lt;label for="message"&gt;
+                Message:
+            &lt;/label&gt;
+
+            &lt;textarea
+                id="message"
+                name="message"
+                rows="6"
+                maxlength="1000"
+                placeholder="Enter your message"
+                required&gt;
+            &lt;/textarea&gt;
+
+        &lt;/div&gt;
+
+        &lt;button type="submit"&gt;
+            Send Message
+        &lt;/button&gt;
+
+    &lt;/form&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">40. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create a form containing:</strong></p>
+
+                <ol>
+                    <li>A message textarea with a label.</li>
+                    <li>An address textarea.</li>
+                    <li>A feedback textarea.</li>
+                    <li>A required textarea.</li>
+                    <li>A textarea with <code>maxlength</code>.</li>
+                    <li>A readonly textarea.</li>
+                    <li>A disabled textarea.</li>
+                    <li>A responsive textarea using CSS.</li>
+                    <li>A textarea with a character counter using JavaScript.</li>
+                </ol>
+            </div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    The HTML <code>&lt;textarea&gt;</code> element is used for
+                    multi-line text input. Important attributes include
+                    <code>rows</code>, <code>cols</code>, <code>name</code>,
+                    <code>id</code>, <code>placeholder</code>, <code>required</code>,
+                    <code>maxlength</code>, <code>minlength</code>,
+                    <code>readonly</code>, <code>disabled</code>,
+                    <code>autocomplete</code>, and <code>wrap</code>.
+                    CSS can be used to create responsive layouts and control
+                    resizing and visual appearance.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Labels", "Forms", new { area = "HTML" })">
+                    ← Previous: Labels
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("SelectAndOption", "Forms", new { area = "HTML" })">
+                    Next: Select and Option →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

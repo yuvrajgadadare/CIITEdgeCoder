@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Root User vs IAM User";
+    Layout = "~/Areas/AWS/Views/Shared/AWSLayout.cshtml";
+}
+
+<div class="row g-4 aws-content">
+        <div class="col-lg-3">
+            @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSTopics.cshtml")
+        </div>
+        <div class="col-lg-9">
+            @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSContentStyles.cshtml")
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="aws-deep">
+                        <h2 class="fw-bold">Root User vs IAM User</h2>
+                        <p>The root user is the original identity for the AWS account. An IAM user is a separate identity created inside that account and can be granted controlled permissions.</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-middle">
+                                <thead><tr><th>Root User</th><th>IAM User</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Account-level identity</td><td>Controlled identity inside the account</td></tr>
+                                    <tr><td>Very broad account capabilities</td><td>Permissions depend on policies/groups</td></tr>
+                                    <tr><td>Protect strongly and avoid routine use</td><td>Suitable for controlled daily access</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="aws-example">
+                        <h5 class="fw-bold">Simple mental model</h5>
+                        <div class="aws-code">AWS Account → Root User (protect)
+           → IAM User / Role → Policy → AWS Service</div>
+                    </div>
+                    @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSMiniTest.cshtml")
+                    <div class="aws-lesson-nav">
+                        <a class="btn aws-back" href="@Url.Action("AWSAccountSetup", "Introduction", new { area = "AWS" })">← Back</a>
+                        <a class="btn aws-next" href="@Url.Action("AWSFreeTier", "Introduction", new { area = "AWS" })">Next →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,656 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Syntax";
+}
+
+<style>
+
+    /* ===================================================== */
+    /* CONTENT */
+    /* ===================================================== */
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+        .content-section h1.page-title {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.75;
+        }
+
+
+    /* ===================================================== */
+    /* CODE BLOCK */
+    /* ===================================================== */
+
+    .css-example {
+        background-color: #0f172a;
+        color: #f1f5f9;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 12px;
+    }
+
+
+    /* ===================================================== */
+    /* SYNTAX DIAGRAM */
+    /* ===================================================== */
+
+    .syntax-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 28px 0;
+    }
+
+    .syntax-box {
+        min-width: 150px;
+        min-height: 90px;
+        border-radius: 12px;
+        padding: 18px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .selector-box {
+        background: #fff3cd;
+        border: 1px solid #ffe69c;
+    }
+
+    .property-box {
+        background: #e0e7ff;
+        border: 1px solid #c7d2fe;
+    }
+
+    .value-box {
+        background: #d1fae5;
+        border: 1px solid #a7f3d0;
+    }
+
+    .syntax-title {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .syntax-text {
+        color: #495057;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .syntax-arrow {
+        font-size: 25px;
+        font-weight: 700;
+        color: #495057;
+    }
+
+
+    /* ===================================================== */
+    /* OUTPUT */
+    /* ===================================================== */
+
+    .output-section {
+        margin-top: 18px;
+        margin-bottom: 22px;
+    }
+
+    .output-label {
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 8px;
+    }
+
+    .browser-output {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 24px;
+        min-height: 90px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+
+    /* ===================================================== */
+    /* DEMO OUTPUT */
+    /* ===================================================== */
+
+    .syntax-demo {
+        color: blue !important;
+        font-size: 24px !important;
+        font-weight: 700;
+        margin: 0 !important;
+    }
+
+    .class-demo {
+        color: green !important;
+        font-size: 22px !important;
+        margin: 0 !important;
+    }
+
+
+    /* ===================================================== */
+    /* INFO BOX */
+    /* ===================================================== */
+
+    .info-box {
+        border-left: 4px solid #2563eb;
+        background-color: #f8f9fa;
+        padding: 18px 20px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+    .content-list {
+        padding-left: 22px;
+    }
+
+
+    /* ===================================================== */
+    /* TOPIC NAVIGATION */
+    /* ===================================================== */
+
+    .topic-navigation {
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 24px;
+    }
+
+        .topic-navigation .btn {
+            min-height: 42px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .topic-navigation .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+            .topic-navigation .btn-primary:hover {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+
+    /* ===================================================== */
+    /* RESPONSIVE */
+    /* ===================================================== */
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .syntax-arrow {
+            transform: rotate(90deg);
+        }
+
+        .syntax-box {
+            width: 100%;
+            max-width: 260px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- ================================================= -->
+        <!-- LEFT: COURSE SYLLABUS -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- RIGHT: CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- PAGE TITLE -->
+                <!-- ================================================= -->
+
+                <h1 class="page-title">
+                    CSS Syntax
+                </h1>
+
+                <p class="lead text-muted">
+                    Learn the basic syntax of CSS and understand how
+                    selectors, properties, and values form a CSS rule.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- WHAT IS CSS SYNTAX -->
+                <!-- ================================================= -->
+
+                <h2>What is CSS Syntax?</h2>
+
+                <p>
+                    CSS syntax is the standard way of writing CSS rules.
+                    It tells the browser which HTML element should be
+                    styled and what style should be applied.
+                </p>
+
+                <p>
+                    A basic CSS rule contains a
+                    <strong>selector</strong> followed by one or more
+                    <strong>declarations</strong>.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>Parts of a CSS Rule</h2>
+
+                <div class="syntax-diagram">
+
+                    <div class="syntax-box selector-box">
+
+                        <div class="syntax-title">
+                            Selector
+                        </div>
+
+                        <p class="syntax-text">
+                            Selects the HTML element
+                        </p>
+
+                    </div>
+
+
+                    <div class="syntax-arrow">
+                        →
+                    </div>
+
+
+                    <div class="syntax-box property-box">
+
+                        <div class="syntax-title">
+                            Property
+                        </div>
+
+                        <p class="syntax-text">
+                            What should change
+                        </p>
+
+                    </div>
+
+
+                    <div class="syntax-arrow">
+                        →
+                    </div>
+
+
+                    <div class="syntax-box value-box">
+
+                        <div class="syntax-title">
+                            Value
+                        </div>
+
+                        <p class="syntax-text">
+                            How it should change
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC SYNTAX -->
+                <!-- ================================================= -->
+
+                <h2>CSS Syntax</h2>
+
+                <div class="css-example">
+                    <pre class="mb-0">selector {
+    property: value;
+}</pre>
+                </div>
+
+                <p class="mt-3">
+                    This is the basic structure that you will use when
+                    writing CSS rules.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 1 -->
+                <!-- ================================================= -->
+
+                <h2>Example 1: Basic CSS Rule</h2>
+
+                <p>
+                    Let us create a paragraph and change its text color
+                    using CSS.
+                </p>
+
+
+                <h3>Code</h3>
+
+                <div class="css-example">
+                    <pre class="mb-0">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;style&gt;
+
+        p {
+            color: blue;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;p&gt;
+        Learning CSS Syntax
+    &lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                </div>
+
+
+                <h3>How It Works</h3>
+
+                <ul class="content-list">
+
+                    <li>
+                        <strong>p</strong> is the selector.
+                    </li>
+
+                    <li>
+                        <strong>color</strong> is the property.
+                    </li>
+
+                    <li>
+                        <strong>blue</strong> is the value.
+                    </li>
+
+                    <li>
+                        The semicolon <strong>;</strong> ends the declaration.
+                    </li>
+
+                </ul>
+
+
+                <!-- OUTPUT -->
+
+                <div class="output-section">
+
+                    <div class="output-label">
+                        Output
+                    </div>
+
+                    <div class="browser-output">
+
+                        <p class="syntax-demo">
+                            Learning CSS Syntax
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 2 -->
+                <!-- ================================================= -->
+
+                <h2>Example 2: Multiple Declarations</h2>
+
+                <p>
+                    A selector can contain multiple declarations.
+                    Each declaration contains a property and value.
+                </p>
+
+
+                <h3>Code</h3>
+
+                <div class="css-example">
+                    <pre class="mb-0">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;style&gt;
+
+        p {
+            color: green;
+            font-size: 22px;
+            text-align: center;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;p&gt;
+        Welcome To Ciit  Institute 🤓❤️..!
+    &lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                </div>
+
+
+                <h3>How It Works</h3>
+
+                <ul class="content-list">
+
+                    <li>
+                        <strong>color: green;</strong>
+                        changes the text color.
+                    </li>
+
+                    <li>
+                        <strong>font-size: 22px;</strong>
+                        changes the text size.
+                    </li>
+
+                    <li>
+                        <strong>text-align: center;</strong>
+                        moves the text to the center.
+                    </li>
+
+                </ul>
+
+
+                <!-- OUTPUT -->
+
+                <div class="output-section">
+
+                    <div class="output-label">
+                        Output
+                    </div>
+
+                    <div class="browser-output">
+
+                        <p class="class-demo"
+                           style="text-align: center;">
+                            Welcome To Ciit  Institute 🤓❤️..!
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT RULES -->
+                <!-- ================================================= -->
+
+                <h2>Important CSS Syntax Rules</h2>
+
+                <ul class="content-list">
+
+                    <li>
+                        The selector identifies the HTML element.
+                    </li>
+
+                    <li>
+                        Curly braces <strong>{ }</strong> contain CSS declarations.
+                    </li>
+
+                    <li>
+                        A property and value are separated by a colon
+                        <strong>:</strong>.
+                    </li>
+
+                    <li>
+                        Each declaration normally ends with a semicolon
+                        <strong>;</strong>.
+                    </li>
+
+                    <li>
+                        Multiple declarations can be written inside one
+                        CSS rule.
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- INFO -->
+                <!-- ================================================= -->
+
+                <div class="info-box">
+
+                    <strong>Remember:</strong>
+
+                    <p class="mb-0 mt-2">
+                        CSS syntax follows a simple pattern:
+                        <strong>Selector → Property → Value</strong>.
+                        Once this structure is understood, writing basic
+                        CSS becomes much easier.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="alert alert-info mt-4">
+
+                    <h2 class="h4 fw-bold">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS syntax defines how CSS rules are written.
+                        A rule contains a selector and declarations.
+                        Each declaration contains a property and a value.
+                        Curly braces contain the declarations, while
+                        colons and semicolons separate the parts of a rule.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PREVIOUS / NEXT -->
+                <!-- ================================================= -->
+
+                <div class="topic-navigation">
+
+                    <div class="row g-3 align-items-center">
+
+
+                        <!-- PREVIOUS -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-outline-secondary w-100"
+                               href="@Url.Action("Index", "CSSBasics", new { area = "CSS" })">
+
+                                ← Previous: CSS Basics
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- NEXT -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("InlineCSS", "CSSBasics", new { area = "CSS" })">
+
+                                Next: Inline CSS →
+
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

@@ -1,0 +1,1198 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Collections";
+}
+
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <!-- COLLECTIONS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4" id="collections">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">Collections in C#</h2>
+
+                <p class="text-muted mb-4">
+                    Collections in C# are used to store, organize, and manipulate groups
+                    of objects. Collections provide flexible ways to work with multiple
+                    values and are widely used in real-world .NET applications.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    A collection is a container that can store multiple values or objects
+                    and provides methods to add, remove, search, and manage those values.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Why Do We Use Collections?</h4>
+
+                <p class="text-muted">
+                    Collections are useful when the number of elements may change during
+                    program execution or when we need specific ways to organize and access data.
+                </p>
+
+                <ul class="text-muted">
+                    <li>Store multiple values in a single object.</li>
+                    <li>Add and remove elements dynamically.</li>
+                    <li>Search and sort data easily.</li>
+                    <li>Store data in key-value pairs.</li>
+                    <li>Manage unique values.</li>
+                    <li>Implement FIFO and LIFO data structures.</li>
+                </ul>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Types of Collections in C#
+                </h4>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Collection</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>List&lt;T&gt;</td>
+                                <td>Stores an ordered collection of elements</td>
+                            </tr>
+                            <tr>
+                                <td>Dictionary&lt;TKey,TValue&gt;</td>
+                                <td>Stores data using key-value pairs</td>
+                            </tr>
+                            <tr>
+                                <td>HashSet&lt;T&gt;</td>
+                                <td>Stores unique elements</td>
+                            </tr>
+                            <tr>
+                                <td>Queue&lt;T&gt;</td>
+                                <td>Stores elements using FIFO order</td>
+                            </tr>
+                            <tr>
+                                <td>Stack&lt;T&gt;</td>
+                                <td>Stores elements using LIFO order</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- LIST -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">1. List&lt;T&gt;</h3>
+
+                <p class="text-muted">
+                    List&lt;T&gt; is a generic collection used to store an ordered collection
+                    of strongly typed elements. Unlike arrays, a List can dynamically grow
+                    or shrink as elements are added or removed.
+                </p>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Creating a List</h4>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List<int> numbers = new List<int>();
+
+numbers.Add(10);
+numbers.Add(20);
+numbers.Add(30);
+
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Adding Elements to a List</h4>
+
+                <p class="text-muted">
+                    The Add() method is used to add a new element to the end of a List.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List<string> students = new List<string>();
+
+students.Add("Rahul");
+students.Add("Sneha");
+students.Add("Amit");
+
+Console.WriteLine(students.Count);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>3</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Accessing List Elements</h4>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List<string> students =
+    new List<string> { "Rahul", "Sneha", "Amit" };
+
+Console.WriteLine(students[0]);
+Console.WriteLine(students[2]);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Rahul
+Amit</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Removing Elements from a List</h4>
+
+                <p class="text-muted">
+                    The Remove() method removes a specific value from a List.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List<int> numbers =
+    new List<int> { 10, 20, 30, 40 };
+
+numbers.Remove(30);
+
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+40</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">List Count</h4>
+
+                <p class="text-muted">
+                    The Count property returns the number of elements currently
+                    stored in the List.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List<int> numbers =
+    new List<int> { 10, 20, 30, 40, 50 };
+
+Console.WriteLine(numbers.Count);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>5</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Sorting a List</h4>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List<int> numbers =
+    new List<int> { 50, 10, 40, 20, 30 };
+
+numbers.Sort();
+
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+                </div>
+
+
+                <!-- DICTIONARY -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    2. Dictionary&lt;TKey, TValue&gt;
+                </h3>
+
+                <p class="text-muted">
+                    A Dictionary stores data in key-value pairs. Each key must be unique
+                    and is used to access its corresponding value.
+                </p>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Creating a Dictionary
+                </h4>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Dictionary<int, string> students =
+    new Dictionary<int, string>();
+
+students.Add(101, "Rahul");
+students.Add(102, "Sneha");
+students.Add(103, "Amit");
+
+Console.WriteLine(students[102]);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Sneha</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Checking a Dictionary Key
+                </h4>
+
+                <p class="text-muted">
+                    The ContainsKey() method checks whether a specified key exists
+                    in the Dictionary.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Dictionary<int, string> students =
+    new Dictionary<int, string>();
+
+students.Add(101, "Rahul");
+students.Add(102, "Sneha");
+
+if (students.ContainsKey(101))
+{
+    Console.WriteLine("Student Found");
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Student Found</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Iterating Through a Dictionary
+                </h4>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Dictionary<int, string> students =
+    new Dictionary<int, string>();
+
+students.Add(101, "Rahul");
+students.Add(102, "Sneha");
+students.Add(103, "Amit");
+
+foreach (KeyValuePair<int, string> student in students)
+{
+    Console.WriteLine(
+        student.Key + " - " + student.Value);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>101 - Rahul
+102 - Sneha
+103 - Amit</code></pre>
+                </div>
+
+
+                <!-- HASHSET -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">3. HashSet&lt;T&gt;</h3>
+
+                <p class="text-muted">
+                    HashSet&lt;T&gt; stores unique elements. If we try to add the same
+                    value more than once, the duplicate value is ignored.
+                </p>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Creating a HashSet
+                </h4>
+
+               <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+HashSet<int> numbers = new HashSet<int>();
+
+numbers.Add(10);
+numbers.Add(20);
+numbers.Add(10);
+numbers.Add(30);
+
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30</code></pre>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>Important:</strong>
+                    HashSet does not store duplicate values.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Checking an Element in HashSet
+                </h4>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+HashSet<string> courses =
+    new HashSet<string>();
+
+courses.Add("C#");
+courses.Add(".NET");
+courses.Add("Python");
+
+Console.WriteLine(courses.Contains("C#"));</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>True</code></pre>
+                </div>
+
+
+                <!-- QUEUE -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">4. Queue&lt;T&gt;</h3>
+
+                <p class="text-muted">
+                    Queue&lt;T&gt; follows the <strong>FIFO</strong> principle:
+                    <strong>First In, First Out</strong>.
+                    The element added first is removed first.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Real-World Example:</strong>
+                    A customer queue at a bank follows the FIFO principle.
+                    The customer who arrives first is served first.
+                </div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Creating a Queue
+                </h4>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Queue<string> customers =
+    new Queue<string>();
+
+customers.Enqueue("Rahul");
+customers.Enqueue("Sneha");
+customers.Enqueue("Amit");
+
+Console.WriteLine(customers.Dequeue());</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Rahul</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Enqueue() and Dequeue()
+                </h4>
+
+                <p class="text-muted">
+                    <strong>Enqueue()</strong> adds an element to the end of the Queue.
+                    <strong>Dequeue()</strong> removes the element from the beginning.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Queue<int> numbers = new Queue<int>();
+
+numbers.Enqueue(10);
+numbers.Enqueue(20);
+numbers.Enqueue(30);
+
+Console.WriteLine(numbers.Dequeue());
+Console.WriteLine(numbers.Dequeue());</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20</code></pre>
+                </div>
+
+
+                <!-- STACK -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">5. Stack&lt;T&gt;</h3>
+
+                <p class="text-muted">
+                    Stack&lt;T&gt; follows the <strong>LIFO</strong> principle:
+                    <strong>Last In, First Out</strong>.
+                    The element added last is removed first.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Real-World Example:</strong>
+                    A stack of plates follows the LIFO principle.
+                    The last plate placed on the stack is the first plate removed.
+                </div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Creating a Stack
+                </h4>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ Stack<int> numbers = new Stack<int>();
+
+numbers.Push(10);
+numbers.Push(20);
+numbers.Push(30);
+
+Console.WriteLine(numbers.Pop());</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>30</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Push() and Pop()
+                </h4>
+
+                <p class="text-muted">
+                    <strong>Push()</strong> adds an element to the Stack.
+                    <strong>Pop()</strong> removes and returns the top element.
+                </p>
+
+               <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Stack<string> pages =
+    new Stack<string>();
+
+pages.Push("Home");
+pages.Push("Products");
+pages.Push("Contact");
+
+Console.WriteLine(pages.Pop());
+Console.WriteLine(pages.Pop());</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Contact
+Products</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Queue vs Stack
+                </h4>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Queue</th>
+                                <th>Stack</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Principle</td>
+                                <td>FIFO</td>
+                                <td>LIFO</td>
+                            </tr>
+                            <tr>
+                                <td>Add Method</td>
+                                <td>Enqueue()</td>
+                                <td>Push()</td>
+                            </tr>
+                            <tr>
+                                <td>Remove Method</td>
+                                <td>Dequeue()</td>
+                                <td>Pop()</td>
+                            </tr>
+                            <tr>
+                                <td>First Removed</td>
+                                <td>First Added</td>
+                                <td>Last Added</td>
+                            </tr>
+                            <tr>
+                                <td>Example</td>
+                                <td>Customer Queue</td>
+                                <td>Browser History</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Collection Comparison
+                </h4>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Collection</th>
+                                <th>Stores</th>
+                                <th>Duplicates</th>
+                                <th>Access</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>List&lt;T&gt;</td>
+                                <td>Ordered elements</td>
+                                <td>Allowed</td>
+                                <td>Index</td>
+                            </tr>
+                            <tr>
+                                <td>Dictionary&lt;TKey,TValue&gt;</td>
+                                <td>Key-value pairs</td>
+                                <td>Keys must be unique</td>
+                                <td>Key</td>
+                            </tr>
+                            <tr>
+                                <td>HashSet&lt;T&gt;</td>
+                                <td>Unique elements</td>
+                                <td>Not allowed</td>
+                                <td>Value</td>
+                            </tr>
+                            <tr>
+                                <td>Queue&lt;T&gt;</td>
+                                <td>Ordered elements</td>
+                                <td>Allowed</td>
+                                <td>FIFO</td>
+                            </tr>
+                            <tr>
+                                <td>Stack&lt;T&gt;</td>
+                                <td>Ordered elements</td>
+                                <td>Allowed</td>
+                                <td>LIFO</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Applications 👨‍🏫📩
+                </h4>
+
+                <ul class="text-muted">
+                    <li><strong>List&lt;T&gt;:</strong> Student lists, product lists, employee records.</li>
+                    <li><strong>Dictionary&lt;TKey,TValue&gt;:</strong> Student ID and student name mapping.</li>
+                    <li><strong>HashSet&lt;T&gt;:</strong> Unique user IDs, tags, categories.</li>
+                    <li><strong>Queue&lt;T&gt;:</strong> Customer queues, print jobs, background tasks.</li>
+                    <li><strong>Stack&lt;T&gt;:</strong> Browser history, undo operations, navigation history.</li>
+                </ul>
+
+
+                <div class="alert alert-success">
+                    <strong>CIIT Practical Point:</strong>
+                    Collections are used extensively in ASP.NET Core applications,
+                    Web APIs, database operations, business logic, service layers,
+                    reporting systems and enterprise applications.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Common Mistakes with Collections
+                </h4>
+
+                <ul class="text-muted">
+                    <li>Choose the collection based on the requirement.</li>
+                    <li>Use List when indexed and dynamically sized data is required.</li>
+                    <li>Use Dictionary when data needs to be accessed using a key.</li>
+                    <li>Use HashSet when duplicate values should not be stored.</li>
+                    <li>Remember that Queue follows FIFO.</li>
+                    <li>Remember that Stack follows LIFO.</li>
+                    <li>Do not access a List using an invalid index.</li>
+                    <li>Do not add duplicate keys to a Dictionary.</li>
+                </ul>
+
+
+                <h4 class="fw-bold text-dark mt-5 mb-3">
+                    Interview Questions
+                </h4>
+
+                <h5 class="fw-bold">1. What is a Collection in C#?</h5>
+
+                <p class="text-muted mb-4">
+                    A collection is an object used to store and manage multiple elements.
+                </p>
+
+                <h5 class="fw-bold">2. What is the difference between Array and List?</h5>
+
+                <p class="text-muted mb-4">
+                    An array has a fixed size, while a List can dynamically grow or shrink.
+                </p>
+
+                <h5 class="fw-bold">3. What is a Dictionary?</h5>
+
+                <p class="text-muted mb-4">
+                    A Dictionary stores data in key-value pairs.
+                </p>
+
+                <h5 class="fw-bold">4. What is HashSet?</h5>
+
+                <p class="text-muted mb-4">
+                    HashSet is a collection that stores unique elements and does not
+                    allow duplicate values.
+                </p>
+
+                <h5 class="fw-bold">5. What is FIFO?</h5>
+
+                <p class="text-muted mb-4">
+                    FIFO means First In, First Out. Queue follows this principle.
+                </p>
+
+                <h5 class="fw-bold">6. What is LIFO?</h5>
+
+                <p class="text-muted mb-4">
+                    LIFO means Last In, First Out. Stack follows this principle.
+                </p>
+
+                <h5 class="fw-bold">7. Which collection is used for key-value pairs?</h5>
+
+                <p class="text-muted">
+                    Dictionary&lt;TKey,TValue&gt; is used for key-value pairs.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Collections Summary
+                </h2>
+
+                <ul class="text-muted">
+                    <li>Collections are used to store and manage multiple elements.</li>
+                    <li>List&lt;T&gt; provides a dynamically sized ordered collection.</li>
+                    <li>Dictionary&lt;TKey,TValue&gt; stores key-value pairs.</li>
+                    <li>HashSet&lt;T&gt; stores unique values.</li>
+                    <li>Queue&lt;T&gt; follows FIFO.</li>
+                    <li>Stack&lt;T&gt; follows LIFO.</li>
+                    <li>Collections provide useful methods for adding, removing, searching and sorting data.</li>
+                    <li>Generic collections provide strong type safety.</li>
+                    <li>Collections are widely used in real-world .NET applications.</li>
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE QUESTIONS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Create a List&lt;int&gt; and add five numbers.</li>
+                    <li>Remove an element from a List.</li>
+                    <li>Sort a List in ascending order.</li>
+                    <li>Create a Dictionary containing student ID and student name.</li>
+                    <li>Search for a key in a Dictionary using ContainsKey().</li>
+                    <li>Create a HashSet and add duplicate values.</li>
+                    <li>Check whether a value exists in a HashSet.</li>
+                    <li>Create a Queue and demonstrate Enqueue() and Dequeue().</li>
+                    <li>Create a Stack and demonstrate Push() and Pop().</li>
+                    <li>Explain the difference between Queue and Stack.</li>
+                    <li>Choose the appropriate collection for a given real-world scenario.</li>
+                    <li>Compare List, Dictionary, HashSet, Queue and Stack.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- MODULE NAVIGATION -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="/CSharp/DataStructuresCollection/Generics"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="/CSharp/AdvanceFeature/ExceptionHandling"
+                   class="btn btn-primary">
+                    Next Module →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+
+            <script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

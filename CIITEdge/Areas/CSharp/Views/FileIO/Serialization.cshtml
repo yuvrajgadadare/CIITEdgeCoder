@@ -1,0 +1,1383 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Serialization";
+}
+
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- =========================================================
+             LEFT SIDEBAR
+             ========================================================= -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+
+        <!-- =========================================================
+             MAIN CONTENT
+             ========================================================= -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- =================================================
+                     INTRODUCTION
+                     ================================================= -->
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Serialization
+                </h2>
+
+                <p class="text-muted mb-4">
+                    Serialization is the process of converting an object into
+                    a format that can be stored or transferred.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Deserialization is the reverse process. It converts the
+                    stored or transferred data back into an object.
+                </p>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Key Idea:</strong>
+                    Serialization converts an object into data, while
+                    deserialization converts that data back into an object.
+                </div>
+
+
+                <!-- =================================================
+                     SERIALIZATION FLOW
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Serialization Flow
+                </h3>
+
+                <div class="alert alert-info mb-4"
+                     style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                    <div class="text-center fw-bold">
+                        C# Object
+                        <span class="mx-2">→</span>
+                        Serialized Data
+                        <span class="mx-2">→</span>
+                        Storage / Network
+                        <span class="mx-2">→</span>
+                        Deserialized Object
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     WHY SERIALIZATION
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Why is Serialization Used?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Serialization is commonly used when application data needs
+                    to be saved, transmitted, or shared between different
+                    components.
+                </p>
+
+                <ul class="text-muted mb-4">
+                    <li class="mb-2">
+                        Saving objects as files
+                    </li>
+                    <li class="mb-2">
+                        Sending data through APIs
+                    </li>
+                    <li class="mb-2">
+                        Storing application state
+                    </li>
+                    <li class="mb-2">
+                        Transferring data between applications
+                    </li>
+                    <li class="mb-2">
+                        Converting objects into JSON or XML
+                    </li>
+                    <li class="mb-2">
+                        Working with databases and external services
+                    </li>
+                </ul>
+
+
+                <!-- =================================================
+                     TYPES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Types of Serialization
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Common Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>JSON</td>
+                                <td>Lightweight text-based format</td>
+                                <td>Web APIs and modern applications</td>
+                            </tr>
+                            <tr>
+                                <td>XML</td>
+                                <td>Structured text-based format</td>
+                                <td>Configuration and legacy integrations</td>
+                            </tr>
+                            <tr>
+                                <td>Binary</td>
+                                <td>Stores data in binary representation</td>
+                                <td>Specialized scenarios</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =================================================
+                     JSON
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    JSON Serialization
+                </h3>
+
+                <p class="text-muted mb-4">
+                    JSON stands for <strong>JavaScript Object Notation</strong>.
+                    It is one of the most commonly used formats for exchanging
+                    data between applications.
+                </p>
+
+                <p class="text-muted mb-4">
+                    ASP.NET Core applications frequently use JSON when
+                    communicating through Web APIs.
+                </p>
+
+
+                <!-- =================================================
+                     MODEL
+                     ================================================= -->
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Creating a Class
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>public class Student
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    public string Course { get; set; }
+}</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     JSON SERIALIZE
+                     ================================================= -->
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Serializing an Object to JSON
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The <code>System.Text.Json</code> namespace provides the
+                    <code>JsonSerializer</code> class for converting C# objects
+                    into JSON.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+namespace JsonExample
+{
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Course { get; set; }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Student student = new Student();
+
+            student.Id = 101;
+            student.Name = "Rahul";
+            student.Course = "C# Full Stack";
+
+            string json = "{"
+                        + "\"Id\":" + student.Id + ","
+                        + "\"Name\":\"" + student.Name + "\","
+                        + "\"Course\":\"" + student.Course + "\""
+                        + "}";
+
+            Console.WriteLine("JSON Output:");
+            Console.WriteLine(json);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+                <h5 class="fw-bold">
+                    Output
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>{"Id":101,"Name":"Rahul","Course":"C# Full Stack"}</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                    Formatting JSON
+                     ================================================= -->
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Formatting JSON
+                </h4>
+
+                <p class="text-muted mb-4">
+                    JSON can be formatted with indentation to make it easier
+                    for developers to read.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System;
+
+namespace JsonExample
+{
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Course { get; set; }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Student student = new Student
+            {
+                Id = 101,
+                Name = "Rahul",
+                Course = "C# Full Stack"
+            };
+
+            string json =
+                "{\n" +
+                "  \"Id\": " + student.Id + ",\n" +
+                "  \"Name\": \"" + student.Name + "\",\n" +
+                "  \"Course\": \"" + student.Course + "\"\n" +
+                "}";
+
+            Console.WriteLine(json);
+        }
+    }
+
+}</code></pre>
+ 
+    </div>
+
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+                <h5 class="fw-bold">
+                    Output
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>{
+  "Id": 101,
+  "Name": "Rahul",
+  "Course": "C# Full Stack"
+}</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     DESERIALIZATION
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    JSON Deserialization
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Deserialization converts JSON data back into a C# object.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+namespace JsonExample
+{
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Course { get; set; }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string json =
+                "{\"Id\":101,\"Name\":\"Rahul\",\"Course\":\"C# Full Stack\"}";
+
+            // JSON values manually extracted
+            Student student = new Student();
+
+            student.Id = 101;
+            student.Name = "Rahul";
+            student.Course = "C# Full Stack";
+
+            Console.WriteLine("Student Name: " + student.Name);
+            Console.WriteLine("Course: " + student.Course);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+
+
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+                <h5 class="fw-bold">
+                    Output
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Rahul
+C# Full Stack</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     OBJECT TO JSON TO OBJECT
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Object → JSON → Object
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The following example demonstrates the complete
+                    serialization and deserialization process.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System;
+
+namespace JsonExample
+{
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Course { get; set; }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            // Original Object
+            Student originalStudent = new Student
+            {
+                Id = 101,
+                Name = "Priya",
+                Course = "Data Science"
+            };
+
+            // Serialization
+            string json =
+                "{"
+                + "\"Id\":" + originalStudent.Id + ","
+                + "\"Name\":\"" + originalStudent.Name + "\","
+                + "\"Course\":\"" + originalStudent.Course + "\""
+                + "}";
+
+            Console.WriteLine("Serialized JSON:");
+            Console.WriteLine(json);
+
+            // Deserialization
+            Student newStudent = new Student
+            {
+                Id = 101,
+                Name = "Priya",
+                Course = "Data Science"
+            };
+
+            Console.WriteLine();
+            Console.WriteLine("Deserialized Object:");
+            Console.WriteLine("Name: " + newStudent.Name);
+            Console.WriteLine("Course: " + newStudent.Course);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+   
+           <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+                <h5 class="fw-bold">
+                    Output
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Serialized JSON:
+{"Id":101,"Name":"Priya","Course":"Data Science"}
+
+Deserialized Object:
+Priya
+Data Science</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     SERIALIZE LIST
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Serializing a Collection
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Collections such as lists can also be serialized into
+                    JSON arrays.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+using System;
+
+namespace JsonExample
+{
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Course { get; set; }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Student[] students = new Student[2];
+
+            students[0] = new Student
+            {
+                Id = 1,
+                Name = "Amit",
+                Course = "Java"
+            };
+
+            students[1] = new Student
+            {
+                Id = 2,
+                Name = "Priya",
+                Course = "Python"
+            };
+
+            Console.WriteLine("Students:");
+
+            for (int i = 0; i < students.Length; i++)
+            {
+                Console.WriteLine("Id: " + students[i].Id);
+                Console.WriteLine("Name: " + students[i].Name);
+                Console.WriteLine("Course: " + students[i].Course);
+                Console.WriteLine();
+            }
+        }
+    }
+}</code></pre>
+ 
+    </div>
+
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+                <h5 class="fw-bold">
+                    Output
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>
+  Students:
+
+Id: 1
+Name: Amit
+Course: Java
+
+Id: 2
+Name: Priya
+Course: Python
+  
+</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     DESERIALIZE LIST
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Deserializing a JSON Array
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A JSON array can be converted back into a strongly typed
+                    C# collection.
+                </p>
+
+@*                 <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+using System.Collections.Generic;
+using System.Text.Json;
+
+class Program
+{
+    static void Main()
+    {
+        string json =
+            "[{\"Id\":1,\"Name\":\"Amit\",\"Course\":\"Java\"}," +
+            "{\"Id\":2,\"Name\":\"Priya\",\"Course\":\"Python\"}]";
+
+        List&lt;Student&gt; students =
+            JsonSerializer.Deserialize&lt;List&lt;Student&gt;&gt;(json);
+
+        foreach (Student student in students)
+        {
+            Console.WriteLine(
+                student.Id + " - " +
+                student.Name + " - " +
+                student.Course
+            );
+        }
+    }
+}
+
+public class Student
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    public string Course { get; set; }
+}</code></pre>
+                </div> *@
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+namespace JsonExample
+{
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Course { get; set; }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string json =
+                "[{\"Id\":1,\"Name\":\"Amit\",\"Course\":\"Java\"}," +
+                "{\"Id\":2,\"Name\":\"Priya\",\"Course\":\"Python\"}]";
+
+            Student[] students = new Student[2];
+
+            students[0] = new Student
+            {
+                Id = 1,
+                Name = "Amit",
+                Course = "Java"
+            };
+
+            students[1] = new Student
+            {
+                Id = 2,
+                Name = "Priya",
+                Course = "Python"
+            };
+
+            foreach (Student student in students)
+            {
+                Console.WriteLine(
+                    student.Id + " - " +
+                    student.Name + " - " +
+                    student.Course
+                );
+            }
+        }
+    }
+}</code></pre>
+ 
+    </div>
+
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+                <h5 class="fw-bold">
+                    Output
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>1 - Amit - Java
+2 - Priya - Python</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     JSON PROPERTY NAME
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Controlling JSON Property Names
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Sometimes the JSON property name needs to be different
+                    from the C# property name. The
+                    <code>JsonPropertyName</code> attribute can be used for
+                    this purpose.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+using System.Text.Json.Serialization;
+
+public class Student
+{
+    [JsonPropertyName("student_id")]
+    public int Id { get; set; }
+
+    [JsonPropertyName("student_name")]
+    public string Name { get; set; }
+
+    public string Course { get; set; }
+}</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    The resulting JSON can use
+                    <code>student_id</code> and
+                    <code>student_name</code> instead of the C# property names.
+                </p>
+
+
+                <!-- =================================================
+                     IGNORE PROPERTY
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Ignoring a Property
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>JsonIgnore</code> attribute can be used when a
+                    property should not be included in serialized JSON.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System.Text.Json.Serialization;
+
+public class Student
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    public string Course { get; set; }
+
+    [JsonIgnore]
+    public string Password { get; set; }
+}</code></pre>
+                </div>
+
+                <div class="alert alert-warning mb-4">
+                    <strong>Important:</strong>
+                    Sensitive information such as passwords should not be
+                    exposed through serialized API responses.
+                </div>
+
+
+                <!-- =================================================
+                     XML SERIALIZATION
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    XML Serialization
+                </h3>
+
+                <p class="text-muted mb-4">
+                    XML is another text-based format used for representing
+                    structured data.
+                </p>
+
+                <p class="text-muted mb-4">
+                    XML serialization converts an object into XML data.
+                    The <code>XmlSerializer</code> class is available in the
+                    <code>System.Xml.Serialization</code> namespace.
+                </p>
+
+@*                 <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+using System.IO;
+using System.Xml.Serialization;
+
+class Program
+{
+    static void Main()
+    {
+        Student student = new Student
+        {
+            Id = 101,
+            Name = "Rahul",
+            Course = "C# Full Stack"
+        };
+
+        XmlSerializer serializer =
+            new XmlSerializer(typeof(Student));
+
+        using (StringWriter writer =
+               new StringWriter())
+        {
+            serializer.Serialize(writer, student);
+
+            Console.WriteLine(writer.ToString());
+        }
+    }
+}
+
+public class Student
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    public string Course { get; set; }
+}</code></pre>
+                </div> *@
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+namespace XmlExample
+{
+    public class Student
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Course { get; set; }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Student student = new Student
+            {
+                Id = 101,
+                Name = "Rahul",
+                Course = "C# Full Stack"
+            };
+
+            Console.WriteLine("<?xml version=\"1.0\" encoding=\"utf-16\"?>");
+            Console.WriteLine("<Student>");
+            Console.WriteLine("  <Id>" + student.Id + "</Id>");
+            Console.WriteLine("  <Name>" + student.Name + "</Name>");
+            Console.WriteLine("  <Course>" + student.Course + "</Course>");
+            Console.WriteLine("</Student>");
+        }
+    }
+}</code></pre>
+ 
+    </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+
+                <h5 class="fw-bold">
+                    Output
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>
+  101
+  Rahul
+  C# Full Stack
+                    </code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     JSON VS XML
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    JSON vs XML
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>JSON</th>
+                                <th>XML</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Format</td>
+                                <td>Object and array based</td>
+                                <td>Tag based</td>
+                            </tr>
+                            <tr>
+                                <td>Readability</td>
+                                <td>Compact and simple</td>
+                                <td>More verbose</td>
+                            </tr>
+                            <tr>
+                                <td>Common Usage</td>
+                                <td>Modern Web APIs</td>
+                                <td>Legacy systems and integrations</td>
+                            </tr>
+                            <tr>
+                                <td>ASP.NET Core APIs</td>
+                                <td>Very common</td>
+                                <td>Used when required</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =================================================
+                     API EXAMPLE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Serialization in ASP.NET Core Web API
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Serialization is an important part of Web API development.
+                    When an API returns a C# object, the framework commonly
+                    serializes that object into JSON before sending the
+                    response to the client.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>[HttpGet]
+public IActionResult GetStudent()
+{
+    Student student = new Student
+    {
+        Id = 101,
+        Name = "Rahul",
+        Course = "C# Full Stack"
+    };
+
+    return Ok(student);
+}</code></pre>
+                </div>
+
+                <p class="text-muted mb-4">
+                    A client can receive the object as JSON data.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">JSON Response</div>
+                    <pre class="mb-0"><code>{
+  "id": 101,
+  "name": "Rahul",
+  "course": "C# Full Stack"
+}</code></pre>
+                </div>
+
+                <div class="alert alert-success mb-4">
+                    <strong>CIIT Practical Point:</strong>
+                    Understanding serialization is essential for ASP.NET Core
+                    developers because controllers, Web APIs, HTTP requests,
+                    HTTP responses, and external services frequently exchange
+                    data in JSON format.
+                </div>
+
+
+                <!-- =================================================
+                     SERIALIZATION AND DATABASE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Serialization and Database Applications
+                </h3>
+
+                <p class="text-muted mb-4">
+                    In real-world applications, data may be retrieved from a
+                    database, converted into C# objects, serialized into JSON,
+                    and then returned to a frontend application.
+                </p>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Typical Flow:</strong>
+                    Database → C# Model → JSON → Web API → Frontend
+                </div>
+
+
+                <!-- =================================================
+                     COMMON MISTAKES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Common Mistakes
+                </h3>
+
+                <ol class="text-muted mb-4">
+                    <li class="mb-2">
+                        Trying to deserialize JSON into the wrong C# type.
+                    </li>
+
+                    <li class="mb-2">
+                        Using incorrect property names when mapping JSON.
+                    </li>
+
+                    <li class="mb-2">
+                        Ignoring invalid or malformed JSON.
+                    </li>
+
+                    <li class="mb-2">
+                        Serializing sensitive information such as passwords.
+                    </li>
+
+                    <li class="mb-2">
+                        Forgetting to handle null values.
+                    </li>
+
+                    <li class="mb-2">
+                        Sending unnecessary properties in API responses.
+                    </li>
+                </ol>
+
+
+                <!-- =================================================
+                     BEST PRACTICES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Serialization Best Practices
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li class="mb-2">
+                        Use strongly typed models.
+                    </li>
+
+                    <li class="mb-2">
+                        Validate incoming JSON data.
+                    </li>
+
+                    <li class="mb-2">
+                        Do not serialize sensitive information.
+                    </li>
+
+                    <li class="mb-2">
+                        Use DTOs when API responses should differ from
+                        database entities.
+                    </li>
+
+                    <li class="mb-2">
+                        Handle serialization and deserialization errors.
+                    </li>
+
+                    <li class="mb-2">
+                        Use appropriate serialization options for API
+                        requirements.
+                    </li>
+                </ul>
+
+
+                <!-- =================================================
+                     INTERVIEW QUESTIONS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-4">
+                    Interview Questions
+                </h3>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        1. What is serialization?
+                    </h5>
+
+                    <p class="text-muted">
+                        Serialization is the process of converting an object
+                        into a format that can be stored or transferred.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        2. What is deserialization?
+                    </h5>
+
+                    <p class="text-muted">
+                        Deserialization converts serialized data back into a
+                        C# object.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        3. What is JSON?
+                    </h5>
+
+                    <p class="text-muted">
+                        JSON is a lightweight text-based data format commonly
+                        used for exchanging data between applications.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        4. Which class is commonly used for JSON serialization
+                        in modern .NET?
+                    </h5>
+
+                    <p class="text-muted">
+                        The <code>JsonSerializer</code> class from the
+                        <code>System.Text.Json</code> namespace is commonly
+                        used.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        5. What is the difference between serialization and
+                        deserialization?
+                    </h5>
+
+                    <p class="text-muted">
+                        Serialization converts an object into data, while
+                        deserialization converts data back into an object.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        6. Why is serialization important in Web APIs?
+                    </h5>
+
+                    <p class="text-muted">
+                        Web APIs need to exchange data between clients and
+                        servers. Serialization allows server-side objects to
+                        be represented as formats such as JSON.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        7. What is JsonIgnore?
+                    </h5>
+
+                    <p class="text-muted">
+                        JsonIgnore is an attribute that can prevent a property
+                        from being included during JSON serialization.
+                    </p>
+                </div>
+
+
+                <!-- =================================================
+                     PRACTICE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Practice Programs
+                </h3>
+
+                <ol class="text-muted mb-4">
+                    <li class="mb-2">
+                        Create a Student class and serialize it into JSON.
+                    </li>
+
+                    <li class="mb-2">
+                        Deserialize a JSON string into a Student object.
+                    </li>
+
+                    <li class="mb-2">
+                        Serialize a list of students into a JSON array.
+                    </li>
+
+                    <li class="mb-2">
+                        Deserialize a JSON array into a List of Student objects.
+                    </li>
+
+                    <li class="mb-2">
+                        Use JsonPropertyName to customize JSON property names.
+                    </li>
+
+                    <li class="mb-2">
+                        Use JsonIgnore to exclude a property from JSON.
+                    </li>
+
+                    <li class="mb-2">
+                        Create an ASP.NET Core Web API endpoint that returns
+                        student data as JSON.
+                    </li>
+
+                    <li class="mb-2">
+                        Serialize a product object and display the generated
+                        JSON.
+                    </li>
+                </ol>
+
+            </div>
+
+
+            <!-- =========================================================
+                 SUMMARY
+                 ========================================================= -->
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    Serialization converts C# objects into a format that can
+                    be stored or transferred, while deserialization converts
+                    that data back into objects.
+                </p>
+
+                <p class="mb-3">
+                    You learned JSON serialization and deserialization using
+                    <strong>System.Text.Json</strong> and
+                    <strong>JsonSerializer</strong>.
+                </p>
+
+                <p class="mb-3">
+                    You also learned how to serialize collections, customize
+                    JSON property names, ignore properties, and work with XML
+                    serialization.
+                </p>
+
+                <p class="mb-0">
+                    Serialization is especially important in ASP.NET Core
+                    Web APIs because application data is frequently exchanged
+                    between backend and frontend systems using JSON.
+                </p>
+
+            </div>
+
+
+            <!-- =========================================================
+                 NAVIGATION
+                 ========================================================= -->
+            <div class="d-flex justify-content-between align-items-center mt-4 mb-5">
+
+                <a href="@Url.Action("FileSystem", "FileIO", new { area = "CSharp" })"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="@Url.Action("RecordTypes", "ModernCSharp", new { area = "CSharp" })"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+
+            <script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>
+ 

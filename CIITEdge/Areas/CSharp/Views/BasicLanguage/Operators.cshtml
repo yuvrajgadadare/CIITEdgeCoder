@@ -1,0 +1,713 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Operators";
+}
+
+<style>
+    .try-it-btn
+    {
+        background: #198754;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+    .try-it-btn:hover 
+    {
+        background: #157347;
+        color: #fff;
+    }
+
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">Operators</h2>
+
+                <p class="text-muted mb-4">
+                    An operator in C# is a symbol that tells the compiler to perform specific mathematical, logical, or data manipulations on operands (variables or values).
+                </p>
+
+                <p class="text-muted mb-4">
+                    C# provides a rich set of built-in operators. Below are the primary categories of C# Operators.
+                </p>
+
+                <!-- Operator Categories -->
+                <div class="alert alert-light border shadow-sm mb-5">
+                    <h5 class="fw-bold text-dark mb-3">Operator Categories in C#</h5>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Operator Category</th>
+                                    <th>Purpose</th>
+                                    <th>Examples</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Arithmetic</td>
+                                    <td>Perform mathematical calculations</td>
+                                    <td>+, -, *, /, %</td>
+                                </tr>
+                                <tr>
+                                    <td>Relational / Comparison</td>
+                                    <td>Compare two values</td>
+                                    <td>==, !=, &gt;, &lt;, &gt;=, &lt;=</td>
+                                </tr>
+                                <tr>
+                                    <td>Logical</td>
+                                    <td>Combine boolean conditions</td>
+                                    <td>&amp;&amp;, ||, !</td>
+                                </tr>
+                                <tr>
+                                    <td>Assignment</td>
+                                    <td>Assign or update values</td>
+                                    <td>=, +=, -=, *=, /=</td>
+                                </tr>
+                                <tr>
+                                    <td>Increment / Decrement</td>
+                                    <td>Increase or decrease a value</td>
+                                    <td>++, --</td>
+                                </tr>
+                                <tr>
+                                    <td>Ternary</td>
+                                    <td>Short form of if-else</td>
+                                    <td>?:</td>
+                                </tr>
+                                <tr>
+                                    <td>Null-Coalescing</td>
+                                    <td>Handle null values</td>
+                                    <td>??, ??=</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <ol>
+
+                    <!-- Arithmetic Operators -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            Arithmetic Operators
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            Used to perform common mathematical computations on numeric types.
+                        </p>
+
+                        <ul class="text-muted mb-4">
+                            <li><strong>+</strong> (Addition): Adds two values.</li>
+                            <li><strong>-</strong> (Subtraction): Subtracts one value from another.</li>
+                            <li><strong>*</strong> (Multiplication): Multiplies two values.</li>
+                            <li><strong>/</strong> (Division): Divides one value by another.</li>
+                            <li><strong>%</strong> (Modulus): Returns the division remainder.</li>
+                        </ul>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+                       
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+int a = 10;
+int b = 3;
+
+Console.WriteLine(a + b);  // Output: 13
+Console.WriteLine(a - b);  // Output: 7
+Console.WriteLine(a * b);  // Output: 30
+Console.WriteLine(a / b);  // Output: 3 (Integer division drops decimal part)
+Console.WriteLine(a % b);  // Output: 1 (Remainder of 10 / 3)</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+
+    <div class="alert alert-info">
+        <strong>Important:</strong> When two integer values are divided, C# performs integer division and the decimal part is removed.
+    </div>
+            </li>
+
+                    <!-- Relational Operators -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            Relational (Comparison) Operators
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            Used to compare two values. These always return a boolean result (true or false).
+                        </p>
+
+                        <ul class="text-muted mb-4">
+                            <li><strong>==</strong> (Equal to): Checks if two values are equal.</li>
+                            <li><strong>!=</strong> (Not equal to): Checks if two values are not equal.</li>
+                            <li><strong>&gt;</strong> (Greater than): Checks if the left value is greater than the right.</li>
+                            <li><strong>&lt;</strong> (Less than): Checks if the left value is less than the right.</li>
+                            <li><strong>&gt;=</strong> (Greater than or equal to): Checks left value is greater than or equal to the right.</li>
+                            <li><strong>&lt;=</strong> (Less than or equal to): Checks left value is less than or equal to the right.</li>
+                        </ul>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+                            <div class="try-it-example">
+
+                                <div class="code-block shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        C#
+                                    </div>
+
+<pre class="mb-0"><code>using System;
+ 
+int x = 5;
+int y = 10;
+
+Console.WriteLine(x == y); // Output: False
+Console.WriteLine(x != y); // Output: True
+Console.WriteLine(x &gt; y);  // Output: False
+Console.WriteLine(x &lt; y);  // Output: True
+Console.WriteLine(x &gt;= 5); // Output: True</code></pre>
+
+                                </div>
+
+                                <div class="text-end mt-2 mb-3">
+                                    <button type="button"
+                                            class="try-it-btn"
+                                            onclick="tryItYourself(this)">
+                                        <i class="bi bi-play-fill me-1"></i>
+                                        Try It
+                                    </button>
+                                </div>
+
+
+
+                        <div class="alert alert-info">
+                            <strong>Example:</strong> Comparison operators are commonly used when checking age, marks, salary, eligibility, or other conditions.
+                        </div>
+                    </li>
+
+                    <!-- Logical Operators -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            Logical Operators
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            Used to combine multiple boolean conditions or expressions.
+                        </p>
+
+                        <ul class="text-muted mb-4">
+                            <li><strong>&amp;&amp;</strong> (Logical AND): Returns true if both statements are true.</li>
+                            <li><strong>||</strong> (Logical OR): Returns true if at least one statement is true.</li>
+                            <li><strong>!</strong> (Logical NOT): Reverses the logical state (turns true to false and vice versa).</li>
+                        </ul>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+@*                         <div class="code-block mb-4 shadow-sm">
+                            <div class="code-lang-tag">C#</div>
+                            <pre class="mb-0"><code>bool isSunny = true;
+bool isWarm = false;
+
+Console.WriteLine(isSunny &amp;&amp; isWarm); // Output: False
+Console.WriteLine(isSunny || isWarm);  // Output: True
+Console.WriteLine(!isSunny);           // Output: False</code></pre>
+                        </div> *@
+
+                                <div class="try-it-example">
+
+                                    <div class="code-block shadow-sm">
+
+                                        <div class="code-lang-tag">
+                                            C#
+                                        </div>
+
+    <pre class="mb-0"><code>using System;
+ 
+bool isSunny = true;
+bool isWarm = false;
+
+Console.WriteLine(isSunny &amp;&amp; isWarm); // Output: False
+Console.WriteLine(isSunny || isWarm);  // Output: True
+Console.WriteLine(!isSunny);           // Output: False</code></pre>
+
+                                    </div>
+
+                                    <div class="text-end mt-2 mb-3">
+                                        <button type="button"
+                                                class="try-it-btn"
+                                                onclick="tryItYourself(this)">
+                                            <i class="bi bi-play-fill me-1"></i>
+                                            Try It
+                                        </button>
+                                    </div>
+
+
+
+                        <div class="alert alert-info">
+                            <strong>Real-World Example:</strong> Logical operators can be used to check multiple conditions, such as username/password validation or age and eligibility conditions.
+                        </div>
+                    </li>
+
+                    <!-- Assignment Operators -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            Assignment Operators
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            Used to assign values to variables. This includes compound assignments which combine arithmetic operations with an assignment.
+                        </p>
+
+                        <ul class="text-muted mb-4">
+                            <li><strong>=</strong> (Simple Assignment): Assigns right value to left variable.</li>
+                            <li><strong>+=</strong> (Add and assign): Shorthand for x = x + y.</li>
+                            <li><strong>-=</strong> (Subtract and assign): Shorthand for x = x - y.</li>
+                            <li><strong>*=</strong> (Multiply and assign): Shorthand for x = x * y.</li>
+                            <li><strong>/=</strong> (Divide and assign): Shorthand for x = x / y.</li>
+                        </ul>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+                                    <div class="try-it-example">
+
+                                        <div class="code-block shadow-sm">
+
+                                            <div class="code-lang-tag">
+                                                C#
+                                            </div>
+
+    <pre class="mb-0"><code>using System;
+ 
+int score = 10; // Simple assignment
+
+score += 5; // Equivalent to score = score + 5; (score is now 15)
+score -= 2; // Equivalent to score = score - 2; (score is now 13)
+score *= 2; // Equivalent to score = score * 2; (score is now 26)
+
+Console.WriteLine(score); // Output: 26</code></pre>
+
+                                        </div>
+
+                                        <div class="text-end mt-2 mb-3">
+                                            <button type="button"
+                                                    class="try-it-btn"
+                                                    onclick="tryItYourself(this)">
+                                                <i class="bi bi-play-fill me-1"></i>
+                                                Try It
+                                            </button>
+                                        </div>
+
+
+                    </li>
+
+                    <!-- Increment Decrement -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            Increment and Decrement Operators
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            Unary operators used to increase or decrease a variable's value by exactly 1.
+                        </p>
+
+                        <ul class="text-muted mb-4">
+                            <li><strong>++</strong> (Increment): Increases value by 1.</li>
+                            <li><strong>--</strong> (Decrement): Decreases value by 1.</li>
+                        </ul>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+@*                         <div class="code-block mb-4 shadow-sm">
+                            <div class="code-lang-tag">C#</div>
+                            <pre class="mb-0"><code>int energy = 5;
+
+energy++; // Postfix increment (energy becomes 6)
+Console.WriteLine(energy); // Output: 6
+
+--energy; // Prefix decrement (energy becomes 5)
+Console.WriteLine(energy); // Output: 5</code></pre>
+                        </div> *@
+
+                                        <div class="try-it-example">
+
+                                            <div class="code-block shadow-sm">
+
+                                                <div class="code-lang-tag">
+                                                    C#
+                                                </div>
+
+ <pre class="mb-0"><code>using System;
+ 
+int energy = 5;
+
+energy++; // Postfix increment (energy becomes 6)
+Console.WriteLine(energy); // Output: 6
+
+--energy; // Prefix decrement (energy becomes 5)
+Console.WriteLine(energy); // Output: 5</code></pre>
+
+                                            </div>
+
+                                            <div class="text-end mt-2 mb-3">
+                                                <button type="button"
+                                                        class="try-it-btn"
+                                                        onclick="tryItYourself(this)">
+                                                    <i class="bi bi-play-fill me-1"></i>
+                                                    Try It
+                                                </button>
+                                            </div>
+
+
+
+                        <div class="alert alert-warning">
+                            <strong>Note:</strong> Both <code>++</code> and <code>--</code> change the variable value by exactly one.
+                        </div>
+                    </li>
+
+                    <!-- Ternary -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            Ternary (Conditional) Operator
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            A shorthand alternative to the if-else statement. It operates on three operands:
+                            <strong>condition ? expression_if_true : expression_if_false</strong>
+                        </p>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+                                            <div class="try-it-example">
+
+                                                <div class="code-block shadow-sm">
+
+                                                    <div class="code-lang-tag">
+                                                        C#
+                                                    </div>
+
+<pre class="mb-0"><code>using System;
+ 
+int age = 20;
+
+string status = (age &gt;= 18) ? "Adult" : "Minor";
+
+Console.WriteLine(status); // Output: Adult</code></pre>
+
+                                                </div>
+
+                                                <div class="text-end mt-2 mb-3">
+                                                    <button type="button"
+                                                            class="try-it-btn"
+                                                            onclick="tryItYourself(this)">
+                                                        <i class="bi bi-play-fill me-1"></i>
+                                                        Try It
+                                                    </button>
+                                                </div>
+
+
+
+                        <div class="alert alert-info">
+                            <strong>Tip:</strong> The ternary operator is useful when a simple condition needs to return one of two values.
+                        </div>
+                    </li>
+
+                    <!-- Null Coalescing -->
+                    <li class="mb-5">
+                        <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                            Null-Coalescing Operators
+                        </h4>
+
+                        <p class="text-muted mb-4">
+                            Operators designed to cleanly handle variables that might hold null values.
+                        </p>
+
+                        <ul class="text-muted mb-4">
+                            <li class="mb-3">
+                                <strong>??</strong>: Returns the left-hand operand if it is not null; otherwise, it returns the right-hand operand.
+                            </li>
+
+                            <li>
+                                <strong>??=</strong>: Assigns the right-hand value to the left-hand variable only if the left-hand variable is currently null.
+                            </li>
+                        </ul>
+
+                        <h6 class="fw-bold text-primary mb-2">Example</h6>
+
+@*                         <div class="code-block mb-4 shadow-sm">
+                            <div class="code-lang-tag">C#</div>
+                            <pre class="mb-0"><code>string? name = null;
+
+// Use fallback if name is null
+string displayName = name ?? "Guest";
+
+Console.WriteLine(displayName); // Output: Guest
+
+// Assign value only if null
+name ??= "Alice";
+
+Console.WriteLine(name); // Output: Alice</code></pre>
+                        </div> *@
+
+                                                <div class="try-it-example">
+
+                                                    <div class="code-block shadow-sm">
+
+                                                        <div class="code-lang-tag">
+                                                            C#
+                                                        </div>
+
+<pre class="mb-0"><code>using System;
+ 
+string? name = null;
+
+// Use fallback if name is null
+string displayName = name ?? "Guest";
+
+Console.WriteLine(displayName); // Output: Guest
+
+// Assign value only if null
+name ??= "Alice";
+
+Console.WriteLine(name); // Output: Alice</code></pre>
+
+                                                    </div>
+
+                                                    <div class="text-end mt-2 mb-3">
+                                                        <button type="button"
+                                                                class="try-it-btn"
+                                                                onclick="tryItYourself(this)">
+                                                            <i class="bi bi-play-fill me-1"></i>
+                                                            Try It
+                                                        </button>
+                                                    </div>
+
+
+
+                        <div class="alert alert-info">
+                            <strong>Real-World Use:</strong> Null-coalescing operators are useful when displaying default values when a database field, user input, or optional value is null.
+                        </div>
+                    </li>
+
+                </ol>
+
+                <!-- Common Mistakes -->
+                <div class="mt-5">
+                    <h4 class="fw-bold text-dark mb-3">
+                        Common Mistakes to Avoid
+                    </h4>
+
+                    <ul class="text-muted">
+                        <li class="mb-2">Do not confuse <code>=</code> with <code>==</code>. <code>=</code> assigns a value, while <code>==</code> compares values.</li>
+                        <li class="mb-2">Remember that integer division removes the decimal portion.</li>
+                        <li class="mb-2">Use parentheses when an expression needs a specific order of evaluation.</li>
+                        <li class="mb-2">Use logical operators carefully when combining multiple conditions.</li>
+                        <li class="mb-2">Use <code>??</code> when you need a fallback value for a possible null value.</li>
+                    </ul>
+                </div>
+
+                <!-- Real World Example -->
+                <div class="mt-5">
+                    <h4 class="fw-bold text-dark mb-3">
+                        Real-World Example
+                    </h4>
+
+                    <p class="text-muted">
+                        Operators are frequently used in real applications for calculating prices,
+                        checking eligibility, validating conditions, updating counters, and handling optional values.
+                    </p>
+
+@*                     <div class="code-block mb-4 shadow-sm">
+                        <div class="code-lang-tag">C#</div>
+                        <pre class="mb-0"><code>int marks = 75;
+bool attendance = true;
+
+bool eligible = marks &gt;= 60 &amp;&amp; attendance;
+
+string result = eligible ? "Eligible" : "Not Eligible";
+
+Console.WriteLine(result); // Output: Eligible</code></pre>
+                    </div>
+                </div> *@
+
+                                                <div class="try-it-example">
+
+                                                    <div class="code-block shadow-sm">
+
+                                                        <div class="code-lang-tag">
+                                                            C#
+                                                        </div>
+ <pre class="mb-0"><code>using System;
+ 
+int marks = 75;
+bool attendance = true;
+
+bool eligible = marks &gt;= 60 &amp;&amp; attendance;
+
+string result = eligible ? "Eligible" : "Not Eligible";
+
+Console.WriteLine(result); // Output: Eligible</code></pre>
+
+                                                    </div>
+
+                                                    <div class="text-end mt-2 mb-3">
+                                                        <button type="button"
+                                                                class="try-it-btn"
+                                                                onclick="tryItYourself(this)">
+                                                            <i class="bi bi-play-fill me-1"></i>
+                                                            Try It
+                                                        </button>
+                                                    </div>
+
+
+
+                <!-- Summary -->
+                <div class="alert alert-success mt-5">
+                    <h5 class="fw-bold">Summary</h5>
+                    <p class="mb-0">
+                        C# operators are used to perform calculations, compare values,
+                        combine conditions, assign values, modify variables, select values,
+                        and handle null values. Understanding operators is essential for
+                        writing conditions, calculations, and business logic in C# applications.
+                    </p>
+                </div>
+
+                <!-- Practice -->
+                <div class="mt-5">
+                    <h4 class="fw-bold text-dark mb-3">
+                        Practice Questions
+                    </h4>
+
+                    <ol class="text-muted">
+                        <li class="mb-2">Write a C# program using all arithmetic operators.</li>
+                        <li class="mb-2">Compare two numbers using relational operators.</li>
+                        <li class="mb-2">Write a program using <code>&amp;&amp;</code>, <code>||</code>, and <code>!</code>.</li>
+                        <li class="mb-2">Use compound assignment operators to update a variable.</li>
+                        <li class="mb-2">Create a program using the ternary operator to check whether a person is eligible to vote.</li>
+                        <li class="mb-2">Use <code>??</code> to provide a default value when a variable is null.</li>
+                    </ol>
+                </div>
+
+                <!-- Next Topic -->
+                <div class="d-flex justify-content-between align-items-center mb-5">
+
+                    <a href="/CSharp/BasicLanguage/TypeConversion"
+                       class="btn btn-outline-secondary">
+                        ← Previous Topic
+                    </a>
+
+                    <a href="/CSharp/BasicLanguage/ControlFlowStatements"
+                       class="btn btn-primary">
+                        Next Topic →
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<script>
+
+    function tryItYourself(button) {
+
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+
+        // Create temporary form
+
+        const form = document.createElement("form");
+
+        form.method = "POST";
+
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
+        document.body.removeChild(form);
+
+    }
+
+</script>
+
+ 

@@ -1,0 +1,923 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Align Items";
+}
+
+<style>
+
+    #css-align-items-page {
+        color: #212529;
+    }
+
+    #css-align-items-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-align-items-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-align-items-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-align-items-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-align-items-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* Code */
+
+    #css-align-items-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-align-items-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* Explanation */
+
+    #css-align-items-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-align-items-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Diagram */
+
+    #css-align-items-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-align-items-page .diagram-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        min-height: 180px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-align-items-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 15px 22px;
+        border-radius: 6px;
+        font-weight: 700;
+    }
+
+    /* Output */
+
+    #css-align-items-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-align-items-page .output-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        min-height: 180px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-align-items-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 18px 22px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* Cards */
+
+    #css-align-items-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-align-items-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-align-items-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Note */
+
+    #css-align-items-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* Summary */
+
+    #css-align-items-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-align-items-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-align-items-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+</style>
+
+
+<div id="css-align-items-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- Title -->
+
+                <h1>
+                    CSS Align Items
+                </h1>
+
+                <p>
+                    The CSS <strong>align-items</strong> property
+                    controls how Flex Items are aligned along the
+                    <strong>cross axis</strong> of a Flex Container.
+                </p>
+
+                <p>
+                    While <strong>justify-content</strong> controls
+                    the main axis, <strong>align-items</strong>
+                    controls the cross axis.
+                </p>
+
+
+                <!-- Main Axis and Cross Axis -->
+
+                <h2>
+                    Main Axis and Cross Axis
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        When
+                        <strong>flex-direction: row;</strong>
+                        is used, the main axis is horizontal and
+                        the cross axis is vertical.
+                    </p>
+
+                    <p>
+                        Therefore,
+                        <strong>justify-content</strong> controls
+                        horizontal positioning, while
+                        <strong>align-items</strong> controls
+                        vertical positioning.
+                    </p>
+
+                    <p>
+                        When
+                        <strong>flex-direction: column;</strong>
+                        is used, these directions are reversed.
+                    </p>
+
+                </div>
+
+
+                <!-- Syntax -->
+
+                <h2>
+                    Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    align-items: value;
+}</code></pre>
+
+                </div>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Align Items Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-container">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        align-items controls alignment along
+                        the cross axis.
+                    </p>
+
+                </div>
+
+
+                <!-- Values -->
+
+                <h2>
+                    Values of align-items
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Value</th>
+                                <th>Description</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>stretch</strong>
+                                </td>
+
+                                <td>
+                                    Stretches items across the
+                                    cross axis when possible.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>flex-start</strong>
+                                </td>
+
+                                <td>
+                                    Aligns items at the beginning
+                                    of the cross axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>flex-end</strong>
+                                </td>
+
+                                <td>
+                                    Aligns items at the end of the
+                                    cross axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>center</strong>
+                                </td>
+
+                                <td>
+                                    Centers items along the
+                                    cross axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>baseline</strong>
+                                </td>
+
+                                <td>
+                                    Aligns items according to their
+                                    text baselines.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Flex Start -->
+
+                <h2>
+                    1. align-items: flex-start
+                </h2>
+
+                <p>
+                    <strong>flex-start</strong> places Flex Items
+                    at the beginning of the cross axis.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    align-items: flex-start;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="align-items:flex-start;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Flex End -->
+
+                <h2>
+                    2. align-items: flex-end
+                </h2>
+
+                <p>
+                    <strong>flex-end</strong> places Flex Items
+                    at the end of the cross axis.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    align-items: flex-end;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="align-items:flex-end;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Center -->
+
+                <h2>
+                    3. align-items: center
+                </h2>
+
+                <p>
+                    <strong>center</strong> places the Flex Items
+                    in the center of the cross axis.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    align-items: center;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="align-items:center;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Stretch -->
+
+                <h2>
+                    4. align-items: stretch
+                </h2>
+
+                <p>
+                    <strong>stretch</strong> stretches Flex Items
+                    across the cross axis when their cross-axis
+                    size is not explicitly defined.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    align-items: stretch;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div style="
+                        display:flex;
+                        align-items:stretch;
+                        gap:15px;
+                        min-height:180px;
+                        padding:20px;
+                        border:2px solid #2563eb;
+                        background-color:#dbeafe;
+                    ">
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px 22px;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            HTML
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px 22px;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            CSS
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px 22px;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Baseline -->
+
+                <h2>
+                    5. align-items: baseline
+                </h2>
+
+                <p>
+                    <strong>baseline</strong> aligns Flex Items
+                    according to the baseline of their content,
+                    especially useful when the items contain text
+                    with different sizes.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    align-items: baseline;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div style="
+                        display:flex;
+                        align-items:baseline;
+                        gap:15px;
+                        min-height:150px;
+                        padding:20px;
+                        border:2px solid #2563eb;
+                        background-color:#dbeafe;
+                    ">
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:15px;
+                            font-size:18px;
+                            font-weight:700;
+                        ">
+                            HTML
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:15px;
+                            font-size:28px;
+                            font-weight:700;
+                        ">
+                            CSS
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:15px;
+                            font-size:22px;
+                            font-weight:700;
+                        ">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Comparison -->
+
+                <h2>
+                    Comparing align-items Values
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex-start
+                            </h3>
+
+                            <p>
+                                Places items at the beginning
+                                of the cross axis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex-end
+                            </h3>
+
+                            <p>
+                                Places items at the end
+                                of the cross axis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                center
+                            </h3>
+
+                            <p>
+                                Centers items along the
+                                cross axis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                stretch
+                            </h3>
+
+                            <p>
+                                Stretches items across the
+                                cross axis when possible.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                baseline
+                            </h3>
+
+                            <p>
+                                Aligns items according to
+                                their content baseline.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Difference -->
+
+                <h2>
+                    justify-content vs align-items
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Property</th>
+                                <th>Controls</th>
+                                <th>Axis</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>justify-content</strong>
+                                </td>
+
+                                <td>
+                                    Distribution of Flex Items
+                                </td>
+
+                                <td>
+                                    Main Axis
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>align-items</strong>
+                                </td>
+
+                                <td>
+                                    Alignment of Flex Items
+                                </td>
+
+                                <td>
+                                    Cross Axis
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Real World -->
+
+                <h2>
+                    Example 🌍🤓
+                </h2>
+
+                <p>
+                    Consider a navigation bar containing a logo,
+                    menu items, and a button.
+                </p>
+
+                <p>
+                    If the navigation bar uses
+                    <strong>display: flex;</strong>, the
+                    <strong>align-items: center;</strong> property
+                    can be used to vertically align these elements
+                    when the main direction is a row.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.navbar {
+    display: flex;
+    align-items: center;
+}</code></pre>
+
+                </div>
+
+
+                <!-- Important -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    <strong>align-items</strong> works along the
+                    cross axis, while
+                    <strong>justify-content</strong> works along
+                    the main axis. The direction of both axes depends
+                    on the value of <strong>flex-direction</strong>.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>align-items</strong> property
+                        controls the alignment of Flex Items along
+                        the cross axis. Its commonly used values are
+                        <strong>flex-start</strong>,
+                        <strong>flex-end</strong>,
+                        <strong>center</strong>,
+                        <strong>stretch</strong>, and
+                        <strong>baseline</strong>. Together with
+                        <strong>justify-content</strong>, it provides
+                        precise control over Flexbox alignment.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("JustifyContent", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Justify Content
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("AlignContent", "Flexbox", new { area = "CSS" })">
+
+                            Next: Align Content →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

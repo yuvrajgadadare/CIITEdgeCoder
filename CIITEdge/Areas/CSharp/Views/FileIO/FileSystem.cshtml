@@ -1,0 +1,1848 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "File System";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- =========================================================
+             LEFT SIDEBAR
+             ========================================================= -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+
+        <!-- =========================================================
+             MAIN CONTENT
+             ========================================================= -->
+        <section class="col-lg-9">
+
+            <!-- =====================================================
+                 INTRODUCTION
+                 ===================================================== -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    File System
+                </h2>
+
+                <p class="text-muted mb-4">
+                    File System programming in C# allows applications to create,
+                    read, write, update, copy, move, and delete files and
+                    directories stored on a computer.
+                </p>
+
+                <p class="text-muted mb-4">
+                    C# provides the
+                    <strong>System.IO</strong> namespace for working with files,
+                    folders, streams, paths, and other file-related operations.
+                </p>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Key Idea:</strong>
+                    File handling is commonly used when an application needs to
+                    store or retrieve information from files such as text files,
+                    configuration files, logs, reports, and exported data.
+                </div>
+
+
+                <!-- =================================================
+                     WHAT IS FILE HANDLING?
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    What is File Handling?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    File handling means performing operations on files stored
+                    in a file system. A C# application can interact with files
+                    through classes provided by the <strong>System.IO</strong>
+                    namespace.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Common file operations include:
+                </p>
+
+                <ul class="text-muted mb-4">
+                    <li>Create a file</li>
+                    <li>Write data to a file</li>
+                    <li>Read data from a file</li>
+                    <li>Append data to a file</li>
+                    <li>Copy a file</li>
+                    <li>Move a file</li>
+                    <li>Delete a file</li>
+                    <li>Check whether a file exists</li>
+                </ul>
+
+
+                <!-- =================================================
+                     SYSTEM.IO
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    System.IO Namespace
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>System.IO</code> namespace contains classes that
+                    provide functionality for working with files, directories,
+                    streams, and paths.
+                </p>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>File</td>
+                                <td>Provides static methods for file operations</td>
+                            </tr>
+                            <tr>
+                                <td>Directory</td>
+                                <td>Provides static methods for directory operations</td>
+                            </tr>
+                            <tr>
+                                <td>FileInfo</td>
+                                <td>Provides instance-based file operations and information</td>
+                            </tr>
+                            <tr>
+                                <td>DirectoryInfo</td>
+                                <td>Provides instance-based directory operations and information</td>
+                            </tr>
+                            <tr>
+                                <td>FileStream</td>
+                                <td>Provides a stream for reading and writing file data</td>
+                            </tr>
+                            <tr>
+                                <td>StreamReader</td>
+                                <td>Reads characters from a text stream</td>
+                            </tr>
+                            <tr>
+                                <td>StreamWriter</td>
+                                <td>Writes characters to a text stream</td>
+                            </tr>
+                            <tr>
+                                <td>Path</td>
+                                <td>Works with file and directory path information</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =================================================
+                     FILE.CREATE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Creating a File
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>File.Create()</code> method creates a new file at
+                    the specified path.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "ciit_student_records.txt";
+
+        File.Create(path);
+        
+        Console.WriteLine("CIIT Institute student records file created successfully 📩👨‍🏫..!");
+    }
+}</code></pre>
+ 
+    </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>CIIT Institute student records file created successfully 📩👨‍🏫..!</code></pre>
+                </div>
+
+                <div class="alert alert-warning mb-4">
+                    <strong>Note:</strong>
+                    The file is created in the application's current working
+                    directory when only a file name is supplied.
+                </div>
+
+
+                <!-- =================================================
+                     FILE.WRITEALLTEXT
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Writing Text to a File
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>File.WriteAllText()</code> method creates a file
+                    if it does not exist and writes text into it. If the file
+                    already exists, its existing content is replaced.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "student.txt";
+
+        File.WriteAllText(
+            path,
+            "Name: Rahul\nCourse: C# Full Stack"
+        );
+
+        Console.WriteLine("Data written successfully✅");
+    }
+}</code></pre>
+ 
+    </div>
+
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Data written successfully✅</code></pre>
+                </div>
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    File Content
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">student.txt</div>
+                    <pre class="mb-0"><code>Name: Rahul
+Course: C# Full Stack</code></pre>
+                </div>
+
+                <!-- =================================================
+                     FILE.READALLTEXT
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Reading Text from a File
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>File.ReadAllText()</code> method reads the complete
+                    contents of a text file and returns it as a string.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "student.txt";
+
+        string content = File.ReadAllText(path);
+
+        Console.WriteLine(content);
+    }
+}</code></pre>
+ 
+    </div>
+
+
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Name: Rahul
+Course: C# Full Stack</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     FILE.READALLLINES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Reading All Lines
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>File.ReadAllLines()</code> method reads all lines
+                    from a text file and returns them as an array of strings.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "student.txt";
+
+        string[] lines = File.ReadAllLines(path);
+
+        foreach (string line in lines)
+        {
+            Console.WriteLine(line);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Name: Rahul
+Course: C# Full Stack</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     FILE.APPENDALLTEXT
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Appending Data to a File
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>File.AppendAllText()</code> method adds new content
+                    to the end of an existing file without removing its
+                    previous content.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "student.txt";
+
+        File.AppendAllText(
+            path,
+            "\nStatus: Training Completed"
+        );
+
+        Console.WriteLine("Data appended successfully✅");
+    }
+}</code></pre>
+ 
+    </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Data appended successfully✅</code></pre>
+                </div>
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    File Content
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">student.txt</div>
+                    <pre class="mb-0"><code>Name: Rahul
+Course: C# Full Stack
+Status: Training Completed</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     FILE.EXISTS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Checking Whether a File Exists
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>File.Exists()</code> method checks whether a file
+                    exists at the specified path.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "student.txt";
+
+        if (File.Exists(path))
+        {
+            Console.WriteLine("File exists.");
+        }
+        else
+        {
+            Console.WriteLine("File does not exist.");
+        }
+    }
+}</code></pre>
+ 
+    </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>File exists.</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     FILE.COPY
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Copying a File
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>File.Copy()</code> method creates a copy of an
+                    existing file at another location.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string source = "student.txt";
+        string destination = "student-copy.txt";
+
+        File.Copy(source, destination, true);
+
+        Console.WriteLine("File copied successfully✅");
+    }
+}</code></pre>
+ 
+    </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div>
+
+
+                <p class="text-muted mb-4">
+                    The third argument <code>true</code> allows the destination
+                    file to be overwritten if it already exists.
+                </p>
+
+
+                <!-- =================================================
+                     FILE.MOVE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Moving a File
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>File.Move()</code> method moves a file from one
+                    location to another.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string source = "student.txt";
+        string destination = "Documents/student.txt";
+
+        File.Move(source, destination);
+
+        Console.WriteLine("File moved successfully.");
+    }
+
+}</code></pre>
+ 
+    </div>
+
+                <!-- =================================================
+                     FILE.DELETE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Deleting a File
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>File.Delete()</code> method deletes the specified
+                    file.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "student-copy.txt";
+
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+
+            Console.WriteLine("File deleted successfully.");
+        }
+    }
+}
+</code></pre>
+ 
+                 </div>
+
+@*                 <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div> *@
+                 <div class="alert alert-warning mt-4 mb-4">
+    <strong>Important:</strong>
+    Always check the file path carefully before deleting files.
+    Deletion is a destructive operation.
+</div>
+
+
+                <!-- =================================================
+                     DIRECTORY
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Working with Directories
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>Directory</code> class provides static methods
+                    for creating, checking, listing, and deleting directories.
+                </p>
+
+
+                <!-- DIRECTORY.CREATE -->
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Creating a Directory
+                </h4>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "StudentData";
+
+        Directory.CreateDirectory(path);
+
+        Console.WriteLine("Directory created.");
+    }
+}</code></pre>
+ 
+    </div>
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                 <h4 class="fw-bold">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Directory created.</code></pre>
+                </div>
+
+
+                <!-- DIRECTORY.EXISTS -->
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Checking Directory Exists
+                </h4>
+
+             
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "StudentData";
+
+        if (Directory.Exists(path))
+        {
+            Console.WriteLine("Directory exists.");
+        }
+        else
+        {
+            Console.WriteLine("Directory does not exist.");
+        }
+    }
+}</code></pre>
+ 
+    </div>
+
+                
+                <!-- DIRECTORY.GETFILES -->
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Getting Files from a Directory
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The <code>Directory.GetFiles()</code> method returns the
+                    file paths contained in a directory.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "StudentData";
+
+        string[] files = Directory.GetFiles(path);
+
+        foreach (string file in files)
+        {
+            Console.WriteLine(file);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+
+
+
+
+                <!-- DIRECTORY.GETDIRECTORIES -->
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Getting Subdirectories
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The <code>Directory.GetDirectories()</code> method returns
+                    the directories contained inside another directory.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "StudentData";
+
+        string[] directories =
+            Directory.GetDirectories(path);
+
+        foreach (string directory in directories)
+        {
+            Console.WriteLine(directory);
+        }
+    }
+}</code></pre>
+                </div>
+                
+
+
+
+                <!-- =================================================
+                     PATH CLASS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Path Class
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <code>Path</code> class provides methods for working
+                    with file and directory paths without directly performing
+                    file operations.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Common methods include:
+                </p>
+
+                <ul class="text-muted mb-4">
+                    <li><code>Path.Combine()</code></li>
+                    <li><code>Path.GetFileName()</code></li>
+                    <li><code>Path.GetExtension()</code></li>
+                    <li><code>Path.GetDirectoryName()</code></li>
+                    <li><code>Path.GetFullPath()</code></li>
+                </ul>
+
+@*                 <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string folder = "StudentData";
+        string file = "students.txt";
+
+        string path = Path.Combine(folder, file);
+
+        Console.WriteLine(path);
+        Console.WriteLine(Path.GetFileName(path));
+        Console.WriteLine(Path.GetExtension(path));
+    }
+}</code></pre>
+                </div>
+                <div class="text-end mt-2 mb-3">         
+<button type="button" class="try-it-btn"  onclick="tryItYourself(this)"> 
+<i class="bi bi-play-fill me-1"></i> Try It</button>   
+</div> *@
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string folder = "StudentData";
+        string file = "students.txt";
+
+        string path = Path.Combine(folder, file);
+
+        Console.WriteLine(path);
+        Console.WriteLine(Path.GetFileName(path));
+        Console.WriteLine(Path.GetExtension(path));
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>StudentData\students.txt
+students.txt
+.txt</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     FILEINFO
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    FileInfo Class
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <code>FileInfo</code> provides instance-based operations
+                    and information about a specific file.
+                </p>
+
+                <p class="text-muted mb-4">
+                    It can be useful when an application performs multiple
+                    operations on the same file.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        FileInfo file = new FileInfo("student.txt");
+
+        Console.WriteLine("File Name: " + file.Name);
+        Console.WriteLine("Extension: " + file.Extension);
+        Console.WriteLine("Full Path: " + file.FullName);
+        Console.WriteLine("Size: " + file.Length + " bytes");
+    }
+}</code></pre>
+                </div>
+                
+                <!-- =================================================
+                     DIRECTORYINFO
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    DirectoryInfo Class
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <code>DirectoryInfo</code> provides instance-based
+                    operations and information about a directory.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        DirectoryInfo directory =
+            new DirectoryInfo("StudentData");
+
+        Console.WriteLine(
+            "Directory Name: " + directory.Name
+        );
+
+        Console.WriteLine(
+            "Full Path: " + directory.FullName
+        );
+    }
+}</code></pre>
+                </div>
+                
+
+
+
+                <!-- =================================================
+                     STREAMS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    What is a Stream?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A stream represents a flow of data between a source and a
+                    destination. Streams are commonly used when reading or
+                    writing data.
+                </p>
+
+                <p class="text-muted mb-4">
+                    A file stream allows an application to read or write data
+                    to a file progressively rather than treating the entire
+                    file as a single string.
+                </p>
+
+                <div class="alert alert-info mb-4">
+                    <strong>Simple Understanding:</strong>
+                    Think of a stream as a channel through which data moves
+                    between your application and a file.
+                </div>
+
+
+                <!-- =================================================
+                     FILESTREAM
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    FileStream
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <code>FileStream</code> provides a stream for reading and
+                    writing bytes to a file.
+                </p>
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        string path = "message.txt";
+
+        using (FileStream stream =
+               new FileStream(
+                   path,
+                   FileMode.Create,
+                   FileAccess.Write))
+        {
+            string message = "Hello from C#";
+
+            byte[] data =
+                Encoding.UTF8.GetBytes(message);
+
+            stream.Write(data, 0, data.Length);
+        }
+
+        Console.WriteLine("Data written using FileStream.");
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Data written using FileStream.</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     STREAMWRITER
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    StreamWriter
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <code>StreamWriter</code> is used to write characters and
+                    text to a stream or file.
+                </p>
+
+
+ <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        using (StreamWriter writer =
+               new StreamWriter("students.txt"))
+        {
+            writer.WriteLine("Amit");
+            writer.WriteLine("Priya");
+            writer.WriteLine("Rahul");
+        }
+
+        Console.WriteLine("Student data written.");
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">students.txt</div>
+                    <pre class="mb-0"><code>Student data written.</code></pre>
+                </div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    File Content
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">students.txt</div>
+                    <pre class="mb-0"><code>Amit
+Priya
+Rahul</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     STREAMREADER
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    StreamReader
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <code>StreamReader</code> is used to read characters from
+                    a text stream.
+                </p>
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        using (StreamReader reader =
+               new StreamReader("students.txt"))
+        {
+            string content = reader.ReadToEnd();
+
+            Console.WriteLine(content);
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Amit
+Priya
+Rahul</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     USING STATEMENT
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    using Statement with Files
+                </h3>
+
+                <p class="text-muted mb-4">
+                    File and stream objects often use system resources such as
+                    file handles. The <code>using</code> statement ensures that
+                    the object is disposed properly after use.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using (StreamWriter writer =
+       new StreamWriter("log.txt"))
+{
+    writer.WriteLine("Application started.");
+}</code></pre>
+                </div>
+
+                <div class="alert alert-success mb-4">
+                    <strong>Best Practice:</strong>
+                    Dispose file and stream resources properly. The
+                    <code>using</code> statement is a simple and reliable way
+                    to manage these resources.
+                </div>
+
+
+                <!-- =================================================
+                     EXCEPTION HANDLING
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Exception Handling in File Operations
+                </h3>
+
+                <p class="text-muted mb-4">
+                    File operations can fail for different reasons, such as an
+                    invalid path, missing file, insufficient permissions, or
+                    a file being unavailable.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Use exception handling when file operations are expected
+                    to interact with external resources.
+                </p>
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            string content =
+                File.ReadAllText("missing.txt");
+
+            Console.WriteLine(content);
+        }
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine("File was not found.");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("File operation failed.");
+        }
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>File was not found.</code></pre>
+                </div>
+
+
+                <!-- =================================================
+                     REAL WORLD EXAMPLE
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Example: Application Log 🌍📩
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Applications often store important events in log files.
+                    These logs can help developers understand application
+                    behavior and troubleshoot problems.
+                </p>
+
+
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string logFile = "application.log";
+
+        string message =
+            DateTime.Now +
+            " - Application started.";
+
+        File.AppendAllText(
+            logFile,
+            message + Environment.NewLine
+        );
+
+        Console.WriteLine("Log entry added.");
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Possible Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+                    <pre class="mb-0"><code>Log entry added.</code></pre>
+                </div>
+
+                <div class="alert alert-success mb-4">
+                    <strong>CIIT Practical Point:</strong>
+                    File handling is useful in .NET applications for logging,
+                    importing text data, generating reports, storing temporary
+                    files, processing uploaded files, and managing application
+                    resources.
+                </div>
+
+
+                <!-- =================================================
+                     FILE CLASS VS FILEINFO
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    File vs FileInfo
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>File</th>
+                                <th>FileInfo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Type</td>
+                                <td>Static class</td>
+                                <td>Instance class</td>
+                            </tr>
+                            <tr>
+                                <td>Usage</td>
+                                <td>Quick file operations</td>
+                                <td>Repeated operations on a specific file</td>
+                            </tr>
+                            <tr>
+                                <td>Object Required</td>
+                                <td>No</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Example</td>
+                                <td>File.ReadAllText()</td>
+                                <td>file.OpenRead()</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- =================================================
+                     COMMON MISTAKES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Common Mistakes
+                </h3>
+
+                <ol class="text-muted mb-4">
+                    <li class="mb-2">
+                        Using an incorrect file path.
+                    </li>
+
+                    <li class="mb-2">
+                        Trying to read a file that does not exist.
+                    </li>
+
+                    <li class="mb-2">
+                        Forgetting to dispose streams.
+                    </li>
+
+                    <li class="mb-2">
+                        Deleting a file without checking the path.
+                    </li>
+
+                    <li class="mb-2">
+                        Ignoring file access permissions.
+                    </li>
+
+                    <li class="mb-2">
+                        Assuming that a relative path always points to the
+                        project folder.
+                    </li>
+
+                    <li class="mb-2">
+                        Loading very large files completely into memory when
+                        streaming would be more appropriate.
+                    </li>
+                </ol>
+
+
+                <!-- =================================================
+                     BEST PRACTICES
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    File Handling Best Practices
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li>Validate file paths before performing operations.</li>
+                    <li>Check whether a file exists when appropriate.</li>
+                    <li>Use <code>using</code> for streams and disposable resources.</li>
+                    <li>Handle expected file-related exceptions.</li>
+                    <li>Avoid unnecessary file operations.</li>
+                    <li>Use streaming APIs for large files when appropriate.</li>
+                    <li>Never trust user-provided file paths without validation.</li>
+                </ul>
+
+
+                <!-- =================================================
+                     INTERVIEW QUESTIONS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-4">
+                    Interview Questions
+                </h3>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        1. What is file handling in C#?
+                    </h5>
+
+                    <p class="text-muted">
+                        File handling is the process of creating, reading,
+                        writing, updating, copying, moving, and deleting files
+                        using C# APIs.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        2. Which namespace is used for file handling?
+                    </h5>
+
+                    <p class="text-muted">
+                        The <code>System.IO</code> namespace provides classes
+                        for file, directory, path, and stream operations.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        3. What is the difference between File and FileInfo?
+                    </h5>
+
+                    <p class="text-muted">
+                        File provides static methods for common file operations,
+                        while FileInfo provides instance-based operations and
+                        information for a specific file.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        4. What is FileStream?
+                    </h5>
+
+                    <p class="text-muted">
+                        FileStream provides a stream for reading and writing
+                        bytes to a file.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        5. What is StreamReader?
+                    </h5>
+
+                    <p class="text-muted">
+                        StreamReader is used to read characters from a text
+                        stream.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        6. What is StreamWriter?
+                    </h5>
+
+                    <p class="text-muted">
+                        StreamWriter is used to write characters and text to
+                        a stream or file.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        7. What is the purpose of the using statement?
+                    </h5>
+
+                    <p class="text-muted">
+                        The using statement ensures that disposable resources
+                        such as streams are released properly after use.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold">
+                        8. What is the Path class used for?
+                    </h5>
+
+                    <p class="text-muted">
+                        The Path class provides methods for creating and
+                        analyzing file and directory paths.
+                    </p>
+                </div>
+
+
+                <!-- =================================================
+                     PRACTICE PROGRAMS
+                     ================================================= -->
+                <h3 class="fw-bold text-dark mt-5 mb-3">
+                    Practice Programs
+                </h3>
+
+                <ol class="text-muted mb-4">
+                    <li class="mb-2">
+                        Create a text file and write student information into it.
+                    </li>
+
+                    <li class="mb-2">
+                        Read the complete contents of a text file.
+                    </li>
+
+                    <li class="mb-2">
+                        Read a file line by line.
+                    </li>
+
+                    <li class="mb-2">
+                        Append a new student record to an existing file.
+                    </li>
+
+                    <li class="mb-2">
+                        Check whether a specified file exists.
+                    </li>
+
+                    <li class="mb-2">
+                        Copy a file from one location to another.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a directory and list all files inside it.
+                    </li>
+
+                    <li class="mb-2">
+                        Display file name, extension, full path, and file size
+                        using FileInfo.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a simple application log using AppendAllText().
+                    </li>
+
+                    <li class="mb-2">
+                        Read a text file using StreamReader and display its content.
+                    </li>
+                </ol>
+
+            </div>
+
+
+            <!-- =========================================================
+                 SUMMARY
+                 ========================================================= -->
+            <div class="alert alert-info mb-4"
+                 style="background-color:#cfe2ff; border:1px solid #b6d4fe; color:#084298; border-radius:6px; padding:20px 24px;">
+
+                <h2 class="h3 fw-bold mb-3">
+                    Summary
+                </h2>
+
+                <p class="mb-3">
+                    C# provides powerful file system APIs through the
+                    <strong>System.IO</strong> namespace.
+                </p>
+
+                <p class="mb-3">
+                    You learned how to create, read, write, append, copy,
+                    move, delete, and check files using the
+                    <strong>File</strong> class.
+                </p>
+
+                <p class="mb-3">
+                    You also learned about
+                    <strong>
+                        Directory, FileInfo, DirectoryInfo, Path,
+                        FileStream, StreamReader, and StreamWriter
+                    </strong>.
+                </p>
+
+                <p class="mb-3">
+                    Proper resource management, exception handling, path
+                    validation, and secure file handling are important when
+                    working with files in real-world applications.
+                </p>
+
+                <p class="mb-0">
+                    File system knowledge is especially useful in applications
+                    that handle logs, reports, uploaded files, imports,
+                    exports, and local data processing.
+                </p>
+
+            </div>
+
+
+            <!-- =========================================================
+                 NAVIGATION
+                 ========================================================= -->
+            <div class="d-flex justify-content-between align-items-center mt-4 mb-5">
+
+                <a href="@Url.Action("ParallelProcessing", "AsynchronousParallelProgramming", new { area = "CSharp" })"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>
+
+                <a href="@Url.Action("Serialization", "FileIO", new { area = "CSharp" })"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+
+            <script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+       }
+ 
+</script>
+ 

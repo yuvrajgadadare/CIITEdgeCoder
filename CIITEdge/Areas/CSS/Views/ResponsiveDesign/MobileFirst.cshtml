@@ -1,0 +1,683 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Mobile First";
+}
+
+<div id="css-mobile-first-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">Mobile First</h1>
+
+                <p class="lead">
+                    Mobile First is a responsive design approach where you
+                    design the website for smaller screens first and then
+                    enhance the layout for larger screens.
+                </p>
+
+                <hr />
+
+                <!-- What is Mobile First -->
+                <h2 class="h4 mt-4">What is Mobile First?</h2>
+
+                <p>
+                    In a Mobile First approach, the default CSS is written
+                    for mobile devices. Additional styles are then added
+                    using media queries for tablets, laptops, and desktops.
+                </p>
+
+                <p>
+                    The main idea is to first create a clean and usable
+                    layout for small screens and then progressively improve
+                    the design for larger screens.
+                </p>
+
+                <!-- Online Image -->
+                <div class="image-section mt-4">
+
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80"
+                         alt="Mobile First Responsive Web Design"
+                         class="mobile-first-image" />
+
+                    <p class="image-caption">
+                        Mobile First design starts with smaller screens
+                        and progressively adapts the layout for larger screens.
+                    </p>
+
+                </div>
+
+                <!-- Mobile First Diagram -->
+                <h2 class="h4 mt-4">Mobile First Approach</h2>
+
+                <div class="mobile-first-diagram">
+
+                    <div class="diagram-card">
+                        <div class="diagram-title">Mobile</div>
+                        <div class="diagram-text">
+                            Base CSS
+                        </div>
+                    </div>
+
+                    <div class="diagram-arrow">→</div>
+
+                    <div class="diagram-card">
+                        <div class="diagram-title">Tablet</div>
+                        <div class="diagram-text">
+                            Add CSS using Media Query
+                        </div>
+                    </div>
+
+                    <div class="diagram-arrow">→</div>
+
+                    <div class="diagram-card">
+                        <div class="diagram-title">Desktop</div>
+                        <div class="diagram-text">
+                            Add larger-screen styles
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Simple Explanation -->
+                <div class="explanation-box">
+
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p>
+                        Imagine you are designing a website for a mobile phone.
+                        You first create the basic layout for the small screen.
+                    </p>
+
+                    <p class="mb-0">
+                        Then, when the screen becomes wider, you add extra
+                        styles to use the available space more effectively.
+                    </p>
+
+                </div>
+
+                <!-- Syntax -->
+                <h2 class="h4 mt-4">Mobile First Syntax</h2>
+
+                <pre class="code-box"><code>.container {
+    width: 100%;
+    padding: 15px;
+}
+
+@@media (min-width: 768px) {
+
+    .container {
+        max-width: 720px;
+    }
+}
+
+@@media (min-width: 992px) {
+
+    .container {
+        max-width: 960px;
+    }
+}</code></pre>
+
+                <!-- Explanation -->
+                <div class="property-card">
+
+                    <h3 class="h6">Base CSS</h3>
+
+                    <p class="mb-0">
+                        The first set of styles applies to all screen sizes,
+                        especially small screens.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Tablet Styles</h3>
+
+                    <p class="mb-0">
+                        At <code>768px</code> and above, additional styles
+                        are applied for larger screens.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Desktop Styles</h3>
+
+                    <p class="mb-0">
+                        At <code>992px</code> and above, the container becomes
+                        wider for desktop screens.
+                    </p>
+
+                </div>
+
+                <!-- Example -->
+                <h2 class="h4 mt-4">Example: Mobile First Card Layout</h2>
+
+                <p>
+                    The following example starts with one column for mobile.
+                    At larger screen sizes, more columns are added.
+                </p>
+
+                <pre class="code-box"><code>.mobile-first-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.mobile-first-card {
+    background-color: #2563eb;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+@@media (min-width: 768px) {
+
+    .mobile-first-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mobile-first-card {
+        background-color: #7c3aed;
+    }
+}
+
+@@media (min-width: 992px) {
+
+    .mobile-first-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .mobile-first-card {
+        background-color: #0f766e;
+    }
+}</code></pre>
+
+                <!-- Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="mobile-first-grid">
+
+                        <div class="mobile-first-card">
+                            Card 1
+                        </div>
+
+                        <div class="mobile-first-card">
+                            Card 2
+                        </div>
+
+                        <div class="mobile-first-card">
+                            Card 3
+                        </div>
+
+                        <div class="mobile-first-card">
+                            Card 4
+                        </div>
+
+                    </div>
+
+                    <p class="output-note">
+                        Resize the browser window to observe the Mobile First
+                        layout changing at different screen widths.
+                    </p>
+
+                </div>
+
+                <!-- How it works -->
+                <h2 class="h4 mt-4">How This Example Works</h2>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Mobile: Below 768px</h3>
+
+                    <p class="mb-0">
+                        The default CSS creates
+                        <strong>1 column</strong>.
+                        The card background color is
+                        <code>#2563eb</code>.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Tablet: 768px and Above</h3>
+
+                    <p class="mb-0">
+                        The grid changes to
+                        <strong>2 columns</strong>
+                        and the card background color becomes
+                        <code>#7c3aed</code>.
+                    </p>
+
+                </div>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Desktop: 992px and Above</h3>
+
+                    <p class="mb-0">
+                        The grid changes to
+                        <strong>4 columns</strong>
+                        and the card background color becomes
+                        <code>#0f766e</code>.
+                    </p>
+
+                </div>
+
+                <!-- Mobile First vs Desktop First -->
+                <h2 class="h4 mt-4">Mobile First vs Desktop First</h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Mobile First</th>
+                                <th>Desktop First</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Starts with small screens</td>
+                                <td>Starts with large screens</td>
+                            </tr>
+
+                            <tr>
+                                <td>Uses <code>min-width</code> frequently</td>
+                                <td>Uses <code>max-width</code> frequently</td>
+                            </tr>
+
+                            <tr>
+                                <td>Progressively enhances the layout</td>
+                                <td>Progressively reduces the layout</td>
+                            </tr>
+
+                            <tr>
+                                <td>Useful for responsive design</td>
+                                <td>Can be useful for desktop-focused layouts</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Why Mobile First -->
+                <h2 class="h4 mt-4">Why Use Mobile First?</h2>
+
+                <div class="explanation-box">
+
+                    <ul class="mb-0">
+
+                        <li>
+                            Mobile screens have limited space, so important
+                            content is designed first.
+                        </li>
+
+                        <li>
+                            It encourages simpler and cleaner layouts.
+                        </li>
+
+                        <li>
+                            Larger screens can progressively receive additional
+                            layout features.
+                        </li>
+
+                        <li>
+                            It works naturally with responsive grid and flex layouts.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Common min-width -->
+                <h2 class="h4 mt-4">Common Mobile First Media Queries</h2>
+
+                <pre class="code-box"><code>@@media (min-width: 576px) {
+    /* Small devices */
+}
+
+@@media (min-width: 768px) {
+    /* Tablets */
+}
+
+@@media (min-width: 992px) {
+    /* Desktops */
+}
+
+@@media (min-width: 1200px) {
+    /* Large desktops */
+}</code></pre>
+
+                <!-- Important Note -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        Mobile First does not mean that the website is only
+                        designed for mobile devices. It means the base design
+                        starts with the smallest practical screen size and
+                        additional styles are added for larger screens.
+                    </p>
+
+                </div>
+
+                <!-- Real World Uses -->
+                <h2 class="h4 mt-4">Real-World Uses</h2>
+
+                <ul>
+                    <li>Responsive websites</li>
+                    <li>E-commerce websites</li>
+                    <li>Training institute websites</li>
+                    <li>News and content websites</li>
+                    <li>Responsive dashboards</li>
+                    <li>Portfolio websites</li>
+                </ul>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        Mobile First is a responsive design strategy where the
+                        base CSS is created for smaller screens first.
+                        Media queries using <code>min-width</code> are then used
+                        to add styles for tablets, desktops, and larger screens.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("Breakpoints", "ResponsiveDesign", new { area = "CSS" })">
+                            ← Previous: Breakpoints
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("ResponsiveImages", "ResponsiveDesign", new { area = "CSS" })">
+                            Next: Responsive Images →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-mobile-first-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-mobile-first-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-mobile-first-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-mobile-first-page .content-section p,
+        #css-mobile-first-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Online Image */
+    #css-mobile-first-page .image-section {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    #css-mobile-first-page .mobile-first-image {
+        width: 100%;
+        max-height: 360px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+    }
+
+    #css-mobile-first-page .image-caption {
+        margin: 12px 5px 0;
+        color: #6c757d !important;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    #css-mobile-first-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    #css-mobile-first-page .mobile-first-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-mobile-first-page .diagram-card {
+        min-width: 180px;
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+    }
+
+    #css-mobile-first-page .diagram-title {
+        color: #2563eb;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    #css-mobile-first-page .diagram-text {
+        color: #495057;
+        font-size: 14px;
+        margin-top: 7px;
+    }
+
+    #css-mobile-first-page .diagram-arrow {
+        color: #2563eb;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    #css-mobile-first-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-mobile-first-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    #css-mobile-first-page .property-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+        #css-mobile-first-page .property-card h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    #css-mobile-first-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    #css-mobile-first-page .mobile-first-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    #css-mobile-first-page .mobile-first-card {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 25px;
+        text-align: center;
+        border-radius: 8px;
+        font-weight: 700;
+    }
+
+    #css-mobile-first-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #6c757d !important;
+        text-align: center;
+    }
+
+    #css-mobile-first-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-mobile-first-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-mobile-first-page .note-box p {
+            color: #78350f;
+        }
+
+    #css-mobile-first-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-mobile-first-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-mobile-first-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    @@media (min-width: 768px) {
+
+        #css-mobile-first-page .mobile-first-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #css-mobile-first-page .mobile-first-card {
+            background-color: #7c3aed;
+        }
+    }
+
+    @@media (min-width: 992px) {
+
+        #css-mobile-first-page .mobile-first-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        #css-mobile-first-page .mobile-first-card {
+            background-color: #0f766e;
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        #css-mobile-first-page .content-section {
+            padding: 16px;
+        }
+
+        #css-mobile-first-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-mobile-first-page .diagram-card {
+            width: 100%;
+        }
+
+        #css-mobile-first-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-mobile-first-page .mobile-first-image {
+            max-height: 260px;
+        }
+    }
+
+</style>

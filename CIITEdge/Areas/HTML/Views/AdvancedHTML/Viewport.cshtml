@@ -1,0 +1,531 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Viewport";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #ffffff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .viewport-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 125px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML Viewport</h1>
+
+            <p>
+                The viewport is the visible area of a webpage inside the browser window.
+                On desktop, the viewport is usually much wider than on a mobile phone.
+            </p>
+
+            <p>
+                The HTML viewport meta tag helps the browser understand how the page
+                should be scaled and displayed on different devices.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Idea:</strong>
+                Viewport tells the browser how the webpage should fit inside
+                the device screen.
+            </div>
+
+            <h2>1. What is the Viewport?</h2>
+
+            <p>
+                The viewport is the area of the webpage that the user can currently see.
+                Its dimensions depend on the browser window or device screen.
+            </p>
+
+            <p>
+                A desktop may have a large viewport, while a mobile device has a much
+                smaller viewport.
+            </p>
+
+            <h2>2. How Viewport Works</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    Viewport Concept
+                </div>
+
+                <div class="viewport-flow">
+
+                    <div class="flow-item">
+                        Device<br>
+                        Screen
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Browser<br>
+                        Viewport
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        HTML + CSS
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Responsive<br>
+                        Page
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>3. Viewport Meta Tag</h2>
+
+            <p>
+                The viewport is commonly configured using the
+                <code>meta</code> element inside the document's
+                <code>&lt;head&gt;</code>.
+            </p>
+
+            <pre><code>&lt;meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+            <p>
+                This is the commonly used viewport declaration for responsive pages.
+            </p>
+
+            <h2>4. What does width=device-width Mean?</h2>
+
+            <p>
+                <code>width=device-width</code> tells the browser to use the device's
+                screen width as the viewport width.
+            </p>
+
+            <p>
+                In simple words, the webpage should use the actual width available
+                on the device instead of assuming a wider virtual layout.
+            </p>
+
+            <h2>5. What does initial-scale=1.0 Mean?</h2>
+
+            <p>
+                <code>initial-scale=1.0</code> sets the initial zoom level of the page
+                to the normal scale.
+            </p>
+
+            <pre><code>&lt;meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+            <h2>6. Why Viewport is Important?</h2>
+
+            <p>
+                Without an appropriate viewport setting, a responsive webpage may
+                not display as expected on smaller screens.
+            </p>
+
+            <p>
+                The viewport works together with CSS responsive techniques to help
+                the page adapt to different screen sizes.
+            </p>
+
+            <h2>7. Mobile Responsive Example</h2>
+
+            <p>
+                A typical responsive HTML document includes the viewport declaration
+                in the head section.
+            </p>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;title&gt;
+        Responsive Website
+    &lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;
+        Responsive Web Page
+    &lt;/h1&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>8. Viewport and CSS</h2>
+
+            <p>
+                The viewport meta tag alone does not create a fully responsive design.
+                CSS is responsible for controlling the layout across different screen sizes.
+            </p>
+
+            <p>
+                CSS tools commonly used with responsive layouts include:
+            </p>
+
+            <ul>
+                <li>Flexible widths</li>
+                <li>Flexbox</li>
+                <li>CSS Grid</li>
+                <li>Media queries</li>
+                <li>Responsive images</li>
+            </ul>
+
+            <h2>9. Viewport vs Screen</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Term</th>
+                            <th>Simple Meaning</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Screen</td>
+                            <td>The physical display area of the device.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Viewport</td>
+                            <td>The area through which the webpage is currently viewed.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Page</td>
+                            <td>The complete HTML content available in the document.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>10. Common Viewport Properties</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><code>width</code></td>
+                            <td>Controls the viewport width.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>initial-scale</code></td>
+                            <td>Controls the initial zoom level.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>minimum-scale</code></td>
+                            <td>Defines a minimum zoom level.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>maximum-scale</code></td>
+                            <td>Defines a maximum zoom level.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>user-scalable</code></td>
+                            <td>Controls whether the user can zoom the page.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>11. Commonly Used Viewport Declaration</h2>
+
+            <pre><code>&lt;meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+            <p>
+                This is the standard starting point for most responsive webpages.
+            </p>
+
+            <h2>12. Viewport and Mobile Devices</h2>
+
+            <p>
+                Mobile devices have much smaller display areas than desktop screens.
+                Without suitable viewport behavior, pages designed primarily for desktop
+                layouts can appear difficult to use on phones.
+            </p>
+
+            <p>
+                The viewport declaration helps the browser use the device width
+                appropriately.
+            </p>
+
+            <h2>13. Viewport is Not the Same as Responsive Design</h2>
+
+            <p>
+                This is an important difference.
+            </p>
+
+            <p>
+                <strong>Viewport configuration</strong> tells the browser how to interpret
+                the page width and scale.
+            </p>
+
+            <p>
+                <strong>Responsive design</strong> uses CSS and other techniques to make
+                the page layout adapt to different screen sizes.
+            </p>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                Viewport is one important part of responsive web development.
+                It is not the complete responsive design solution.
+            </div>
+
+            <h2>14. Common Mistakes</h2>
+
+            <h3>Mistake 1: Forgetting the viewport tag</h3>
+
+            <p>
+                Responsive pages should normally include an appropriate viewport
+                declaration.
+            </p>
+
+            <h3>Mistake 2: Thinking viewport alone makes a page responsive</h3>
+
+            <p>
+                CSS is still required to create responsive layouts.
+            </p>
+
+            <h3>Mistake 3: Using unnecessary viewport restrictions</h3>
+
+            <p>
+                Restricting zoom or changing user scaling without a strong reason
+                can create usability and accessibility problems.
+            </p>
+
+            <h2>15. Best Practices</h2>
+
+            <ul>
+                <li>Include a suitable viewport declaration in responsive pages.</li>
+                <li>Use <code>width=device-width</code> for typical responsive layouts.</li>
+                <li>Use <code>initial-scale=1.0</code> as a common starting configuration.</li>
+                <li>Use CSS to build the actual responsive layout.</li>
+                <li>Avoid unnecessary restrictions on user zooming.</li>
+                <li>Test the page on different screen sizes.</li>
+            </ul>
+
+            <h2>16. Practice Example</h2>
+
+            <p>
+                Create a basic responsive HTML page using the viewport meta tag.
+            </p>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;title&gt;
+        Responsive HTML Page
+    &lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;header&gt;
+        &lt;h1&gt;
+            My Website
+        &lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+
+        &lt;section&gt;
+
+            &lt;h2&gt;
+                Welcome
+            &lt;/h2&gt;
+
+            &lt;p&gt;
+                This page is prepared for responsive design.
+            &lt;/p&gt;
+
+        &lt;/section&gt;
+
+    &lt;/main&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    The viewport is the visible area through which a user views a webpage.
+                    The viewport meta tag, commonly written as
+                    <code>width=device-width, initial-scale=1.0</code>, helps the browser
+                    use the device's width and set an appropriate initial scale. The
+                    viewport is an important part of responsive design, but CSS is still
+                    required to create the actual responsive layout.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("MetaTags", "AdvancedHTML", new { area = "HTML" })">
+                    ← Previous: Meta Tags
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("HTMLAccessibility", "AdvancedHTML", new { area = "HTML" })">
+                    Next: HTML Accessibility →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

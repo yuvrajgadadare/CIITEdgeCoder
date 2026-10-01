@@ -1,0 +1,266 @@
+﻿
+<nav class="topics-navbar">
+
+    <!-- LEFT ARROW -->
+    <button type="button"
+            class="topics-arrow topics-left"
+            onclick="scrollTopics(-350)"
+            aria-label="Previous topics">
+        ‹
+    </button>
+
+    <!-- TOPICS TITLE -->
+    <div class="topics-title">
+        Topics
+    </div>
+
+    <!-- SCROLLABLE TOPICS -->
+    <div class="topics-scroll-wrapper" id="topicsScroll">
+
+        <a href="/Html/Introduction/Index">HTML</a>
+
+        <a href="/CSS/Introduction/Index">CSS</a>
+
+        <a href="/Bootstrap/Introduction">Bootstrap</a>
+
+        <a href="/Javascript/Introduction">JavaScript</a>
+
+        <a href="/TypeScript/Introduction">TypeScript</a>
+
+        <a href="/React/Introduction">React</a>
+
+        <a href="/Angular/Introduction">Angular</a>
+
+        <a href="/NodeJs/Introduction">Node.js</a>
+
+        <a href="/CoreJava/Introduction">Core Java</a>
+
+        <a href="/Python/PythonBasics/Index">Python</a>
+
+        <a href="/csharp/introduction">C#</a>
+
+        <a href="/GitHub/VersionControlFundamental/WhatisVersionControl">Git</a>
+
+        <a href="/GitHub/VersionControlFundamental/WhatisVersionControl">GitHub</a>
+
+        <a href="/Jenkins/Introduction">Jenkins</a>
+
+        <a href="/Azure/Introduction">Azure</a>
+
+        <a href="/AWS/Introduction">AWS</a>
+
+        <a href="/SqlServer/Introduction">SQL Server</a>
+
+        <a href="/BasicExcel/Introduction">Basic Excel</a>
+
+        <a href="/AdvanceExcel/Introduction">Advanced Excel</a>
+
+        <a href="/PowerBI/Introduction">Power BI</a>
+
+        <a href="/Tableau/Introduction">Tableau</a>
+
+        <a href="/NumPy/Introduction">NumPy</a>
+
+        <a href="/Pandas/Introduction">Pandas</a>
+
+        <a href="/MatplotLib/Introduction">Matplotlib</a>
+
+    </div>
+
+    <!-- RIGHT ARROW -->
+    <button type="button"
+            class="topics-arrow topics-right"
+            onclick="scrollTopics(350)"
+            aria-label="Next topics">
+        ›
+    </button>
+
+</nav>
+
+
+<style>
+
+    /* ================================
+           TOPICS NAVBAR
+           ================================ */
+
+    .topics-navbar {
+        width: 100%;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        border-top: 1px solid #eeeeee;
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        position: relative;
+        z-index: 1000;
+    }
+
+
+    /* ================================
+           TOPICS TITLE
+           ================================ */
+
+    .topics-title {
+        flex: 0 0 auto;
+        min-width: 118px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+        color: #111827;
+        font-size: 17px;
+        font-weight: 700;
+        border-right: 1px solid #e5e7eb;
+        white-space: nowrap;
+    }
+
+
+    /* ================================
+           SCROLL AREA
+           ================================ */
+
+    .topics-scroll-wrapper {
+        flex: 1 1 auto;
+        min-width: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding: 0 18px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+
+        .topics-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        /* ================================
+           TOPIC LINKS
+           ================================ */
+
+        .topics-scroll-wrapper a {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 2px;
+            color: #374151;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color 0.2s ease;
+        }
+
+
+            .topics-scroll-wrapper a:hover {
+                color: #1769ff;
+            }
+
+
+            .topics-scroll-wrapper a.active {
+                color: #1769ff;
+                font-weight: 700;
+            }
+
+
+    /* ================================
+           ARROWS
+           ================================ */
+
+    .topics-arrow {
+        flex: 0 0 44px;
+        width: 44px;
+        height: 100%;
+        border: none;
+        background: #ffffff;
+        color: #1769ff;
+        font-size: 30px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        transition: background 0.2s ease;
+    }
+
+
+        .topics-arrow:hover {
+            background: #f3f7ff;
+        }
+
+
+    .topics-left {
+        border-right: 1px solid #f0f0f0;
+    }
+
+
+    .topics-right {
+        border-left: 1px solid #f0f0f0;
+    }
+
+
+    /* ================================
+           MOBILE
+           ================================ */
+
+    @@media (max-width: 768px) {
+
+        .topics-navbar {
+            height: 58px;
+        }
+
+        .topics-title {
+            min-width: 90px;
+            padding: 0 12px;
+            font-size: 15px;
+        }
+
+        .topics-scroll-wrapper {
+            gap: 22px;
+            padding: 0 12px;
+        }
+
+            .topics-scroll-wrapper a {
+                font-size: 14px;
+            }
+
+        .topics-arrow {
+            flex-basis: 36px;
+            width: 36px;
+            font-size: 26px;
+        }
+    }
+
+</style>
+
+
+<script>
+
+    function scrollTopics(amount) {
+
+        const container = document.getElementById("topicsScroll");
+
+        if (!container) {
+            return;
+        }
+
+        container.scrollBy({
+            left: amount,
+            behavior: "smooth"
+        });
+    }
+
+</script>

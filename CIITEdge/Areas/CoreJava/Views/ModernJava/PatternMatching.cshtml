@@ -1,0 +1,825 @@
+﻿@{
+    ViewData["Title"] = "Pattern Matching in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-2">Pattern Matching in Java</h1>
+                <p class="text-muted mb-0">
+                    Learn modern Java pattern matching with instanceof and switch.
+                </p>
+            </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Introduction -->
+        <h2 class="fw-bold">1. What is Pattern Matching?</h2>
+
+        <p>
+            <strong>Pattern matching</strong> is a modern Java language feature that
+            combines type checking, type conversion, and conditional logic into a
+            more concise syntax.
+        </p>
+
+        <p>
+            Before pattern matching, Java code often required an explicit
+            <code>instanceof</code> check followed by a cast.
+        </p>
+
+        <div class="alert alert-info">
+            <strong>Key idea:</strong>
+            Pattern matching can make type-based code shorter, safer, and easier to read.
+        </div>
+
+        <!-- Traditional instanceof -->
+        <h2 class="fw-bold mt-5">2. Traditional instanceof</h2>
+
+        <p>
+            Before Java 16, developers commonly checked the type and then explicitly
+            cast the object.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Object value = "Hello world CIIT 🌍🤓";
+
+if (value instanceof String) {
+
+    String text = (String) value;
+
+    System.out.println(text.length());
+}</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>21</code></pre>
+</div>
+
+        <!-- Pattern variable -->
+        <h2 class="fw-bold mt-5">3. Pattern Matching with instanceof</h2>
+
+        <p>
+            Modern Java allows the type test and variable declaration to be combined.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Object value = "Hello world CIIT 🌍🤓";
+
+if (value instanceof String text) {
+
+    System.out.println(text.length());
+}</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>21</code></pre>
+</div>
+        <p>
+            Here, <code>text</code> is the pattern variable. If the object is a
+            <code>String</code>, Java automatically makes the variable available
+            in the valid scope.
+        </p>
+
+        <!-- Scope -->
+        <h2 class="fw-bold mt-5">4. Scope of Pattern Variables</h2>
+
+        <p>
+            A pattern variable is available where the compiler can prove that
+            the pattern has matched.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Object value = "CIIT";
+
+if (value instanceof String text
+        &amp;&amp; text.length() &gt; 3) {
+
+    System.out.println(text);
+}</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>CIIT</code></pre>
+</div>
+        <p>
+            The variable <code>text</code> is available on the right side of
+            <code>&amp;&amp;</code> because the first condition establishes that
+            it is a <code>String</code>.
+        </p>
+
+        <!-- Negation -->
+        <h2 class="fw-bold mt-5">5. Pattern Matching with Negation</h2>
+
+        <p>
+            Pattern variables can also work with negated conditions.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Object value = "CIIT";
+
+if (!(value instanceof String text)) {
+
+    System.out.println("Validation failed: Data is not a valid text record inside the CIIT system 🫥.");
+
+    return;
+}
+
+System.out.println(
+    "String length: " + text.length()
+);</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>String length: 4</code></pre>
+</div>
+        <p>
+            After the early return, the compiler knows that <code>text</code>
+            represents a <code>String</code>.
+        </p>
+
+        <!-- Multiple conditions -->
+        <h2 class="fw-bold mt-5">6. Pattern Matching with Multiple Conditions</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Object value = "Programming";
+
+if (value instanceof String text
+        &amp;&amp; !text.isEmpty()
+        &amp;&amp; text.length() &gt; 5) {
+
+    System.out.println(
+        "Long text: " + text
+    );
+}</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Long text: Programming</code></pre>
+</div>
+        <!-- Java 16 -->
+        <h2 class="fw-bold mt-5">7. Pattern Matching for instanceof</h2>
+
+        <p>
+            Pattern matching for <code>instanceof</code> became a standard feature
+            in Java 16.
+        </p>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Old Style</th>
+                        <th>Modern Style</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Check type separately</td>
+                        <td>Check type and declare variable together</td>
+                    </tr>
+                    <tr>
+                        <td>Requires explicit cast</td>
+                        <td>Automatic pattern variable</td>
+                    </tr>
+                    <tr>
+                        <td>More verbose</td>
+                        <td>More concise</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Switch -->
+        <h2 class="fw-bold mt-5">8. Pattern Matching with switch</h2>
+
+        <p>
+            Modern Java extends pattern matching to switch expressions.
+            This allows switch branches to match objects based on their types.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String describe(Object value) {
+
+    return switch (value) {
+
+        case String text -&gt;
+            "String: " + text;
+
+        case Integer number -&gt;
+            "Integer: " + number;
+
+        case Double number -&gt;
+            "Double: " + number;
+
+        default -&gt;
+            "Unknown type";
+    };
+}</code></pre>
+        </div>
+
+        <div class="alert alert-success">
+            <strong>Benefit:</strong>
+            The explicit casts that were common in older type-based branching
+            code are no longer necessary.
+        </div>
+
+        <!-- Java 21 -->
+        <h2 class="fw-bold mt-5">9. Pattern Matching for switch in Java 21</h2>
+
+        <p>
+            Pattern matching for switch became a permanent standard language feature
+            in Java 21.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String getType(Object value) {
+
+    return switch (value) {
+
+        case String text -&gt;
+            "Text";
+
+        case Integer number -&gt;
+            "Integer";
+
+        case Long number -&gt;
+            "Long";
+
+        default -&gt;
+            "Other";
+    };
+}</code></pre>
+        </div>
+
+        <!-- Null -->
+        <h2 class="fw-bold mt-5">10. Handling null in Pattern Matching</h2>
+
+        <p>
+            A modern switch can explicitly handle <code>null</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String describe(Object value) {
+
+    return switch (value) {
+
+        case null -&gt;
+            "Value is null";
+
+        case String text -&gt;
+            "String: " + text;
+
+        default -&gt;
+            "Other value";
+    };
+}</code></pre>
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>Important:</strong>
+            A null selector should be handled explicitly when null is a valid
+            input for the application.
+        </div>
+
+        <!-- Guards -->
+        <h2 class="fw-bold mt-5">11. Pattern Matching with when</h2>
+
+        <p>
+            Modern Java supports additional conditions on patterns using
+            the <code>when</code> guard syntax.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String classify(Object value) {
+
+    return switch (value) {
+
+        case Integer number when number &gt; 0 -&gt;
+            "Positive number";
+
+        case Integer number -&gt;
+            "Zero or negative number";
+
+        case String text when !text.isEmpty() -&gt;
+            "Non-empty text";
+
+        case String text -&gt;
+            "Empty text";
+
+        default -&gt;
+            "Other";
+    };
+}</code></pre>
+        </div>
+
+        <div class="alert alert-info">
+            <strong>Version note:</strong>
+            The <code>when</code> guard syntax belongs to the modern
+            pattern-matching switch language features available in recent Java versions.
+        </div>
+
+        <!-- Sealed classes -->
+        <h2 class="fw-bold mt-5">12. Pattern Matching with Sealed Classes</h2>
+
+        <p>
+            Pattern matching works especially well with sealed class hierarchies,
+            because the compiler can reason about the permitted subclasses.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface Shape
+    permits Circle, Rectangle {
+}
+
+final class Circle implements Shape {
+
+    double radius;
+}
+
+final class Rectangle implements Shape {
+
+    double width;
+    double height;
+}</code></pre>
+        </div>
+
+        <p>
+            A switch can then handle the permitted types.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String describe(Shape shape) {
+
+    return switch (shape) {
+
+        case Circle circle -&gt;
+            "Circle";
+
+        case Rectangle rectangle -&gt;
+            "Rectangle";
+    };
+}</code></pre>
+        </div>
+
+        <!-- Exhaustiveness -->
+        <h2 class="fw-bold mt-5">13. Exhaustive Pattern Matching</h2>
+
+        <p>
+            Pattern matching switch expressions must be exhaustive.
+            Every possible input must be covered.
+        </p>
+
+        <p>
+            With a sealed hierarchy, the compiler can use the permitted subclasses
+            to determine whether all cases have been handled.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface Payment
+    permits CardPayment, CashPayment {
+}
+
+final class CardPayment implements Payment {
+}
+
+final class CashPayment implements Payment {
+}
+
+static String process(Payment payment) {
+
+    return switch (payment) {
+
+        case CardPayment card -&gt;
+            "Processing card";
+
+        case CashPayment cash -&gt;
+            "Processing cash";
+    };
+}</code></pre>
+        </div>
+
+        <!-- Record -->
+        <h2 class="fw-bold mt-5">14. Pattern Matching with Records</h2>
+
+        <p>
+            Modern Java also supports record patterns, allowing components of a
+            record to be matched and extracted directly.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>record Person(String name, int age) {
+}
+
+static String describe(Object value) {
+
+    return switch (value) {
+
+        case Person(String name, int age) -&gt;
+            name + " is " + age + " years old";
+
+        default -&gt;
+            "Unknown";
+    };
+}</code></pre>
+        </div>
+
+        <div class="alert alert-success">
+            <strong>Modern Java:</strong>
+            Record patterns became a permanent feature in Java 21.
+        </div>
+
+        <!-- Nested record -->
+        <h2 class="fw-bold mt-5">15. Nested Record Patterns</h2>
+
+        <p>
+            Record patterns can be nested when records contain other records.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>record Address(String city) {
+}
+
+record Employee(String name, Address address) {
+}
+
+static String getCity(Employee employee) {
+
+    return switch (employee) {
+
+        case Employee(
+            String name,
+            Address(String city)
+        ) -&gt; city;
+    };
+}</code></pre>
+        </div>
+
+        <!-- Generic Object -->
+        <h2 class="fw-bold mt-5">16. Working with Object Values</h2>
+
+        <p>
+            Pattern matching is useful when a method receives a broad type such as
+            <code>Object</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static void printValue(Object value) {
+
+    if (value instanceof String text) {
+
+        System.out.println(
+            "Text: " + text
+        );
+
+    } else if (value instanceof Integer number) {
+
+        System.out.println(
+            "Number: " + number
+        );
+
+    } else {
+
+        System.out.println(
+            "Other value"
+        );
+    }
+}</code></pre>
+        </div>
+
+        <!-- instanceof vs switch -->
+        <h2 class="fw-bold mt-5">17. instanceof vs Pattern Matching switch</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>instanceof Pattern</th>
+                        <th>switch Pattern</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Useful for a small number of type checks</td>
+                        <td>Useful for multiple alternatives</td>
+                    </tr>
+                    <tr>
+                        <td>Works naturally inside if statements</td>
+                        <td>Works naturally as a switch expression</td>
+                    </tr>
+                    <tr>
+                        <td>Good for conditional logic</td>
+                        <td>Good for exhaustive branching</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Benefits -->
+        <h2 class="fw-bold mt-5">18. Advantages of Pattern Matching</h2>
+
+        <ul>
+            <li>Reduces explicit casting.</li>
+            <li>Improves readability.</li>
+            <li>Provides compile-time type safety.</li>
+            <li>Works with <code>instanceof</code>.</li>
+            <li>Works with switch expressions.</li>
+            <li>Works with sealed class hierarchies.</li>
+            <li>Works with record patterns.</li>
+            <li>Can simplify type-based business logic.</li>
+        </ul>
+
+        <!-- Limitations -->
+        <h2 class="fw-bold mt-5">19. Things to Remember</h2>
+
+        <ul>
+            <li>Pattern variables have a defined scope.</li>
+            <li>Switch expressions must be exhaustive.</li>
+            <li>Use a suitable Java version for the syntax being used.</li>
+            <li>Do not make patterns unnecessarily complex.</li>
+            <li>Prefer simple and readable branching logic.</li>
+            <li>Use sealed hierarchies when exhaustive type handling is valuable.</li>
+        </ul>
+
+        <!-- Complete example -->
+        <h2 class="fw-bold mt-5">20. Example 🤓🤷‍♀️</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Main {
+
+    static String describe(Object value) {
+
+        return switch (value) {
+
+            case null -&gt;
+                "Null value";
+
+            case String text when !text.isEmpty() -&gt;
+                "Text: " + text;
+
+            case Integer number when number &gt; 0 -&gt;
+                "Positive integer: " + number;
+
+            case Integer number -&gt;
+                "Non-positive integer: " + number;
+
+            default -&gt;
+                "Other value";
+        };
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(
+            describe("Java")
+        );
+
+        System.out.println(
+            describe(100)
+        );
+
+        System.out.println(
+            describe(-5)
+        );
+
+        System.out.println(
+            describe(null)
+        );
+    }
+}</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Text: Java
+Positive integer: 100
+Non-positive integer: -5
+Null value</code></pre>
+</div>
+        <!-- Best Practices -->
+        <h2 class="fw-bold mt-5">21. Best Practices</h2>
+
+        <ul>
+            <li>Use pattern matching when it makes type checks simpler.</li>
+            <li>Keep pattern conditions easy to understand.</li>
+            <li>Use switch expressions for multiple type alternatives.</li>
+            <li>Use sealed classes when a closed type hierarchy is appropriate.</li>
+            <li>Use record patterns when extracting record components improves clarity.</li>
+            <li>Handle null deliberately.</li>
+            <li>Compile the project using the Java version required by the syntax.</li>
+        </ul>
+
+        <!-- Interview -->
+        <h2 class="fw-bold mt-5">22. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="patternQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#patternQuestionOne">
+                        What is pattern matching in Java?
+                    </button>
+                </h2>
+
+                <div id="patternQuestionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#patternQuestions">
+
+                    <div class="accordion-body">
+                        Pattern matching combines type checking and variable binding
+                        into a concise syntax, reducing explicit casting.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#patternQuestionTwo">
+                        When did instanceof pattern matching become standard?
+                    </button>
+                </h2>
+
+                <div id="patternQuestionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#patternQuestions">
+
+                    <div class="accordion-body">
+                        Pattern matching for <code>instanceof</code> became a
+                        standard feature in Java 16.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#patternQuestionThree">
+                        When did pattern matching for switch become standard?
+                    </button>
+                </h2>
+
+                <div id="patternQuestionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#patternQuestions">
+
+                    <div class="accordion-body">
+                        Pattern matching for switch became a standard feature in Java 21.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#patternQuestionFour">
+                        What is a pattern variable?
+                    </button>
+                </h2>
+
+                <div id="patternQuestionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#patternQuestions">
+
+                    <div class="accordion-body">
+                        A pattern variable is a variable introduced by a successful
+                        type pattern, such as <code>value instanceof String text</code>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#patternQuestionFive">
+                        What are record patterns?
+                    </button>
+                </h2>
+
+                <div id="patternQuestionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#patternQuestions">
+
+                    <div class="accordion-body">
+                        Record patterns allow Java code to match a record and
+                        extract its component values directly.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="alert alert-success mt-5">
+            <h4 class="fw-bold">Summary</h4>
+
+            <p class="mb-2">
+                In this lesson, you learned:
+            </p>
+
+            <ul class="mb-0">
+                <li>Traditional instanceof checks</li>
+                <li>Pattern matching with instanceof</li>
+                <li>Pattern variable scope</li>
+                <li>Pattern matching with switch</li>
+                <li>Switch pattern matching in Java 21</li>
+                <li>Handling null</li>
+                <li>Pattern guards using when</li>
+                <li>Sealed class pattern matching</li>
+                <li>Record patterns</li>
+                <li>Nested record patterns</li>
+                <li>Advantages and best practices</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("SwitchExpressions", "ModernJava", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("TextBlocks", "ModernJava", new { area = "CoreJava" })">
+                Next: Topic →
+            </a>
+
+        </div>
+
+    </div>
+</div>

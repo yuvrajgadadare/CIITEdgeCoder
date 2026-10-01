@@ -1,0 +1,1196 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Functions";
+}
+
+<div id="css-functions-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">CSS Functions</h1>
+
+                <p class="lead">
+                    CSS functions allow you to perform calculations, create flexible
+                    layouts, control responsive values, and dynamically combine CSS values.
+                </p>
+
+                <hr />
+
+                <!-- Introduction -->
+                <h2 class="h4 mt-4">What are CSS Functions?</h2>
+
+                <p>
+                    CSS functions are special expressions that return a value
+                    which can be used by CSS properties.
+                </p>
+
+                <p>
+                    They are useful when a value needs to be calculated,
+                    limited within a range, reused, or generated dynamically.
+                </p>
+
+                <!-- Effective Visual -->
+                <h2 class="h4 mt-4">Interactive CSS Functions Visual</h2>
+
+                <p>
+                    Hover over the visual cards below. The layout uses CSS
+                    functions such as <code>clamp()</code> and
+                    <code>calc()</code> to create flexible sizing.
+                </p>
+
+                <div class="functions-visual-section">
+
+                    <div class="function-visual-grid">
+
+                        <div class="function-visual-card card-calc">
+
+                            <div class="visual-icon">
+                                +
+                            </div>
+
+                            <strong>calc()</strong>
+
+                            <span>
+                                Calculate values
+                            </span>
+
+                        </div>
+
+                        <div class="function-visual-card card-min">
+
+                            <div class="visual-icon">
+                                ↓
+                            </div>
+
+                            <strong>min()</strong>
+
+                            <span>
+                                Choose the smaller value
+                            </span>
+
+                        </div>
+
+                        <div class="function-visual-card card-max">
+
+                            <div class="visual-icon">
+                                ↑
+                            </div>
+
+                            <strong>max()</strong>
+
+                            <span>
+                                Choose the larger value
+                            </span>
+
+                        </div>
+
+                        <div class="function-visual-card card-clamp">
+
+                            <div class="visual-icon">
+                                ↔
+                            </div>
+
+                            <strong>clamp()</strong>
+
+                            <span>
+                                Keep a value within a range
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="visual-image-wrapper">
+
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+                             alt="Creative colorful workspace representing flexible CSS design"
+                             class="functions-image"
+                             tabindex="0" />
+
+                        <div class="visual-image-overlay">
+                            Flexible CSS Design
+                        </div>
+
+                    </div>
+
+                    <p class="image-caption">
+                        CSS functions make layouts more flexible and responsive.
+                    </p>
+
+                </div>
+
+                <!-- Syntax -->
+                <h2 class="h4 mt-4">Basic CSS Function Syntax</h2>
+
+                <pre class="code-box"><code>property: function(value);</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p class="mb-2">
+                        A CSS function receives one or more values and returns
+                        a result that can be used by a CSS property.
+                    </p>
+
+                    <p class="mb-0">
+                        For example, <code>calc()</code> can calculate a size,
+                        while <code>clamp()</code> can keep a value between
+                        a minimum and maximum.
+                    </p>
+
+                </div>
+
+                <!-- Diagram -->
+                <h2 class="h4 mt-4">How CSS Functions Work</h2>
+
+                <div class="function-diagram">
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            CSS Property
+                        </div>
+
+                        <div class="diagram-code">
+                            width
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Function
+                        </div>
+
+                        <div class="diagram-code">
+                            calc()
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Calculated Value
+                        </div>
+
+                        <div class="diagram-code">
+                            760px
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- calc -->
+                <h2 class="h4 mt-4">1. calc()</h2>
+
+                <p>
+                    The <code>calc()</code> function allows you to perform
+                    calculations using CSS values.
+                </p>
+
+                <pre class="code-box"><code>.container {
+    width: calc(100% - 40px);
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">How it works</h3>
+
+                    <p class="mb-0">
+                        The width becomes the available width minus
+                        <code>40px</code>.
+                    </p>
+
+                </div>
+
+                <!-- calc output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="calc-demo">
+                        calc(100% - 40px)
+                    </div>
+
+                    <p class="output-note">
+                        Resize the browser to see the container remain flexible.
+                    </p>
+
+                </div>
+
+                <!-- min -->
+                <h2 class="h4 mt-4">2. min()</h2>
+
+                <p>
+                    The <code>min()</code> function returns the smallest value
+                    from the values provided.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    width: min(90%, 600px);
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Meaning</h3>
+
+                    <p class="mb-0">
+                        The width will use whichever is smaller:
+                        <code>90%</code> or <code>600px</code>.
+                    </p>
+
+                </div>
+
+                <!-- min output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="min-demo">
+                        min(90%, 600px)
+                    </div>
+
+                </div>
+
+                <!-- max -->
+                <h2 class="h4 mt-4">3. max()</h2>
+
+                <p>
+                    The <code>max()</code> function returns the largest value
+                    from the values provided.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    width: max(50%, 300px);
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Meaning</h3>
+
+                    <p class="mb-0">
+                        The width will use whichever is larger:
+                        <code>50%</code> or <code>300px</code>.
+                    </p>
+
+                </div>
+
+                <!-- max output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="max-demo">
+                        max(50%, 300px)
+                    </div>
+
+                </div>
+
+                <!-- clamp -->
+                <h2 class="h4 mt-4">4. clamp()</h2>
+
+                <p>
+                    The <code>clamp()</code> function keeps a value between
+                    a minimum, preferred, and maximum value.
+                </p>
+
+                <pre class="code-box"><code>.heading {
+    font-size: clamp(28px, 5vw, 52px);
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">clamp() Structure</h3>
+
+                    <p class="mb-2">
+                        <code>clamp(minimum, preferred, maximum)</code>
+                    </p>
+
+                    <p class="mb-0">
+                        The value should not go below the minimum or above
+                        the maximum while the preferred value adapts
+                        to the viewport.
+                    </p>
+
+                </div>
+
+                <!-- clamp output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box clamp-output">
+
+                    <h3 class="clamp-heading">
+                        Responsive Heading
+                    </h3>
+
+                    <p class="output-note">
+                        Resize the browser window to see the heading adapt.
+                    </p>
+
+                </div>
+
+                <!-- var -->
+                <h2 class="h4 mt-4">5. var()</h2>
+
+                <p>
+                    The <code>var()</code> function is used to access a
+                    CSS custom property.
+                </p>
+
+                <pre class="code-box"><code>:root {
+    --primary-color: #2563eb;
+}
+
+.button {
+    background-color: var(--primary-color);
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Why use var()?</h3>
+
+                    <p class="mb-0">
+                        It allows you to reuse values stored in CSS variables.
+                    </p>
+
+                </div>
+
+                <!-- Var output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <button type="button" class="var-demo-button">
+                        var(--primary-color)
+                    </button>
+
+                </div>
+
+                <!-- Combining Functions -->
+                <h2 class="h4 mt-4">6. Combining CSS Functions</h2>
+
+                <p>
+                    CSS functions can also be combined to create more flexible
+                    layouts.
+                </p>
+
+                <pre class="code-box"><code:.container {
+    width: min(
+        calc(100% - 40px),
+        1000px
+    );
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">How it works</h3>
+
+                    <p class="mb-0">
+                        First, <code>calc()</code> performs the calculation.
+                        Then <code>min()</code> compares the calculated value
+                        with <code>1000px</code> and uses the smaller result.
+                    </p>
+
+                </div>
+
+                <!-- Color function -->
+                <h2 class="h4 mt-4">7. Color Functions</h2>
+
+                <p>
+                    CSS also provides functions for creating and modifying colors.
+                    Modern CSS supports functions such as
+                    <code>rgb()</code>, <code>hsl()</code>,
+                    <code>rgba()</code>, and <code>hsla()</code>.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    background-color: rgb(37, 99, 235);
+}
+
+.card {
+    background-color: rgba(37, 99, 235, 0.15);
+}</code></pre>
+
+                <!-- Color output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="color-function-grid">
+
+                        <div class="color-function-card rgb-card">
+                            rgb()
+                        </div>
+
+                        <div class="color-function-card rgba-card">
+                            rgba()
+                        </div>
+
+                        <div class="color-function-card hsl-card">
+                            hsl()
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Common Functions -->
+                <h2 class="h4 mt-4">Common CSS Functions</h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><code>calc()</code></td>
+                                <td>Performs calculations</td>
+                                <td><code>calc(100% - 40px)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>min()</code></td>
+                                <td>Returns the smaller value</td>
+                                <td><code>min(90%, 600px)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>max()</code></td>
+                                <td>Returns the larger value</td>
+                                <td><code>max(50%, 300px)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>clamp()</code></td>
+                                <td>Limits a value within a range</td>
+                                <td><code>clamp(20px, 5vw, 50px)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>var()</code></td>
+                                <td>Accesses a CSS variable</td>
+                                <td><code>var(--primary)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>rgb()</code></td>
+                                <td>Creates a color using RGB values</td>
+                                <td><code>rgb(37, 99, 235)</code></td>
+                            </tr>
+
+                            <tr>
+                                <td><code>hsl()</code></td>
+                                <td>Creates a color using HSL values</td>
+                                <td><code>hsl(217, 83%, 53%)</code></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Responsive Card -->
+                <h2 class="h4 mt-4">Practical Example: Responsive Card</h2>
+
+                <pre class="code-box"><code>.responsive-card {
+    width: min(90%, 650px);
+    padding: clamp(16px, 4vw, 30px);
+    font-size: clamp(16px, 2vw, 22px);
+}</code></pre>
+
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="responsive-function-card">
+
+                        <div class="responsive-card-icon">
+                            CSS
+                        </div>
+
+                        <h3>
+                            Flexible Course Card
+                        </h3>
+
+                        <p>
+                            This card uses CSS functions to adapt its
+                            width, padding, and typography.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Benefits -->
+                <h2 class="h4 mt-4">Benefits of CSS Functions</h2>
+
+                <div class="benefit-grid">
+
+                    <div class="benefit-card">
+                        <strong>Flexible</strong>
+                        <span>Adapt values to available space</span>
+                    </div>
+
+                    <div class="benefit-card">
+                        <strong>Responsive</strong>
+                        <span>Create layouts for different screens</span>
+                    </div>
+
+                    <div class="benefit-card">
+                        <strong>Reusable</strong>
+                        <span>Combine with CSS variables</span>
+                    </div>
+
+                    <div class="benefit-card">
+                        <strong>Maintainable</strong>
+                        <span>Reduce unnecessary media queries</span>
+                    </div>
+
+                </div>
+
+                <!-- Best Practices -->
+                <h2 class="h4 mt-4">Best Practices</h2>
+
+                <ul>
+
+                    <li>
+                        Use <code>calc()</code> when values need mathematical
+                        calculations.
+                    </li>
+
+                    <li>
+                        Use <code>min()</code> and <code>max()</code> when
+                        values need upper or lower constraints.
+                    </li>
+
+                    <li>
+                        Use <code>clamp()</code> for fluid responsive values.
+                    </li>
+
+                    <li>
+                        Combine functions with CSS variables when creating
+                        reusable design systems.
+                    </li>
+
+                    <li>
+                        Keep calculations understandable and easy to maintain.
+                    </li>
+
+                </ul>
+
+                <!-- Important -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        CSS functions are especially useful for responsive
+                        design because they can reduce the need for many
+                        breakpoint-specific values.
+                    </p>
+
+                </div>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS functions allow developers to calculate, compare,
+                        limit, and reuse CSS values. Important functions include
+                        <code>calc()</code>, <code>min()</code>,
+                        <code>max()</code>, <code>clamp()</code>,
+                        <code>var()</code>, <code>rgb()</code>, and
+                        <code>hsl()</code>. They are especially useful for
+                        creating flexible and responsive designs.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("CSSVariables", "AdvancedCSS", new { area = "CSS" })">
+                            ← Previous: CSS Variables
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("CSSSpecificity", "AdvancedCSS", new { area = "CSS" })">
+                            Next: CSS Specificity →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-functions-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-functions-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-functions-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-functions-page .content-section p,
+        #css-functions-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Visual Section */
+    #css-functions-page .functions-visual-section {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    #css-functions-page .function-visual-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    #css-functions-page .function-visual-card {
+        min-height: 145px;
+        border-radius: 12px;
+        padding: 20px 15px;
+        color: #ffffff;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+        #css-functions-page .function-visual-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+    #css-functions-page .card-calc {
+        background-color: #2563eb;
+    }
+
+    #css-functions-page .card-min {
+        background-color: #7c3aed;
+    }
+
+    #css-functions-page .card-max {
+        background-color: #0f766e;
+    }
+
+    #css-functions-page .card-clamp {
+        background-color: #db2777;
+    }
+
+    #css-functions-page .visual-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(255,255,255,0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-functions-page .function-visual-card strong {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    #css-functions-page .function-visual-card span {
+        font-size: 13px;
+        opacity: 0.95;
+    }
+
+    /* Visual Image */
+    #css-functions-page .visual-image-wrapper {
+        width: 100%;
+        max-width: 850px;
+        height: 300px;
+        margin: 0 auto;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+    }
+
+    #css-functions-page .functions-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+        transition: transform 0.55s ease, filter 0.55s ease;
+    }
+
+        #css-functions-page .visual-image-wrapper:hover .functions-image,
+        #css-functions-page .functions-image:focus {
+            transform: scale(1.08);
+            filter: saturate(1.25) brightness(1.05);
+        }
+
+    #css-functions-page .visual-image-overlay {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(33,37,41,0.68);
+        color: #ffffff;
+        border-radius: 10px;
+        padding: 13px 20px;
+        font-weight: 700;
+        pointer-events: none;
+    }
+
+    #css-functions-page .image-caption {
+        margin: 12px 5px 0;
+        text-align: center;
+        color: #6c757d !important;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    /* Code */
+    #css-functions-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Explanation */
+    #css-functions-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-functions-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Diagram */
+    #css-functions-page .function-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-functions-page .diagram-card {
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+        min-width: 180px;
+    }
+
+    #css-functions-page .diagram-title {
+        color: #2563eb;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-functions-page .diagram-code {
+        background-color: #e0f2fe;
+        color: #075985;
+        border-radius: 6px;
+        padding: 10px;
+        font-family: monospace;
+        font-weight: 600;
+        font-size: 13px;
+    }
+
+    #css-functions-page .diagram-arrow {
+        color: #2563eb;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    /* Property Card */
+    #css-functions-page .property-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+        #css-functions-page .property-card h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    /* Output */
+    #css-functions-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-functions-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        text-align: center;
+        color: #6c757d !important;
+        font-size: 14px;
+    }
+
+    /* calc */
+    #css-functions-page .calc-demo {
+        width: calc(100% - 40px);
+        margin: auto;
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* min */
+    #css-functions-page .min-demo {
+        width: min(90%, 600px);
+        margin: auto;
+        background-color: #7c3aed;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* max */
+    #css-functions-page .max-demo {
+        width: max(50%, 300px);
+        margin: auto;
+        background-color: #0f766e;
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* clamp */
+    #css-functions-page .clamp-output {
+        text-align: center;
+    }
+
+    #css-functions-page .clamp-heading {
+        font-size: clamp(28px, 5vw, 52px);
+        color: #db2777;
+        font-weight: 700;
+        line-height: 1.15;
+        margin-bottom: 10px;
+    }
+
+    /* var */
+    #css-functions-page .var-demo-button {
+        --button-color: #2563eb;
+        background-color: var(--button-color);
+        color: #ffffff;
+        border: 0;
+        border-radius: 8px;
+        padding: 13px 24px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+        #css-functions-page .var-demo-button:hover {
+            --button-color: #7c3aed;
+            transform: translateY(-3px);
+        }
+
+    /* Color Functions */
+    #css-functions-page .color-function-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    #css-functions-page .color-function-card {
+        min-height: 120px;
+        border-radius: 10px;
+        color: #ffffff;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: monospace;
+        transition: transform 0.3s ease;
+    }
+
+        #css-functions-page .color-function-card:hover {
+            transform: scale(1.04);
+        }
+
+    #css-functions-page .rgb-card {
+        background-color: rgb(37, 99, 235);
+    }
+
+    #css-functions-page .rgba-card {
+        background-color: rgba(37, 99, 235, 0.65);
+    }
+
+    #css-functions-page .hsl-card {
+        background-color: hsl(217, 83%, 53%);
+    }
+
+    /* Responsive Card */
+    #css-functions-page .responsive-function-card {
+        width: min(90%, 650px);
+        margin: auto;
+        padding: clamp(16px, 4vw, 30px);
+        font-size: clamp(16px, 2vw, 22px);
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 14px;
+        text-align: center;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+        #css-functions-page .responsive-function-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+    #css-functions-page .responsive-card-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 15px;
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    #css-functions-page .responsive-function-card h3 {
+        color: #2563eb;
+        font-weight: 700;
+    }
+
+    /* Benefits */
+    #css-functions-page .benefit-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #css-functions-page .benefit-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+        #css-functions-page .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        #css-functions-page .benefit-card strong {
+            display: block;
+            color: #2563eb;
+            margin-bottom: 7px;
+        }
+
+        #css-functions-page .benefit-card span {
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+    /* Note */
+    #css-functions-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-functions-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-functions-page .note-box p {
+            color: #78350f;
+        }
+
+    /* Summary */
+    #css-functions-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-functions-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-functions-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    @@media (max-width: 991px) {
+
+        #css-functions-page .function-visual-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #css-functions-page .benefit-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 768px) {
+
+        #css-functions-page .content-section {
+            padding: 20px;
+        }
+
+        #css-functions-page .visual-image-wrapper {
+            height: 260px;
+        }
+
+        #css-functions-page .function-diagram {
+            flex-direction: column;
+        }
+
+        #css-functions-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        #css-functions-page .content-section {
+            padding: 16px;
+        }
+
+        #css-functions-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-functions-page .function-visual-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-functions-page .benefit-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-functions-page .color-function-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-functions-page .visual-image-wrapper {
+            height: 210px;
+        }
+
+        #css-functions-page .diagram-card {
+            width: 100%;
+            max-width: 290px;
+        }
+    }
+
+</style>

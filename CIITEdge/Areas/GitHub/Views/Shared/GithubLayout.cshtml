@@ -1,0 +1,473 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CIIT Institute | Learn Git Hub Step-by-Step</title>
+
+    <script type="importmap"></script>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/CIITEdge.styles.css"
+          asp-append-version="true" />
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+
+            :root {
+                --brand-purple: #4c1d95;
+                --brand-purple-dark: #2e1065;
+                --syntax-bg: #0f172a;
+            }
+
+            .bg-brand-gradient {
+                background: linear-gradient( 135deg, var(--brand-purple-dark) 0%, #312e81 100% );
+            }
+
+            .navbar-brand span {
+                color: #c084fc;
+                font-weight: 900;
+                letter-spacing: 0.05em;
+            }
+
+            .code-block {
+                background-color: var(--syntax-bg);
+                color: #f1f5f9;
+                padding: 1.5rem;
+                border-radius: 0.5rem;
+                font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+                font-size: 0.875rem;
+                line-height: 1.6;
+                position: relative;
+                overflow-x: auto;
+            }
+
+            .code-lang-tag {
+                position: absolute;
+                top: 0.5rem;
+                right: 1rem;
+                font-size: 0.75rem;
+                color: #64748b;
+                user-select: none;
+            }
+
+            .keyword {
+                color: #c084fc;
+            }
+
+            .class-name {
+                color: #34d399;
+            }
+
+            .method-name {
+                color: #fbbf24;
+            }
+
+            .string-lit {
+                color: #fef08a;
+            }
+
+            .editor-textarea {
+                background-color: #1e1e1e !important;
+                color: #d4d4d4 !important;
+                font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+                font-size: 0.9rem;
+                resize: vertical;
+            }
+
+            .terminal-output {
+                background-color: #000000;
+                color: #f1f1f1;
+                font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+                font-size: 0.85rem;
+                min-height: 100px;
+                white-space: pre-wrap;
+            }
+
+            .java-sidebar {
+                position: sticky;
+                top: 90px;
+            }
+
+                .java-sidebar .card {
+                    border-radius: 0.5rem;
+                    overflow: hidden;
+                }
+
+                .java-sidebar .module-title {
+                    font-weight: 700;
+                    background-color: #ffffff;
+                    color: #212529;
+                }
+
+                .java-sidebar .topic-link {
+                    padding-left: 2rem;
+                    font-size: 0.92rem;
+                    text-decoration: none;
+                }
+
+                    .java-sidebar .topic-link:hover {
+                        background-color: #f3e8ff;
+                    }
+
+                    .java-sidebar .topic-link.active {
+                        background-color: #4c1d95;
+                        color: #ffffff;
+                        font-weight: 600;
+                    }
+
+            @@media (max-width: 991.98px) {
+
+                .java-sidebar {
+                    position: static;
+                }
+            }
+    </style>
+
+</head>
+<body class="bg-light text-dark">
+    @Html.Partial("~/Views/Shared/Menus/MenusWithDropdown.cshtml")
+    @Html.Partial("~/Views/Shared/Menus/ProgrammingMenus.cshtml")
+
+
+    <!-- ===================================================== -->
+    <!-- HERO -->
+    <!-- ===================================================== -->
+
+    <header class="bg-brand-gradient text-white text-center py-5">
+
+        <div class="container py-4">
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-8">
+
+                    <h1 class="display-4 fw-extrabold mb-3">
+
+                        Master Git Hub Programming From Scratch
+
+                    </h1>
+
+                    <p class="lead text-purple-100 mb-4 opacity-75">
+
+                        Clear, interactive, and structured coding lessons
+                        designed for absolute beginners.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <main id="tutorials"
+          class="container py-4">
+
+        <div class="row g-4">
+
+
+
+            <aside class="col-lg-3">
+
+                <div class="java-sidebar">
+
+                    <div class="card border-0 shadow-sm">
+
+                        <div class="card-header bg-dark text-white fw-bold">
+
+                            COURSE SYLLABUS
+
+                        </div>
+
+
+                        <div class="list-group list-group-flush">
+
+
+                            <!-- MODULE 1 -->
+
+                            <div class="list-group-item module-title">
+
+                                Version Control Fundamentals
+
+                            </div>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("WhatisVersionControl", "VersionControlFundamental", new { area = "GitHub" })">
+
+                              What is Version Control?
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("GitAndGitHub", "VersionControlFundamental", new { area = "GitHub" })">
+
+                              Git And GitHub
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("InstallationAndSetup", "VersionControlFundamental", new { area = "GitHub" })">
+
+                               Installation & Setup
+
+                            </a>
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("InitialConfiguration", "VersionControlFundamental", new { area = "GitHub" })">
+
+                               Initial Configuration
+
+                            </a>
+
+
+                            <div class="list-group-item module-title">
+
+                                Basic Local Git Workflow
+
+                            </div>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("InitializingRepositories", "LocalGitWorkflow", new { area = "GitHub" })">
+
+                                 Initializing Repositories
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("ThreeStates", "LocalGitWorkflow", new { area = "GitHub" })">
+
+                                The Three States
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("TrackingChanges", "LocalGitWorkflow", new { area = "GitHub" })">
+
+                              Tracking Changes
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("CheckingStatus", "LocalGitWorkflow", new { area = "GitHub" })">
+
+                                Checking Status
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("InspectingHistory", "LocalGitWorkflow", new { area = "GitHub" })">
+
+                                 Inspecting History
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("IgnoringFiles", "LocalGitWorkflow", new { area = "GitHub" })">
+
+                                Ignoring Files
+
+                            </a>
+
+
+                            <div class="list-group-item module-title">
+
+                                Branching And Merging
+
+                            </div>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("GitBranchingConcept", "BranchingAndMerging", new { area = "GitHub" })">
+
+                                 Git Branching Concept
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("ManagingBranches", "BranchingAndMerging", new { area = "GitHub" })">
+
+                                Managing Branches
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("SwitchingContexts", "BranchingAndMerging", new { area = "GitHub" })">
+
+                               Switching Contexts 
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("BasicMerging", "BranchingAndMerging", new { area = "GitHub" })">
+
+                                Basic Merging
+
+                            </a>
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("ResolvingMergeConflicts", "BranchingAndMerging", new { area = "GitHub" })">
+
+                            Resolving Merge Conflicts
+
+                            </a>
+
+
+
+                            <div class="list-group-item module-title">
+
+                                Remote Collaboration with GitHub
+
+                            </div>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("ConnectingRemotes", "RemoteCollaboration", new { area = "GitHub" })">
+
+                               Connecting Remotes
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("CloningProjects", "RemoteCollaboration", new { area = "GitHub" })">
+
+                            Cloning Projects
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("PushingCode", "RemoteCollaboration", new { area = "GitHub" })">
+
+                                Pushing Code
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("PullingUpdates", "RemoteCollaboration", new { area = "GitHub" })">
+
+                                Pulling Updates 
+
+                            </a>
+
+                           
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("PullRequests", "RemoteCollaboration", new { area = "GitHub" })">
+
+                            Pull Requests (PRs) 
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("ForksvsClones", "RemoteCollaboration", new { area = "GitHub" })">
+
+                                Forks vs. Clones
+
+                            </a>
+
+                            <div class="list-group-item module-title">
+
+                                Advanced Git & History Management
+
+                            </div>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("Stashing", "AdvancedGitAndHistory", new { area = "GitHub" })">
+
+                                Stashing
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("UndoingMistakes", "AdvancedGitAndHistory", new { area = "GitHub" })">
+
+                                Undoing Mistakes
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("Rebasing", "AdvancedGitAndHistory", new { area = "GitHub" })">
+
+                                 Rebasing
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("Tagging", "AdvancedGitAndHistory", new { area = "GitHub" })">
+
+                               Tagging
+
+                            </a>
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("BlamingAuditing", "AdvancedGitAndHistory", new { area = "GitHub" })">
+
+                                Blaming & Auditing
+
+                            </a>
+
+                            <!-- MODULE 6 -->
+
+                            <div class="list-group-item module-title">
+
+                                GitHub Ecosystem & Workflows
+
+                            </div>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("MarkdownDocumentation", "GitHubEcosystemAndWorkflow", new { area = "GitHub" })">
+
+                                 Markdown Documentation
+
+                            </a>
+
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("GitHubIssues", "GitHubEcosystemAndWorkflow", new { area = "GitHub" })">
+
+                               GitHub Issues
+
+                            </a>
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("GitHubActions", "GitHubEcosystemAndWorkflow", new { area = "GitHub" })">
+                                GitHub Actions
+                            </a>
+                            <a class="list-group-item list-group-item-action topic-link"
+                               href="@Url.Action("GitHubPages", "GitHubEcosystemAndWorkflow", new { area = "GitHub" })">
+                                GitHub Pages
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <section class="col-lg-9">
+                @RenderBody()
+            </section>
+        </div>
+    </main>
+    <footer class="bg-dark text-muted text-center py-4 border-top border-secondary mt-5">
+        <div class="container">
+            <p class="mb-0 small">
+                &copy; @DateTime.Now.Year CIIT Institute.
+                Powered by Open Execution Environments.
+
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

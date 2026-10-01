@@ -1,0 +1,1185 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Best Practices";
+}
+
+<div id="css-best-practices-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">CSS Best Practices</h1>
+
+                <p class="lead">
+                    CSS best practices help developers write clean, reusable,
+                    maintainable, responsive, and scalable stylesheets.
+                </p>
+
+                <hr />
+
+                <!-- Introduction -->
+                <h2 class="h4 mt-4">What are CSS Best Practices?</h2>
+
+                <p>
+                    CSS can become difficult to maintain when a project grows.
+                    Repeated styles, unnecessary selectors, inconsistent naming,
+                    and excessive overrides can make a stylesheet harder to understand.
+                </p>
+
+                <p>
+                    Following good CSS practices helps keep styles organized
+                    and makes future changes easier.
+                </p>
+
+                <!-- Effective Image -->
+                <h2 class="h4 mt-4">Clean CSS Design</h2>
+
+                <p>
+                    Hover over the visual below to see a subtle interactive effect.
+                    It represents the idea of organizing CSS into clear and reusable
+                    design components.
+                </p>
+
+                <div class="interactive-design-section">
+
+                    <div class="design-visual">
+
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80"
+                             alt="Colorful modern design system"
+                             class="design-image"
+                             tabindex="0" />
+
+                        <div class="design-overlay">
+                            <strong>Clean CSS</strong>
+                            <span>Reusable • Responsive • Maintainable</span>
+                        </div>
+
+                    </div>
+
+                    <p class="image-caption">
+                        Good CSS structure makes web interfaces easier to build,
+                        understand, and maintain.
+                    </p>
+
+                </div>
+
+                <!-- Principles -->
+                <h2 class="h4 mt-4">Core CSS Best Practices</h2>
+
+                <div class="principles-grid">
+
+                    <div class="principle-card">
+                        <div class="principle-icon">1</div>
+                        <strong>Readable</strong>
+                        <span>Use clear formatting and spacing.</span>
+                    </div>
+
+                    <div class="principle-card">
+                        <div class="principle-icon">2</div>
+                        <strong>Reusable</strong>
+                        <span>Avoid repeating the same styles.</span>
+                    </div>
+
+                    <div class="principle-card">
+                        <div class="principle-icon">3</div>
+                        <strong>Scalable</strong>
+                        <span>Keep CSS easy to extend.</span>
+                    </div>
+
+                    <div class="principle-card">
+                        <div class="principle-icon">4</div>
+                        <strong>Responsive</strong>
+                        <span>Support different screen sizes.</span>
+                    </div>
+
+                </div>
+
+                <!-- 1 Naming -->
+                <h2 class="h4 mt-4">1. Use Meaningful Class Names</h2>
+
+                <p>
+                    Use class names that clearly describe the purpose or role
+                    of an element.
+                </p>
+
+                <h3 class="h6 mt-3">Avoid</h3>
+
+                <pre class="code-box"><code>.blue-box {
+    background-color: #2563eb;
+}</code></pre>
+
+                <h3 class="h6 mt-3">Prefer</h3>
+
+                <pre class="code-box"><code>.primary-button {
+    background-color: #2563eb;
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Why?</h3>
+
+                    <p class="mb-0">
+                        A name like <code>primary-button</code> describes the
+                        role of the component rather than its current color.
+                        This makes future changes easier.
+                    </p>
+
+                </div>
+
+                <!-- 2 Avoid repetition -->
+                <h2 class="h4 mt-4">2. Avoid Repeating CSS Values</h2>
+
+                <p>
+                    When the same value is used many times, CSS variables
+                    can reduce repetition.
+                </p>
+
+                <h3 class="h6 mt-3">Repeated Values</h3>
+
+                <pre class="code-box"><code>.button {
+    background-color: #2563eb;
+}
+
+.heading {
+    color: #2563eb;
+}
+
+.card {
+    border-color: #2563eb;
+}</code></pre>
+
+                <h3 class="h6 mt-3">Using a Variable</h3>
+
+                <pre class="code-box"><code>:root {
+    --primary-color: #2563eb;
+}
+
+.button {
+    background-color: var(--primary-color);
+}
+
+.heading {
+    color: var(--primary-color);
+}
+
+.card {
+    border-color: var(--primary-color);
+}</code></pre>
+
+                <!-- 3 Keep selectors simple -->
+                <h2 class="h4 mt-4">3. Keep Selectors Simple</h2>
+
+                <p>
+                    Very long selector chains can make CSS difficult to maintain
+                    and can create unnecessary specificity problems.
+                </p>
+
+                <h3 class="h6 mt-3">Avoid</h3>
+
+                <pre class="code-box"><code>.page .container .content .card .title {
+    color: #2563eb;
+}</code></pre>
+
+                <h3 class="h6 mt-3">Prefer</h3>
+
+                <pre class="code-box"><code>.card-title {
+    color: #2563eb;
+}</code></pre>
+
+                <!-- 4 Don't overuse !important -->
+                <h2 class="h4 mt-4">4. Avoid Overusing !important</h2>
+
+                <p>
+                    The <code>!important</code> annotation can override normal
+                    CSS priority and should not be used as the default solution
+                    to styling conflicts.
+                </p>
+
+                <pre class="code-box"><code>.button {
+    color: #ffffff !important;
+}</code></pre>
+
+                <div class="note-box">
+
+                    <h3 class="h6">Better Approach</h3>
+
+                    <p class="mb-0">
+                        First understand why another rule is winning, then
+                        improve the selector, source order, or CSS structure
+                        where appropriate.
+                    </p>
+
+                </div>
+
+                <!-- 5 Reusable components -->
+                <h2 class="h4 mt-4">5. Create Reusable Components</h2>
+
+                <p>
+                    Common UI patterns should use reusable classes instead of
+                    copying the same CSS for every element.
+                </p>
+
+                <pre class="code-box"><code>.primary-button {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: 0;
+    padding: 12px 20px;
+    border-radius: 7px;
+}
+
+.primary-button:hover {
+    background-color: #7c3aed;
+}</code></pre>
+
+                <!-- Component Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="button-demo-row">
+
+                        <button type="button"
+                                class="primary-button-demo">
+                            Enroll Now
+                        </button>
+
+                        <button type="button"
+                                class="primary-button-demo">
+                            Learn More
+                        </button>
+
+                    </div>
+
+                    <p class="output-note">
+                        Both buttons use the same reusable CSS component.
+                    </p>
+
+                </div>
+
+                <!-- 6 Organize -->
+                <h2 class="h4 mt-4">6. Organize Your CSS</h2>
+
+                <p>
+                    Keep related CSS together and use a predictable structure.
+                </p>
+
+                <pre class="code-box"><code>/* Layout */
+.container { }
+
+/* Typography */
+.heading { }
+
+/* Components */
+.card { }
+.button { }
+
+/* Forms */
+.input { }
+
+/* Responsive */
+@@media (max-width: 768px) { }</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Benefit</h3>
+
+                    <p class="mb-0">
+                        An organized stylesheet makes it easier to find,
+                        understand, and update styles.
+                    </p>
+
+                </div>
+
+                <!-- 7 Responsive -->
+                <h2 class="h4 mt-4">7. Build Responsive CSS</h2>
+
+                <p>
+                    Always consider different viewport sizes when creating
+                    layouts.
+                </p>
+
+                <pre class="code-box"><code>.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@@media (max-width: 768px) {
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+
+                <!-- Responsive visual -->
+                <h2 class="h4 mt-4">Responsive Output</h2>
+
+                <div class="output-box">
+
+                    <div class="responsive-practice-grid">
+
+                        <div class="practice-box">
+                            Card 1
+                        </div>
+
+                        <div class="practice-box">
+                            Card 2
+                        </div>
+
+                        <div class="practice-box">
+                            Card 3
+                        </div>
+
+                    </div>
+
+                    <p class="output-note">
+                        Resize the browser to see the layout adapt.
+                    </p>
+
+                </div>
+
+                <!-- 8 Comments -->
+                <h2 class="h4 mt-4">8. Use Comments Where Helpful</h2>
+
+                <p>
+                    Comments can explain sections or unusual decisions.
+                    Avoid writing comments that simply repeat obvious code.
+                </p>
+
+                <pre class="code-box"><code>/* Course card component */
+
+.course-card {
+    padding: 24px;
+    border-radius: 12px;
+}</code></pre>
+
+                <!-- 9 Avoid inline -->
+                <h2 class="h4 mt-4">9. Avoid Excessive Inline Styles</h2>
+
+                <p>
+                    Keeping styling in CSS classes is usually easier to reuse
+                    and maintain than repeating inline <code>style</code>
+                    attributes.
+                </p>
+
+                <h3 class="h6 mt-3">Avoid</h3>
+
+                <pre class="code-box"><code>&lt;button style="background-color: #2563eb;"&gt;
+    Submit
+&lt;/button&gt;</code></pre>
+
+                <h3 class="h6 mt-3">Prefer</h3>
+
+                <pre class="code-box"><code>&lt;button class="primary-button"&gt;
+    Submit
+&lt;/button&gt;</code></pre>
+
+                <!-- 10 Accessibility -->
+                <h2 class="h4 mt-4">10. Consider Accessibility</h2>
+
+                <p>
+                    CSS should support readable and usable interfaces.
+                    Do not depend only on color to communicate important states.
+                </p>
+
+                <pre class="code-box"><code>.error-message {
+    color: #b91c1c;
+    border-left: 4px solid #b91c1c;
+    padding: 10px;
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Example</h3>
+
+                    <p class="mb-0">
+                        Combining color with an icon, border, text, or other
+                        visual indicator can make important information easier
+                        to understand.
+                    </p>
+
+                </div>
+
+                <!-- 11 Performance -->
+                <h2 class="h4 mt-4">11. Keep CSS Efficient</h2>
+
+                <ul>
+
+                    <li>
+                        Remove unused styles when possible.
+                    </li>
+
+                    <li>
+                        Avoid unnecessary duplication.
+                    </li>
+
+                    <li>
+                        Keep selectors reasonably simple.
+                    </li>
+
+                    <li>
+                        Reuse component classes and variables.
+                    </li>
+
+                    <li>
+                        Keep large stylesheets logically organized.
+                    </li>
+
+                </ul>
+
+                <!-- 12 Browser Testing -->
+                <h2 class="h4 mt-4">12. Test Your CSS</h2>
+
+                <p>
+                    Always test layouts on different viewport sizes and
+                    browsers that your project supports.
+                </p>
+
+                <div class="testing-grid">
+
+                    <div class="testing-card">
+                        <strong>Desktop</strong>
+                        <span>Large viewport</span>
+                    </div>
+
+                    <div class="testing-card">
+                        <strong>Tablet</strong>
+                        <span>Medium viewport</span>
+                    </div>
+
+                    <div class="testing-card">
+                        <strong>Mobile</strong>
+                        <span>Small viewport</span>
+                    </div>
+
+                    <div class="testing-card">
+                        <strong>Keyboard</strong>
+                        <span>Focus interaction</span>
+                    </div>
+
+                </div>
+
+                <!-- Do and Don't -->
+                <h2 class="h4 mt-4">CSS Do's and Don'ts</h2>
+
+                <div class="dos-donts">
+
+                    <div class="do-card">
+
+                        <h3>Do</h3>
+
+                        <ul>
+                            <li>Use meaningful class names.</li>
+                            <li>Reuse common styles.</li>
+                            <li>Use CSS variables where useful.</li>
+                            <li>Design responsively.</li>
+                            <li>Keep selectors understandable.</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="dont-card">
+
+                        <h3>Don't</h3>
+
+                        <ul>
+                            <li>Repeat the same CSS unnecessarily.</li>
+                            <li>Use long selectors without a reason.</li>
+                            <li>Overuse !important.</li>
+                            <li>Ignore mobile layouts.</li>
+                            <li>Make styles difficult to override.</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <!-- Recommended Structure -->
+                <h2 class="h4 mt-4">Recommended CSS Structure</h2>
+
+                <div class="structure-box">
+
+                    <div class="structure-item">
+                        <span>01</span>
+                        Variables
+                    </div>
+
+                    <div class="structure-item">
+                        <span>02</span>
+                        Base Styles
+                    </div>
+
+                    <div class="structure-item">
+                        <span>03</span>
+                        Layout
+                    </div>
+
+                    <div class="structure-item">
+                        <span>04</span>
+                        Components
+                    </div>
+
+                    <div class="structure-item">
+                        <span>05</span>
+                        Utilities
+                    </div>
+
+                    <div class="structure-item">
+                        <span>06</span>
+                        Responsive Rules
+                    </div>
+
+                </div>
+
+                <!-- Benefits -->
+                <h2 class="h4 mt-4">Why These Practices Matter</h2>
+
+                <div class="benefit-grid">
+
+                    <div class="benefit-card">
+                        <strong>Maintainability</strong>
+                        <span>Changes are easier to manage.</span>
+                    </div>
+
+                    <div class="benefit-card">
+                        <strong>Consistency</strong>
+                        <span>Components share common design rules.</span>
+                    </div>
+
+                    <div class="benefit-card">
+                        <strong>Scalability</strong>
+                        <span>Styles can grow with the application.</span>
+                    </div>
+
+                    <div class="benefit-card">
+                        <strong>Debugging</strong>
+                        <span>Conflicting styles are easier to identify.</span>
+                    </div>
+
+                </div>
+
+                <!-- Important Note -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        There is no single CSS architecture that is perfect
+                        for every project. Choose conventions that make the
+                        codebase consistent, understandable, and maintainable.
+                    </p>
+
+                </div>
+
+                <!-- Summary + Course Completion -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Good CSS practices include meaningful naming,
+                        reusable components, simple selectors, CSS variables,
+                        responsive layouts, accessibility awareness,
+                        organized stylesheets, and limited use of
+                        <code>!important</code>. These practices make CSS
+                        easier to understand, maintain, debug, and scale.
+                    </p>
+
+                    <!-- Navigation -->
+                    <div class="summary-navigation">
+
+                        <a class="previous-topic-btn"
+                           href="@Url.Action("CSSSpecificity", "AdvancedCSS", new { area = "CSS" })">
+
+                            ← Previous: CSS Specificity
+
+                        </a>
+
+                        <button type="button"
+                                class="course-completed-btn">
+
+                            🎉 Course Completed
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-best-practices-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-best-practices-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-best-practices-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-best-practices-page .content-section p,
+        #css-best-practices-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Interactive Image */
+    #css-best-practices-page .interactive-design-section {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 15px;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    #css-best-practices-page .design-visual {
+        width: 100%;
+        max-width: 850px;
+        height: 320px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    #css-best-practices-page .design-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+        transition: transform 0.55s ease, filter 0.55s ease;
+    }
+
+        #css-best-practices-page .design-visual:hover .design-image,
+        #css-best-practices-page .design-image:focus {
+            transform: scale(1.07);
+            filter: saturate(1.2) brightness(1.05);
+        }
+
+    #css-best-practices-page .design-overlay {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        min-width: 260px;
+        padding: 18px 25px;
+        background-color: rgba(33,37,41,0.68);
+        color: #ffffff;
+        border-radius: 12px;
+        pointer-events: none;
+    }
+
+        #css-best-practices-page .design-overlay strong {
+            display: block;
+            font-size: 24px;
+        }
+
+        #css-best-practices-page .design-overlay span {
+            display: block;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+    #css-best-practices-page .image-caption {
+        margin: 12px 5px 0;
+        color: #6c757d !important;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    /* Principles */
+    #css-best-practices-page .principles-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #css-best-practices-page .principle-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        #css-best-practices-page .principle-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.10);
+        }
+
+    #css-best-practices-page .principle-icon {
+        width: 46px;
+        height: 46px;
+        margin: 0 auto 10px;
+        border-radius: 50%;
+        background-color: #2563eb;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+    }
+
+    #css-best-practices-page .principle-card strong {
+        display: block;
+        color: #212529;
+        margin-bottom: 6px;
+    }
+
+    #css-best-practices-page .principle-card span {
+        color: #6c757d;
+        font-size: 13px;
+    }
+
+    /* Code */
+    #css-best-practices-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Explanation */
+    #css-best-practices-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-best-practices-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Property */
+    #css-best-practices-page .property-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+        #css-best-practices-page .property-card h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    /* Output */
+    #css-best-practices-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-best-practices-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        color: #6c757d !important;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    /* Reusable Buttons */
+    #css-best-practices-page .button-demo-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    #css-best-practices-page .primary-button-demo {
+        background-color: #2563eb;
+        color: #ffffff;
+        border: 0;
+        border-radius: 7px;
+        padding: 12px 22px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        #css-best-practices-page .primary-button-demo:hover {
+            background-color: #7c3aed;
+            transform: translateY(-3px);
+        }
+
+    /* Responsive Demo */
+    #css-best-practices-page .responsive-practice-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    #css-best-practices-page .practice-box {
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 25px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* Testing */
+    #css-best-practices-page .testing-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #css-best-practices-page .testing-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+    }
+
+        #css-best-practices-page .testing-card strong {
+            display: block;
+            color: #2563eb;
+            margin-bottom: 6px;
+        }
+
+        #css-best-practices-page .testing-card span {
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+    /* Do / Don't */
+    #css-best-practices-page .dos-donts {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 15px;
+    }
+
+    #css-best-practices-page .do-card,
+    #css-best-practices-page .dont-card {
+        border-radius: 10px;
+        padding: 22px;
+    }
+
+    #css-best-practices-page .do-card {
+        background-color: #ecfdf5;
+        border: 1px solid #86efac;
+    }
+
+    #css-best-practices-page .dont-card {
+        background-color: #fff1f2;
+        border: 1px solid #fda4af;
+    }
+
+    #css-best-practices-page .do-card h3 {
+        color: #166534;
+        font-weight: 700;
+    }
+
+    #css-best-practices-page .dont-card h3 {
+        color: #be123c;
+        font-weight: 700;
+    }
+
+    #css-best-practices-page .do-card li {
+        color: #166534;
+    }
+
+    #css-best-practices-page .dont-card li {
+        color: #9f1239;
+    }
+
+    /* Structure */
+    #css-best-practices-page .structure-box {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    #css-best-practices-page .structure-item {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 16px;
+        font-weight: 600;
+        color: #212529;
+    }
+
+        #css-best-practices-page .structure-item span {
+            display: inline-flex;
+            width: 30px;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #2563eb;
+            color: #ffffff;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+    /* Benefits */
+    #css-best-practices-page .benefit-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #css-best-practices-page .benefit-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+        #css-best-practices-page .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        #css-best-practices-page .benefit-card strong {
+            display: block;
+            color: #2563eb;
+            margin-bottom: 7px;
+        }
+
+        #css-best-practices-page .benefit-card span {
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+    /* Note */
+    #css-best-practices-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-best-practices-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-best-practices-page .note-box p {
+            color: #78350f;
+        }
+
+    /* Summary */
+    #css-best-practices-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px 16px;
+        margin-top: 30px;
+    }
+
+        #css-best-practices-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-best-practices-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    /* Summary Navigation */
+    #css-best-practices-page .summary-navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    #css-best-practices-page .previous-topic-btn {
+        display: inline-block;
+        background-color: transparent;
+        color: #2563eb;
+        border: 1px solid #2563eb;
+        border-radius: 6px;
+        padding: 9px 14px;
+        font-size: 14px;
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+        #css-best-practices-page .previous-topic-btn:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+    /* Course Completed Button */
+    #css-best-practices-page .course-completed-btn {
+        display: inline-block;
+        background-color: #198754;
+        color: #ffffff;
+        border: 0;
+        border-radius: 6px;
+        padding: 10px 18px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+        #css-best-practices-page .course-completed-btn:hover {
+            background-color: #157347;
+            transform: translateY(-1px);
+        }
+
+        #css-best-practices-page .course-completed-btn:focus {
+            outline: 3px solid rgba(25, 135, 84, 0.25);
+            outline-offset: 2px;
+        }
+
+    /* Tablet */
+    @@media (max-width: 991px) {
+
+        #css-best-practices-page .principles-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #css-best-practices-page .testing-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #css-best-practices-page .benefit-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #css-best-practices-page .structure-box {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #css-best-practices-page .responsive-practice-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Mobile */
+    @@media (max-width: 768px) {
+
+        #css-best-practices-page .content-section {
+            padding: 20px;
+        }
+
+        #css-best-practices-page .design-visual {
+            height: 270px;
+        }
+
+        #css-best-practices-page .dos-donts {
+            grid-template-columns: 1fr;
+        }
+
+        #css-best-practices-page .summary-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #css-best-practices-page .previous-topic-btn,
+        #css-best-practices-page .course-completed-btn {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    /* Small Mobile */
+    @@media (max-width: 576px) {
+
+        #css-best-practices-page .content-section {
+            padding: 16px;
+        }
+
+        #css-best-practices-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-best-practices-page .principles-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-best-practices-page .testing-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-best-practices-page .benefit-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-best-practices-page .structure-box {
+            grid-template-columns: 1fr;
+        }
+
+        #css-best-practices-page .responsive-practice-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-best-practices-page .design-visual {
+            height: 210px;
+        }
+
+        #css-best-practices-page .design-overlay {
+            min-width: 220px;
+        }
+
+            #css-best-practices-page .design-overlay strong {
+                font-size: 19px;
+            }
+    }
+
+</style>

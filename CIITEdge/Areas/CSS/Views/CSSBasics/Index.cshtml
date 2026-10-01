@@ -1,0 +1,691 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Basics";
+}
+
+<style>
+
+    /* ===================================================== */
+    /* CONTENT */
+    /* ===================================================== */
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+        .content-section h1.page-title {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.75;
+        }
+
+
+    /* ===================================================== */
+    /* CODE BLOCK */
+    /* ===================================================== */
+
+    .css-example {
+        background-color: #0f172a;
+        color: #f1f5f9;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 12px;
+    }
+
+    .code-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 18px;
+        margin-bottom: 8px;
+    }
+
+
+    /* ===================================================== */
+    /* SIMPLE DIAGRAM */
+    /* ===================================================== */
+
+    .basics-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 28px 0;
+    }
+
+    .diagram-box {
+        width: 200px;
+        min-height: 115px;
+        border-radius: 12px;
+        padding: 20px 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .diagram-selector {
+        background: #fff3cd;
+        border: 1px solid #ffe69c;
+    }
+
+    .diagram-property {
+        background: #e0e7ff;
+        border: 1px solid #c7d2fe;
+    }
+
+    .diagram-value {
+        background: #d1fae5;
+        border: 1px solid #a7f3d0;
+    }
+
+    .diagram-title {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .diagram-text {
+        color: #495057;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .diagram-arrow {
+        font-size: 28px;
+        font-weight: 700;
+        color: #495057;
+    }
+
+
+    /* ===================================================== */
+    /* OUTPUT AREA */
+    /* ===================================================== */
+
+    .output-section {
+        margin-top: 18px;
+        margin-bottom: 22px;
+    }
+
+    .output-label {
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 8px;
+    }
+
+    .browser-output {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 24px;
+        min-height: 95px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+
+    /* ===================================================== */
+    /* EXAMPLE OUTPUT STYLES */
+    /* ===================================================== */
+
+    .output-example-1 {
+        color: blue !important;
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .output-example-2 {
+        color: purple !important;
+        font-size: 30px !important;
+        text-align: center !important;
+        font-weight: 700;
+        margin: 0 !important;
+    }
+
+    .output-example-3 {
+        color: green !important;
+        font-size: 22px !important;
+        margin: 0 !important;
+    }
+
+
+    /* ===================================================== */
+    /* INFO BOX */
+    /* ===================================================== */
+
+    .info-box {
+        border-left: 4px solid #2563eb;
+        background-color: #f8f9fa;
+        padding: 18px 20px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+
+    /* ===================================================== */
+    /* CONTENT LIST */
+    /* ===================================================== */
+
+    .content-list {
+        padding-left: 22px;
+    }
+
+
+    /* ===================================================== */
+    /* TOPIC NAVIGATION */
+    /* ===================================================== */
+
+    .topic-navigation {
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 24px;
+    }
+
+        .topic-navigation .btn {
+            min-height: 42px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .topic-navigation .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+            .topic-navigation .btn-primary:hover {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+
+    /* ===================================================== */
+    /* RESPONSIVE */
+    /* ===================================================== */
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        .diagram-box {
+            width: 100%;
+            max-width: 280px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- ================================================= -->
+        <!-- LEFT: COURSE SYLLABUS -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- RIGHT: CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- PAGE TITLE -->
+                <!-- ================================================= -->
+
+                <h1 class="page-title">
+                    CSS Basics
+                </h1>
+
+                <p class="lead text-muted">
+                    Learn the basic structure of CSS and understand how
+                    selectors, properties, and values work together.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- INTRODUCTION -->
+                <!-- ================================================= -->
+
+                <h2>What Are CSS Basics?</h2>
+
+                <p>
+                    CSS basics are the foundation of styling web pages.
+                    Before learning advanced CSS, you should understand
+                    how a CSS rule is written and how each part works.
+                </p>
+
+                <p>
+                    A basic CSS rule contains a
+                    <strong>selector</strong>, a
+                    <strong>property</strong>, and a
+                    <strong>value</strong>.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>Basic CSS Structure</h2>
+
+                <div class="basics-diagram">
+
+                    <div class="diagram-box diagram-selector">
+
+                        <div class="diagram-title">
+                            Selector
+                        </div>
+
+                        <p class="diagram-text">
+                            Selects the HTML element
+                        </p>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-box diagram-property">
+
+                        <div class="diagram-title">
+                            Property
+                        </div>
+
+                        <p class="diagram-text">
+                            Defines what to change
+                        </p>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-box diagram-value">
+
+                        <div class="diagram-title">
+                            Value
+                        </div>
+
+                        <p class="diagram-text">
+                            Defines how it should look
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 1 -->
+                <!-- ================================================= -->
+
+                <h2>Example 1: Change Text Color</h2>
+
+                <p>
+                    In this example, we will create a paragraph in HTML
+                    and use CSS to change its text color to blue.
+                </p>
+
+
+                <h3>Complete Code</h3>
+
+                <div class="css-example">
+                    <pre class="mb-0">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CSS Example&lt;/title&gt;
+
+    &lt;style&gt;
+        .message {
+            color: blue;
+        }
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;p class="message"&gt;
+        Hello CIIT Student .
+    &lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                </div>
+
+
+                <h3>How It Works</h3>
+
+                <ul class="content-list">
+
+                    <li>
+                        <strong>&lt;p&gt;</strong> creates the paragraph.
+                    </li>
+
+                    <li>
+                        <strong>class="message"</strong> gives the
+                        paragraph a class name.
+                    </li>
+
+                    <li>
+                        <strong>.message</strong> selects that element.
+                    </li>
+
+                    <li>
+                        <strong>color: blue;</strong> changes the text color.
+                    </li>
+
+                </ul>
+
+
+                <div class="output-section">
+
+                    <div class="output-label">
+                        Output
+                    </div>
+
+                    <div class="browser-output">
+
+                        <p class="output-example-1">
+                            Hello CIIT Student .
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 2 -->
+                <!-- ================================================= -->
+
+                <h2>Example 2: Use Multiple Properties</h2>
+
+                <p>
+                    A CSS rule can contain multiple properties.
+                    In this example, we will change the text color,
+                    font size, and alignment of a heading.
+                </p>
+
+
+                <h3>Complete Code</h3>
+
+                <div class="css-example">
+                    <pre class="mb-0">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CSS Multiple Properties&lt;/title&gt;
+
+    &lt;style&gt;
+        .welcome {
+            color: purple;
+            font-size: 30px;
+            text-align: center;
+        }
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1 class="welcome"&gt;
+        WelCome To CIIT World 🌍👀..!
+    &lt;/h1&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                </div>
+
+
+                <h3>How It Works</h3>
+
+                <ul class="content-list">
+
+                    <li>
+                        <strong>.welcome</strong> selects the heading.
+                    </li>
+
+                    <li>
+                        <strong>color: purple;</strong> makes the text purple.
+                    </li>
+
+                    <li>
+                        <strong>font-size: 30px;</strong> increases the
+                        text size.
+                    </li>
+
+                    <li>
+                        <strong>text-align: center;</strong> places the
+                        heading in the center.
+                    </li>
+
+                </ul>
+
+
+                <div class="output-section">
+
+                    <div class="output-label">
+                        Output
+                    </div>
+
+                    <div class="browser-output">
+
+                        <h2 class="output-example-2">
+                            WelCome To CIIT World 🌍👀..!
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EXAMPLE 3 -->
+                <!-- ================================================= -->
+
+                <h2>Example 3: Change Text Size</h2>
+
+                <p>
+                    The <strong>font-size</strong> property controls
+                    the size of text.
+                </p>
+
+
+                <h3>Complete Code</h3>
+
+                <div class="css-example">
+                    <pre class="mb-0">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CSS Font Size&lt;/title&gt;
+
+    &lt;style&gt;
+        .large-text {
+            color: green;
+            font-size: 22px;
+        }
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;p class="large-text"&gt;
+        WELCOME TO CIIT TRAINING INSTITUTE 🤓🌍..!
+    &lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                </div>
+
+
+                <h3>How It Works</h3>
+
+                <ul class="content-list">
+
+                    <li>
+                        <strong>color: green;</strong> changes the text
+                        color to green.
+                    </li>
+
+                    <li>
+                        <strong>font-size: 22px;</strong> makes the text
+                        larger.
+                    </li>
+
+                </ul>
+
+
+                <div class="output-section">
+
+                    <div class="output-label">
+                        Output
+                    </div>
+
+                    <div class="browser-output">
+
+                        <p class="output-example-3">
+                            WELCOME TO CIIT TRAINING INSTITUTE 🤓🌍..!
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- KEY CONCEPT -->
+                <!-- ================================================= -->
+
+                <div class="info-box">
+
+                    <strong>Remember:</strong>
+
+                    <p class="mb-0 mt-2">
+                        Selector chooses the element.
+                        Property tells what you want to change.
+                        Value tells how you want it to look.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="alert alert-info mt-4">
+
+                    <h2 class="h4 fw-bold">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS basics start with understanding selectors,
+                        properties, and values. A CSS rule can contain
+                        one or more properties. By combining these
+                        properties, you can control the color, size,
+                        alignment, spacing, and appearance of HTML elements.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PREVIOUS / NEXT -->
+                <!-- ================================================= -->
+
+                <div class="topic-navigation">
+
+                    <div class="row g-3 align-items-center">
+
+
+                        <!-- PREVIOUS -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-outline-secondary w-100"
+                               href="@Url.Action("AddingCSS", "Introduction", new { area = "CSS" })">
+
+                                ← Previous: Adding CSS
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- NEXT -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("CSSSyntax", "CSSBasics", new { area = "CSS" })">
+
+                                Next: CSS Syntax →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

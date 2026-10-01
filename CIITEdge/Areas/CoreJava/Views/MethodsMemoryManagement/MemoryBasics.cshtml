@@ -1,0 +1,766 @@
+﻿@{
+    ViewData["Title"] = "Memory Basics";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Memory Basics in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Understand how Java manages memory, including the Stack,
+                Heap, objects, references, and method execution.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">How Java Memory Works</h3>
+
+            <p>
+                When a Java application runs, the JVM manages different
+                runtime memory areas for storing data and executing code.
+            </p>
+
+            <p>
+                Two of the most important areas for understanding normal
+                application execution are the <strong>Stack</strong> and
+                <strong>Heap</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- JVM MEMORY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Important JVM Memory Areas</h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Memory Area</th>
+                            <th>Purpose</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Heap</td>
+                            <td>
+                                Stores objects and arrays created during
+                                program execution.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Stack</td>
+                            <td>
+                                Stores method frames, local variables, and
+                                method execution state for each thread.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Method Area</td>
+                            <td>
+                                Stores class-level runtime information such
+                                as class metadata and method information.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PC Register</td>
+                            <td>
+                                Keeps track of the current JVM instruction
+                                for each thread.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Native Method Stack</td>
+                            <td>
+                                Supports execution of native methods.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- STACK -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Stack Memory</h3>
+
+            <p>
+                Each thread has its own JVM stack. Whenever a method is
+                called, a stack frame is created for that method.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>public static void main(String[] args) {
+
+    int number = 10;
+
+    calculate(number);
+
+}
+
+static void calculate(int value) {
+
+    int result = value * 2;
+
+    System.out.println(result);
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>20</code></pre>
+</div>
+
+            <p class="mt-3">
+                The <code>main()</code> method has its own stack frame.
+                Calling <code>calculate()</code> creates another stack frame.
+            </p>
+
+        </section>
+
+
+        <!-- STACK FRAME -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Stack Frame</h3>
+
+            <p>
+                A stack frame contains information needed to execute a
+                method, including local variables and execution state.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>
+                                                   Thread Stack
+
+                                            ┌──────────────────────────┐
+                                            │ calculate() frame       │
+                                            │ value = 10              │
+                                            │ result = 20             │
+                                            ├──────────────────────────┤
+                                            │ main() frame            │
+                                            │ number = 10             │
+                                            └──────────────────────────┘</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- HEAP -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Heap Memory</h3>
+
+            <p>
+                The heap is the runtime memory area from which objects and
+                arrays are allocated.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Student {
+
+    String name;
+
+}
+
+Student student = new Student();
+
+student.name = "Komal";</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The <code>new Student()</code> expression creates a
+                <code>Student</code> object on the heap. The variable
+                <code>student</code> holds a reference to that object.
+            </p>
+
+        </section>
+
+
+        <!-- REFERENCE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">References</h3>
+
+            <p>
+                A reference variable can refer to an object stored in the
+                heap.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Student first = new Student();
+
+first.name = "Samiksha ";
+
+Student second = first;
+
+second.name = "Samadhan";</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Both <code>first</code> and <code>second</code> refer to the
+                same object. Therefore, changing the object through
+                <code>second</code> is visible through <code>first</code>.
+            </p>
+
+        </section>
+
+
+        <!-- NULL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">null Reference</h3>
+
+            <p>
+                A reference can contain <code>null</code>, which means it
+                does not currently refer to an object.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Student student = null;</code></pre>
+
+            </div>
+
+            <div class="alert alert-warning mt-3">
+
+                <strong>Important:</strong>
+
+                Attempting to access an instance member through a
+                <code>null</code> reference can cause a
+                <code>NullPointerException</code>.
+
+            </div>
+
+        </section>
+
+
+        <!-- PRIMITIVES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Primitive Variables and Object References
+            </h3>
+
+            <p>
+                Primitive variables directly represent primitive values,
+                while reference variables refer to objects.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>int age = 21;
+
+String name = "Samadhan";</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The variable <code>age</code> contains the primitive value
+                <code>21</code>. The variable <code>name</code> refers to a
+                String object.
+            </p>
+
+        </section>
+
+
+        <!-- OBJECT LIFETIME -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Object Lifetime</h3>
+
+            <p>
+                An object remains usable while it is reachable through
+                references from the running application.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Student student = new Student();
+
+student.name = "Samiksha";
+
+student = null;</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                After the reference is cleared, the previously created object
+                may become eligible for garbage collection if no other
+                reachable reference points to it.
+            </p>
+
+        </section>
+
+
+        <!-- STRING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">String and Memory</h3>
+
+            <p>
+                Java String literals are commonly stored in the
+                <strong>String Pool</strong>, which is maintained as part of
+                the heap.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String a = "CIIT";
+
+String b = "CIIT";
+
+System.out.println(a == b);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>true</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Both variables can refer to the same interned String object
+                when the same literal is used.
+            </p>
+
+        </section>
+
+
+        <!-- NEW STRING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                String Created with new
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String a = "CIIT Institute";
+
+String b = new String("CIIT Institute");
+
+System.out.println(a == b);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>false</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The <code>new</code> expression creates a separate String
+                object. For content comparison, use
+                <code>.equals()</code>.
+            </p>
+
+        </section>
+
+
+        <!-- METHOD CALL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Memory During Method Calls
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>public class Program {
+
+    static int square(int number) {
+
+        return number * number;
+
+    }
+
+    public static void main(String[] args) {
+
+        int result = square(5);
+
+        System.out.println(result);
+
+    }
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>25</code></pre>
+</div>
+
+            <p class="mt-3">
+                Calling <code>square()</code> creates a new stack frame for
+                that method. Its local parameter exists within that frame.
+                After the method returns, its frame is removed.
+            </p>
+
+        </section>
+
+
+        <!-- STACK VS HEAP -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Stack vs Heap</h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Feature</th>
+                            <th>Stack</th>
+                            <th>Heap</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Method execution and local state.</td>
+                            <td>Objects and arrays.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Ownership</td>
+                            <td>Each thread has its own stack.</td>
+                            <td>Shared JVM runtime memory area.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Lifetime</td>
+                            <td>Associated with method/thread execution.</td>
+                            <td>Objects remain while reachable and are later reclaimed.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Management</td>
+                            <td>Frames are pushed and popped during execution.</td>
+                            <td>Managed by the JVM and garbage collector.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- STACK OVERFLOW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">StackOverflowError</h3>
+
+            <p>
+                Excessive nested method calls or uncontrolled recursion can
+                exhaust the thread's stack.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static void callAgain() {
+
+    callAgain();
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Calling this method indefinitely can eventually result in a
+                <code>StackOverflowError</code>.
+            </p>
+
+        </section>
+
+
+        <!-- OUT OF MEMORY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">OutOfMemoryError</h3>
+
+            <p>
+                If the JVM cannot allocate enough heap memory for required
+                objects, it can throw <code>OutOfMemoryError</code>.
+            </p>
+
+            <div class="alert alert-warning">
+
+                <strong>Note:</strong>
+
+                Memory errors are generally application or environment
+                problems and should be investigated using profiling,
+                monitoring, heap analysis, and appropriate JVM configuration.
+
+            </div>
+
+        </section>
+
+
+        <!-- GARBAGE COLLECTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Garbage Collection</h3>
+
+            <p>
+                Java automatically reclaims heap memory occupied by objects
+                that are no longer reachable.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>
+                                      Object created
+                                          ↓
+                                    Object is reachable
+                                          ↓
+                                    References removed
+                                          ↓
+                                    Object becomes eligible
+                                          ↓
+                             Garbage Collector may reclaim memory</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Garbage collection is covered in detail in the next lesson.
+            </p>
+
+        </section>
+
+
+        <!-- MEMORY LEAK -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Can Java Have Memory Leaks?</h3>
+
+            <p>
+                Yes. Java provides automatic garbage collection, but an
+                application can still retain references to objects that are
+                no longer logically needed.
+            </p>
+
+            <p>
+                Because those objects remain reachable, the garbage collector
+                cannot reclaim them.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Example</div>
+
+                <pre class="mb-0"><code>static List&lt;Object&gt; cache = new ArrayList&lt;&gt;();
+
+cache.add(new Object());</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                An unbounded cache that continuously retains objects can
+                consume increasing amounts of memory.
+            </p>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Memory Management Best Practices</h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Avoid creating unnecessary objects.
+                </li>
+
+                <li class="mb-2">
+                    Release references to objects that are no longer needed
+                    when appropriate.
+                </li>
+
+                <li class="mb-2">
+                    Avoid unbounded caches and collections.
+                </li>
+
+                <li class="mb-2">
+                    Use profiling tools when investigating memory problems.
+                </li>
+
+                <li class="mb-2">
+                    Avoid relying on <code>System.gc()</code> as a normal
+                    memory-management strategy.
+                </li>
+
+                <li>
+                    Understand object lifetime and reference ownership in
+                    long-running applications.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Java uses managed runtime memory. The stack primarily
+                    supports method execution and thread-local state, while
+                    the heap stores objects and arrays. Understanding
+                    references, object reachability, and garbage collection
+                    is essential for writing efficient Java applications.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "MethodOverloading",
+                               "MethodsMemoryManagement",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "GarbageCollection",
+                               "MethodsMemoryManagement",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

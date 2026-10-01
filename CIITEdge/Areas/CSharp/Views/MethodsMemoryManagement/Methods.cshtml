@@ -1,0 +1,965 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Methods";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+        .try-it-btn:hover {
+            background: #157347;
+            color: #fff;
+        }
+
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Methods in C#
+                </h2>
+
+                <!-- Introduction -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    What is a Method?
+                </h4>
+
+                <p class="text-muted mb-4">
+                    A method is a block of code that performs a specific task.
+                    Methods are used to organize code into small, reusable and
+                    manageable sections.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Instead of writing the same code multiple times, we can write
+                    that code inside a method and call the method whenever it is required.
+                    Methods help make programs easier to understand, maintain, test and debug.
+                </p>
+
+                <div class="alert alert-info mb-5">
+                    <strong>Simple Example:</strong>
+                    If an application needs to display a welcome message at multiple
+                    places, we can create one method for the welcome message and call
+                    that method whenever required.
+                </div>
+
+                <!-- Why Methods -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Why Do We Use Methods?
+                </h4>
+
+                <ul class="text-muted mb-5">
+                    <li class="mb-2">
+                        <strong>Code Reusability:</strong>
+                        Write code once and use it multiple times.
+                    </li>
+                    <li class="mb-2">
+                        <strong>Maintainability:</strong>
+                        Changes can be made in one place.
+                    </li>
+                    <li class="mb-2">
+                        <strong>Readability:</strong>
+                        Large programs can be divided into smaller meaningful blocks.
+                    </li>
+                    <li class="mb-2">
+                        <strong>Testing:</strong>
+                        Individual methods can be tested separately.
+                    </li>
+                    <li class="mb-2">
+                        <strong>Debugging:</strong>
+                        Errors can be located more easily.
+                    </li>
+                </ul>
+
+                <!-- Method Syntax -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Method Syntax
+                </h4>
+
+                <p class="text-muted mb-4">
+                    A method generally contains an access modifier, return type,
+                    method name, parameters and a method body.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>accessModifier returnType MethodName(parameters)
+{
+    // Code to be executed
+}</code></pre>
+                </div>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Main Parts of a Method
+                </h5>
+
+                <div class="table-responsive mb-5">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Part</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Access Modifier</td>
+                                <td>Defines who can access the method.</td>
+                            </tr>
+                            <tr>
+                                <td>Return Type</td>
+                                <td>Defines the type of value returned by the method.</td>
+                            </tr>
+                            <tr>
+                                <td>Method Name</td>
+                                <td>The name used to identify and call the method.</td>
+                            </tr>
+                            <tr>
+                                <td>Parameters</td>
+                                <td>Values that can be passed to the method.</td>
+                            </tr>
+                            <tr>
+                                <td>Method Body</td>
+                                <td>Contains the statements executed by the method.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Simple Method -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Creating a Simple Method
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The following method simply displays a welcome message.
+                </p>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+                        <pre class="mb-0"><code>using System;
+ 
+static void DisplayMessage()
+{
+    Console.WriteLine("Welcome to CIIT Training Institute 🤓❤️...!");
+}</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+                        </button>
+                    </div>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Calling the Method
+                </h5>
+
+                <p class="text-muted mb-4">
+                    Defining a method does not execute it automatically.
+                    We need to call the method to execute its code.
+                </p>
+
+                    <div class="try-it-example">
+
+                        <div class="code-block shadow-sm">
+
+                            <div class="code-lang-tag">
+                                C#
+                            </div>
+
+                            <pre class="mb-0"><code>using System;
+ 
+static void Main()
+{
+    DisplayMessage();
+}
+
+static void DisplayMessage()
+{
+    Console.WriteLine("Welcome to CIIT Training Institute 🤓❤️...!");
+}</code></pre>
+
+                        </div>
+
+                        <div class="text-end mt-2 mb-3">
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryItYourself(this)">
+                                <i class="bi bi-play-fill me-1"></i>
+                                Try It
+                            </button>
+                        </div>
+
+                <div class="alert alert-success mb-5">
+                    <strong>Output:</strong>
+                    Welcome to CIIT Training Institute 🤓❤️...!
+                </div>
+
+                <!-- Void -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Methods with void Return Type
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The <code>void</code> keyword indicates that a method does not
+                    return any value to the calling code.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+                                <pre class="mb-0"><code>using System;
+ 
+static void PrintName()
+{
+    Console.WriteLine("Samadhan");
+}
+
+PrintName();</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+                                </button>
+                            </div>
+
+                <!-- Parameters -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Methods with Parameters
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Parameters allow us to pass data into a method.
+                    A method can accept one or more parameters.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                            <div class="try-it-example">
+
+                                <div class="code-block shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        C#
+                                    </div>
+
+                                    <pre class="mb-0"><code>using System;
+ 
+static void GreetUser(string name)
+{
+    Console.WriteLine($"Welcome, {name}!");
+}
+
+GreetUser("Samadhan");
+GreetUser("Pradnya");</code></pre>
+
+                                </div>
+
+                                <div class="text-end mt-2 mb-3">
+                                    <button type="button"
+                                            class="try-it-btn"
+                                            onclick="tryItYourself(this)">
+                                        <i class="bi bi-play-fill me-1"></i>
+                                        Try It
+                                    </button>
+                                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <code>name</code> is a parameter and the values
+                    <code>"Samadhan"</code> and <code>"Prardnya"</code> are arguments
+                    passed to the method.
+                </p>
+
+                <!-- Multiple Parameters -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Methods with Multiple Parameters
+                </h4>
+
+                <p class="text-muted mb-4">
+                    A method can accept multiple parameters of different or same data types.
+                </p>
+
+                                <div class="try-it-example">
+
+                                    <div class="code-block shadow-sm">
+
+                                        <div class="code-lang-tag">
+                                            C#
+                                        </div>
+
+                                        <pre class="mb-0"><code>using System;
+ 
+static void DisplayStudent(string name, int age)
+{
+    Console.WriteLine($"Name: {name}");
+    Console.WriteLine($"Age: {age}");
+}
+
+DisplayStudent("Sejl", 22);</code></pre>
+
+                                    </div>
+
+                                    <div class="text-end mt-2 mb-3">
+                                        <button type="button"
+                                                class="try-it-btn"
+                                                onclick="tryItYourself(this)">
+                                            <i class="bi bi-play-fill me-1"></i>
+                                            Try It
+                                        </button>
+                                    </div>
+
+                <!-- Return Value -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Methods with Return Value
+                </h4>
+
+                <p class="text-muted mb-4">
+                    A method can perform some calculation and return a value to
+                    the calling code. The return type specifies what type of value
+                    the method will return.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                                    <div class="try-it-example">
+
+                                        <div class="code-block shadow-sm">
+
+                                            <div class="code-lang-tag">
+                                                C#
+                                            </div>
+
+                                            <pre class="mb-0"><code>using System;
+ 
+static int Add(int a, int b)
+{
+    return a + b;
+}
+
+int result = Add(10, 20);
+
+Console.WriteLine(result);</code></pre>
+
+                                        </div>
+
+                                        <div class="text-end mt-2 mb-3">
+                                            <button type="button"
+                                                    class="try-it-btn"
+                                                    onclick="tryItYourself(this)">
+                                                <i class="bi bi-play-fill me-1"></i>
+                                                Try It
+                                            </button>
+                                        </div>
+
+                <div class="alert alert-success mb-5">
+                    <strong>Output:</strong> 30
+                </div>
+
+                <!-- Return Keyword -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    The return Keyword
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The <code>return</code> keyword is used to return a value from
+                    a method to the calling code. Once the return statement executes,
+                    the method finishes its execution.
+                </p>
+
+                                        <div class="try-it-example">
+
+                                            <div class="code-block shadow-sm">
+
+                                                <div class="code-lang-tag">
+                                                    C#
+                                                </div>
+
+                                                <pre class="mb-0"><code>using System;
+ 
+static int Square(int number)
+{
+    return number * number;
+}
+
+int result = Square(5);
+
+Console.WriteLine(result);</code></pre>
+
+                                            </div>
+
+                                            <div class="text-end mt-2 mb-3">
+                                                <button type="button"
+                                                        class="try-it-btn"
+                                                        onclick="tryItYourself(this)">
+                                                    <i class="bi bi-play-fill me-1"></i>
+                                                    Try It
+                                                </button>
+                                            </div>
+                <div class="alert alert-success mb-5">
+                    <strong>Output:</strong> 25
+                </div>
+
+                <!-- Different Return Types -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Different Return Types
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Methods can return different types of values such as
+                    <code>int</code>, <code>double</code>, <code>string</code>,
+                    <code>bool</code>, objects and other data types.
+                </p>
+
+                                            <div class="try-it-example">
+
+                                                <div class="code-block shadow-sm">
+
+                                                    <div class="code-lang-tag">
+                                                        C#
+                                                    </div>
+
+             <pre class="mb-0"><code>using System;
+ 
+static string GetCourseName()
+{
+    return ".NET Full Stack Development";
+}
+
+static bool IsAdult(int age)
+{
+    return age >= 18;
+}
+
+Console.WriteLine(GetCourseName());
+Console.WriteLine(IsAdult(25));</code></pre>
+
+                                                </div>
+
+                                                <div class="text-end mt-2 mb-3">
+                                                    <button type="button"
+                                                            class="try-it-btn"
+                                                            onclick="tryItYourself(this)">
+                                                        <i class="bi bi-play-fill me-1"></i>
+                                                        Try It
+                                                    </button>
+                                                </div>
+
+                <!-- Static Methods -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Static Methods
+                </h4>
+
+                <p class="text-muted mb-4">
+                    A static method belongs to the class rather than an object.
+                    It can be called using the class name without creating an object.
+                </p>
+
+                                                <div class="try-it-example">
+
+                                                    <div class="code-block shadow-sm">
+
+                                                        <div class="code-lang-tag">
+                                                            C#
+                                                        </div>
+
+<pre class="mb-0"><code>using System;
+ 
+class Calculator
+{
+    public static int Add(int a, int b)
+    {
+        return a + b;
+    }
+}
+
+int result = Calculator.Add(10, 20);
+
+Console.WriteLine(result);</code></pre>
+
+                                                    </div>
+
+                                                    <div class="text-end mt-2 mb-3">
+                                                        <button type="button"
+                                                                class="try-it-btn"
+                                                                onclick="tryItYourself(this)">
+                                                            <i class="bi bi-play-fill me-1"></i>
+                                                            Try It
+                                                        </button>
+                                                    </div>
+
+                <!-- Instance Methods -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Instance Methods
+                </h4>
+
+                <p class="text-muted mb-4">
+                    An instance method belongs to an object of a class.
+                    To call an instance method, we first create an object of that class.
+                </p>
+
+                                                    <div class="try-it-example">
+
+                                                        <div class="code-block shadow-sm">
+
+                                                            <div class="code-lang-tag">
+                                                                C#
+                                                            </div>
+
+                                                            <pre class="mb-0"><code>using System;
+ 
+class Student
+{
+    public void DisplayName()
+    {
+        Console.WriteLine("Student: Rahul");
+    }
+}
+
+Student student = new Student();
+
+student.DisplayName();</code></pre>
+
+                                                        </div>
+
+                                                        <div class="text-end mt-2 mb-3">
+                                                            <button type="button"
+                                                                    class="try-it-btn"
+                                                                    onclick="tryItYourself(this)">
+                                                                <i class="bi bi-play-fill me-1"></i>
+                                                                Try It
+                                                            </button>
+                                                        </div>
+                <!-- Method Parameters -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Value Parameters
+                </h4>
+
+                <p class="text-muted mb-4">
+                    By default, C# passes value-type parameters by value.
+                    This means the method receives a copy of the original value.
+                </p>
+
+                                                        <div class="try-it-example">
+
+                                                            <div class="code-block shadow-sm">
+
+                                                                <div class="code-lang-tag">
+                                                                    C#
+                                                                </div>
+
+                          <pre class="mb-0"><code>using System;
+static void ChangeValue(int number)
+{
+    number = 100;
+}
+
+int value = 10;
+
+ChangeValue(value);
+
+Console.WriteLine(value);</code></pre>
+
+                                                            </div>
+
+                                                            <div class="text-end mt-2 mb-3">
+                                                                <button type="button"
+                                                                        class="try-it-btn"
+                                                                        onclick="tryItYourself(this)">
+                                                                    <i class="bi bi-play-fill me-1"></i>
+                                                                    Try It
+                                                                </button>
+                                                            </div>
+
+                <div class="alert alert-info mb-5">
+                    <strong>Output:</strong> 10
+                    <br />
+                    The original value is not changed because the method received
+                    a copy of the value.
+                </div>
+
+                <!-- Optional Parameters -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Optional Parameters
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Optional parameters allow a method to have default values.
+                    The caller does not need to provide a value for an optional parameter.
+                </p>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+                             <div class="code-lang-tag">
+                                C#
+                             </div>
+
+                             <pre class="mb-0"><code>using System;
+ 
+static void Greet(string name = "Guest")
+{
+    Console.WriteLine($"Hello, {name}");
+}
+
+Greet();
+Greet("Amit");</code></pre>
+
+                                                                </div>
+
+                                                                <div class="text-end mt-2 mb-3">
+                                                                    <button type="button"
+                                                                            class="try-it-btn"
+                                                                            onclick="tryItYourself(this)">
+                                                                        <i class="bi bi-play-fill me-1"></i>
+                                                                        Try It
+                                                                    </button>
+                                                                </div>
+
+                <p class="text-muted mb-5">
+                    If no argument is supplied, the default value <code>"Guest"</code>
+                    is used.
+                </p>
+
+                <!-- Named Arguments -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Named Arguments
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Named arguments allow us to specify parameter names while calling
+                    a method. This can make method calls easier to understand.
+                </p>
+
+                 <div class="try-it-example">
+
+                  <div class="code-block shadow-sm">
+
+                       <div class="code-lang-tag"> C# </div>
+
+                          <pre class="mb-0"><code>using System;
+ 
+static void DisplayEmployee(string name, int age)
+{
+    Console.WriteLine($"Name: {name}");
+    Console.WriteLine($"Age: {age}");
+}
+
+DisplayEmployee(age: 25, name: "Sneha");</code></pre>
+
+                                                                    </div>
+
+                                                                    <div class="text-end mt-2 mb-3">
+                                                                        <button type="button"
+                                                                                class="try-it-btn"
+                                                                                onclick="tryItYourself(this)">
+                                                                            <i class="bi bi-play-fill me-1"></i>
+                                                                            Try It
+                                                                        </button>
+                                                                    </div>
+                <!-- Expression Bodied -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Expression-Bodied Methods
+                </h4>
+
+                <p class="text-muted mb-4">
+                    C# provides a shorter syntax for methods that contain a single
+                    expression. The <code>=&gt;</code> operator is used for this purpose.
+                </p>
+
+              <div class="try-it-example">
+                    <div class="code-block shadow-sm">
+                         <div class="code-lang-tag"> C# </div>
+                            <pre class="mb-0"><code>using System;
+ 
+static int Multiply(int a, int b) => a * b;
+
+Console.WriteLine(Multiply(5, 4));</code></pre>
+
+         </div>
+
+               <div class="text-end mt-2 mb-3">
+                     <button type="button"
+                          class="try-it-btn"
+                                                                                        onclick="tryItYourself(this)">
+                            <i class="bi bi-play-fill me-1"></i> Try It
+                     </button>
+               </div>
+
+                <div class="alert alert-success mb-5">
+                    <strong>Output:</strong> 20
+                </div>
+
+                <!-- Real World -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                   Example 🌍❤️
+                </h4>
+
+                <p class="text-muted mb-4">
+                    In real-world applications, methods are used to divide business
+                    logic into reusable operations. For example, an application may
+                    have separate methods for calculating salary, validating users,
+                    calculating marks, processing payments, or retrieving data.
+                </p>
+
+                  <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+                       <div class="code-lang-tag"> C# </div>
+    <pre class="mb-0"><code>using System;
+ static double CalculateDiscount(double price, double discountPercentage)
+{
+    double discount = price * discountPercentage / 100;
+    return price - discount;
+}
+
+double finalPrice = CalculateDiscount(1000, 10);
+
+Console.WriteLine($"Final Price: {finalPrice}");</code></pre>
+     </div>
+        <div class="text-end mt-2 mb-3">
+            <button type="button"
+                 class="try-it-btn"
+                                                                                        onclick="tryItYourself(this)">
+                   <i class="bi bi-play-fill me-1"></i>
+                        Try It
+                    </button>
+               </div>
+
+                <div class="alert alert-success mb-5">
+                    <strong>Output:</strong> Final Price: 900
+                </div>
+
+                <!-- Method Naming -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Method Naming Best Practices
+                </h4>
+
+                <ul class="text-muted mb-5">
+                    <li class="mb-2">
+                        Use meaningful and descriptive method names.
+                    </li>
+                    <li class="mb-2">
+                        Use PascalCase for method names in C#.
+                    </li>
+                    <li class="mb-2">
+                        A method should generally perform one clear responsibility.
+                    </li>
+                    <li class="mb-2">
+                        Avoid unnecessarily long methods.
+                    </li>
+                    <li class="mb-2">
+                        Use parameters when a method needs input.
+                    </li>
+                    <li class="mb-2">
+                        Use a suitable return type when a method needs to return a result.
+                    </li>
+                </ul>
+
+                <!-- Common Mistakes -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Common Mistakes to Avoid
+                </h4>
+
+                <ul class="text-muted mb-5">
+                    <li class="mb-2">
+                        Defining a method but forgetting to call it.
+                    </li>
+                    <li class="mb-2">
+                        Using the wrong return type.
+                    </li>
+                    <li class="mb-2">
+                        Forgetting the <code>return</code> statement when a value is expected.
+                    </li>
+                    <li class="mb-2">
+                        Passing arguments in the wrong order.
+                    </li>
+                    <li class="mb-2">
+                        Creating methods that are too large and difficult to maintain.
+                    </li>
+                </ul>
+
+                <!-- Summary -->
+                <div class="alert alert-success mt-5">
+                    <h5 class="fw-bold">
+                        Summary
+                    </h5>
+
+                    <p class="mb-0">
+                        Methods are reusable blocks of code that perform specific tasks.
+                        They help improve code organization, readability, reusability,
+                        testing and maintenance. A method can accept parameters and can
+                        return a value. C# supports static methods, instance methods,
+                        optional parameters, named arguments and expression-bodied methods.
+                    </p>
+                </div>
+
+                <!-- Practice Questions -->
+                <div class="mt-5">
+                    <h4 class="fw-bold text-dark mb-3">
+                        Practice Questions
+                    </h4>
+
+                    <ol class="text-muted">
+                        <li class="mb-2">
+                            Create a method to display your name.
+                        </li>
+
+                        <li class="mb-2">
+                            Create a method that accepts two numbers and prints their sum.
+                        </li>
+
+                        <li class="mb-2">
+                            Create a method that returns the square of a number.
+                        </li>
+
+                        <li class="mb-2">
+                            Create a method that checks whether a number is even or odd.
+                        </li>
+
+                        <li class="mb-2">
+                            Create a method that accepts student name and marks and displays them.
+                        </li>
+
+                        <li class="mb-2">
+                            Create a method to calculate the final price after applying a discount.
+                        </li>
+
+                        <li class="mb-2">
+                            Create a method using an optional parameter.
+                        </li>
+
+                        <li class="mb-2">
+                            Create an expression-bodied method to calculate multiplication.
+                        </li>
+
+                        <li class="mb-2">
+                            Explain the difference between static and instance methods.
+                        </li>
+
+                        <li class="mb-2">
+                            Explain the difference between a parameter and an argument.
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Next Topic -->
+                <div class="d-flex justify-content-between align-items-center mb-5">
+
+                    <a href="/CSharp/BasicLanguage/Loops"
+                       class="btn btn-outline-secondary">
+                        ← Previous Topic
+                    </a>
+
+                    <a href="/CSharp/MethodsMemoryManagement/MethodOverloading"
+                       class="btn btn-primary">
+                        Next Topic →
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<script>
+
+    function tryItYourself(button) {
+
+        // Find the code example containing this button
+        const example = button.closest(".try-it-example");
+
+        if (!example) {
+            alert("Code example not found.");
+            return;
+        }
+
+        // Find only this example's code
+        const codeElement = example.querySelector("pre code");
+
+        if (!codeElement) {
+            alert("Tutorial code not found.");
+            return;
+        }
+
+        // Get exact code and preserve indentation/new lines
+        const code = codeElement.textContent.trim();
+
+        // Create temporary form
+        const form = document.createElement("form");
+
+        form.method = "POST";
+
+        form.action =
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+        // IMPORTANT: Open compiler in new tab
+        form.target = "_blank";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
+        document.body.removeChild(form);
+    }
+
+</script>

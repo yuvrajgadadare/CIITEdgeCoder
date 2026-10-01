@@ -1,0 +1,877 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Loops";
+}
+
+<style>
+
+    #javascript-loops-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-loops-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-loops-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-loops-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-loops-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-loops-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       INFO BOX
+       ========================================================= */
+
+    #javascript-loops-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-loops-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-loops-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-loops-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       RELATED IMAGE
+       ========================================================= */
+
+    #javascript-loops-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-loops-page .loops-image {
+        width: 100%;
+        max-height: 430px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-loops-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       LOOP CARDS
+       ========================================================= */
+
+    #javascript-loops-page .loop-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-loops-page .loop-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-loops-page .loop-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-loops-page .loop-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 55px;
+        height: 40px;
+        padding: 0 12px;
+        background: #5b21b6;
+        color: #ffffff;
+        border-radius: 7px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-loops-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-loops-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 24px;
+    }
+
+    #javascript-loops-page .loop-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-loops-page .diagram-item {
+        min-width: 135px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-loops-page .diagram-item small {
+        display: block;
+        color: #6c757d;
+        margin-top: 6px;
+        font-weight: 400;
+    }
+
+    #javascript-loops-page .condition-item {
+        background: #eee7ff;
+        border: 2px solid #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-loops-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+    #javascript-loops-page .loop-back {
+        text-align: center;
+        color: #5b21b6;
+        font-weight: 700;
+        margin-top: 18px;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-loops-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-loops-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-loops-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-loops-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-loops-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-loops-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-loops-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-loops-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-loops-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-loops-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-loops-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-loops-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-loops-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-loops-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-loops-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-loops-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-loops-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-loops-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-loops-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-loops-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-loops-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-loops-page .loop-flow {
+            flex-direction: column;
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-loops-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Loops
+                </h1>
+
+                <p class="lead-text">
+                    Learn how to repeat a block of JavaScript code multiple
+                    times using loops.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS A LOOP?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is a Loop?
+                </h2>
+
+                <p class="section-text">
+                    A loop is used when we need to execute the same block
+                    of code repeatedly.
+                </p>
+
+                <p class="section-text">
+                    Instead of writing the same statements many times,
+                    we can use a loop and control how many times the code
+                    should execute.
+                </p>
+
+
+                <!-- =================================================
+                     RELATED IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://mwofqqzjzhhinqamxmxt.supabase.co/storage/v1/object/public/blog-images/88d13d47-10d2-45dc-a734-6b89b6200de0/p6sgr9-1769609350759.png"
+                         alt="JavaScript loops for while do while"
+                         class="loops-image" />
+
+                    <p class="image-caption">
+                        Common JavaScript loop structures and their execution flow.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     TYPES OF LOOPS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Common JavaScript Loops
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="loop-card">
+
+                            <div class="loop-badge">
+                                for
+                            </div>
+
+                            <h5>for Loop</h5>
+
+                            <p>
+                                Commonly used when the number of iterations
+                                is known or controlled with a counter.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="loop-card">
+
+                            <div class="loop-badge">
+                                while
+                            </div>
+
+                            <h5>while Loop</h5>
+
+                            <p>
+                                Repeats code while a specified condition
+                                remains true.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="loop-card">
+
+                            <div class="loop-badge">
+                                do
+                            </div>
+
+                            <h5>do...while Loop</h5>
+
+                            <p>
+                                Executes the loop body first and checks
+                                the condition afterward.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     FOR LOOP SYNTAX
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    for Loop Syntax
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>for (initialization; condition; update) {
+    // code to execute
+}</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How a Loop Works
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Start → Check Condition → Execute → Update → Repeat
+                    </div>
+
+                    <div class="loop-flow">
+
+                        <div class="diagram-item">
+                            Start
+                            <small>Initialize counter</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item condition-item">
+                            Condition
+                            <small>true or false</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Execute Code
+                            <small>Run loop body</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Update
+                            <small>Change counter</small>
+                        </div>
+
+                    </div>
+
+                    <div class="loop-back">
+                        ↺ Check the condition again until it becomes false
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: for Loop
+                </h2>
+
+                <p class="section-text">
+                    Here, the loop starts from 1 and runs until the counter
+                    reaches 5.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>for (let i = 1; i &lt;= 5; i++) {
+    console.log("Number:", i);
+}</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryForLoopExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Number: 1<br />
+                    Number: 2<br />
+                    Number: 3<br />
+                    Number: 4<br />
+                    Number: 5
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: while Loop
+                </h2>
+
+                <p class="section-text">
+                    A while loop checks its condition before each iteration.
+                    The loop continues while the condition is true.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let count = 1;
+
+while (count &lt;= 5) {
+    console.log("Count:", count);
+    count++;
+}</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryWhileLoopExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Count: 1<br />
+                    Count: 2<br />
+                    Count: 3<br />
+                    Count: 4<br />
+                    Count: 5
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Note
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Avoid Infinite Loops
+                    </h5>
+
+                    <p>
+                        Make sure the loop condition can eventually become
+                        false.
+                    </p>
+
+                    <p>
+                        In a counter-based loop, update the counter correctly
+                        so that the loop can stop.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Loops are used to repeat code efficiently.
+                        The main JavaScript loops are <strong>for</strong>,
+                        <strong>while</strong>, and <strong>do...while</strong>.
+                        A <strong>for</strong> loop is useful for controlled
+                        repetition, a <strong>while</strong> loop checks its
+                        condition before each iteration, and a
+                        <strong>do...while</strong> loop checks the condition
+                        after executing the loop body.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Switch", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>←</span>
+
+                        <span>
+                            Previous: Switch
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Index", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Functions
+                        </span>
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryForLoopExample() {
+
+        const code =
+            'for (let i = 1; i <= 5; i++) {\n' +
+            '    console.log("Number:", i);\n' +
+            '}';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryWhileLoopExample() {
+
+        const code =
+            'let count = 1;\n' +
+            '\n' +
+            'while (count <= 5) {\n' +
+            '    console.log("Count:", count);\n' +
+            '    count++;\n' +
+            '}';
+
+        openCompiler(code);
+
+    }
+
+</script>

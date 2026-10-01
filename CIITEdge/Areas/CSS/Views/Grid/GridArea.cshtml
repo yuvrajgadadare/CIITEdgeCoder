@@ -1,0 +1,827 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Grid Area";
+}
+
+<style>
+
+    #css-grid-area-page {
+        color: #212529;
+    }
+
+    #css-grid-area-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-grid-area-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-area-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-area-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    #css-grid-area-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-grid-area-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    #css-grid-area-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-grid-area-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    #css-grid-area-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-area-page .grid-diagram {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 70px 120px 70px;
+        gap: 10px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-grid-area-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #css-grid-area-page .diagram-header {
+        grid-column: 1 / 4;
+        background-color: #f97316;
+        border: 3px solid #c2410c;
+    }
+
+    #css-grid-area-page .diagram-sidebar {
+        grid-row: 2 / 3;
+        background-color: #16a34a;
+    }
+
+    #css-grid-area-page .diagram-main {
+        background-color: #2563eb;
+    }
+
+    #css-grid-area-page .diagram-footer {
+        grid-column: 1 / 4;
+        background-color: #7c3aed;
+    }
+
+    #css-grid-area-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-area-page .output-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 70px 120px 70px;
+        gap: 15px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-grid-area-page .output-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
+        font-weight: 700;
+        border-radius: 6px;
+    }
+
+    #css-grid-area-page .output-header {
+        grid-area: header;
+        background-color: orange;
+        border: 2px solid darkorange;
+    }
+
+    #css-grid-area-page .output-sidebar {
+        grid-area: sidebar;
+        background-color: green;
+        border: 2px solid darkgreen;
+    }
+
+    #css-grid-area-page .output-main {
+        grid-area: main;
+        background-color: blue;
+        border: 2px solid darkblue;
+    }
+
+    #css-grid-area-page .output-right {
+        grid-area: right;
+        background-color: purple;
+        border: 2px solid darkviolet;
+    }
+
+    #css-grid-area-page .output-footer {
+        grid-area: footer;
+        background-color: brown;
+        border: 2px solid #5c2e00;
+    }
+
+    #css-grid-area-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-grid-area-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-area-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    #css-grid-area-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    #css-grid-area-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-grid-area-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-area-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+    @@media (max-width: 991px) {
+
+        #css-grid-area-page .content-section {
+            padding: 20px;
+        }
+
+        #css-grid-area-page .grid-diagram,
+        #css-grid-area-page .output-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-grid-area-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1>
+                    CSS Grid Area
+                </h1>
+
+                <p>
+                    CSS Grid allows you to give names to different
+                    areas of a Grid layout and then place Grid items
+                    into those named areas.
+                </p>
+
+                <p>
+                    The <strong>grid-template-areas</strong> property
+                    is used to define named Grid areas, while the
+                    <strong>grid-area</strong> property assigns an
+                    element to one of those areas.
+                </p>
+
+
+                <!-- What is Grid Area -->
+
+                <h2>
+                    What is Grid Area?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        A Grid area is a named section of a CSS Grid
+                        layout.
+                    </p>
+
+                    <p>
+                        Instead of working only with row and column
+                        numbers, you can give meaningful names such as
+                        <strong>header</strong>,
+                        <strong>sidebar</strong>,
+                        <strong>main</strong>, and
+                        <strong>footer</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- Basic Syntax -->
+
+                <h2>
+                    Basic Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+}
+
+.header {
+    grid-area: header;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+}
+
+.footer {
+    grid-area: footer;
+}</code></pre>
+
+                </div>
+
+
+                <div class="explanation-box">
+
+                    <p>
+                        The
+                        <strong>grid-template-areas</strong>
+                        property creates named areas.
+                    </p>
+
+                    <p>
+                        The
+                        <strong>grid-area</strong>
+                        property assigns each element to its
+                        corresponding named area.
+                    </p>
+
+                </div>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Grid Area Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="grid-diagram">
+
+                        <div class="diagram-item diagram-header">
+                            Header
+                        </div>
+
+                        <div class="diagram-item diagram-sidebar">
+                            Sidebar
+                        </div>
+
+                        <div class="diagram-item diagram-main">
+                            Main Content
+                        </div>
+
+                        <div class="diagram-item">
+                            Right
+                        </div>
+
+                        <div class="diagram-item diagram-footer">
+                            Footer
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        Named areas make a Grid layout easier to
+                        understand and maintain.
+                    </p>
+
+                </div>
+
+
+                <!-- Template Areas -->
+
+                <h2>
+                    grid-template-areas
+                </h2>
+
+                <p>
+                    The
+                    <strong>grid-template-areas</strong>
+                    property defines the visual structure of the
+                    Grid using text values.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+
+    grid-template-areas:
+        "header header header"
+        "sidebar main right"
+        "footer footer footer";
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Each string represents one Grid row.
+                    </p>
+
+                    <p>
+                        Each name represents a Grid area.
+                    </p>
+
+                    <p>
+                        The same name can be repeated to make an
+                        area span multiple Grid cells.
+                    </p>
+
+                </div>
+
+
+                <!-- Assign Areas -->
+
+                <h2>
+                    Assigning an Element to an Area
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.header {
+    grid-area: header;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+}
+
+.footer {
+    grid-area: footer;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The value of
+                        <strong>grid-area</strong>
+                        must match the name defined inside
+                        <strong>grid-template-areas</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- Practical Example -->
+
+                <h2>
+                    Practical Website Layout
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 70px 120px 70px;
+    gap: 15px;
+
+    grid-template-areas:
+        "header header header"
+        "sidebar main right"
+        "footer footer footer";
+}
+
+.header {
+    grid-area: header;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+}
+
+.right {
+    grid-area: right;
+}
+
+.footer {
+    grid-area: footer;
+}</code></pre>
+
+                </div>
+
+
+                <div class="explanation-box">
+
+                    <p>
+                        This layout creates:
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Header across the complete top row
+                        </li>
+
+                        <li>
+                            Sidebar on the left
+                        </li>
+
+                        <li>
+                            Main content in the center
+                        </li>
+
+                        <li>
+                            Right section on the right
+                        </li>
+
+                        <li>
+                            Footer across the complete bottom row
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Output -->
+
+                <h2>
+                    Output
+                </h2>
+
+                <div class="browser-output">
+
+                    <div class="output-grid"
+                         style="
+                            grid-template-areas:
+                            'header header header'
+                            'sidebar main right'
+                            'footer footer footer';
+                         ">
+
+                        <div class="output-item output-header">
+                            Header
+                        </div>
+
+                        <div class="output-item output-sidebar">
+                            Sidebar
+                        </div>
+
+                        <div class="output-item output-main">
+                            Main Content
+                        </div>
+
+                        <div class="output-item output-right">
+                            Right Section
+                        </div>
+
+                        <div class="output-item output-footer">
+                            Footer
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Empty Cell -->
+
+                <h2>
+                    Creating Empty Grid Areas
+                </h2>
+
+                <p>
+                    A period
+                    <strong>.</strong>
+                    can be used to create an empty Grid cell.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+
+    grid-template-areas:
+        "header header"
+        "sidebar ."
+        "footer footer";
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The period represents an empty Grid area.
+                    </p>
+
+                    <p>
+                        In this example, the second cell in the
+                        second row remains empty.
+                    </p>
+
+                </div>
+
+
+                <!-- Repeated Areas -->
+
+                <h2>
+                    Repeating a Grid Area
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    grid-template-areas:
+        "header header"
+        "main main"
+        "footer footer";
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The
+                        <strong>header</strong>,
+                        <strong>main</strong>, and
+                        <strong>footer</strong>
+                        areas each span across two columns.
+                    </p>
+
+                </div>
+
+
+                <!-- Advantages -->
+
+                <h2>
+                    Advantages of Grid Areas
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Easy to Read
+                            </h3>
+
+                            <p>
+                                Named areas make the layout structure
+                                easy to understand.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Easy to Maintain
+                            </h3>
+
+                            <p>
+                                Layout changes can be made by editing
+                                the named area structure.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Useful for Layouts
+                            </h3>
+
+                            <p>
+                                It is useful for headers, sidebars,
+                                content areas, and footers.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Real World -->
+
+                <h2>
+                    Real-World Uses
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Website layouts
+                    </li>
+
+                    <li>
+                        Admin dashboards
+                    </li>
+
+                    <li>
+                        Blog layouts
+                    </li>
+
+                    <li>
+                        E-commerce pages
+                    </li>
+
+                    <li>
+                        Course websites
+                    </li>
+
+                    <li>
+                        Application dashboards
+                    </li>
+
+                </ul>
+
+
+                <!-- Note -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    Every named area used in
+                    <strong>grid-template-areas</strong>
+                    should form a rectangular area. Avoid creating
+                    irregular shapes with the same area name.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        CSS Grid Areas allow you to create readable
+                        and structured layouts using names such as
+                        <strong>header</strong>,
+                        <strong>sidebar</strong>,
+                        <strong>main</strong>, and
+                        <strong>footer</strong>.
+                        The
+                        <strong>grid-template-areas</strong>
+                        property defines the layout structure, while
+                        <strong>grid-area</strong>
+                        assigns elements to the named areas.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2 mb-md-0">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("GridRow", "Grid", new { area = "CSS" })">
+
+                            ← Previous: Grid Row
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("GridAlignment", "Grid", new { area = "CSS" })">
+
+                            Next: Grid Alignment →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

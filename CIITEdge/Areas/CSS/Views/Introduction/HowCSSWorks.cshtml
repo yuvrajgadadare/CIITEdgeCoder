@@ -1,0 +1,477 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "How CSS Works";
+}
+
+<style>
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+        .content-section h1,
+        .content-section h2,
+        .content-section h3 {
+            color: #212529 !important;
+            font-weight: 700;
+        }
+
+        .content-section h1 {
+            margin-bottom: 12px;
+        }
+
+        .content-section h2 {
+            margin-top: 28px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.75;
+        }
+
+    .css-example {
+        background-color: #0f172a;
+        color: #f1f5f9;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 12px;
+    }
+
+    .flow-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 25px 0;
+    }
+
+    .diagram-box {
+        width: 180px;
+        min-height: 100px;
+        border-radius: 12px;
+        padding: 20px 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .diagram-browser {
+        background: #dbeafe;
+        border: 1px solid #bfdbfe;
+    }
+
+    .diagram-rule {
+        background: #ede9fe;
+        border: 1px solid #ddd6fe;
+    }
+
+    .diagram-element {
+        background: #d1fae5;
+        border: 1px solid #a7f3d0;
+    }
+
+    .diagram-title {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .diagram-text {
+        color: #495057;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .diagram-arrow {
+        font-size: 28px;
+        font-weight: 700;
+        color: #495057;
+    }
+
+    .info-box {
+        border-left: 4px solid #2563eb;
+        background: #f8f9fa;
+        padding: 18px 20px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+    .content-list {
+        padding-left: 22px;
+    }
+
+    .topic-navigation {
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 24px;
+    }
+
+        .topic-navigation .btn {
+            min-height: 42px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .topic-navigation .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+            .topic-navigation .btn-primary:hover {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        .diagram-box {
+            width: 100%;
+            max-width: 260px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ================================================= -->
+        <!-- LEFT: COURSE SYLLABUS -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- RIGHT: CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    How CSS Works
+                </h1>
+
+                <p class="lead text-muted">
+                    Understand how the browser reads CSS rules and
+                    applies them to HTML elements.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC IDEA -->
+                <!-- ================================================= -->
+
+                <h2>How Does CSS Work?</h2>
+
+                <p>
+                    CSS works by selecting HTML elements and applying
+                    styling rules to those elements.
+                </p>
+
+                <p>
+                    A CSS rule tells the browser which element should
+                    be styled and what changes should be applied.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>CSS Working Flow</h2>
+
+                <p>
+                    The browser reads the HTML page, finds the matching
+                    CSS rules, and applies the styles before displaying
+                    the final page.
+                </p>
+
+
+                <div class="flow-diagram">
+
+                    <div class="diagram-box diagram-browser">
+
+                        <div class="diagram-title">
+                            HTML Element
+                        </div>
+
+                        <p class="diagram-text">
+                            &lt;p&gt;Hello&lt;/p&gt;
+                        </p>
+
+                    </div>
+
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+
+                    <div class="diagram-box diagram-rule">
+
+                        <div class="diagram-title">
+                            CSS Rule
+                        </div>
+
+                        <p class="diagram-text">
+                            color: blue;
+                        </p>
+
+                    </div>
+
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+
+                    <div class="diagram-box diagram-element">
+
+                        <div class="diagram-title">
+                            Styled Element
+                        </div>
+
+                        <p class="diagram-text">
+                            Blue text
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- CSS RULE -->
+                <!-- ================================================= -->
+
+                <h2>CSS Rule Structure</h2>
+
+                <p>
+                    A CSS rule normally contains a selector and one or
+                    more declarations.
+                </p>
+
+
+                <div class="css-example">
+                    <pre class="mb-0">p {
+    color: blue;
+    font-size: 18px;
+}</pre>
+                </div>
+
+
+                <h3>Parts of the Rule</h3>
+
+                <ul class="content-list">
+
+                    <li>
+                        <strong>p</strong> is the selector.
+                    </li>
+
+                    <li>
+                        <strong>color: blue;</strong> is a declaration.
+                    </li>
+
+                    <li>
+                        <strong>font-size: 18px;</strong> is another declaration.
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- SELECTOR -->
+                <!-- ================================================= -->
+
+                <h2>What is a Selector?</h2>
+
+                <p>
+                    A selector tells CSS which HTML element should
+                    receive the styling.
+                </p>
+
+                <div class="css-example">
+                    <pre class="mb-0">h1 {
+    color: purple;
+}</pre>
+                </div>
+
+                <p class="mt-3">
+                    Here, the <strong>h1</strong> selector targets all
+                    <strong>&lt;h1&gt;</strong> elements.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- DECLARATION -->
+                <!-- ================================================= -->
+
+                <h2>What is a Declaration?</h2>
+
+                <p>
+                    A declaration contains a CSS property and its value.
+                </p>
+
+                <div class="css-example">
+                    <pre class="mb-0">color: blue;
+font-size: 20px;</pre>
+                </div>
+
+                <p class="mt-3">
+                    The property describes what should change, while
+                    the value specifies how it should change.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- MULTIPLE DECLARATIONS -->
+                <!-- ================================================= -->
+
+                <h2>Multiple CSS Properties</h2>
+
+                <p>
+                    One selector can contain multiple declarations.
+                </p>
+
+                <div class="css-example">
+                    <pre class="mb-0">.title {
+    color: blue;
+    font-size: 24px;
+    text-align: center;
+}</pre>
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BROWSER RESPONSIBILITY -->
+                <!-- ================================================= -->
+
+                <h2>How the Browser Applies CSS</h2>
+
+                <p>
+                    The browser loads the HTML document, reads the CSS
+                    rules, matches selectors with HTML elements, and
+                    applies the matching styles.
+                </p>
+
+                <div class="info-box">
+
+                    <strong>Remember:</strong>
+
+                    <p class="mb-0 mt-2">
+                        CSS does not replace HTML.
+                        It works with HTML to control presentation and layout.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="alert alert-info mt-4">
+
+                    <h2 class="h4 fw-bold">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS works by selecting HTML elements and applying
+                        styling declarations. A CSS rule contains a
+                        selector, properties, and values. The browser
+                        reads these rules and applies the matching styles
+                        to the web page.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PREVIOUS / NEXT -->
+                <!-- ================================================= -->
+
+                <div class="topic-navigation">
+
+                    <div class="row g-3 align-items-center">
+
+                        <!-- PREVIOUS -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-outline-secondary w-100"
+                               href="@Url.Action("Index", "Introduction", new { area = "CSS" })">
+
+                                ← Previous: Introduction
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- NEXT -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("CSSvsHTML", "Introduction", new { area = "CSS" })">
+
+                                Next: CSS vs HTML →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

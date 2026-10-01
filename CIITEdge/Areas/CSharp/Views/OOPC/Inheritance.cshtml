@@ -1,0 +1,1495 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+}
+
+<style>
+.try-it-btn {
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease;
+}
+ 
+.try-it-btn:hover {
+    background: #157347;
+    color: #fff;
+}
+
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- ===================================================== -->
+                <!-- PAGE HEADER -->
+                <!-- ===================================================== -->
+
+                <h2 class="h1 fw-bold text-dark mb-3">
+                    Inheritance in C#
+                </h2>
+
+                <p class="text-muted mb-4">
+                    <b>Inheritance</b> is one of the important concepts of
+                    Object-Oriented Programming (OOP) in C#. It allows one class
+                    to acquire the members and behavior of another class.
+                </p>
+
+                <p class="text-muted mb-4">
+                    In simple words, inheritance allows us to create a new class
+                    using an existing class. The new class can reuse existing
+                    functionality and can also add its own functionality.
+                </p>
+
+                <div class="alert alert-info border-0 shadow-sm mb-4">
+                    <strong>Simple Example:</strong>
+                    Suppose <b>Vehicle</b> is a parent class and
+                    <b>Car</b> is a child class. A car is a vehicle, so the
+                    Car class can reuse common vehicle functionality and also
+                    define car-specific functionality.
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- WHAT IS INHERITANCE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    What is Inheritance?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Inheritance is a mechanism in which a class derives its
+                    members from another class. The existing class is called
+                    the <b>base class</b>, and the new class is called the
+                    <b>derived class</b>.
+                </p>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Term</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><b>Base Class</b></td>
+                                <td>
+                                    The class whose members are inherited.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Derived Class</b></td>
+                                <td>
+                                    The class that inherits from the base class.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Inheritance</b></td>
+                                <td>
+                                    The relationship through which the derived
+                                    class gets accessible members from the
+                                    base class.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- SYNTAX -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Inheritance Syntax in C#
+                </h3>
+
+                <p class="text-muted mb-3">
+                    In C#, inheritance is specified using a colon
+                    <b>:</b> between the derived class and the base class.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Parent</span>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="comment">// Parent class members</span><br>
+                    }<br><br>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Child</span> :
+                    <span class="class-name">Parent</span><br>
+                    {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="comment">// Child class members</span><br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <b>Child</b> is the derived class and
+                    <b>Parent</b> is the base class.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- WHY INHERITANCE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Why Do We Need Inheritance?
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Avoids duplicate code.
+                    </li>
+
+                    <li class="mb-2">
+                        Allows code reusability.
+                    </li>
+
+                    <li class="mb-2">
+                        Helps organize related classes.
+                    </li>
+
+                    <li class="mb-2">
+                        Allows derived classes to extend existing functionality.
+                    </li>
+
+                    <li class="mb-2">
+                        Supports polymorphism.
+                    </li>
+
+                    <li class="mb-2">
+                        Makes large applications easier to maintain.
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- SIMPLE PROGRAM -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Simple Inheritance Program
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Let's understand inheritance using a simple
+                    <b>Person</b> and <b>Student</b> example.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Person
+{
+     public string Name { get; set; }
+
+     public void DisplayName()
+    {
+         Console.WriteLine( $"Name: {Name}");
+    }
+}
+
+class Student : Person
+{
+     public string Course { get; set; }
+
+     public void DisplayCourse()
+    {
+         Console.WriteLine( $"Course: {Course}");
+    }
+}
+
+class Program
+{
+     static void Main()
+    {
+         Student student = new Student();
+
+         student.Name = "Rahul";
+         student.Course = "C# Full Stack";
+
+         student.DisplayName();
+         student.DisplayCourse();
+    }
+};</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+                <!-- ===================================================== -->
+                <!-- OUTPUT -->
+                <!-- ===================================================== -->
+
+                <h4 class="h4 fw-bold text-dark mt-4 mb-3">
+                    Program Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+
+                    Name: Rahul<br>
+                    Course: C# Full Stack
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- PROGRAM EXPLANATION -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Program Explanation
+                </h3>
+
+                <div class="table-responsive mb-4">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Code</th>
+                                <th>Explanation</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <b>class Person</b>
+                                </td>
+                                <td>
+                                    Creates the base class named Person.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <b>Name</b>
+                                </td>
+                                <td>
+                                    Property used to store the person's name.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <b>DisplayName()</b>
+                                </td>
+                                <td>
+                                    Method defined in the Person class.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <b>class Student : Person</b>
+                                </td>
+                                <td>
+                                    Student inherits from Person.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <b>Course</b>
+                                </td>
+                                <td>
+                                    Property specific to the Student class.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <b>student.Name</b>
+                                </td>
+                                <td>
+                                    Student can access the inherited Name
+                                    property.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <b>student.DisplayName()</b>
+                                </td>
+                                <td>
+                                    Student can call the inherited method.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <b>student.DisplayCourse()</b>
+                                </td>
+                                <td>
+                                    Calls the method defined inside Student.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- BASE AND DERIVED -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Base Class and Derived Class
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The class from which another class inherits is called the
+                    <b>base class</b>. The class that inherits is called the
+                    <b>derived class</b>.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Vehicle</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="comment">// Base class</span><br>
+                    }<br><br>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Car</span> :
+                    <span class="class-name">Vehicle</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="comment">// Derived class</span><br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <b>Vehicle</b> is the base class and
+                    <b>Car</b> is the derived class.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- REAL WORLD EXAMPLE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Example: Vehicle 👨‍🏫❤️
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A vehicle can have common properties and behaviors such as
+                    brand, speed, and starting. A car can reuse those common
+                    features and add car-specific functionality.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Vehicle
+{
+     public string Brand { get; set; }
+
+     public void Start()
+    {
+         Console.WriteLine( "Vehicle started.");
+    }
+}
+
+class Car : Vehicle
+{
+     public void Drive()
+    {
+         Console.WriteLine( "Car is driving.");
+    }
+}
+
+class Program
+{
+     static void Main()
+    {
+         Car car = new Car();
+
+         car.Brand = "Toyota";
+
+         Console.WriteLine( $"Brand: {car.Brand}");
+         car.Start();
+         car.Drive();
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+
+                <h4 class="h4 fw-bold text-dark mt-4 mb-3">
+                    Output
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+
+                    Brand: Toyota<br>
+                    Vehicle started.<br>
+                    Car is driving.
+                </div>
+
+                <p class="text-muted mb-4">
+                    The <b>Car</b> object can access the <b>Brand</b> property
+                    and <b>Start()</b> method inherited from <b>Vehicle</b>.
+                    It can also use its own <b>Drive()</b> method.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- WHAT IS INHERITED -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    What Can Be Inherited?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A derived class can access inherited members according to
+                    their accessibility. Public and protected members can be
+                    available to the derived class, while private members of
+                    the base class are not directly accessible in the derived
+                    class.
+                </p>
+
+                <div class="table-responsive mb-4">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Member</th>
+                                <th>Directly Accessible in Derived Class?</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><b>public</b></td>
+                                <td>Yes</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>protected</b></td>
+                                <td>Yes</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>private</b></td>
+                                <td>No</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- PROTECTED -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Protected Members
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <b>protected</b> access modifier allows a member to be
+                    accessed inside its containing class and inside derived
+                    classes.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Person</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">protected</span>
+                    <span class="keyword">string</span> Name;<br>
+                    }<br><br>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span> :
+                    <span class="class-name">Person</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">SetName</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Name =
+                    <span class="string-lit">"Rahul"</span>;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    The Student class can access the protected <b>Name</b>
+                    member because Student derives from Person.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- MULTILEVEL -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Multilevel Inheritance
+                </h3>
+
+                <p class="text-muted mb-4">
+                    In multilevel inheritance, a class derives from another
+                    derived class, creating a chain of inheritance.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">GrandParent</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">ShowGrandParent</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"GrandParent"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Parent</span> :
+                    <span class="class-name">GrandParent</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">ShowParent</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Parent"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Child</span> :
+                    <span class="class-name">Parent</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">ShowChild</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Child"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    A Child object can access the accessible members of both
+                    Parent and GrandParent through the inheritance chain.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- HIERARCHICAL -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Hierarchical Inheritance
+                </h3>
+
+                <p class="text-muted mb-4">
+                    In hierarchical inheritance, multiple derived classes
+                    inherit from the same base class.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Vehicle</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">Start</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Vehicle started."</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Car</span> :
+                    <span class="class-name">Vehicle</span><br>
+                    {<br>
+                    }<br><br>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Bike</span> :
+                    <span class="class-name">Vehicle</span><br>
+                    {<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    Both <b>Car</b> and <b>Bike</b> inherit from
+                    <b>Vehicle</b>.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- BASE KEYWORD -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    The base Keyword
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <b>base</b> keyword is used to access members of the
+                    base class from a derived class. It can also be used to
+                    call a base class constructor.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Person</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">protected</span>
+                    <span class="keyword">string</span> Name =
+                    <span class="string-lit">"Rahul"</span>;<br>
+                    }<br><br>
+
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span> :
+                    <span class="class-name">Person</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">Display</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="keyword">base</span>.Name);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- CONSTRUCTOR WITH INHERITANCE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructor with Inheritance
+                </h3>
+
+                <p class="text-muted mb-4">
+                    When a derived class object is created, the base class
+                    portion of the object is initialized before the derived
+                    class constructor body runs.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Person</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="class-name">Person</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Person constructor"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span> :
+                    <span class="class-name">Person</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="class-name">Student</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Student constructor"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();
+                </div>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+
+                    Person constructor<br>
+                    Student constructor
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- CONSTRUCTOR CHAIN -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Calling Base Constructor using base()
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <b>base()</b> constructor initializer can be used to
+                    pass values from a derived class constructor to a base
+                    class constructor.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Person</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="class-name">Person</span>(
+                    <span class="keyword">string</span> name)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Name = name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span> :
+                    <span class="class-name">Person</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="class-name">Student</span>(
+                    <span class="keyword">string</span> name)
+                    : <span class="keyword">base</span>(name)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- METHOD OVERRIDING INTRO -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Inheritance and Method Overriding
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Inheritance is closely related to <b>method overriding</b>.
+                    A derived class can provide its own implementation of a
+                    virtual method defined in the base class.
+                </p>
+
+                <p class="text-muted mb-3">
+                    The <b>virtual</b> keyword allows a base class method to be
+                    overridden, and the <b>override</b> keyword is used in the
+                    derived class.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Animal</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="keyword">virtual</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">Sound</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Animal makes a sound."</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Dog</span> :
+                    <span class="class-name">Animal</span><br>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">public</span>
+                    <span class="keyword">override</span>
+                    <span class="keyword">void</span>
+                    <span class="method-name">Sound</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Dog barks."</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    Method overriding is an important part of
+                    <b>polymorphism</b>, which we will study in more detail
+                    in the next OOP topics.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- TYPES OF INHERITANCE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Types of Inheritance in C#
+                </h3>
+
+                <div class="table-responsive mb-4">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Type</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><b>Single</b></td>
+                                <td>
+                                    One derived class inherits from one base class.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Multilevel</b></td>
+                                <td>
+                                    Inheritance occurs in multiple levels.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Hierarchical</b></td>
+                                <td>
+                                    Multiple derived classes inherit from
+                                    the same base class.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Multiple</b></td>
+                                <td>
+                                    C# classes do not support multiple class
+                                    inheritance directly. Multiple interfaces
+                                    can be implemented instead.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- MULTIPLE INTERFACES -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Multiple Inheritance using Interfaces
+                </h3>
+
+                <p class="text-muted mb-4">
+                    C# does not allow a class to inherit directly from multiple
+                    classes. However, a class can implement multiple interfaces.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">interface</span>
+                    <span class="class-name">IPrintable</span><br>
+                    {<br>
+                    }<br><br>
+
+                    <span class="keyword">interface</span>
+                    <span class="class-name">ISavable</span><br>
+                    {<br>
+                    }<br><br>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Document</span> :
+                    <span class="class-name">IPrintable</span>,
+                    <span class="class-name">ISavable</span><br>
+                    {<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    This allows a class to implement contracts from multiple
+                    interfaces without inheriting implementation from multiple
+                    base classes.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- ADVANTAGES -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Advantages of Inheritance
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        <b>Code Reusability:</b> Existing functionality can be reused.
+                    </li>
+
+                    <li class="mb-2">
+                        <b>Less Duplicate Code:</b> Common functionality can
+                        remain in the base class.
+                    </li>
+
+                    <li class="mb-2">
+                        <b>Extensibility:</b> Derived classes can add new behavior.
+                    </li>
+
+                    <li class="mb-2">
+                        <b>Maintainability:</b> Common changes can often be made
+                        in the base class.
+                    </li>
+
+                    <li class="mb-2">
+                        <b>Polymorphism:</b> Inheritance enables important
+                        polymorphic designs.
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- COMMON MISTAKES -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Common Beginner Mistakes
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Confusing the base class and derived class.
+                    </li>
+
+                    <li class="mb-2">
+                        Assuming private members can be directly accessed
+                        in the derived class.
+                    </li>
+
+                    <li class="mb-2">
+                        Using inheritance only for code reuse when the
+                        classes do not have a meaningful "is-a" relationship.
+                    </li>
+
+                    <li class="mb-2">
+                        Forgetting to use <b>virtual</b> and <b>override</b>
+                        when overriding a base class method.
+                    </li>
+
+                    <li class="mb-2">
+                        Thinking that C# supports multiple class inheritance.
+                    </li>
+
+                    <li class="mb-2">
+                        Creating unnecessarily deep inheritance hierarchies.
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- IS-A RELATIONSHIP -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    The "Is-A" Relationship
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Inheritance generally represents an <b>"is-a"</b> relationship.
+                </p>
+
+                <div class="table-responsive mb-4">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Derived Class</th>
+                                <th>Base Class</th>
+                                <th>Relationship</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Car</td>
+                                <td>Vehicle</td>
+                                <td>Car is a Vehicle</td>
+                            </tr>
+
+                            <tr>
+                                <td>Dog</td>
+                                <td>Animal</td>
+                                <td>Dog is an Animal</td>
+                            </tr>
+
+                            <tr>
+                                <td>Student</td>
+                                <td>Person</td>
+                                <td>Student is a Person</td>
+                            </tr>
+
+                            <tr>
+                                <td>Manager</td>
+                                <td>Employee</td>
+                                <td>Manager is an Employee</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- CIIT PRACTICAL -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    CIIT Practical Point
+                </h3>
+
+                <div class="alert alert-success border-0 shadow-sm mb-4">
+
+                    <p class="mb-2">
+                        In professional C# development, inheritance is used
+                        when classes have a meaningful relationship and common
+                        behavior can be placed in a base class.
+                    </p>
+
+                    <p class="mb-2">
+                        In ASP.NET Core and enterprise applications, developers
+                        may work with base classes, derived classes, abstract
+                        classes, and framework types.
+                    </p>
+
+                    <p class="mb-0">
+                        A good developer should not use inheritance only for
+                        code reuse. The relationship between the classes should
+                        make logical sense.
+                    </p>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- INTERVIEW POINTS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    CIIT Interview Points
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        What is inheritance in C#?
+                    </li>
+
+                    <li class="mb-2">
+                        What is a base class?
+                    </li>
+
+                    <li class="mb-2">
+                        What is a derived class?
+                    </li>
+
+                    <li class="mb-2">
+                        How do you implement inheritance in C#?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the purpose of the <b>:</b> symbol in class declaration?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the <b>base</b> keyword?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the difference between public, protected,
+                        and private members in inheritance?
+                    </li>
+
+                    <li class="mb-2">
+                        What is multilevel inheritance?
+                    </li>
+
+                    <li class="mb-2">
+                        Does C# support multiple class inheritance?
+                    </li>
+
+                    <li class="mb-2">
+                        What is method overriding?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the difference between <b>virtual</b> and
+                        <b>override</b>?
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- SUMMARY -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Summary
+                </h3>
+
+                <div class="alert alert-primary border-0 shadow-sm mb-4">
+
+                    <ul class="mb-0">
+
+                        <li class="mb-2">
+                            Inheritance allows one class to derive from another class.
+                        </li>
+
+                        <li class="mb-2">
+                            The existing class is called the <b>base class</b>.
+                        </li>
+
+                        <li class="mb-2">
+                            The new class is called the <b>derived class</b>.
+                        </li>
+
+                        <li class="mb-2">
+                            Inheritance improves code reuse and extensibility.
+                        </li>
+
+                        <li class="mb-2">
+                            C# uses <b>:</b> to specify class inheritance.
+                        </li>
+
+                        <li class="mb-2">
+                            <b>public</b> and <b>protected</b> members can be
+                            available to derived classes according to their
+                            accessibility.
+                        </li>
+
+                        <li class="mb-2">
+                            Private base-class members are not directly accessible
+                            in the derived class.
+                        </li>
+
+                        <li class="mb-2">
+                            C# supports single, multilevel, and hierarchical
+                            class inheritance.
+                        </li>
+
+                        <li class="mb-2">
+                            C# does not support multiple inheritance between
+                            classes, but multiple interfaces can be implemented.
+                        </li>
+
+                        <li>
+                            Inheritance is an important foundation for
+                            polymorphism and other OOP concepts.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- PRACTICE QUESTIONS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Practice Questions
+                </h3>
+
+                <ol class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Create a <b>Person</b> base class with Name and Age.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a <b>Student</b> class that inherits from Person.
+                    </li>
+
+                    <li class="mb-2">
+                        Add Course and RollNumber to Student.
+                    </li>
+
+                    <li class="mb-2">
+                        Create an object of Student and display all details.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a Vehicle base class and derive Car from it.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a multilevel inheritance example using
+                        GrandParent, Parent, and Child.
+                    </li>
+
+                    <li class="mb-2">
+                        Create two classes derived from the same base class
+                        to demonstrate hierarchical inheritance.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a virtual method in a base class and override
+                        it in a derived class.
+                    </li>
+
+                    <li class="mb-2">
+                        Explain the difference between <b>base</b> and
+                        <b>this</b> keywords.
+                    </li>
+
+                </ol>
+
+
+                <!-- ===================================================== -->
+                <!-- NEXT TOPIC -->
+                <!-- ===================================================== -->
+
+                <div class="d-flex justify-content-between align-items-center mb-5">
+
+    <a href="/CSharp/OOPC/Encapsulation"
+       class="btn btn-outline-secondary">
+        ← Previous Topic
+    </a>
+
+    <a href="/CSharp/OOPC/Polymorphism"
+       class="btn btn-primary">
+        Next Topic →
+    </a>
+
+</div>
+
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+<script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+            alert("Code example not found.");
+            return;
+        }
+ 
+        // Find only this example's code
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+            alert("Tutorial code not found.");
+            return;
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+    }
+ </script>  

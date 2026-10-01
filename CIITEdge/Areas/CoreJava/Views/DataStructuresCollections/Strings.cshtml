@@ -1,0 +1,1353 @@
+﻿@{
+    ViewData["Title"] = "Strings in Java";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Strings in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how Java represents text using String, how strings are
+                created and compared, and how to use common String methods
+                efficiently.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is a String?</h3>
+
+            <p>
+                A <code>String</code> represents a sequence of characters.
+                In Java, String is a class provided by the
+                <code>java.lang</code> package.
+            </p>
+
+            <p>
+                Strings are objects, even though Java provides special syntax
+                for creating them using string literals.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String name = "CIIT";
+
+System.out.println(name);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">Output</div>
+    <pre class="mb-0"><code>CIIT</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- STRING CREATION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Creating Strings</h3>
+
+            <p>
+                Strings are commonly created using string literals.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String language = "Java";
+
+String message = "Welcome CIIT world 🌍..!";</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                A String can also be explicitly created using the constructor,
+                although literals are normally preferred.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = new String("Java");</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- IMMUTABILITY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">String Immutability</h3>
+
+            <p>
+                Strings in Java are immutable. Once a String object is
+                created, its character contents cannot be changed.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "CIIT";
+
+text = text + " Institute";
+
+System.out.println(text);</code></pre>
+
+            </div>
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">Output</div>
+    <pre class="mb-0"><code>CIIT Institute</code></pre>
+</div>
+
+            <p class="mt-3">
+                The original String object is not modified. A new String
+                object is created for the concatenated result, and the
+                variable is updated to reference it.
+            </p>
+
+        </section>
+
+
+        <!-- STRING POOL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">String Pool</h3>
+
+            <p>
+                Java maintains a special pool for string literals. Identical
+                literals can share the same pooled String object.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String first = "CIIT";
+
+String second = "Institute";
+
+System.out.println(first == second);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>false</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The <code>==</code> comparison here checks whether the two
+                variables refer to the same object.
+            </p>
+
+        </section>
+
+
+        <!-- EQUALS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Comparing Strings with equals()
+            </h3>
+
+            <p>
+                Use <code>equals()</code> when you want to compare String
+                contents.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String first = "CIIT";
+
+String second = new String("Institute");
+
+System.out.println(first.equals(second));</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>true</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- EQUALS IGNORE CASE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Case-Insensitive Comparison
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String first = "ciit";
+
+String second = "INSTITUTE";
+
+System.out.println(
+    first.equalsIgnoreCase(second)
+);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>true</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- LENGTH -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">String length()</h3>
+
+            <p>
+                The <code>length()</code> method returns the number of UTF-16
+                code units in the String.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "CIIT";
+
+System.out.println(text.length());</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>4</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHARAT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">charAt()</h3>
+
+            <p>
+                The <code>charAt()</code> method returns the character at a
+                specified zero-based index.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "Java";
+
+System.out.println(text.charAt(0));
+
+System.out.println(text.charAt(2));</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>J
+v</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUBSTRING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">substring()</h3>
+
+            <p>
+                The <code>substring()</code> method extracts part of a String.
+                The ending index is exclusive.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "Programming";
+
+System.out.println(
+    text.substring(0, 4)
+);
+
+System.out.println(
+    text.substring(4)
+);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Prog
+ramming</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTAINS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">contains()</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "Java Programming";
+
+System.out.println(
+    text.contains("Java")
+);
+
+System.out.println(
+    text.contains("Python")
+);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>true
+false</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- STARTS ENDS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                startsWith() and endsWith()
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String file = "report.pdf";
+
+System.out.println(
+    file.startsWith("report")
+);
+
+System.out.println(
+    file.endsWith(".pdf")
+);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>true
+true</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- INDEX -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                indexOf() and lastIndexOf()
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "Java Programming";
+
+System.out.println(
+    text.indexOf("a")
+);
+
+System.out.println(
+    text.lastIndexOf("a")
+);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">Output</div>
+    <pre class="mb-0"><code>1
+14</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- REPLACE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">replace()</h3>
+
+            <p>
+                Since Strings are immutable, <code>replace()</code> returns a
+                new String instead of modifying the original.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "Java is easy";
+
+String updated =
+    text.replace("easy", "powerful");
+
+System.out.println(updated);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Java is powerful</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- TO LOWER -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                toLowerCase() and toUpperCase()
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "Java Programming";
+
+System.out.println(
+    text.toLowerCase()
+);
+
+System.out.println(
+    text.toUpperCase()
+);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>java programming
+JAVA PROGRAMMING</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRIM -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                trim() and strip()
+            </h3>
+
+            <p>
+                <code>trim()</code> removes certain leading and trailing
+                characters with code points at or below U+0020.
+                Modern Java also provides <code>strip()</code>, which uses
+                Unicode-aware whitespace rules.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "   Java   ";
+
+System.out.println(
+    text.trim()
+);
+
+System.out.println(
+    text.strip()
+);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">Output</div>
+    <pre class="mb-0"><code>Java
+Java</code></pre>
+</div>
+        </section>
+
+
+        <!-- CONCATENATION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                String Concatenation
+            </h3>
+
+            <p>
+                Strings can be combined using the <code>+</code> operator.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String firstName = "Samadhan";
+
+String lastName = "Patole";
+
+String fullName =
+    firstName + " " + lastName;
+
+System.out.println(fullName);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">Output</div>
+    <pre class="mb-0"><code>Samadhan Patole</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- CONCAT METHOD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">concat()</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String first = "CIIT";
+
+String second = " Institute";
+
+String result = first.concat(second);
+
+System.out.println(result);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">Output</div>
+    <pre class="mb-0"><code>CIIT Institute</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- SPLIT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">split()</h3>
+
+            <p>
+                The <code>split()</code> method divides a String according to
+                a regular expression.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String languages =
+    "Java,Python,CSharp";
+
+String[] values =
+    languages.split(",");
+
+for (String value : values) {
+
+    System.out.println(value);
+
+}</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Java
+Python
+CSharp</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- JOIN -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">String.join()</h3>
+
+            <p>
+                <code>String.join()</code> can combine multiple strings using
+                a delimiter.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String result = String.join(
+    ", ",
+    "Java",
+    "Python",
+    "CSharp"
+);
+
+System.out.println(result);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Java, Python, CSharp</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- FORMAT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">String Formatting</h3>
+
+            <p>
+                <code>String.format()</code> creates formatted text using
+                placeholders.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String name = "Amit";
+
+int age = 25;
+
+String result = String.format(
+    "Name: %s, Age: %d",
+    name,
+    age
+);
+
+System.out.println(result);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Name: Amit, Age: 25</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- TEXT BLOCK -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Text Blocks
+            </h3>
+
+            <p>
+                Modern Java supports text blocks for convenient representation
+                of multiline text.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String message = """
+        Hello
+        Welcome to Java
+        Programming
+        """;</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- STRINGBUILDER -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                StringBuilder
+            </h3>
+
+            <p>
+                When text needs to be modified repeatedly, use
+                <code>StringBuilder</code> instead of creating many temporary
+                String objects.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>StringBuilder builder =
+    new StringBuilder();
+
+builder.append("Java");
+builder.append(" ");
+builder.append("Programming");
+
+System.out.println(
+    builder.toString()
+);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Java Programming</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- STRINGBUFFER -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                StringBuffer
+            </h3>
+
+            <p>
+                <code>StringBuffer</code> is another mutable character
+                sequence. Its methods are synchronized, making it different
+                from <code>StringBuilder</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>StringBuffer buffer =
+    new StringBuffer("Java");
+
+buffer.append(" Programming");
+
+System.out.println(buffer);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">Output</div>
+    <pre class="mb-0"><code>Java Programming</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- STRING VS STRINGBUILDER -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                String vs StringBuilder vs StringBuffer
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Feature</th>
+                            <th>String</th>
+                            <th>StringBuilder</th>
+                            <th>StringBuffer</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Mutable</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+
+                        <tr>
+                            <td>Typical Use</td>
+                            <td>Fixed text</td>
+                            <td>Repeated text modification</td>
+                            <td>Mutable text with synchronized methods</td>
+                        </tr>
+
+                        <tr>
+                            <td>Synchronization</td>
+                            <td>Immutable</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+
+                        <tr>
+                            <td>Performance</td>
+                            <td>Good for immutable values</td>
+                            <td>Usually preferred for local mutable building</td>
+                            <td>More overhead than StringBuilder</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- EMPTY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Checking Empty and Blank Strings
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "";
+
+System.out.println(text.isEmpty());
+
+String value = "   ";
+
+System.out.println(value.isBlank());</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>true
+true</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                <code>isEmpty()</code> checks whether the String has zero
+                characters. <code>isBlank()</code> also considers strings
+                containing only whitespace to be blank.
+            </p>
+
+        </section>
+
+
+        <!-- NULL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">String and null</h3>
+
+            <p>
+                A String variable can contain <code>null</code>, meaning it
+                does not currently reference a String object.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = null;
+
+if (text != null) {
+
+    System.out.println(text.length());
+
+}</code></pre>
+
+            </div>
+
+            <div class="alert alert-warning mt-3">
+
+                <strong>Important:</strong>
+
+                Calling an instance method such as <code>length()</code> on a
+                null reference causes <code>NullPointerException</code>.
+
+            </div>
+
+        </section>
+
+
+        <!-- CHARACTERS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                String and Unicode
+            </h3>
+
+            <p>
+                Java Strings use UTF-16 internally. Characters outside the
+                Basic Multilingual Plane may require a surrogate pair, so
+                <code>char</code> is not always equivalent to one Unicode
+                code point.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String text = "Hello";
+
+System.out.println(
+    text.codePointAt(0)
+);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">Output</div>
+    <pre class="mb-0"><code>72</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- REAL WORLD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Example: Username Validation
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>String username = "  Sam2210  ";
+
+username = username.strip();
+
+if (!username.isBlank()
+        &amp;&amp; username.length() &gt;= 5) {
+
+    System.out.println(
+        "Valid username"
+    );
+
+} else {
+
+    System.out.println(
+        "Invalid username"
+    );
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">Output</div>
+    <pre class="mb-0"><code>Valid username</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">String Best Practices</h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Use <code>equals()</code> for content comparison.
+                </li>
+
+                <li class="mb-2">
+                    Avoid using <code>==</code> when your intention is to
+                    compare String contents.
+                </li>
+
+                <li class="mb-2">
+                    Remember that Strings are immutable.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>StringBuilder</code> for repeated local string
+                    modifications.
+                </li>
+
+                <li class="mb-2">
+                    Handle possible <code>null</code> references safely.
+                </li>
+
+                <li>
+                    Use <code>strip()</code> when Unicode-aware whitespace
+                    handling is desired.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="stringQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#stringQuestionOne">
+
+                            Why is String immutable in Java?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="stringQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#stringQuestions">
+
+                        <div class="accordion-body">
+
+                            String immutability supports safe sharing,
+                            predictable behavior, and enables optimizations
+                            such as string pooling.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#stringQuestionTwo">
+
+                            What is the difference between == and equals()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="stringQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#stringQuestions">
+
+                        <div class="accordion-body">
+
+                            For object references, <code>==</code> compares
+                            references, while <code>equals()</code> is used
+                            to compare logical content when the class
+                            implements it appropriately.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#stringQuestionThree">
+
+                            String vs StringBuilder?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="stringQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#stringQuestions">
+
+                        <div class="accordion-body">
+
+                            String is immutable. StringBuilder is mutable and
+                            is generally useful when repeatedly constructing or
+                            modifying text within a single thread.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#stringQuestionFour">
+
+                            What is the String pool?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="stringQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#stringQuestions">
+
+                        <div class="accordion-body">
+
+                            It is the JVM's mechanism for sharing String
+                            literals so identical literals can reuse the same
+                            String object.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#stringQuestionFive">
+
+                            What is the difference between isEmpty() and isBlank()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="stringQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#stringQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>isEmpty()</code> checks for zero length,
+                            while <code>isBlank()</code> also considers a
+                            string containing only whitespace to be blank.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Java Strings are immutable objects used to represent text.
+                    Important concepts include string literals, the String
+                    pool, content comparison with <code>equals()</code>,
+                    common String methods, Unicode handling, and mutable
+                    alternatives such as <code>StringBuilder</code> and
+                    <code>StringBuffer</code>.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Arrays",
+                               "DataStructuresCollections",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "Generics",
+                               "DataStructuresCollections",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

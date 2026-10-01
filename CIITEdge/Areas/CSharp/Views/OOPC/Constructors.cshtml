@@ -1,0 +1,1126 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+}
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- ===================================================== -->
+                <!-- PAGE HEADER -->
+                <!-- ===================================================== -->
+
+                <h2 class="h1 fw-bold text-dark mb-3">
+                    Constructors in C#
+                </h2>
+
+                <p class="text-muted mb-4">
+                    A <b>constructor</b> is a special member of a class that is
+                    automatically called when an object of that class is created.
+                    Constructors are mainly used to initialize the object with
+                    appropriate values.
+                </p>
+
+                <p class="text-muted mb-4">
+                    In simple words, a constructor helps us prepare an object
+                    when it is created. It can assign initial values to properties
+                    and perform initialization work required by the object.
+                </p>
+
+                <div class="alert alert-info border-0 shadow-sm mb-4">
+                    <strong>Beginner Tip:</strong>
+                    Whenever you create an object using the <b>new</b> keyword,
+                    the appropriate constructor of that class is called automatically.
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- WHAT IS CONSTRUCTOR -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    What is a Constructor?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A constructor is a special method-like member of a class that
+                    has the <b>same name as the class</b>. It does not have a return
+                    type, not even <b>void</b>.
+                </p>
+
+                <p class="text-muted mb-3">
+                    Consider the following example:
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Student object created."</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <b>Student()</b> is the constructor because its name is
+                    the same as the class name <b>Student</b>.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- BASIC SYNTAX -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructor Syntax
+                </h3>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">ClassName</span>
+                    {<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">ClassName</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="comment">// Initialization code</span><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Rule</th>
+                                <th>Explanation</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Same name as class</td>
+                                <td>
+                                    Constructor name must match the class name.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>No return type</td>
+                                <td>
+                                    A constructor does not have a return type.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Called automatically</td>
+                                <td>
+                                    It is called when an object is created.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Used for initialization</td>
+                                <td>
+                                    It can initialize fields and properties.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- DEFAULT CONSTRUCTOR -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Default Constructor
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A constructor that does not take any parameters is called a
+                    <b>parameterless constructor</b>. It is commonly called a
+                    default constructor in beginner-level discussions.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Default constructor called."</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();
+                </div>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">Output</div>
+
+                    Default constructor called.
+                </div>
+
+                <p class="text-muted mb-4">
+                    When <b>new Student()</b> is executed, the constructor runs
+                    automatically.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- COMPILER PROVIDED CONSTRUCTOR -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructor Provided by the Compiler
+                </h3>
+
+                <p class="text-muted mb-4">
+                    If a class does not declare any instance constructor, C#
+                    provides an implicit parameterless constructor. This allows
+                    an object to be created using the <b>new</b> keyword.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br>
+                    }<br><br>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, no constructor is explicitly written. The compiler
+                    provides a parameterless constructor because the class
+                    does not declare an instance constructor.
+                </p>
+
+                <div class="alert alert-warning border-0 mb-4">
+                    <strong>Important:</strong>
+                    Once you declare your own instance constructor, the compiler
+                    does not automatically add the parameterless constructor
+                    for you. If you still need one, you must declare it yourself.
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- PARAMETERIZED CONSTRUCTOR -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Parameterized Constructor
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A constructor that accepts one or more parameters is called a
+                    <b>parameterized constructor</b>. It allows us to initialize
+                    an object with values at the time of object creation.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Id { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>(
+                    <span class="keyword">int</span> id,
+                    <span class="keyword">string</span> name)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Id = id;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Name = name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>(
+                    101,
+                    <span class="string-lit">"Rahul"</span>);
+                </div>
+
+                <p class="text-muted mb-4">
+                    The values <b>101</b> and <b>"Rahul"</b> are passed to the
+                    constructor during object creation. The constructor assigns
+                    these values to the object's properties.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- THIS KEYWORD -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Using the this Keyword
+                </h3>
+
+                <p class="text-muted mb-4">
+                    The <b>this</b> keyword refers to the current object.
+                    It is commonly used when constructor parameters have the
+                    same names as class properties.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Id { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>(
+                    <span class="keyword">int</span> Id,
+                    <span class="keyword">string</span> Name)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">this</span>.Id = Id;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">this</span>.Name = Name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, <b>this.Id</b> refers to the property of the current
+                    object, while <b>Id</b> refers to the constructor parameter.
+                    The same applies to <b>this.Name</b> and <b>Name</b>.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- MULTIPLE PARAMETERS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructor with Multiple Parameters
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A constructor can accept multiple parameters when an object
+                    requires several values during initialization.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Employee</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Id { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Department { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">double</span> Salary { get; set; }<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Employee</span>(
+                    <span class="keyword">int</span> id,
+                    <span class="keyword">string</span> name,
+                    <span class="keyword">string</span> department,
+                    <span class="keyword">double</span> salary)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">this</span>.Id = id;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">this</span>.Name = name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">this</span>.Department = department;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">this</span>.Salary = salary;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+                    <span class="class-name">Employee</span> employee =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Employee</span>(
+                    101,
+                    <span class="string-lit">"Amit"</span>,
+                    <span class="string-lit">"IT"</span>,
+                    55000);
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- CONSTRUCTOR OVERLOADING -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructor Overloading
+                </h3>
+
+                <p class="text-muted mb-4">
+                    A class can have multiple constructors with different
+                    parameter lists. This is called <b>constructor overloading</b>.
+                </p>
+
+                <p class="text-muted mb-3">
+                    Constructors can be overloaded by changing the number,
+                    type, or combination of parameters.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Parameterless constructor</span><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Name = <span class="string-lit">"Unknown"</span>;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// One parameter</span><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>(
+                    <span class="keyword">string</span> name)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Name = name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Two parameters</span><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>(
+                    <span class="keyword">int</span> id,
+                    <span class="keyword">string</span> name)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Id = id;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Name = name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Id { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    Now we can create Student objects in different ways depending
+                    on the information available at the time of creation.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">Student</span> s1 =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();<br><br>
+
+                    <span class="class-name">Student</span> s2 =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>(
+                    <span class="string-lit">"Rahul"</span>);<br><br>
+
+                    <span class="class-name">Student</span> s3 =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>(
+                    101,
+                    <span class="string-lit">"Priya"</span>);
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- CONSTRUCTOR CHAINING -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructor Chaining
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Constructor chaining allows one constructor to call another
+                    constructor in the same class. The <b>this()</b> syntax can
+                    be used for this purpose.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Id { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>() :
+                    <span class="keyword">this</span>(0,
+                    <span class="string-lit">"Unknown"</span>)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>(
+                    <span class="keyword">int</span> id,
+                    <span class="keyword">string</span> name)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Id = id;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Name = name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <p class="text-muted mb-4">
+                    Here, the parameterless constructor calls the constructor
+                    that accepts <b>id</b> and <b>name</b>. This helps avoid
+                    duplicate initialization code.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- OBJECT INITIALIZER VS CONSTRUCTOR -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructor vs Object Initializer
+                </h3>
+
+                <p class="text-muted mb-4">
+                    C# also provides object initializer syntax. It can be useful
+                    when you want to create an object and assign properties directly.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;Id = 101,<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;Name =
+                    <span class="string-lit">"Rahul"</span><br>
+                    };
+                </div>
+
+                <p class="text-muted mb-4">
+                    Object initializers are different from constructors.
+                    A constructor performs initialization logic, while an object
+                    initializer assigns accessible properties or fields after
+                    the object has been created.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- REAL WORLD EXAMPLE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                   Example: Employee 🤓🌍
+                </h3>
+
+                <p class="text-muted mb-4">
+                    In a real application, an Employee object may require
+                    important information such as employee ID, name, department,
+                    and salary when it is created.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Employee</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">int</span> Id { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="keyword">string</span> Name { get; set; }<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">string</span> Department { get; set; }<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Employee</span>(
+                    <span class="keyword">int</span> id,
+                    <span class="keyword">string</span> name,
+                    <span class="keyword">string</span> department)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">this</span>.Id = id;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">this</span>.Name = name;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="keyword">this</span>.Department = department;<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+                    <span class="class-name">Employee</span> employee =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Employee</span>(
+                    101,
+                    <span class="string-lit">"Amit"</span>,
+                    <span class="string-lit">"Development"</span>);
+                </div>
+
+                <p class="text-muted mb-4">
+                    The constructor ensures that every Employee object is
+                    initialized with the required information when it is created.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- CONSTRUCTOR VS METHOD -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructor vs Method
+                </h3>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Constructor</th>
+                                <th>Method</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Has the same name as the class.
+                                </td>
+
+                                <td>
+                                    Can have any valid method name.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Does not have a return type.
+                                </td>
+
+                                <td>
+                                    Has a return type or <b>void</b>.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Called automatically during object creation.
+                                </td>
+
+                                <td>
+                                    Usually called explicitly.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Mainly used for initialization.
+                                </td>
+
+                                <td>
+                                    Mainly used to perform an operation or behavior.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- CONSTRUCTOR AND INHERITANCE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructors and Inheritance
+                </h3>
+
+                <p class="text-muted mb-4">
+                    Constructors also play an important role when inheritance is
+                    used. When a derived class object is created, the base class
+                    constructor is involved in initializing the base part of
+                    the object.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Person</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Person</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Person constructor"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+                    <span class="keyword">class</span>
+                    <span class="class-name">Student</span> :
+                    <span class="class-name">Person</span>
+                    {<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                    <span class="class-name">Student</span>()<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                    <span class="string-lit">"Student constructor"</span>);<br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }<br><br>
+
+                    <span class="class-name">Student</span> student =
+                    <span class="keyword">new</span>
+                    <span class="class-name">Student</span>();
+                </div>
+
+                <p class="text-muted mb-4">
+                    In inheritance, constructor execution follows the class
+                    hierarchy. The base class portion is initialized before
+                    the derived class constructor body completes its initialization.
+                </p>
+
+
+                <!-- ===================================================== -->
+                <!-- IMPORTANT RULES -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Important Constructor Rules
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Constructor name must be the same as the class name.
+                    </li>
+
+                    <li class="mb-2">
+                        A constructor cannot have a return type.
+                    </li>
+
+                    <li class="mb-2">
+                        Constructors are called when objects are initialized.
+                    </li>
+
+                    <li class="mb-2">
+                        A class can have multiple overloaded constructors.
+                    </li>
+
+                    <li class="mb-2">
+                        Constructors can have parameters.
+                    </li>
+
+                    <li class="mb-2">
+                        Constructors can call other constructors using
+                        constructor chaining.
+                    </li>
+
+                    <li class="mb-2">
+                        A constructor cannot be inherited like a normal member.
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- COMMON MISTAKES -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Common Beginner Mistakes
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Giving a constructor a return type such as <b>void</b>.
+                    </li>
+
+                    <li class="mb-2">
+                        Giving the constructor a different name from the class.
+                    </li>
+
+                    <li class="mb-2">
+                        Forgetting that declaring a parameterized constructor
+                        means a parameterless constructor is not automatically
+                        supplied.
+                    </li>
+
+                    <li class="mb-2">
+                        Passing the wrong number or type of arguments while
+                        creating an object.
+                    </li>
+
+                    <li class="mb-2">
+                        Confusing constructors with normal methods.
+                    </li>
+
+                    <li class="mb-2">
+                        Putting too much business logic inside constructors.
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- BEST PRACTICES -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Constructor Best Practices
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Use constructors to establish a valid initial state
+                        for an object.
+                    </li>
+
+                    <li class="mb-2">
+                        Keep constructor logic simple and focused on initialization.
+                    </li>
+
+                    <li class="mb-2">
+                        Use meaningful parameter names.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <b>this</b> when it improves clarity between
+                        parameters and properties.
+                    </li>
+
+                    <li class="mb-2">
+                        Use constructor overloading when different initialization
+                        options are genuinely required.
+                    </li>
+
+                    <li class="mb-2">
+                        Avoid performing expensive or unrelated operations
+                        unnecessarily inside constructors.
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- CIIT PRACTICAL POINT -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    CIIT Practical Point
+                </h3>
+
+                <div class="alert alert-success border-0 shadow-sm mb-4">
+
+                    <p class="mb-2">
+                        In real-world C# applications, constructors are frequently
+                        used to initialize models, services, configuration objects,
+                        and other application components.
+                    </p>
+
+                    <p class="mb-2">
+                        In ASP.NET Core applications, constructors are also commonly
+                        used for <b>Dependency Injection</b>, where required services
+                        are provided to a class through its constructor.
+                    </p>
+
+                    <p class="mb-0">
+                        Therefore, understanding constructors is important before
+                        moving to advanced OOP concepts and ASP.NET Core development.
+                    </p>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- INTERVIEW POINTS -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    CIIT Interview Points
+                </h3>
+
+                <ul class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        What is a constructor in C#?
+                    </li>
+
+                    <li class="mb-2">
+                        Why are constructors used?
+                    </li>
+
+                    <li class="mb-2">
+                        What is a parameterless constructor?
+                    </li>
+
+                    <li class="mb-2">
+                        What is a parameterized constructor?
+                    </li>
+
+                    <li class="mb-2">
+                        What is constructor overloading?
+                    </li>
+
+                    <li class="mb-2">
+                        Can a constructor have a return type?
+                    </li>
+
+                    <li class="mb-2">
+                        What is the purpose of the <b>this</b> keyword?
+                    </li>
+
+                    <li class="mb-2">
+                        What happens if you declare a parameterized constructor
+                        but no parameterless constructor?
+                    </li>
+
+                    <li class="mb-2">
+                        What is constructor chaining?
+                    </li>
+
+                    <li class="mb-2">
+                        How are constructors used with Dependency Injection
+                        in ASP.NET Core?
+                    </li>
+
+                </ul>
+
+
+                <!-- ===================================================== -->
+                <!-- SUMMARY -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Summary
+                </h3>
+
+                <div class="alert alert-primary border-0 shadow-sm mb-4">
+
+                    <ul class="mb-0">
+
+                        <li class="mb-2">
+                            A constructor is used to initialize an object.
+                        </li>
+
+                        <li class="mb-2">
+                            A constructor has the same name as its class.
+                        </li>
+
+                        <li class="mb-2">
+                            A constructor does not have a return type.
+                        </li>
+
+                        <li class="mb-2">
+                            A constructor is called when an object is created.
+                        </li>
+
+                        <li class="mb-2">
+                            Constructors can be parameterless or parameterized.
+                        </li>
+
+                        <li class="mb-2">
+                            A class can contain multiple overloaded constructors.
+                        </li>
+
+                        <li class="mb-2">
+                            The <b>this</b> keyword can refer to the current object
+                            and can also participate in constructor chaining.
+                        </li>
+
+                        <li>
+                            Constructors are widely used in professional C#
+                            and ASP.NET Core applications.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- ===================================================== -->
+                <!-- PRACTICE -->
+                <!-- ===================================================== -->
+
+                <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                    Practice Questions
+                </h3>
+
+                <ol class="text-muted mb-4">
+
+                    <li class="mb-2">
+                        Create a class named <b>Student</b> with a parameterless
+                        constructor.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a parameterized constructor that accepts
+                        student ID and name.
+                    </li>
+
+                    <li class="mb-2">
+                        Create two objects using different constructors.
+                    </li>
+
+                    <li class="mb-2">
+                        Demonstrate constructor overloading.
+                    </li>
+
+                    <li class="mb-2">
+                        Use the <b>this</b> keyword inside a constructor.
+                    </li>
+
+                    <li class="mb-2">
+                        Create an Employee class and initialize its
+                        Id, Name, and Department using a constructor.
+                    </li>
+
+                    <li class="mb-2">
+                        Explain the difference between a constructor and a method.
+                    </li>
+
+                    <li class="mb-2">
+                        Explain constructor chaining with an example.
+                    </li>
+
+                </ol>
+
+
+                <!-- ===================================================== -->
+                <!-- NEXT TOPIC -->
+                <!-- ===================================================== -->
+
+               <div class="d-flex justify-content-between align-items-center mb-5">
+
+    <a href="/CSharp/OOPC/ClassesObjects"
+       class="btn btn-outline-secondary">
+        ← Previous Topic
+    </a>
+
+    <a href="/CSharp/OOPC/Encapsulation"
+       class="btn btn-primary">
+        Next Topic →
+    </a>
+
+</div>
+
+            </div>
+
+        </section>
+
+    </div>
+</main>

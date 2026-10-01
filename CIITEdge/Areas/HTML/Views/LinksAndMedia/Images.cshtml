@@ -1,0 +1,579 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Images";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .demo-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Images</h1>
+
+            <p class="lead">
+                Images make web pages more attractive, informative, and easier to understand.
+                HTML provides the <code>&lt;img&gt;</code> element to display images on a webpage.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. Introduction to HTML Images</h2>
+
+            <p>
+                The HTML <code>&lt;img&gt;</code> element is used to embed an image
+                into a webpage.
+            </p>
+
+            <p>
+                The <code>&lt;img&gt;</code> element is an empty element, which means
+                it does not require a closing tag.
+            </p>
+
+            <pre><code>&lt;img src="image.jpg" alt="Sample Image"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">2. Basic Image Syntax</h2>
+
+            <p>
+                The basic syntax of an HTML image is:
+            </p>
+
+            <pre><code>&lt;img src="image.jpg" alt="Description of image"&gt;</code></pre>
+
+            <p>
+                Two important attributes are <code>src</code> and <code>alt</code>.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Specifies the image file or image URL.</td>
+                    </tr>
+                    <tr>
+                        <td><code>alt</code></td>
+                        <td>Provides alternative text for the image.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">3. The src Attribute</h2>
+
+            <p>
+                The <code>src</code> attribute specifies the path or URL of the image.
+            </p>
+
+            <pre><code>&lt;img src="flower.jpg" alt="Beautiful Flower"&gt;</code></pre>
+
+            <p>
+                If the image is stored inside an <code>images</code> folder:
+            </p>
+
+            <pre><code>&lt;img src="images/flower.jpg" alt="Beautiful Flower"&gt;</code></pre>
+
+            <p>
+                An external image can also be loaded using a complete URL:
+            </p>
+
+            <pre><code>&lt;img src="https://example.com/images/photo.jpg"
+     alt="Example Photo"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">4. The alt Attribute</h2>
+
+            <p>
+                The <code>alt</code> attribute provides alternative text for an image.
+                It is displayed or used when the image cannot be loaded.
+            </p>
+
+            <pre><code>&lt;img src="student.jpg" alt="Student studying HTML"&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Always provide meaningful alternative text for informative images.
+                For decorative images, an empty <code>alt</code> value can be appropriate.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">5. Complete Image Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;HTML Images&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Welcome to HTML&lt;/h1&gt;
+
+    &lt;img src="images/html.jpg"
+         alt="HTML learning image"&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">6. Image Width and Height</h2>
+
+            <p>
+                The <code>width</code> and <code>height</code> attributes can be used
+                to specify the dimensions of an image.
+            </p>
+
+            <pre><code>&lt;img src="flower.jpg"
+     alt="Flower"
+     width="300"
+     height="200"&gt;</code></pre>
+
+
+
+            <p>
+                The values are normally specified in pixels when used as HTML attributes.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">7. Example with Width and Height</h2>
+
+            <pre><code>&lt;img src="images/nature.jpg"
+     alt="Nature"
+     width="500"
+     height="300"&gt;</code></pre>
+     <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                <strong>Example Output:</strong>
+
+                <div class="mt-3">
+                    <div style="width:500px; max-width:100%; height:180px; background:#e9ecef; display:flex; align-items:center; justify-content:center; border-radius:8px;">
+                        Sample Image Area
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">8. Image from a Folder</h2>
+
+            <p>
+                Organizing images inside a separate folder is common in web projects.
+            </p>
+
+            <p>Example folder structure:</p>
+
+            <pre><code>MyWebsite/
+│
+├── index.html
+│
+└── images/
+    ├── logo.png
+    ├── banner.jpg
+    └── student.jpg</code></pre>
+
+            <p>
+                To display <code>logo.png</code>:
+            </p>
+
+            <pre><code>&lt;img src="images/logo.png" alt="Website Logo"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">9. Relative Image Path</h2>
+
+            <p>
+                A relative path points to an image based on the location of the current HTML file.
+            </p>
+
+            <pre><code>&lt;img src="images/logo.png" alt="Logo"&gt;</code></pre>
+
+            <p>
+                If the image is one folder above the current page:
+            </p>
+
+            <pre><code>&lt;img src="../images/logo.png" alt="Logo"&gt;</code></pre>
+
+            <p>
+                The <code>../</code> notation moves one directory level upward.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">10. Absolute Image URL</h2>
+
+            <p>
+                An absolute URL contains the complete address of the image.
+            </p>
+
+            <pre><code>&lt;img src="https://example.com/images/logo.png"
+     alt="Example Logo"&gt;</code></pre>
+
+            <p>
+                Absolute URLs are useful when referencing images hosted on another
+                website or content delivery system.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">11. Image as a Link</h2>
+
+            <p>
+                An image can be placed inside an <code>&lt;a&gt;</code> element
+                to make the image clickable.
+            </p>
+
+            <pre><code>&lt;a href="https://www.example.com"&gt;
+    &lt;img src="images/logo.png" alt="Visit Example Website"&gt;
+&lt;/a&gt;</code></pre>
+
+            <p>
+                When the user clicks the image, the browser follows the link.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">12. Image with Border</h2>
+
+            <p>
+                CSS can be used to add a border around an image.
+            </p>
+
+            <pre><code>&lt;img src="images/photo.jpg"
+     alt="Photo"
+     style="border: 3px solid black;"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">13. Image with CSS Width</h2>
+
+            <p>
+                CSS provides more flexible control over image dimensions.
+            </p>
+
+            <pre><code>&lt;img src="images/banner.jpg"
+     alt="Banner"
+     style="width: 500px;"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">14. Responsive Images</h2>
+
+            <p>
+                A responsive image adjusts to the available screen width.
+                A common CSS technique is to use <code>max-width: 100%</code>.
+            </p>
+
+            <pre><code>&lt;img src="images/banner.jpg"
+     alt="Website Banner"
+     style="max-width: 100%; height: auto;"&gt;</code></pre>
+
+            <div class="example-box">
+                <strong>Why Responsive Images?</strong>
+                <ul class="mt-2 mb-0">
+                    <li>They work better on mobile devices.</li>
+                    <li>They can fit different screen sizes.</li>
+                    <li>They help prevent horizontal scrolling.</li>
+                </ul>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">15. Using the style Attribute</h2>
+
+            <p>
+                Inline CSS can be used to customize image appearance.
+            </p>
+
+            <pre><code>&lt;img src="images/photo.jpg"
+     alt="Photo"
+     style="width:300px; height:auto; border-radius:10px;"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">16. Image Alignment</h2>
+
+            <p>
+                CSS can be used to position an image within a webpage.
+            </p>
+
+            <pre><code>&lt;img src="images/photo.jpg"
+     alt="Photo"
+     style="display:block; margin:auto; width:300px;"&gt;</code></pre>
+
+            <p>
+                The example uses <code>margin:auto</code> to center the image
+                when the image is displayed as a block element.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">17. Image Formats</h2>
+
+            <p>
+                Different image formats are commonly used on websites.
+            </p>
+
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Format</th>
+                        <th>Common Use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>JPG / JPEG</td>
+                        <td>Photographs and complex images.</td>
+                    </tr>
+                    <tr>
+                        <td>PNG</td>
+                        <td>Images requiring transparency or lossless quality.</td>
+                    </tr>
+                    <tr>
+                        <td>GIF</td>
+                        <td>Simple animations and limited-color graphics.</td>
+                    </tr>
+                    <tr>
+                        <td>SVG</td>
+                        <td>Scalable vector graphics such as logos and icons.</td>
+                    </tr>
+                    <tr>
+                        <td>WebP</td>
+                        <td>Modern web images with efficient compression.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">18. Image Title</h2>
+
+            <p>
+                The <code>title</code> attribute can provide additional information
+                about an image.
+            </p>
+
+            <pre><code>&lt;img src="images/logo.png"
+     alt="Company Logo"
+     title="Company Logo"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">19. Using Figure and Figcaption</h2>
+
+            <p>
+                The <code>&lt;figure&gt;</code> element can group an image with
+                its caption.
+            </p>
+
+            <pre><code>&lt;figure&gt;
+
+    &lt;img src="images/mountain.jpg"
+         alt="Mountain landscape"
+         width="500"&gt;
+
+    &lt;figcaption&gt;
+        Beautiful Mountain Landscape
+    &lt;/figcaption&gt;
+
+&lt;/figure&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                <figure class="mb-0">
+                    <div style="width:100%; height:180px; background:#e9ecef; display:flex; align-items:center; justify-content:center; border-radius:8px;">
+                        Sample Mountain Image
+                    </div>
+
+                    <figcaption class="text-center mt-2">
+                        Beautiful Mountain Landscape
+                    </figcaption>
+                </figure>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">20. Image Loading and Broken Images</h2>
+
+            <p>
+                If the browser cannot find or load an image specified by the
+                <code>src</code> attribute, the image may not be displayed.
+            </p>
+
+            <pre><code>&lt;img src="wrong-image.jpg"
+     alt="Sample Image"&gt;</code></pre>
+
+            <p>
+                A meaningful <code>alt</code> value helps communicate the intended
+                content when the image cannot be displayed.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">21. Accessibility Best Practices</h2>
+
+            <ul>
+                <li>Use meaningful alternative text for informative images.</li>
+                <li>Keep image descriptions concise and useful.</li>
+                <li>Use an empty <code>alt</code> attribute for purely decorative images when appropriate.</li>
+                <li>Avoid putting important text only inside images.</li>
+                <li>Use suitable image dimensions and formats.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">22. Common Mistakes</h2>
+
+            <ul>
+                <li>Forgetting the <code>src</code> attribute.</li>
+                <li>Using an incorrect image path.</li>
+                <li>Forgetting the <code>alt</code> attribute.</li>
+                <li>Using extremely large images unnecessarily.</li>
+                <li>Using inappropriate image formats.</li>
+                <li>Using fixed dimensions that break the layout on small screens.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">23. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML page containing:</strong></p>
+
+                <ol>
+                    <li>A logo image.</li>
+                    <li>An image loaded from an <code>images</code> folder.</li>
+                    <li>An image with <code>width</code> and <code>height</code>.</li>
+                    <li>An image with meaningful <code>alt</code> text.</li>
+                    <li>A responsive image using CSS.</li>
+                    <li>An image wrapped inside a hyperlink.</li>
+                    <li>A figure containing an image and caption.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">24. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Image Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;My Favorite Place&lt;/h1&gt;
+
+    &lt;figure&gt;
+
+        &lt;img src="images/nature.jpg"
+             alt="Beautiful nature landscape"
+             style="max-width:100%; height:auto;"&gt;
+
+        &lt;figcaption&gt;
+            Beautiful Nature Landscape
+        &lt;/figcaption&gt;
+
+    &lt;/figure&gt;
+
+    &lt;br&gt;
+
+    &lt;a href="https://www.example.com"&gt;
+        &lt;img src="images/logo.png"
+             alt="Example Website Logo"
+             width="150"&gt;
+    &lt;/a&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML images are displayed using the <code>&lt;img&gt;</code> element.
+                    The <code>src</code> attribute specifies the image location and the
+                    <code>alt</code> attribute provides alternative text. Images can be
+                    resized, styled, made responsive, used as links, and combined with
+                    <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> for
+                    structured image content.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("LinkAttributes", "LinksAndMedia", new { area = "HTML" })">
+                    ← Previous: Link Attributes
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("ImageAttributes", "LinksAndMedia", new { area = "HTML" })">
+                    Next: Image Attributes →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

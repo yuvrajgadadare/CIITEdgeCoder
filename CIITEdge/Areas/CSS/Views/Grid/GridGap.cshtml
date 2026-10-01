@@ -1,0 +1,891 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Grid Gap";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #css-grid-gap-page {
+        color: #212529;
+    }
+
+    #css-grid-gap-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    /* =========================================================
+       HEADINGS
+       ========================================================= */
+
+    #css-grid-gap-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-gap-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-gap-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-grid-gap-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #css-grid-gap-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-grid-gap-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* =========================================================
+       EXPLANATION
+       ========================================================= */
+
+    #css-grid-gap-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-grid-gap-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #css-grid-gap-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-gap-page .grid-diagram {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 100px);
+        gap: 20px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-grid-gap-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #css-grid-gap-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-gap-page .output-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-grid-gap-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* =========================================================
+       PROPERTY CARDS
+       ========================================================= */
+
+    #css-grid-gap-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-grid-gap-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-gap-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* =========================================================
+       NOTE
+       ========================================================= */
+
+    #css-grid-gap-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #css-grid-gap-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-grid-gap-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-gap-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @@media (max-width: 991px) {
+
+        #css-grid-gap-page .content-section {
+            padding: 20px;
+        }
+
+        #css-grid-gap-page .grid-diagram,
+        #css-grid-gap-page .output-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-grid-gap-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS Grid Gap
+                </h1>
+
+                <p>
+                    The <strong>gap</strong> property is used to create
+                    space between rows and columns inside a CSS Grid
+                    container.
+                </p>
+
+                <p>
+                    It provides a simple way to control the spacing
+                    between Grid items without adding margins to each
+                    individual item.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- WHAT IS GAP -->
+                <!-- ================================================= -->
+
+                <h2>
+                    What is Grid Gap?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The <strong>gap</strong> property defines the
+                        space between Grid rows and columns.
+                    </p>
+
+                    <p>
+                        It works only between Grid items. It does not
+                        create space outside the Grid container.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC SYNTAX -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Basic Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    gap: 20px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The <strong>gap</strong> property creates
+                        <strong>20px</strong> of space between the
+                        Grid rows and columns.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Grid Gap Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="grid-diagram">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 4
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 5
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 6
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+
+                        The space between Grid items is controlled
+                        by the <strong>gap</strong> property.
+
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- ROW GAP -->
+                <!-- ================================================= -->
+
+                <h2>
+                    row-gap
+                </h2>
+
+                <p>
+                    The <strong>row-gap</strong> property controls the
+                    vertical space between Grid rows.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    row-gap: 20px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        This creates <strong>20px</strong> of vertical
+                        space between the Grid rows.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- COLUMN GAP -->
+                <!-- ================================================= -->
+
+                <h2>
+                    column-gap
+                </h2>
+
+                <p>
+                    The <strong>column-gap</strong> property controls
+                    the horizontal space between Grid columns.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    column-gap: 30px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        This creates <strong>30px</strong> of horizontal
+                        space between Grid columns.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- ROW AND COLUMN GAP -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Different Row and Column Gaps
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    row-gap: 20px;
+    column-gap: 30px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The Grid has <strong>20px</strong> vertical
+                        spacing between rows.
+                    </p>
+
+                    <p>
+                        The Grid has <strong>30px</strong> horizontal
+                        spacing between columns.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- GAP SHORTHAND -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Gap Shorthand
+                </h2>
+
+                <p>
+                    The <strong>gap</strong> property can be used as
+                    shorthand for both row and column gaps.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    gap: 20px 30px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The first value,
+                        <strong>20px</strong>,
+                        represents the row gap.
+                    </p>
+
+                    <p>
+                        The second value,
+                        <strong>30px</strong>,
+                        represents the column gap.
+                    </p>
+
+                    <p>
+                        Therefore:
+                        <strong>row gap = 20px</strong> and
+                        <strong>column gap = 30px</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- ONE VALUE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Gap with One Value
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    gap: 15px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        When one value is used, the same
+                        <strong>15px</strong> gap is applied between
+                        both rows and columns.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- TWO VALUES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Gap with Two Values
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    gap: 10px 25px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The first value
+                        <strong>10px</strong>
+                        defines the row gap.
+                    </p>
+
+                    <p>
+                        The second value
+                        <strong>25px</strong>
+                        defines the column gap.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- OUTPUT -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Output
+                </h2>
+
+                <div class="browser-output">
+
+                    <div class="output-grid">
+
+                        <div class="output-item">
+                            Grid Item 1
+                        </div>
+
+                        <div class="output-item">
+                            Grid Item 2
+                        </div>
+
+                        <div class="output-item">
+                            Grid Item 3
+                        </div>
+
+                        <div class="output-item">
+                            Grid Item 4
+                        </div>
+
+                        <div class="output-item">
+                            Grid Item 5
+                        </div>
+
+                        <div class="output-item">
+                            Grid Item 6
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="mt-3">
+                    The output uses
+                    <strong>gap: 20px;</strong>,
+                    so equal 20px spacing appears between both rows
+                    and columns.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- GAP VS MARGIN -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Gap vs Margin
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                gap
+                            </h3>
+
+                            <p>
+                                Creates consistent spacing between
+                                Grid items.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                margin
+                            </h3>
+
+                            <p>
+                                Creates space around individual
+                                elements.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT PROPERTIES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Important Gap Properties
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                gap
+                            </h3>
+
+                            <p>
+                                Controls both row and column
+                                spacing.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                row-gap
+                            </h3>
+
+                            <p>
+                                Controls vertical spacing between
+                                Grid rows.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                column-gap
+                            </h3>
+
+                            <p>
+                                Controls horizontal spacing between
+                                Grid columns.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PRACTICAL EXAMPLE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 🤓🌍
+                </h2>
+
+                <p>
+                    A course card layout can use the
+                    <strong>gap</strong> property to create consistent
+                    spacing between course cards.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The Grid contains three equal columns.
+                    </p>
+
+                    <p>
+                        A <strong>20px</strong> gap is automatically
+                        created between the course cards.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- REAL WORLD -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Real-World Uses
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Course card layouts
+                    </li>
+
+                    <li>
+                        Product grids
+                    </li>
+
+                    <li>
+                        Image galleries
+                    </li>
+
+                    <li>
+                        Dashboard cards
+                    </li>
+
+                    <li>
+                        Portfolio layouts
+                    </li>
+
+                    <li>
+                        Admin panels
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- NOTE -->
+                <!-- ================================================= -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    The <strong>gap</strong> property creates space
+                    between Grid rows and columns. It does not create
+                    outer space around the Grid container.
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>gap</strong> property controls the
+                        spacing between CSS Grid items.
+                        <strong>row-gap</strong> controls vertical
+                        spacing, while <strong>column-gap</strong>
+                        controls horizontal spacing. The shorthand
+                        <strong>gap</strong> can be used to control
+                        both values together.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- NAVIGATION -->
+                <!-- ================================================= -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2 mb-md-0">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("GridTemplateRows", "Grid", new { area = "CSS" })">
+
+                            ← Previous: Grid Template Rows
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("GridColumn", "Grid", new { area = "CSS" })">
+
+                            Next: Grid Column →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

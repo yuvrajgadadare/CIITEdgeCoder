@@ -1,0 +1,904 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "Subscript and Superscript";
+}
+
+<style>
+
+    #html-subscript-superscript-page pre {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        #html-subscript-superscript-page pre code {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+    #html-subscript-superscript-page .info-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+        #html-subscript-superscript-page .info-card h5 {
+            color: #5b21b6;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+    #html-subscript-superscript-page .example-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #html-subscript-superscript-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 24px;
+    }
+
+    #html-subscript-superscript-page .table th {
+        background: #f8f9fa;
+        vertical-align: middle;
+    }
+
+    #html-subscript-superscript-page .table td {
+        vertical-align: middle;
+    }
+
+</style>
+
+
+<main id="html-subscript-superscript-page"
+      class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/HTML/Views/Shared/HTMLTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <section class="col-lg-9">
+
+
+            <!-- PAGE TITLE -->
+            <div class="mb-4">
+
+                <h1 class="fw-bold">
+                    Subscript and Superscript
+                </h1>
+
+                <p class="lead">
+                    Learn how to display characters below or above the normal
+                    text line using the HTML <code>&lt;sub&gt;</code> and
+                    <code>&lt;sup&gt;</code> elements.
+                </p>
+
+            </div>
+
+
+            <!-- INTRODUCTION -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Introduction
+                </h2>
+
+                <p>
+                    HTML provides two special text formatting elements for
+                    positioning characters relative to the normal text line.
+                </p>
+
+                <ul>
+
+                    <li class="mb-2">
+                        <code>&lt;sub&gt;</code> displays subscript text.
+                    </li>
+
+                    <li>
+                        <code>&lt;sup&gt;</code> displays superscript text.
+                    </li>
+
+                </ul>
+
+                <div class="alert alert-info">
+
+                    <strong>Simple Example:</strong>
+
+                    <div class="mt-2">
+                        H<sub>2</sub>O &nbsp;&nbsp; and &nbsp;&nbsp; x<sup>2</sup>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBSCRIPT -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    The &lt;sub&gt; Element
+                </h2>
+
+                <p>
+                    The <code>&lt;sub&gt;</code> element displays text as
+                    subscript, which means the text appears slightly below
+                    the normal text line.
+                </p>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Syntax
+                </h3>
+
+                <pre><code>&lt;sub&gt;Text&lt;/sub&gt;</code></pre>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Example
+                </h3>
+
+                <pre><code>&lt;p&gt;
+    H&lt;sub&gt;2&lt;/sub&gt;O
+&lt;/p&gt;</code></pre>
+
+                <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        H<sub>2</sub>O
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBSCRIPT EXAMPLES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Common Uses of &lt;sub&gt;
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Chemical Formula
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    H&lt;sub&gt;2&lt;/sub&gt;O
+&lt;/p&gt;</code></pre>
+
+                            <div class="mt-3">
+                                H<sub>2</sub>O
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Carbon Dioxide
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    CO&lt;sub&gt;2&lt;/sub&gt;
+&lt;/p&gt;</code></pre>
+
+                            <div class="mt-3">
+                                CO<sub>2</sub>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Mathematical Index
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    x&lt;sub&gt;1&lt;/sub&gt;
+&lt;/p&gt;</code></pre>
+
+                            <div class="mt-3">
+                                x<sub>1</sub>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Variable Notation
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    a&lt;sub&gt;n&lt;/sub&gt;
+&lt;/p&gt;</code></pre>
+
+                            <div class="mt-3">
+                                a<sub>n</sub>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUPERSCRIPT -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    The &lt;sup&gt; Element
+                </h2>
+
+                <p>
+                    The <code>&lt;sup&gt;</code> element displays text as
+                    superscript, which means the text appears slightly above
+                    the normal text line.
+                </p>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Syntax
+                </h3>
+
+                <pre><code>&lt;sup&gt;Text&lt;/sup&gt;</code></pre>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Example
+                </h3>
+
+                <pre><code>&lt;p&gt;
+    x&lt;sup&gt;2&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+                <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        x<sup>2</sup>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUPERSCRIPT EXAMPLES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Common Uses of &lt;sup&gt;
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Square
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    x&lt;sup&gt;2&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+                            <div class="mt-3">
+                                x<sup>2</sup>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Cube
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    x&lt;sup&gt;3&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+                            <div class="mt-3">
+                                x<sup>3</sup>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Mathematical Power
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    10&lt;sup&gt;6&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+                            <div class="mt-3">
+                                10<sup>6</sup>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Ordinal Numbers
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    1&lt;sup&gt;st&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+                            <div class="mt-3">
+                                1<sup>st</sup>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUB VS SUP -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    &lt;sub&gt; vs &lt;sup&gt;
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead>
+
+                            <tr>
+                                <th>Feature</th>
+                                <th>&lt;sub&gt;</th>
+                                <th>&lt;sup&gt;</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    Position
+                                </td>
+
+                                <td>
+                                    Below the normal text line.
+                                </td>
+
+                                <td>
+                                    Above the normal text line.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Common Use
+                                </td>
+
+                                <td>
+                                    Chemical formulas, indices, notation.
+                                </td>
+
+                                <td>
+                                    Powers, exponents, ordinal notation.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Example
+                                </td>
+
+                                <td>
+                                    H<sub>2</sub>O
+                                </td>
+
+                                <td>
+                                    x<sup>2</sup>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMBINING -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Combining Subscript and Superscript
+                </h2>
+
+                <p>
+                    Both elements can be used together when the notation
+                    requires both lower and upper positioning.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    X&lt;sub&gt;1&lt;/sub&gt;&lt;sup&gt;2&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        X<sub>1</sub><sup>2</sup>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MATHEMATICAL EXAMPLES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Mathematical Examples
+                </h2>
+
+                <div class="concept-box">
+
+                    <p>
+                        x<sup>2</sup> + y<sup>2</sup> = z<sup>2</sup>
+                    </p>
+
+                    <p>
+                        a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
+                    </p>
+
+                    <p>
+                        10<sup>3</sup> = 1000
+                    </p>
+
+                    <p class="mb-0">
+                        x<sub>1</sub> + x<sub>2</sub> = x<sub>3</sub>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHEMICAL EXAMPLES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Chemical Formula Examples
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-4">
+
+                        <div class="info-card text-center">
+
+                            <h5>
+                                Water
+                            </h5>
+
+                            <div class="fs-4">
+                                H<sub>2</sub>O
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="info-card text-center">
+
+                            <h5>
+                                Carbon Dioxide
+                            </h5>
+
+                            <div class="fs-4">
+                                CO<sub>2</sub>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="info-card text-center">
+
+                            <h5>
+                                Sulfuric Acid
+                            </h5>
+
+                            <div class="fs-4">
+                                H<sub>2</sub>SO<sub>4</sub>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REAL WORLD -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Example 🌍👨‍🏫
+                </h2>
+
+                <pre><code>&lt;h2&gt;
+    HTML Examples
+&lt;/h2&gt;
+
+&lt;p&gt;
+    Water:
+    H&lt;sub&gt;2&lt;/sub&gt;O
+&lt;/p&gt;
+
+&lt;p&gt;
+    Carbon Dioxide:
+    CO&lt;sub&gt;2&lt;/sub&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+    Area of a square:
+    a&lt;sup&gt;2&lt;/sup&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+    Cube:
+    x&lt;sup&gt;3&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <h3>
+                        HTML Examples
+                    </h3>
+
+                    <p>
+                        Water:
+                        H<sub>2</sub>O
+                    </p>
+
+                    <p>
+                        Carbon Dioxide:
+                        CO<sub>2</sub>
+                    </p>
+
+                    <p>
+                        Area of a square:
+                        a<sup>2</sup>
+                    </p>
+
+                    <p class="mb-0">
+                        Cube:
+                        x<sup>3</sup>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CSS NOTE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    CSS and Default Appearance
+                </h2>
+
+                <p>
+                    Browsers provide a default visual style for
+                    <code>&lt;sub&gt;</code> and <code>&lt;sup&gt;</code>.
+                    CSS can be used when a different appearance is required.
+                </p>
+
+                <pre><code>&lt;span class="custom-sup"&gt;
+    2
+&lt;/span&gt;
+
+&lt;style&gt;
+
+    .custom-sup {
+        position: relative;
+        top: -0.5em;
+        font-size: 75%;
+    }
+
+&lt;/style&gt;</code></pre>
+
+            </div>
+            <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <!-- IMPORTANT POINTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Important Points
+                </h2>
+
+                <ul>
+
+                    <li class="mb-2">
+                        <code>&lt;sub&gt;</code> places content below the
+                        normal text line.
+                    </li>
+
+                    <li class="mb-2">
+                        <code>&lt;sup&gt;</code> places content above the
+                        normal text line.
+                    </li>
+
+                    <li class="mb-2">
+                        Subscript is commonly used in chemical formulas
+                        and indices.
+                    </li>
+
+                    <li class="mb-2">
+                        Superscript is commonly used in exponents and
+                        ordinal notation.
+                    </li>
+
+                    <li>
+                        CSS can be used for custom visual styling.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- COMMON MISTAKES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Common Mistakes
+                </h2>
+
+                <ul>
+
+                    <li class="mb-2">
+                        Using <code>&lt;sub&gt;</code> when text should
+                        actually be superscript.
+                    </li>
+
+                    <li class="mb-2">
+                        Using <code>&lt;sup&gt;</code> for chemical formulas.
+                    </li>
+
+                    <li class="mb-2">
+                        Forgetting that the element represents actual
+                        text positioning and meaning.
+                    </li>
+
+                    <li>
+                        Using CSS positioning when the semantic HTML element
+                        already represents the intended meaning.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Practice Exercise
+                </h2>
+
+                <ol>
+
+                    <li class="mb-2">
+                        Write H<sub>2</sub>O using HTML.
+                    </li>
+
+                    <li class="mb-2">
+                        Write CO<sub>2</sub> using HTML.
+                    </li>
+
+                    <li class="mb-2">
+                        Write x<sup>2</sup>.
+                    </li>
+
+                    <li class="mb-2">
+                        Write x<sup>3</sup>.
+                    </li>
+
+                    <li class="mb-2">
+                        Write x<sub>1</sub> and x<sub>2</sub>.
+                    </li>
+
+                    <li>
+                        Create a page containing at least three chemical
+                        formulas and three mathematical expressions.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    The <code>&lt;sub&gt;</code> element displays text below
+                    the normal text line and is commonly used for chemical
+                    formulas and indices. The <code>&lt;sup&gt;</code>
+                    element displays text above the normal text line and is
+                    commonly used for exponents and ordinal notation.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("UnderlineAndHighlight", "TextFormatting", new { area = "HTML" })">
+
+                    ← Previous: Underline and Highlight
+
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Quotations", "TextFormatting", new { area = "HTML" })">
+
+                    Next: Quotations →
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>

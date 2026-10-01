@@ -1,0 +1,1071 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Creating Elements";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-creating-elements-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-creating-elements-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+
+    /* =========================================================
+       TITLE
+       ========================================================= */
+
+    #javascript-creating-elements-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-creating-elements-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+
+    /* =========================================================
+       SECTION
+       ========================================================= */
+
+    #javascript-creating-elements-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-creating-elements-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-creating-elements-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-creating-elements-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-creating-elements-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-creating-elements-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       IMAGE
+       ========================================================= */
+
+    #javascript-creating-elements-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-creating-elements-page .creating-elements-image {
+        width: 100%;
+        height: 360px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-creating-elements-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-creating-elements-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 26px;
+        margin: 28px 0;
+    }
+
+    #javascript-creating-elements-page .diagram-title {
+        text-align: center;
+        font-size: 19px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 25px;
+    }
+
+    #javascript-creating-elements-page .creating-flow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-creating-elements-page .flow-box {
+        background: #ffffff;
+        border: 2px solid #d8dee9;
+        border-radius: 9px;
+        padding: 16px 20px;
+        min-width: 155px;
+        text-align: center;
+        font-family: Consolas, Monaco, monospace;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #javascript-creating-elements-page .flow-box small {
+        display: block;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+        color: #6c757d;
+        margin-top: 7px;
+    }
+
+    #javascript-creating-elements-page .flow-highlight {
+        background: #f3ecff;
+        border-color: #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-creating-elements-page .flow-result {
+        background: #ecfdf3;
+        border-color: #198754;
+        color: #157347;
+    }
+
+    #javascript-creating-elements-page .flow-arrow {
+        color: #5b21b6;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    #javascript-creating-elements-page .diagram-note {
+        color: #6c757d;
+        text-align: center;
+        line-height: 1.7;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       STEP CARDS
+       ========================================================= */
+
+    #javascript-creating-elements-page .step-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.04);
+    }
+
+    #javascript-creating-elements-page .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: #5b21b6;
+        color: #ffffff;
+        border-radius: 50%;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-creating-elements-page .step-card h5 {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    #javascript-creating-elements-page .step-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-creating-elements-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-creating-elements-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-creating-elements-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-creating-elements-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-creating-elements-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-creating-elements-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-creating-elements-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-creating-elements-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-creating-elements-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-creating-elements-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-creating-elements-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-creating-elements-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-creating-elements-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-creating-elements-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-creating-elements-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-creating-elements-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-creating-elements-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-creating-elements-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-creating-elements-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-creating-elements-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-creating-elements-page .creating-elements-image {
+            height: 260px;
+        }
+
+        #javascript-creating-elements-page .creating-flow {
+            flex-direction: column;
+        }
+
+        #javascript-creating-elements-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-creating-elements-page" class="container">
+
+    <div class="row g-4">
+
+
+        <!-- =====================================================
+             LEFT SIDE - JAVASCRIPT SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- =================================================
+                     PAGE TITLE
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    Creating Elements
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript can create new HTML elements
+                    dynamically and add them to a web page using the DOM.
+                </p>
+
+
+                <!-- =================================================
+                     INTRODUCTION
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is Creating Elements?
+                </h2>
+
+                <p class="section-text">
+                    JavaScript allows us to create new HTML elements
+                    dynamically using the DOM.
+                </p>
+
+                <p class="section-text">
+                    The
+                    <strong>document.createElement()</strong>
+                    method creates a new HTML element that can later
+                    be added to the web page.
+                </p>
+
+
+                <!-- =================================================
+                     CONCEPT BOX
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Definition
+                    </h5>
+
+                    <p>
+                        Creating Elements means creating a new HTML
+                        element using JavaScript instead of writing
+                        that element directly in the HTML document.
+                    </p>
+
+                    <p>
+                        The most commonly used method is
+                        <strong>document.createElement()</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement/element.png"
+                         alt="JavaScript DOM createElement reference"
+                         class="creating-elements-image"
+                         onerror="this.style.display='none';" />
+
+                    <p class="image-caption">
+                        JavaScript can create new HTML elements dynamically
+                        and add them to the DOM.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     HOW IT WORKS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How Creating Elements Works
+                </h2>
+
+                <p class="section-text">
+                    Creating an element normally follows three simple
+                    steps: create the element, add content, and attach
+                    the element to the document.
+                </p>
+
+
+                <!-- =================================================
+                     DIAGRAM
+                     ================================================= -->
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        JavaScript Element Creation Flow
+                    </div>
+
+                    <div class="creating-flow">
+
+                        <div class="flow-box">
+                            document
+                            <small>DOM Document</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box flow-highlight">
+                            createElement()
+                            <small>Create New Element</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            textContent
+                            <small>Add Content</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box flow-result">
+                            appendChild()
+                            <small>Add to Page</small>
+                        </div>
+
+                    </div>
+
+                    <p class="diagram-note">
+                        Create → Configure → Add the new element to the DOM.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     STEPS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Steps to Create an Element
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-4">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                1
+                            </div>
+
+                            <h5>
+                                Create Element
+                            </h5>
+
+                            <p>
+                                Use
+                                <strong>document.createElement()</strong>
+                                to create a new HTML element.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                2
+                            </div>
+
+                            <h5>
+                                Add Content
+                            </h5>
+
+                            <p>
+                                Use properties such as
+                                <strong>textContent</strong>
+                                to add content.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                3
+                            </div>
+
+                            <h5>
+                                Add to DOM
+                            </h5>
+
+                            <p>
+                                Use
+                                <strong>appendChild()</strong>
+                                to add the new element to the page.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Create a Paragraph
+                </h2>
+
+                <p class="section-text">
+                    The following browser-side JavaScript creates a new
+                    paragraph element and adds text to it.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const paragraph = document.createElement("p");
+
+paragraph.textContent =
+    "Welcome to CIIT Training Institute";
+
+document.body.appendChild(paragraph);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runCreatingExample1()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Created Element: p
+                    <br />
+                    Output: Welcome to CIIT Training Institute
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Create a Heading
+                </h2>
+
+                <p class="section-text">
+                    We can create different HTML elements by passing
+                    the required tag name to
+                    <strong>createElement()</strong>.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const heading = document.createElement("h2");
+
+heading.textContent = "Learn JavaScript with CIIT";
+
+document.body.appendChild(heading);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runCreatingExample2()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Created Element: h2
+                    <br />
+                    Output: Learn JavaScript with CIIT
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 3: Create a Button
+                </h2>
+
+                <p class="section-text">
+                    JavaScript can also create interactive elements
+                    such as buttons.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const button = document.createElement("button");
+
+button.textContent = "Click Me";
+
+document.body.appendChild(button);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runCreatingExample3()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Created Element: button
+                    <br />
+                    Output: Click Me
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 4
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 4: Create Multiple Elements
+                </h2>
+
+                <p class="section-text">
+                    Multiple elements can be created and added to the
+                    page using JavaScript.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const heading = document.createElement("h2");
+heading.textContent = "CIIT Training Institute";
+
+const paragraph = document.createElement("p");
+paragraph.textContent = "Learn Full Stack Development";
+
+document.body.appendChild(heading);
+document.body.appendChild(paragraph);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runCreatingExample4()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: h2 → CIIT Training Institute
+                    <br />
+                    Output: p → Learn Full Stack Development
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Important Note
+                    </h5>
+
+                    <p>
+                        <strong>document.createElement()</strong>
+                        creates the element, but it does not automatically
+                        place the element on the page.
+                    </p>
+
+                    <p>
+                        To add the created element to the page, methods
+                        such as <strong>appendChild()</strong> can be used.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        JavaScript can dynamically create HTML elements
+                        using the DOM. The
+                        <strong>document.createElement()</strong>
+                        method creates a new element, properties such as
+                        <strong>textContent</strong> add content, and
+                        <strong>appendChild()</strong> adds the element
+                        to the document.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("ChangingStyles", "DOM", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Changing Styles
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Index", "Events", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Events Introduction
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1 - CREATE PARAGRAPH
+       ========================================================= */
+
+    function runCreatingExample1() {
+
+        const code =
+            'const paragraph = {\\n' +
+            '    tagName: "p",\\n' +
+            '    textContent: ""\\n' +
+            '};\\n' +
+            '\\n' +
+            'paragraph.textContent =\\n' +
+            '    "Welcome to CIIT Training Institute";\\n' +
+            '\\n' +
+            'console.log("Created Element:", paragraph.tagName);\\n' +
+            'console.log("Content:", paragraph.textContent);';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2 - CREATE HEADING
+       ========================================================= */
+
+    function runCreatingExample2() {
+
+        const code =
+            'const heading = {\\n' +
+            '    tagName: "h2",\\n' +
+            '    textContent: ""\\n' +
+            '};\\n' +
+            '\\n' +
+            'heading.textContent =\\n' +
+            '    "Learn JavaScript with CIIT";\\n' +
+            '\\n' +
+            'console.log("Created Element:", heading.tagName);\\n' +
+            'console.log("Content:", heading.textContent);';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3 - CREATE BUTTON
+       ========================================================= */
+
+    function runCreatingExample3() {
+
+        const code =
+            'const button = {\\n' +
+            '    tagName: "button",\\n' +
+            '    textContent: ""\\n' +
+            '};\\n' +
+            '\\n' +
+            'button.textContent = "Click Me";\\n' +
+            '\\n' +
+            'console.log("Created Element:", button.tagName);\\n' +
+            'console.log("Content:", button.textContent);';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4 - MULTIPLE ELEMENTS
+       ========================================================= */
+
+    function runCreatingExample4() {
+
+        const heading = 
+            'const heading = {\\n' +
+            '    tagName: "h2",\\n' +
+            '    textContent: "CIIT Training Institute"\\n' +
+            '};\\n' +
+            '\\n' +
+            'const paragraph = {\\n' +
+            '    tagName: "p",\\n' +
+            '    textContent: "Learn Full Stack Development"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log(heading.tagName, "->", heading.textContent);\\n' +
+            'console.log(paragraph.tagName, "->", paragraph.textContent);';
+
+        openCompiler(heading);
+
+    }
+
+</script>

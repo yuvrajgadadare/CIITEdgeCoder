@@ -1,0 +1,527 @@
+@{
+    var c = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    var a = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+
+    string title = "Understanding the Topic";
+    string definition = "AWS services solve focused infrastructure problems. Learn the responsibility first, then the console steps.";
+    string why = "Understanding the responsibility helps you choose the right service and avoid unnecessary complexity.";
+    string how = "A useful mental model is: user/request → AWS service → resource → data/response → monitoring.";
+    string example = "A production application normally combines several services, with each service responsible for one layer.";
+
+    if (c == "Introduction" && a == "Index")
+    {
+        title = "Start With the Cloud Mental Model";
+        definition = "Cloud computing means using computing resources such as servers, storage, networking and databases on demand instead of owning and maintaining all physical infrastructure yourself. AWS provides these capabilities as managed services that you configure through a console, APIs or command-line tools.";
+        why = "Before learning individual service names, understand the infrastructure layers: identity controls who can act, networking controls where traffic can travel, compute runs workloads, storage holds files, databases hold structured records, and monitoring tells you what is happening.";
+        how = "A simple mental model is User → DNS/entry point → network → compute → database/storage → response, while IAM and security controls protect access and CloudWatch provides operational visibility.";
+        example = "For a web application, a browser may reach an application through DNS and a load balancer, the application can run on EC2, structured records can live in RDS, files can live in S3, and CloudWatch can collect operational signals.";
+    }
+    else if (c == "Introduction" && a == "WhatIsAWS")
+    {
+        title = "What AWS Actually Provides";
+        definition = "Amazon Web Services is a broad cloud platform containing services for compute, storage, databases, networking, identity, security, integration and monitoring. Each service has a focused responsibility rather than being one giant application server.";
+        why = "This service-oriented approach lets teams choose only the infrastructure capabilities they need and scale them independently.";
+        how = "You create a resource in an AWS Region, configure access and networking, use the resource through the console/API/CLI, monitor it, and remove it when the lab is complete.";
+        example = "A company can run an API on EC2, store uploads in S3, keep relational data in RDS, and use CloudWatch for logs and metrics.";
+    }
+    else if (c == "Introduction" && a == "AWSGlobalInfrastructure")
+    {
+        title = "Regions and Availability Zones";
+        definition = "An AWS Region is a separate geographic area containing multiple Availability Zones. Availability Zones are distinct locations within a Region, designed so workloads can be distributed for resilience.";
+        why = "Region selection affects latency, service availability, compliance considerations and cost. Multiple Availability Zones can reduce dependence on a single location.";
+        how = "Choose a Region close to the intended users when appropriate, then place resilient resources across Availability Zones where the service and architecture support it.";
+        example = "A web application can run instances in two Availability Zones behind a load balancer so traffic can continue if one zone has a problem.";
+    }
+    else if (c == "Introduction" && a == "AWSManagementConsole")
+    {
+        title = "AWS Management Console";
+        definition = "The AWS Management Console is a browser-based interface for creating, viewing and configuring AWS resources. The top search can be used to find services such as IAM, EC2, S3 and CloudWatch.";
+        why = "Beginners can see the resource state and available settings visually before moving to CLI or infrastructure-as-code workflows.";
+        how = "Sign in → select the correct Region → search for a service → open the service → create or inspect a resource → verify the result.";
+        example = "For S3, search for S3, open the service, select Create bucket, enter a unique bucket name and verify the bucket appears in the list.";
+    }
+    else if (c == "Introduction" && a == "AWSAccountSetup")
+    {
+        title = "AWS Account Setup and Safe Access";
+        definition = "The AWS account starts with a root identity. For everyday work, use controlled identities and permissions rather than using the root identity for routine tasks.";
+        why = "Separating account-level control from day-to-day permissions reduces accidental changes and supports least privilege.";
+        how = "Secure the root identity → enable MFA → create appropriate IAM access → use only the permissions required for the task → monitor and review access.";
+        example = "A developer can receive only the permissions required to work with EC2 and S3 instead of unrestricted account access.";
+    }
+    else if (c == "Introduction" && a == "RootVsIAM")
+    {
+        title = "Root User vs IAM User";
+        definition = "The root user is the original identity associated with an AWS account. An IAM user is a separate identity created inside the account and can be granted selected permissions through policies or groups.";
+        why = "Root has account-level capabilities, while IAM access can be limited. This makes IAM suitable for controlled day-to-day access.";
+        how = "AWS account → Root identity (secure and rarely used) → IAM identities/roles → policies → allowed AWS actions.";
+        example = "Think of the root user as the account owner and an IAM user as a staff identity that receives only the permissions needed for its role.";
+    }
+    else if (c == "Introduction" && a == "AWSFreeTier")
+    {
+        title = "Free Tier and Billing Safety";
+        definition = "AWS pricing depends on the service, Region, resource type, usage and duration. Free offers have eligibility and usage limits, so they should not be treated as unlimited free infrastructure.";
+        why = "Cloud labs can create charges if resources remain active or exceed included usage.";
+        how = "Check pricing and account billing information → create only small lab resources → record what you created → delete or stop resources when finished → verify the resource is gone.";
+        example = "An EC2 instance left running, a NAT Gateway left provisioned, or storage kept after a lab can continue generating charges.";
+    }
+    else if (c == "IAM" && a == "Index")
+    {
+        title = "Identity and Access Management";
+        definition = "IAM controls authentication and authorization for AWS resources. Authentication answers who is requesting access; authorization answers what that identity is allowed to do.";
+        why = "AWS resources should not be openly accessible. IAM is the control layer that enforces least privilege.";
+        how = "Identity → policy evaluation → Allow/Deny decision → AWS service action.";
+        example = "A developer identity may be allowed to start EC2 instances but denied permission to change billing settings.";
+    }
+    else if (c == "IAM" && a == "IAMUsers")
+    {
+        title = "IAM Users";
+        definition = "An IAM user represents a person or application identity that can receive credentials and permissions. Permissions can be attached directly or inherited through a group.";
+        why = "Users let organizations separate access instead of sharing one set of credentials.";
+        how = "Create identity → choose credential/access method → attach appropriate policies or groups → enable MFA where appropriate → test only required actions.";
+        example = "A training lab can have a developer identity with limited EC2 and S3 permissions.";
+    }
+    else if (c == "IAM" && a == "IAMGroups")
+    {
+        title = "IAM Groups";
+        definition = "An IAM group is a collection of IAM users to which permissions can be attached as a common set. A group is useful when several users need similar access.";
+        why = "Groups reduce repeated policy assignment and make permission management easier.";
+        how = "Create group → attach policy → add users → users receive the group permissions.";
+        example = "A Developers group can contain several developers and share a carefully scoped development policy.";
+    }
+    else if (c == "IAM" && a == "IAMPolicies")
+    {
+        title = "IAM Policies";
+        definition = "IAM policies are JSON documents that define permissions. A policy can allow or deny actions on specific resources under specified conditions.";
+        why = "Policies are the detailed rules that turn an identity into an authorized identity.";
+        how = "Principal receives policy → AWS evaluates action/resource/conditions → explicit deny wins over allow → action is permitted or rejected.";
+        example = "A policy can allow reading objects from one S3 bucket without granting access to every S3 bucket.";
+    }
+    else if (c == "IAM" && a == "IAMRoles")
+    {
+        title = "IAM Roles";
+        definition = "An IAM role is an identity with permissions that can be assumed by trusted principals. Roles provide temporary credentials and are widely used by AWS services and workloads.";
+        why = "Roles reduce the need to place long-lived access keys inside applications.";
+        how = "Trusted principal assumes role → temporary credentials are issued → workload calls AWS services with role permissions.";
+        example = "An EC2 instance can use an IAM role to read from S3 without storing an access key in the application code.";
+    }
+    else if (c == "IAM" && a == "MultiFactorAuthentication")
+    {
+        title = "Multi-Factor Authentication";
+        definition = "MFA adds another verification factor beyond a password. It reduces the impact of a stolen password.";
+        why = "A second factor makes account takeover harder when a password is exposed.";
+        how = "Password/credential → additional factor → identity is authenticated → permitted actions are evaluated.";
+        example = "Use MFA on the root identity and other privileged access according to your security policy.";
+    }
+    else if (c == "EC2" && a == "Index")
+    {
+        title = "Elastic Compute Cloud (EC2)";
+        definition = "Amazon EC2 provides resizable compute capacity in the cloud. An EC2 instance is a virtual server whose operating system and software you control.";
+        why = "EC2 is useful when you need control over the operating system, runtime, networking and installed application software.";
+        how = "Choose an image and instance type → configure networking/security → launch → connect → install/run workload → monitor → stop or terminate when finished.";
+        example = "A backend API can run as a service on an EC2 instance and listen on a controlled application port.";
+    }
+    else if (c == "EC2" && a == "IntroductionToEC2")
+    {
+        title = "EC2 Core Concepts";
+        definition = "Important EC2 concepts include AMIs, instance types, EBS volumes, security groups, key pairs, subnets and public/private networking.";
+        why = "Each concept controls a different part of the virtual server environment.";
+        how = "AMI provides the starting image, instance type supplies compute capacity, EBS stores persistent block data, security groups control network traffic, and networking determines reachability.";
+        example = "A small Linux API server may use a lightweight instance type, an EBS root volume and a security group allowing only required traffic.";
+    }
+    else if (c == "EC2" && a == "EC2InstanceTypes")
+    {
+        title = "EC2 Instance Types";
+        definition = "Instance types provide different balances of CPU, memory, network and other capabilities. The right type depends on workload characteristics.";
+        why = "Choosing an appropriate type helps avoid over-provisioning and poor performance.";
+        how = "Understand workload → identify CPU/memory/network needs → choose a suitable family/size → test performance → resize when necessary.";
+        example = "A CPU-heavy workload and a memory-heavy workload can require different instance families.";
+    }
+    else if (c == "EC2" && a == "LaunchEC2Instance")
+    {
+        title = "Launching an EC2 Instance";
+        definition = "Launching an EC2 instance creates a virtual server from a selected image and configuration. The console guides you through image, type, key pair, network and storage settings.";
+        why = "This is the practical path from an empty account to a running compute resource.";
+        how = "EC2 console → Launch instance → name → AMI → instance type → key pair → network/security group → storage → launch → verify state.";
+        example = "For a lab, launch the smallest suitable instance, verify connectivity, then stop or terminate it after practice.";
+    }
+    else if (c == "EC2" && a == "SecurityGroups")
+    {
+        title = "EC2 Security Groups";
+        definition = "A security group is a stateful virtual firewall associated with supported resources such as EC2 instances. Rules control allowed inbound and outbound traffic.";
+        why = "A running server should expose only the ports and sources required by the workload.";
+        how = "Define inbound rules → define outbound rules → attach security group → test from an allowed source → remove unnecessary rules.";
+        example = "Allow SSH only from a trusted administration IP and allow HTTP/HTTPS when a web application needs it.";
+    }
+    else if (c == "EC2" && a == "KeyPairs")
+    {
+        title = "EC2 Key Pairs";
+        definition = "A key pair is used for secure login to supported EC2 operating systems. The private key must be protected because possession can provide access to the server.";
+        why = "Key-based access avoids sharing a password for common Linux SSH workflows.";
+        how = "Create/select key pair → download private key securely → launch instance → use the matching public/private key mechanism to connect.";
+        example = "Keep the private key out of source control and restrict access to the file.";
+    }
+    else if (c == "EC2" && a == "ElasticBlockStore")
+    {
+        title = "Elastic Block Store (EBS)";
+        definition = "Amazon EBS provides block storage volumes for EC2. A volume can act as a root or additional disk depending on configuration.";
+        why = "Applications need storage that behaves like a disk rather than object storage.";
+        how = "Create/attach volume → format/mount when required → store data → snapshot when appropriate → manage lifecycle.";
+        example = "An application server can use EBS for operating-system files and application data that require block-storage semantics.";
+    }
+    else if (c == "S3" && a == "Index")
+    {
+        title = "Amazon S3 — Simple Storage Service";
+        definition = "Amazon S3 is an object storage service. It stores objects inside buckets and is designed for high durability and large-scale storage.";
+        why = "S3 is a strong fit for files, media, backups, logs, static assets and other objects that do not need a traditional disk interface.";
+        how = "Create bucket → choose settings → upload object → object receives a key → control access → retrieve object when authorized.";
+        example = "A web application can keep profile images and exported reports in S3 while storing their metadata in a database.";
+    }
+    else if (c == "S3" && a == "IntroductionToS3")
+    {
+        title = "S3 Buckets, Objects and Keys";
+        definition = "A bucket is a container for S3 objects. An object contains data and metadata, and its key identifies it within the bucket.";
+        why = "Understanding bucket/object/key relationships is the foundation for every S3 task.";
+        how = "Bucket → object key → object data + metadata → access policy → retrieval.";
+        example = "A key such as uploads/2026/invoices/invoice-1001.pdf identifies an object path-like name inside a bucket.";
+    }
+    else if (c == "S3" && a == "S3Buckets")
+    {
+        title = "S3 Buckets";
+        definition = "Buckets are the top-level containers used to organize S3 objects. Bucket names follow global naming rules, so names must be chosen carefully.";
+        why = "Bucket settings affect access, encryption, versioning, lifecycle and data organization.";
+        how = "S3 → Create bucket → choose Region → configure ownership/public access/versioning/encryption → create → verify.";
+        example = "Keep a private bucket for application uploads and grant access through the application's IAM role rather than making the bucket public.";
+    }
+    else if (c == "S3" && a == "S3Objects")
+    {
+        title = "S3 Objects and Keys";
+        definition = "An S3 object is the stored data plus metadata. The key is the unique name used to identify that object within its bucket.";
+        why = "Applications use keys to locate files and organize objects logically.";
+        how = "Upload file → choose object key → S3 stores object → authorized request uses bucket + key to retrieve it.";
+        example = "documents/employees/1001/resume.pdf is a useful logical key for an employee document.";
+    }
+    else if (c == "S3" && a == "Versioning")
+    {
+        title = "S3 Versioning";
+        definition = "S3 Versioning keeps multiple versions of an object in the same bucket. It can help recover from accidental overwrite or deletion.";
+        why = "A previous object version may be recoverable when versioning is enabled.";
+        how = "Enable versioning → upload/update object → S3 records versions → inspect or restore an earlier version when needed.";
+        example = "If a report is accidentally overwritten, a previous version can be selected instead of losing the earlier data.";
+    }
+    else if (c == "S3" && a == "BucketPolicies")
+    {
+        title = "S3 Bucket Policies";
+        definition = "A bucket policy is a resource-based JSON policy attached to an S3 bucket. It can define who may perform which actions on which resources.";
+        why = "Bucket policies can grant narrowly scoped access without making a bucket public.";
+        how = "Choose bucket → Permissions → Bucket policy → define principal/action/resource/conditions → save → test access.";
+        example = "A policy can permit a specific service principal or account to read selected objects while leaving everything else private.";
+    }
+    else if (c == "VPC" && a == "Index")
+    {
+        title = "Amazon VPC";
+        definition = "A Virtual Private Cloud provides an isolated networking environment in AWS where you define IP ranges, subnets, routes and traffic controls.";
+        why = "Networking determines how resources reach each other, the internet and other networks.";
+        how = "VPC CIDR → subnets → route tables → gateways → security controls → resources.";
+        example = "A public subnet can host a load balancer while application instances and databases can stay in private subnets.";
+    }
+    else if (c == "VPC" && a == "IntroductionToVPC")
+    {
+        title = "VPC Core Concepts";
+        definition = "A VPC is a logical network boundary containing subnets and routing. Subnets are associated with Availability Zones, and route tables decide where traffic goes.";
+        why = "A clear network design is essential for secure cloud applications.";
+        how = "Create VPC → create subnets → associate route tables → add required gateways → attach security controls → deploy resources.";
+        example = "Separate public-facing components from private application and database components.";
+    }
+    else if (c == "VPC" && a == "Subnets")
+    {
+        title = "VPC Subnets";
+        definition = "A subnet is a range of IP addresses inside a VPC and is associated with an Availability Zone.";
+        why = "Subnets let you separate resources by reachability and architecture role.";
+        how = "Choose VPC CIDR → create subnet CIDR → associate with AZ → route using a route table.";
+        example = "Public subnet for a load balancer; private subnet for an application server.";
+    }
+    else if (c == "VPC" && a == "RouteTables")
+    {
+        title = "Route Tables";
+        definition = "A route table contains routes that determine where network traffic from a subnet is directed.";
+        why = "Without appropriate routes, resources may not reach the destinations they need.";
+        how = "Destination CIDR → target such as local, internet gateway or NAT gateway → associate route table with subnet.";
+        example = "A public subnet commonly has a route to an Internet Gateway.";
+    }
+    else if (c == "VPC" && a == "InternetGateway")
+    {
+        title = "Internet Gateway";
+        definition = "An Internet Gateway is a VPC component that provides a path between a VPC and the internet for resources with appropriate routes and public addressing.";
+        why = "Public-facing resources need a controlled internet path.";
+        how = "Attach gateway to VPC → route public subnet traffic to it → ensure resource addressing/security are appropriate.";
+        example = "A public load balancer can use an internet-facing path while backend instances remain private.";
+    }
+    else if (c == "VPC" && a == "NATGateway")
+    {
+        title = "NAT Gateway";
+        definition = "A NAT Gateway allows resources in a private subnet to initiate connections to destinations outside the VPC without accepting unsolicited inbound connections from the internet.";
+        why = "Private workloads may need software updates or outbound API calls while remaining unreachable from the public internet.";
+        how = "Create NAT Gateway in a suitable public subnet → private route table sends 0.0.0.0/0 to NAT → outbound traffic exits through NAT.";
+        example = "A private application server downloads packages or calls an external API through NAT.";
+    }
+    else if (c == "VPC" && a == "VPCSecurityGroups")
+    {
+        title = "VPC Security Groups";
+        definition = "Security groups control network traffic at the resource level for supported AWS resources and are stateful.";
+        why = "They provide an important network access boundary around workloads.";
+        how = "Create rules → attach to resource → allow only required source, destination and port combinations.";
+        example = "Allow application servers to reach an RDS database on its database port while blocking unrelated traffic.";
+    }
+    else if (c == "RDS" && a == "Index")
+    {
+        title = "Amazon RDS";
+        definition = "Amazon Relational Database Service makes it easier to run managed relational databases without managing every database server task yourself.";
+        why = "RDS handles many operational tasks such as provisioning, backups and maintenance options, while your application still works with a relational database engine.";
+        how = "Choose engine → configure instance/storage/network/security → create DB → connect privately → monitor and back up.";
+        example = "An application can store employee records in an RDS MySQL or PostgreSQL database.";
+    }
+    else if (c == "RDS" && a == "IntroductionToRDS")
+    {
+        title = "RDS Core Concepts";
+        definition = "RDS combines a managed database engine with compute, storage, networking, backups and security configuration.";
+        why = "You get relational database capabilities without manually building the entire database server stack.";
+        how = "Engine + DB instance + storage + subnet group + security group + credentials → application connection.";
+        example = "Keep database resources in private subnets and allow only the application security group to connect.";
+    }
+    else if (c == "RDS" && a == "DatabaseEngines")
+    {
+        title = "RDS Database Engines";
+        definition = "RDS supports several relational database engines. Engine choice affects SQL features, compatibility, drivers and operational considerations.";
+        why = "The application and team may already depend on a specific engine.";
+        how = "Identify application compatibility → choose engine/version → test connection and SQL behavior → deploy.";
+        example = "A Java/Spring application may use PostgreSQL or MySQL depending on requirements.";
+    }
+    else if (c == "RDS" && a == "CreateRDSDatabase")
+    {
+        title = "Create an RDS Database";
+        definition = "Creating an RDS database involves choosing an engine, instance/storage settings, network placement, authentication and security controls.";
+        why = "Database creation is a critical infrastructure step and should be done carefully to avoid exposure and cost.";
+        how = "RDS → Create database → engine → template → credentials → connectivity → security group → storage → create → verify.";
+        example = "Use a private subnet group and allow database traffic only from the application tier.";
+    }
+    else if (c == "RDS" && a == "Backups")
+    {
+        title = "RDS Backups";
+        definition = "RDS provides automated backups and supports snapshots for supported configurations. Backups are part of recovery planning.";
+        why = "Databases contain state that should survive accidental changes or infrastructure failures.";
+        how = "Set backup retention → monitor backup status → create snapshots when appropriate → understand restore workflow.";
+        example = "Before a major schema change, a snapshot can provide a recovery point.";
+    }
+    else if (c == "Lambda" && a == "Index")
+    {
+        title = "AWS Lambda";
+        definition = "AWS Lambda is a serverless compute service that runs code in response to events without requiring you to manage a server directly.";
+        why = "It is useful for short-lived, event-driven workloads and can scale automatically within service limits.";
+        how = "Function code + execution role + trigger/event → Lambda invocation → result/logs.";
+        example = "An S3 upload event can trigger a Lambda function to validate metadata or process a file.";
+    }
+    else if (c == "Lambda" && a == "IntroductionToLambda")
+    {
+        title = "Lambda Core Concepts";
+        definition = "A Lambda function has code, configuration, an execution role and a runtime. Invocations can come from AWS services or direct API calls.";
+        why = "Understanding the execution model helps you decide whether a workload fits serverless compute.";
+        how = "Event → function invocation → execution → response/logs → scale down when idle.";
+        example = "A scheduled Lambda can perform a small maintenance task without a continuously running server.";
+    }
+    else if (c == "Lambda" && a == "LambdaFunctions")
+    {
+        title = "Lambda Functions";
+        definition = "A Lambda function is the deployable unit of serverless code. Its runtime, handler, memory, timeout and environment configuration affect execution.";
+        why = "Correct function configuration is important for reliability and cost.";
+        how = "Create function → choose runtime → add code → set execution role/configuration → deploy → test → inspect logs.";
+        example = "A Python function can validate an uploaded JSON file and write a result to another service.";
+    }
+    else if (c == "Lambda" && a == "Triggers")
+    {
+        title = "Lambda Triggers";
+        definition = "Triggers connect events or requests to Lambda invocations. Different AWS services can invoke Lambda in different ways.";
+        why = "Triggers turn a function into an event-driven component.";
+        how = "Choose event source → configure invocation relationship → send event → Lambda executes → inspect result/logs.";
+        example = "API Gateway can invoke Lambda for an HTTP request, while S3 can invoke it for an object event.";
+    }
+    else if (c == "Lambda" && a == "EnvironmentVariables")
+    {
+        title = "Lambda Environment Variables";
+        definition = "Environment variables provide configuration values to a Lambda function without hard-coding those values into source code.";
+        why = "Separating configuration from code makes deployments easier across environments.";
+        how = "Function configuration → environment variables → runtime reads value → code uses configuration.";
+        example = "Use an environment variable for a non-secret configuration value such as a logical bucket name; use Secrets Manager for sensitive secrets.";
+    }
+    else if (c == "CloudWatch" && a == "Index")
+    {
+        title = "Amazon CloudWatch";
+        definition = "CloudWatch provides monitoring and observability capabilities such as metrics, logs and alarms for AWS resources and applications.";
+        why = "Running infrastructure is not enough; operators need evidence about health and behavior.";
+        how = "Resource/application emits telemetry → CloudWatch stores/aggregates it → dashboards/alarms help operators respond.";
+        example = "Monitor EC2 CPU utilization and application logs while investigating a slow API.";
+    }
+    else if (c == "CloudWatch" && a == "IntroductionToCloudWatch")
+    {
+        title = "CloudWatch Core Concepts";
+        definition = "CloudWatch commonly involves metrics, logs, alarms, dashboards and related observability features.";
+        why = "These capabilities help you detect abnormal behavior and troubleshoot failures.";
+        how = "Collect telemetry → visualize → define threshold or condition → alarm → investigate logs/metrics.";
+        example = "An alarm can notify an operator when an important metric crosses a defined threshold.";
+    }
+    else if (c == "CloudWatch" && a == "Metrics")
+    {
+        title = "CloudWatch Metrics";
+        definition = "Metrics are numerical time-series measurements such as CPU utilization, request counts or latency-related signals.";
+        why = "Metrics make resource behavior measurable over time.";
+        how = "Metric namespace/dimension → datapoints → graph/statistic → threshold or comparison.";
+        example = "EC2 CPUUtilization can help identify a server under sustained CPU pressure.";
+    }
+    else if (c == "CloudWatch" && a == "CloudWatchLogs")
+    {
+        title = "CloudWatch Logs";
+        definition = "CloudWatch Logs stores log events in log groups and log streams so applications and services can be inspected over time.";
+        why = "Logs provide detailed evidence that a single metric cannot provide.";
+        how = "Application/service writes logs → log group/stream → search/filter → correlate with metrics.";
+        example = "An API exception stack trace in CloudWatch Logs can explain why a request returned an error.";
+    }
+    else if (c == "CloudWatch" && a == "Alarms")
+    {
+        title = "CloudWatch Alarms";
+        definition = "A CloudWatch alarm evaluates a metric or expression against configured conditions and can move between states such as OK and ALARM.";
+        why = "Alarms help teams detect conditions that require attention.";
+        how = "Metric → threshold/evaluation period → alarm state → configured action/notification.";
+        example = "Alert when a critical service's error metric remains above an acceptable threshold.";
+    }
+    else if (c == "ElasticLoadBalancing" && a == "Index")
+    {
+        title = "Elastic Load Balancing";
+        definition = "Elastic Load Balancing distributes incoming traffic across registered targets such as EC2 instances or other supported resources.";
+        why = "Load balancing can improve availability and distribute workload across multiple targets.";
+        how = "Client → load balancer listener → target group → healthy target → response.";
+        example = "Two API servers can sit behind an Application Load Balancer so requests are distributed between healthy targets.";
+    }
+    else if (c == "ElasticLoadBalancing" && a == "Introduction")
+    {
+        title = "ELB Core Concepts";
+        definition = "Key ELB concepts include listeners, target groups, routing rules and health checks. Different load balancer types fit different traffic patterns.";
+        why = "Understanding these components makes troubleshooting much easier.";
+        how = "Listener receives traffic → rule selects target group → health checks determine eligible targets → traffic is forwarded.";
+        example = "An HTTPS listener can route /api requests to an API target group.";
+    }
+    else if (c == "ElasticLoadBalancing" && a == "ApplicationLoadBalancer")
+    {
+        title = "Application Load Balancer";
+        definition = "An Application Load Balancer works at the application layer and supports HTTP/HTTPS routing features such as host- and path-based routing.";
+        why = "It is useful for modern web applications and APIs that need application-aware routing.";
+        how = "Listener → rules → target group → healthy target.";
+        example = "Route /employees to one target group and /reports to another.";
+    }
+    else if (c == "ElasticLoadBalancing" && a == "NetworkLoadBalancer")
+    {
+        title = "Network Load Balancer";
+        definition = "A Network Load Balancer is designed for high-performance network traffic and operates at the connection/transport layer.";
+        why = "It fits use cases that need network-level load balancing characteristics.";
+        how = "Listener → target group → network connection → target.";
+        example = "Use an NLB when the workload requires network-level behavior rather than HTTP-aware routing.";
+    }
+    else if (c == "ElasticLoadBalancing" && a == "GatewayLoadBalancer")
+    {
+        title = "Gateway Load Balancer";
+        definition = "Gateway Load Balancer is designed for deploying, scaling and managing virtual network appliances in a traffic flow.";
+        why = "Security and inspection appliances may need to be inserted into network traffic paths.";
+        how = "Traffic → gateway load balancer → appliance fleet → destination.";
+        example = "A fleet of inspection appliances can be scaled behind the gateway load balancer.";
+    }
+    else if (c == "ElasticLoadBalancing" && a == "TargetGroups")
+    {
+        title = "Target Groups";
+        definition = "A target group is a logical collection of registered targets used by a load balancer for forwarding traffic and health evaluation.";
+        why = "Target groups separate listener routing from the actual backend target set.";
+        how = "Create target group → register targets → configure health check → attach to listener/rule.";
+        example = "An API target group can contain two EC2 instances running the same backend service.";
+    }
+    else if (c == "ElasticLoadBalancing" && a == "HealthChecks")
+    {
+        title = "Load Balancer Health Checks";
+        definition = "Health checks test whether registered targets are able to receive traffic according to configured criteria.";
+        why = "A load balancer should avoid sending normal traffic to unhealthy targets.";
+        how = "Configure protocol/path/port → load balancer probes target → healthy/unhealthy result → routing decision.";
+        example = "If /health returns an error repeatedly, the target can be removed from normal routing until it recovers.";
+    }
+    else if (c == "ElasticLoadBalancing" && a == "ListenerAndRules")
+    {
+        title = "Listeners and Rules";
+        definition = "A listener accepts connection requests on a configured protocol and port. Rules can determine how matching requests are routed.";
+        why = "Listeners are the entry point into a load balancer's routing logic.";
+        how = "Client request → listener → priority/rule evaluation → target group → backend response.";
+        example = "An HTTPS listener on port 443 can route requests with a /api path to the API target group.";
+    }
+}
+
+<div class="aws-deep">
+    <h3 class="fw-bold mb-3">@title</h3>
+    <p class="mb-3">@definition</p>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="aws-deep h-100">
+                <h5 class="fw-bold">Why it matters</h5>
+                <p class="mb-0">@why</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="aws-deep h-100">
+                <h5 class="fw-bold">How it works</h5>
+                <p class="mb-0">@how</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="aws-example mt-3">
+        <strong>Real-world example:</strong> @example
+    </div>
+
+    @if (c == "Introduction" && a == "Index")
+    {
+        <div class="aws-history mt-3">
+            <h5 class="fw-bold">A short AWS history</h5>
+            <p class="mb-2">AWS grew from Amazon's experience operating large-scale technology infrastructure. Amazon Web Services launched its first major infrastructure services in 2006, including Amazon S3 for object storage and Amazon EC2 for on-demand compute.</p>
+            <p class="mb-0">The important lesson is not to memorize dates: cloud infrastructure separates responsibilities into services that can be provisioned on demand and combined into larger architectures.</p>
+        </div>
+
+        <div class="aws-diagram mt-3">
+            <div class="text-center fw-bold mb-2">Infrastructure Mental Model</div>
+
+            <div class="row text-center g-2">
+                <div class="col-6 col-md-3">
+                    <div class="p-2 border rounded bg-white">
+                        Identity<br />
+                        <small>IAM</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="p-2 border rounded bg-white">
+                        Network<br />
+                        <small>VPC</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="p-2 border rounded bg-white">
+                        Compute<br />
+                        <small>EC2 / Lambda</small>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="p-2 border rounded bg-white">
+                        Data<br />
+                        <small>S3 / RDS</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

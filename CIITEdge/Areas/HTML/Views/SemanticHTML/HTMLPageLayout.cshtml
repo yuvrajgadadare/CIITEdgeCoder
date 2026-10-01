@@ -1,0 +1,805 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Page Layout";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #374151;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    .content-section p {
+        color: #4b5563;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+    pre code {
+        background: transparent !important;
+        color: #fff !important;
+    }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .demo-layout {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 18px;
+    }
+
+    .demo-header,
+    .demo-nav,
+    .demo-main,
+    .demo-section,
+    .demo-aside,
+    .demo-footer {
+        padding: 18px;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .demo-header {
+        background: #e9ecef;
+        text-align: center;
+    }
+
+    .demo-nav {
+        background: #f8f9fa;
+        text-align: center;
+    }
+
+    .demo-main {
+        background: #ffffff;
+    }
+
+    .demo-content {
+        display: flex;
+        gap: 15px;
+    }
+
+    .demo-section {
+        flex: 1;
+        background: #f8f9fa;
+    }
+
+    .demo-aside {
+        width: 30%;
+        background: #f3f4ff;
+    }
+
+    .demo-footer {
+        background: #e9ecef;
+        text-align: center;
+        border-bottom: none;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+
+    @@media (max-width: 768px) {
+        .demo-content {
+            flex-direction: column;
+        }
+
+        .demo-aside {
+            width: 100%;
+        }
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML Page Layout</h1>
+
+            <p>
+                HTML page layout means organizing a webpage into meaningful areas such as
+                the header, navigation, main content, sections, sidebar, and footer.
+            </p>
+
+            <div class="info-box">
+                <strong>Easy Way to Understand:</strong>
+                A webpage is like a building.
+                The <code>&lt;header&gt;</code> is the entrance,
+                <code>&lt;nav&gt;</code> is the direction area,
+                <code>&lt;main&gt;</code> is the main room,
+                <code>&lt;aside&gt;</code> is the supporting area,
+                and <code>&lt;footer&gt;</code> is the closing section.
+            </div>
+
+            <h2>1. Basic HTML Page Structure</h2>
+
+            <p>
+                A typical semantic HTML page can be organized using these major elements:
+            </p>
+
+            <ul>
+                <li><code>&lt;header&gt;</code> - introductory content</li>
+                <li><code>&lt;nav&gt;</code> - main navigation</li>
+                <li><code>&lt;main&gt;</code> - primary page content</li>
+                <li><code>&lt;section&gt;</code> - related content group</li>
+                <li><code>&lt;article&gt;</code> - independent content</li>
+                <li><code>&lt;aside&gt;</code> - related secondary content</li>
+                <li><code>&lt;footer&gt;</code> - footer information</li>
+            </ul>
+
+            <h2>2. Simple Page Layout Example</h2>
+
+            <pre><code>&lt;header&gt;
+    Website Header
+&lt;/header&gt;
+
+&lt;nav&gt;
+    Navigation
+&lt;/nav&gt;
+
+&lt;main&gt;
+    Main Content
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Footer
+&lt;/footer&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Visual Layout</h3>
+
+            <div class="demo-layout">
+                <div class="demo-header">
+                    <strong>Header</strong>
+                </div>
+
+                <div class="demo-nav">
+                    <strong>Navigation</strong>
+                </div>
+
+                <div class="demo-main">
+                    <strong>Main Content</strong>
+                </div>
+
+                <div class="demo-footer">
+                    <strong>Footer</strong>
+                </div>
+            </div>
+
+            <h2>3. Complete Semantic Page Layout</h2>
+
+            <p>
+                A more complete layout can contain a main section and a related sidebar.
+            </p>
+
+            <pre><code>&lt;header&gt;
+    Website Header
+&lt;/header&gt;
+
+&lt;nav&gt;
+    Main Navigation
+&lt;/nav&gt;
+
+&lt;main&gt;
+
+    &lt;section&gt;
+        Main Content
+    &lt;/section&gt;
+
+    &lt;aside&gt;
+        Related Content
+    &lt;/aside&gt;
+
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Footer
+&lt;/footer&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Visual Structure</h3>
+
+            <div class="demo-layout">
+
+                <div class="demo-header">
+                    <strong>Header</strong>
+                </div>
+
+                <div class="demo-nav">
+                    <strong>Navigation</strong>
+                </div>
+
+                <div class="demo-main">
+
+                    <div class="demo-content">
+
+                        <div class="demo-section">
+                            <strong>Main Section</strong>
+                            <p class="mb-0 mt-2">
+                                Primary page content.
+                            </p>
+                        </div>
+
+                        <div class="demo-aside">
+                            <strong>Aside</strong>
+                            <p class="mb-0 mt-2">
+                                Related information.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="demo-footer">
+                    <strong>Footer</strong>
+                </div>
+
+            </div>
+
+            <h2>4. Header Area</h2>
+
+            <p>
+                The header normally introduces the website or a particular section.
+                It may contain a logo, website title, heading, or introductory information.
+            </p>
+
+            <pre><code>&lt;header&gt;
+
+    &lt;h1&gt;
+        CIIT Training Institute
+    &lt;/h1&gt;
+
+    &lt;p&gt;
+        Technology Training and Learning
+    &lt;/p&gt;
+
+&lt;/header&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>5. Navigation Area</h2>
+
+            <p>
+                The navigation area contains important links that help users move
+                through the website.
+            </p>
+
+            <pre><code>&lt;nav&gt;
+
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;Courses&lt;/a&gt;
+    &lt;a href="#"&gt;Tutorials&lt;/a&gt;
+    &lt;a href="#"&gt;Contact&lt;/a&gt;
+
+&lt;/nav&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>6. Main Content Area</h2>
+
+            <p>
+                The <code>&lt;main&gt;</code> element contains the most important
+                content of the current page.
+            </p>
+
+            <pre><code>&lt;main&gt;
+
+    &lt;h1&gt;
+        HTML Tutorial
+    &lt;/h1&gt;
+
+    &lt;p&gt;
+        Learn HTML from basic to advanced concepts.
+    &lt;/p&gt;
+
+&lt;/main&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>7. Using Sections</h2>
+
+            <p>
+                A large main content area can be divided into sections based on topics.
+            </p>
+
+            <pre><code>&lt;main&gt;
+
+    &lt;section&gt;
+
+        &lt;h2&gt;
+            HTML Basics
+        &lt;/h2&gt;
+
+        &lt;p&gt;
+            Learn HTML fundamentals.
+        &lt;/p&gt;
+
+    &lt;/section&gt;
+
+    &lt;section&gt;
+
+        &lt;h2&gt;
+            HTML Forms
+        &lt;/h2&gt;
+
+        &lt;p&gt;
+            Learn HTML form controls.
+        &lt;/p&gt;
+
+    &lt;/section&gt;
+
+&lt;/main&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>8. Using Articles</h2>
+
+            <p>
+                Independent content inside the main area can be represented using
+                <code>&lt;article&gt;</code>.
+            </p>
+
+            <pre><code>&lt;main&gt;
+
+    &lt;section&gt;
+
+        &lt;h2&gt;
+            Latest Tutorials
+        &lt;/h2&gt;
+
+        &lt;article&gt;
+            &lt;h3&gt;HTML Basics&lt;/h3&gt;
+            &lt;p&gt;
+                Learn HTML fundamentals.
+            &lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article&gt;
+            &lt;h3&gt;HTML Forms&lt;/h3&gt;
+            &lt;p&gt;
+                Learn HTML forms.
+            &lt;/p&gt;
+        &lt;/article&gt;
+
+    &lt;/section&gt;
+
+&lt;/main&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>9. Sidebar Using aside</h2>
+
+            <p>
+                A related sidebar can be represented using the
+                <code>&lt;aside&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;aside&gt;
+
+    &lt;h3&gt;
+        Related Topics
+    &lt;/h3&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;HTML Forms&lt;/li&gt;
+        &lt;li&gt;HTML Tables&lt;/li&gt;
+        &lt;li&gt;HTML Lists&lt;/li&gt;
+    &lt;/ul&gt;
+
+&lt;/aside&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>10. Footer Area</h2>
+
+            <p>
+                The footer normally contains supporting information such as
+                copyright, contact details, privacy links, or related navigation.
+            </p>
+
+            <pre><code>&lt;footer&gt;
+
+    &lt;p&gt;
+        &copy; 2026 Learning Portal
+    &lt;/p&gt;
+
+&lt;/footer&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>11. Complete HTML Page Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta name="viewport"
+          content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;title&gt;
+        Learning Portal
+    &lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;header&gt;
+
+        &lt;h1&gt;
+            Learning Portal
+        &lt;/h1&gt;
+
+    &lt;/header&gt;
+
+    &lt;nav&gt;
+
+        &lt;a href="#"&gt;Home&lt;/a&gt;
+        &lt;a href="#"&gt;Courses&lt;/a&gt;
+        &lt;a href="#"&gt;Tutorials&lt;/a&gt;
+        &lt;a href="#"&gt;Contact&lt;/a&gt;
+
+    &lt;/nav&gt;
+
+    &lt;main&gt;
+
+        &lt;section&gt;
+
+            &lt;h2&gt;
+                HTML Course
+            &lt;/h2&gt;
+
+            &lt;p&gt;
+                Learn HTML from basic to advanced topics.
+            &lt;/p&gt;
+
+        &lt;/section&gt;
+
+        &lt;aside&gt;
+
+            &lt;h3&gt;
+                Related Topics
+            &lt;/h3&gt;
+
+            &lt;p&gt;
+                CSS and JavaScript
+            &lt;/p&gt;
+
+        &lt;/aside&gt;
+
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+
+        &lt;p&gt;
+            &copy; 2026 Learning Portal
+        &lt;/p&gt;
+
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>12. Layout Components at a Glance</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Simple Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;header&gt;</code></td>
+                            <td>Introduction or top area</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;nav&gt;</code></td>
+                            <td>Navigation links</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;main&gt;</code></td>
+                            <td>Primary page content</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;section&gt;</code></td>
+                            <td>Related content group</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;article&gt;</code></td>
+                            <td>Independent content</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;aside&gt;</code></td>
+                            <td>Related or secondary content</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;footer&gt;</code></td>
+                            <td>Closing or supporting information</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>13. Semantic Layout vs Generic Layout</h2>
+
+            <p>
+                A page can technically be built using many
+                <code>&lt;div&gt;</code> elements, but semantic elements make
+                the structure easier to understand.
+            </p>
+
+            <pre><code>&lt;!-- Generic layout --&gt;
+
+&lt;div&gt;
+    Header
+&lt;/div&gt;
+
+&lt;div&gt;
+    Navigation
+&lt;/div&gt;
+
+&lt;div&gt;
+    Main Content
+&lt;/div&gt;
+
+&lt;div&gt;
+    Footer
+&lt;/div&gt;</code></pre>
+
+            <p>
+                A semantic layout clearly describes each area:
+            </p>
+
+            <pre><code>&lt;header&gt;
+    Header
+&lt;/header&gt;
+
+&lt;nav&gt;
+    Navigation
+&lt;/nav&gt;
+
+&lt;main&gt;
+    Main Content
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Footer
+&lt;/footer&gt;</code></pre>
+
+            <h2>14. Responsive Layout</h2>
+
+            <p>
+                HTML provides the structure, while CSS is generally responsible
+                for controlling how the layout behaves on different screen sizes.
+            </p>
+
+            <p>
+                For example, on a desktop screen, the main content and sidebar may
+                appear side by side. On a smaller screen, CSS can stack them vertically.
+            </p>
+
+            <h2>15. Common Mistakes</h2>
+
+            <h3>Mistake 1: Using every semantic element without a reason</h3>
+
+            <p>
+                Semantic elements should describe real content relationships.
+                Do not use them simply because they exist.
+            </p>
+
+            <h3>Mistake 2: Confusing structure with styling</h3>
+
+            <p>
+                HTML defines the meaning and structure of the page.
+                CSS controls colors, spacing, positioning, and visual appearance.
+            </p>
+
+            <h3>Mistake 3: Putting the main content inside aside</h3>
+
+            <p>
+                The primary content belongs inside <code>&lt;main&gt;</code>.
+                Supporting information can go inside <code>&lt;aside&gt;</code>.
+            </p>
+
+            <h2>16. Best Practices</h2>
+
+            <ul>
+                <li>Use semantic elements according to their meaning.</li>
+                <li>Keep the main content inside <code>&lt;main&gt;</code>.</li>
+                <li>Use <code>&lt;nav&gt;</code> for important navigation areas.</li>
+                <li>Use sections and articles to organize related content.</li>
+                <li>Use <code>&lt;aside&gt;</code> for supporting information.</li>
+                <li>Use <code>&lt;footer&gt;</code> for footer-related information.</li>
+                <li>Use CSS separately for visual layout and responsive behavior.</li>
+            </ul>
+
+            <h2>17. Practice Example</h2>
+
+            <p>
+                Create a simple webpage with the following structure:
+            </p>
+
+            <ul>
+                <li>Header containing a website title</li>
+                <li>Navigation containing three links</li>
+                <li>Main area containing one section</li>
+                <li>Aside containing related topics</li>
+                <li>Footer containing copyright information</li>
+            </ul>
+
+            <pre><code>&lt;header&gt;
+    &lt;h1&gt;My Website&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;Courses&lt;/a&gt;
+    &lt;a href="#"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+
+    &lt;section&gt;
+        &lt;h2&gt;HTML Course&lt;/h2&gt;
+        &lt;p&gt;
+            Learn HTML step by step.
+        &lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;aside&gt;
+        &lt;h3&gt;Related Topics&lt;/h3&gt;
+        &lt;p&gt;
+            CSS and JavaScript
+        &lt;/p&gt;
+    &lt;/aside&gt;
+
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;
+        &copy; 2026 My Website
+    &lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML page layout is the process of organizing webpage content into
+                    meaningful areas. A common semantic layout uses
+                    <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+                    <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>,
+                    <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, and
+                    <code>&lt;footer&gt;</code>. HTML provides the structure, while CSS
+                    controls the visual layout and responsive behavior.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Footer", "SemanticHTML", new { area = "HTML" })">
+                    ← Previous: Footer
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Index", "HTML5Features", new { area = "HTML" })">
+                    Next: HTML5 Features →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "CloudWatch Logs";
+    Layout = "~/Areas/AWS/Views/Shared/AWSLayout.cshtml";
+}
+
+<div class="row g-4 aws-content">
+    <div class="col-lg-3">
+        @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSTopics.cshtml")
+    </div>
+    <div class="col-lg-9">
+        @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSDeepTheory.cshtml")
+        @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSContentStyles.cshtml")
+<div class="card border-0 shadow-sm mb-4"><div class="card-body p-4 p-lg-5">
+            <h3 class="fw-bold mb-3">Core Concept</h3>
+            <p>Log groups organize log streams and retention settings.</p>
+            <p>Avoid writing passwords, tokens or other sensitive information into logs.</p>
+            <svg class="aws-diagram" viewBox="0 0 800 210"><rect x="35" y="65" width="150" height="80" rx="14" fill="#eef6ff" stroke="#0d6efd"/><text x="110" y="98" text-anchor="middle" font-weight="700">Application</text><text x="110" y="124" text-anchor="middle">Metrics + Logs</text><path d="M185 105H300" stroke="#212529" stroke-width="4"/><polygon points="300,105 285,97 285,113" fill="#212529"/><rect x="320" y="45" width="180" height="120" rx="14" fill="#fff3df" stroke="#0d6efd"/><text x="410" y="82" text-anchor="middle" font-weight="700">CloudWatch</text><text x="410" y="110" text-anchor="middle">Metrics</text><text x="410" y="138" text-anchor="middle">Logs</text><path d="M500 105H615" stroke="#212529" stroke-width="4"/><polygon points="615,105 600,97 600,113" fill="#212529"/><rect x="635" y="65" width="130" height="80" rx="14" fill="#ecfdf5" stroke="#10b981"/><text x="700" y="110" text-anchor="middle">Alarm</text></svg>
+            <h3 class="fw-bold mt-5 mb-3">What you should remember</h3>
+            <div class="row g-3"><div class="col-md-6"><div class="aws-card p-4"><div class="icon mb-3"><i class="bi bi-check2-circle"></i></div><h5 class="fw-bold">Key idea</h5><p class="text-muted mb-0">Log groups organize log streams and retention settings.</p></div></div><div class="col-md-6"><div class="aws-card p-4"><div class="icon mb-3"><i class="bi bi-check2-circle"></i></div><h5 class="fw-bold">Key idea</h5><p class="text-muted mb-0">Avoid writing passwords, tokens or other sensitive information into logs.</p></div></div></div>
+            <div class="aws-example mt-4"><h5 class="fw-bold"><i class="bi bi-lightbulb text-warning me-2"></i>Real-world example</h5><p class="mb-2">Use a realistic cloud workload and focus on the responsibility of this AWS service.</p><div class="aws-code">User → AWS service → application → data / response</div><p class="text-muted mt-3 mb-0">Choose the service that matches the responsibility instead of forcing every workload into one resource.</p></div>
+            <div class="aws-code mt-3"># Conceptual workflow
+aws-service --resource example
+# Verify configuration → test → monitor → clean up</div>
+            <div class="aws-callout mt-4"><strong>Practice tip:</strong> Build the smallest possible lab, verify the result, then remove resources you no longer need.</div>
+            @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSConsoleWalkthrough.cshtml")
+            @await Html.PartialAsync("~/Areas/AWS/Views/Shared/AWSMiniTest.cshtml")
+            <div class="mt-4"><a class="btn btn-outline-secondary" href="@Url.Action("Metrics", "CloudWatch", new { area = "AWS" })">← Previous</a><a class="btn btn-primary fw-semibold ms-2" href="@Url.Action("Alarms", "CloudWatch", new { area = "AWS" })">Next →</a></div>
+        </div></div>
+    </div>
+</div>

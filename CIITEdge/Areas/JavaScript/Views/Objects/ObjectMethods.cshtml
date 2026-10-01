@@ -1,0 +1,1113 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Object Methods";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-object-methods-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-object-methods-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+
+    /* =========================================================
+       TITLE
+       ========================================================= */
+
+    #javascript-object-methods-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-object-methods-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+
+    /* =========================================================
+       SECTION
+       ========================================================= */
+
+    #javascript-object-methods-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-object-methods-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-object-methods-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-object-methods-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-object-methods-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-object-methods-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ACTUAL OBJECT METHOD IMAGE
+       ========================================================= */
+
+    #javascript-object-methods-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-object-methods-page .methods-image {
+        width: 100%;
+        height: 360px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-object-methods-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       METHOD CARDS
+       ========================================================= */
+
+    #javascript-object-methods-page .method-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.04);
+    }
+
+    #javascript-object-methods-page .method-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-object-methods-page .method-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-object-methods-page .method-label {
+        display: inline-block;
+        background: #f3ecff;
+        color: #4c1d95;
+        border: 1px solid #d8b4fe;
+        border-radius: 6px;
+        padding: 5px 9px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-object-methods-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 26px;
+        margin: 28px 0;
+    }
+
+    #javascript-object-methods-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 24px;
+    }
+
+    #javascript-object-methods-page .method-flow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-object-methods-page .flow-box {
+        background: #ffffff;
+        border: 2px solid #d8dee9;
+        border-radius: 9px;
+        padding: 15px 18px;
+        min-width: 145px;
+        text-align: center;
+        font-family: Consolas, Monaco, monospace;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #javascript-object-methods-page .flow-box small {
+        display: block;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+        color: #6c757d;
+        margin-top: 6px;
+    }
+
+    #javascript-object-methods-page .flow-highlight {
+        background: #f3ecff;
+        border-color: #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-object-methods-page .flow-result {
+        background: #ecfdf3;
+        border-color: #198754;
+        color: #157347;
+    }
+
+    #javascript-object-methods-page .flow-arrow {
+        color: #5b21b6;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    #javascript-object-methods-page .diagram-note {
+        color: #6c757d;
+        text-align: center;
+        line-height: 1.7;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-object-methods-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-object-methods-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-object-methods-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT BUTTON
+       ========================================================= */
+
+    #javascript-object-methods-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-object-methods-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-object-methods-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-object-methods-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-object-methods-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-object-methods-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-object-methods-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-object-methods-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-object-methods-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-object-methods-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-object-methods-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-object-methods-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-object-methods-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-object-methods-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-object-methods-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-object-methods-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-object-methods-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-object-methods-page .methods-image {
+            height: 260px;
+        }
+
+        #javascript-object-methods-page .method-flow {
+            flex-direction: column;
+        }
+
+        #javascript-object-methods-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-object-methods-page" class="container">
+
+    <div class="row g-4">
+
+
+        <!-- =====================================================
+             LEFT SIDE - JAVASCRIPT SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- =================================================
+                     PAGE TITLE
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    Object Methods
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript objects can contain functions as
+                    methods and how those methods can perform actions
+                    using the data stored inside an object.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT ARE OBJECT METHODS?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What are Object Methods?
+                </h2>
+
+                <p class="section-text">
+                    A JavaScript object can contain properties and functions.
+                    When a function is stored as a property of an object,
+                    that function is called a <strong>method</strong>.
+                </p>
+
+                <p class="section-text">
+                    Methods describe the actions or behaviour that an object
+                    can perform.
+                </p>
+
+
+                <!-- =================================================
+                     CONCEPT BOX
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Property vs Method
+                    </h5>
+
+                    <p>
+                        A <strong>property</strong> stores information,
+                        such as a course name or duration.
+                    </p>
+
+                    <p>
+                        A <strong>method</strong> stores a function that
+                        performs an action related to that object.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     ACTUAL RELATED IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://media2.dev.to/dynamic/image/width%3D800%2Cheight%3D%2Cfit%3Dscale-down%2Cgravity%3Dauto%2Cformat%3Dauto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fyp92ofy49wmcru08cfq0.png"
+                         alt="JavaScript object method definition and method call"
+                         class="methods-image" />
+
+                    <p class="image-caption">
+                        JavaScript object method: a function stored as an
+                        object property and called using object.method().
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     OBJECT METHOD SYNTAX
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Object Method Syntax
+                </h2>
+
+                <p class="section-text">
+                    A method can be created by assigning a function to an
+                    object property.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let course = {
+
+    name: "JavaScript",
+
+    showCourse: function () {
+        console.log("Course: JavaScript");
+    }
+
+};
+
+course.showCourse();</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     METHOD PARTS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Parts of an Object Method
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-4">
+
+                        <div class="method-card">
+
+                            <span class="method-label">
+                                course
+                            </span>
+
+                            <h5>
+                                Object
+                            </h5>
+
+                            <p>
+                                The object that contains properties
+                                and methods.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="method-card">
+
+                            <span class="method-label">
+                                showCourse
+                            </span>
+
+                            <h5>
+                                Method Name
+                            </h5>
+
+                            <p>
+                                The name used to identify and call
+                                the method.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="method-card">
+
+                            <span class="method-label">
+                                function()
+                            </span>
+
+                            <h5>
+                                Function Body
+                            </h5>
+
+                            <p>
+                                Contains the statements executed when
+                                the method is called.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXPLANATORY DIAGRAM
+                     ================================================= -->
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        How an Object Method Works
+                    </div>
+
+                    <div class="method-flow">
+
+                        <div class="flow-box">
+                            course
+                            <small>Object</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box flow-highlight">
+                            showCourse()
+                            <small>Method Call</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            function()
+                            <small>Executes</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box flow-result">
+                            Output
+                            <small>Course: JavaScript</small>
+                        </div>
+
+                    </div>
+
+                    <p class="diagram-note">
+                        The method is accessed using
+                        <strong>objectName.methodName()</strong>.
+                        Parentheses execute the function stored in the method.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Creating an Object Method
+                </h2>
+
+                <p class="section-text">
+                    Here, the <strong>showCourse()</strong> method performs
+                    an action when it is called.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let course = {
+
+    title: "JavaScript",
+    duration: "3 Months",
+
+    showDetails: function () {
+        console.log(this.title);
+        console.log(this.duration);
+    }
+
+};
+
+course.showDetails();</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runObjectMethodExample1()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: JavaScript<br />
+                    Output: 3 Months
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Method with Parameters
+                </h2>
+
+                <p class="section-text">
+                    An object method can accept parameters just like a
+                    normal JavaScript function.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let calculator = {
+
+    add: function (first, second) {
+        return first + second;
+    }
+
+};
+
+console.log(calculator.add(15, 25));</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runObjectMethodExample2()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: 40
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 3: Multiple Methods
+                </h2>
+
+                <p class="section-text">
+                    One object can contain multiple methods. Each method
+                    can perform a different operation.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let trainer = {
+
+    startClass: function () {
+        return "Class Started";
+    },
+
+    endClass: function () {
+        return "Class Completed";
+    }
+
+};
+
+console.log(trainer.startClass());
+console.log(trainer.endClass());</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runObjectMethodExample3()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Class Started<br />
+                    Output: Class Completed
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 4
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 4: Method Using Object Properties
+                </h2>
+
+                <p class="section-text">
+                    A method can use properties belonging to the same
+                    object. The <strong>this</strong> keyword is commonly
+                    used for this purpose.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let student = {
+
+    name: "Priya",
+    course: "JavaScript",
+
+    getDetails: function () {
+        return this.name + " is learning " + this.course;
+    }
+
+};
+
+console.log(student.getDetails());</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runObjectMethodExample4()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Priya is learning JavaScript
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Important
+                    </h5>
+
+                    <p>
+                        To execute an object method, use parentheses after
+                        the method name.
+                    </p>
+
+                    <p>
+                        Example:
+                        <strong>student.getDetails()</strong>
+                    </p>
+
+                    <p>
+                        The next topic,
+                        <strong>this Keyword</strong>, will explain in detail
+                        how <strong>this</strong> refers to the current object
+                        inside an object method.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        An object method is a function stored as a property
+                        of an object. Methods allow objects to perform
+                        actions, accept parameters, return values, and work
+                        with the object's own properties. Methods are called
+                        using the syntax
+                        <strong>objectName.methodName()</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("ObjectProperties", "Objects", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Object Properties
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("ThisKeyword", "Objects", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: this Keyword
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function runObjectMethodExample1() {
+
+        const code =
+            'let course = {\\n' +
+            '\\n' +
+            '    title: "JavaScript",\\n' +
+            '    duration: "3 Months",\\n' +
+            '\\n' +
+            '    showDetails: function () {\\n' +
+            '        console.log(this.title);\\n' +
+            '        console.log(this.duration);\\n' +
+            '    }\\n' +
+            '\\n' +
+            '};\\n' +
+            '\\n' +
+            'course.showDetails();';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function runObjectMethodExample2() {
+
+        const code =
+            'let calculator = {\\n' +
+            '\\n' +
+            '    add: function (first, second) {\\n' +
+            '        return first + second;\\n' +
+            '    }\\n' +
+            '\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log(calculator.add(15, 25));';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function runObjectMethodExample3() {
+
+        const code =
+            'let trainer = {\\n' +
+            '\\n' +
+            '    startClass: function () {\\n' +
+            '        return "Class Started";\\n' +
+            '    },\\n' +
+            '\\n' +
+            '    endClass: function () {\\n' +
+            '        return "Class Completed";\\n' +
+            '    }\\n' +
+            '\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log(trainer.startClass());\\n' +
+            'console.log(trainer.endClass());';
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       ========================================================= */
+
+    function runObjectMethodExample4() {
+
+        const code =
+            'let student = {\\n' +
+            '\\n' +
+            '    name: "Priya",\\n' +
+            '    course: "JavaScript",\\n' +
+            '\\n' +
+            '    getDetails: function () {\\n' +
+            '        return this.name + " is learning " + this.course;\\n' +
+            '    }\\n' +
+            '\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log(student.getDetails());';
+
+        openCompiler(code);
+
+    }
+
+</script>

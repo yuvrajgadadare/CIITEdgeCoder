@@ -1,0 +1,936 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Pseudo-Elements";
+}
+
+<div id="css-pseudo-elements-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">CSS Pseudo-Elements</h1>
+
+                <p class="lead">
+                    CSS pseudo-elements allow you to style specific parts of
+                    an HTML element or insert generated content without adding
+                    extra HTML elements.
+                </p>
+
+                <hr />
+
+                <!-- Introduction -->
+                <h2 class="h4 mt-4">What is a CSS Pseudo-Element?</h2>
+
+                <p>
+                    A pseudo-element is a CSS keyword that lets you style a
+                    specific part of an element.
+                </p>
+
+                <p>
+                    Pseudo-elements are written using two colons
+                    <code>::</code>, such as <code>::before</code>,
+                    <code>::after</code>, <code>::first-letter</code>,
+                    and <code>::first-line</code>.
+                </p>
+
+                <!-- Image -->
+                <div class="image-section mt-4">
+
+                    <img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?auto=format&fit=crop&w=1200&q=80"
+                         alt="Web development and CSS design"
+                         class="pseudo-elements-image" />
+
+                    <p class="image-caption">
+                        Pseudo-elements help create visual effects and
+                        decorative content using CSS.
+                    </p>
+
+                </div>
+
+                <!-- Syntax -->
+                <h2 class="h4 mt-4">Pseudo-Element Syntax</h2>
+
+                <pre class="code-box"><code>selector::pseudo-element {
+    property: value;
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p class="mb-0">
+                        The double colon <code>::</code> tells CSS that we are
+                        targeting a pseudo-element rather than the complete
+                        HTML element.
+                    </p>
+
+                </div>
+
+                <!-- Diagram -->
+                <h2 class="h4 mt-4">How Pseudo-Elements Work</h2>
+
+                <div class="pseudo-elements-diagram">
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            HTML Element
+                        </div>
+
+                        <div class="diagram-code">
+                            &lt;p&gt;Hello&lt;/p&gt;
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Pseudo-Element
+                        </div>
+
+                        <div class="diagram-code">
+                            ::before
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Visual Result
+                        </div>
+
+                        <div class="diagram-code">
+                            ★ Hello
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Before -->
+                <h2 class="h4 mt-4">1. ::before</h2>
+
+                <p>
+                    The <code>::before</code> pseudo-element inserts generated
+                    content before the actual content of an element.
+                </p>
+
+                <pre class="code-box"><code>.before-example::before {
+    content: "★ ";
+    color: #2563eb;
+}</code></pre>
+
+                <!-- Before Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <p class="before-example">
+                        CSS is powerful.
+                    </p>
+
+                </div>
+
+                <!-- After -->
+                <h2 class="h4 mt-4">2. ::after</h2>
+
+                <p>
+                    The <code>::after</code> pseudo-element inserts generated
+                    content after the actual content of an element.
+                </p>
+
+                <pre class="code-box"><code>.after-example::after {
+    content: " ✓";
+    color: #0f766e;
+}</code></pre>
+
+                <!-- After Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <p class="after-example">
+                        Course Completed
+                    </p>
+
+                </div>
+
+                <!-- Important Content -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important</h3>
+
+                    <p class="mb-0">
+                        When using <code>::before</code> or
+                        <code>::after</code> to insert generated content,
+                        the <code>content</code> property is normally required.
+                    </p>
+
+                </div>
+
+                <!-- First Letter -->
+                <h2 class="h4 mt-4">3. ::first-letter</h2>
+
+                <p>
+                    The <code>::first-letter</code> pseudo-element styles
+                    the first letter of the text inside an element.
+                </p>
+
+                <pre class="code-box"><code>.first-letter-example::first-letter {
+    color: #7c3aed;
+    font-size: 40px;
+    font-weight: 700;
+}</code></pre>
+
+                <!-- First Letter Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <p class="first-letter-example">
+                        Responsive design helps websites work well across
+                        different devices and screen sizes.
+                    </p>
+
+                </div>
+
+                <!-- First Line -->
+                <h2 class="h4 mt-4">4. ::first-line</h2>
+
+                <p>
+                    The <code>::first-line</code> pseudo-element styles the
+                    first line of text in an element.
+                </p>
+
+                <pre class="code-box"><code>.first-line-example::first-line {
+    color: #2563eb;
+    font-weight: 700;
+}</code></pre>
+
+                <!-- First Line Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <p class="first-line-example">
+                        CSS makes webpages visually attractive and easier
+                        to understand. Proper styling improves readability,
+                        spacing, layout, and overall user experience.
+                    </p>
+
+                </div>
+
+                <!-- Selection -->
+                <h2 class="h4 mt-4">5. ::selection</h2>
+
+                <p>
+                    The <code>::selection</code> pseudo-element styles the
+                    portion of text selected by the user.
+                </p>
+
+                <pre class="code-box"><code>.selection-example::selection {
+    background-color: #2563eb;
+    color: #ffffff;
+}</code></pre>
+
+                <!-- Selection Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <p class="selection-example">
+                        Select this text with your mouse to see the custom
+                        selection color.
+                    </p>
+
+                </div>
+
+                <!-- Marker -->
+                <h2 class="h4 mt-4">6. ::marker</h2>
+
+                <p>
+                    The <code>::marker</code> pseudo-element styles the marker
+                    of list items.
+                </p>
+
+                <pre class="code-box"><code>.course-list::marker {
+    color: #2563eb;
+}</code></pre>
+
+                <!-- Marker Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <ul class="course-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>C#</li>
+                    </ul>
+
+                </div>
+
+                <!-- Placeholder -->
+                <h2 class="h4 mt-4">7. ::placeholder</h2>
+
+                <p>
+                    The <code>::placeholder</code> pseudo-element styles
+                    the placeholder text inside form controls.
+                </p>
+
+                <pre class="code-box"><code>.name-input::placeholder {
+    color: #7c3aed;
+}</code></pre>
+
+                <!-- Placeholder Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <input type="text"
+                           class="name-input"
+                           placeholder="Enter your name" />
+
+                </div>
+
+                <!-- Before After Practical Example -->
+                <h2 class="h4 mt-4">Practical Example: Decorative Heading</h2>
+
+                <p>
+                    Pseudo-elements can also be used to add decorative lines
+                    or icons around headings.
+                </p>
+
+                <pre class="code-box"><code>.decorative-heading::before {
+    content: "";
+    display: inline-block;
+    width: 35px;
+    height: 4px;
+    background-color: #2563eb;
+    margin-right: 10px;
+    vertical-align: middle;
+}</code></pre>
+
+                <!-- Decorative Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <h3 class="decorative-heading">
+                        Learn CSS
+                    </h3>
+
+                </div>
+
+                <!-- Common Pseudo Elements -->
+                <h2 class="h4 mt-4">Common CSS Pseudo-Elements</h2>
+
+                <div class="pseudo-element-grid">
+
+                    <div class="pseudo-element-card">
+                        <code>::before</code>
+                        <p>Inserts content before an element</p>
+                    </div>
+
+                    <div class="pseudo-element-card">
+                        <code>::after</code>
+                        <p>Inserts content after an element</p>
+                    </div>
+
+                    <div class="pseudo-element-card">
+                        <code>::first-letter</code>
+                        <p>Styles the first letter</p>
+                    </div>
+
+                    <div class="pseudo-element-card">
+                        <code>::first-line</code>
+                        <p>Styles the first line</p>
+                    </div>
+
+                    <div class="pseudo-element-card">
+                        <code>::selection</code>
+                        <p>Styles selected text</p>
+                    </div>
+
+                    <div class="pseudo-element-card">
+                        <code>::marker</code>
+                        <p>Styles list markers</p>
+                    </div>
+
+                    <div class="pseudo-element-card">
+                        <code>::placeholder</code>
+                        <p>Styles placeholder text</p>
+                    </div>
+
+                </div>
+
+                <!-- Pseudo Class vs Element -->
+                <h2 class="h4 mt-4">Pseudo-Class vs Pseudo-Element</h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Pseudo-Class</th>
+                                <th>Pseudo-Element</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Uses a single colon</td>
+                                <td>Uses double colon</td>
+                            </tr>
+
+                            <tr>
+                                <td>Example: <code>:hover</code></td>
+                                <td>Example: <code>::before</code></td>
+                            </tr>
+
+                            <tr>
+                                <td>Targets a state or condition</td>
+                                <td>Targets a specific part of an element</td>
+                            </tr>
+
+                            <tr>
+                                <td>Often used for interaction</td>
+                                <td>Often used for decoration or generated content</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Example -->
+                <h2 class="h4 mt-4">Combined Example</h2>
+
+                <pre class="code-box"><code>.course-title {
+    color: #212529;
+}
+
+.course-title:hover {
+    color: #2563eb;
+}
+
+.course-title::before {
+    content: "★ ";
+    color: #f59e0b;
+}
+
+.course-title::after {
+    content: " ✓";
+    color: #0f766e;
+}</code></pre>
+
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <h3 class="course-title">
+                        CSS Course
+                    </h3>
+
+                    <p class="output-note">
+                        Hover over the heading to see the pseudo-class
+                        and pseudo-elements working together.
+                    </p>
+
+                </div>
+
+                <!-- Best Practices -->
+                <h2 class="h4 mt-4">Best Practices</h2>
+
+                <ul>
+
+                    <li>
+                        Use pseudo-elements for presentation and decoration.
+                    </li>
+
+                    <li>
+                        Keep meaningful content in the HTML whenever it is
+                        important for accessibility or search engines.
+                    </li>
+
+                    <li>
+                        Use <code>::before</code> and <code>::after</code>
+                        carefully for generated content.
+                    </li>
+
+                    <li>
+                        Test pseudo-element styles on different screen sizes.
+                    </li>
+
+                    <li>
+                        Keep decorative CSS separate from core content styles.
+                    </li>
+
+                </ul>
+
+                <!-- Important Note -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        Pseudo-elements are mainly useful for styling and
+                        decoration. Important information should normally be
+                        present in the HTML itself instead of being added only
+                        through CSS generated content.
+                    </p>
+
+                </div>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS pseudo-elements allow developers to style specific
+                        parts of elements or generate decorative content.
+                        Common pseudo-elements include
+                        <code>::before</code>, <code>::after</code>,
+                        <code>::first-letter</code>, <code>::first-line</code>,
+                        <code>::selection</code>, <code>::marker</code>, and
+                        <code>::placeholder</code>.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("PseudoClasses", "AdvancedCSS", new { area = "CSS" })">
+
+                            ← Previous: CSS Pseudo-Classes
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Transforms", "AdvancedCSS", new { area = "CSS" })">
+
+                            Next: CSS Transforms →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-pseudo-elements-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-pseudo-elements-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-pseudo-elements-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-pseudo-elements-page .content-section p,
+        #css-pseudo-elements-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Image */
+    #css-pseudo-elements-page .image-section {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    #css-pseudo-elements-page .pseudo-elements-image {
+        width: 100%;
+        max-height: 360px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+    }
+
+    #css-pseudo-elements-page .image-caption {
+        margin: 12px 5px 0;
+        color: #6c757d !important;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    /* Code */
+    #css-pseudo-elements-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Explanation */
+    #css-pseudo-elements-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-pseudo-elements-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Diagram */
+    #css-pseudo-elements-page .pseudo-elements-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-pseudo-elements-page .diagram-card {
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 8px;
+        padding: 16px 22px;
+        text-align: center;
+        min-width: 180px;
+    }
+
+    #css-pseudo-elements-page .diagram-title {
+        color: #2563eb;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    #css-pseudo-elements-page .diagram-code {
+        background-color: #e0f2fe;
+        color: #075985;
+        padding: 8px 10px;
+        border-radius: 5px;
+        font-family: monospace;
+        font-weight: 600;
+    }
+
+    #css-pseudo-elements-page .diagram-arrow {
+        color: #2563eb;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    /* Output */
+    #css-pseudo-elements-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-pseudo-elements-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #6c757d !important;
+        text-align: center;
+    }
+
+    /* Before */
+    #css-pseudo-elements-page .before-example {
+        font-size: 20px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+        #css-pseudo-elements-page .before-example::before {
+            content: "★ ";
+            color: #2563eb;
+        }
+
+    /* After */
+    #css-pseudo-elements-page .after-example {
+        font-size: 20px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+        #css-pseudo-elements-page .after-example::after {
+            content: " ✓";
+            color: #0f766e;
+        }
+
+    /* First Letter */
+    #css-pseudo-elements-page .first-letter-example {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+        #css-pseudo-elements-page .first-letter-example::first-letter {
+            color: #7c3aed;
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+    /* First Line */
+    #css-pseudo-elements-page .first-line-example {
+        max-width: 700px;
+        color: #495057;
+        line-height: 1.8;
+    }
+
+        #css-pseudo-elements-page .first-line-example::first-line {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Selection */
+    #css-pseudo-elements-page .selection-example {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+        #css-pseudo-elements-page .selection-example::selection {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+    /* Marker */
+    #css-pseudo-elements-page .course-list::marker {
+        color: #2563eb;
+        font-weight: 700;
+    }
+
+    /* Placeholder */
+    #css-pseudo-elements-page .name-input {
+        width: 100%;
+        max-width: 450px;
+        border: 2px solid #ced4da;
+        border-radius: 6px;
+        padding: 11px 12px;
+        color: #212529;
+        background-color: #ffffff;
+    }
+
+        #css-pseudo-elements-page .name-input::placeholder {
+            color: #7c3aed;
+            opacity: 1;
+        }
+
+    /* Decorative Heading */
+    #css-pseudo-elements-page .decorative-heading {
+        color: #212529;
+        font-weight: 700;
+    }
+
+        #css-pseudo-elements-page .decorative-heading::before {
+            content: "";
+            display: inline-block;
+            width: 35px;
+            height: 4px;
+            background-color: #2563eb;
+            margin-right: 10px;
+            vertical-align: middle;
+            border-radius: 3px;
+        }
+
+    /* Course Title */
+    #css-pseudo-elements-page .course-title {
+        color: #212529;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+        #css-pseudo-elements-page .course-title:hover {
+            color: #2563eb;
+        }
+
+        #css-pseudo-elements-page .course-title::before {
+            content: "★ ";
+            color: #f59e0b;
+        }
+
+        #css-pseudo-elements-page .course-title::after {
+            content: " ✓";
+            color: #0f766e;
+        }
+
+    /* Pseudo Element Cards */
+    #css-pseudo-elements-page .pseudo-element-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    #css-pseudo-elements-page .pseudo-element-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+    }
+
+        #css-pseudo-elements-page .pseudo-element-card code {
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        #css-pseudo-elements-page .pseudo-element-card p {
+            margin: 8px 0 0;
+            font-size: 14px;
+            color: #6c757d !important;
+        }
+
+    /* Note */
+    #css-pseudo-elements-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-pseudo-elements-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-pseudo-elements-page .note-box p {
+            color: #78350f;
+        }
+
+    /* Summary */
+    #css-pseudo-elements-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-pseudo-elements-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-pseudo-elements-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    @@media (max-width: 991px) {
+
+        #css-pseudo-elements-page .pseudo-element-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 768px) {
+
+        #css-pseudo-elements-page .content-section {
+            padding: 20px;
+        }
+
+        #css-pseudo-elements-page .pseudo-elements-diagram {
+            flex-direction: column;
+        }
+
+        #css-pseudo-elements-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-pseudo-elements-page .diagram-card {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        #css-pseudo-elements-page .pseudo-elements-image {
+            max-height: 280px;
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        #css-pseudo-elements-page .content-section {
+            padding: 16px;
+        }
+
+        #css-pseudo-elements-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-pseudo-elements-page .pseudo-element-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-pseudo-elements-page .first-letter-example::first-letter {
+            font-size: 34px;
+        }
+    }
+
+</style>

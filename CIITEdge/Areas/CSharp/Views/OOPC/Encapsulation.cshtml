@@ -1,0 +1,1300 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+    .try-it-btn:hover {
+        background: #157347;
+        color: #fff;
+    }
+
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- ===================================================== -->
+                <!-- PAGE HEADER -->
+                <!-- ===================================================== -->
+
+                <h2 class="h1 fw-bold text-dark mb-3">
+                    Encapsulation in C#
+                </h2>
+
+                <p class="text-muted mb-4">
+                    <b>Encapsulation</b> is one of the important principles of
+                    Object-Oriented Programming (OOP). It means keeping the data
+                    and the methods that work with that data together inside a
+                    class and controlling how that data can be accessed.
+                </p>
+
+                <p class="text-muted mb-4">
+                    In simple words, <b>
+                    Encapsulation means protecting data from
+                    direct unwanted access and providing controlled access to it.
+                </b>
+            </p>
+
+            <div class="alert alert-info border-0 shadow-sm mb-4">
+                <strong>Simple Example:</strong>
+                Think about an ATM. You cannot directly access the bank's
+                internal database. You use controlled options such as
+                <b>withdraw</b>, <b>deposit</b>, and <b>check balance</b>.
+                Encapsulation follows a similar idea in programming.
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- WHAT IS ENCAPSULATION -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                What is Encapsulation?
+            </h3>
+
+            <p class="text-muted mb-4">
+                Encapsulation is the process of wrapping data and the methods
+                that operate on that data into a single unit, usually a class.
+                It also allows us to control the visibility and modification
+                of that data.
+            </p>
+
+            <p class="text-muted mb-4">
+                In C#, encapsulation is commonly implemented using
+                <b>access modifiers</b>, <b>properties</b>, and
+                <b>methods</b>.
+            </p>
+
+
+            <!-- ===================================================== -->
+            <!-- WHY ENCAPSULATION -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Why Do We Need Encapsulation?
+            </h3>
+
+            <p class="text-muted mb-3">
+                Suppose we have an Employee class and we allow anyone to
+                directly change the employee's salary.
+                This could result in invalid or unwanted data.
+            </p>
+
+            <p class="text-muted mb-4">
+                Encapsulation allows us to control how data is read and changed.
+            </p>
+
+            <ul class="text-muted mb-4">
+
+                <li class="mb-2">
+                    Protects important data from unwanted direct access.
+                </li>
+
+                <li class="mb-2">
+                    Provides controlled access to class members.
+                </li>
+
+                <li class="mb-2">
+                    Allows validation before changing data.
+                </li>
+
+                <li class="mb-2">
+                    Makes code easier to maintain.
+                </li>
+
+                <li class="mb-2">
+                    Reduces accidental modification of data.
+                </li>
+
+                <li class="mb-2">
+                    Helps create secure and well-structured applications.
+                </li>
+
+            </ul>
+
+
+            <!-- ===================================================== -->
+            <!-- ACCESS MODIFIERS -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Access Modifiers in C#
+            </h3>
+
+            <p class="text-muted mb-4">
+                Access modifiers determine where a class member can be accessed.
+                They are an important part of implementing encapsulation.
+            </p>
+
+            <div class="table-responsive mb-4">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Access Modifier</th>
+                            <th>Simple Meaning</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><b>public</b></td>
+                            <td>
+                                Can be accessed from code that has access
+                                to the containing type.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><b>private</b></td>
+                            <td>
+                                Can be accessed only within the containing type.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><b>protected</b></td>
+                            <td>
+                                Can be accessed within the containing type
+                                and derived types.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><b>internal</b></td>
+                            <td>
+                                Can be accessed within the same assembly.
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- SIMPLE EXAMPLE -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Simple Encapsulation Example
+            </h3>
+
+            <p class="text-muted mb-3">
+                Let's start with a simple example using a private field.
+            </p>
+
+            <div class="code-block mb-4 shadow-sm">
+                <div class="code-lang-tag">C#</div>
+
+                <span class="keyword">class</span>
+                <span class="class-name">Student</span>
+                {<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>
+                <span class="keyword">string</span> name;<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                <span class="keyword">void</span>
+                <span class="method-name">SetName</span>(
+                <span class="keyword">string</span> value)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                name = value;<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                <span class="keyword">string</span>
+                <span class="method-name">GetName</span>()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="keyword">return</span> name;<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div>
+
+            <p class="text-muted mb-4">
+                The <b>name</b> field is private, so outside code cannot
+                directly access it. Instead, the <b>SetName()</b> and
+                <b>GetName()</b> methods provide controlled access.
+            </p>
+
+
+            <!-- ===================================================== -->
+            <!-- COMPLETE PROGRAM -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Complete Program: Encapsulation
+            </h3>
+
+            <p class="text-muted mb-3">
+                Now let's create a complete C# console program to understand
+                encapsulation step by step.
+            </p>
+
+            <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class BankAccount
+{
+    private double balance;
+
+    public void Deposit( double amount)
+    {
+         if (amount > 0)
+        {
+             balance += amount;
+             Console.WriteLine( "Amount deposited successfully.");
+        }
+        else
+        {
+             Console.WriteLine( "Amount must be greater than zero.");
+        }
+    }
+
+    public double GetBalance()
+    {
+         return balance;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+         BankAccount account = new BankAccount();
+
+         account.Deposit(5000);
+
+         Console.WriteLine( $"Current Balance: {account.GetBalance()}");
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+            <!-- ===================================================== -->
+            <!-- PROGRAM OUTPUT -->
+            <!-- ===================================================== -->
+
+            <h4 class="h4 fw-bold text-dark mt-4 mb-3">
+                Program Output
+            </h4>
+
+            <div class="code-block mb-4 shadow-sm">
+                <div class="code-lang-tag">Output</div>
+
+                Amount deposited successfully.<br>
+                Current Balance: 5000
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- PROGRAM EXPLANATION -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Program Explanation
+            </h3>
+
+            <div class="table-responsive mb-4">
+
+                <table class="table table-bordered">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Code</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                <b>class BankAccount</b>
+                            </td>
+
+                            <td>
+                                Creates a class named BankAccount.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>private double balance;</b>
+                            </td>
+
+                            <td>
+                                Creates a private field named balance.
+                                Outside code cannot directly access it.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>Deposit()</b>
+                            </td>
+
+                            <td>
+                                Provides a controlled way to add money
+                                to the account.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>if (amount &gt; 0)</b>
+                            </td>
+
+                            <td>
+                                Checks whether the amount is valid before
+                                changing the balance.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>balance += amount</b>
+                            </td>
+
+                            <td>
+                                Adds the valid amount to the private balance.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>GetBalance()</b>
+                            </td>
+
+                            <td>
+                                Provides controlled read access to the balance.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>new BankAccount()</b>
+                            </td>
+
+                            <td>
+                                Creates an object of the BankAccount class.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>account.Deposit(5000)</b>
+                            </td>
+
+                            <td>
+                                Calls the Deposit method and adds 5000
+                                to the account.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>account.GetBalance()</b>
+                            </td>
+
+                            <td>
+                                Gets the current balance through the
+                                public method.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- WHY PRIVATE -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Why is the balance Field Private?
+            </h3>
+
+            <p class="text-muted mb-4">
+                The balance field is private because we do not want outside
+                code to directly change the account balance.
+            </p>
+
+            <p class="text-muted mb-3">
+                For example, without proper encapsulation, someone might
+                try to do something like this:
+            </p>
+
+            <div class="code-block mb-4 shadow-sm">
+                <div class="code-lang-tag">Incorrect Access</div>
+
+                account.balance = -5000;
+            </div>
+
+            <p class="text-muted mb-4">
+                This is not allowed because <b>balance</b> is private.
+                The class controls how the balance can be changed through
+                the <b>Deposit()</b> method.
+            </p>
+
+
+            <!-- ===================================================== -->
+            <!-- VALIDATION -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Encapsulation with Validation
+            </h3>
+
+            <p class="text-muted mb-4">
+                One major advantage of encapsulation is that we can validate
+                data before allowing it to change.
+            </p>
+
+            <div class="code-block mb-4 shadow-sm">
+                <div class="code-lang-tag">C#</div>
+
+                <span class="keyword">public</span>
+                <span class="keyword">void</span>
+                <span class="method-name">Deposit</span>(
+                <span class="keyword">double</span> amount)<br>
+                {<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (amount &gt; 0)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                balance += amount;<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                <span class="string-lit">"Invalid amount."</span>);<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div>
+
+            <p class="text-muted mb-4">
+                The validation ensures that a negative or zero amount
+                cannot be deposited.
+            </p>
+
+
+            <!-- ===================================================== -->
+            <!-- PROPERTY ENCAPSULATION -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Encapsulation Using Properties
+            </h3>
+
+            <p class="text-muted mb-4">
+                Properties are another common way to implement encapsulation
+                in C#. We can control whether a property can be read or
+                changed from outside the class.
+            </p>
+
+            <div class="code-block mb-4 shadow-sm">
+                <div class="code-lang-tag">C#</div>
+
+                <span class="keyword">class</span>
+                <span class="class-name">Student</span>
+                {<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                <span class="keyword">string</span> Name { get; <span class="keyword">private</span> set; }<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                <span class="keyword">void</span>
+                <span class="method-name">SetStudentName</span>(
+                <span class="keyword">string</span> name)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="keyword">if</span> (!<span class="keyword">string</span>.IsNullOrWhiteSpace(name))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Name = name;<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div>
+
+            <p class="text-muted mb-4">
+                Here, <b>Name</b> can be read from outside the class,
+                but its value can only be assigned from inside the
+                <b>Student</b> class because the setter is private.
+            </p>
+
+
+            <!-- ===================================================== -->
+            <!-- GET PRIVATE SET -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                public get and private set
+            </h3>
+
+            <p class="text-muted mb-3">
+                This pattern is frequently used when a value should be
+                visible to other parts of the application but should not
+                be freely changed from outside.
+            </p>
+
+            <div class="code-block mb-4 shadow-sm">
+                <div class="code-lang-tag">C#</div>
+
+                <span class="keyword">public</span>
+                <span class="keyword">int</span> StudentId { get; <span class="keyword">private</span> set; }
+            </div>
+
+            <p class="text-muted mb-4">
+                Other code can read <b>StudentId</b>, but cannot directly
+                assign a new value to it. The class itself can control
+                when and how the value changes.
+            </p>
+
+
+            <!-- ===================================================== -->
+            <!-- READ ONLY PROPERTY -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Read-Only Data
+            </h3>
+
+            <p class="text-muted mb-4">
+                Encapsulation can also be used to expose information without
+                allowing external code to modify it.
+            </p>
+
+            <div class="code-block mb-4 shadow-sm">
+                <div class="code-lang-tag">C#</div>
+
+                <span class="keyword">class</span>
+                <span class="class-name">Employee</span>
+                {<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                <span class="keyword">string</span> EmployeeId { get; }<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                <span class="class-name">Employee</span>(
+                <span class="keyword">string</span> employeeId)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                EmployeeId = employeeId;<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div>
+
+            <p class="text-muted mb-4">
+                The property can be read publicly, while its value is
+                initialized inside the class.
+            </p>
+
+
+            <!-- ===================================================== -->
+            <!-- ENCAPSULATION VS ABSTRACTION -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Encapsulation vs Abstraction
+            </h3>
+
+            <p class="text-muted mb-4">
+                Encapsulation and abstraction are related OOP concepts,
+                but they are not exactly the same.
+            </p>
+
+            <div class="table-responsive mb-4">
+
+                <table class="table table-bordered">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Encapsulation</th>
+                            <th>Abstraction</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                Focuses on protecting and controlling data.
+                            </td>
+
+                            <td>
+                                Focuses on hiding unnecessary implementation details.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Commonly uses access modifiers and properties.
+                            </td>
+
+                            <td>
+                                Commonly uses abstract classes and interfaces.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Controls how data is accessed or modified.
+                            </td>
+
+                            <td>
+                                Shows only the required functionality.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- REAL WORLD EXAMPLE -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Example: Bank Account 📩👨‍🏫
+            </h3>
+
+            <p class="text-muted mb-4">
+                A bank account is a good real-world example of encapsulation.
+                The customer should not directly modify the internal balance.
+                Instead, the bank system provides controlled operations such
+                as deposit and withdrawal.
+            </p>
+
+            <div class="table-responsive mb-4">
+
+                <table class="table table-bordered">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Bank Concept</th>
+                            <th>C# Concept</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Account Balance</td>
+                            <td>Private field</td>
+                        </tr>
+
+                        <tr>
+                            <td>Deposit</td>
+                            <td>Public method</td>
+                        </tr>
+
+                        <tr>
+                            <td>Withdraw</td>
+                            <td>Public method</td>
+                        </tr>
+
+                        <tr>
+                            <td>Validation</td>
+                            <td>Business rules inside methods</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- SECOND PROGRAM -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Complete Program: Employee Salary
+            </h3>
+
+            <p class="text-muted mb-3">
+                Let's take another practical example where salary is
+                controlled through a method.
+            </p>
+
+            @* <div class="code-block mb-4 shadow-sm">
+                <div class="code-lang-tag">C#</div>
+
+                <span class="keyword">using</span> System;<br><br>
+
+                <span class="keyword">class</span>
+                <span class="class-name">Employee</span><br>
+                {<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span>
+                <span class="keyword">double</span> salary;<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                <span class="keyword">void</span>
+                <span class="method-name">SetSalary</span>(
+                <span class="keyword">double</span> amount)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="keyword">if</span> (amount &gt;= 15000)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                salary = amount;<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                <span class="string-lit">"Salary must be at least 15000."</span>);<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span>
+                <span class="keyword">double</span>
+                <span class="method-name">GetSalary</span>()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="keyword">return</span> salary;<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }<br><br>
+
+
+                <span class="keyword">class</span>
+                <span class="class-name">Program</span><br>
+                {<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span>
+                <span class="keyword">void</span>
+                <span class="method-name">Main</span>()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="class-name">Employee</span> employee =
+                <span class="keyword">new</span>
+                <span class="class-name">Employee</span>();<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                employee.SetSalary(40000);<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="class-name">Console</span>.<span class="method-name">WriteLine</span>(
+                <span class="string-lit">$"Employee Salary: {employee.GetSalary()}"</span>);<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                }
+            </div> *@
+            
+            <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Employee
+{
+    private double salary;
+
+    public void SetSalary( double amount)
+    {
+         if (amount >= 15000)
+        {
+             salary = amount;
+        }
+        else
+        {
+             Console.WriteLine( "Salary must be at least 15000.");
+        }
+    }
+
+    public double GetSalary()
+    {
+         return salary;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+         Employee employee = new Employee();
+
+         employee.SetSalary(40000);
+
+         Console.WriteLine( $"Employee Salary: {employee.GetSalary()}");
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+
+            <h4 class="h4 fw-bold text-dark mt-4 mb-3">
+                Program Output
+            </h4>
+
+            <div class="code-block mb-4 shadow-sm">
+                <div class="code-lang-tag">Output</div>
+
+                Employee Salary: 40000
+            </div>
+
+            <p class="text-muted mb-4">
+                The salary field is private. The outside code cannot directly
+                modify it. The <b>SetSalary()</b> method controls how salary
+                is assigned and validates the value before storing it.
+            </p>
+
+
+            <!-- ===================================================== -->
+            <!-- BENEFITS -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Benefits of Encapsulation
+            </h3>
+
+            <ul class="text-muted mb-4">
+
+                <li class="mb-2">
+                    <b>Data Protection:</b> Prevents direct unwanted modification.
+                </li>
+
+                <li class="mb-2">
+                    <b>Validation:</b> Allows validation before storing data.
+                </li>
+
+                <li class="mb-2">
+                    <b>Maintainability:</b> Internal implementation can change
+                    without changing how outside code uses the class.
+                </li>
+
+                <li class="mb-2">
+                    <b>Control:</b> Determines exactly how data can be accessed.
+                </li>
+
+                <li class="mb-2">
+                    <b>Security:</b> Helps protect important application data
+                    from inappropriate access.
+                </li>
+
+                <li class="mb-2">
+                    <b>Reusability:</b> Encapsulated classes can be reused
+                    across different parts of an application.
+                </li>
+
+            </ul>
+
+
+            <!-- ===================================================== -->
+            <!-- BEST PRACTICES -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Encapsulation Best Practices
+            </h3>
+
+            <ul class="text-muted mb-4">
+
+                <li class="mb-2">
+                    Keep internal data private when direct access is not required.
+                </li>
+
+                <li class="mb-2">
+                    Use properties to expose data in a controlled manner.
+                </li>
+
+                <li class="mb-2">
+                    Validate important data before changing it.
+                </li>
+
+                <li class="mb-2">
+                    Keep business rules inside appropriate classes or services.
+                </li>
+
+                <li class="mb-2">
+                    Avoid exposing internal implementation unnecessarily.
+                </li>
+
+                <li class="mb-2">
+                    Give methods and properties meaningful names.
+                </li>
+
+            </ul>
+
+
+            <!-- ===================================================== -->
+            <!-- COMMON MISTAKES -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Common Beginner Mistakes
+            </h3>
+
+            <ul class="text-muted mb-4">
+
+                <li class="mb-2">
+                    Making every field <b>public</b> without considering
+                    whether direct access is necessary.
+                </li>
+
+                <li class="mb-2">
+                    Confusing encapsulation with simply making fields private.
+                </li>
+
+                <li class="mb-2">
+                    Forgetting to validate data before modifying important values.
+                </li>
+
+                <li class="mb-2">
+                    Exposing internal implementation unnecessarily.
+                </li>
+
+                <li class="mb-2">
+                    Putting unrelated responsibilities inside one class.
+                </li>
+
+            </ul>
+
+
+            <!-- ===================================================== -->
+            <!-- CIIT PRACTICAL POINT -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                CIIT Practical Point
+            </h3>
+
+            <div class="alert alert-success border-0 shadow-sm mb-4">
+
+                <p class="mb-2">
+                    Encapsulation is used extensively in professional
+                    C# applications to protect business data and control
+                    how application components interact with each other.
+                </p>
+
+                <p class="mb-2">
+                    In ASP.NET Core applications, models, services,
+                    repositories, and business components commonly use
+                    properties, private members, and methods to control
+                    application behavior.
+                </p>
+
+                <p class="mb-0">
+                    During interviews, be ready to explain encapsulation
+                    with a real-world example such as a <b>Bank Account</b>
+                    or <b>Employee Salary</b>.
+                </p>
+
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- INTERVIEW POINTS -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                CIIT Interview Points
+            </h3>
+
+            <ul class="text-muted mb-4">
+
+                <li class="mb-2">
+                    What is encapsulation in C#?
+                </li>
+
+                <li class="mb-2">
+                    Why is encapsulation important?
+                </li>
+
+                <li class="mb-2">
+                    How can encapsulation be implemented in C#?
+                </li>
+
+                <li class="mb-2">
+                    What is the difference between public and private?
+                </li>
+
+                <li class="mb-2">
+                    Why should fields often be private?
+                </li>
+
+                <li class="mb-2">
+                    What is a property in C#?
+                </li>
+
+                <li class="mb-2">
+                    What is the purpose of <b>private set</b>?
+                </li>
+
+                <li class="mb-2">
+                    What is the difference between encapsulation and abstraction?
+                </li>
+
+                <li class="mb-2">
+                    Give a real-world example of encapsulation.
+                </li>
+
+                <li class="mb-2">
+                    How does encapsulation help with data validation?
+                </li>
+
+            </ul>
+
+
+            <!-- ===================================================== -->
+            <!-- SUMMARY -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Summary
+            </h3>
+
+            <div class="alert alert-primary border-0 shadow-sm mb-4">
+
+                <ul class="mb-0">
+
+                    <li class="mb-2">
+                        Encapsulation is an important principle of OOP.
+                    </li>
+
+                    <li class="mb-2">
+                        It combines related data and behavior inside a class.
+                    </li>
+
+                    <li class="mb-2">
+                        It helps control how data can be accessed or modified.
+                    </li>
+
+                    <li class="mb-2">
+                        Private members help hide internal data from direct
+                        outside access.
+                    </li>
+
+                    <li class="mb-2">
+                        Public methods and properties can provide controlled access.
+                    </li>
+
+                    <li class="mb-2">
+                        Validation can be performed before changing important data.
+                    </li>
+
+                    <li class="mb-2">
+                        Properties such as <b>get; private set;</b> are commonly
+                        used to control access.
+                    </li>
+
+                    <li>
+                        Encapsulation makes applications easier to maintain,
+                        understand, and protect.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- PRACTICE QUESTIONS -->
+            <!-- ===================================================== -->
+
+            <h3 class="h3 fw-bold text-dark mt-4 mb-3">
+                Practice Questions
+            </h3>
+
+            <ol class="text-muted mb-4">
+
+                <li class="mb-2">
+                    Create a <b>BankAccount</b> class with a private balance field.
+                </li>
+
+                <li class="mb-2">
+                    Create a <b>Deposit()</b> method that accepts an amount.
+                </li>
+
+                <li class="mb-2">
+                    Add validation so negative amounts cannot be deposited.
+                </li>
+
+                <li class="mb-2">
+                    Create a <b>GetBalance()</b> method.
+                </li>
+
+                <li class="mb-2">
+                    Create an Employee class with a private salary field.
+                </li>
+
+                <li class="mb-2">
+                    Create a method to set salary with validation.
+                </li>
+
+                <li class="mb-2">
+                    Create a property using <b>get; private set;</b>.
+                </li>
+
+                <li class="mb-2">
+                    Explain encapsulation using an ATM example.
+                </li>
+
+            </ol>
+
+
+            <!-- ===================================================== -->
+            <!-- NEXT TOPIC -->
+            <!-- ===================================================== -->
+
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+    <a href="/CSharp/OOPC/Constructors"
+       class="btn btn-outline-secondary">
+        ← Previous Topic
+    </a>
+
+    <a href="/CSharp/OOPC/Inheritance"
+       class="btn btn-primary">
+        Next Topic →
+    </a>
+
+</div>
+        </div>
+
+    </section>
+
+</div>
+</main>
+
+<script>
+
+    function tryItYourself(button) {
+
+        // Find the code example containing this button
+        const example = button.closest(".try-it-example");
+
+        if (!example) {
+            alert("Code example not found.");
+            return;
+        }
+
+        // Find only this example's code
+        const codeElement = example.querySelector("pre code");
+
+        if (!codeElement) {
+            alert("Tutorial code not found.");
+            return;
+        }
+
+        // Get exact code and preserve indentation/new lines
+        const code = codeElement.textContent.trim();
+
+        // Create temporary form
+        const form = document.createElement("form");
+
+        form.method = "POST";
+
+        form.action =
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+        // IMPORTANT: Open compiler in new tab
+        form.target = "_blank";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
+        document.body.removeChild(form);
+    }
+
+</script>

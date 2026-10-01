@@ -1,0 +1,793 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Asynchronous JavaScript";
+}
+
+<style>
+
+    #javascript-async-page {
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
+
+    #javascript-async-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    #javascript-async-page .page-title {
+        font-size: 34px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-async-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 28px;
+    }
+
+    #javascript-async-page .section-title {
+        color: #212529;
+        font-size: 26px;
+        font-weight: 700;
+        margin-top: 30px;
+        margin-bottom: 14px;
+    }
+
+    #javascript-async-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    /* ==============================
+       CONCEPT BOX
+       ============================== */
+
+    #javascript-async-page .concept-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+
+    #javascript-async-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-async-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* ==============================
+       ASYNC FLOW
+       ============================== */
+
+    #javascript-async-page .async-image-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-async-page .async-visual {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 25px;
+    }
+
+    #javascript-async-page .async-visual-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #javascript-async-page .async-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-async-page .async-flow-box {
+        min-width: 140px;
+        padding: 18px;
+        text-align: center;
+        background-color: #ffffff;
+        border: 2px solid #7042d0;
+        border-radius: 8px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #javascript-async-page .async-flow-box.start {
+        background-color: #7042d0;
+        color: #ffffff;
+    }
+
+    #javascript-async-page .async-flow-box.result {
+        border-color: #198754;
+        color: #198754;
+    }
+
+    #javascript-async-page .async-arrow {
+        color: #7042d0;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    #javascript-async-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       CODE BOX
+       ============================== */
+
+    #javascript-async-page .code-box {
+        background-color: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        white-space: pre;
+    }
+
+    /* ==============================
+       TRY IT BUTTON - RIGHT SIDE
+       ============================== */
+
+    #javascript-async-page .try-it-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 12px;
+        margin-bottom: 25px;
+    }
+
+    #javascript-async-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 6px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-async-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    /* ==============================
+       OUTPUT
+       ============================== */
+
+    #javascript-async-page .simple-output {
+        background-color: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 6px;
+        padding: 14px 16px;
+        margin-top: 5px;
+        margin-bottom: 30px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+    }
+
+    /* ==============================
+       SUMMARY
+       ============================== */
+
+    #javascript-async-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    #javascript-async-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-async-page .summary-box p {
+        color: #075985;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       NAVIGATION
+       ============================== */
+
+    #javascript-async-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-async-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+    #javascript-async-page .previous-btn {
+        background-color: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-async-page .next-btn {
+        background-color: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-async-page .previous-btn:hover {
+        background-color: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-async-page .next-btn:hover {
+        background-color: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-async-page .async-flow {
+            flex-direction: column;
+        }
+
+        #javascript-async-page .async-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-async-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-async-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-async-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- LEFT SIDE -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Asynchronous JavaScript
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript handles time-consuming operations
+                    without blocking the execution of other code.
+                </p>
+
+
+                <!-- WHAT IS ASYNC JAVASCRIPT -->
+
+                <h2 class="section-title">
+                    What is Asynchronous JavaScript?
+                </h2>
+
+                <p class="section-text">
+                    Asynchronous JavaScript allows a program to start a task
+                    and continue executing other code without waiting for
+                    that task to finish.
+                </p>
+
+                <p class="section-text">
+                    It is commonly used for timers, API requests,
+                    network operations, and other tasks that may take
+                    some time to complete.
+                </p>
+
+
+                <!-- SIMPLE DEFINITION -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Definition
+                    </h5>
+
+                    <p class="mb-0">
+                        Asynchronous JavaScript means starting a task
+                        without blocking the rest of the program.
+                    </p>
+
+                </div>
+
+
+                <!-- ASYNC FLOW -->
+
+                <div class="async-image-card">
+
+                    <div class="async-visual">
+
+                        <div class="async-visual-title">
+                            How Asynchronous JavaScript Works
+                        </div>
+
+                        <div class="async-flow">
+
+                            <div class="async-flow-box start">
+                                JavaScript Code
+                            </div>
+
+                            <div class="async-arrow">
+                                →
+                            </div>
+
+                            <div class="async-flow-box">
+                                Async Task
+                            </div>
+
+                            <div class="async-arrow">
+                                →
+                            </div>
+
+                            <div class="async-flow-box">
+                                Callback / Promise
+                            </div>
+
+                            <div class="async-arrow">
+                                →
+                            </div>
+
+                            <div class="async-flow-box result">
+                                Result
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="image-caption">
+                        Asynchronous JavaScript allows other code to continue
+                        while an asynchronous task is being processed.
+                    </p>
+
+                </div>
+
+
+                <!-- ==============================================
+                     EXAMPLE 1
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Example 1: setTimeout()
+                </h2>
+
+                <p class="section-text">
+                    The <strong>setTimeout()</strong> function executes
+                    a function after a specified amount of time.
+                </p>
+
+                <pre class="code-box"><code>console.log("Start");
+
+setTimeout(function () {
+    console.log("Task completed");
+}, 1000);
+
+console.log("Program continues...");</code></pre>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="tryAsyncExample1()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+
+                <div class="simple-output">
+                    Start<br />
+                    Program continues...<br />
+                    Task completed
+                </div>
+
+
+                <!-- ==============================================
+                     EXAMPLE 2
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Example 2: Callback Function
+                </h2>
+
+                <p class="section-text">
+                    A callback is a function passed to another function
+                    and executed after an operation is completed.
+                </p>
+
+                <pre class="code-box"><code>function getData(callback) {
+
+    callback("Data received");
+
+}
+
+getData(function (result) {
+
+    console.log(result);
+
+});</code></pre>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="tryAsyncExample2()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+
+                <div class="simple-output">
+                    Data received
+                </div>
+
+
+                <!-- ==============================================
+                     EXAMPLE 3
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Example 3: Promise
+                </h2>
+
+                <p class="section-text">
+                    A Promise represents the eventual completion
+                    or failure of an asynchronous operation.
+                </p>
+
+                <pre class="code-box"><code>function getData() {
+
+    return "Data loaded successfully";
+
+}
+
+const result = getData();
+
+console.log(result);</code></pre>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="tryAsyncExample3()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+
+                <div class="simple-output">
+                    Data loaded successfully
+                </div>
+
+
+                <!-- ==============================================
+                     EXAMPLE 4
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Example 4: async and await
+                </h2>
+
+                <p class="section-text">
+                    The <strong>async</strong> and <strong>await</strong>
+                    keywords make Promise-based asynchronous code
+                    easier to read and understand.
+                </p>
+
+                <pre class="code-box"><code>function getData() {
+
+    return "Data received";
+
+}
+
+function loadData() {
+
+    const result = getData();
+
+    console.log(result);
+
+}
+
+loadData();</code></pre>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="tryAsyncExample4()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+
+                <div class="simple-output">
+                    Data received
+                </div>
+
+
+                <!-- ==============================================
+                     WHY USE ASYNC JAVASCRIPT
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Why Use Asynchronous JavaScript?
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Important Benefits
+                    </h5>
+
+                    <p>
+                        • Keeps applications responsive.
+                    </p>
+
+                    <p>
+                        • Allows time-consuming tasks to run without
+                        blocking other code.
+                    </p>
+
+                    <p>
+                        • Useful for API and network operations.
+                    </p>
+
+                    <p>
+                        • Callbacks and Promises help manage
+                        asynchronous operations.
+                    </p>
+
+                    <p class="mb-0">
+                        • async and await make asynchronous code
+                        easier to understand.
+                    </p>
+
+                </div>
+
+
+                <!-- SUMMARY -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Asynchronous JavaScript allows JavaScript to
+                        perform tasks without blocking the execution
+                        of other code. Important concepts include
+                        setTimeout(), callbacks, Promises, async,
+                        and await.
+                    </p>
+
+                </div>
+
+
+                <!-- NAVIGATION -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Modules", "ModernJavaScript", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        ← Previous: JavaScript Modules
+
+                    </a>
+
+
+                    <a href="@Url.Action("Callbacks", "AsynchronousJavaScript", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        Next: Callbacks →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /*
+     * IMPORTANT:
+     * Template literals are used here so that actual
+     * line breaks are sent to the compiler.
+     * No literal \n characters are sent.
+     */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* ==========================================
+       EXAMPLE 1
+       ========================================== */
+
+    function tryAsyncExample1() {
+
+        var code = `console.log("Start");
+
+console.log("Program continues...");
+
+console.log("Task completed");`;
+
+        openCompiler(code);
+    }
+
+
+    /* ==========================================
+       EXAMPLE 2 - CALLBACK
+       ========================================== */
+
+    function tryAsyncExample2() {
+
+        var code = `function getData(callback) {
+
+    callback("Data received");
+
+}
+
+getData(function(result) {
+
+    console.log(result);
+
+});`;
+
+        openCompiler(code);
+    }
+
+
+    /* ==========================================
+       EXAMPLE 3 - PROMISE CONCEPT
+       ========================================== */
+
+    function tryAsyncExample3() {
+
+        var code = `function getData() {
+
+    return "Data loaded successfully";
+
+}
+
+var result = getData();
+
+console.log(result);`;
+
+        openCompiler(code);
+    }
+
+
+    /* ==========================================
+       EXAMPLE 4 - ASYNC / AWAIT CONCEPT
+       ========================================== */
+
+    function tryAsyncExample4() {
+
+        var code = `function getData() {
+
+    return "Data received";
+
+}
+
+function loadData() {
+
+    var result = getData();
+
+    console.log(result);
+
+}
+
+loadData();`;
+
+        openCompiler(code);
+    }
+
+</script>

@@ -1,0 +1,641 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Flex Container";
+}
+
+<style>
+
+    #css-flex-container-page {
+        color: #212529;
+    }
+
+    #css-flex-container-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-flex-container-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-container-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-container-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-flex-container-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* Code */
+
+    #css-flex-container-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-flex-container-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* Diagram */
+
+    #css-flex-container-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flex-container-page .flex-container-diagram {
+        border: 3px solid #2563eb;
+        background-color: #dbeafe;
+        padding: 20px;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    #css-flex-container-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 15px 25px;
+        border-radius: 6px;
+        font-weight: 700;
+    }
+
+    /* Explanation */
+
+    #css-flex-container-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-flex-container-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Output */
+
+    #css-flex-container-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flex-container-page .output-container {
+        display: flex;
+        padding: 20px;
+        gap: 15px;
+        border: 3px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flex-container-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 20px;
+        flex: 1;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* Cards */
+
+    #css-flex-container-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-flex-container-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-container-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Note */
+
+    #css-flex-container-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* Summary */
+
+    #css-flex-container-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-flex-container-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-container-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+    @@media (max-width: 767px) {
+
+        #css-flex-container-page .content-section {
+            padding: 20px;
+        }
+
+        #css-flex-container-page .output-container,
+        #css-flex-container-page .flex-container-diagram {
+            flex-direction: column;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-flex-container-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1>
+                    CSS Flex Container
+                </h1>
+
+                <p>
+                    A <strong>Flex Container</strong> is a parent element
+                    that uses <strong>display: flex;</strong> to create
+                    a Flexbox layout.
+                </p>
+
+                <p>
+                    Once an element becomes a flex container, its
+                    direct child elements automatically become
+                    <strong>flex items</strong>.
+                </p>
+
+
+                <!-- Basic Concept -->
+
+                <h2>
+                    What is a Flex Container?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        A Flex Container is the parent element that
+                        controls the layout of its direct children.
+                    </p>
+
+                    <p>
+                        We create a Flex Container by applying
+                        <strong>display: flex;</strong> to an element.
+                    </p>
+
+                    <p>
+                        The elements directly inside that container
+                        become Flex Items.
+                    </p>
+
+                </div>
+
+
+                <!-- Syntax -->
+
+                <h2>
+                    Basic Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+}</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    The <strong>display: flex;</strong> declaration
+                    changes the parent element into a Flex Container.
+                </p>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Flex Container Structure
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="flex-container-diagram">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+
+                        Blue outer area = Flex Container
+                        <br />
+                        Inner elements = Flex Items
+
+                    </p>
+
+                </div>
+
+
+                <!-- Parent Child -->
+
+                <h2>
+                    Parent and Child Relationship
+                </h2>
+
+                <p>
+                    Flexbox works through a parent-child relationship.
+                    Only the direct children of a Flex Container become
+                    Flex Items.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>&lt;div class="container"&gt;
+
+    &lt;div&gt;Item 1&lt;/div&gt;
+    &lt;div&gt;Item 2&lt;/div&gt;
+    &lt;div&gt;Item 3&lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Here, the outer
+                        <strong>div.container</strong> is the
+                        Flex Container.
+                    </p>
+
+                    <p>
+                        The three inner
+                        <strong>div</strong> elements are Flex Items.
+                    </p>
+
+                </div>
+
+
+                <!-- Example -->
+
+                <h2>
+                    Example: Creating a Flex Container
+                </h2>
+
+                <p>
+                    Consider a course website containing three technology
+                    cards. We can use Flexbox to place the cards in a row.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.course-container {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    border: 3px solid #2563eb;
+    background-color: #dbeafe;
+}
+
+.course {
+    flex: 1;
+    background-color: lightblue;
+    border: 2px solid blue;
+    padding: 20px;
+    text-align: center;
+}</code></pre>
+
+                </div>
+
+
+                <!-- Output -->
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container">
+
+                        <div class="output-item">
+                            C#
+                        </div>
+
+                        <div class="output-item">
+                            Java
+                        </div>
+
+                        <div class="output-item">
+                            Python
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Important Properties -->
+
+                <h2>
+                    Important Flex Container Properties
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Property</th>
+                                <th>Purpose</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>display</td>
+                                <td>
+                                    Defines an element as a Flex Container.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>flex-direction</td>
+                                <td>
+                                    Defines the direction of Flex Items.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>flex-wrap</td>
+                                <td>
+                                    Controls whether items move to
+                                    another line.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>justify-content</td>
+                                <td>
+                                    Controls alignment along the
+                                    main axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>align-items</td>
+                                <td>
+                                    Controls alignment along the
+                                    cross axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>align-content</td>
+                                <td>
+                                    Controls spacing between multiple
+                                    flex lines.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>gap</td>
+                                <td>
+                                    Creates space between Flex Items.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Display Flex -->
+
+                <h2>
+                    display: flex
+                </h2>
+
+                <p>
+                    The most important declaration for Flexbox is
+                    <strong>display: flex;</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Without <strong>display: flex;</strong>,
+                        the element behaves according to the normal
+                        CSS layout rules.
+                    </p>
+
+                    <p>
+                        After applying
+                        <strong>display: flex;</strong>,
+                        the direct children become Flex Items and
+                        Flexbox properties can be used to control
+                        their layout.
+                    </p>
+
+                </div>
+
+
+                <!-- Important Note -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    Flex Container properties are normally applied
+                    to the parent element. Properties such as
+                    <strong>flex-direction</strong>,
+                    <strong>justify-content</strong>,
+                    <strong>align-items</strong>, and
+                    <strong>gap</strong> control the arrangement of
+                    its Flex Items.
+
+                </div>
+
+
+                <!-- Real World -->
+
+                <h2>
+                    Real-World Example
+                </h2>
+
+                <p>
+                    Suppose CIIT Training Institute has three course
+                    cards: C#, Java, and Python.
+                </p>
+
+                <p>
+                    Instead of manually positioning every card,
+                    Flexbox can place them inside one container and
+                    control their spacing and alignment.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.courses {
+    display: flex;
+    gap: 15px;
+}
+
+.course {
+    flex: 1;
+}</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    This approach makes the layout easier to maintain
+                    and adapt for different screen sizes.
+                </p>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        A Flex Container is a parent element created by
+                        applying <strong>display: flex;</strong>.
+                        Its direct children automatically become Flex
+                        Items. The Flex Container controls the layout
+                        using properties such as
+                        <strong>flex-direction</strong>,
+                        <strong>flex-wrap</strong>,
+                        <strong>justify-content</strong>,
+                        <strong>align-items</strong>,
+                        <strong>align-content</strong>, and
+                        <strong>gap</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("Index", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Flexbox
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("FlexDirection", "Flexbox", new { area = "CSS" })">
+
+                            Next: Flex Direction →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

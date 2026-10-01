@@ -1,0 +1,499 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Introduction to CSS";
+}
+
+<style>
+
+    /* ===================================================== */
+    /* CONTENT */
+    /* ===================================================== */
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+        .content-section h1 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 28px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.75;
+        }
+
+    /* ===================================================== */
+    /* CODE BLOCK */
+    /* ===================================================== */
+
+    .css-example {
+        background-color: #0f172a;
+        color: #f1f5f9;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 12px;
+    }
+
+    /* ===================================================== */
+    /* SIMPLE DIAGRAM */
+    /* ===================================================== */
+
+    .css-flow-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 25px 0;
+    }
+
+    .diagram-box {
+        width: 180px;
+        min-height: 100px;
+        border-radius: 12px;
+        padding: 20px 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .diagram-html {
+        background-color: #fff3cd;
+        border: 1px solid #ffe69c;
+    }
+
+    .diagram-css {
+        background-color: #e0e7ff;
+        border: 1px solid #c7d2fe;
+    }
+
+    .diagram-browser {
+        background-color: #d1fae5;
+        border: 1px solid #a7f3d0;
+    }
+
+    .diagram-arrow {
+        font-size: 28px;
+        font-weight: 700;
+        color: #495057;
+    }
+
+    .diagram-title {
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 6px;
+    }
+
+    .diagram-text {
+        font-size: 13px;
+        color: #495057;
+        margin: 0;
+    }
+
+    /* ===================================================== */
+    /* INFO BOX */
+    /* ===================================================== */
+
+    .info-box {
+        border-left: 4px solid #2563eb;
+        background-color: #f8f9fa;
+        padding: 18px 20px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+    /* ===================================================== */
+    /* LIST */
+    /* ===================================================== */
+
+    .content-list {
+        padding-left: 22px;
+    }
+
+    /* ===================================================== */
+    /* RESPONSIVE DIAGRAM */
+    /* ===================================================== */
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        .diagram-box {
+            width: 100%;
+            max-width: 260px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- ================================================= -->
+        <!-- LEFT: COURSE SYLLABUS -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- RIGHT: CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- PAGE TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    Introduction to CSS
+                </h1>
+
+                <p class="lead text-muted">
+                    Learn what CSS is, why it is used, and how it works
+                    together with HTML to create attractive web pages.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- WHAT IS CSS -->
+                <!-- ================================================= -->
+
+                <h2>What is CSS?</h2>
+
+                <p>
+                    CSS stands for
+                    <strong>Cascading Style Sheets</strong>.
+                    It is a stylesheet language used to control the
+                    appearance and layout of HTML elements.
+                </p>
+
+                <p>
+                    HTML creates the structure of a web page.
+                    CSS controls how that structure looks.
+                </p>
+
+                <div class="info-box">
+
+                    <strong>Simple way to remember:</strong>
+
+                    <p class="mb-0 mt-2">
+                        HTML gives the page its structure.
+                        <br />
+                        CSS gives the page its style and design.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- ONE SIMPLE DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>How HTML and CSS Work Together</h2>
+
+                <p>
+                    When a browser loads a web page, HTML provides the
+                    content and structure, while CSS tells the browser
+                    how that content should look.
+                </p>
+
+
+                <div class="css-flow-diagram">
+
+
+                    <div class="diagram-box diagram-html">
+
+                        <div class="diagram-title">
+                            HTML
+                        </div>
+
+                        <p class="diagram-text">
+                            Structure and Content
+                        </p>
+
+                    </div>
+
+
+                    <div class="diagram-arrow">
+                        +
+                    </div>
+
+
+                    <div class="diagram-box diagram-css">
+
+                        <div class="diagram-title">
+                            CSS
+                        </div>
+
+                        <p class="diagram-text">
+                            Style and Layout
+                        </p>
+
+                    </div>
+
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+
+                    <div class="diagram-box diagram-browser">
+
+                        <div class="diagram-title">
+                            Browser
+                        </div>
+
+                        <p class="diagram-text">
+                            Styled Web Page
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SIMPLE EXAMPLE -->
+                <!-- ================================================= -->
+
+                <h2>Simple CSS Example</h2>
+
+                <p>
+                    In this example, HTML creates a heading and CSS changes
+                    its text color.
+                </p>
+
+                <div class="css-example">
+                    <pre class="mb-0">&lt;h1 class="title"&gt;Welcome to CSS&lt;/h1&gt;
+
+&lt;style&gt;
+.title {
+    color: blue;
+}
+&lt;/style&gt;</pre>
+                </div>
+
+
+                <h3>What happens here?</h3>
+
+                <ul class="content-list">
+
+                    <li>
+                        The <strong>&lt;h1&gt;</strong> element creates
+                        the heading.
+                    </li>
+
+                    <li>
+                        The <strong>title</strong> class identifies
+                        the element.
+                    </li>
+
+                    <li>
+                        The CSS rule changes the text color to blue.
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- WHY CSS IS IMPORTANT -->
+                <!-- ================================================= -->
+
+                <h2>Why Do We Use CSS?</h2>
+
+                <p>
+                    Without CSS, a web page can look very basic.
+                    CSS helps developers create clear, attractive,
+                    and user-friendly interfaces.
+                </p>
+
+                <ul class="content-list">
+
+                    <li>
+                        Change text and background colors.
+                    </li>
+
+                    <li>
+                        Change fonts and text appearance.
+                    </li>
+
+                    <li>
+                        Add margin, padding, and borders.
+                    </li>
+
+                    <li>
+                        Control the size and position of elements.
+                    </li>
+
+                    <li>
+                        Create layouts using Flexbox and Grid.
+                    </li>
+
+                    <li>
+                        Make pages responsive for different screen sizes.
+                    </li>
+
+                    <li>
+                        Add transitions and animations.
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- WHERE CSS IS USED -->
+                <!-- ================================================= -->
+
+                <h2>Where is CSS Used?</h2>
+
+                <p>
+                    CSS is used in almost every modern website and
+                    web application.
+                </p>
+
+                <ul class="content-list">
+
+                    <li>Company websites</li>
+                    <li>Portfolio websites</li>
+                    <li>E-commerce websites</li>
+                    <li>Blogs and news websites</li>
+                    <li>Web applications</li>
+                    <li>Admin dashboards</li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- CSS WITH HTML -->
+                <!-- ================================================= -->
+
+                <h2>CSS and HTML</h2>
+
+                <p>
+                    HTML and CSS work together, but they have different
+                    responsibilities.
+                </p>
+
+                <div class="info-box">
+
+                    <p class="mb-2">
+                        <strong>HTML:</strong>
+                        Creates the structure and content.
+                    </p>
+
+                    <p class="mb-2">
+                        <strong>CSS:</strong>
+                        Controls the visual appearance and layout.
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>Browser:</strong>
+                        Combines both and displays the final page.
+                    </p>
+
+                </div>
+
+
+
+
+
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="alert alert-info mt-4 mb-0">
+
+                    <h2 class="h4 fw-bold">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS is used to style and design HTML content.
+                        It controls colors, fonts, spacing, borders,
+                        layouts, and responsive behavior. HTML provides
+                        the structure, while CSS controls the presentation.
+                    </p>
+
+                </div>
+
+                <!-- ===================================================== -->
+                <!-- TOPIC NAVIGATION -->
+                <!-- ===================================================== -->
+
+                <div class="topic-navigation mt-5 pt-4 border-top">
+
+                    <div class="row g-3 align-items-center">
+
+
+                        <!-- NEXT -->
+                        <div class="col-md-6 text-md-end">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("HowCSSWorks", "Introduction", new { area = "CSS" })">
+
+                                Next: How CSS Works →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

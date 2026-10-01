@@ -1,0 +1,729 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Aside Element";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #374151;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    .content-section p {
+        color: #4b5563;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+    pre code {
+        background: transparent !important;
+        color: #fff !important;
+    }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .aside-demo {
+        background: #f8f9fa;
+        border-left: 4px solid #6c757d;
+        padding: 18px;
+        border-radius: 6px;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML Aside Element</h1>
+
+            <p>
+                The HTML <code>&lt;aside&gt;</code> element is used for content that is
+                related to the main content but is not part of the main flow of that content.
+            </p>
+
+            <p>
+                It is commonly used for <strong>sidebars, related links, tips, advertisements,
+                author information, and additional resources</strong>.
+            </p>
+
+            <div class="info-box">
+                <strong>Easy Way to Remember:</strong>
+                <code>&lt;main&gt;</code> contains the primary content,
+                while <code>&lt;aside&gt;</code> contains useful related or secondary content.
+            </div>
+
+            <h2>1. What is the aside Element?</h2>
+
+            <p>
+                The <code>&lt;aside&gt;</code> element represents content that is
+                connected to the surrounding content, but is not essential to its main message.
+            </p>
+
+            <p>
+                For example, imagine a blog article about HTML Forms. A sidebar showing
+                "Related HTML Topics" would be suitable for an <code>&lt;aside&gt;</code>.
+            </p>
+
+            <pre><code>&lt;aside&gt;
+
+    &lt;h3&gt;Related Topics&lt;/h3&gt;
+
+    &lt;p&gt;
+        HTML Forms, Tables and Lists
+    &lt;/p&gt;
+
+&lt;/aside&gt;</code></pre>
+
+            <h2>2. Why Do We Use aside?</h2>
+
+            <p>
+                The main purpose of <code>&lt;aside&gt;</code> is to separate
+                additional information from the main content.
+            </p>
+
+            <p>For example, a page may contain:</p>
+
+            <ul>
+                <li>Related articles</li>
+                <li>Useful tips</li>
+                <li>Author information</li>
+                <li>Course resources</li>
+                <li>Advertisements</li>
+                <li>Important notes</li>
+            </ul>
+
+            <h2>3. Simple aside Example</h2>
+
+            <pre><code>&lt;main&gt;
+
+    &lt;h1&gt;HTML Forms&lt;/h1&gt;
+
+    &lt;p&gt;
+        HTML forms are used to collect user input.
+    &lt;/p&gt;
+
+    &lt;aside&gt;
+
+        &lt;h3&gt;Related Topics&lt;/h3&gt;
+
+        &lt;p&gt;
+            Learn HTML Input Types and Validation.
+        &lt;/p&gt;
+
+    &lt;/aside&gt;
+
+&lt;/main&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <h3 class="mt-0">HTML Forms</h3>
+
+                <p>
+                    HTML forms are used to collect user input.
+                </p>
+
+                <aside class="aside-demo">
+                    <h4 class="mb-2">Related Topics</h4>
+                    <p class="mb-0">
+                        Learn HTML Input Types and Validation.
+                    </p>
+                </aside>
+            </div>
+
+            <h2>4. Aside as a Sidebar</h2>
+
+            <p>
+                One of the most common uses of <code>&lt;aside&gt;</code> is a sidebar.
+                A sidebar usually contains information related to the main content.
+            </p>
+
+            <pre><code>&lt;main&gt;
+
+    &lt;section&gt;
+
+        &lt;h1&gt;HTML Tutorial&lt;/h1&gt;
+
+        &lt;p&gt;
+            Learn HTML step by step.
+        &lt;/p&gt;
+
+    &lt;/section&gt;
+
+    &lt;aside&gt;
+
+        &lt;h3&gt;HTML Topics&lt;/h3&gt;
+
+        &lt;ul&gt;
+            &lt;li&gt;Elements&lt;/li&gt;
+            &lt;li&gt;Attributes&lt;/li&gt;
+            &lt;li&gt;Forms&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/aside&gt;
+
+&lt;/main&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>5. Aside for Related Links</h2>
+
+            <p>
+                An aside can provide links to related pages or tutorials.
+            </p>
+
+            <pre><code>&lt;aside&gt;
+
+    &lt;h3&gt;Related Tutorials&lt;/h3&gt;
+
+    &lt;a href="/html-forms"&gt;
+        HTML Forms
+    &lt;/a&gt;
+
+    &lt;br&gt;
+
+    &lt;a href="/html-tables"&gt;
+        HTML Tables
+    &lt;/a&gt;
+
+&lt;/aside&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>6. Aside for Tips and Notes</h2>
+
+            <p>
+                An aside can also display a useful tip without interrupting the
+                main explanation.
+            </p>
+
+            <pre><code>&lt;aside&gt;
+
+    &lt;h3&gt;Tip&lt;/h3&gt;
+
+    &lt;p&gt;
+        Always use labels with form controls.
+    &lt;/p&gt;
+
+&lt;/aside&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="demo-box">
+                <aside class="aside-demo">
+                    <h4 class="mb-2">Tip</h4>
+                    <p class="mb-0">
+                        Always use labels with form controls.
+                    </p>
+                </aside>
+            </div>
+
+            <h2>7. Aside for Author Information</h2>
+
+            <p>
+                On a blog or article page, an aside can contain information
+                about the author.
+            </p>
+
+            <pre><code>&lt;article&gt;
+
+    &lt;h1&gt;
+        Introduction to HTML
+    &lt;/h1&gt;
+
+    &lt;p&gt;
+        HTML is used to structure web pages.
+    &lt;/p&gt;
+
+    &lt;aside&gt;
+
+        &lt;h3&gt;About the Author&lt;/h3&gt;
+
+        &lt;p&gt;
+            Written by the Web Development Team.
+        &lt;/p&gt;
+
+    &lt;/aside&gt;
+
+&lt;/article&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>8. Aside for Related Courses</h2>
+
+            <p>
+                On a training website, an aside can show related courses or learning resources.
+            </p>
+
+            <pre><code>&lt;aside&gt;
+
+    &lt;h3&gt;Related Courses&lt;/h3&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;.NET Full Stack&lt;/li&gt;
+        &lt;li&gt;Python Programming&lt;/li&gt;
+        &lt;li&gt;Java Programming&lt;/li&gt;
+    &lt;/ul&gt;
+
+&lt;/aside&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>9. Aside with Main Content</h2>
+
+            <p>
+                The most common structure is to place the main topic and related
+                secondary information together.
+            </p>
+
+            <pre><code>&lt;main&gt;
+
+    &lt;section&gt;
+
+        &lt;h1&gt;HTML Semantic Elements&lt;/h1&gt;
+
+        &lt;p&gt;
+            Semantic elements describe the meaning of content.
+        &lt;/p&gt;
+
+    &lt;/section&gt;
+
+    &lt;aside&gt;
+
+        &lt;h3&gt;Related Topics&lt;/h3&gt;
+
+        &lt;p&gt;
+            Header, Nav, Main, Section and Article
+        &lt;/p&gt;
+
+    &lt;/aside&gt;
+
+&lt;/main&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>10. Aside with Navigation</h2>
+
+            <p>
+                An aside can contain a navigation area when the links are related
+                to the main page content.
+            </p>
+
+            <pre><code>&lt;aside&gt;
+
+    &lt;nav aria-label="Tutorial Navigation"&gt;
+
+        &lt;a href="#"&gt;HTML Basics&lt;/a&gt;
+        &lt;a href="#"&gt;HTML Forms&lt;/a&gt;
+        &lt;a href="#"&gt;HTML Tables&lt;/a&gt;
+
+    &lt;/nav&gt;
+
+&lt;/aside&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="info-box">
+                <strong>Important:</strong>
+                The <code>&lt;aside&gt;</code> itself is not automatically a visual
+                sidebar. CSS controls how it looks and where it appears on the page.
+            </div>
+
+            <h2>11. Aside vs Section</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;section&gt;</code></td>
+                            <td>Groups content that belongs to the main document topic.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;aside&gt;</code></td>
+                            <td>Contains related or secondary information.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>12. Aside vs div</h2>
+
+            <p>
+                A <code>&lt;div&gt;</code> is a generic container. It does not
+                explain what the content means.
+            </p>
+
+            <p>
+                An <code>&lt;aside&gt;</code> tells us that the content is related
+                to the surrounding content but is secondary.
+            </p>
+
+            <pre><code>&lt;!-- Generic container --&gt;
+
+&lt;div&gt;
+    Related Information
+&lt;/div&gt;
+
+
+&lt;!-- Semantic container --&gt;
+
+&lt;aside&gt;
+    Related Information
+&lt;/aside&gt;</code></pre>
+
+            <h2>13. Aside vs Article</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;article&gt;</code></td>
+                            <td>Independent content that can stand on its own.</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;aside&gt;</code></td>
+                            <td>Related or secondary content.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>14. Aside and Accessibility</h2>
+
+            <p>
+                Semantic elements help provide a meaningful page structure.
+                An aside can identify content that is related to the main content
+                but is not its primary focus.
+            </p>
+
+            <p>
+                This makes the document structure easier to understand for users
+                and assistive technologies.
+            </p>
+
+            <h2>15. Aside with an Article</h2>
+
+            <pre><code>&lt;article&gt;
+
+    &lt;header&gt;
+
+        &lt;h1&gt;
+            Learn HTML
+        &lt;/h1&gt;
+
+    &lt;/header&gt;
+
+    &lt;p&gt;
+        HTML is used to structure web pages.
+    &lt;/p&gt;
+
+    &lt;aside&gt;
+
+        &lt;h3&gt;Did You Know?&lt;/h3&gt;
+
+        &lt;p&gt;
+            HTML stands for HyperText Markup Language.
+        &lt;/p&gt;
+
+    &lt;/aside&gt;
+
+&lt;/article&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>16. Complete Example</h2>
+
+            <p>
+                Here is a simple page structure using
+                <code>header</code>, <code>nav</code>, <code>main</code>,
+                <code>section</code>, <code>article</code>, and
+                <code>aside</code>.
+            </p>
+
+            <pre><code>&lt;header&gt;
+
+    &lt;h1&gt;
+        Learning Portal
+    &lt;/h1&gt;
+
+&lt;/header&gt;
+
+&lt;nav&gt;
+
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;Courses&lt;/a&gt;
+    &lt;a href="#"&gt;Contact&lt;/a&gt;
+
+&lt;/nav&gt;
+
+&lt;main&gt;
+
+    &lt;section&gt;
+
+        &lt;h2&gt;
+            Latest Tutorial
+        &lt;/h2&gt;
+
+        &lt;article&gt;
+
+            &lt;h3&gt;
+                Introduction to HTML
+            &lt;/h3&gt;
+
+            &lt;p&gt;
+                Learn the fundamentals of HTML.
+            &lt;/p&gt;
+
+        &lt;/article&gt;
+
+    &lt;/section&gt;
+
+    &lt;aside&gt;
+
+        &lt;h3&gt;
+            Related Topics
+        &lt;/h3&gt;
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML Forms&lt;/li&gt;
+            &lt;li&gt;HTML Tables&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/aside&gt;
+
+&lt;/main&gt;
+
+&lt;footer&gt;
+
+    &lt;p&gt;
+        &copy; 2026 Learning Portal
+    &lt;/p&gt;
+
+&lt;/footer&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>17. Common Mistakes</h2>
+
+            <h3>Mistake 1: Using aside for primary content</h3>
+
+            <p>
+                The main topic of the page should not be placed inside
+                <code>&lt;aside&gt;</code>. Use <code>&lt;main&gt;</code> or
+                <code>&lt;section&gt;</code> for primary content.
+            </p>
+
+            <h3>Mistake 2: Thinking aside always means right sidebar</h3>
+
+            <p>
+                <code>&lt;aside&gt;</code> is a semantic concept, not a fixed visual position.
+                CSS decides whether it appears on the left, right, top, or another location.
+            </p>
+
+            <h3>Mistake 3: Using aside for unrelated content</h3>
+
+            <p>
+                The content inside an aside should have some relationship to the
+                surrounding content.
+            </p>
+
+            <h2>18. Best Practices</h2>
+
+            <ul>
+                <li>Use <code>&lt;aside&gt;</code> for related secondary information.</li>
+                <li>Use it for sidebars, tips, related links, and supporting information.</li>
+                <li>Keep the aside relevant to the main content.</li>
+                <li>Do not use aside for the primary topic of the page.</li>
+                <li>Use CSS to control the visual position of the aside.</li>
+                <li>Use a heading when it helps explain the content inside the aside.</li>
+            </ul>
+
+            <h2>19. Practice Example</h2>
+
+            <p>
+                Create a page containing a main article and a related topics sidebar.
+            </p>
+
+            <pre><code>&lt;main&gt;
+
+    &lt;article&gt;
+
+        &lt;h1&gt;
+            Introduction to HTML
+        &lt;/h1&gt;
+
+        &lt;p&gt;
+            HTML is the standard markup language
+            used to structure web pages.
+        &lt;/p&gt;
+
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+
+        &lt;h2&gt;
+            Related Topics
+        &lt;/h2&gt;
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML Elements&lt;/li&gt;
+            &lt;li&gt;HTML Attributes&lt;/li&gt;
+            &lt;li&gt;HTML Forms&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/aside&gt;
+
+&lt;/main&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    The HTML <code>&lt;aside&gt;</code> element is used for content that
+                    is related to the main content but is not part of its primary flow.
+                    Common uses include sidebars, related links, tips, author information,
+                    and additional resources. Remember that <code>&lt;aside&gt;</code>
+                    represents a semantic role; CSS controls its visual position.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Article", "SemanticHTML", new { area = "HTML" })">
+                    ← Previous: Article
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Footer", "SemanticHTML", new { area = "HTML" })">
+                    Next: Footer →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

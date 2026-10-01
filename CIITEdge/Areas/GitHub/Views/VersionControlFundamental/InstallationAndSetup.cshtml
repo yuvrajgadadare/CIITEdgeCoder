@@ -1,0 +1,190 @@
+﻿@{
+    Layout = "~/Areas/GitHub/Views/Shared/GithubLayout.cshtml";
+    ViewData["Title"] = "Installation And Setup";
+}
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <!-- HEADER -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Installation And Setup</h2>
+
+            <p class="lead text-muted mb-0">
+                Setting up Git and GitHub allows you to track changes in your code and collaborate seamlessly with other developers. Git is the local tool that manages your file history, while GitHub is the cloud platform where your repositories live
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+         <div class="mb-5">
+                <p class="mb-5">
+                    Here is the complete step-by-step installation and configuration guide for Windows, Mac, and Linux.
+                </p>
+                <h3 class="fw-bold mb-3">Step 1: Install Git on Your System</h3>
+                
+                <p class="mb-5">
+                    <h4> Windows</h4>
+                    <ol>
+                        <li>
+                            <p class="mb-3">Visit the official Git for Windows download page.</p>
+                            <p class="mb-5">
+                                <img src="~/Images/github/gitwebsite.png" style="height:auto;width:90%;" />
+
+                            </p>
+                        </li>
+                        <li>
+                            <p>Download the <b>64-bit Git for Windows Setup</b> installer</p>
+                        </li>
+                        <li>
+                            <p>Run the downloaded git <b>.exe</b> file.</p>
+                        </li>
+                        <li>
+                            <p>
+                                Click <b>Next</b> through the setup prompts. The default settings work well for most users, but ensure you keep these selections:
+                                <ul>
+                                    <li>
+                                        <b>Choosing the default editor:</b> Select <b>Visual Studio Code</b> (or your preferred editor) instead of Vim.
+                                    </li>
+                                    <li>
+                                        <b>Adjusting your PATH environment:</b> Choose <b>"Git from the command line and also from 3rd-party software"</b>.
+                                    </li>
+                                    <li>
+                                        <b>Choosing the default branch name:</b> Select <b>"Override the default branch name for new repositories"</b> and set it to main to align with GitHub
+                                    </li>
+                                </ul>
+                            </p>
+                        </li>
+                    </ol>
+                </p>
+      
+
+            <h4 class="mg-1">macOS</h4>
+         
+                <p class="mb-3">You can install Git quickly via Terminal:</p>
+                <ol>
+                    <li>
+                        <p>Open the Terminal app (press Cmd + Space, type "Terminal")</p>
+                    </li>
+                    <li>
+                        <p>
+                            Run the downloaded git <b>.exe</b> file.
+                            <div class="code-block mb-4 shadow-sm">
+                                git --version
+                            </div>
+                            
+
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            If not installed, a prompt will ask you to install <b>Xcode Command Line Tools.</b> Click <b>Install</b>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Alternatively, if you use Homebrew, run the following command to install the latest version:
+                            <div class="code-block mb-4 shadow-sm">
+                                brew install git
+                            </div>
+                        </p>
+                    </li>
+                </ol>
+           
+
+            <h4 class="mg-1">Linux</h4>
+           
+                <p class="mb-3">Open your terminal and run the package manager command corresponding to your distribution:</p>
+                <ol>
+                    <li>
+                        Ubuntu/Debian
+                        <div class="code-block mb-4 shadow-sm">
+                             
+                            sudo apt update<br />
+                            sudo apt install git-all
+                        </div>
+                     
+                    </li>
+                    <li>
+                        <p>
+                            Fedora/CentOS
+                            <div class="code-block mb-4 shadow-sm">
+                                sudo dnf install git-all
+                            </div>
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        <div class="mb-3">
+                <h3 class="fw-bold mb-3">Step 2:  Verify Your Installation</h3>
+                <p class="mb-3">
+                    Once installed, open your command-line interface (Git Bash on Windows, or Terminal on Mac/Linux) and run:
+                    <div class="code-block mb-4 shadow-sm">
+                        git --version
+                    </div>
+                </p>
+        </div>
+            <div class="mb-3">
+                <h3 class="fw-bold mb-3">Step 3: Configure Your Git Profile</h3>
+                <div class="mb-3">
+                    Run the following commands in your terminal, replacing the placeholders with your actual details
+                    <div class="code-block mb-3 shadow-sm">
+                        git config --global user.name "Your Name"<br />
+                        git config --global user.email "your_email@example.com"<br />
+                        git config --global init.defaultBranch main<br />
+                    </div>
+                    <p><b>Note:</b> Use the exact email address you plan to use for your GitHub account.</p>
+                </div>
+                <div class="mb-3">
+                    Verify your settings at any time with:
+                    <div class="code-block mb-3 shadow-sm">
+                        git config --global --list
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <h3 class="fw-bold mb-3">Step 4: Create a GitHub Account</h3>
+                <ul>
+                    <li>
+                        <div class="mb-3">
+                            Open GitHub website <b>"https://github.com/"</b>
+                            <img src="~/Images/github/github.png" style="height:auto;width:90%;" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                            Click <b>Sign up</b> in the top-right corner
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                            enter your email, create a secure password, and select a unique username.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                            Verify your account through the confirmation email sent to you
+                        </div>
+                    </li>
+                    <li>
+                        <b>Authentication Setup:</b> Because GitHub does not allow standard password authentication when pushing code via the terminal, you will need to authenticate using either a Personal Access Token (PAT) or an SSH Key:
+                        <ul>
+                            <li>
+                                <b>Option A (Easiest)</b>: Connect your GitHub account directly through Visual Studio Code by clicking the Source Control icon and signing into GitHub when prompted.
+                            </li>
+                            <li>
+                                <b>Option B (Tokens)</b>: Go to GitHub Settings > Developer Settings > Personal Access Tokens > Tokens (classic) to generate a token for command-line access.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                 
+            </div>
+            
+        </section>
+            </div>
+            </div>
+            
+

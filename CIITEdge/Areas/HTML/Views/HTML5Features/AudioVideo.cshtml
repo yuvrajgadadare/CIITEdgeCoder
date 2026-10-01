@@ -1,0 +1,646 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML5 Audio and Video";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #374151;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    .content-section p {
+        color: #4b5563;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+    pre code {
+        background: transparent !important;
+        color: #fff !important;
+    }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #ffffff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .media-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 120px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML5 Audio and Video</h1>
+
+            <p>
+                HTML5 provides built-in elements for adding audio and video directly
+                to a webpage. The two main elements are
+                <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code>.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Idea:</strong>
+                <code>&lt;audio&gt;</code> is used for sound,
+                while <code>&lt;video&gt;</code> is used for moving visual content.
+            </div>
+
+            <h2>1. Audio and Video at a Glance</h2>
+
+            <div class="diagram-box">
+                <div class="diagram-title">
+                    HTML5 Multimedia
+                </div>
+
+                <div class="media-flow">
+
+                    <div class="flow-item">
+                        HTML5
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        &lt;audio&gt;<br>
+                        Sound
+                    </div>
+
+                    <div class="flow-arrow">+</div>
+
+                    <div class="flow-item">
+                        &lt;video&gt;<br>
+                        Video
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Browser<br>
+                        Playback
+                    </div>
+
+                </div>
+            </div>
+
+            <h2>2. The audio Element</h2>
+
+            <p>
+                The <code>&lt;audio&gt;</code> element is used to embed sound content
+                such as music, voice recordings, podcasts, and other audio files.
+            </p>
+
+            <p>
+                A simple example is:
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+    &lt;source src="music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+            <p>
+                The <code>controls</code> attribute tells the browser to display
+                playback controls.
+            </p>
+
+            <h2>3. Audio Controls</h2>
+
+            <p>
+                Without the <code>controls</code> attribute, the browser does not
+                normally display its standard playback controls.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+    &lt;source src="lesson.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+
+            <p>
+                Depending on the browser, the controls can provide options such as
+                play, pause, volume, and playback position.
+            </p>
+
+            <h2>4. Multiple Audio Sources</h2>
+
+            <p>
+                A source can be provided using the <code>&lt;source&gt;</code> element.
+                Multiple sources can be listed so the browser can use a compatible one.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+
+    &lt;source src="lesson.mp3"
+            type="audio/mpeg"&gt;
+
+    &lt;source src="lesson.ogg"
+            type="audio/ogg"&gt;
+
+&lt;/audio&gt;</code></pre>
+
+            <div class="info-box">
+                <strong>Why multiple sources?</strong>
+                Different browsers or environments may support different media formats.
+                The browser can choose a supported source.
+            </div>
+
+            <h2>5. Audio with Autoplay</h2>
+
+            <p>
+                The <code>autoplay</code> attribute requests automatic playback.
+            </p>
+
+            <pre><code>&lt;audio controls autoplay&gt;
+
+    &lt;source src="music.mp3"
+            type="audio/mpeg"&gt;
+
+&lt;/audio&gt;</code></pre>
+
+            <p>
+                Modern browsers may restrict automatic playback, especially when
+                sound would begin without user interaction.
+            </p>
+
+            <h2>6. Audio with Loop</h2>
+
+            <p>
+                The <code>loop</code> attribute causes the media to start again
+                when it reaches the end.
+            </p>
+
+            <pre><code>&lt;audio controls loop&gt;
+
+    &lt;source src="background.mp3"
+            type="audio/mpeg"&gt;
+
+&lt;/audio&gt;</code></pre>
+
+            <h2>7. Muted Audio</h2>
+
+            <p>
+                The <code>muted</code> attribute starts the audio in a muted state.
+            </p>
+
+            <pre><code>&lt;audio controls muted&gt;
+
+    &lt;source src="audio.mp3"
+            type="audio/mpeg"&gt;
+
+&lt;/audio&gt;</code></pre>
+
+            <h2>8. The video Element</h2>
+
+            <p>
+                The <code>&lt;video&gt;</code> element is used to embed video content
+                directly into a webpage.
+            </p>
+
+            <pre><code>&lt;video controls width="500"&gt;
+
+    &lt;source src="lesson.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+            <p>
+                The browser can provide controls for playing and managing the video.
+            </p>
+
+            <h2>9. Video with Width and Height</h2>
+
+            <p>
+                The size of a video can be controlled using attributes such as
+                <code>width</code> and <code>height</code>.
+            </p>
+
+            <pre><code>&lt;video controls
+       width="600"
+       height="350"&gt;
+
+    &lt;source src="lesson.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+            <h2>10. Video Poster</h2>
+
+            <p>
+                The <code>poster</code> attribute specifies an image that can be
+                displayed before the video starts playing.
+            </p>
+
+            <pre><code>&lt;video controls
+       poster="thumbnail.jpg"
+       width="600"&gt;
+
+    &lt;source src="lesson.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+            <p>
+                A poster image is useful because it gives users a visual preview
+                before playback starts.
+            </p>
+
+            <h2>11. Video with Multiple Sources</h2>
+
+            <pre><code>&lt;video controls width="600"&gt;
+
+    &lt;source src="lesson.mp4"
+            type="video/mp4"&gt;
+
+    &lt;source src="lesson.webm"
+            type="video/webm"&gt;
+
+&lt;/video&gt;</code></pre>
+
+            <h2>12. Video with Autoplay</h2>
+
+            <p>
+                The <code>autoplay</code> attribute requests automatic playback.
+            </p>
+
+            <pre><code>&lt;video controls autoplay&gt;
+
+    &lt;source src="lesson.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+            <p>
+                Browser policies can affect whether autoplay is actually allowed.
+            </p>
+
+            <h2>13. Video with Loop and Muted</h2>
+
+            <p>
+                These attributes are often combined when a video should repeat
+                continuously and start without sound.
+            </p>
+
+            <pre><code>&lt;video controls
+       autoplay
+       loop
+       muted&gt;
+
+    &lt;source src="intro.mp4"
+            type="video/mp4"&gt;
+
+&lt;/video&gt;</code></pre>
+
+            <h2>14. Audio vs Video</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Audio</th>
+                            <th>Video</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Element</td>
+                            <td><code>&lt;audio&gt;</code></td>
+                            <td><code>&lt;video&gt;</code></td>
+                        </tr>
+
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Sound content</td>
+                            <td>Video content</td>
+                        </tr>
+
+                        <tr>
+                            <td>Visual Content</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+
+                        <tr>
+                            <td>Controls</td>
+                            <td>Supported</td>
+                            <td>Supported</td>
+                        </tr>
+
+                        <tr>
+                            <td>Source</td>
+                            <td>Audio file</td>
+                            <td>Video file</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>15. Fallback Text</h2>
+
+            <p>
+                Text can be placed inside an audio or video element as fallback
+                content for browsers that cannot use the media element.
+            </p>
+
+            <pre><code>&lt;video controls&gt;
+
+    &lt;source src="lesson.mp4"
+            type="video/mp4"&gt;
+
+    Your browser does not support video playback.
+
+&lt;/video&gt;</code></pre>
+
+            <h2>16. Audio and Video Attributes</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><code>controls</code></td>
+                            <td>Displays playback controls.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>autoplay</code></td>
+                            <td>Requests automatic playback.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>loop</code></td>
+                            <td>Repeats the media.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>muted</code></td>
+                            <td>Starts the media muted.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>poster</code></td>
+                            <td>Displays a preview image for video.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>width</code></td>
+                            <td>Controls video width.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>height</code></td>
+                            <td>Controls video height.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>17. Example: Training Video</h2>
+
+            <p>
+                A training website can use the video element to show recorded lessons.
+            </p>
+
+            <pre><code>&lt;video controls
+       poster="html-course.jpg"
+       width="700"&gt;
+
+    &lt;source src="html-lesson.mp4"
+            type="video/mp4"&gt;
+
+    Your browser does not support video playback.
+
+&lt;/video&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>18. Example: Training Audio</h2>
+
+            <p>
+                Audio can be useful for voice lessons, podcasts, or recorded explanations.
+            </p>
+
+            <pre><code>&lt;audio controls&gt;
+
+    &lt;source src="html-explanation.mp3"
+            type="audio/mpeg"&gt;
+
+    Your browser does not support audio playback.
+
+&lt;/audio&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2>19. Common Mistakes</h2>
+
+            <h3>Mistake 1: Forgetting controls</h3>
+
+            <p>
+                Without <code>controls</code>, users may not see the standard
+                playback interface.
+            </p>
+
+            <h3>Mistake 2: Providing the wrong file type</h3>
+
+            <p>
+                The file format and declared MIME type should match the media file.
+            </p>
+
+            <h3>Mistake 3: Depending on autoplay</h3>
+
+            <p>
+                Autoplay behavior can be restricted by browsers, especially for
+                media that starts with sound.
+            </p>
+
+            <h3>Mistake 4: Forgetting fallback content</h3>
+
+            <p>
+                Providing fallback text gives users a useful message when the
+                media element cannot be played.
+            </p>
+
+            <h2>20. Best Practices</h2>
+
+            <ul>
+                <li>Use <code>controls</code> when users need to control playback.</li>
+                <li>Provide appropriate media formats and MIME types.</li>
+                <li>Use <code>poster</code> images for videos when a preview is useful.</li>
+                <li>Do not depend on autoplay for important content.</li>
+                <li>Provide fallback text where appropriate.</li>
+                <li>Use captions and accessibility features for video content when required.</li>
+                <li>Keep media file sizes optimized for reasonable loading performance.</li>
+            </ul>
+
+            <h2>21. Practice Example</h2>
+
+            <p>
+                Create a simple HTML page containing one audio lesson and one
+                training video.
+            </p>
+
+            <pre><code>&lt;h2&gt;
+    HTML Audio Lesson
+&lt;/h2&gt;
+
+&lt;audio controls&gt;
+
+    &lt;source src="lesson.mp3"
+            type="audio/mpeg"&gt;
+
+    Your browser does not support audio.
+
+&lt;/audio&gt;
+
+
+&lt;h2&gt;
+    HTML Video Lesson
+&lt;/h2&gt;
+
+&lt;video controls
+       width="600"
+       poster="lesson.jpg"&gt;
+
+    &lt;source src="lesson.mp4"
+            type="video/mp4"&gt;
+
+    Your browser does not support video.
+
+&lt;/video&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Output</h3>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML5 provides the <code>&lt;audio&gt;</code> and
+                    <code>&lt;video&gt;</code> elements for native multimedia support.
+                    The <code>controls</code>, <code>autoplay</code>,
+                    <code>loop</code>, <code>muted</code>, and <code>poster</code>
+                    attributes control different parts of media behavior.
+                    Using the correct source format, fallback text, and accessibility
+                    support helps create a better multimedia experience.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("NewInputTypes", "HTML5Features", new { area = "HTML" })">
+                    ← Previous: New Input Types
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Canvas", "HTML5Features", new { area = "HTML" })">
+                    Next: Canvas →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

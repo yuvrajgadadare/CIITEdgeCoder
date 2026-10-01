@@ -1,0 +1,854 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Memory Basics";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+    .try-it-btn:hover {
+        background: #157347;
+        color: #fff;
+    }
+
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Memory Basics in C#
+                </h2>
+
+                <!-- Introduction -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    What is Memory?
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Memory is the area where a computer temporarily stores data and
+                    instructions while a program is running. When a C# application
+                    executes, the .NET runtime manages memory for objects, variables,
+                    method calls and other runtime information.
+                </p>
+
+                <p class="text-muted mb-4">
+                    Understanding memory is important for C# developers because it
+                    helps us understand how variables are stored, how objects are
+                    created, how method calls work and how unused objects are
+                    eventually removed from memory.
+                </p>
+
+                <div class="alert alert-info mb-5">
+                    <strong>Simple Idea:</strong>
+                    When a C# program runs, it needs memory to store the data
+                    required by the program. The .NET runtime manages much of this
+                    memory automatically.
+                </div>
+
+                <!-- Memory Areas -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Memory Management in .NET
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The .NET runtime provides automatic memory management.
+                    Two important memory areas that beginners should understand
+                    are the <strong>Stack</strong> and the <strong>Heap</strong>.
+                </p>
+
+                <div class="table-responsive mb-5">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Stack</th>
+                                <th>Heap</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Used for method calls and local data.</td>
+                                <td>Used for dynamically allocated objects.</td>
+                            </tr>
+                            <tr>
+                                <td>Works with a structured last-in-first-out model.</td>
+                                <td>Stores objects managed by the .NET runtime.</td>
+                            </tr>
+                            <tr>
+                                <td>Generally fast to access.</td>
+                                <td>Managed by the Garbage Collector.</td>
+                            </tr>
+                            <tr>
+                                <td>Method execution creates stack frames.</td>
+                                <td>Objects can remain in memory until they are no longer needed.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Stack -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Stack Memory
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The stack is used during method execution. Local variables,
+                    method parameters and information required for method calls
+                    are associated with stack frames.
+                </p>
+
+                <p class="text-muted mb-4">
+                    When a method is called, a new stack frame is created for
+                    that method. When the method finishes execution, its stack
+                    frame is removed.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+                        <pre class="mb-0"><code>using System;
+ 
+static void Calculate()
+{
+    int number = 10;
+
+    Console.WriteLine(number);
+}
+
+Calculate();</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+                        </button>
+                    </div>
+
+                <p class="text-muted mb-5">
+                    Here, <code>number</code> is a local variable associated with
+                    the execution of the <code>Calculate()</code> method.
+                </p>
+
+                <!-- Heap -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Heap Memory
+                </h4>
+
+                <p class="text-muted mb-4">
+                    The heap is used for objects that are dynamically created
+                    during program execution. In C#, objects created using
+                    <code>new</code> are generally allocated on the managed heap.
+                </p>
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Example
+                </h5>
+
+                    <div class="try-it-example">
+
+                        <div class="code-block shadow-sm">
+
+                            <div class="code-lang-tag">
+                                C#
+                            </div>
+
+                  <pre class="mb-0"><code>using System;
+ 
+class Student
+{
+    public string Name;
+}
+
+Student student = new Student();
+
+student.Name = "Rahul";
+
+Console.WriteLine(student.Name);</code></pre>
+
+                        </div>
+
+                        <div class="text-end mt-2 mb-3">
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryItYourself(this)">
+                                <i class="bi bi-play-fill me-1"></i>
+                                Try It
+                            </button>
+                        </div>
+
+                <p class="text-muted mb-5">
+                    The <code>Student</code> object is created using the
+                    <code>new</code> keyword and is managed by the .NET runtime.
+                </p>
+
+                <!-- Value Types -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Value Types and Memory
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Value types directly contain their data. Common value types
+                    include <code>int</code>, <code>double</code>, <code>bool</code>,
+                    <code>char</code>, structures and enumerations.
+                </p>
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+                    <pre class="mb-0"><code>using System;
+ 
+int number1 = 10;
+int number2 = number1;
+
+number2 = 20;
+
+Console.WriteLine(number1);
+Console.WriteLine(number2);</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+                                </button>
+                            </div>
+
+                <div class="alert alert-success mb-5">
+                    <strong>Output:</strong>
+                    <br />
+                    10
+                    <br />
+                    20
+                </div>
+
+                <p class="text-muted mb-5">
+                    The second variable receives its own copy of the value.
+                    Changing <code>number2</code> does not change
+                    <code>number1</code>.
+                </p>
+
+                <!-- Reference Types -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Reference Types and Memory
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Reference types store a reference to an object rather than
+                    directly containing the object's data. Classes, arrays,
+                    delegates and strings are examples of reference types.
+                </p>
+
+                            <div class="try-it-example">
+
+                                <div class="code-block shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        C#
+                                    </div>
+
+                                    <pre class="mb-0"><code>using System;
+
+class Student
+{
+    public string Name;
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student student1 = new Student();
+
+        student1.Name = "Rahul";
+
+        Student student2 = student1;
+
+        student2.Name = "Amit";
+
+        Console.WriteLine(student1.Name);
+    }
+}</code></pre>
+
+                                </div>
+
+                                <div class="text-end mt-2 mb-3">
+                                    <button type="button"
+                                            class="try-it-btn"
+                                            onclick="tryItYourself(this)">
+                                        <i class="bi bi-play-fill me-1"></i>
+                                        Try It
+                                    </button>
+                                </div>
+
+                <div class="alert alert-success mb-5">
+                    <strong>Output:</strong> Amit
+                </div>
+
+                <p class="text-muted mb-5">
+                    Both <code>student1</code> and <code>student2</code> refer to
+                    the same object. Therefore, changing the object through one
+                    reference can be observed through the other reference.
+                </p>
+
+                <!-- Method Calls -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Memory During Method Calls
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Whenever a method is called, the runtime needs to keep track
+                    of the method's parameters, local variables and execution
+                    information.
+                </p>
+
+
+            <div class="try-it-example">
+
+               <div class="code-block shadow-sm">
+
+                   <div class="code-lang-tag"> C# </div>
+
+                     <pre class="mb-0"><code>using System;
+
+static void Display(int number)
+{
+    int result = number * 2;
+
+    Console.WriteLine(result);
+}
+
+Display(10);</code></pre>
+
+    </div>
+
+        <div class="text-end mt-2 mb-3">
+            <button type="button"
+                class="try-it-btn"
+                   onclick="tryItYourself(this)">
+                      <i class="bi bi-play-fill me-1"></i>
+                          Try It
+            </button>
+    </div>
+
+                <p class="text-muted mb-5">
+                    During the execution of <code>Display()</code>, the runtime
+                    keeps track of the method parameter and local variable
+                    required by the method.
+                </p>
+
+                <!-- Reference Example -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Understanding Reference Assignment
+                </h4>
+
+                <p class="text-muted mb-4">
+                    When one reference variable is assigned to another reference
+                    variable, a new object is not automatically created.
+                    Both variables can refer to the same object.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Car
+{
+    public string Model;
+}
+
+class Program
+{
+    static void Main()
+    {
+        Car car1 = new Car();
+
+        car1.Model = "BMW";
+
+        Car car2 = car1;
+
+        car2.Model = "Audi";
+
+        Console.WriteLine(car1.Model);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+                <div class="alert alert-success mb-5">
+                    <strong>Output:</strong> Audi
+                </div>
+
+                <!-- Object Lifetime -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Object Lifetime
+                </h4>
+
+                <p class="text-muted mb-4">
+                    An object remains available as long as it can still be
+                    reached by references from the running application.
+                    When an object is no longer reachable, it may become
+                    eligible for garbage collection.
+                </p>
+
+               <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Employee
+{
+    public string Name;
+}
+
+Employee employee = new Employee();
+
+employee.Name = "Rahul";
+
+employee = null;</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+                <p class="text-muted mb-5">
+                    After the reference is assigned <code>null</code>, the object
+                    may become eligible for garbage collection if no other
+                    reference points to it.
+                </p>
+
+                <!-- Garbage Collection Intro -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    What is Garbage Collection?
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Garbage Collection, commonly called <strong>GC</strong>,
+                    is the automatic memory management feature provided by
+                    the .NET runtime.
+                </p>
+
+                <p class="text-muted mb-4">
+                    The Garbage Collector identifies objects that are no longer
+                    reachable by the application and reclaims the memory used
+                    by those objects.
+                </p>
+
+                <div class="alert alert-info mb-5">
+                    <strong>Important:</strong>
+                    Developers normally do not need to manually free managed
+                    memory. The .NET Garbage Collector handles this automatically.
+                </div>
+
+                <!-- GC Example -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Simple Garbage Collection Example
+                </h4>
+
+@*                 <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>class Student
+{
+    public string Name;
+}
+
+Student student = new Student();
+
+student.Name = "Rahul";
+
+student = null;
+
+// The object may now become eligible
+// for garbage collection.</code></pre>
+                </div> *@
+
+<div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Student
+{
+    public string Name;
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student student = new Student();
+
+        student.Name = "Rahul";
+
+        student = null;
+
+        // The object may now become eligible
+        // for garbage collection
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+
+                <!-- IDisposable -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Managed and Unmanaged Resources
+                </h4>
+
+                <p class="text-muted mb-4">
+                    .NET automatically manages memory for managed objects.
+                    However, applications can also work with resources such as
+                    files, database connections, network connections and other
+                    resources that should be released properly.
+                </p>
+
+                <p class="text-muted mb-4">
+                    For resources that implement <code>IDisposable</code>,
+                    the <code>using</code> statement is commonly used to ensure
+                    that the resource is disposed correctly.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>using (StreamWriter writer = new StreamWriter("data.txt"))
+{
+    writer.WriteLine("WelCome CIIT 🤓❤️...!");
+}</code></pre>
+                </div>
+
+                <p class="text-muted mb-5">
+                    The <code>using</code> statement ensures that the resource
+                    is disposed when execution leaves the block.
+                </p>
+
+                <!-- Memory Best Practices -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Memory Management Best Practices
+                </h4>
+
+                <ul class="text-muted mb-5">
+                    <li class="mb-2">
+                        Avoid creating unnecessary objects.
+                    </li>
+
+                    <li class="mb-2">
+                        Release disposable resources properly.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>using</code> for objects that implement
+                        <code>IDisposable</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Avoid keeping unnecessary references to large objects.
+                    </li>
+
+                    <li class="mb-2">
+                        Understand the difference between value types and
+                        reference types.
+                    </li>
+
+                    <li class="mb-2">
+                        Avoid manually forcing garbage collection unless
+                        there is a specific and well-understood reason.
+                    </li>
+                </ul>
+
+                <!-- Stack vs Heap -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Stack vs Heap - Quick Comparison
+                </h4>
+
+                <div class="table-responsive mb-5">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Feature</th>
+                                <th>Stack</th>
+                                <th>Heap</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Purpose</td>
+                                <td>Method execution and local data</td>
+                                <td>Object storage</td>
+                            </tr>
+                            <tr>
+                                <td>Management</td>
+                                <td>Managed automatically as methods execute</td>
+                                <td>Managed by the .NET Garbage Collector</td>
+                            </tr>
+                            <tr>
+                                <td>Typical Use</td>
+                                <td>Method parameters and local variables</td>
+                                <td>Objects and dynamically allocated data</td>
+                            </tr>
+                            <tr>
+                                <td>Lifetime</td>
+                                <td>Usually associated with method execution</td>
+                                <td>Depends on object reachability and GC</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- CIIT Practical Point -->
+                <div class="alert alert-warning mb-5">
+                    <strong>CIIT Practical Point:</strong>
+                    In interviews, candidates are commonly asked about
+                    Stack vs Heap, Value Type vs Reference Type,
+                    Garbage Collection, object lifetime and
+                    <code>IDisposable</code>.
+                </div>
+
+                <!-- Common Mistakes -->
+                <h4 class="h4 fw-bold text-dark mt-1 mb-4">
+                    Common Mistakes to Avoid
+                </h4>
+
+                <ul class="text-muted mb-5">
+                    <li class="mb-2">
+                        Assuming every variable is stored in exactly the same
+                        memory location.
+                    </li>
+
+                    <li class="mb-2">
+                        Assuming assigning one reference variable to another
+                        automatically creates a new object.
+                    </li>
+
+                    <li class="mb-2">
+                        Forgetting to dispose resources such as streams and
+                        database connections.
+                    </li>
+
+                    <li class="mb-2">
+                        Calling <code>GC.Collect()</code> unnecessarily.
+                    </li>
+
+                    <li class="mb-2">
+                        Confusing object lifetime with variable lifetime.
+                    </li>
+                </ul>
+
+                <!-- Summary -->
+                <div class="alert alert-success mt-5">
+                    <h5 class="fw-bold">
+                        Summary
+                    </h5>
+
+                    <p class="mb-0">
+                        Memory management is an important concept in C#.
+                        The .NET runtime manages memory automatically.
+                        The Stack is associated with method execution and
+                        local data, while the managed Heap is used for objects.
+                        Understanding value types, reference types, object
+                        lifetime and Garbage Collection helps developers
+                        write efficient and reliable applications.
+                    </p>
+                </div>
+
+                <!-- Practice Questions -->
+                <div class="mt-5">
+                    <h4 class="fw-bold text-dark mb-3">
+                        Practice Questions
+                    </h4>
+
+                    <ol class="text-muted">
+                        <li class="mb-2">
+                            What is Stack memory?
+                        </li>
+
+                        <li class="mb-2">
+                            What is Heap memory?
+                        </li>
+
+                        <li class="mb-2">
+                            Explain the difference between Stack and Heap.
+                        </li>
+
+                        <li class="mb-2">
+                            What is the difference between Value Type and
+                            Reference Type?
+                        </li>
+
+                        <li class="mb-2">
+                            What happens when one reference variable is assigned
+                            to another?
+                        </li>
+
+                        <li class="mb-2">
+                            What is Garbage Collection?
+                        </li>
+
+                        <li class="mb-2">
+                            What is an unreachable object?
+                        </li>
+
+                        <li class="mb-2">
+                            What is IDisposable?
+                        </li>
+
+                        <li class="mb-2">
+                            Why is the using statement useful?
+                        </li>
+
+                        <li class="mb-2">
+                            Why should GC.Collect() generally not be called
+                            unnecessarily?
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Next Topic -->
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+
+                        <a href="/CSharp/MethodsMemoryManagement/MethodOverloading"
+                           class="btn btn-outline-secondary">
+                            ← Previous Topic
+                        </a>
+
+                        <a href="/CSharp/MethodsMemoryManagement/GarbageCollection"
+                           class="btn btn-primary">
+                            Next Topic →
+                        </a>
+
+                    </div>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+    <script>
+
+        function tryItYourself(button) {
+
+            // Find the code example containing this button
+            const example = button.closest(".try-it-example");
+
+            if (!example) {
+                alert("Code example not found.");
+                return;
+            }
+
+            // Find only this example's code
+            const codeElement = example.querySelector("pre code");
+
+            if (!codeElement) {
+                alert("Tutorial code not found.");
+                return;
+            }
+
+            // Get exact code and preserve indentation/new lines
+            const code = codeElement.textContent.trim();
+
+            // Create temporary form
+            const form = document.createElement("form");
+
+            form.method = "POST";
+
+            form.action =
+                '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+            // IMPORTANT: Open compiler in new tab
+            form.target = "_blank";
+
+            const input = document.createElement("input");
+
+            input.type = "hidden";
+            input.name = "code";
+            input.value = code;
+
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+
+            form.submit();
+
+            document.body.removeChild(form);
+        }
+
+    </script>

@@ -1,0 +1,39 @@
+﻿@model TutorialModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-route-category="">Tutorials</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index" asp-route-category="@Model.Category">@Model.Category</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+    </ol>
+</nav>
+
+<div class="row mt-4">
+    <!-- Main Content Area -->
+    <div class="col-lg-8">
+        <article class="bg-white p-4 rounded shadow-sm">
+            <h1 class="fw-bold mb-3">@Model.Title</h1>
+            <hr />
+            <p class="fs-5 lh-base">@Model.Content</p>
+
+            <h4 class="mt-4 fw-bold text-secondary">Code Example:</h4>
+            <div class="bg-dark text-light p-3 rounded font-monospace shadow-sm position-relative">
+                <pre class="mb-0"><code>@Model.CodeSnippet</code></pre>
+            </div>
+
+            <a asp-action="Index" class="btn btn-secondary mt-4">← Back to Dashboard</a>
+        </article>
+    </div>
+
+    <!-- Sidebar Widget Area -->
+    <div class="col-lg-4">
+        <div class="p-4 bg-white rounded shadow-sm mb-4">
+            <h4 class="fw-bold">Need Help?</h4>
+            <p class="text-muted small">Join our community forum or practice coding directly in our sandbox environment.</p>
+            <button class="btn btn-success btn-sm w-100 mb-2">Ask a Question</button>
+        </div>
+    </div>
+</div>

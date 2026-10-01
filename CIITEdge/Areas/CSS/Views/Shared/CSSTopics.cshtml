@@ -1,0 +1,826 @@
+﻿@{
+    var currentController =
+        ViewContext.RouteData.Values["controller"]?.ToString();
+
+    var currentAction =
+        ViewContext.RouteData.Values["action"]?.ToString();
+
+    bool IsActive(string controller, string action)
+    {
+        return string.Equals(
+                   currentController,
+                   controller,
+                   StringComparison.OrdinalIgnoreCase)
+               &&
+               string.Equals(
+                   currentAction,
+                   action,
+                   StringComparison.OrdinalIgnoreCase);
+    }
+}
+
+<style>
+
+    /* ===================================================== */
+    /* CSS SYLLABUS CARD */
+    /* ===================================================== */
+
+    .css-syllabus-card {
+        border: 0;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+
+    /* ===================================================== */
+    /* SYLLABUS HEADER */
+    /* ===================================================== */
+
+    .css-syllabus-header {
+        background-color: #212529 !important;
+        color: #fff !important;
+        padding: 14px 18px !important;
+        font-size: 15px;
+        font-weight: 700;
+        display: block !important;
+        visibility: visible !important;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+
+    /* ===================================================== */
+    /* MODULE TITLE */
+    /* ===================================================== */
+
+    .css-module-title {
+        background-color: #f8f9fa !important;
+        font-weight: 700 !important;
+        color: #212529 !important;
+        padding: 12px 16px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+
+    /* ===================================================== */
+    /* TOPIC LINKS */
+    /* ===================================================== */
+
+    .css-topic-link {
+        display: block;
+        padding: 10px 16px 10px 28px;
+        font-size: 14px;
+        color: #495057 !important;
+        text-decoration: none !important;
+        border: 0 !important;
+        border-bottom: 1px solid #f1f1f1 !important;
+        background-color: #fff !important;
+    }
+
+
+    .css-topic-link:hover {
+        background-color: #f1f3f5 !important;
+        color: #212529 !important;
+    }
+
+
+    /* ===================================================== */
+    /* ACTIVE TOPIC */
+    /* ===================================================== */
+
+    .css-topic-link.active,
+    .css-topic-link.active:hover,
+    .css-topic-link.active:focus {
+        background-color: #fff !important;
+        color: #495057 !important;
+        font-weight: 400 !important;
+        border-top: 0 !important;
+        border-left: 0 !important;
+        border-right: 0 !important;
+        border-bottom: 2px solid #2563eb !important;
+        box-shadow: none !important;
+    }
+
+
+    /* ===================================================== */
+    /* SCROLLBAR */
+    /* ===================================================== */
+
+    .css-syllabus-card::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .css-syllabus-card::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .css-syllabus-card::-webkit-scrollbar-thumb {
+        background: #c8c8c8;
+        border-radius: 10px;
+    }
+
+    .css-syllabus-card::-webkit-scrollbar-thumb:hover {
+        background: #aaa;
+    }
+
+
+    /* ===================================================== */
+    /* MOBILE */
+    /* ===================================================== */
+
+    @@media (max-width: 991px) {
+
+        .css-syllabus-card {
+            position: relative;
+            top: auto;
+            max-height: none;
+            overflow: hidden;
+        }
+
+        .css-syllabus-header {
+            position: relative;
+        }
+    }
+
+</style>
+
+
+<div class="card css-syllabus-card">
+
+    <!-- ================================================= -->
+    <!-- HEADER -->
+    <!-- ================================================= -->
+
+    <div class="card-header css-syllabus-header">
+
+        <span>COURSE SYLLABUS</span>
+
+    </div>
+
+
+    <div class="list-group list-group-flush">
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 1 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            1. Introduction to CSS
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Introduction", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Introduction", new { area = "CSS" })">
+            Introduction to CSS
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Introduction", "HowCSSWorks") ? "active" : "")"
+           href="@Url.Action("HowCSSWorks", "Introduction", new { area = "CSS" })">
+            How CSS Works
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Introduction", "CSSvsHTML") ? "active" : "")"
+           href="@Url.Action("CSSvsHTML", "Introduction", new { area = "CSS" })">
+            CSS vs HTML
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Introduction", "AddingCSS") ? "active" : "")"
+           href="@Url.Action("AddingCSS", "Introduction", new { area = "CSS" })">
+            Adding CSS
+        </a>
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 2 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            2. CSS Basics
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("CSSBasics", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "CSSBasics", new { area = "CSS" })">
+            CSS Basics
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("CSSBasics", "CSSSyntax") ? "active" : "")"
+           href="@Url.Action("CSSSyntax", "CSSBasics", new { area = "CSS" })">
+            CSS Syntax
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("CSSBasics", "InlineCSS") ? "active" : "")"
+           href="@Url.Action("InlineCSS", "CSSBasics", new { area = "CSS" })">
+            Inline CSS
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("CSSBasics", "InternalCSS") ? "active" : "")"
+           href="@Url.Action("InternalCSS", "CSSBasics", new { area = "CSS" })">
+            Internal CSS
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("CSSBasics", "ExternalCSS") ? "active" : "")"
+           href="@Url.Action("ExternalCSS", "CSSBasics", new { area = "CSS" })">
+            External CSS
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("CSSBasics", "CSSComments") ? "active" : "")"
+           href="@Url.Action("CSSComments", "CSSBasics", new { area = "CSS" })">
+            CSS Comments
+        </a>
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 3 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            3. CSS Selectors
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Selectors", new { area = "CSS" })">
+            CSS Selectors
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "ElementSelector") ? "active" : "")"
+           href="@Url.Action("ElementSelector", "Selectors", new { area = "CSS" })">
+            Element Selector
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "ClassSelector") ? "active" : "")"
+           href="@Url.Action("ClassSelector", "Selectors", new { area = "CSS" })">
+            Class Selector
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "IdSelector") ? "active" : "")"
+           href="@Url.Action("IdSelector", "Selectors", new { area = "CSS" })">
+            ID Selector
+        </a>
+
+
+        @* <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "UniversalSelector") ? "active" : "")"
+           href="@Url.Action("UniversalSelector", "Selectors", new { area = "CSS" })">
+            Universal Selector
+        </a> *@
+
+
+        @* <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "GroupingSelector") ? "active" : "")"
+           href="@Url.Action("GroupingSelector", "Selectors", new { area = "CSS" })">
+            Grouping Selector
+        </a> *@
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "AttributeSelector") ? "active" : "")"
+           href="@Url.Action("AttributeSelector", "Selectors", new { area = "CSS" })">
+            Attribute Selector
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "DescendantSelector") ? "active" : "")"
+           href="@Url.Action("DescendantSelector", "Selectors", new { area = "CSS" })">
+            Descendant Selector
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "ChildSelector") ? "active" : "")"
+           href="@Url.Action("ChildSelector", "Selectors", new { area = "CSS" })">
+            Child Selector
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "PseudoClassSelector") ? "active" : "")"
+           href="@Url.Action("PseudoClassSelector", "Selectors", new { area = "CSS" })">
+            Pseudo-Class Selector
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Selectors", "PseudoElementSelector") ? "active" : "")"
+           href="@Url.Action("PseudoElementSelector", "Selectors", new { area = "CSS" })">
+            Pseudo-Element Selector
+        </a>
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 4 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            4. Colors &amp; Backgrounds
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "ColorsBackgrounds", new { area = "CSS" })">
+            Colors &amp; Backgrounds
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "ColorValues") ? "active" : "")"
+           href="@Url.Action("ColorValues", "ColorsBackgrounds", new { area = "CSS" })">
+            Color Values
+        </a>
+
+
+        @* <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "ColorNames") ? "active" : "")"
+           href="@Url.Action("ColorNames", "ColorsBackgrounds", new { area = "CSS" })">
+            Color Names
+        </a> *@
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "BackgroundColor") ? "active" : "")"
+           href="@Url.Action("BackgroundColor", "ColorsBackgrounds", new { area = "CSS" })">
+            Background Color
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "BackgroundImage") ? "active" : "")"
+           href="@Url.Action("BackgroundImage", "ColorsBackgrounds", new { area = "CSS" })">
+            Background Image
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "BackgroundRepeat") ? "active" : "")"
+           href="@Url.Action("BackgroundRepeat", "ColorsBackgrounds", new { area = "CSS" })">
+            Background Repeat
+        </a>
+
+
+        @* <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "BackgroundPosition") ? "active" : "")"
+           href="@Url.Action("BackgroundPosition", "ColorsBackgrounds", new { area = "CSS" })">
+            Background Position
+        </a> *@
+
+
+        @* <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "BackgroundSize") ? "active" : "")"
+           href="@Url.Action("BackgroundSize", "ColorsBackgrounds", new { area = "CSS" })">
+            Background Size
+        </a> *@
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "BackgroundAttachment") ? "active" : "")"
+           href="@Url.Action("BackgroundAttachment", "ColorsBackgrounds", new { area = "CSS" })">
+            Background Attachment
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ColorsBackgrounds", "MultipleBackgrounds") ? "active" : "")"
+           href="@Url.Action("MultipleBackgrounds", "ColorsBackgrounds", new { area = "CSS" })">
+            Multiple Backgrounds
+        </a>
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 5 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            5. Text &amp; Fonts
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "TextFonts", new { area = "CSS" })">
+            Text &amp; Fonts
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "TextColor") ? "active" : "")"
+           href="@Url.Action("TextColor", "TextFonts", new { area = "CSS" })">
+            Text Color
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "TextAlignment") ? "active" : "")"
+           href="@Url.Action("TextAlignment", "TextFonts", new { area = "CSS" })">
+            Text Alignment
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "TextDecoration") ? "active" : "")"
+           href="@Url.Action("TextDecoration", "TextFonts", new { area = "CSS" })">
+            Text Decoration
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "TextTransformation") ? "active" : "")"
+           href="@Url.Action("TextTransformation", "TextFonts", new { area = "CSS" })">
+            Text Transformation
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "TextSpacing") ? "active" : "")"
+           href="@Url.Action("TextSpacing", "TextFonts", new { area = "CSS" })">
+            Text Spacing
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "TextShadow") ? "active" : "")"
+           href="@Url.Action("TextShadow", "TextFonts", new { area = "CSS" })">
+            Text Shadow
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "FontFamily") ? "active" : "")"
+           href="@Url.Action("FontFamily", "TextFonts", new { area = "CSS" })">
+            Font Family
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "FontSize") ? "active" : "")"
+           href="@Url.Action("FontSize", "TextFonts", new { area = "CSS" })">
+            Font Size
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "FontStyle") ? "active" : "")"
+           href="@Url.Action("FontStyle", "TextFonts", new { area = "CSS" })">
+            Font Style
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "FontWeight") ? "active" : "")"
+           href="@Url.Action("FontWeight", "TextFonts", new { area = "CSS" })">
+            Font Weight
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("TextFonts", "WebFonts") ? "active" : "")"
+           href="@Url.Action("WebFonts", "TextFonts", new { area = "CSS" })">
+            Web Fonts
+        </a>
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 6 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            6. CSS Box Model
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("BoxModel", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "BoxModel", new { area = "CSS" })">
+            CSS Box Model
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("BoxModel", "WidthAndHeight") ? "active" : "")"
+           href="@Url.Action("WidthAndHeight", "BoxModel", new { area = "CSS" })">
+            Width &amp; Height
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("BoxModel", "Padding") ? "active" : "")"
+           href="@Url.Action("Padding", "BoxModel", new { area = "CSS" })">
+            Padding
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("BoxModel", "Margin") ? "active" : "")"
+           href="@Url.Action("Margin", "BoxModel", new { area = "CSS" })">
+            Margin
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("BoxModel", "Border") ? "active" : "")"
+           href="@Url.Action("Border", "BoxModel", new { area = "CSS" })">
+            Border
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("BoxModel", "BorderRadius") ? "active" : "")"
+           href="@Url.Action("BorderRadius", "BoxModel", new { area = "CSS" })">
+            Border Radius
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("BoxModel", "BoxSizing") ? "active" : "")"
+           href="@Url.Action("BoxSizing", "BoxModel", new { area = "CSS" })">
+            Box Sizing
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("BoxModel", "BoxShadow") ? "active" : "")"
+           href="@Url.Action("BoxShadow", "BoxModel", new { area = "CSS" })">
+            Box Shadow
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("BoxModel", "Overflow") ? "active" : "")"
+           href="@Url.Action("Overflow", "BoxModel", new { area = "CSS" })">
+            Overflow
+        </a>
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 7 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            7. Flexbox
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Flexbox", new { area = "CSS" })">
+            Flexbox
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "FlexContainer") ? "active" : "")"
+           href="@Url.Action("FlexContainer", "Flexbox", new { area = "CSS" })">
+            Flex Container
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "FlexDirection") ? "active" : "")"
+           href="@Url.Action("FlexDirection", "Flexbox", new { area = "CSS" })">
+            Flex Direction
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "FlexWrap") ? "active" : "")"
+           href="@Url.Action("FlexWrap", "Flexbox", new { area = "CSS" })">
+            Flex Wrap
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "JustifyContent") ? "active" : "")"
+           href="@Url.Action("JustifyContent", "Flexbox", new { area = "CSS" })">
+            Justify Content
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "AlignItems") ? "active" : "")"
+           href="@Url.Action("AlignItems", "Flexbox", new { area = "CSS" })">
+            Align Items
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "AlignContent") ? "active" : "")"
+           href="@Url.Action("AlignContent", "Flexbox", new { area = "CSS" })">
+            Align Content
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "Gap") ? "active" : "")"
+           href="@Url.Action("Gap", "Flexbox", new { area = "CSS" })">
+            Gap
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "FlexItems") ? "active" : "")"
+           href="@Url.Action("FlexItems", "Flexbox", new { area = "CSS" })">
+            Flex Items
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "Order") ? "active" : "")"
+           href="@Url.Action("Order", "Flexbox", new { area = "CSS" })">
+            Order
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "FlexGrow") ? "active" : "")"
+           href="@Url.Action("FlexGrow", "Flexbox", new { area = "CSS" })">
+            Flex Grow
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "FlexShrink") ? "active" : "")"
+           href="@Url.Action("FlexShrink", "Flexbox", new { area = "CSS" })">
+            Flex Shrink
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Flexbox", "FlexBasis") ? "active" : "")"
+           href="@Url.Action("FlexBasis", "Flexbox", new { area = "CSS" })">
+            Flex Basis
+        </a>
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 8 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            8. CSS Grid
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Grid", new { area = "CSS" })">
+            CSS Grid
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "GridContainer") ? "active" : "")"
+           href="@Url.Action("GridContainer", "Grid", new { area = "CSS" })">
+            Grid Container
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "GridRowsAndColumns") ? "active" : "")"
+           href="@Url.Action("GridRowsAndColumns", "Grid", new { area = "CSS" })">
+            Grid Rows &amp; Columns
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "GridTemplateColumns") ? "active" : "")"
+           href="@Url.Action("GridTemplateColumns", "Grid", new { area = "CSS" })">
+            Grid Template Columns
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "GridTemplateRows") ? "active" : "")"
+           href="@Url.Action("GridTemplateRows", "Grid", new { area = "CSS" })">
+            Grid Template Rows
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "GridGap") ? "active" : "")"
+           href="@Url.Action("GridGap", "Grid", new { area = "CSS" })">
+            Grid Gap
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "GridColumn") ? "active" : "")"
+           href="@Url.Action("GridColumn", "Grid", new { area = "CSS" })">
+            Grid Column
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "GridRow") ? "active" : "")"
+           href="@Url.Action("GridRow", "Grid", new { area = "CSS" })">
+            Grid Row
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "GridArea") ? "active" : "")"
+           href="@Url.Action("GridArea", "Grid", new { area = "CSS" })">
+            Grid Area
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "GridAlignment") ? "active" : "")"
+           href="@Url.Action("GridAlignment", "Grid", new { area = "CSS" })">
+            Grid Alignment
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("Grid", "ResponsiveGrid") ? "active" : "")"
+           href="@Url.Action("ResponsiveGrid", "Grid", new { area = "CSS" })">
+            Responsive Grid
+        </a>
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 9 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            9. Responsive Design
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ResponsiveDesign", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "ResponsiveDesign", new { area = "CSS" })">
+            Responsive Design
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ResponsiveDesign", "ResponsiveWebDesign") ? "active" : "")"
+           href="@Url.Action("ResponsiveWebDesign", "ResponsiveDesign", new { area = "CSS" })">
+            Responsive Web Design
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ResponsiveDesign", "Viewport") ? "active" : "")"
+           href="@Url.Action("Viewport", "ResponsiveDesign", new { area = "CSS" })">
+            Viewport
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ResponsiveDesign", "MediaQueries") ? "active" : "")"
+           href="@Url.Action("MediaQueries", "ResponsiveDesign", new { area = "CSS" })">
+            Media Queries
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ResponsiveDesign", "Breakpoints") ? "active" : "")"
+           href="@Url.Action("Breakpoints", "ResponsiveDesign", new { area = "CSS" })">
+            Breakpoints
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ResponsiveDesign", "MobileFirst") ? "active" : "")"
+           href="@Url.Action("MobileFirst", "ResponsiveDesign", new { area = "CSS" })">
+            Mobile First
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ResponsiveDesign", "ResponsiveImages") ? "active" : "")"
+           href="@Url.Action("ResponsiveImages", "ResponsiveDesign", new { area = "CSS" })">
+            Responsive Images
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("ResponsiveDesign", "ResponsiveTypography") ? "active" : "")"
+           href="@Url.Action("ResponsiveTypography", "ResponsiveDesign", new { area = "CSS" })">
+            Responsive Typography
+        </a>
+
+
+        <!-- ================================================= -->
+        <!-- MODULE 10 -->
+        <!-- ================================================= -->
+
+        <div class="list-group-item css-module-title">
+            10. Advanced CSS
+        </div>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "AdvancedCSS", new { area = "CSS" })">
+            Advanced CSS
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "PseudoClasses") ? "active" : "")"
+           href="@Url.Action("PseudoClasses", "AdvancedCSS", new { area = "CSS" })">
+            CSS Pseudo-Classes
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "PseudoElements") ? "active" : "")"
+           href="@Url.Action("PseudoElements", "AdvancedCSS", new { area = "CSS" })">
+            CSS Pseudo-Elements
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "Transforms") ? "active" : "")"
+           href="@Url.Action("Transforms", "AdvancedCSS", new { area = "CSS" })">
+            CSS Transforms
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "Transitions") ? "active" : "")"
+           href="@Url.Action("Transitions", "AdvancedCSS", new { area = "CSS" })">
+            CSS Transitions
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "Animations") ? "active" : "")"
+           href="@Url.Action("Animations", "AdvancedCSS", new { area = "CSS" })">
+            CSS Animations
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "CSSVariables") ? "active" : "")"
+           href="@Url.Action("CSSVariables", "AdvancedCSS", new { area = "CSS" })">
+            CSS Variables
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "Functions") ? "active" : "")"
+           href="@Url.Action("Functions", "AdvancedCSS", new { area = "CSS" })">
+            CSS Functions
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "CSSSpecificity") ? "active" : "")"
+           href="@Url.Action("CSSSpecificity", "AdvancedCSS", new { area = "CSS" })">
+            CSS Specificity
+        </a>
+
+
+        <a class="list-group-item list-group-item-action css-topic-link @(IsActive("AdvancedCSS", "CSSBestPractices") ? "active" : "")"
+           href="@Url.Action("CSSBestPractices", "AdvancedCSS", new { area = "CSS" })">
+            CSS Best Practices
+        </a>
+
+
+    </div>
+
+</div>

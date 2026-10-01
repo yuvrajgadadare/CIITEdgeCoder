@@ -1,0 +1,616 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "Advanced HTML";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #ffffff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .advanced-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 120px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">Advanced HTML</h1>
+
+            <p>
+                Advanced HTML focuses on writing HTML that is well-structured,
+                accessible, search-engine friendly, maintainable, and suitable
+                for modern web applications.
+            </p>
+
+            <p>
+                At this stage, the goal is not only to know HTML tags,
+                but also to understand <strong>how to use them correctly</strong>.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Idea:</strong>
+                Basic HTML teaches you how to write elements.
+                Advanced HTML teaches you how to build better-quality pages
+                using those elements.
+            </div>
+
+            <h2>1. What is Advanced HTML?</h2>
+
+            <p>
+                Advanced HTML covers techniques that go beyond basic page structure.
+                It includes global attributes, metadata, responsive viewport settings,
+                accessibility, ARIA basics, best practices, and SEO-friendly structure.
+            </p>
+
+            <h2>2. Advanced HTML Areas</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    Advanced HTML Learning Path
+                </div>
+
+                <div class="advanced-flow">
+
+                    <div class="flow-item">
+                        Global<br>Attributes
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Meta<br>Tags
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Viewport
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Accessibility
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        SEO &amp;<br>Best Practices
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>3. Global Attributes</h2>
+
+            <p>
+                Global attributes are attributes that can generally be used on
+                many different HTML elements.
+            </p>
+
+            <p>
+                Common examples include:
+            </p>
+
+            <ul>
+                <li><code>id</code></li>
+                <li><code>class</code></li>
+                <li><code>title</code></li>
+                <li><code>hidden</code></li>
+                <li><code>style</code></li>
+                <li><code>lang</code></li>
+                <li><code>dir</code></li>
+                <li><code>tabindex</code></li>
+            </ul>
+
+            <p>
+                These attributes help identify, style, describe, or control elements.
+            </p>
+
+            <h2>4. Meta Tags</h2>
+
+            <p>
+                Meta tags provide information about the HTML document.
+                They are generally placed inside the <code>&lt;head&gt;</code> element.
+            </p>
+
+            <p>
+                Common examples include character encoding, description,
+                viewport settings, and other metadata.
+            </p>
+
+            <pre><code>&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta name="description"
+          content="HTML tutorial for beginners"&gt;
+
+&lt;/head&gt;</code></pre>
+
+
+
+            <h2>5. Viewport</h2>
+
+            <p>
+                The viewport controls how a webpage is displayed on different
+                screen sizes, especially mobile devices.
+            </p>
+
+            <p>
+                A commonly used viewport declaration is:
+            </p>
+
+            <pre><code>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+            <div class="info-box">
+                <strong>Why is this important?</strong>
+                Without a suitable viewport configuration, a page may not behave
+                as expected on smaller screens.
+            </div>
+
+            <h2>6. HTML Accessibility</h2>
+
+            <p>
+                Accessibility means making websites usable by as many people as possible,
+                including people who use assistive technologies such as screen readers.
+            </p>
+
+            <p>
+                Good HTML structure is an important part of accessibility.
+            </p>
+
+            <p>Examples include:</p>
+
+            <ul>
+                <li>Using semantic HTML elements</li>
+                <li>Using meaningful headings</li>
+                <li>Providing labels for form controls</li>
+                <li>Providing useful alternative text for images</li>
+                <li>Maintaining logical keyboard navigation</li>
+            </ul>
+
+            <h2>7. ARIA Basics</h2>
+
+            <p>
+                ARIA stands for
+                <strong>Accessible Rich Internet Applications</strong>.
+            </p>
+
+            <p>
+                ARIA attributes can provide additional accessibility information
+                when normal HTML semantics are not enough.
+            </p>
+
+            <pre><code>&lt;button
+    aria-label="Close menu"&gt;
+
+    X
+
+&lt;/button&gt;</code></pre>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                Prefer native semantic HTML whenever it already provides the
+                required meaning. ARIA should supplement HTML, not unnecessarily
+                replace it.
+            </div>
+
+            <h2>8. HTML Best Practices</h2>
+
+            <p>
+                Good HTML should be readable, meaningful, consistent, and easy to maintain.
+            </p>
+
+            <ul>
+                <li>Use semantic elements where appropriate.</li>
+                <li>Use meaningful element and attribute values.</li>
+                <li>Keep the document structure logical.</li>
+                <li>Use proper heading hierarchy.</li>
+                <li>Keep HTML, CSS, and JavaScript responsibilities separate.</li>
+                <li>Write accessible forms and navigation.</li>
+            </ul>
+
+            <h2>9. SEO-Friendly HTML</h2>
+
+            <p>
+                SEO-friendly HTML means organizing content so that the structure
+                and meaning of the page are clear to users and search engines.
+            </p>
+
+            <p>
+                Useful practices include:
+            </p>
+
+            <ul>
+                <li>Using meaningful page titles</li>
+                <li>Using clear headings</li>
+                <li>Writing useful content</li>
+                <li>Using semantic HTML</li>
+                <li>Providing descriptive links</li>
+                <li>Using meaningful image alternative text</li>
+                <li>Providing useful metadata</li>
+            </ul>
+
+            <h2>10. Complete Advanced HTML Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta name="viewport"
+          content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;meta name="description"
+          content="Learn HTML from beginner to advanced concepts"&gt;
+
+    &lt;title&gt;
+        HTML Tutorial
+    &lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;header&gt;
+
+        &lt;h1&gt;
+            HTML Tutorial
+        &lt;/h1&gt;
+
+    &lt;/header&gt;
+
+    &lt;nav aria-label="Main Navigation"&gt;
+
+        &lt;a href="#"&gt;
+            Home
+        &lt;/a&gt;
+
+        &lt;a href="#"&gt;
+            Tutorials
+        &lt;/a&gt;
+
+        &lt;a href="#"&gt;
+            Contact
+        &lt;/a&gt;
+
+    &lt;/nav&gt;
+
+    &lt;main&gt;
+
+        &lt;section&gt;
+
+            &lt;h2&gt;
+                Learn HTML
+            &lt;/h2&gt;
+
+            &lt;p&gt;
+                Learn HTML step by step.
+            &lt;/p&gt;
+
+        &lt;/section&gt;
+
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+
+        &lt;p&gt;
+            &copy; 2026 HTML Tutorial
+        &lt;/p&gt;
+
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>11. Why Advanced HTML Matters</h2>
+
+            <p>
+                Knowing HTML syntax is only the first step.
+                Real-world development requires pages that are understandable,
+                accessible, responsive, and maintainable.
+            </p>
+
+            <p>
+                Advanced HTML practices help create a stronger foundation before
+                adding CSS, JavaScript, backend logic, or frameworks.
+            </p>
+
+            <h2>12. Common Mistakes</h2>
+
+            <h3>Mistake 1: Using HTML only for visual appearance</h3>
+
+            <p>
+                HTML should describe the structure and meaning of content.
+                Visual design should generally be handled by CSS.
+            </p>
+
+            <h3>Mistake 2: Ignoring accessibility</h3>
+
+            <p>
+                A page may look correct visually but still be difficult to use
+                with assistive technologies.
+            </p>
+
+            <h3>Mistake 3: Overusing ARIA</h3>
+
+            <p>
+                Native semantic HTML is usually the preferred starting point.
+                ARIA should be added when additional accessibility information
+                is genuinely needed.
+            </p>
+
+            <h3>Mistake 4: Poor document structure</h3>
+
+            <p>
+                Random headings, excessive generic containers, and unclear sections
+                make pages harder to understand and maintain.
+            </p>
+
+            <h2>13. Best Practices Checklist</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Area</th>
+                            <th>Good Practice</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Structure</td>
+                            <td>Use semantic HTML elements.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Headings</td>
+                            <td>Use a logical heading hierarchy.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Forms</td>
+                            <td>Use labels and appropriate input types.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Images</td>
+                            <td>Provide meaningful alternative text when needed.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Accessibility</td>
+                            <td>Prefer native HTML semantics and use ARIA appropriately.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mobile</td>
+                            <td>Use a suitable viewport configuration.</td>
+                        </tr>
+
+                        <tr>
+                            <td>SEO</td>
+                            <td>Use meaningful titles, headings, links, and content.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>14. Practice Example</h2>
+
+            <p>
+                Create a complete HTML page using:
+            </p>
+
+            <ul>
+                <li>Semantic structure</li>
+                <li>Viewport metadata</li>
+                <li>Description metadata</li>
+                <li>Accessible navigation</li>
+                <li>Meaningful headings</li>
+                <li>Footer information</li>
+            </ul>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta name="viewport"
+          content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;meta name="description"
+          content="Learn HTML"&gt;
+
+    &lt;title&gt;
+        Learn HTML
+    &lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;header&gt;
+        &lt;h1&gt;
+            Learn HTML
+        &lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;nav aria-label="Main Navigation"&gt;
+        &lt;a href="#"&gt;Home&lt;/a&gt;
+        &lt;a href="#"&gt;Courses&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;main&gt;
+
+        &lt;section&gt;
+
+            &lt;h2&gt;
+                HTML Basics
+            &lt;/h2&gt;
+
+            &lt;p&gt;
+                Learn HTML step by step.
+            &lt;/p&gt;
+
+        &lt;/section&gt;
+
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+
+        &lt;p&gt;
+            &copy; 2026 Learn HTML
+        &lt;/p&gt;
+
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    Advanced HTML focuses on writing high-quality HTML using semantic
+                    structure, global attributes, metadata, viewport settings,
+                    accessibility techniques, ARIA basics, best practices, and
+                    SEO-friendly structure. The goal is to create HTML that is not only
+                    correct, but also meaningful, accessible, responsive, and maintainable.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("DataAttributes", "HTML5Features", new { area = "HTML" })">
+                    ← Previous: Data Attributes
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("GlobalAttributes", "AdvancedHTML", new { area = "HTML" })">
+                    Next: Global Attributes →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

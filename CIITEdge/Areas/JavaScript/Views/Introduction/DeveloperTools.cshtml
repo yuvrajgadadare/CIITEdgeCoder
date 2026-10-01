@@ -1,0 +1,1092 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Browser Developer Tools";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-devtools-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-devtools-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-devtools-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-devtools-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-devtools-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-devtools-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-devtools-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #javascript-devtools-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-devtools-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       IMAGE
+       ========================================================= */
+
+    #javascript-devtools-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-devtools-page .devtools-image {
+        width: 100%;
+        max-height: 380px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+
+    #javascript-devtools-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0 5px;
+    }
+
+
+    /* =========================================================
+       DEVTOOLS CARDS
+       ========================================================= */
+
+    #javascript-devtools-page .tool-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-devtools-page .tool-icon {
+        font-size: 24px;
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-devtools-page .tool-card h5 {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    #javascript-devtools-page .tool-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       STEPS
+       ========================================================= */
+
+    #javascript-devtools-page .step-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-devtools-page .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #5b21b6;
+        color: #ffffff;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-devtools-page .step-card h5 {
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 8px;
+    }
+
+    #javascript-devtools-page .step-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-devtools-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-devtools-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-devtools-page .diagram {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-devtools-page .diagram-item {
+        min-width: 135px;
+        padding: 16px;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-devtools-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       KEYBOARD SHORTCUT
+       ========================================================= */
+
+    #javascript-devtools-page .shortcut-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 9px;
+        padding: 20px;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    #javascript-devtools-page .shortcut-key {
+        display: inline-block;
+        background: #ffffff;
+        color: #212529;
+        border-radius: 6px;
+        padding: 6px 10px;
+        margin: 4px;
+        font-family: Consolas, Monaco, monospace;
+        font-weight: 700;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-devtools-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-devtools-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-devtools-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-devtools-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-devtools-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        min-width: 105px;
+    }
+
+    #javascript-devtools-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-devtools-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-devtools-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-devtools-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-devtools-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-devtools-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-devtools-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-devtools-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-devtools-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-devtools-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-devtools-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-devtools-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Browser Developer Tools
+                </h1>
+
+                <p class="lead-text">
+                    Learn how browser Developer Tools help you inspect,
+                    test, debug, and understand JavaScript code.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT ARE DEVTOOLS?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What are Browser Developer Tools?
+                </h2>
+
+                <p class="section-text">
+                    Browser Developer Tools, commonly called DevTools,
+                    are built-in tools available in modern web browsers.
+                </p>
+
+                <p class="section-text">
+                    Developers use them to inspect HTML and CSS,
+                    run JavaScript, view console messages, find errors,
+                    and debug web applications.
+                </p>
+
+
+                <!-- =================================================
+                     IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=80"
+                         alt="Developer working with source code"
+                         class="devtools-image" />
+
+                    <p class="image-caption">
+                        Developer tools are commonly used while writing,
+                        testing, and debugging web applications.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     HOW TO OPEN
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How to Open Developer Tools
+                </h2>
+
+                <p class="section-text">
+                    On Windows, you can open Developer Tools using
+                    these common keyboard shortcuts.
+                </p>
+
+                <div class="shortcut-box">
+
+                    <span class="shortcut-key">
+                        F12
+                    </span>
+
+                    <span>
+                        or
+                    </span>
+
+                    <span class="shortcut-key">
+                        Ctrl
+                    </span>
+
+                    <span>
+                        +
+                    </span>
+
+                    <span class="shortcut-key">
+                        Shift
+                    </span>
+
+                    <span>
+                        +
+                    </span>
+
+                    <span class="shortcut-key">
+                        I
+                    </span>
+
+                </div>
+
+
+                <!-- =================================================
+                     DEVTOOLS PANELS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Developer Tools Panels
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="tool-card">
+
+                            <div class="tool-icon">
+                                HTML
+                            </div>
+
+                            <h5>
+                                Elements / Inspector
+                            </h5>
+
+                            <p>
+                                Inspect HTML elements and view the CSS
+                                styles applied to the page.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="tool-card">
+
+                            <div class="tool-icon">
+                                JS
+                            </div>
+
+                            <h5>
+                                Console
+                            </h5>
+
+                            <p>
+                                Run JavaScript commands and view
+                                console messages and errors.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="tool-card">
+
+                            <div class="tool-icon">
+                                DEBUG
+                            </div>
+
+                            <h5>
+                                Sources / Debugger
+                            </h5>
+
+                            <p>
+                                Open JavaScript files, use breakpoints,
+                                and inspect variables.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="tool-card">
+
+                            <div class="tool-icon">
+                                NETWORK
+                            </div>
+
+                            <h5>
+                                Network
+                            </h5>
+
+                            <p>
+                                Inspect requests made by the web page
+                                and review their responses.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     WORKFLOW
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Simple DevTools Workflow
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Debugging a JavaScript Application
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            Write Code
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Open DevTools
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Check Console
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Find Error
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Fix Code
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CONSOLE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript Console
+                </h2>
+
+                <p class="section-text">
+                    The Console is one of the most useful DevTools
+                    panels for JavaScript developers. The
+                    <strong>console.log()</strong> method can be used
+                    to display information while testing code.
+                </p>
+
+
+                <!-- =================================================
+                     PROGRAM 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Console.log()
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>console.log("Welcome to CIIT Training Institute ❤️🧑‍🎓.....!");
+console.log("Course: JavaScript");
+console.log("JavaScript is working successfully.");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryDeveloperToolsCode()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Welcome to CIIT Training Institute ❤️🧑‍🎓.....!<br />
+                    Course: JavaScript<br />
+                    JavaScript is working successfully.
+
+                </div>
+
+
+                <!-- =================================================
+                     DEBUGGER
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    JavaScript Debugger
+                </h2>
+
+                <p class="section-text">
+                    The Debugger helps developers pause JavaScript
+                    execution and inspect what is happening inside
+                    a program.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Breakpoint
+                    </h5>
+
+                    <p>
+                        A breakpoint pauses the program at a selected
+                        point so you can inspect variables and understand
+                        the execution flow.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     PROGRAM 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Debugger
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const institute = "CIIT Training Institute";
+const student = "Samadhan";
+const marks = 85;
+
+console.log("Institute:", institute);
+console.log("Student:", student);
+
+debugger;
+
+console.log("Marks:", marks);
+console.log("Debugging practice completed ❤️🧑‍🎓.....!");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryDebuggerCode()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Institute: CIIT Training Institute<br />
+                    Student: Samadhan<br />
+                    Marks: 85<br />
+                    Debugging practice completed ❤️🧑‍🎓.....!
+
+                </div>
+
+
+                <!-- =================================================
+                     PRACTICAL STEPS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Practical Steps
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                1
+                            </div>
+
+                            <h5>
+                                Open Your Web Page
+                            </h5>
+
+                            <p>
+                                Open the JavaScript application
+                                in your browser.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                2
+                            </div>
+
+                            <h5>
+                                Open DevTools
+                            </h5>
+
+                            <p>
+                                Press F12 or Ctrl + Shift + I.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                3
+                            </div>
+
+                            <h5>
+                                Open Console
+                            </h5>
+
+                            <p>
+                                Select Console and run JavaScript
+                                commands or inspect messages.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="step-card">
+
+                            <div class="step-number">
+                                4
+                            </div>
+
+                            <h5>
+                                Debug Your Code
+                            </h5>
+
+                            <p>
+                                Use Sources, breakpoints, and the
+                                Console to understand your code.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CIIT PRACTICE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    CIIT Training Institute Practice
+                </h2>
+
+                <p class="section-text">
+                    Use the browser Console while learning JavaScript
+                    with CIIT Training Institute.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Practice Commands
+                    </h5>
+
+                    <p class="mb-2">
+                        <strong>2 + 3</strong>
+                    </p>
+
+                    <p class="mb-2">
+                        <strong>"CIIT" + " Training Institute"</strong>
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>console.log("Hello CIIT!");</strong>
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Browser Developer Tools help developers inspect,
+                        test, and debug web applications. The Console is
+                        useful for JavaScript messages and errors, while
+                        Sources or Debugger helps developers inspect
+                        execution and variables.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("JavaScriptInBrowser", "Introduction", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: JavaScript in the Browser
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Index", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: JavaScript Basics
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function tryDeveloperToolsCode() {
+
+        const code =
+            'console.log("Welcome to CIIT Training Institute ❤️🧑‍🎓.....!");\n' +
+            'console.log("Course: JavaScript");\n' +
+            'console.log("JavaScript is working successfully.");';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryDebuggerCode() {
+
+        const code =
+            'const institute = "CIIT Training Institute";\n' +
+            'const student = "Samadhan";\n' +
+            'const marks = 85;\n' +
+            '\n' +
+            'console.log("Institute:", institute);\n' +
+            'console.log("Student:", student);\n' +
+            '\n' +
+            'debugger;\n' +
+            '\n' +
+            'console.log("Marks:", marks);\n' +
+            'console.log("Debugging practice completed ❤️🧑‍🎓.....!");';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+</script>

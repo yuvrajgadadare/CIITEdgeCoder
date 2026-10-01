@@ -1,0 +1,1124 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Grid Template Columns";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #css-grid-template-columns-page {
+        color: #212529;
+    }
+
+
+    /* =========================================================
+       CONTENT SECTION
+       ========================================================= */
+
+    #css-grid-template-columns-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+
+    /* =========================================================
+       HEADINGS
+       ========================================================= */
+
+    #css-grid-template-columns-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-template-columns-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-grid-template-columns-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+
+    /* =========================================================
+       PARAGRAPHS
+       ========================================================= */
+
+    #css-grid-template-columns-page .content-section > p {
+        line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #css-grid-template-columns-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-grid-template-columns-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       EXPLANATION
+       ========================================================= */
+
+    #css-grid-template-columns-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-grid-template-columns-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #css-grid-template-columns-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-template-columns-page .grid-diagram {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 100px 100px;
+        gap: 10px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-grid-template-columns-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 700;
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #css-grid-template-columns-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-grid-template-columns-page .output-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 15px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-grid-template-columns-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 700;
+    }
+
+
+    /* =========================================================
+       PROPERTY CARDS
+       ========================================================= */
+
+    #css-grid-template-columns-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-grid-template-columns-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-template-columns-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       NOTE
+       ========================================================= */
+
+    #css-grid-template-columns-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #css-grid-template-columns-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-grid-template-columns-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-grid-template-columns-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @@media (max-width: 991px) {
+
+        #css-grid-template-columns-page .content-section {
+            padding: 20px;
+        }
+
+        #css-grid-template-columns-page .grid-diagram {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+        #css-grid-template-columns-page .output-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-grid-template-columns-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS Grid Template Columns
+                </h1>
+
+                <p>
+                    The <strong>grid-template-columns</strong> property
+                    defines the number and size of columns inside a
+                    CSS Grid Container.
+                </p>
+
+                <p>
+                    It controls how the available horizontal space
+                    is divided between Grid columns.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- WHAT IS GRID TEMPLATE COLUMNS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    What is grid-template-columns?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The
+                        <strong>grid-template-columns</strong>
+                        property is used to define the column structure
+                        of a CSS Grid.
+                    </p>
+
+                    <p>
+                        You can define columns using values such as
+                        <strong>px</strong>,
+                        <strong>%</strong>,
+                        <strong>fr</strong>,
+                        <strong>auto</strong>,
+                        and
+                        <strong>repeat()</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC SYNTAX -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Basic Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The Grid Container contains three columns.
+                    </p>
+
+                    <p>
+                        The first column receives
+                        <strong>1 fraction</strong>,
+                        the second column receives
+                        <strong>2 fractions</strong>,
+                        and the third column receives
+                        <strong>1 fraction</strong>.
+                    </p>
+
+                    <p>
+                        Therefore, the column proportion is
+                        <strong>1 : 2 : 1</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FR UNIT -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Understanding the fr Unit
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The <strong>fr</strong> unit means
+                        <strong>fraction of the available space</strong>.
+                    </p>
+
+                    <p>
+                        It is commonly used to create flexible Grid
+                        columns.
+                    </p>
+
+                    <p>
+                        For example,
+                        <strong>1fr 2fr 1fr</strong>
+                        divides the available space into four fractions.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Column Structure Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="grid-diagram">
+
+                        <div class="diagram-item">
+                            1fr
+                            <br />
+                            Column 1
+                        </div>
+
+                        <div class="diagram-item">
+                            2fr
+                            <br />
+                            Column 2
+                        </div>
+
+                        <div class="diagram-item">
+                            1fr
+                            <br />
+                            Column 3
+                        </div>
+
+                        <div class="diagram-item">
+                            1fr
+                            <br />
+                            Column 1
+                        </div>
+
+                        <div class="diagram-item">
+                            2fr
+                            <br />
+                            Column 2
+                        </div>
+
+                        <div class="diagram-item">
+                            1fr
+                            <br />
+                            Column 3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+
+                        Three columns are created with a
+                        <strong>1 : 2 : 1</strong> proportion.
+
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- EQUAL COLUMNS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Creating Equal Columns
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The three columns receive equal amounts of
+                        available horizontal space.
+                    </p>
+
+                    <p>
+                        The proportion is:
+                        <strong>1 : 1 : 1</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DIFFERENT COLUMN SIZES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Different Column Sizes
+                </h2>
+
+                <p>
+                    Grid columns do not have to be equal.
+                    Different values can be used to create different
+                    column sizes.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The available space is divided into
+                        <strong>4 fractions</strong>.
+                    </p>
+
+                    <p>
+                        The first column receives 1 fraction,
+                        the second receives 2 fractions,
+                        and the third receives 1 fraction.
+                    </p>
+
+                    <p>
+                        The resulting proportion is:
+                        <strong>1 : 2 : 1</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PIXEL VALUES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Using Pixel Values
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: 200px 300px 200px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The first column has a width of
+                        <strong>200px</strong>.
+                    </p>
+
+                    <p>
+                        The second column has a width of
+                        <strong>300px</strong>.
+                    </p>
+
+                    <p>
+                        The third column has a width of
+                        <strong>200px</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PERCENTAGE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Using Percentage Values
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Percentage values define column sizes relative
+                        to the available width of the Grid Container.
+                    </p>
+
+                    <p>
+                        The three columns use
+                        <strong>25%</strong>,
+                        <strong>50%</strong>,
+                        and
+                        <strong>25%</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- AUTO -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Using auto
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: 200px auto 200px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The first and third columns are fixed at
+                        <strong>200px</strong>.
+                    </p>
+
+                    <p>
+                        The middle column uses the remaining available
+                        horizontal space.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- REPEAT -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Using repeat()
+                </h2>
+
+                <p>
+                    The <strong>repeat()</strong> function is useful
+                    when multiple columns have the same size.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        This creates three equal flexible columns.
+                    </p>
+
+                    <p>
+                        It is equivalent to:
+                    </p>
+
+<pre><code>grid-template-columns: 1fr 1fr 1fr;</code></pre>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- REPEAT FIXED -->
+                <!-- ================================================= -->
+
+                <h2>
+                    repeat() with Fixed Width
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        This creates two columns.
+                    </p>
+
+                    <p>
+                        Each column has a width of
+                        <strong>200px</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- COMBINING UNITS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Combining Different Units
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: grid;
+    grid-template-columns: 200px 1fr 2fr;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        CSS Grid allows different units to be combined
+                        in the same declaration.
+                    </p>
+
+                    <p>
+                        The first column is fixed at
+                        <strong>200px</strong>.
+                    </p>
+
+                    <p>
+                        The remaining available space is divided between
+                        the <strong>1fr</strong> and
+                        <strong>2fr</strong> columns.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PRACTICAL EXAMPLE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Example 🤓🌍
+                </h2>
+
+                <p>
+                    A training dashboard can use three columns for
+                    course navigation, main content, and quick links.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 15px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The main content receives twice as much
+                        horizontal space as the two side sections.
+                    </p>
+
+                    <p>
+                        The resulting proportion is
+                        <strong>1 : 2 : 1</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- OUTPUT -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Output
+                </h2>
+
+                <div class="browser-output">
+
+                    <div class="output-grid">
+
+                        <div class="output-item">
+                            Course Menu
+                        </div>
+
+                        <div class="output-item">
+                            Main Course Content
+                        </div>
+
+                        <div class="output-item">
+                            Quick Links
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PROPERTY CARDS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Important Properties
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                grid-template-columns
+                            </h3>
+
+                            <p>
+                                Defines the number and size of
+                                Grid columns.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                fr
+                            </h3>
+
+                            <p>
+                                Represents a fraction of the available
+                                Grid space.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                repeat()
+                            </h3>
+
+                            <p>
+                                Repeats a column size multiple times.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                auto
+                            </h3>
+
+                            <p>
+                                Allows a column to use available
+                                remaining space.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- COMMON VALUES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Common Values
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+
+                                <th>
+                                    Value
+                                </th>
+
+                                <th>
+                                    Purpose
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    1fr 1fr
+                                </td>
+
+                                <td>
+                                    Creates two equal flexible columns.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    1fr 2fr
+                                </td>
+
+                                <td>
+                                    Creates two columns with a
+                                    1 : 2 proportion.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    200px 300px
+                                </td>
+
+                                <td>
+                                    Creates fixed-width columns.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    25% 75%
+                                </td>
+
+                                <td>
+                                    Creates columns using percentages.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    200px auto
+                                </td>
+
+                                <td>
+                                    Creates one fixed column and one
+                                    flexible column.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    repeat(3, 1fr)
+                                </td>
+
+                                <td>
+                                    Creates three equal flexible columns.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- REAL WORLD -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Real-World Uses
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Website navigation layouts
+                    </li>
+
+                    <li>
+                        Course dashboards
+                    </li>
+
+                    <li>
+                        Admin panels
+                    </li>
+
+                    <li>
+                        Product layouts
+                    </li>
+
+                    <li>
+                        Portfolio layouts
+                    </li>
+
+                    <li>
+                        Sidebar and content layouts
+                    </li>
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- NOTE -->
+                <!-- ================================================= -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    The
+                    <strong>grid-template-columns</strong>
+                    property controls the column structure of a
+                    CSS Grid. The number of column values determines
+                    the number of explicit columns.
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The
+                        <strong>grid-template-columns</strong>
+                        property controls the number and size of
+                        columns in a CSS Grid layout.
+                        Values such as
+                        <strong>px</strong>,
+                        <strong>fr</strong>,
+                        <strong>%</strong>,
+                        <strong>auto</strong>,
+                        and
+                        <strong>repeat()</strong>
+                        can be used to create flexible and structured
+                        Grid layouts.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- NAVIGATION -->
+                <!-- ================================================= -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2 mb-md-0">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("GridRowsAndColumns", "Grid", new { area = "CSS" })">
+
+                            ← Previous: Grid Rows &amp; Columns
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("GridTemplateRows", "Grid", new { area = "CSS" })">
+
+                            Next: Grid Template Rows →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

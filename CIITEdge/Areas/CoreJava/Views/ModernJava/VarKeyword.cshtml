@@ -1,0 +1,638 @@
+﻿@{
+    ViewData["Title"] = "var and Local Variable Type Inference in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-2">var and Local Variable Type Inference</h1>
+                <p class="text-muted mb-0">
+                    Learn how Java uses the var keyword to simplify local variable declarations.
+                </p>
+            </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Introduction -->
+        <h2 class="fw-bold">1. What is var?</h2>
+
+        <p>
+            Java introduced the <code>var</code> keyword in Java 10.
+            It allows the compiler to infer the type of a local variable from
+            the value assigned to it.
+        </p>
+
+        <p>
+            Instead of explicitly writing the type, you can use <code>var</code>.
+            The compiler determines the actual type at compile time.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var name = "Samadhan";
+var age = 22;
+var price = 99.99;
+var active = true;</code></pre>
+        </div>
+
+        <div class="alert alert-info">
+            <strong>Important:</strong>
+            <code>var</code> does not make Java dynamically typed.
+            The variable still has a fixed type determined at compile time.
+        </div>
+
+        <!-- Explicit vs var -->
+        <h2 class="fw-bold mt-5">2. Explicit Type vs var</h2>
+
+        <p>
+            The traditional approach explicitly declares the variable type.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String name = "Samiksha";
+Integer age = 22;
+Double salary = 50000.0;</code></pre>
+        </div>
+
+        <p>
+            The same declarations can be written using <code>var</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var name = "Sujit";
+var age = 25;
+var salary = 50000.0;</code></pre>
+        </div>
+
+        <p>
+            The compiler infers:
+        </p>
+
+        <ul>
+            <li><code>name</code> → <code>String</code></li>
+            <li><code>age</code> → <code>int</code></li>
+            <li><code>salary</code> → <code>double</code></li>
+        </ul>
+
+        <!-- Compile Time -->
+        <h2 class="fw-bold mt-5">3. Compile-Time Type Inference</h2>
+
+        <p>
+            The type of a <code>var</code> variable is determined during compilation.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var number = 100;
+
+number = 200;
+
+// number = "Java";  // Compile-time error</code></pre>
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>Remember:</strong>
+            A variable declared with <code>var</code> cannot later be assigned a
+            value of an incompatible type.
+        </div>
+
+        <!-- Initialization -->
+        <h2 class="fw-bold mt-5">4. var Must Be Initialized</h2>
+
+        <p>
+            A <code>var</code> variable must have an initializer because the compiler
+            needs the initializer to determine the variable's type.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var name = "CIIT";
+
+// var value;
+// Invalid because the compiler cannot infer the type.</code></pre>
+        </div>
+
+        <!-- Null -->
+        <h2 class="fw-bold mt-5">5. var Cannot Be Initialized with null Alone</h2>
+
+        <p>
+            The compiler cannot infer a type when the only initializer is
+            <code>null</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>// var value = null;
+// Invalid because null does not provide enough type information.</code></pre>
+        </div>
+
+        <p>
+            Instead, provide an explicit reference type.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>String value = null;</code></pre>
+        </div>
+
+        <!-- Local Variables -->
+        <h2 class="fw-bold mt-5">6. var is Used for Local Variables</h2>
+
+        <p>
+            The <code>var</code> keyword is primarily used for local variables,
+            including variables declared inside methods and loop variables.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Simple {
+
+    public static void main(String[] args) {
+
+        var message = "Welcome CIIT Institute ❤️😍...!";
+
+        System.out.println(message);
+    }
+}</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Welcome CIIT Institute ❤️😍...!</code></pre>
+</div>
+        <!-- Collections -->
+        <h2 class="fw-bold mt-5">7. var with Collections</h2>
+
+        <p>
+            <code>var</code> can make complex generic declarations easier to read.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.ArrayList;
+import java.util.List;
+
+List&lt;String&gt; names =
+    new ArrayList&lt;&gt;();
+
+var names2 =
+    new ArrayList&lt;String&gt;();
+
+names2.add("Java");
+names2.add("Spring");</code></pre>
+        </div>
+
+        <p>
+            The compiler knows that <code>names2</code> is an
+            <code>ArrayList&lt;String&gt;</code>.
+        </p>
+
+        <!-- Loops -->
+        <h2 class="fw-bold mt-5">8. var in Enhanced for Loop</h2>
+
+        <p>
+            <code>var</code> can also be used as the loop variable in an enhanced
+            <code>for</code> loop.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var names =
+    List.of("Java", "Spring", "SQL");
+
+for (var name : names) {
+    System.out.println(name);
+}</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Java
+Spring
+SQL</code></pre>
+</div>
+        <!-- Traditional For -->
+        <h2 class="fw-bold mt-5">9. var in Traditional for Loop</h2>
+
+        <p>
+            The loop initialization section can also use <code>var</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>for (var i = 0; i &lt; 5; i++) {
+    System.out.println(i);
+}</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>0
+1
+2
+3
+4</code></pre>
+</div>
+        <!-- Try with resources -->
+        <h2 class="fw-bold mt-5">10. var with try-with-resources</h2>
+
+        <p>
+            <code>var</code> can simplify local resource declarations when the
+            resource type is obvious.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.io.BufferedReader;
+import java.io.FileReader;
+
+try (var reader =
+        new BufferedReader(
+            new FileReader("data.txt")
+        )) {
+
+    String line = reader.readLine();
+
+    System.out.println(line);
+}</code></pre>
+        </div>
+
+        <!-- Lambda -->
+        <h2 class="fw-bold mt-5">11. var and Lambda Expressions</h2>
+
+        <p>
+            A lambda expression normally requires a target functional-interface type.
+            You cannot simply write <code>var</code> without a target type.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var task = () -&gt; {
+    System.out.println("Running");
+};
+
+// Invalid because the compiler cannot infer
+// a functional interface type from the lambda alone.</code></pre>
+        </div>
+
+        <p>
+            Use an explicit functional interface instead.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Runnable task = () -&gt; {
+    System.out.println("Running");
+};
+
+task.run();</code></pre>
+        </div>
+
+        <!-- var with Object -->
+        <h2 class="fw-bold mt-5">12. var Does Not Mean Object</h2>
+
+        <p>
+            <code>var</code> should not be confused with <code>Object</code>.
+            The compiler still preserves the specific inferred type.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var text = "Welcome CIIT 🌍";
+
+System.out.println(
+    text.length()
+);</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>16</code></pre>
+</div>
+        <p>
+            Here, <code>text</code> is inferred as <code>String</code>,
+            so String methods can be used directly.
+        </p>
+
+        <!-- Diamond -->
+        <h2 class="fw-bold mt-5">13. var with Diamond Operator</h2>
+
+        <p>
+            Java's diamond operator <code>&lt;&gt;</code> can be combined with
+            <code>var</code> to reduce repetitive generic type declarations.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var numbers =
+    new ArrayList&lt;Integer&gt;();
+
+numbers.add(10);
+numbers.add(20);
+numbers.add(30);</code></pre>
+        </div>
+
+        <!-- Readability -->
+        <h2 class="fw-bold mt-5">14. Readability</h2>
+
+        <p>
+            <code>var</code> can improve readability when the type is obvious from
+            the right-hand side.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Map&lt;String, List&lt;Integer&gt;&gt; data =
+    new HashMap&lt;&gt;();
+
+var data2 =
+    new HashMap&lt;String, List&lt;Integer&gt;&gt;();</code></pre>
+        </div>
+
+        <div class="alert alert-success">
+            <strong>Good use:</strong>
+            Use <code>var</code> when the initializer makes the type clear and
+            the shorter declaration improves readability.
+        </div>
+
+        <!-- Bad use -->
+        <h2 class="fw-bold mt-5">15. When Not to Use var</h2>
+
+        <p>
+            Avoid <code>var</code> when the inferred type is unclear or makes
+            the code harder to understand.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>var result = getData();</code></pre>
+        </div>
+
+        <p>
+            If the return type of <code>getData()</code> is not obvious,
+            an explicit type may be clearer.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Customer result = getCustomer();</code></pre>
+        </div>
+
+        <!-- Advantages -->
+        <h2 class="fw-bold mt-5">16. Advantages of var</h2>
+
+        <ul>
+            <li>Reduces repetitive type declarations.</li>
+            <li>Makes complex generic declarations shorter.</li>
+            <li>Can improve readability when the type is obvious.</li>
+            <li>Works with local variables.</li>
+            <li>Still provides compile-time type safety.</li>
+        </ul>
+
+        <!-- Limitations -->
+        <h2 class="fw-bold mt-5">17. Limitations of var</h2>
+
+        <ul>
+            <li>Cannot be used for uninitialized local variables.</li>
+            <li>Cannot be initialized with only <code>null</code>.</li>
+            <li>Cannot be used directly for fields.</li>
+            <li>Cannot be used as a method parameter type.</li>
+            <li>Cannot be used as a method return type.</li>
+            <li>Cannot be used directly with an untyped lambda expression.</li>
+        </ul>
+
+        <!-- Example -->
+        <h2 class="fw-bold mt-5">18. Complete Example</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        var language = "Java";
+
+        var version = 21;
+
+        var frameworks =
+            List.of(
+                "Spring",
+                "Spring Boot",
+                "Hibernate"
+            );
+
+        System.out.println(
+            "Language: " + language
+        );
+
+        System.out.println(
+            "Version: " + version
+        );
+
+        for (var framework : frameworks) {
+
+            System.out.println(
+                framework
+            );
+        }
+    }
+}</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Language: Java
+Version: 21
+Spring
+Spring Boot
+Hibernate</code></pre>
+</div>
+
+        <!-- Interview -->
+        <h2 class="fw-bold mt-5">19. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="varQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#varQuestionOne">
+                        What is var in Java?
+                    </button>
+                </h2>
+
+                <div id="varQuestionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#varQuestions">
+
+                    <div class="accordion-body">
+                        <code>var</code> is a local variable type-inference feature
+                        introduced in Java 10. The compiler determines the variable's
+                        type from its initializer.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#varQuestionTwo">
+                        Is Java dynamically typed because of var?
+                    </button>
+                </h2>
+
+                <div id="varQuestionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#varQuestions">
+
+                    <div class="accordion-body">
+                        No. Java remains statically typed. The variable type is
+                        inferred at compile time.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#varQuestionThree">
+                        Can var be used for fields?
+                    </button>
+                </h2>
+
+                <div id="varQuestionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#varQuestions">
+
+                    <div class="accordion-body">
+                        No. Java's <code>var</code> is intended for local variable
+                        declarations, not class fields.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#varQuestionFour">
+                        Can var be declared without initialization?
+                    </button>
+                </h2>
+
+                <div id="varQuestionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#varQuestions">
+
+                    <div class="accordion-body">
+                        No. The compiler needs an initializer to infer the variable type.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#varQuestionFive">
+                        Can var be used with lambda expressions?
+                    </button>
+                </h2>
+
+                <div id="varQuestionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#varQuestions">
+
+                    <div class="accordion-body">
+                        A bare <code>var</code> declaration cannot infer the target
+                        functional-interface type of a lambda expression.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="alert alert-success mt-5">
+            <h4 class="fw-bold">Summary</h4>
+
+            <p class="mb-2">
+                In this lesson, you learned:
+            </p>
+
+            <ul class="mb-0">
+                <li>What <code>var</code> means in Java</li>
+                <li>Compile-time local variable type inference</li>
+                <li>How to use <code>var</code> with collections</li>
+                <li>Using <code>var</code> in loops</li>
+                <li>Using <code>var</code> with try-with-resources</li>
+                <li>Why <code>var</code> cannot be used with an untyped lambda</li>
+                <li>Advantages and limitations of <code>var</code></li>
+                <li>When explicit types are clearer</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("ParallelProcessing", "AsynchronousParallelProgramming", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("SwitchExpressions", "ModernJava", new { area = "CoreJava" })">
+                Next: Topic →
+            </a>
+
+        </div>
+
+    </div>
+</div>

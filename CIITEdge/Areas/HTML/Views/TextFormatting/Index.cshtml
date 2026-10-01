@@ -1,0 +1,1037 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "Text Formatting";
+}
+
+<style>
+
+    #html-text-formatting-page pre {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        #html-text-formatting-page pre code {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+    #html-text-formatting-page .info-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+        #html-text-formatting-page .info-card h5 {
+            color: #5b21b6;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+    #html-text-formatting-page .example-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #html-text-formatting-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 24px;
+    }
+
+    #html-text-formatting-page .table th {
+        background: #f8f9fa;
+        vertical-align: middle;
+    }
+
+    #html-text-formatting-page .table td {
+        vertical-align: middle;
+    }
+
+</style>
+
+
+<main id="html-text-formatting-page"
+      class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/HTML/Views/Shared/HTMLTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <section class="col-lg-9">
+
+
+            <!-- PAGE TITLE -->
+            <div class="mb-4">
+
+                <h1 class="fw-bold">
+                    Text Formatting
+                </h1>
+
+                <p class="lead">
+                    Learn how HTML elements are used to emphasize, highlight,
+                    style, and give meaning to different parts of text.
+                </p>
+
+            </div>
+
+
+            <!-- INTRODUCTION -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    What is Text Formatting?
+                </h2>
+
+                <p>
+                    HTML provides several elements that can change the
+                    presentation or meaning of text.
+                </p>
+
+                <p>
+                    Some elements are mainly presentational, while others
+                    communicate semantic meaning such as importance or emphasis.
+                </p>
+
+                <div class="alert alert-info">
+
+                    <strong>Common Formatting Elements:</strong>
+
+                    <div class="mt-2">
+
+                        <code>&lt;b&gt;</code>,
+                        <code>&lt;strong&gt;</code>,
+                        <code>&lt;i&gt;</code>,
+                        <code>&lt;em&gt;</code>,
+                        <code>&lt;mark&gt;</code>,
+                        <code>&lt;small&gt;</code>,
+                        <code>&lt;sub&gt;</code>,
+                        <code>&lt;sup&gt;</code>,
+                        <code>&lt;del&gt;</code>,
+                        <code>&lt;ins&gt;</code>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BASIC EXAMPLE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Basic Example
+                </h2>
+
+                <pre><code>&lt;p&gt;
+    This is &lt;strong&gt;important&lt;/strong&gt; text.
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+                <h3 class="h5 fw-bold mt-4">
+                    Output
+                </h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        This is <strong>important</strong> text.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORMATTING OVERVIEW -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Common Text Formatting Elements
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead>
+
+                            <tr>
+                                <th>Element</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;b&gt;</code>
+                                </td>
+
+                                <td>
+                                    Draws attention to text without adding
+                                    special importance.
+                                </td>
+
+                                <td>
+                                    <b>Bold text</b>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;strong&gt;</code>
+                                </td>
+
+                                <td>
+                                    Indicates strong importance.
+                                </td>
+
+                                <td>
+                                    <strong>Important text</strong>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;i&gt;</code>
+                                </td>
+
+                                <td>
+                                    Represents text in an alternate voice
+                                    or mood.
+                                </td>
+
+                                <td>
+                                    <i>Italic text</i>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;em&gt;</code>
+                                </td>
+
+                                <td>
+                                    Adds emphasis to text.
+                                </td>
+
+                                <td>
+                                    <em>Emphasized text</em>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;mark&gt;</code>
+                                </td>
+
+                                <td>
+                                    Highlights text.
+                                </td>
+
+                                <td>
+                                    <mark>Highlighted text</mark>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;small&gt;</code>
+                                </td>
+
+                                <td>
+                                    Represents smaller side comments or print.
+                                </td>
+
+                                <td>
+                                    <small>Small text</small>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;del&gt;</code>
+                                </td>
+
+                                <td>
+                                    Represents deleted content.
+                                </td>
+
+                                <td>
+                                    <del>Old text</del>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;ins&gt;</code>
+                                </td>
+
+                                <td>
+                                    Represents inserted content.
+                                </td>
+
+                                <td>
+                                    <ins>New text</ins>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOLD -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Bold Text
+                </h2>
+
+                <p>
+                    The <code>&lt;b&gt;</code> element is used to draw the
+                    reader's attention to text without adding extra importance.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    Learn &lt;b&gt;HTML&lt;/b&gt; today.
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        Learn <b>HTML</b> today.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STRONG -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Strong Text
+                </h2>
+
+                <p>
+                    The <code>&lt;strong&gt;</code> element indicates that
+                    the content has strong importance.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    &lt;strong&gt;Important:&lt;/strong&gt;
+    Save your work regularly.
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        <strong>Important:</strong>
+                        Save your work regularly.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ITALIC -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Italic Text
+                </h2>
+
+                <p>
+                    The <code>&lt;i&gt;</code> element represents text in
+                    an alternate voice or mood.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    This is &lt;i&gt;italic text&lt;/i&gt;.
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        This is <i>italic text</i>.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMPHASIS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Emphasized Text
+                </h2>
+
+                <p>
+                    The <code>&lt;em&gt;</code> element adds emphasis
+                    to text and also carries semantic meaning.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    You &lt;em&gt;must&lt;/em&gt; practice HTML.
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        You <em>must</em> practice HTML.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MARK -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Highlighted Text
+                </h2>
+
+                <p>
+                    The <code>&lt;mark&gt;</code> element highlights text
+                    to make it stand out.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    Learn &lt;mark&gt;HTML&lt;/mark&gt; step-by-step.
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        Learn <mark>HTML</mark> step-by-step.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SMALL -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Small Text
+                </h2>
+
+                <p>
+                    The <code>&lt;small&gt;</code> element represents
+                    smaller side comments or fine print.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    HTML Course
+    &lt;small&gt;Terms and conditions apply.&lt;/small&gt;
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        HTML Course
+                        <small>Terms and conditions apply.</small>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DELETE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Deleted Text
+                </h2>
+
+                <p>
+                    The <code>&lt;del&gt;</code> element represents content
+                    that has been deleted from a document.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    Original Price:
+    &lt;del&gt;₹5000&lt;/del&gt;
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        Original Price:
+                        <del>₹5000</del>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- INSERTED -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Inserted Text
+                </h2>
+
+                <p>
+                    The <code>&lt;ins&gt;</code> element represents content
+                    that has been inserted into a document.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    Updated Price:
+    &lt;ins&gt;₹4500&lt;/ins&gt;
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        Updated Price:
+                        <ins>₹4500</ins>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBSCRIPT PREVIEW -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Subscript and Superscript Preview
+                </h2>
+
+                <p>
+                    HTML also provides elements for displaying text below
+                    or above the normal text line.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    H&lt;sub&gt;2&lt;/sub&gt;O
+&lt;/p&gt;
+
+&lt;p&gt;
+    x&lt;sup&gt;2&lt;/sup&gt;
+&lt;/p&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p>
+                        H<sub>2</sub>O
+                    </p>
+
+                    <p class="mb-0">
+                        x<sup>2</sup>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SEMANTIC DIFFERENCE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Presentational vs Semantic Formatting
+                </h2>
+
+                <p>
+                    Some formatting elements primarily affect presentation,
+                    while others communicate meaning.
+                </p>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead>
+
+                            <tr>
+                                <th>Element</th>
+                                <th>Category</th>
+                                <th>Meaning</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;b&gt;</code>
+                                </td>
+
+                                <td>
+                                    Presentational
+                                </td>
+
+                                <td>
+                                    Draws attention to text.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;strong&gt;</code>
+                                </td>
+
+                                <td>
+                                    Semantic
+                                </td>
+
+                                <td>
+                                    Indicates strong importance.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;i&gt;</code>
+                                </td>
+
+                                <td>
+                                    Alternate voice or mood
+                                </td>
+
+                                <td>
+                                    Represents text in an alternate voice.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;em&gt;</code>
+                                </td>
+
+                                <td>
+                                    Semantic
+                                </td>
+
+                                <td>
+                                    Adds emphasis.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMBINING FORMATTING -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Combining Formatting Elements
+                </h2>
+
+                <p>
+                    HTML formatting elements can be combined when appropriate.
+                </p>
+
+                <pre><code>&lt;p&gt;
+    This is
+    &lt;strong&gt;
+        &lt;mark&gt;very important&lt;/mark&gt;
+    &lt;/strong&gt;
+    information.
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        This is
+                        <strong>
+                            <mark>very important</mark>
+                        </strong>
+                        information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMPLETE EXAMPLE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Complete Example
+                </h2>
+
+                <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;
+        Text Formatting Example
+    &lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;
+        HTML Text Formatting
+    &lt;/h1&gt;
+
+    &lt;p&gt;
+        Learn &lt;strong&gt;HTML&lt;/strong&gt;
+        and &lt;em&gt;web development&lt;/em&gt;.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        This is &lt;mark&gt;important&lt;/mark&gt; information.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        Old Price:
+        &lt;del&gt;₹5000&lt;/del&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        New Price:
+        &lt;ins&gt;₹4500&lt;/ins&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        Formula: H&lt;sub&gt;2&lt;/sub&gt;O
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        Equation: x&lt;sup&gt;2&lt;/sup&gt;
+    &lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+            </div>
+
+
+            <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <!-- IMPORTANT POINTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Important Points
+                </h2>
+
+                <ul>
+
+                    <li class="mb-2">
+                        Use <code>&lt;strong&gt;</code> when text has strong importance.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>&lt;em&gt;</code> when text needs emphasis.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>&lt;mark&gt;</code> to highlight relevant text.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>&lt;del&gt;</code> for deleted content.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>&lt;ins&gt;</code> for inserted content.
+                    </li>
+
+                    <li class="mb-2">
+                        Use <code>&lt;sub&gt;</code> and <code>&lt;sup&gt;</code>
+                        for subscript and superscript.
+                    </li>
+
+                    <li>
+                        Use semantic elements when you need to communicate
+                        meaning, not only visual appearance.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Practice Exercise
+                </h2>
+
+                <ol>
+
+                    <li class="mb-2">
+                        Create a paragraph containing bold text.
+                    </li>
+
+                    <li class="mb-2">
+                        Add an emphasized word.
+                    </li>
+
+                    <li class="mb-2">
+                        Highlight an important word.
+                    </li>
+
+                    <li class="mb-2">
+                        Show an old price using <code>&lt;del&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Show a new price using <code>&lt;ins&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Write H<sub>2</sub>O using HTML.
+                    </li>
+
+                    <li>
+                        Write x<sup>2</sup> using HTML.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    HTML provides several text formatting elements such as
+                    <code>&lt;b&gt;</code>, <code>&lt;strong&gt;</code>,
+                    <code>&lt;i&gt;</code>, <code>&lt;em&gt;</code>,
+                    <code>&lt;mark&gt;</code>, <code>&lt;small&gt;</code>,
+                    <code>&lt;del&gt;</code>, and <code>&lt;ins&gt;</code>.
+                    Semantic elements should be preferred when the meaning
+                    of the text is important.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Index", "Tags", new { area = "HTML" })">
+
+                    ← Previous: HTML Tags
+
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("TextFormatting", "TextFormatting", new { area = "HTML" })">
+
+                    Next: Text Formatting Details →
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>

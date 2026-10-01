@@ -1,0 +1,1126 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Changing Content";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-changing-content-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-changing-content-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-changing-content-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-changing-content-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-changing-content-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-changing-content-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-changing-content-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-changing-content-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-changing-content-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGE
+       ========================================================= */
+
+    #javascript-changing-content-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-changing-content-page .dom-image {
+        width: 100%;
+        max-height: 480px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-changing-content-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       CHANGE CONTENT DIAGRAM
+       ========================================================= */
+
+    #javascript-changing-content-page .content-diagram {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #javascript-changing-content-page .diagram-title {
+        font-size: 19px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 25px;
+    }
+
+    #javascript-changing-content-page .diagram-box {
+        display: inline-block;
+        min-width: 220px;
+        padding: 13px 20px;
+        margin: 6px;
+        border-radius: 8px;
+        border: 2px solid #6f42c1;
+        background: #ffffff;
+        color: #343a40;
+        font-weight: 600;
+    }
+
+    #javascript-changing-content-page .diagram-box.main {
+        background: #6f42c1;
+        color: #ffffff;
+    }
+
+    #javascript-changing-content-page .diagram-arrow {
+        color: #6f42c1;
+        font-size: 25px;
+        font-weight: 700;
+        margin: 3px 0;
+    }
+
+    #javascript-changing-content-page .diagram-row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 8px;
+    }
+
+
+    /* =========================================================
+       COMPARISON CARDS
+       ========================================================= */
+
+    #javascript-changing-content-page .content-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    #javascript-changing-content-page .content-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-changing-content-page .content-card p {
+        color: #495057;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-changing-content-page .code-section {
+        margin-top: 15px;
+    }
+
+    #javascript-changing-content-page .code-box {
+        background-color: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       TRY IT BUTTON
+       ========================================================= */
+
+    #javascript-changing-content-page .try-it-wrapper {
+        text-align: right;
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+
+    #javascript-changing-content-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 6px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-changing-content-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-changing-content-page .output-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-left: 4px solid #198754;
+        border-radius: 8px;
+        padding: 15px 18px;
+        margin-bottom: 25px;
+        color: #343a40;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-changing-content-page .summary-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 35px;
+    }
+
+    #javascript-changing-content-page .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-changing-content-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-changing-content-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 20px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-changing-content-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    #javascript-changing-content-page .previous-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    #javascript-changing-content-page .next-btn {
+        background: #5b21b6;
+        border: 1px solid #5b21b6;
+        color: #ffffff;
+    }
+
+    #javascript-changing-content-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-changing-content-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @@media (max-width: 768px) {
+
+        #javascript-changing-content-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-changing-content-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-changing-content-page .section-title {
+            font-size: 23px;
+        }
+
+        #javascript-changing-content-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-changing-content-page .nav-btn {
+            justify-content: center;
+        }
+
+        #javascript-changing-content-page .diagram-box {
+            min-width: 180px;
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-changing-content-page">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3 mb-4">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- =================================================
+                         PAGE HEADER
+                         ================================================= -->
+
+                    <h1 class="page-title">
+                        Changing Content
+                    </h1>
+
+                    <p class="lead-text">
+                        JavaScript can dynamically change the text or HTML
+                        content inside an element using DOM properties such as
+                        <strong>textContent</strong> and
+                        <strong>innerHTML</strong>.
+                    </p>
+
+
+                    <!-- =================================================
+                         WHAT IS CHANGING CONTENT?
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What is Changing Content?
+                    </h2>
+
+                    <p class="section-text">
+                        Changing content means updating the information
+                        displayed inside an HTML element after the page has
+                        already loaded.
+                    </p>
+
+                    <p class="section-text">
+                        JavaScript first selects an element and then changes
+                        the content of that element using DOM properties.
+                    </p>
+
+
+                    <!-- =================================================
+                         CONCEPT
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p>
+                            <strong>Select the element</strong>
+                            →
+                            <strong>Access its content</strong>
+                            →
+                            <strong>Change the content</strong>.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ONLINE DOM IMAGE
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <img src="https://cdn-media-0.freecodecamp.org/2022/05/js-dom-model.png"
+                             alt="JavaScript DOM tree structure"
+                             class="dom-image" />
+
+                        <p class="image-caption">
+                            JavaScript uses the DOM to access and manipulate
+                            elements of an HTML document.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         HOW CHANGING CONTENT WORKS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        How Changing Content Works
+                    </h2>
+
+                    <p class="section-text">
+                        The basic process is to select an HTML element and
+                        update the content stored inside that element.
+                    </p>
+
+
+                    <!-- =================================================
+                         DIAGRAM
+                         ================================================= -->
+
+                    <div class="content-diagram">
+
+                        <div class="diagram-title">
+                            JavaScript Content Update Flow
+                        </div>
+
+                        <div>
+                            <span class="diagram-box main">
+                                HTML Element
+                            </span>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            ↓
+                        </div>
+
+                        <div>
+                            <span class="diagram-box">
+                                Select Element
+                            </span>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            ↓
+                        </div>
+
+                        <div class="diagram-row">
+
+                            <span class="diagram-box">
+                                textContent
+                            </span>
+
+                            <span class="diagram-box">
+                                innerHTML
+                            </span>
+
+                            <span class="diagram-box">
+                                innerText
+                            </span>
+
+                        </div>
+
+                        <div class="diagram-arrow">
+                            ↓
+                        </div>
+
+                        <div>
+                            <span class="diagram-box main">
+                                Updated Page Content
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         COMMON METHODS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Common Ways to Change Content
+                    </h2>
+
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+
+                            <div class="content-card">
+
+                                <h5>
+                                    textContent
+                                </h5>
+
+                                <p>
+                                    Changes or reads the plain text content
+                                    of an element.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="content-card">
+
+                                <h5>
+                                    innerHTML
+                                </h5>
+
+                                <p>
+                                    Changes or reads HTML markup inside
+                                    an element.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="content-card">
+
+                                <h5>
+                                    innerText
+                                </h5>
+
+                                <p>
+                                    Works with the visible text rendered
+                                    inside an element.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Change Text Using textContent
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>textContent</strong> property can be used
+                        to replace the text inside an element.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const message = "Welcome to CIIT Training Institute";
+
+console.log("Before:", "Hello Student");
+
+console.log("After:", message);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryChangingContentExample1()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Output:
+                        <br />
+
+                        Before: Hello Student
+                        <br />
+
+                        After: Welcome to CIIT Training Institute
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Change Content Using innerHTML
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>innerHTML</strong> property allows
+                        JavaScript to insert HTML markup inside an element.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const content = "&lt;strong&gt;Welcome to CIIT JavaScript Course!&lt;/strong&gt;";
+
+console.log(content);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryChangingContentExample2()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Output:
+                        <br />
+
+                        Welcome to CIIT JavaScript Course!
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Updating a Paragraph
+                    </h2>
+
+                    <p class="section-text">
+                        JavaScript can also update the content of a paragraph
+                        dynamically.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>let courseMessage = "Learn JavaScript with CIIT";
+
+console.log("Original:", "Start Learning");
+
+courseMessage = "Learn JavaScript with CIIT";
+
+console.log("Updated:", courseMessage);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryChangingContentExample3()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Output:
+                        <br />
+
+                        Original: Start Learning
+                        <br />
+
+                        Updated: Learn JavaScript with CIIT
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 4
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 4: Changing Multiple Values
+                    </h2>
+
+                    <p class="section-text">
+                        JavaScript can update multiple values and display
+                        the new content.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>let studentName = "Aarav";
+let course = "JavaScript";
+
+studentName = "Riya";
+course = "Full Stack Development";
+
+console.log("Student:", studentName);
+console.log("Course:", course);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryChangingContentExample4()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Output:
+                        <br />
+
+                        Student: Riya
+                        <br />
+
+                        Course: Full Stack Development
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TEXTCONTENT VS INNERHTML
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        textContent vs innerHTML
+                    </h2>
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Difference
+                        </h5>
+
+                        <p>
+                            <strong>textContent</strong> treats the assigned
+                            value as plain text.
+                            <br /><br />
+
+                            <strong>innerHTML</strong> treats the assigned
+                            value as HTML markup.
+                            <br /><br />
+
+                            When working with untrusted user input,
+                            prefer <strong>textContent</strong> rather than
+                            directly inserting that input through
+                            <strong>innerHTML</strong>.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         REAL WORLD EXAMPLE
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Real-World Example
+                    </h2>
+
+                    <p class="section-text">
+                        A training website can dynamically update course
+                        information, student messages, notifications, or
+                        status text using DOM content properties.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>let courseStatus = "JavaScript Course Available";
+
+console.log("Course Status:", courseStatus);
+
+courseStatus = "JavaScript Course Started";
+
+console.log("Updated Status:", courseStatus);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryChangingContentExample5()">
+
+                                <span>▶</span>
+
+                                <span>
+                                    Try It
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Output:
+                        <br />
+
+                        Course Status: JavaScript Course Available
+                        <br />
+
+                        Updated Status: JavaScript Course Started
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT POINTS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Important Points
+                    </h2>
+
+                    <div class="concept-box">
+
+                        <p class="mb-2">
+                            • Select the element before changing its content.
+                        </p>
+
+                        <p class="mb-2">
+                            • Use <strong>textContent</strong> for plain text.
+                        </p>
+
+                        <p class="mb-2">
+                            • Use <strong>innerHTML</strong> when HTML markup
+                            is intentionally required.
+                        </p>
+
+                        <p class="mb-2">
+                            • Changing content updates the DOM and can change
+                            what the user sees on the page.
+                        </p>
+
+                        <p class="mb-0">
+                            • Be careful when inserting untrusted data with
+                            <strong>innerHTML</strong>.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+                            JavaScript can change the content of HTML
+                            elements through the DOM. The most common
+                            properties are <strong>textContent</strong>,
+                            <strong>innerHTML</strong>, and
+                            <strong>innerText</strong>.
+                            Selecting the correct element and updating its
+                            content allows web pages to become dynamic and
+                            interactive.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("SelectingElements", "DOM", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Selecting Elements
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("ChangingStyles", "DOM", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Changing Styles
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function tryChangingContentExample1() {
+
+        const code =
+            'const message = "Welcome to CIIT Training Institute";\n' +
+            '\n' +
+            'console.log("Before:", "Hello Student");\n' +
+            'console.log("After:", message);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function tryChangingContentExample2() {
+
+        const code =
+            'const content = "<strong>Welcome to CIIT JavaScript Course!</strong>";\n' +
+            '\n' +
+            'console.log(content);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function tryChangingContentExample3() {
+
+        const code =
+            'let courseMessage = "Start Learning";\n' +
+            '\n' +
+            'console.log("Original:", courseMessage);\n' +
+            '\n' +
+            'courseMessage = "Learn JavaScript with CIIT";\n' +
+            '\n' +
+            'console.log("Updated:", courseMessage);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       ========================================================= */
+
+    function tryChangingContentExample4() {
+
+        const code =
+            'let studentName = "Aarav";\n' +
+            'let course = "JavaScript";\n' +
+            '\n' +
+            'studentName = "Riya";\n' +
+            'course = "Full Stack Development";\n' +
+            '\n' +
+            'console.log("Student:", studentName);\n' +
+            'console.log("Course:", course);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       REAL WORLD EXAMPLE
+       ========================================================= */
+
+    function tryChangingContentExample5() {
+
+        const code =
+            'let courseStatus = "JavaScript Course Available";\n' +
+            '\n' +
+            'console.log("Course Status:", courseStatus);\n' +
+            '\n' +
+            'courseStatus = "JavaScript Course Started";\n' +
+            '\n' +
+            'console.log("Updated Status:", courseStatus);';
+
+        openCompiler(code);
+    }
+
+</script>

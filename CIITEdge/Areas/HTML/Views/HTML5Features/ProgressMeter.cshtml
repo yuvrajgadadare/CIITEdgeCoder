@@ -1,0 +1,692 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML5 Progress and Meter";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #ffffff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .meter-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 120px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .progress-demo,
+    .meter-demo {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML5 Progress and Meter</h1>
+
+            <p>
+                HTML5 provides two useful elements for displaying numeric information:
+                <code>&lt;progress&gt;</code> and <code>&lt;meter&gt;</code>.
+            </p>
+
+            <p>
+                Although they look similar, they represent different things.
+                <code>&lt;progress&gt;</code> shows the completion of a task,
+                while <code>&lt;meter&gt;</code> shows a value within a known range.
+            </p>
+
+            <div class="info-box">
+                <strong>Easy Way to Remember:</strong>
+                <code>&lt;progress&gt;</code> = "How much of a task is completed?"
+                <br>
+                <code>&lt;meter&gt;</code> = "How much value is currently measured?"
+            </div>
+
+            <h2>1. Progress vs Meter</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    Progress and Meter
+                </div>
+
+                <div class="meter-flow">
+
+                    <div class="flow-item">
+                        Progress<br>
+                        Task Completion
+                    </div>
+
+                    <div class="flow-arrow">↔</div>
+
+                    <div class="flow-item">
+                        Meter<br>
+                        Measured Value
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>2. What is the progress Element?</h2>
+
+            <p>
+                The <code>&lt;progress&gt;</code> element represents the completion
+                progress of a task.
+            </p>
+
+            <p>
+                For example, it can show how much of a course has been completed,
+                how much of a file has uploaded, or how far a process has progressed.
+            </p>
+
+            <h2>3. Basic progress Example</h2>
+
+            <pre><code>&lt;progress value="60"
+          max="100"&gt;
+&lt;/progress&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <label class="form-label fw-semibold">
+                    Course Progress
+                </label>
+
+                <br>
+
+                <progress class="progress-demo"
+                          value="60"
+                          max="100">
+                </progress>
+            </div>
+
+            <p>
+                Here, the current progress is <code>60</code> and the maximum
+                value is <code>100</code>.
+            </p>
+
+            <h2>4. Understanding value and max</h2>
+
+            <p>
+                The <code>value</code> attribute represents the current amount of progress,
+                while <code>max</code> represents the total amount.
+            </p>
+
+            <pre><code>&lt;progress value="75"
+          max="100"&gt;
+&lt;/progress&gt;</code></pre>
+
+            <p>
+                This represents 75 out of 100 units of progress.
+            </p>
+
+            <h2>5. Progress without a Value</h2>
+
+            <p>
+                A progress element without a value can represent an indeterminate
+                operation whose completion percentage is not currently known.
+            </p>
+
+            <pre><code>&lt;progress&gt;
+&lt;/progress&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+                <h3>Output</h3>
+
+            <div class="demo-box">
+                <label class="form-label fw-semibold">
+                    Processing...
+                </label>
+
+                <br>
+
+                <progress></progress>
+            </div>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                An indeterminate progress bar means the application knows a task
+                is running but does not currently provide a specific completion value.
+            </div>
+
+            <h2>6. Real-Life Examples of progress</h2>
+
+            <ul>
+                <li>File upload progress</li>
+                <li>Course completion</li>
+                <li>Installation progress</li>
+                <li>Download progress</li>
+                <li>Multi-step process completion</li>
+            </ul>
+
+            <h2>7. Course Progress Example</h2>
+
+            <pre><code>&lt;p&gt;
+    HTML Course Progress
+&lt;/p&gt;
+
+&lt;progress value="80"
+          max="100"&gt;
+&lt;/progress&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="demo-box">
+                <p class="fw-semibold mb-2">
+                    HTML Course Progress
+                </p>
+
+                <progress class="progress-demo"
+                          value="80"
+                          max="100">
+                </progress>
+            </div>
+
+            <h2>8. Upload Progress Example</h2>
+
+            <p>
+                A progress element can visually represent the completion of an upload.
+            </p>
+
+            <pre><code>&lt;label&gt;
+    Upload Progress
+&lt;/label&gt;
+
+&lt;progress value="45"
+          max="100"&gt;
+&lt;/progress&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+        <h3>Output</h3>
+            <div class="demo-box">
+                <label class="form-label fw-semibold">
+                    Upload Progress
+                </label>
+
+                <br>
+
+                <progress class="progress-demo"
+                          value="45"
+                          max="100">
+                </progress>
+            </div>
+
+            <h2>9. What is the meter Element?</h2>
+
+            <p>
+                The <code>&lt;meter&gt;</code> element represents a scalar value
+                within a known range, or a value that can be compared against
+                defined minimum and maximum values.
+            </p>
+
+            <p>
+                It is useful for showing things such as a score, storage usage,
+                rating, or another measured value.
+            </p>
+
+            <h2>10. Basic meter Example</h2>
+
+            <pre><code>&lt;meter value="70"
+       min="0"
+       max="100"&gt;
+    70
+&lt;/meter&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <label class="form-label fw-semibold">
+                    Score
+                </label>
+
+                <br>
+
+                <meter class="meter-demo"
+                       value="70"
+                       min="0"
+                       max="100">
+                    70
+                </meter>
+            </div>
+
+            <h2>11. meter with min and max</h2>
+
+            <p>
+                The <code>min</code> and <code>max</code> attributes define
+                the range of the measured value.
+            </p>
+
+            <pre><code>&lt;meter value="6"
+       min="0"
+       max="10"&gt;
+    6
+&lt;/meter&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+            <div class="demo-box">
+                <label class="form-label fw-semibold">
+                    Rating
+                </label>
+
+                <br>
+
+                <meter class="meter-demo"
+                       value="6"
+                       min="0"
+                       max="10">
+                    6
+                </meter>
+            </div>
+
+            <h2>12. meter with low and high</h2>
+
+            <p>
+                The <code>low</code> and <code>high</code> attributes define
+                thresholds that help describe which values are considered lower
+                or higher within the range.
+            </p>
+
+            <pre><code>&lt;meter value="70"
+       min="0"
+       max="100"
+       low="30"
+       high="80"&gt;
+    70
+&lt;/meter&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+            <div class="demo-box">
+                <label class="form-label fw-semibold">
+                    Performance Level
+                </label>
+
+                <br>
+
+                <meter class="meter-demo"
+                       value="70"
+                       min="0"
+                       max="100"
+                       low="30"
+                       high="80">
+                    70
+                </meter>
+            </div>
+
+            <h2>13. meter with optimum</h2>
+
+            <p>
+                The <code>optimum</code> attribute indicates the preferred or
+                ideal value within the meter's range.
+            </p>
+
+            <pre><code>&lt;meter value="85"
+       min="0"
+       max="100"
+       optimum="90"&gt;
+    85
+&lt;/meter&gt;</code></pre>
+
+
+
+            <h2>14. Example: Storage Usage</h2>
+
+            <p>
+                A meter can represent the amount of storage currently being used.
+            </p>
+
+            <pre><code>&lt;p&gt;
+    Storage Used
+&lt;/p&gt;
+
+&lt;meter value="70"
+       min="0"
+       max="100"&gt;
+    70%
+&lt;/meter&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+            <div class="demo-box">
+                <p class="fw-semibold mb-2">
+                    Storage Used
+                </p>
+
+                <meter class="meter-demo"
+                       value="70"
+                       min="0"
+                       max="100">
+                    70%
+                </meter>
+            </div>
+
+            <h2>15. Progress vs Meter</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Progress</th>
+                            <th>Meter</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Task completion</td>
+                            <td>Measured value</td>
+                        </tr>
+
+                        <tr>
+                            <td>Example</td>
+                            <td>Course completion</td>
+                            <td>Storage usage</td>
+                        </tr>
+
+                        <tr>
+                            <td>Current Value</td>
+                            <td>Progress amount</td>
+                            <td>Measured amount</td>
+                        </tr>
+
+                        <tr>
+                            <td>Common Attributes</td>
+                            <td>value, max</td>
+                            <td>min, max, low, high, optimum</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>16. Simple Difference</h2>
+
+            <p>
+                Think about downloading a file.
+            </p>
+
+            <p>
+                If the question is:
+                <strong>"How much of the download is completed?"</strong>
+                use <code>&lt;progress&gt;</code>.
+            </p>
+
+            <p>
+                If the question is:
+                <strong>"How much storage is being used?"</strong>
+                use <code>&lt;meter&gt;</code>.
+            </p>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                Progress is about a process moving toward completion.
+                Meter is about the current value of something.
+            </div>
+
+            <h2>17. Common Mistakes</h2>
+
+            <h3>Mistake 1: Using meter for task progress</h3>
+
+            <p>
+                If the value represents completion of a process, use
+                <code>&lt;progress&gt;</code>.
+            </p>
+
+            <h3>Mistake 2: Using progress for a static measurement</h3>
+
+            <p>
+                If you are displaying a measurement such as a score or storage usage,
+                <code>&lt;meter&gt;</code> may be more appropriate.
+            </p>
+
+            <h3>Mistake 3: Forgetting the range</h3>
+
+            <p>
+                When using these elements, make sure the values and range accurately
+                represent what you want the user to understand.
+            </p>
+
+            <h2>18. Best Practices</h2>
+
+            <ul>
+                <li>Use <code>&lt;progress&gt;</code> for task completion.</li>
+                <li>Use <code>&lt;meter&gt;</code> for measurements within a known range.</li>
+                <li>Set meaningful minimum and maximum values for meters.</li>
+                <li>Use <code>low</code>, <code>high</code>, and <code>optimum</code> when thresholds are useful.</li>
+                <li>Keep the surrounding text clear so users understand what the value represents.</li>
+            </ul>
+
+            <h2>19. Practice Example</h2>
+
+            <p>
+                Create a page containing:
+            </p>
+
+            <ul>
+                <li>A course completion progress bar at 75%.</li>
+                <li>A test score meter showing 8 out of 10.</li>
+                <li>A storage meter showing 65 out of 100.</li>
+            </ul>
+
+            <pre><code>&lt;p&gt;
+    Course Progress
+&lt;/p&gt;
+
+&lt;progress value="75"
+          max="100"&gt;
+&lt;/progress&gt;
+
+
+&lt;p&gt;
+    Test Score
+&lt;/p&gt;
+
+&lt;meter value="8"
+       min="0"
+       max="10"&gt;
+    8
+&lt;/meter&gt;
+
+
+&lt;p&gt;
+    Storage Used
+&lt;/p&gt;
+
+&lt;meter value="65"
+       min="0"
+       max="100"&gt;
+    65
+&lt;/meter&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML5 provides <code>&lt;progress&gt;</code> for showing the
+                    completion of a task and <code>&lt;meter&gt;</code> for showing
+                    a measured value within a known range. Progress commonly uses
+                    <code>value</code> and <code>max</code>, while meter can also use
+                    <code>min</code>, <code>low</code>, <code>high</code>, and
+                    <code>optimum</code>. The easiest way to remember the difference
+                    is: progress shows task completion, while meter shows a measurement.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("SVG", "HTML5Features", new { area = "HTML" })">
+                    ← Previous: SVG
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("DetailsSummary", "HTML5Features", new { area = "HTML" })">
+                    Next: Details &amp; Summary →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

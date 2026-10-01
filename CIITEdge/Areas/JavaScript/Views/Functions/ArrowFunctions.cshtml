@@ -1,0 +1,1088 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Arrow Functions";
+}
+
+<style>
+    #javascript-arrow-functions-page {
+        padding: 30px 0 50px;
+    }
+
+    #javascript-arrow-functions-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    #javascript-arrow-functions-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #212529;
+    }
+
+    #javascript-arrow-functions-page .lead-text {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #6c757d;
+        margin-bottom: 30px;
+    }
+
+    #javascript-arrow-functions-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-arrow-functions-page .section-text {
+        font-size: 16px;
+        line-height: 1.85;
+        color: #555;
+    }
+
+    /* =========================
+       CONCEPT BOX
+       ========================= */
+
+    #javascript-arrow-functions-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    /* =========================
+       IMAGE
+       ========================= */
+
+    #javascript-arrow-functions-page .image-card {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-arrow-functions-page .arrow-image {
+        width: 100%;
+        height: 300px;
+        display: block;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-arrow-functions-page .image-caption {
+        margin: 12px 5px 0;
+        text-align: center;
+        color: #6c757d;
+        font-size: 14px;
+    }
+
+    /* =========================
+       PART CARDS
+       ========================= */
+
+    #javascript-arrow-functions-page .part-card {
+        border: 1px solid #e1e5e9;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 15px;
+        background: #ffffff;
+    }
+
+    #javascript-arrow-functions-page .part-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #6f42c1;
+        color: #ffffff;
+        font-weight: 700;
+        margin-right: 10px;
+    }
+
+    /* =========================
+       DIAGRAM
+       ========================= */
+
+    #javascript-arrow-functions-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #javascript-arrow-functions-page .diagram-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #212529;
+    }
+
+    #javascript-arrow-functions-page .arrow-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-arrow-functions-page .diagram-item {
+        background: #ffffff;
+        border: 2px solid #6f42c1;
+        border-radius: 10px;
+        padding: 15px 20px;
+        min-width: 150px;
+        font-weight: 600;
+    }
+
+    #javascript-arrow-functions-page .diagram-highlight {
+        background: #6f42c1;
+        color: #ffffff;
+    }
+
+    #javascript-arrow-functions-page .diagram-arrow {
+        font-size: 25px;
+        font-weight: bold;
+        color: #6f42c1;
+    }
+
+    /* =========================
+       CODE BOX
+       ========================= */
+
+    #javascript-arrow-functions-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 22px;
+        border-radius: 10px;
+        margin: 18px 0 10px;
+        overflow-x: auto;
+    }
+
+    #javascript-arrow-functions-page .code-box pre {
+        margin: 0;
+        color: #f8f9fa;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* =========================
+       TRY IT BUTTON
+       ========================= */
+
+    #javascript-arrow-functions-page .try-it-container {
+        text-align: right;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-arrow-functions-page .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        border-radius: 7px;
+        padding: 10px 18px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #javascript-arrow-functions-page .try-it-btn:hover {
+        opacity: 0.9;
+    }
+
+    /* =========================
+       OUTPUT
+       ========================= */
+
+    #javascript-arrow-functions-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 6px;
+        padding: 15px 18px;
+        margin: 15px 0 25px;
+    }
+
+    /* =========================
+       NOTE
+       ========================= */
+
+    #javascript-arrow-functions-page .note-box {
+        background: #fff8e1;
+        border-left: 4px solid #ffc107;
+        border-radius: 6px;
+        padding: 18px;
+        margin: 20px 0;
+    }
+
+    /* =========================
+       SUMMARY
+       ========================= */
+
+    #javascript-arrow-functions-page .summary-box {
+        background: #e8f7fa;
+        border: 1px solid #8edee9;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    #javascript-arrow-functions-page .summary-box h3 {
+        color: #056b87;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-arrow-functions-page .summary-box p {
+        color: #056b87;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 0;
+    }
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    #javascript-arrow-functions-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 32px;
+        padding-top: 25px;
+        border-top: 1px solid #e5e5e5;
+    }
+
+    #javascript-arrow-functions-page .nav-btn {
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 7px;
+        font-weight: 600;
+    }
+
+    #javascript-arrow-functions-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-arrow-functions-page .next-btn {
+        background: #6f2dbd;
+        color: #ffffff;
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    @@media (max-width: 768px) {
+
+        #javascript-arrow-functions-page .content-section {
+            padding: 22px;
+        }
+
+        #javascript-arrow-functions-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-arrow-functions-page .arrow-image {
+            height: 220px;
+        }
+
+        #javascript-arrow-functions-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-arrow-functions-page .nav-btn {
+            text-align: center;
+        }
+    }
+</style>
+
+
+<main id="javascript-arrow-functions-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =========================================
+             LEFT SIDE - COMPLETE SYLLABUS
+             ========================================= -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =========================================
+             RIGHT SIDE
+             ========================================= -->
+
+        <div class="col-lg-9">
+
+            <section class="content-section">
+
+                <!-- TITLE -->
+
+                <h1 class="page-title">
+                    Arrow Functions
+                </h1>
+
+                <p class="lead-text">
+                    Arrow Functions are a shorter and cleaner way to write
+                    functions in JavaScript. They use the
+                    <strong>=&gt;</strong>
+                    arrow syntax instead of the traditional
+                    <strong>function</strong>
+                    keyword.
+                </p>
+
+
+                <!-- =========================================
+                     RELATED IMAGE
+                     ========================================= -->
+
+                <div class="image-card">
+
+                    <svg class="arrow-image"
+                         viewBox="0 0 1200 420"
+                         xmlns="http://www.w3.org/2000/svg">
+
+                        <rect width="1200"
+                              height="420"
+                              rx="15"
+                              fill="#f8f9fa" />
+
+                        <text x="600"
+                              y="65"
+                              text-anchor="middle"
+                              font-size="32"
+                              font-weight="700"
+                              fill="#212529">
+                            JavaScript Arrow Function
+                        </text>
+
+                        <rect x="80"
+                              y="135"
+                              width="300"
+                              height="170"
+                              rx="15"
+                              fill="#ffffff"
+                              stroke="#6f42c1"
+                              stroke-width="3" />
+
+                        <text x="230"
+                              y="185"
+                              text-anchor="middle"
+                              font-size="21"
+                              font-weight="700"
+                              fill="#212529">
+                            Parameters
+                        </text>
+
+                        <text x="230"
+                              y="235"
+                              text-anchor="middle"
+                              font-size="30"
+                              font-family="monospace"
+                              fill="#6f42c1">
+                            (a, b)
+                        </text>
+
+                        <text x="230"
+                              y="275"
+                              text-anchor="middle"
+                              font-size="17"
+                              fill="#6c757d">
+                            Input values
+                        </text>
+
+
+                        <line x1="380"
+                              y1="220"
+                              x2="470"
+                              y2="220"
+                              stroke="#6f42c1"
+                              stroke-width="5" />
+
+                        <polygon points="470,220 450,207 450,233"
+                                 fill="#6f42c1" />
+
+
+                        <rect x="470"
+                              y="135"
+                              width="260"
+                              height="170"
+                              rx="15"
+                              fill="#6f42c1" />
+
+                        <text x="600"
+                              y="210"
+                              text-anchor="middle"
+                              font-size="42"
+                              font-weight="700"
+                              fill="#ffffff">
+                            =&gt;
+                        </text>
+
+                        <text x="600"
+                              y="260"
+                              text-anchor="middle"
+                              font-size="18"
+                              fill="#ffffff">
+                            Arrow Syntax
+                        </text>
+
+
+                        <line x1="730"
+                              y1="220"
+                              x2="820"
+                              y2="220"
+                              stroke="#6f42c1"
+                              stroke-width="5" />
+
+                        <polygon points="820,220 800,207 800,233"
+                                 fill="#6f42c1" />
+
+
+                        <rect x="820"
+                              y="135"
+                              width="300"
+                              height="170"
+                              rx="15"
+                              fill="#ffffff"
+                              stroke="#6f42c1"
+                              stroke-width="3" />
+
+                        <text x="970"
+                              y="185"
+                              text-anchor="middle"
+                              font-size="21"
+                              font-weight="700"
+                              fill="#212529">
+                            Function Body
+                        </text>
+
+                        <text x="970"
+                              y="235"
+                              text-anchor="middle"
+                              font-size="27"
+                              font-family="monospace"
+                              fill="#198754">
+                            a + b
+                        </text>
+
+                        <text x="970"
+                              y="275"
+                              text-anchor="middle"
+                              font-size="17"
+                              fill="#6c757d">
+                            Function logic
+                        </text>
+
+                    </svg>
+
+                    <p class="image-caption">
+                        Arrow Functions use the
+                        <strong>=&gt;</strong>
+                        syntax to write functions in a shorter form.
+                    </p>
+
+                </div>
+
+
+                <!-- =========================================
+                     SIMPLE EXPLANATION
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Simple Explanation
+                </h2>
+
+                <div class="concept-box">
+
+                    <p class="section-text mb-0">
+
+                        Think of an Arrow Function as a shorter way to write
+                        a normal JavaScript function.
+
+                        <br /><br />
+
+                        A normal function uses the
+                        <strong>function</strong>
+                        keyword. An Arrow Function removes the
+                        <strong>function</strong>
+                        keyword and uses the
+                        <strong>=&gt;</strong>
+                        symbol.
+
+                        <br /><br />
+
+                        Arrow Functions make many common functions shorter
+                        and easier to read.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =========================================
+                     BASIC SYNTAX
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Basic Syntax
+                </h2>
+
+                <p class="section-text">
+                    The basic structure of an Arrow Function contains
+                    parameters, the arrow symbol, and the function body.
+                </p>
+
+
+                <!-- =========================================
+                     PARTS
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Parts of an Arrow Function
+                </h2>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        1
+                    </span>
+
+                    <strong>
+                        Function Variable
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        The function is commonly stored inside a variable
+                        using <strong>const</strong>.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        2
+                    </span>
+
+                    <strong>
+                        Parameters
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        Parameters receive values passed to the function.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        3
+                    </span>
+
+                    <strong>
+                        =&gt; Arrow
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        The <strong>=&gt;</strong> symbol is the main
+                        syntax of an Arrow Function.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        4
+                    </span>
+
+                    <strong>
+                        Function Body
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        The function body contains the code that executes
+                        when the function is called.
+                    </p>
+
+                </div>
+
+
+                <!-- =========================================
+                     DIAGRAM
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Arrow Function Flow
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        How an Arrow Function Works
+                    </div>
+
+                    <div class="arrow-flow">
+
+                        <div class="diagram-item">
+                            Parameters
+                            <br />
+                            <small>(a, b)</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item diagram-highlight">
+                            =&gt;
+                            <br />
+                            <small>Arrow</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Function Body
+                            <br />
+                            <small>a + b</small>
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Result
+                            <br />
+                            <small>30</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     EXAMPLE 1
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Basic Arrow Function
+                </h2>
+
+                <p class="section-text">
+                    A simple Arrow Function can execute a statement when
+                    it is called.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>const greet = () =&gt; {
+    console.log("Hello JavaScript");
+};
+
+greet();</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrowExample1()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    Hello JavaScript
+
+                </div>
+
+
+                <!-- =========================================
+                     EXAMPLE 2
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Arrow Function with Parameters
+                </h2>
+
+                <p class="section-text">
+                    An Arrow Function can receive values through parameters.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>const greetUser = (name) =&gt; {
+    console.log("Hello " + name);
+};
+
+greetUser("Rahul");</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrowExample2()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    Hello Rahul
+
+                </div>
+
+
+                <!-- =========================================
+                     EXAMPLE 3
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Example 3: Arrow Function with Return Value
+                </h2>
+
+                <p class="section-text">
+                    An Arrow Function can return the result of a calculation.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>const add = (a, b) =&gt; {
+    return a + b;
+};
+
+const result = add(10, 20);
+
+console.log(result);</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrowExample3()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    30
+
+                </div>
+
+
+                <!-- =========================================
+                     EXAMPLE 4
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Example 4: Short Arrow Function
+                </h2>
+
+                <p class="section-text">
+                    When an Arrow Function contains one expression, it can
+                    be written without curly braces and the
+                    <strong>return</strong> keyword.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>const square = number =&gt; number * number;
+
+console.log(square(5));</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrowExample4()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    25
+
+                </div>
+
+
+                <!-- =========================================
+                     NORMAL VS ARROW
+                     NO EXTRA CODE EXAMPLE
+                     ========================================= -->
+
+                <h2 class="section-title">
+                    Normal Function vs Arrow Function
+                </h2>
+
+                <div class="concept-box">
+
+                    <p class="section-text mb-0">
+
+                        A normal JavaScript function uses the
+                        <strong>function</strong>
+                        keyword.
+
+                        <br /><br />
+
+                        An Arrow Function uses the
+                        <strong>=&gt;</strong>
+                        symbol instead.
+
+                        <br /><br />
+
+                        The main advantage for beginners is that Arrow
+                        Functions provide a shorter syntax for many
+                        function expressions.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =========================================
+                     IMPORTANT NOTE
+                     ========================================= -->
+
+                <div class="note-box">
+
+                    <strong>
+                        Important Note:
+                    </strong>
+
+                    <p class="section-text mb-0 mt-2">
+
+                        Arrow Functions do not use the
+                        <strong>function</strong>
+                        keyword. They use the
+                        <strong>=&gt;</strong>
+                        symbol.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =========================================
+                     SUMMARY
+                     ========================================= -->
+
+                <div class="summary-box">
+
+                    <h3>
+                        Summary
+                    </h3>
+
+                    <p>
+
+                        An Arrow Function is a shorter way to write a
+                        JavaScript function using the
+                        <strong>=&gt;</strong>
+                        syntax. It can accept parameters, execute code,
+                        and return values. When a function contains a
+                        single expression, the syntax can be shortened
+                        further by using an implicit return.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =========================================
+                     PREVIOUS / NEXT
+                     ========================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("ReturnValues", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        ← Previous: Return Values
+
+                    </a>
+
+
+                    <a href="@Url.Action("CallbackFunctions", "Functions", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        Next: Callback Functions →
+
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================
+     TRY IT JAVASCRIPT
+     ========================================= -->
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    // ========================================
+    // EXAMPLE 1
+    // ========================================
+
+    function runArrowExample1() {
+
+        const code = `
+const greet = () => {
+    console.log("Hello JavaScript");
+};
+
+greet();
+`;
+
+        openCompiler(code);
+    }
+
+
+    // ========================================
+    // EXAMPLE 2
+    // ========================================
+
+    function runArrowExample2() {
+
+        const code = `
+const greetUser = (name) => {
+    console.log("Hello " + name);
+};
+
+greetUser("Rahul");
+`;
+
+        openCompiler(code);
+    }
+
+
+    // ========================================
+    // EXAMPLE 3
+    // ========================================
+
+    function runArrowExample3() {
+
+        const code = `
+const add = (a, b) => {
+    return a + b;
+};
+
+const result = add(10, 20);
+
+console.log(result);
+`;
+
+        openCompiler(code);
+    }
+
+
+    // ========================================
+    // EXAMPLE 4
+    // ========================================
+
+    function runArrowExample4() {
+
+        const code = `
+const square = number => number * number;
+
+console.log(square(5));
+`;
+
+        openCompiler(code);
+    }
+
+</script>

@@ -1,0 +1,901 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Elements";
+}
+
+<style>
+
+    #html-elements-page pre {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        #html-elements-page pre code {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+    #html-elements-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 24px;
+    }
+
+    #html-elements-page .info-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+        #html-elements-page .info-card h5 {
+            color: #5b21b6;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+    #html-elements-page .example-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #html-elements-page .table-responsive {
+        margin-top: 15px;
+    }
+
+</style>
+
+
+<main id="html-elements-page"
+      class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/HTML/Views/Shared/HTMLTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <section class="col-lg-9">
+
+
+            <!-- PAGE TITLE -->
+            <div class="mb-4">
+
+                <h1 class="fw-bold">
+                    HTML Elements
+                </h1>
+
+                <p class="lead">
+                    Learn what HTML elements are, understand their structure,
+                    and explore common elements used to build web pages.
+                </p>
+
+            </div>
+
+
+            <!-- INTRODUCTION -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    What is an HTML Element?
+                </h2>
+
+                <p>
+                    An HTML element is a building block of an HTML document.
+                    It defines a particular part of the content or structure
+                    of a web page.
+                </p>
+
+                <p>
+                    HTML elements are represented using tags. Many elements
+                    contain an opening tag, content, and a closing tag.
+                </p>
+
+                <div class="alert alert-info">
+
+                    <strong>Simple Definition:</strong>
+
+                    An HTML element is a complete HTML structure consisting
+                    of tags and content that represents a part of a web page.
+
+                </div>
+
+            </div>
+
+
+            <!-- BASIC ELEMENT STRUCTURE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Basic Structure of an HTML Element
+                </h2>
+
+                <pre><code>&lt;tagname&gt;Content&lt;/tagname&gt;</code></pre>
+
+                <p class="mt-3">
+                    Example:
+                </p>
+
+                <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Part</th>
+                                <th>Example</th>
+                                <th>Purpose</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    Opening Tag
+                                </td>
+
+                                <td>
+                                    <code>&lt;p&gt;</code>
+                                </td>
+
+                                <td>
+                                    Marks the beginning of the element.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Content
+                                </td>
+
+                                <td>
+                                    <code>This is a paragraph.</code>
+                                </td>
+
+                                <td>
+                                    Represents the content of the element.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Closing Tag
+                                </td>
+
+                                <td>
+                                    <code>&lt;/p&gt;</code>
+                                </td>
+
+                                <td>
+                                    Marks the end of the element.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- OPENING AND CLOSING TAG -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Opening Tag and Closing Tag
+                </h2>
+
+                <p>
+                    Most HTML elements have both an opening tag and a closing tag.
+                </p>
+
+                <pre><code>&lt;h1&gt;Welcome to HTML&lt;/h1&gt;</code></pre>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Opening Tag
+                            </h5>
+
+                            <p class="mb-0">
+                                <code>&lt;h1&gt;</code> tells the browser that
+                                a heading element is starting.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Closing Tag
+                            </h5>
+
+                            <p class="mb-0">
+                                <code>&lt;/h1&gt;</code> tells the browser that
+                                the heading element has ended.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NESTED ELEMENTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Nested HTML Elements
+                </h2>
+
+                <p>
+                    HTML elements can be placed inside other HTML elements.
+                    This is called nesting.
+                </p>
+
+                <pre><code>&lt;div&gt;
+
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+
+    &lt;p&gt;
+        Learn HTML at CIIT Institute.
+    &lt;/p&gt;
+
+&lt;/div&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+                <p>
+                    In this example, the
+                    <code>&lt;h1&gt;</code> and
+                    <code>&lt;p&gt;</code> elements are nested inside
+                    the <code>&lt;div&gt;</code> element.
+                </p>
+
+                <div class="alert alert-warning">
+
+                    <strong>Important:</strong>
+
+                    Proper nesting is important for clean and predictable
+                    HTML structure.
+
+                </div>
+
+            </div>
+
+
+            <!-- EMPTY ELEMENTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Empty HTML Elements
+                </h2>
+
+                <p>
+                    Some HTML elements do not contain content and do not require
+                    a separate closing tag. These are commonly called empty or
+                    void elements.
+                </p>
+
+                <pre><code>&lt;br&gt;
+
+&lt;hr&gt;
+
+&lt;img src="image.jpg" alt="Example Image"&gt;</code></pre>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Element</th>
+                                <th>Purpose</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;br&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates a line break.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;hr&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates a thematic horizontal rule.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;img&gt;</code>
+                                </td>
+
+                                <td>
+                                    Displays an image.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMMON ELEMENTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Common HTML Elements
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead class="table-light">
+
+                            <tr>
+
+                                <th>
+                                    Element
+                                </th>
+
+                                <th>
+                                    Example
+                                </th>
+
+                                <th>
+                                    Purpose
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;h1&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;h1&gt;Title&lt;/h1&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates a main heading.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;p&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;p&gt;Text&lt;/p&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates a paragraph.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;a&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;a href="#"&gt;Link&lt;/a&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates a hyperlink.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;img&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;img src="image.jpg" alt="Image"&gt;</code>
+                                </td>
+
+                                <td>
+                                    Displays an image.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;ul&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;ul&gt;...&lt;/ul&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates an unordered list.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;ol&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;ol&gt;...&lt;/ol&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates an ordered list.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;table&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;table&gt;...&lt;/table&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates a table.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;form&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;form&gt;...&lt;/form&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates a form.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;div&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;div&gt;Content&lt;/div&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates a generic block container.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <code>&lt;span&gt;</code>
+                                </td>
+
+                                <td>
+                                    <code>&lt;span&gt;Text&lt;/span&gt;</code>
+                                </td>
+
+                                <td>
+                                    Creates a generic inline container.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ELEMENT WITH ATTRIBUTE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    HTML Elements with Attributes
+                </h2>
+
+                <p>
+                    HTML elements can contain attributes that provide additional
+                    information about the element.
+                </p>
+
+                <pre><code>&lt;a href="https://example.com"&gt;
+    Visit Website
+&lt;/a&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+                <p>
+                    Here, the <code>href</code> attribute specifies the destination
+                    of the hyperlink.
+                </p>
+
+            </div>
+
+
+            <!-- BLOCK AND INLINE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Block and Inline Elements
+                </h2>
+
+                <p>
+                    HTML elements can be broadly described as block-level or
+                    inline elements based on their normal layout behavior.
+                </p>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Block-Level Elements
+                            </h5>
+
+                            <p>
+                                These normally start on a new line and occupy
+                                the available width.
+                            </p>
+
+                            <p class="mb-0">
+                                Examples:
+                                <code>&lt;div&gt;</code>,
+                                <code>&lt;p&gt;</code>,
+                                <code>&lt;h1&gt;</code>,
+                                <code>&lt;section&gt;</code>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Inline Elements
+                            </h5>
+
+                            <p>
+                                These normally flow within the surrounding text.
+                            </p>
+
+                            <p class="mb-0">
+                                Examples:
+                                <code>&lt;span&gt;</code>,
+                                <code>&lt;a&gt;</code>,
+                                <code>&lt;strong&gt;</code>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMPLETE EXAMPLE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Complete Example
+                </h2>
+
+                <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;HTML Elements Example&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;CIIT Institute&lt;/h1&gt;
+
+    &lt;p&gt;
+        Learn HTML step-by-step.
+    &lt;/p&gt;
+
+    &lt;a href="#"&gt;
+        Learn More
+    &lt;/a&gt;
+
+    &lt;hr&gt;
+
+    &lt;div&gt;
+
+        &lt;span&gt;
+            HTML Elements
+        &lt;/span&gt;
+
+    &lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Output
+                </h3>
+
+                <div class="example-box">
+
+                    <h2>
+                        CIIT Institute
+                    </h2>
+
+                    <p>
+                        Learn HTML step-by-step.
+                    </p>
+
+                    <a href="#">
+                        Learn More
+                    </a>
+
+                    <hr />
+
+                    <div>
+                        <span>
+                            HTML Elements
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMPORTANT POINTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Important Points
+                </h2>
+
+                <ul>
+
+                    <li class="mb-2">
+                        HTML elements are the building blocks of HTML documents.
+                    </li>
+
+                    <li class="mb-2">
+                        Most elements have opening and closing tags.
+                    </li>
+
+                    <li class="mb-2">
+                        Elements can be nested inside other elements.
+                    </li>
+
+                    <li class="mb-2">
+                        Some elements are empty or void elements.
+                    </li>
+
+                    <li class="mb-2">
+                        HTML elements can contain attributes.
+                    </li>
+
+                    <li>
+                        Proper nesting helps maintain a clear document structure.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Practice Exercise
+                </h2>
+
+                <ol>
+
+                    <li class="mb-2">
+                        Create a heading using <code>&lt;h1&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a paragraph using <code>&lt;p&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Add a link using <code>&lt;a&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Add an image using <code>&lt;img&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Add a horizontal rule using <code>&lt;hr&gt;</code>.
+                    </li>
+
+                    <li>
+                        Place a paragraph inside a <code>&lt;div&gt;</code>.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    HTML elements are the fundamental building blocks of web pages.
+                    They define content and structure using tags. Elements can be
+                    nested, can contain attributes, and may be either normal elements
+                    with opening and closing tags or empty elements such as
+                    <code>&lt;br&gt;</code> and <code>&lt;img&gt;</code>.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Index", "BasicHTML", new { area = "HTML" })">
+
+                    ← Previous: Basic HTML
+
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("HTMLAttributes", "BasicHTML", new { area = "HTML" })">
+
+                    Next: HTML Attributes →
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>

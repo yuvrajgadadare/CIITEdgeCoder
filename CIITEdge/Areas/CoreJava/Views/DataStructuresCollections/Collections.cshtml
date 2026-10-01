@@ -1,0 +1,1624 @@
+﻿@{
+    ViewData["Title"] = "Collections in Java";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Collections in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn the Java Collections Framework, including List, Set,
+                Map, Queue, Deque, ArrayList, LinkedList, HashSet, TreeSet,
+                HashMap, iteration, sorting, and common collection operations.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is the Collections Framework?</h3>
+
+            <p>
+                The Java Collections Framework provides interfaces and
+                implementations for storing and manipulating groups of
+                objects.
+            </p>
+
+            <p>
+                The main collection interfaces include
+                <code>List</code>, <code>Set</code>, <code>Queue</code>,
+                <code>Deque</code>, and <code>Map</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    new ArrayList&lt;&gt;();
+
+names.add("Amit");
+names.add("Neha");
+
+System.out.println(names);</code></pre>
+
+            </div>
+            List<String> names = new ArrayList<>();
+
+names.add("Amit");
+names.add("Neha");
+
+System.out.println(names);
+
+        </section>
+
+
+        <!-- COLLECTION HIERARCHY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Collection Framework Overview</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Structure</div>
+
+                <pre class="mb-0"><code>Collection
+│
+├── List
+│   ├── ArrayList
+│   └── LinkedList
+│
+├── Set
+│   ├── HashSet
+│   ├── LinkedHashSet
+│   └── TreeSet
+│
+└── Queue
+    ├── PriorityQueue
+    └── Deque
+        └── ArrayDeque
+
+Map
+├── HashMap
+├── LinkedHashMap
+└── TreeMap</code></pre>
+
+            </div>
+
+            <div class="alert alert-info mt-3">
+
+                <strong>Important:</strong>
+
+                <code>Map</code> is part of the Java Collections Framework,
+                but it does not extend the <code>Collection</code> interface.
+
+            </div>
+
+        </section>
+
+
+        <!-- LIST -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">List</h3>
+
+            <p>
+                A <code>List</code> is an ordered collection that permits
+                duplicate elements and provides index-based access.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    new ArrayList&lt;&gt;();
+
+names.add("Amit");
+names.add("Neha");
+names.add("Amit");
+
+System.out.println(names);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>[Amit, Neha, Amit]</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- ARRAYLIST -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">ArrayList</h3>
+
+            <p>
+                <code>ArrayList</code> is a resizable-array implementation of
+                the <code>List</code> interface.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>ArrayList&lt;String&gt; languages =
+    new ArrayList&lt;&gt;();
+
+languages.add("Java");
+languages.add("Python");
+languages.add("C#");
+
+System.out.println(
+    languages.get(0)
+);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Java</code></pre>
+</div>
+
+            <p class="mt-3">
+                ArrayList is generally a good default when you need indexed
+                access and frequent access by position.
+            </p>
+
+        </section>
+
+
+        <!-- ARRAYLIST OPERATIONS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Common ArrayList Operations
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    new ArrayList&lt;&gt;();
+
+names.add("Amit");
+names.add("Neha");
+
+names.add(1, "Rahul");
+
+names.set(0, "Priya");
+
+names.remove("Neha");
+
+System.out.println(names);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>[Priya, Rahul]</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- LINKEDLIST -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">LinkedList</h3>
+
+            <p>
+                <code>LinkedList</code> implements both
+                <code>List</code> and <code>Deque</code>. It can be useful
+                when operations at the ends are important.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>LinkedList&lt;String&gt; names =
+    new LinkedList&lt;&gt;();
+
+names.add("Amit");
+names.addFirst("Neha");
+names.addLast("Rahul");
+
+System.out.println(names);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>[Neha, Amit, Rahul]</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- SET -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Set</h3>
+
+            <p>
+                A <code>Set</code> does not permit duplicate elements.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Set&lt;String&gt; languages =
+    new HashSet&lt;&gt;();
+
+languages.add("Java");
+languages.add("Python");
+languages.add("Java");
+
+System.out.println(languages);</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The duplicate <code>"Java"</code> value is not added again.
+            </p>
+
+        </section>
+
+
+        <!-- HASHSET -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">HashSet</h3>
+
+            <p>
+                <code>HashSet</code> is a hash-table-based implementation of
+                <code>Set</code>. It does not guarantee iteration order.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Set&lt;Integer&gt; numbers =
+    new HashSet&lt;&gt;();
+
+numbers.add(30);
+numbers.add(10);
+numbers.add(20);
+numbers.add(10);
+
+System.out.println(numbers);</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- LINKEDHASHSET -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">LinkedHashSet</h3>
+
+            <p>
+                <code>LinkedHashSet</code> maintains insertion order during
+                iteration.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Set&lt;String&gt; names =
+    new LinkedHashSet&lt;&gt;();
+
+names.add("Amit");
+names.add("Neha");
+names.add("Rahul");
+
+System.out.println(names);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>[Amit, Neha, Rahul]</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- TREESET -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">TreeSet</h3>
+
+            <p>
+                <code>TreeSet</code> is a sorted set implementation based on
+                a tree structure.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Set&lt;Integer&gt; numbers =
+    new TreeSet&lt;&gt;();
+
+numbers.add(50);
+numbers.add(10);
+numbers.add(30);
+numbers.add(20);
+
+System.out.println(numbers);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>[10, 20, 30, 50]</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUEUE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Queue</h3>
+
+            <p>
+                A <code>Queue</code> is commonly used when elements need to
+                be processed according to a particular ordering, often
+                FIFO.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Queue&lt;String&gt; queue =
+    new LinkedList&lt;&gt;();
+
+queue.offer("A");
+queue.offer("B");
+queue.offer("C");
+
+System.out.println(queue.poll());</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>A</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRIORITY QUEUE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">PriorityQueue</h3>
+
+            <p>
+                <code>PriorityQueue</code> processes elements according to
+                their priority rather than simple insertion order.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Queue&lt;Integer&gt; numbers =
+    new PriorityQueue&lt;&gt;();
+
+numbers.offer(30);
+numbers.offer(10);
+numbers.offer(20);
+
+System.out.println(numbers.poll());</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>10</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- DEQUE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Deque</h3>
+
+            <p>
+                A <code>Deque</code> supports insertion and removal at both
+                ends of the sequence.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Deque&lt;String&gt; deque =
+    new ArrayDeque&lt;&gt;();
+
+deque.addFirst("A");
+deque.addLast("B");
+
+System.out.println(
+    deque.removeFirst()
+);
+
+System.out.println(
+    deque.removeLast()
+);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>A
+B</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- MAP -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Map</h3>
+
+            <p>
+                A <code>Map</code> stores key-value associations. Keys are
+                unique within a map.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;Integer, String&gt; students =
+    new HashMap&lt;&gt;();
+
+students.put(101, "Amit");
+students.put(102, "Neha");
+
+System.out.println(
+    students.get(101)
+);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- HASHMAP -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">HashMap</h3>
+
+            <p>
+                <code>HashMap</code> is a commonly used map implementation
+                based on hashing. It does not guarantee iteration order.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;String, Integer&gt; scores =
+    new HashMap&lt;&gt;();
+
+scores.put("Amit", 90);
+scores.put("Neha", 85);
+
+scores.put("Amit", 95);
+
+System.out.println(
+    scores.get("Amit")
+);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>95</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Adding a value with an existing key replaces the previous
+                value associated with that key.
+            </p>
+
+        </section>
+
+
+        <!-- LINKEDHASHMAP -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">LinkedHashMap</h3>
+
+            <p>
+                <code>LinkedHashMap</code> maintains a predictable iteration
+                order, normally based on insertion order unless configured
+                for access order.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;String, Integer&gt; scores =
+    new LinkedHashMap&lt;&gt;();
+
+scores.put("Amit", 90);
+scores.put("Neha", 85);
+scores.put("Rahul", 88);
+
+System.out.println(scores);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>{Amit=90, Neha=85, Rahul=88}</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- TREEMAP -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">TreeMap</h3>
+
+            <p>
+                <code>TreeMap</code> maintains its keys in sorted order
+                according to their natural ordering or a supplied comparator.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;Integer, String&gt; students =
+    new TreeMap&lt;&gt;();
+
+students.put(103, "Rahul");
+students.put(101, "Amit");
+students.put(102, "Neha");
+
+System.out.println(students);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>{101=Amit, 102=Neha, 103=Rahul}</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- ITERATION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Iterating Through a Collection
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of("Amit", "Neha", "Rahul");
+
+for (String name : names) {
+
+    System.out.println(name);
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit
+Neha
+Rahul</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- ITERATOR -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Iterator</h3>
+
+            <p>
+                An <code>Iterator</code> provides a standard way to traverse
+                many collection types.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    new ArrayList&lt;&gt;();
+
+names.add("Amit");
+names.add("Neha");
+names.add("Rahul");
+
+Iterator&lt;String&gt; iterator =
+    names.iterator();
+
+while (iterator.hasNext()) {
+
+    String name = iterator.next();
+
+    System.out.println(name);
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit
+Neha
+Rahul</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- REMOVE WITH ITERATOR -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Removing Elements with Iterator
+            </h3>
+
+            <p>
+                An iterator can safely remove elements from the collection
+                during iteration using its <code>remove()</code> method.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    new ArrayList&lt;&gt;();
+
+numbers.add(10);
+numbers.add(20);
+numbers.add(30);
+
+Iterator&lt;Integer&gt; iterator =
+    numbers.iterator();
+
+while (iterator.hasNext()) {
+
+    Integer number = iterator.next();
+
+    if (number == 20) {
+
+        iterator.remove();
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- SORTING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Sorting Collections</h3>
+
+            <p>
+                The <code>Collections.sort()</code> method can sort a mutable
+                list according to natural ordering.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    new ArrayList&lt;&gt;(
+        List.of(50, 10, 30, 20)
+    );
+
+Collections.sort(numbers);
+
+System.out.println(numbers);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>[10, 20, 30, 50]</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- COMPARATOR -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Sorting with Comparator</h3>
+
+            <p>
+                A <code>Comparator</code> allows custom ordering.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    new ArrayList&lt;&gt;(
+        List.of(10, 20, 30, 40)
+    );
+
+numbers.sort(
+    Comparator.reverseOrder()
+);
+
+System.out.println(numbers);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>[40, 30, 20, 10]</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAP ITERATION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Iterating Through a Map
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;String, Integer&gt; scores =
+    Map.of(
+        "Amit", 90,
+        "Neha", 85
+    );
+
+for (
+    Map.Entry&lt;String, Integer&gt; entry
+    : scores.entrySet()
+) {
+
+    System.out.println(
+        entry.getKey()
+        + " = "
+        + entry.getValue()
+    );
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAP METHODS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Useful Map Methods
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;String, Integer&gt; scores =
+    new HashMap&lt;&gt;();
+
+scores.put("Amit", 90);
+
+scores.containsKey("Amit");
+
+scores.containsValue(90);
+
+scores.get("Amit");
+
+scores.getOrDefault(
+    "Neha",
+    0
+);
+
+scores.remove("Amit");</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- GET OR DEFAULT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                getOrDefault()
+            </h3>
+
+            <p>
+                <code>getOrDefault()</code> returns a fallback value when a
+                requested key is not present.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;String, Integer&gt; scores =
+    new HashMap&lt;&gt;();
+
+scores.put("Amit", 90);
+
+int score = scores.getOrDefault(
+    "Neha",
+    0
+);
+
+System.out.println(score);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>0</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAP COMPUTE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                computeIfAbsent()
+            </h3>
+
+            <p>
+                <code>computeIfAbsent()</code> can create and store a value
+                when a key does not already have a mapping.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;String, List&lt;String&gt;&gt; groups =
+    new HashMap&lt;&gt;();
+
+groups.computeIfAbsent(
+    "Java",
+    key -&gt; new ArrayList&lt;&gt;()
+).add("Amit");
+
+System.out.println(groups);</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>{Java=[Amit]}</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- IMMUTABLE COLLECTIONS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Immutable Collection Factories
+            </h3>
+
+            <p>
+                Modern Java provides convenient factory methods such as
+                <code>List.of()</code>, <code>Set.of()</code>, and
+                <code>Map.of()</code> for creating unmodifiable collections.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of("Amit", "Neha");
+
+Set&lt;Integer&gt; numbers =
+    Set.of(10, 20, 30);
+
+Map&lt;Integer, String&gt; students =
+    Map.of(
+        101, "Amit",
+        102, "Neha"
+    );</code></pre>
+
+            </div>
+
+            <div class="alert alert-warning mt-3">
+
+                These factory-created collections do not support structural
+                modification such as <code>add()</code> or
+                <code>remove()</code>.
+
+            </div>
+
+        </section>
+
+
+        <!-- NULL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Null Values
+            </h3>
+
+            <p>
+                Collection implementations differ in how they handle
+                <code>null</code>. For example, HashMap permits a null key
+                and null values, while TreeMap's behavior depends on the
+                ordering configuration.
+            </p>
+
+            <p>
+                Always check the contract of the particular collection
+                implementation when null handling matters.
+            </p>
+
+        </section>
+
+
+        <!-- CHOOSING COLLECTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Choosing the Right Collection
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Requirement</th>
+                            <th>Common Choice</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Indexed ordered data</td>
+                            <td>ArrayList</td>
+                        </tr>
+
+                        <tr>
+                            <td>Unique values</td>
+                            <td>HashSet</td>
+                        </tr>
+
+                        <tr>
+                            <td>Unique sorted values</td>
+                            <td>TreeSet</td>
+                        </tr>
+
+                        <tr>
+                            <td>Insertion-order set</td>
+                            <td>LinkedHashSet</td>
+                        </tr>
+
+                        <tr>
+                            <td>Key-value lookup</td>
+                            <td>HashMap</td>
+                        </tr>
+
+                        <tr>
+                            <td>Sorted keys</td>
+                            <td>TreeMap</td>
+                        </tr>
+
+                        <tr>
+                            <td>FIFO-style processing</td>
+                            <td>Queue</td>
+                        </tr>
+
+                        <tr>
+                            <td>Both-end operations</td>
+                            <td>Deque / ArrayDeque</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- COLLECTION VS ARRAY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Collections vs Arrays
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Feature</th>
+                            <th>Array</th>
+                            <th>Collection</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Size</td>
+                            <td>Fixed</td>
+                            <td>Usually dynamic</td>
+                        </tr>
+
+                        <tr>
+                            <td>Primitive Elements</td>
+                            <td>Supported</td>
+                            <td>Use wrapper types</td>
+                        </tr>
+
+                        <tr>
+                            <td>Built-in Operations</td>
+                            <td>Limited</td>
+                            <td>Rich API</td>
+                        </tr>
+
+                        <tr>
+                            <td>Generics</td>
+                            <td>Array component types</td>
+                            <td>Strongly integrated</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- REAL WORLD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Example: Employee Management
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;Integer, String&gt; employees =
+    new HashMap&lt;&gt;();
+
+employees.put(101, "Amit");
+employees.put(102, "Neha");
+employees.put(103, "Rahul");
+
+for (
+    Map.Entry&lt;Integer, String&gt; entry
+    : employees.entrySet()
+) {
+
+    System.out.println(
+        entry.getKey()
+        + " : "
+        + entry.getValue()
+    );
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>101 : Amit
+102 : Neha
+103 : Rahul</code></pre>
+</div>
+
+     <div class="alert alert-warning mt-3">
+          <h5 class="fw-bold">Important:</h5>
+         <p> The iteration order of `HashMap` is not guaranted, so the exact order is not fixed.</p>
+
+          </div>
+
+        </section>
+
+
+        <!-- PERFORMANCE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Performance Considerations
+            </h3>
+
+            <p>
+                Different collection implementations provide different
+                performance characteristics.
+            </p>
+
+            <ul>
+
+                <li class="mb-2">
+                    <code>ArrayList</code> provides efficient indexed access.
+                </li>
+
+                <li class="mb-2">
+                    <code>HashMap</code> is commonly used for fast key-based
+                    lookup under typical conditions.
+                </li>
+
+                <li class="mb-2">
+                    <code>TreeMap</code> and <code>TreeSet</code> maintain
+                    sorted order with logarithmic-style tree operations.
+                </li>
+
+                <li>
+                    Choose based on required operations rather than assuming
+                    one collection is always fastest.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Collections Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Declare variables using interfaces such as
+                    <code>List</code>, <code>Set</code>, and <code>Map</code>
+                    where practical.
+                </li>
+
+                <li class="mb-2">
+                    Choose an implementation based on ordering, uniqueness,
+                    lookup, and update requirements.
+                </li>
+
+                <li class="mb-2">
+                    Use generics to maintain compile-time type safety.
+                </li>
+
+                <li class="mb-2">
+                    Avoid raw collection types.
+                </li>
+
+                <li>
+                    Prefer unmodifiable collections when mutation is not
+                    required.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="collectionQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collectionQuestionOne">
+
+                            What is the Java Collections Framework?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="collectionQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#collectionQuestions">
+
+                        <div class="accordion-body">
+
+                            It is a set of interfaces, implementations, and
+                            utility algorithms for working with groups of
+                            objects.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collectionQuestionTwo">
+
+                            What is the difference between List and Set?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="collectionQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#collectionQuestions">
+
+                        <div class="accordion-body">
+
+                            A List is ordered and permits duplicates, while a
+                            Set does not permit duplicate elements.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collectionQuestionThree">
+
+                            What is the difference between ArrayList and LinkedList?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="collectionQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#collectionQuestions">
+
+                        <div class="accordion-body">
+
+                            ArrayList is backed by a resizable array and is
+                            generally strong for indexed access. LinkedList
+                            is a doubly linked list and also implements
+                            Deque, making operations at the ends convenient.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collectionQuestionFour">
+
+                            HashMap vs TreeMap?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="collectionQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#collectionQuestions">
+
+                        <div class="accordion-body">
+
+                            HashMap is hash-based and does not guarantee key
+                            iteration order. TreeMap maintains keys in sorted
+                            order.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collectionQuestionFive">
+
+                            Does Map extend Collection?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="collectionQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#collectionQuestions">
+
+                        <div class="accordion-body">
+
+                            No. Map is a separate interface in the Collections
+                            Framework and represents key-value associations.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    The Java Collections Framework provides reusable data
+                    structures for managing groups of objects. Important
+                    interfaces include List, Set, Queue, Deque, and Map,
+                    with implementations such as ArrayList, HashSet,
+                    TreeSet, HashMap, TreeMap, and ArrayDeque.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Generics",
+                               "DataStructuresCollections",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "FileSystem",
+                               "FileIO",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

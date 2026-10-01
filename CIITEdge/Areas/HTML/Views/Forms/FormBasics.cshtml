@@ -1,0 +1,1152 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Form Basics";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+
+    .form-demo {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 15px;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Form Basics</h1>
+
+            <p class="lead">
+                HTML forms provide a structured way to collect information from users.
+                This lesson covers the basic form structure, controls, labels, names,
+                values, and buttons.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. What is an HTML Form?</h2>
+
+            <p>
+                The <code>&lt;form&gt;</code> element is used to create a section
+                of a webpage that collects user input.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;!-- Form controls go here --&gt;
+
+&lt;/form&gt;</code></pre>
+
+            <p>
+                A form can contain text boxes, email fields, passwords, radio buttons,
+                checkboxes, dropdowns, textareas, file inputs, and buttons.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">2. Basic Form Example</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label&gt;Name:&lt;/label&gt;
+    &lt;input type="text"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                <div class="form-demo">
+                    <label class="form-label">Name:</label>
+
+                    <input type="text"
+                           class="form-control mb-3"
+                           placeholder="Enter your name" />
+
+                    <button type="button"
+                            class="btn btn-primary">
+                        Submit
+                    </button>
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">3. Form Controls</h2>
+
+            <p>
+                Form controls are the individual elements through which users
+                provide or select information.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Control</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Text Input</td>
+                        <td>Collects single-line text.</td>
+                    </tr>
+                    <tr>
+                        <td>Email Input</td>
+                        <td>Collects an email address.</td>
+                    </tr>
+                    <tr>
+                        <td>Password Input</td>
+                        <td>Collects a password.</td>
+                    </tr>
+                    <tr>
+                        <td>Radio Button</td>
+                        <td>Selects one option from a group.</td>
+                    </tr>
+                    <tr>
+                        <td>Checkbox</td>
+                        <td>Selects one or more options.</td>
+                    </tr>
+                    <tr>
+                        <td>Dropdown</td>
+                        <td>Selects an option from a list.</td>
+                    </tr>
+                    <tr>
+                        <td>Textarea</td>
+                        <td>Collects multi-line text.</td>
+                    </tr>
+                    <tr>
+                        <td>Button</td>
+                        <td>Performs an action such as submitting the form.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">4. The input Element</h2>
+
+            <p>
+                The <code>&lt;input&gt;</code> element is one of the most
+                commonly used form elements.
+            </p>
+
+            <pre><code>&lt;input type="text"&gt;</code></pre>
+
+            <p>
+                The <code>type</code> attribute determines the kind of input control.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">5. Text Input</h2>
+
+            <p>
+                A text input allows the user to enter a single line of text.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Enter username" />
+                </div>
+
+            <h2 class="h3 fw-bold mt-5">6. Email Input</h2>
+
+            <p>
+                An email input is designed for email addresses.
+            </p>
+
+            <pre><code>&lt;input type="email"
+       name="email"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                    <input type="email"
+                           class="form-control"
+                           placeholder="Enter email" />
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">7. Password Input</h2>
+
+            <p>
+                The password input hides the characters typed by the user.
+            </p>
+
+            <pre><code>&lt;input type="password"
+       name="password"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                    <input type="password"
+                           class="form-control"
+                           placeholder="Enter password" />
+              
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">8. Name Attribute</h2>
+
+            <p>
+                The <code>name</code> attribute identifies the form control
+                when the form data is submitted.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="fullName"&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Give controls meaningful <code>name</code> values when their
+                data needs to be submitted.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">9. id Attribute</h2>
+
+            <p>
+                The <code>id</code> attribute uniquely identifies an element.
+                It is commonly used to connect a form control with a label.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       id="fullName"
+       name="fullName"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">10. Label Element</h2>
+
+            <p>
+                The <code>&lt;label&gt;</code> element describes a form control.
+            </p>
+
+            <pre><code>&lt;label for="fullName"&gt;
+    Full Name:
+&lt;/label&gt;
+
+&lt;input type="text"
+       id="fullName"
+       name="fullName"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                <div class="form-demo">
+                    <label for="demoFullName"
+                           class="form-label">
+                        Full Name:
+                    </label>
+
+                    <input type="text"
+                           id="demoFullName"
+                           class="form-control" />
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">11. for and id Relationship</h2>
+
+            <p>
+                The value of the label's <code>for</code> attribute should match
+                the input element's <code>id</code>.
+            </p>
+
+            <pre><code>&lt;label for="email"&gt;
+    Email:
+&lt;/label&gt;
+
+&lt;input type="email"
+       id="email"
+       name="email"&gt;</code></pre>
+
+            <p>
+                This association helps users understand which label belongs
+                to which control.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">12. placeholder Attribute</h2>
+
+            <p>
+                The <code>placeholder</code> attribute displays a hint inside
+                an empty input control.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"
+       placeholder="Enter your username"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Enter your username" />
+            </div>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                Placeholder text is a hint, not a replacement for a proper label.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">13. value Attribute</h2>
+
+            <p>
+                The <code>value</code> attribute specifies an initial or current
+                value for a form control.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="city"
+       value="Pune"&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                    <input type="text"
+                           class="form-control"
+                           value="Pune" />
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">14. required Attribute</h2>
+
+            <p>
+                The <code>required</code> attribute indicates that the user
+                must provide a value before the form can be submitted.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"
+       required&gt;</code></pre>
+
+       
+
+            <h2 class="h3 fw-bold mt-5">15. readonly Attribute</h2>
+
+            <p>
+                The <code>readonly</code> attribute prevents the user from
+                editing the current value.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="studentId"
+       value="STU101"
+       readonly&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                <div class="form-demo">
+                    <label class="form-label">Student ID:</label>
+
+                    <input type="text"
+                           class="form-control"
+                           value="STU101"
+                           readonly />
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">16. disabled Attribute</h2>
+
+            <p>
+                The <code>disabled</code> attribute disables a form control.
+                The user cannot interact with it.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       value="Not Available"
+       disabled&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                <div class="form-demo">
+                    <input type="text"
+                           class="form-control"
+                           value="Not Available"
+                           disabled />
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">17. Textarea</h2>
+
+            <p>
+                The <code>&lt;textarea&gt;</code> element is used for
+                multi-line input.
+            </p>
+
+            <pre><code>&lt;label for="message"&gt;
+    Message:
+&lt;/label&gt;
+
+&lt;textarea
+    id="message"
+    name="message"
+    rows="5"
+    cols="40"&gt;
+&lt;/textarea&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                <div class="form-demo">
+                    <label class="form-label">
+                        Message:
+                    </label>
+
+                    <textarea class="form-control"
+                              rows="4"
+                              placeholder="Enter your message"></textarea>
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">18. Select Element</h2>
+
+            <p>
+                The <code>&lt;select&gt;</code> element creates a dropdown list.
+            </p>
+
+            <pre><code>&lt;select name="course"&gt;
+
+    &lt;option value="html"&gt;
+        HTML
+    &lt;/option&gt;
+
+    &lt;option value="css"&gt;
+        CSS
+    &lt;/option&gt;
+
+    &lt;option value="javascript"&gt;
+        JavaScript
+    &lt;/option&gt;
+
+&lt;/select&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">19. Option Element</h2>
+
+            <p>
+                Each option inside a dropdown is created using the
+                <code>&lt;option&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;option value="html"&gt;
+    HTML
+&lt;/option&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">20. Radio Buttons</h2>
+
+            <p>
+                Radio buttons allow the user to choose one option from a group.
+            </p>
+
+            <pre><code>&lt;input type="radio"
+       id="male"
+       name="gender"
+       value="male"&gt;
+
+&lt;label for="male"&gt;
+    Male
+&lt;/label&gt;
+
+&lt;input type="radio"
+       id="female"
+       name="gender"
+       value="female"&gt;
+
+&lt;label for="female"&gt;
+    Female
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Radio buttons belong to the same group when they use the same
+                <code>name</code> value.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">21. Checkboxes</h2>
+
+            <p>
+                Checkboxes allow the user to select one or more options.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="html"
+       name="skills"
+       value="html"&gt;
+
+&lt;label for="html"&gt;
+    HTML
+&lt;/label&gt;
+
+&lt;input type="checkbox"
+       id="css"
+       name="skills"
+       value="css"&gt;
+
+&lt;label for="css"&gt;
+    CSS
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">22. Submit Button</h2>
+
+            <p>
+                A button with <code>type="submit"</code> submits the form.
+            </p>
+
+            <pre><code>&lt;button type="submit"&gt;
+    Submit Form
+&lt;/button&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">23. Reset Button</h2>
+
+            <p>
+                A button with <code>type="reset"</code> resets the form controls
+                to their initial values.
+            </p>
+
+            <pre><code>&lt;button type="reset"&gt;
+    Reset Form
+&lt;/button&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">24. Normal Button</h2>
+
+            <p>
+                A button with <code>type="button"</code> does not submit or
+                reset the form automatically.
+            </p>
+
+            <pre><code>&lt;button type="button"&gt;
+    Click Me
+&lt;/button&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">25. Complete Basic Form</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="name"&gt;
+        Full Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"
+           placeholder="Enter full name"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;
+        Email:
+    &lt;/label&gt;
+
+    &lt;input type="email"
+           id="email"
+           name="email"
+           placeholder="Enter email"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="password"&gt;
+        Password:
+    &lt;/label&gt;
+
+    &lt;input type="password"
+           id="password"
+           name="password"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+    &lt;button type="reset"&gt;
+        Reset
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">26. Form with Multiple Controls</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="name"&gt;
+        Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;
+        Email:
+    &lt;/label&gt;
+
+    &lt;input type="email"
+           id="email"
+           name="email"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="course"&gt;
+        Course:
+    &lt;/label&gt;
+
+    &lt;select id="course"
+            name="course"&gt;
+
+        &lt;option value="html"&gt;
+            HTML
+        &lt;/option&gt;
+
+        &lt;option value="css"&gt;
+            CSS
+        &lt;/option&gt;
+
+        &lt;option value="javascript"&gt;
+            JavaScript
+        &lt;/option&gt;
+
+    &lt;/select&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="message"&gt;
+        Message:
+    &lt;/label&gt;
+
+    &lt;br&gt;
+
+    &lt;textarea
+        id="message"
+        name="message"
+        rows="5"&gt;
+    &lt;/textarea&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">27. Form with fieldset</h2>
+
+            <p>
+                The <code>&lt;fieldset&gt;</code> element groups related controls.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;fieldset&gt;
+
+        &lt;legend&gt;
+            Personal Information
+        &lt;/legend&gt;
+
+        &lt;label for="name"&gt;
+            Name:
+        &lt;/label&gt;
+
+        &lt;input type="text"
+               id="name"
+               name="name"&gt;
+
+        &lt;br&gt;&lt;br&gt;
+
+        &lt;label for="email"&gt;
+            Email:
+        &lt;/label&gt;
+
+        &lt;input type="email"
+               id="email"
+               name="email"&gt;
+
+    &lt;/fieldset&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">28. legend Element</h2>
+
+            <p>
+                The <code>&lt;legend&gt;</code> element provides a caption
+                for a <code>&lt;fieldset&gt;</code>.
+            </p>
+
+            <pre><code>&lt;fieldset&gt;
+
+    &lt;legend&gt;
+        Account Information
+    &lt;/legend&gt;
+
+    &lt;!-- Form controls --&gt;
+
+&lt;/fieldset&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">29. Form Submission Structure</h2>
+
+            <p>
+                A common form structure includes an action URL, a method,
+                form controls, and submit buttons.
+            </p>
+
+            <pre><code>&lt;form action="/register"
+      method="post"&gt;
+
+    &lt;label for="name"&gt;
+        Name:
+    &lt;/label&gt;
+
+    &lt;input type="text"
+           id="name"
+           name="name"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">30. Form Accessibility Basics</h2>
+
+            <p>
+                A good form should clearly communicate the purpose of
+                every control.
+            </p>
+
+            <ul>
+                <li>Use a label for each important control.</li>
+                <li>Match <code>for</code> and <code>id</code> correctly.</li>
+                <li>Use meaningful names.</li>
+                <li>Group related controls when appropriate.</li>
+                <li>Use clear instructions.</li>
+                <li>Use suitable input types.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">31. Common Mistakes</h2>
+
+            <ul>
+                <li>Forgetting the <code>&lt;form&gt;</code> container.</li>
+                <li>Using inputs without meaningful labels.</li>
+                <li>Using incorrect <code>for</code> and <code>id</code> values.</li>
+                <li>Forgetting the <code>name</code> attribute.</li>
+                <li>Using the wrong input type.</li>
+                <li>Using placeholder text as the only label.</li>
+                <li>Forgetting submit and reset buttons.</li>
+                <li>Using unrelated controls in the same group.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">32. Best Practices</h2>
+
+            <ul>
+                <li>Use semantic form elements.</li>
+                <li>Use meaningful labels and names.</li>
+                <li>Use appropriate input types.</li>
+                <li>Keep related controls grouped together.</li>
+                <li>Use HTML validation attributes where appropriate.</li>
+                <li>Keep the form structure simple and clear.</li>
+                <li>Design forms for different screen sizes.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">33. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create a basic student form containing:</strong></p>
+
+                <ol>
+                    <li>Full Name text input.</li>
+                    <li>Email input.</li>
+                    <li>Password input.</li>
+                    <li>Course dropdown.</li>
+                    <li>Gender radio buttons.</li>
+                    <li>Skills checkboxes.</li>
+                    <li>Address textarea.</li>
+                    <li>Submit button.</li>
+                    <li>Reset button.</li>
+                    <li>Required fields.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">34. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;Student Form&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Student Registration Form&lt;/h1&gt;
+
+    &lt;form action="/register"
+          method="post"&gt;
+
+        &lt;fieldset&gt;
+
+            &lt;legend&gt;
+                Student Information
+            &lt;/legend&gt;
+
+            &lt;label for="name"&gt;
+                Full Name:
+            &lt;/label&gt;
+
+            &lt;input type="text"
+                   id="name"
+                   name="name"
+                   placeholder="Enter full name"
+                   required&gt;
+
+            &lt;br&gt;&lt;br&gt;
+
+            &lt;label for="email"&gt;
+                Email:
+            &lt;/label&gt;
+
+            &lt;input type="email"
+                   id="email"
+                   name="email"
+                   placeholder="Enter email"
+                   required&gt;
+
+            &lt;br&gt;&lt;br&gt;
+
+            &lt;label for="course"&gt;
+                Course:
+            &lt;/label&gt;
+
+            &lt;select id="course"
+                    name="course"
+                    required&gt;
+
+                &lt;option value=""&gt;
+                    Select Course
+                &lt;/option&gt;
+
+                &lt;option value="html"&gt;
+                    HTML
+                &lt;/option&gt;
+
+                &lt;option value="css"&gt;
+                    CSS
+                &lt;/option&gt;
+
+                &lt;option value="javascript"&gt;
+                    JavaScript
+                &lt;/option&gt;
+
+            &lt;/select&gt;
+
+            &lt;br&gt;&lt;br&gt;
+
+            &lt;label for="address"&gt;
+                Address:
+            &lt;/label&gt;
+
+            &lt;br&gt;
+
+            &lt;textarea
+                id="address"
+                name="address"
+                rows="5"
+                cols="40"&gt;
+            &lt;/textarea&gt;
+
+            &lt;br&gt;&lt;br&gt;
+
+            &lt;button type="submit"&gt;
+                Register
+            &lt;/button&gt;
+
+            &lt;button type="reset"&gt;
+                Reset
+            &lt;/button&gt;
+
+        &lt;/fieldset&gt;
+
+    &lt;/form&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    HTML form basics start with the <code>&lt;form&gt;</code>
+                    element and controls such as <code>&lt;input&gt;</code>,
+                    <code>&lt;textarea&gt;</code>, <code>&lt;select&gt;</code>,
+                    <code>&lt;option&gt;</code>, and <code>&lt;button&gt;</code>.
+                    Labels should be associated with controls using matching
+                    <code>for</code> and <code>id</code> values. Attributes such
+                    as <code>name</code>, <code>value</code>, <code>placeholder</code>,
+                    <code>required</code>, <code>readonly</code>, and
+                    <code>disabled</code> provide additional control over
+                    form behavior.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Index", "Forms", new { area = "HTML" })">
+                    ← Previous: HTML Forms
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("FormAttributes", "Forms", new { area = "HTML" })">
+                    Next: Form Attributes →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

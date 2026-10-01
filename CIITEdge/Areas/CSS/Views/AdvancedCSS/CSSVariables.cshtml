@@ -1,0 +1,1047 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Variables";
+}
+
+<div id="css-variables-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">CSS Variables</h1>
+
+                <p class="lead">
+                    CSS Variables allow you to store reusable CSS values such as
+                    colors, spacing, font sizes, and other design values in one place.
+                </p>
+
+                <hr />
+
+                <!-- What are CSS Variables -->
+                <h2 class="h4 mt-4">What are CSS Variables?</h2>
+
+                <p>
+                    CSS Variables, also called <strong>CSS Custom Properties</strong>,
+                    are reusable values that can be defined once and used in
+                    multiple places in a stylesheet.
+                </p>
+
+                <p>
+                    They are especially useful for maintaining a consistent
+                    design system and making large websites easier to manage.
+                </p>
+
+                <!-- Interactive Image -->
+                <h2 class="h4 mt-4">Interactive Design System</h2>
+
+                <p>
+                    This visual represents a reusable color system.
+                    Hover over the image to see the colors smoothly change using
+                    CSS variables.
+                </p>
+
+                <div class="interactive-image-section">
+
+                    <div class="design-visual">
+
+                        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1200&q=80"
+                             alt="Colorful abstract design representing CSS variables"
+                             class="variable-image"
+                             tabindex="0" />
+
+                        <div class="design-overlay">
+                            <span class="design-title">CSS Variables</span>
+                            <span class="design-subtitle">
+                                Reusable Design Values
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <p class="image-caption">
+                        CSS variables help maintain consistent colors and design
+                        values across a website.
+                    </p>
+
+                </div>
+
+                <!-- Syntax -->
+                <h2 class="h4 mt-4">CSS Variable Syntax</h2>
+
+                <pre class="code-box"><code>:root {
+    --primary-color: #2563eb;
+    --text-color: #212529;
+}
+
+.button {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p class="mb-2">
+                        A CSS variable starts with two hyphens:
+                        <code>--</code>.
+                    </p>
+
+                    <p class="mb-0">
+                        The <code>var()</code> function is then used to access
+                        the stored value.
+                    </p>
+
+                </div>
+
+                <!-- Diagram -->
+                <h2 class="h4 mt-4">How CSS Variables Work</h2>
+
+                <div class="variable-diagram">
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Define
+                        </div>
+
+                        <div class="diagram-code">
+                            --primary: #2563eb
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Use
+                        </div>
+
+                        <div class="diagram-code">
+                            var(--primary)
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-title">
+                            Result
+                        </div>
+
+                        <div class="color-preview">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Root -->
+                <h2 class="h4 mt-4">1. Defining Variables in :root</h2>
+
+                <p>
+                    The <code>:root</code> selector is commonly used to define
+                    global CSS variables so they can be reused throughout
+                    the stylesheet.
+                </p>
+
+                <pre class="code-box"><code>:root {
+    --primary-color: #2563eb;
+    --secondary-color: #7c3aed;
+    --text-color: #212529;
+    --spacing: 20px;
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Why use :root?</h3>
+
+                    <p class="mb-0">
+                        Variables defined in <code>:root</code> can generally
+                        be accessed throughout the document.
+                    </p>
+
+                </div>
+
+                <!-- Using Variables -->
+                <h2 class="h4 mt-4">2. Using CSS Variables</h2>
+
+                <pre class="code-box"><code>:root {
+    --primary-color: #2563eb;
+}
+
+.button {
+    background-color: var(--primary-color);
+}</code></pre>
+
+                <!-- Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <button type="button" class="variable-button">
+                        Primary Button
+                    </button>
+
+                </div>
+
+                <!-- Multiple Values -->
+                <h2 class="h4 mt-4">3. Storing Multiple Values</h2>
+
+                <p>
+                    CSS variables are not limited to colors. You can store
+                    spacing, border radius, font sizes, shadows, and many
+                    other reusable values.
+                </p>
+
+                <pre class="code-box"><code>:root {
+    --primary-color: #2563eb;
+    --card-radius: 12px;
+    --card-padding: 24px;
+    --heading-size: 28px;
+}</code></pre>
+
+                <!-- Example -->
+                <h2 class="h4 mt-4">Practical Example</h2>
+
+                <pre class="code-box"><code>:root {
+    --primary-color: #2563eb;
+    --card-background: #ffffff;
+    --text-color: #212529;
+    --card-radius: 12px;
+}
+
+.course-card {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--card-radius);
+}</code></pre>
+
+                <!-- Practical Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box">
+
+                    <div class="variable-course-card">
+
+                        <div class="variable-card-icon">
+                            CSS
+                        </div>
+
+                        <h3>
+                            CSS Fundamentals
+                        </h3>
+
+                        <p>
+                            This card uses CSS variables for its color,
+                            border, and border radius.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Changing Variable -->
+                <h2 class="h4 mt-4">4. Changing a Variable</h2>
+
+                <p>
+                    One major advantage of CSS variables is that changing one
+                    variable can update multiple elements that use it.
+                </p>
+
+                <pre class="code-box"><code>:root {
+    --primary-color: #2563eb;
+}
+
+.button {
+    background-color: var(--primary-color);
+}
+
+.card {
+    border-color: var(--primary-color);
+}
+
+.heading {
+    color: var(--primary-color);
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Why is this useful?</h3>
+
+                    <p class="mb-0">
+                        Instead of changing the same color in many places,
+                        you can change the variable once.
+                    </p>
+
+                </div>
+
+                <!-- Theme Example -->
+                <h2 class="h4 mt-4">5. Theme Example</h2>
+
+                <p>
+                    CSS variables are very useful for creating themes.
+                    Different themes can use different variable values.
+                </p>
+
+                <pre class="code-box"><code>:root {
+    --primary-color: #2563eb;
+    --background-color: #ffffff;
+    --text-color: #212529;
+}
+
+.dark-theme {
+    --primary-color: #a78bfa;
+    --background-color: #111827;
+    --text-color: #f9fafb;
+}</code></pre>
+
+                <!-- Theme Output -->
+                <h2 class="h4 mt-4">Interactive Theme Output</h2>
+
+                <div class="output-box">
+
+                    <div class="theme-demo">
+
+                        <div class="theme-content">
+
+                            <span class="theme-badge">
+                                CSS Variables
+                            </span>
+
+                            <h3>
+                                Theme Based Design
+                            </h3>
+
+                            <p>
+                                The same component can use different colors
+                                by changing CSS variables.
+                            </p>
+
+                            <button type="button">
+                                Theme Button
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <p class="output-note">
+                        Hover over the theme card to see the variable values
+                        change visually.
+                    </p>
+
+                </div>
+
+                <!-- Local Variables -->
+                <h2 class="h4 mt-4">6. Local CSS Variables</h2>
+
+                <p>
+                    Variables do not always need to be global. A variable can
+                    also be defined inside a specific element.
+                </p>
+
+                <pre class="code-box"><code>.course-card {
+    --card-color: #7c3aed;
+
+    border-color: var(--card-color);
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Scope</h3>
+
+                    <p class="mb-0">
+                        A locally defined variable can be used inside the
+                        element and its applicable descendants.
+                    </p>
+
+                </div>
+
+                <!-- Fallback -->
+                <h2 class="h4 mt-4">7. Fallback Values</h2>
+
+                <p>
+                    You can provide a fallback value in case a CSS variable
+                    is not available.
+                </p>
+
+                <pre class="code-box"><code:.button {
+    background-color: var(--button-color, #2563eb);
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Meaning</h3>
+
+                    <p class="mb-0">
+                        If <code>--button-color</code> is unavailable,
+                        the browser can use <code>#2563eb</code> as the
+                        fallback value.
+                    </p>
+
+                </div>
+
+                <!-- Variables with Calc -->
+                <h2 class="h4 mt-4">8. CSS Variables with calc()</h2>
+
+                <p>
+                    CSS variables can also be used inside functions such as
+                    <code>calc()</code>.
+                </p>
+
+                <pre class="code-box"><code>:root {
+    --page-padding: 20px;
+}
+
+.container {
+    width: calc(100% - (var(--page-padding) * 2));
+}</code></pre>
+
+                <!-- Common Uses -->
+                <h2 class="h4 mt-4">Common Uses of CSS Variables</h2>
+
+                <div class="variable-use-grid">
+
+                    <div class="use-card">
+                        <strong>Colors</strong>
+                        <span>Theme and brand colors</span>
+                    </div>
+
+                    <div class="use-card">
+                        <strong>Spacing</strong>
+                        <span>Padding and margins</span>
+                    </div>
+
+                    <div class="use-card">
+                        <strong>Typography</strong>
+                        <span>Font sizes and weights</span>
+                    </div>
+
+                    <div class="use-card">
+                        <strong>Components</strong>
+                        <span>Reusable UI styles</span>
+                    </div>
+
+                    <div class="use-card">
+                        <strong>Theme</strong>
+                        <span>Light and dark themes</span>
+                    </div>
+
+                    <div class="use-card">
+                        <strong>Layout</strong>
+                        <span>Shared dimensions</span>
+                    </div>
+
+                </div>
+
+                <!-- Variables vs Normal Values -->
+                <h2 class="h4 mt-4">CSS Variables vs Normal CSS Values</h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Normal CSS Value</th>
+                                <th>CSS Variable</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Value is repeated manually</td>
+                                <td>Value can be reused</td>
+                            </tr>
+
+                            <tr>
+                                <td>Changing values can take more effort</td>
+                                <td>Change the variable once</td>
+                            </tr>
+
+                            <tr>
+                                <td>Less flexible for themes</td>
+                                <td>Useful for theme systems</td>
+                            </tr>
+
+                            <tr>
+                                <td>Can lead to repetition</td>
+                                <td>Reduces repeated values</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Best Practices -->
+                <h2 class="h4 mt-4">Best Practices</h2>
+
+                <ul>
+
+                    <li>
+                        Use meaningful variable names.
+                    </li>
+
+                    <li>
+                        Keep global design values in <code>:root</code>.
+                    </li>
+
+                    <li>
+                        Group related variables together.
+                    </li>
+
+                    <li>
+                        Use variables for repeated values such as colors
+                        and spacing.
+                    </li>
+
+                    <li>
+                        Use fallback values when appropriate.
+                    </li>
+
+                    <li>
+                        Keep variable names consistent across the project.
+                    </li>
+
+                </ul>
+
+                <!-- Important Note -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        CSS variables make styling easier to maintain, but
+                        they should still be named clearly and organized
+                        logically. A good naming system becomes especially
+                        important in large projects.
+                    </p>
+
+                </div>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS Variables, also called Custom Properties, allow
+                        reusable CSS values to be defined and accessed using
+                        <code>var()</code>. They are useful for colors,
+                        spacing, typography, themes, component styling,
+                        and maintainable design systems.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("Animations", "AdvancedCSS", new { area = "CSS" })">
+
+                            ← Previous: CSS Animations
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Functions", "AdvancedCSS", new { area = "CSS" })">
+
+                            Next: CSS Functions →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-variables-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-variables-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-variables-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-variables-page .content-section p,
+        #css-variables-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Interactive Image */
+    #css-variables-page .interactive-image-section {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 15px;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    #css-variables-page .design-visual {
+        width: 100%;
+        max-width: 750px;
+        height: 350px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        cursor: pointer;
+        --accent-one: #2563eb;
+        --accent-two: #7c3aed;
+        --overlay-opacity: 0.45;
+    }
+
+    #css-variables-page .variable-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+        transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+    #css-variables-page .design-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient( 135deg, color-mix( in srgb, var(--accent-one) 25%, transparent ), color-mix( in srgb, var(--accent-two) 35%, transparent ) );
+        opacity: var(--overlay-opacity);
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+    }
+
+    #css-variables-page .design-visual:hover,
+    #css-variables-page .design-visual:focus-within {
+        --accent-one: #0f766e;
+        --accent-two: #db2777;
+        --overlay-opacity: 0.7;
+    }
+
+        #css-variables-page .design-visual:hover .variable-image,
+        #css-variables-page .variable-image:focus {
+            transform: scale(1.08);
+            filter: saturate(1.25);
+        }
+
+    #css-variables-page .design-overlay {
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        background-color: rgba(33,37,41,0.65);
+        padding: 18px 25px;
+        border-radius: 12px;
+        text-align: center;
+        pointer-events: none;
+    }
+
+    #css-variables-page .design-title {
+        display: block;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    #css-variables-page .design-subtitle {
+        display: block;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+
+    #css-variables-page .image-caption {
+        margin: 14px 5px 0;
+        color: #6c757d !important;
+        font-size: 14px;
+    }
+
+    /* Code */
+    #css-variables-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Explanation */
+    #css-variables-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-variables-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Diagram */
+    #css-variables-page .variable-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-variables-page .diagram-card {
+        background-color: #ffffff;
+        border: 2px solid #2563eb;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+        min-width: 190px;
+    }
+
+    #css-variables-page .diagram-title {
+        color: #2563eb;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-variables-page .diagram-code {
+        background-color: #e0f2fe;
+        color: #075985;
+        padding: 9px;
+        border-radius: 6px;
+        font-family: monospace;
+        font-weight: 600;
+        font-size: 13px;
+    }
+
+    #css-variables-page .diagram-arrow {
+        color: #2563eb;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    #css-variables-page .color-preview {
+        width: 85px;
+        height: 50px;
+        margin: auto;
+        border-radius: 7px;
+        background-color: #2563eb;
+    }
+
+    /* Property Card */
+    #css-variables-page .property-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+        #css-variables-page .property-card h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    /* Output */
+    #css-variables-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-variables-page .variable-button {
+        --button-color: #2563eb;
+        background-color: var(--button-color);
+        color: #ffffff;
+        border: 0;
+        border-radius: 8px;
+        padding: 13px 25px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        #css-variables-page .variable-button:hover {
+            --button-color: #7c3aed;
+            transform: translateY(-3px);
+        }
+
+    /* Course Card */
+    #css-variables-page .variable-course-card {
+        --primary-color: #2563eb;
+        --card-radius: 12px;
+        max-width: 450px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        color: #212529;
+        border: 2px solid var(--primary-color);
+        border-radius: var(--card-radius);
+        padding: 25px;
+        text-align: center;
+    }
+
+    #css-variables-page .variable-card-icon {
+        --icon-color: #2563eb;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        background-color: var(--icon-color);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+    #css-variables-page .variable-course-card h3 {
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+
+    /* Theme Demo */
+    #css-variables-page .theme-demo {
+        --theme-primary: #2563eb;
+        --theme-background: #ffffff;
+        --theme-text: #212529;
+        --theme-badge: #e0f2fe;
+        max-width: 650px;
+        margin: 0 auto;
+        background-color: var(--theme-background);
+        border: 2px solid var(--theme-primary);
+        border-radius: 12px;
+        padding: 30px;
+        color: var(--theme-text);
+        transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+    }
+
+        #css-variables-page .theme-demo:hover {
+            --theme-primary: #7c3aed;
+            --theme-background: #f5f3ff;
+            --theme-text: #312e81;
+            --theme-badge: #ede9fe;
+        }
+
+    #css-variables-page .theme-content {
+        text-align: center;
+    }
+
+    #css-variables-page .theme-badge {
+        display: inline-block;
+        background-color: var(--theme-badge);
+        color: var(--theme-primary);
+        padding: 7px 13px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-variables-page .theme-content h3 {
+        color: var(--theme-primary);
+        font-weight: 700;
+    }
+
+    #css-variables-page .theme-content p {
+        color: var(--theme-text) !important;
+    }
+
+    #css-variables-page .theme-content button {
+        background-color: var(--theme-primary);
+        color: #ffffff;
+        border: 0;
+        padding: 11px 22px;
+        border-radius: 7px;
+        font-weight: 700;
+        margin-top: 8px;
+    }
+
+    #css-variables-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        color: #6c757d !important;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Use Cases */
+    #css-variables-page .variable-use-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #css-variables-page .use-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        text-align: center;
+    }
+
+        #css-variables-page .use-card strong {
+            display: block;
+            color: #2563eb;
+            margin-bottom: 6px;
+        }
+
+        #css-variables-page .use-card span {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+    /* Note */
+    #css-variables-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-variables-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-variables-page .note-box p {
+            color: #78350f;
+        }
+
+    /* Summary */
+    #css-variables-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-variables-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-variables-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    @@media (max-width: 991px) {
+
+        #css-variables-page .variable-use-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 768px) {
+
+        #css-variables-page .content-section {
+            padding: 20px;
+        }
+
+        #css-variables-page .design-visual {
+            height: 300px;
+        }
+
+        #css-variables-page .variable-diagram {
+            flex-direction: column;
+        }
+
+        #css-variables-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-variables-page .diagram-card {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        #css-variables-page .content-section {
+            padding: 16px;
+        }
+
+        #css-variables-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-variables-page .variable-use-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-variables-page .design-visual {
+            height: 220px;
+        }
+
+        #css-variables-page .design-title {
+            font-size: 19px;
+        }
+    }
+
+</style>

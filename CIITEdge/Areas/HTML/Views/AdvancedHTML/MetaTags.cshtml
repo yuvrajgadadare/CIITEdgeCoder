@@ -1,0 +1,545 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Meta Tags";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #ffffff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .meta-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 125px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML Meta Tags</h1>
+
+            <p>
+                Meta tags provide information about an HTML document.
+                They are placed inside the <code>&lt;head&gt;</code> section
+                of the page and are generally not displayed as normal page content.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Idea:</strong>
+                Visible content goes inside the page body.
+                Meta information describes the page to browsers, search engines,
+                and other tools.
+            </div>
+
+            <h2>1. How Meta Tags Work</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    HTML Meta Information
+                </div>
+
+                <div class="meta-flow">
+
+                    <div class="flow-item">
+                        HTML<br>Document
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        &lt;head&gt;
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Meta Tags
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Browser /<br>Search Engine
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>2. Where Meta Tags are Written</h2>
+
+            <p>
+                Meta tags are normally placed inside the
+                <code>&lt;head&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta name="description"
+          content="HTML Tutorial"&gt;
+
+    &lt;title&gt;
+        HTML Tutorial
+    &lt;/title&gt;
+
+&lt;/head&gt;</code></pre>
+
+
+
+            <h2>3. Character Encoding with charset</h2>
+
+            <p>
+                The <code>charset</code> attribute specifies the character encoding
+                used by the document.
+            </p>
+
+            <p>
+                UTF-8 is commonly used for modern HTML documents.
+            </p>
+
+            <pre><code>&lt;meta charset="UTF-8"&gt;</code></pre>
+
+            <div class="info-box">
+                This helps the browser interpret text characters correctly.
+            </div>
+
+            <h2>4. Meta Description</h2>
+
+            <p>
+                The description meta tag provides a short description of the page.
+            </p>
+
+            <pre><code>&lt;meta
+    name="description"
+    content="Learn HTML from beginner to advanced topics"&gt;</code></pre>
+
+            <p>
+                Search engines may use this information when presenting search results,
+                depending on the query and other factors.
+            </p>
+
+            <h2>5. Meta Viewport</h2>
+
+            <p>
+                The viewport meta tag helps control how the page is displayed
+                on different screen sizes.
+            </p>
+
+            <pre><code>&lt;meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+            <div class="info-box">
+                <strong>Why is it important?</strong>
+                It is commonly used for responsive pages so the layout can work
+                properly across desktop and mobile screen sizes.
+            </div>
+
+            <h2>6. Meta Keywords</h2>
+
+            <p>
+                Older websites sometimes used a keywords meta tag to list terms
+                related to the page.
+            </p>
+
+            <pre><code>&lt;meta
+    name="keywords"
+    content="HTML, CSS, JavaScript"&gt;</code></pre>
+
+            <p>
+                Modern search engines generally do not rely on the keywords meta tag
+                as a primary ranking signal, so it should not be treated as a major
+                SEO technique.
+            </p>
+
+            <h2>7. Author Information</h2>
+
+            <p>
+                A page can include author information using metadata.
+            </p>
+
+            <pre><code>&lt;meta
+    name="author"
+    content="Web Development Team"&gt;</code></pre>
+
+            <p>
+                This identifies the author or organization associated with the content.
+            </p>
+
+            <h2>8. Robots Meta Tag</h2>
+
+            <p>
+                The robots meta tag can provide instructions to search engine crawlers
+                for a particular page.
+            </p>
+
+            <pre><code>&lt;meta
+    name="robots"
+    content="index, follow"&gt;</code></pre>
+
+            <p>
+                Search engine behavior can depend on the exact directives and
+                other website configuration.
+            </p>
+
+            <h2>9. Refresh Meta Tag</h2>
+
+            <p>
+                The <code>http-equiv="refresh"</code> form can request a page refresh
+                after a specified number of seconds or a redirect to another URL.
+            </p>
+
+            <pre><code>&lt;meta
+    http-equiv="refresh"
+    content="10"&gt;</code></pre>
+
+            <div class="info-box">
+                <strong>Best Practice:</strong>
+                Automatic refresh or redirect through meta tags should be used carefully.
+                Application-level redirects are often preferable when server-side
+                control is available.
+            </div>
+
+            <h2>10. Theme Color</h2>
+
+            <p>
+                Some browsers support a <code>theme-color</code> meta tag that
+                can influence browser interface coloring on supported devices.
+            </p>
+
+            <pre><code>&lt;meta
+    name="theme-color"
+    content="#212529"&gt;</code></pre>
+
+            <h2>11. Complete Head Example</h2>
+
+            <pre><code>&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;meta
+        name="description"
+        content="Learn HTML from beginner to advanced topics"&gt;
+
+    &lt;meta
+        name="author"
+        content="Web Development Team"&gt;
+
+    &lt;meta
+        name="theme-color"
+        content="#212529"&gt;
+
+    &lt;title&gt;
+        HTML Tutorial
+    &lt;/title&gt;
+
+&lt;/head&gt;</code></pre>
+
+
+
+            <h2>12. Meta Tags vs Visible Content</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Example</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Visible Content</td>
+                            <td><code>&lt;h1&gt;</code></td>
+                            <td>Shown directly to users.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Metadata</td>
+                            <td><code>&lt;meta&gt;</code></td>
+                            <td>Provides information about the document.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Page Title</td>
+                            <td><code>&lt;title&gt;</code></td>
+                            <td>Defines the document title.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>13. Important Meta Tags at a Glance</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Meta Tag</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><code>charset</code></td>
+                            <td>Defines character encoding.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>description</code></td>
+                            <td>Provides a page description.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>viewport</code></td>
+                            <td>Controls viewport behavior on devices.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>author</code></td>
+                            <td>Identifies the content author.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>robots</code></td>
+                            <td>Provides crawler-related instructions.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>theme-color</code></td>
+                            <td>Can influence browser UI color on supported platforms.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>14. Meta Tags and SEO</h2>
+
+            <p>
+                Metadata can provide useful information about a page, but SEO does
+                not depend on meta tags alone.
+            </p>
+
+            <p>
+                Good SEO also involves useful content, clear headings, descriptive
+                links, semantic structure, accessibility, and other factors.
+            </p>
+
+            <h2>15. Meta Tags and Responsive Design</h2>
+
+            <p>
+                The viewport meta tag is especially important for pages intended
+                to work across different screen sizes.
+            </p>
+
+            <pre><code>&lt;meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+            <p>
+                CSS then controls the actual responsive layout and styling.
+            </p>
+
+            <h2>16. Common Mistakes</h2>
+
+            <h3>Mistake 1: Putting meta tags inside body</h3>
+
+            <p>
+                Metadata belongs in the document's <code>&lt;head&gt;</code>
+                rather than the normal visible content area.
+            </p>
+
+            <h3>Mistake 2: Using meta tags as a replacement for content</h3>
+
+            <p>
+                A description meta tag does not replace a well-written page.
+                The actual page content still needs to be meaningful and useful.
+            </p>
+
+            <h3>Mistake 3: Depending on keywords meta tags for SEO</h3>
+
+            <p>
+                Modern SEO should focus on useful content and proper page structure
+                rather than relying on a keywords meta tag.
+            </p>
+
+            <h3>Mistake 4: Forgetting viewport</h3>
+
+            <p>
+                Responsive pages should normally include an appropriate viewport
+                configuration.
+            </p>
+
+            <h2>17. Best Practices</h2>
+
+            <ul>
+                <li>Place metadata inside the <code>&lt;head&gt;</code>.</li>
+                <li>Use UTF-8 character encoding for modern HTML documents.</li>
+                <li>Provide a useful page description when appropriate.</li>
+                <li>Include a viewport declaration for responsive pages.</li>
+                <li>Keep metadata accurate and relevant to the page.</li>
+                <li>Do not treat metadata as a replacement for good page content.</li>
+            </ul>
+
+            <h2>18. Practice Example</h2>
+
+            <p>
+                Create the head section of a simple HTML course page using
+                character encoding, viewport, description, author, and title.
+            </p>
+
+            <pre><code>&lt;head&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;meta
+        name="description"
+        content="Learn HTML from scratch"&gt;
+
+    &lt;meta
+        name="author"
+        content="Web Development Team"&gt;
+
+    &lt;title&gt;
+        Learn HTML
+    &lt;/title&gt;
+
+&lt;/head&gt;</code></pre>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    Meta tags provide information about an HTML document and are placed
+                    inside the <code>&lt;head&gt;</code>. Important metadata includes
+                    character encoding, description, viewport configuration, author
+                    information, and crawler-related instructions. Meta tags support
+                    browsers, search engines, and other tools, but they do not replace
+                    meaningful page content or good HTML structure.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("GlobalAttributes", "AdvancedHTML", new { area = "HTML" })">
+                    ← Previous: Global Attributes
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Viewport", "AdvancedHTML", new { area = "HTML" })">
+                    Next: Viewport →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,1004 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Ordered Lists";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Ordered Lists</h1>
+
+            <p class="lead">
+                Ordered lists are used when the sequence or order of items is important.
+                They display list items using numbers or other ordered markers.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. What is an Ordered List?</h2>
+
+            <p>
+                An ordered list is created using the <code>&lt;ol&gt;</code> element.
+                Each item inside the list is created using the <code>&lt;li&gt;</code>
+                element.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+    &lt;li&gt;Step One&lt;/li&gt;
+    &lt;li&gt;Step Two&lt;/li&gt;
+    &lt;li&gt;Step Three&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+
+                <ol class="mt-2 mb-0">
+                    <li>Step One</li>
+                    <li>Step Two</li>
+                    <li>Step Three</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">2. The ol Element</h2>
+
+            <p>
+                The <code>&lt;ol&gt;</code> element defines the ordered list container.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">3. The li Element</h2>
+
+            <p>
+                The <code>&lt;li&gt;</code> element represents one item in an
+                ordered list.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;Open the browser&lt;/li&gt;
+    &lt;li&gt;Create an HTML file&lt;/li&gt;
+    &lt;li&gt;Write HTML code&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+
+                <ol class="mt-2 mb-0">
+                    <li>Open the browser</li>
+                    <li>Create an HTML file</li>
+                    <li>Write HTML code</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">4. Default Numbering</h2>
+
+            <p>
+                By default, browsers display ordered list items using decimal numbers
+                starting from <strong>1</strong>.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                <strong>Default Result:</strong>
+
+                <ol class="mt-2 mb-0">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">5. Ordered List for Steps</h2>
+
+            <p>
+                Ordered lists are useful for instructions where the sequence matters.
+            </p>
+
+            <pre><code>&lt;h2&gt;How to Create an HTML File&lt;/h2&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Open a text editor.&lt;/li&gt;
+    &lt;li&gt;Create a new file.&lt;/li&gt;
+    &lt;li&gt;Save the file with .html extension.&lt;/li&gt;
+    &lt;li&gt;Open the file in a browser.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">6. type Attribute</h2>
+
+            <p>
+                The <code>type</code> attribute specifies the marker style used
+                by the ordered list.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Type</th>
+                        <th>Marker Style</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>1</code></td>
+                        <td>Decimal numbers</td>
+                        <td>1, 2, 3</td>
+                    </tr>
+                    <tr>
+                        <td><code>A</code></td>
+                        <td>Uppercase letters</td>
+                        <td>A, B, C</td>
+                    </tr>
+                    <tr>
+                        <td><code>a</code></td>
+                        <td>Lowercase letters</td>
+                        <td>a, b, c</td>
+                    </tr>
+                    <tr>
+                        <td><code>I</code></td>
+                        <td>Uppercase Roman numerals</td>
+                        <td>I, II, III</td>
+                    </tr>
+                    <tr>
+                        <td><code>i</code></td>
+                        <td>Lowercase Roman numerals</td>
+                        <td>i, ii, iii</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">7. Decimal Numbering</h2>
+
+            <pre><code>&lt;ol type="1"&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="example-box">
+                <ol type="1" class="mb-0">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">8. Uppercase Letters</h2>
+
+            <p>
+                Use <code>type="A"</code> for uppercase alphabetic markers.
+            </p>
+
+            <pre><code>&lt;ol type="A"&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                <ol type="A" class="mb-0">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">9. Lowercase Letters</h2>
+
+            <pre><code>&lt;ol type="a"&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+            <div class="output-box">
+                <ol type="a" class="mb-0">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">10. Uppercase Roman Numerals</h2>
+
+            <pre><code>&lt;ol type="I"&gt;
+    &lt;li&gt;Introduction&lt;/li&gt;
+    &lt;li&gt;Basic HTML&lt;/li&gt;
+    &lt;li&gt;Advanced HTML&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                <ol type="I" class="mb-0">
+                    <li>Introduction</li>
+                    <li>Basic HTML</li>
+                    <li>Advanced HTML</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">11. Lowercase Roman Numerals</h2>
+
+            <pre><code>&lt;ol type="i"&gt;
+    &lt;li&gt;Introduction&lt;/li&gt;
+    &lt;li&gt;Basic HTML&lt;/li&gt;
+    &lt;li&gt;Advanced HTML&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                <ol type="i" class="mb-0">
+                    <li>Introduction</li>
+                    <li>Basic HTML</li>
+                    <li>Advanced HTML</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">12. start Attribute</h2>
+
+            <p>
+                The <code>start</code> attribute specifies the starting number
+                of an ordered list.
+            </p>
+
+            <pre><code>&lt;ol start="5"&gt;
+    &lt;li&gt;Item Five&lt;/li&gt;
+    &lt;li&gt;Item Six&lt;/li&gt;
+    &lt;li&gt;Item Seven&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                <ol start="5" class="mb-0">
+                    <li>Item Five</li>
+                    <li>Item Six</li>
+                    <li>Item Seven</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">13. Starting from a Different Letter</h2>
+
+            <p>
+                The <code>start</code> attribute works with other ordered list
+                marker types as well.
+            </p>
+
+            <pre><code>&lt;ol type="A" start="3"&gt;
+    &lt;li&gt;Item One&lt;/li&gt;
+    &lt;li&gt;Item Two&lt;/li&gt;
+    &lt;li&gt;Item Three&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                <ol type="A" start="3" class="mb-0">
+                    <li>Item One</li>
+                    <li>Item Two</li>
+                    <li>Item Three</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">14. reversed Attribute</h2>
+
+            <p>
+                The <code>reversed</code> attribute displays an ordered list
+                in descending order.
+            </p>
+
+            <pre><code>&lt;ol reversed&gt;
+    &lt;li&gt;Step Three&lt;/li&gt;
+    &lt;li&gt;Step Two&lt;/li&gt;
+    &lt;li&gt;Step One&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                <ol reversed class="mb-0">
+                    <li>Step Three</li>
+                    <li>Step Two</li>
+                    <li>Step One</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">15. reversed with start</h2>
+
+            <p>
+                The <code>reversed</code> and <code>start</code> attributes
+                can be combined.
+            </p>
+
+            <pre><code>&lt;ol reversed start="5"&gt;
+    &lt;li&gt;First Item&lt;/li&gt;
+    &lt;li&gt;Second Item&lt;/li&gt;
+    &lt;li&gt;Third Item&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                <ol reversed start="5" class="mb-0">
+                    <li>First Item</li>
+                    <li>Second Item</li>
+                    <li>Third Item</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">16. value Attribute on li</h2>
+
+            <p>
+                The <code>value</code> attribute on an <code>&lt;li&gt;</code>
+                element can specify the marker value for that item.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li value="10"&gt;Ten&lt;/li&gt;
+    &lt;li&gt;Eleven&lt;/li&gt;
+    &lt;li&gt;Twelve&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                <ol class="mb-0">
+                    <li value="10">Ten</li>
+                    <li>Eleven</li>
+                    <li>Twelve</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">17. Ordered List with Links</h2>
+
+            <p>
+                List items can contain hyperlinks.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;
+        &lt;a href="html.html"&gt;Learn HTML&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        &lt;a href="css.html"&gt;Learn CSS&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        &lt;a href="javascript.html"&gt;Learn JavaScript&lt;/a&gt;
+    &lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">18. Ordered List with Nested List</h2>
+
+            <p>
+                An ordered list can contain another list inside one of its items.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;
+        Frontend
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Backend
+
+        &lt;ul&gt;
+            &lt;li&gt;C#&lt;/li&gt;
+            &lt;li&gt;.NET&lt;/li&gt;
+            &lt;li&gt;SQL&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+
+                <ol class="mt-2 mb-0">
+                    <li>
+                        Frontend
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Backend
+                        <ul>
+                            <li>C#</li>
+                            <li>.NET</li>
+                            <li>SQL</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">19. Multiple Nested Levels</h2>
+
+            <p>
+                Ordered lists can have several nested levels.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;
+        Web Development
+
+        &lt;ol&gt;
+
+            &lt;li&gt;
+                Frontend
+
+                &lt;ol&gt;
+                    &lt;li&gt;HTML&lt;/li&gt;
+                    &lt;li&gt;CSS&lt;/li&gt;
+                    &lt;li&gt;JavaScript&lt;/li&gt;
+                &lt;/ol&gt;
+
+            &lt;/li&gt;
+
+            &lt;li&gt;
+                Backend
+
+                &lt;ol&gt;
+                    &lt;li&gt;C#&lt;/li&gt;
+                    &lt;li&gt;.NET&lt;/li&gt;
+                    &lt;li&gt;SQL&lt;/li&gt;
+                &lt;/ol&gt;
+
+            &lt;/li&gt;
+
+        &lt;/ol&gt;
+
+    &lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">20. Ordered List for Tutorials</h2>
+
+            <p>
+                Ordered lists are useful for displaying learning steps.
+            </p>
+
+            <pre><code>&lt;h2&gt;Steps to Learn HTML&lt;/h2&gt;
+
+&lt;ol&gt;
+
+    &lt;li&gt;Learn HTML syntax.&lt;/li&gt;
+    &lt;li&gt;Learn HTML elements.&lt;/li&gt;
+    &lt;li&gt;Learn HTML attributes.&lt;/li&gt;
+    &lt;li&gt;Practice forms and tables.&lt;/li&gt;
+    &lt;li&gt;Build a project.&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">21. Ordered List for a Process</h2>
+
+            <pre><code>&lt;h2&gt;Login Process&lt;/h2&gt;
+
+&lt;ol&gt;
+
+    &lt;li&gt;Open the login page.&lt;/li&gt;
+    &lt;li&gt;Enter your username.&lt;/li&gt;
+    &lt;li&gt;Enter your password.&lt;/li&gt;
+    &lt;li&gt;Click the Login button.&lt;/li&gt;
+    &lt;li&gt;Access your dashboard.&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+                <h5 class="fw-bold">Login Process</h5>
+
+                <ol class="mb-0">
+                    <li>Open the login page.</li>
+                    <li>Enter your username.</li>
+                    <li>Enter your password.</li>
+                    <li>Click the Login button.</li>
+                    <li>Access your dashboard.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">22. Ordered List with CSS</h2>
+
+            <p>
+                CSS can be used to customize the appearance and spacing of ordered lists.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    .steps {
+        padding-left: 25px;
+        line-height: 1.8;
+    }
+
+&lt;/style&gt;
+
+&lt;ol class="steps"&gt;
+
+    &lt;li&gt;Create HTML file.&lt;/li&gt;
+    &lt;li&gt;Write HTML structure.&lt;/li&gt;
+    &lt;li&gt;Open the file in browser.&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">23. Ordered List with Custom Counter</h2>
+
+            <p>
+                CSS counters can be used to create custom numbering designs.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    .custom-list {
+        counter-reset: step;
+        list-style: none;
+        padding: 0;
+    }
+
+    .custom-list li {
+        counter-increment: step;
+        margin-bottom: 10px;
+    }
+
+    .custom-list li::before {
+        content: "Step " counter(step) ": ";
+        font-weight: bold;
+    }
+
+&lt;/style&gt;
+
+&lt;ol class="custom-list"&gt;
+
+    &lt;li&gt;Learn HTML&lt;/li&gt;
+    &lt;li&gt;Learn CSS&lt;/li&gt;
+    &lt;li&gt;Learn JavaScript&lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">24. Difference Between Ordered and Unordered Lists</h2>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Ordered List</th>
+                        <th>Unordered List</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Uses <code>&lt;ol&gt;</code>.</td>
+                        <td>Uses <code>&lt;ul&gt;</code>.</td>
+                    </tr>
+                    <tr>
+                        <td>Displays ordered markers.</td>
+                        <td>Displays bullets by default.</td>
+                    </tr>
+                    <tr>
+                        <td>Useful when sequence matters.</td>
+                        <td>Useful when sequence does not matter.</td>
+                    </tr>
+                    <tr>
+                        <td>Supports numbers, letters, and Roman numerals.</td>
+                        <td>Supports different bullet styles.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">25. Common Mistakes</h2>
+
+            <ul>
+                <li>Using an ordered list when item order is not important.</li>
+                <li>Forgetting to place items inside <code>&lt;li&gt;</code>.</li>
+                <li>Using unnecessary nested ordered lists.</li>
+                <li>Using confusing numbering structures.</li>
+                <li>Using CSS only to visually number content that has no logical sequence.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">26. Best Practices</h2>
+
+            <ul>
+                <li>Use <code>&lt;ol&gt;</code> when sequence or ranking matters.</li>
+                <li>Use <code>&lt;li&gt;</code> for each list item.</li>
+                <li>Use <code>start</code> only when a non-default starting value is required.</li>
+                <li>Use <code>reversed</code> when descending order is meaningful.</li>
+                <li>Use CSS for visual customization.</li>
+                <li>Keep nested lists logically organized.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">27. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML page containing:</strong></p>
+
+                <ol>
+                    <li>An ordered list of learning steps.</li>
+                    <li>An ordered list using uppercase letters.</li>
+                    <li>An ordered list using lowercase letters.</li>
+                    <li>An ordered list using Roman numerals.</li>
+                    <li>An ordered list starting from number 5.</li>
+                    <li>A reversed ordered list.</li>
+                    <li>An ordered list containing a nested unordered list.</li>
+                    <li>An ordered list with hyperlinks.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">28. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;Ordered List Example&lt;/title&gt;
+
+    &lt;style&gt;
+
+        .learning-steps {
+            padding-left: 25px;
+            line-height: 1.8;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Steps to Become a Web Developer&lt;/h1&gt;
+
+    &lt;ol class="learning-steps"&gt;
+
+        &lt;li&gt;Learn HTML&lt;/li&gt;
+        &lt;li&gt;Learn CSS&lt;/li&gt;
+        &lt;li&gt;Learn JavaScript&lt;/li&gt;
+        &lt;li&gt;Learn a backend technology&lt;/li&gt;
+        &lt;li&gt;Learn SQL&lt;/li&gt;
+        &lt;li&gt;Build real projects&lt;/li&gt;
+
+    &lt;/ol&gt;
+
+    &lt;h2&gt;Frontend Topics&lt;/h2&gt;
+
+    &lt;ol type="A"&gt;
+
+        &lt;li&gt;HTML&lt;/li&gt;
+        &lt;li&gt;CSS&lt;/li&gt;
+        &lt;li&gt;JavaScript&lt;/li&gt;
+
+    &lt;/ol&gt;
+
+    &lt;h2&gt;Advanced Topics&lt;/h2&gt;
+
+    &lt;ol type="I"&gt;
+
+        &lt;li&gt;Accessibility&lt;/li&gt;
+        &lt;li&gt;SEO&lt;/li&gt;
+        &lt;li&gt;Performance&lt;/li&gt;
+
+    &lt;/ol&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    Ordered lists are created using the <code>&lt;ol&gt;</code>
+                    element and contain <code>&lt;li&gt;</code> items. They are
+                    useful when the order of items matters, such as instructions,
+                    procedures, tutorials, rankings, and step-by-step processes.
+                    HTML supports different marker styles through the
+                    <code>type</code> attribute, while <code>start</code>,
+                    <code>reversed</code>, and <code>value</code> provide additional
+                    control over list numbering.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("UnorderedLists", "ListsAndTables", new { area = "HTML" })">
+                    ← Previous: Unordered Lists
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("DescriptionLists", "ListsAndTables", new { area = "HTML" })">
+                    Next: Description Lists →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

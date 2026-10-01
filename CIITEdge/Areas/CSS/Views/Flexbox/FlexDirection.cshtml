@@ -1,0 +1,839 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Flex Direction";
+}
+
+<style>
+
+    #css-flex-direction-page {
+        color: #212529;
+    }
+
+    #css-flex-direction-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-flex-direction-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-direction-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-direction-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-flex-direction-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* Code */
+
+    #css-flex-direction-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-flex-direction-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* Diagram */
+
+    #css-flex-direction-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flex-direction-page .diagram-row {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        padding: 20px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flex-direction-page .diagram-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        padding: 20px;
+        border: 2px dashed #16a34a;
+        background-color: #dcfce7;
+    }
+
+    #css-flex-direction-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 14px 24px;
+        border-radius: 6px;
+        font-weight: 700;
+    }
+
+    #css-flex-direction-page .diagram-column .diagram-item {
+        background-color: #16a34a;
+    }
+
+    /* Explanation */
+
+    #css-flex-direction-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-flex-direction-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Output */
+
+    #css-flex-direction-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flex-direction-page .output-row {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flex-direction-page .output-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px;
+        border: 2px solid #16a34a;
+        background-color: #dcfce7;
+        align-items: stretch;
+    }
+
+    #css-flex-direction-page .output-row-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 18px;
+        text-align: center;
+        font-weight: 700;
+        flex: 1;
+    }
+
+    #css-flex-direction-page .output-column-item {
+        background-color: lightgreen;
+        border: 2px solid green;
+        padding: 18px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* Property Cards */
+
+    #css-flex-direction-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-flex-direction-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-direction-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* Note */
+
+    #css-flex-direction-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* Summary */
+
+    #css-flex-direction-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-flex-direction-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-direction-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+    @@media (max-width: 767px) {
+
+        #css-flex-direction-page .content-section {
+            padding: 20px;
+        }
+
+        #css-flex-direction-page .output-row {
+            flex-direction: column;
+        }
+
+    }
+
+</style>
+
+
+<div id="css-flex-direction-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- Title -->
+
+                <h1>
+                    CSS Flex Direction
+                </h1>
+
+                <p>
+                    The CSS <strong>flex-direction</strong> property
+                    defines the direction in which Flex Items are placed
+                    inside a Flex Container.
+                </p>
+
+                <p>
+                    By default, Flexbox places items horizontally from
+                    left to right. You can change this behavior using
+                    <strong>flex-direction</strong>.
+                </p>
+
+
+                <!-- Syntax -->
+
+                <h2>
+                    Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-direction: value;
+}</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    The <strong>value</strong> determines the direction
+                    in which the Flex Items are arranged.
+                </p>
+
+
+                <!-- Values -->
+
+                <h2>
+                    Values of flex-direction
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Value</th>
+                                <th>Description</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><strong>row</strong></td>
+                                <td>
+                                    Places items horizontally from
+                                    left to right.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>row-reverse</strong></td>
+                                <td>
+                                    Places items horizontally from
+                                    right to left.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>column</strong></td>
+                                <td>
+                                    Places items vertically from
+                                    top to bottom.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>column-reverse</strong></td>
+                                <td>
+                                    Places items vertically from
+                                    bottom to top.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Flex Direction Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <h3>
+                        row
+                    </h3>
+
+                    <div class="diagram-row">
+
+                        <div class="diagram-item">
+                            1
+                        </div>
+
+                        <div class="diagram-item">
+                            2
+                        </div>
+
+                        <div class="diagram-item">
+                            3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3">
+                        Items move horizontally from left to right.
+                    </p>
+
+
+                    <h3>
+                        column
+                    </h3>
+
+                    <div class="diagram-column">
+
+                        <div class="diagram-item">
+                            1
+                        </div>
+
+                        <div class="diagram-item">
+                            2
+                        </div>
+
+                        <div class="diagram-item">
+                            3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        Items move vertically from top to bottom.
+                    </p>
+
+                </div>
+
+
+                <!-- Row -->
+
+                <h2>
+                    1. flex-direction: row
+                </h2>
+
+                <p>
+                    The <strong>row</strong> value is the default value
+                    of flex-direction.
+                </p>
+
+                <p>
+                    It places Flex Items horizontally from left to right.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-direction: row;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-row">
+
+                        <div class="output-row-item">
+                            HTML
+                        </div>
+
+                        <div class="output-row-item">
+                            CSS
+                        </div>
+
+                        <div class="output-row-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Row Reverse -->
+
+                <h2>
+                    2. flex-direction: row-reverse
+                </h2>
+
+                <p>
+                    The <strong>row-reverse</strong> value places items
+                    horizontally in the reverse direction.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-direction: row-reverse;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div style="
+                        display:flex;
+                        flex-direction:row-reverse;
+                        gap:12px;
+                        padding:20px;
+                        border:2px solid #2563eb;
+                        background-color:#dbeafe;
+                    ">
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            text-align:center;
+                            font-weight:700;
+                            flex:1;
+                        ">
+                            HTML
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            text-align:center;
+                            font-weight:700;
+                            flex:1;
+                        ">
+                            CSS
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            text-align:center;
+                            font-weight:700;
+                            flex:1;
+                        ">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Column -->
+
+                <h2>
+                    3. flex-direction: column
+                </h2>
+
+                <p>
+                    The <strong>column</strong> value places Flex Items
+                    vertically from top to bottom.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-direction: column;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-column">
+
+                        <div class="output-column-item">
+                            HTML
+                        </div>
+
+                        <div class="output-column-item">
+                            CSS
+                        </div>
+
+                        <div class="output-column-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Column Reverse -->
+
+                <h2>
+                    4. flex-direction: column-reverse
+                </h2>
+
+                <p>
+                    The <strong>column-reverse</strong> value places
+                    Flex Items vertically in reverse order, from
+                    bottom to top.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-direction: column-reverse;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div style="
+                        display:flex;
+                        flex-direction:column-reverse;
+                        gap:12px;
+                        padding:20px;
+                        border:2px solid #16a34a;
+                        background-color:#dcfce7;
+                    ">
+
+                        <div style="
+                            background-color:lightgreen;
+                            border:2px solid green;
+                            padding:18px;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            HTML
+                        </div>
+
+                        <div style="
+                            background-color:lightgreen;
+                            border:2px solid green;
+                            padding:18px;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            CSS
+                        </div>
+
+                        <div style="
+                            background-color:lightgreen;
+                            border:2px solid green;
+                            padding:18px;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Comparison -->
+
+                <h2>
+                    Comparing the Four Values
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                row
+                            </h3>
+
+                            <p>
+                                Items are arranged horizontally from
+                                left to right.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                row-reverse
+                            </h3>
+
+                            <p>
+                                Items are arranged horizontally in
+                                reverse direction.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                column
+                            </h3>
+
+                            <p>
+                                Items are arranged vertically from
+                                top to bottom.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                column-reverse
+                            </h3>
+
+                            <p>
+                                Items are arranged vertically in
+                                reverse direction.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Real World -->
+
+                <h2>
+                    Real-World Example
+                </h2>
+
+                <p>
+                    Imagine a CIIT Training Institute page containing
+                    course cards.
+                </p>
+
+                <p>
+                    If the cards need to appear side by side, use
+                    <strong>row</strong>.
+                    If they need to appear one below another, use
+                    <strong>column</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.courses {
+    display: flex;
+    flex-direction: row;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        With <strong>row</strong>, course cards can be
+                        displayed horizontally.
+                    </p>
+
+                    <p>
+                        Changing the value to
+                        <strong>column</strong> changes the layout to
+                        a vertical arrangement.
+                    </p>
+
+                </div>
+
+
+                <!-- Important Note -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    The default value of
+                    <strong>flex-direction</strong> is
+                    <strong>row</strong>. The direction of the Flex
+                    Items affects the main axis of the Flex Container.
+                    Properties such as
+                    <strong>justify-content</strong> and
+                    <strong>align-items</strong> work relative to
+                    these axes.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>flex-direction</strong> property
+                        controls the direction of Flex Items inside
+                        a Flex Container. Its four main values are
+                        <strong>row</strong>,
+                        <strong>row-reverse</strong>,
+                        <strong>column</strong>, and
+                        <strong>column-reverse</strong>.
+                        The default value is <strong>row</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("FlexContainer", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Flex Container
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("FlexWrap", "Flexbox", new { area = "CSS" })">
+
+                            Next: Flex Wrap →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

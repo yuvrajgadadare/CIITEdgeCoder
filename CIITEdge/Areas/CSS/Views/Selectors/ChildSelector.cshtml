@@ -1,0 +1,458 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Child Selector";
+}
+
+<style>
+
+    .content-section > h1,
+    .content-section > h2,
+    .content-section > h3 {
+        color: #212529;
+        font-weight: 700;
+    }
+
+    .code-box {
+        background: #0f172a;
+        color: #f8fafc;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        background: #f8f9fa;
+        text-align: center;
+    }
+
+    .diagram-item {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 15px;
+        font-weight: 600;
+    }
+
+    .diagram-arrow {
+        font-size: 28px;
+        font-weight: 700;
+        color: #6f42c1;
+        margin: 8px 0;
+    }
+
+    .output-box {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .example-card {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ================================================= -->
+        <!-- LEFT SIDEBAR -->
+        <!-- ================================================= -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <section class="col-lg-9 content-section">
+
+            <!-- ================================================= -->
+            <!-- PAGE TITLE -->
+            <!-- ================================================= -->
+
+            <h1 class="mb-3">
+                Child Selector
+            </h1>
+
+            <p class="lead">
+                A child selector is used to select elements that are
+                direct children of another HTML element.
+            </p>
+
+
+            <!-- ================================================= -->
+            <!-- WHAT IS CHILD SELECTOR -->
+            <!-- ================================================= -->
+
+            <h2>
+                What is a Child Selector?
+            </h2>
+
+            <p>
+                A child selector targets only the elements that are
+                directly inside a specified parent element.
+            </p>
+
+            <p>
+                The greater-than symbol <code>&gt;</code> is used to
+                define a direct parent-child relationship.
+            </p>
+
+
+            <!-- ================================================= -->
+            <!-- DIAGRAM -->
+            <!-- ================================================= -->
+
+            <h2>
+                Child Selector Flow
+            </h2>
+
+            <div class="diagram-box">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="diagram-item">
+                            Parent Element
+                            <br />
+                            <code>.container</code>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="diagram-item">
+                            Direct Child
+                            <br />
+                            <code>.container &gt; p</code>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="diagram-item">
+                            Applied CSS Style
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- BASIC SYNTAX -->
+            <!-- ================================================= -->
+
+            <h2>
+                Basic Syntax
+            </h2>
+
+            <div class="code-box mb-3">
+
+                <pre style="margin:0;">parent &gt; child {
+    property: value;
+}</pre>
+
+            </div>
+
+            <p>
+                The <code>&gt;</code> symbol selects only direct children
+                of the parent element.
+            </p>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 1 -->
+            <!-- ================================================= -->
+
+            <div class="example-card">
+
+                <h2>
+                    Example 1: Direct Child Paragraph
+                </h2>
+
+                <div class="code-box mb-3">
+
+                    <pre style="margin:0;">div &gt; p {
+    color: blue;
+}</pre>
+
+                </div>
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <div>
+
+                        <p style="color: blue; margin-bottom: 8px;">
+                            Direct child paragraph
+                        </p>
+
+                        <section>
+
+                            <p style="margin-bottom: 0;">
+                                Nested paragraph
+                            </p>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 2 -->
+            <!-- ================================================= -->
+
+            <div class="example-card">
+
+                <h2>
+                    Example 2: Direct Child List Items
+                </h2>
+
+                <div class="code-box mb-3">
+
+                    <pre style="margin:0;">ul &gt; li {
+    color: green;
+}</pre>
+
+                </div>
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <ul style="margin-bottom: 0;">
+
+                        <li style="color: green;">
+                            First Item
+                        </li>
+
+                        <li style="color: green;">
+                            Second Item
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 3 -->
+            <!-- ================================================= -->
+
+            <div class="example-card">
+
+                <h2>
+                    Example 3: Direct Child Heading
+                </h2>
+
+                <div class="code-box mb-3">
+
+                    <pre style="margin:0;">section &gt; h2 {
+    color: red;
+}</pre>
+
+                </div>
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <section>
+
+                        <h4 style="color: red; margin: 0;">
+                            CSS Tutorial
+                        </h4>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- DESCENDANT VS CHILD -->
+            <!-- ================================================= -->
+
+            <h2>
+                Child Selector vs Descendant Selector
+            </h2>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+
+                    <thead class="table-light">
+
+                        <tr>
+                            <th>Selector</th>
+                            <th>Meaning</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>div p</code></td>
+                            <td>Selects all paragraph descendants.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>div &gt; p</code></td>
+                            <td>Selects only direct paragraph children.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- IMPORTANT POINTS -->
+            <!-- ================================================= -->
+
+            <h2>
+                Important Points
+            </h2>
+
+            <ul>
+
+                <li class="mb-2">
+                    The <code>&gt;</code> symbol is used for a child selector.
+                </li>
+
+                <li class="mb-2">
+                    Only direct children are selected.
+                </li>
+
+                <li class="mb-2">
+                    Nested elements are not selected unless they are
+                    direct children.
+                </li>
+
+                <li>
+                    Child selectors provide more precise control than
+                    descendant selectors.
+                </li>
+
+            </ul>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY -->
+            <!-- ================================================= -->
+
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    A child selector selects only the direct children
+                    of a specified parent element. It uses the
+                    <code>&gt;</code> symbol to define the
+                    parent-child relationship.
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- NAVIGATION -->
+            <!-- ================================================= -->
+
+            <div class="topic-navigation mt-4">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("DescendantSelector", "Selectors", new { area = "CSS" })">
+
+                            ← Previous: Descendant Selector
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("PseudoClassSelector", "Selectors", new { area = "CSS" })">
+
+                            Next: Pseudo-Class Selector →
+
+                        </a>
+                            
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>

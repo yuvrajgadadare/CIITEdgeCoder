@@ -1,0 +1,83 @@
+﻿@{
+}
+<div class="container mt-4">
+    <h2 class="mb-4">🖥️ Real-Time Interactive C# Compiler</h2>
+    <div class="row">
+        <!-- Text Editor -->
+        <div class="col-md-7">
+            <label class="form-label fw-bold text-muted">Source Code Editor:</label>
+            <textarea id="codeEditor" class="form-control font-monospace p-3 text-white bg-dark" rows="16" style="resize: vertical;">
+                @ViewBag.CodeSnippet
+            </textarea>
+            <button id="runBtn" class="btn btn-success btn-lg w-100 mt-3 shadow-sm">▶ Run Script</button>
+        </div>
+        <!-- Real-Time Interactive Console Terminal -->
+        <div class="col-md-5">
+            <label class="form-label fw-bold text-muted">Interactive Console Terminal:</label>
+            <div class="card border-0 shadow bg-black text-light font-monospace">
+                <div class="card-body p-0">
+                    <!-- The scrolling console display -->
+                    <div id="terminalScreen" class="p-3" style="height: 340px; overflow-y: auto; white-space: pre-wrap; color: #39ff14; font-size: 0.9rem;">
+                        Click "Run Script" to initialize terminal session...
+                    </div>
+
+                    <!-- Real-Time Input Line -->
+                    <div class="input-group border-top border-secondary">
+                        <span class="input-group-text bg-black border-0 text-success fw-bold font-monospace">&gt;</span>
+                        <input id="terminalInput" type="text" class="form-control bg-black border-0 text-white font-monospace"
+                               placeholder="Type input and press Enter..." disabled autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script>
+    // 1. Open live communication channel to host app
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/compilerHub")
+        .build();
+
+    const terminalScreen = document.getElementById("terminalScreen");
+    const terminalInput = document.getElementById("terminalInput");
+    const runBtn = document.getElementById("runBtn");
+
+    connection.start().catch(err => console.error("SignalR Connection Error: ", err));
+
+    // 2. Output stream arrival logic
+    connection.on("ReceiveOutput", function(text) {
+        if (terminalScreen.innerText === 'Click "Run Script" to initialize terminal session...') {
+            terminalScreen.innerText = '';
+        }
+        terminalScreen.innerText += text;
+        terminalScreen.scrollTop = terminalScreen.scrollHeight; // Auto-scroll down
+    });
+
+    // 3. Submit source file to compilation process
+    runBtn.addEventListener("click", function() {
+        terminalScreen.innerText = "";
+        terminalInput.disabled = false;
+        terminalInput.focus();
+
+        const code = document.getElementById("codeEditor").value;
+        connection.invoke("CompileAndRun", code).catch(err => console.error(err));
+    });
+
+    // 4. Capture line items out of prompt input bar on 'Enter' keypress
+    terminalInput.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            const data = terminalInput.value;
+
+            // Print user input to the screen so it mirrors a genuine shell environment
+            terminalScreen.innerText += data + "\n";
+            terminalScreen.scrollTop = terminalScreen.scrollHeight;
+
+            // Transmit single chunk straight to blocking code thread
+            connection.invoke("SendInputToProgram", data).catch(err => console.error(err));
+
+            terminalInput.value = "";
+            event.preventDefault();
+        }
+    });
+</script>

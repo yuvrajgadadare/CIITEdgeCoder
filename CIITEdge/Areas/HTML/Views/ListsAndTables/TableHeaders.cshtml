@@ -1,0 +1,1035 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Table Headers";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+
+    .demo-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+        .demo-table th,
+        .demo-table td {
+            border: 1px solid #212529;
+            padding: 10px;
+        }
+
+        .demo-table th {
+            background-color: #e9ecef;
+            font-weight: 700;
+        }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Table Headers</h1>
+
+            <p class="lead">
+                Table headers identify the meaning of rows and columns in an HTML table.
+                Proper table headers make structured data easier to understand and more accessible.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. Introduction to Table Headers</h2>
+
+            <p>
+                HTML uses the <code>&lt;th&gt;</code> element to define a table header cell.
+                Header cells normally describe the data contained in a row or column.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+        &lt;th&gt;Marks&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Output:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Marks</th>
+                    </tr>
+
+                    <tr>
+                        <td>John</td>
+                        <td>HTML</td>
+                        <td>85</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">2. The th Element</h2>
+
+            <p>
+                The <code>&lt;th&gt;</code> element defines a header cell.
+                By default, browsers generally render header text as bold and centered.
+            </p>
+
+            <pre><code>&lt;th&gt;Student Name&lt;/th&gt;</code></pre>
+
+            <p>
+                Header cells can identify either columns or rows depending on
+                the table structure.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">3. Column Headers</h2>
+
+            <p>
+                The most common use of <code>&lt;th&gt;</code> is to identify columns.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Student Name&lt;/th&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+        &lt;th&gt;Marks&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">4. Row Headers</h2>
+
+            <p>
+                A table can also have a header cell that identifies the content
+                of a particular row.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+        &lt;th&gt;Marks&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;HTML&lt;/th&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;CSS&lt;/th&gt;
+        &lt;td&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th>Course</th>
+                        <th>Marks</th>
+                    </tr>
+
+                    <tr>
+                        <th>HTML</th>
+                        <td>85</td>
+                    </tr>
+
+                    <tr>
+                        <th>CSS</th>
+                        <td>90</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">5. scope Attribute</h2>
+
+            <p>
+                The <code>scope</code> attribute specifies whether a header
+                applies to a column or a row.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th scope="col"&gt;Name&lt;/th&gt;
+        &lt;th scope="col"&gt;Course&lt;/th&gt;
+        &lt;th scope="col"&gt;Marks&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2 class="h3 fw-bold mt-5">6. scope="col"</h2>
+
+            <p>
+                Use <code>scope="col"</code> when a header identifies
+                the cells in a column.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;th scope="col"&gt;Product&lt;/th&gt;
+    &lt;th scope="col"&gt;Quantity&lt;/th&gt;
+    &lt;th scope="col"&gt;Price&lt;/th&gt;
+
+&lt;/tr&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Meaning:</strong>
+                Each header applies to the cells below it in the same column.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">7. scope="row"</h2>
+
+            <p>
+                Use <code>scope="row"</code> when a header identifies
+                the cells across the same row.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;th scope="row"&gt;Laptop&lt;/th&gt;
+    &lt;td&gt;2&lt;/td&gt;
+    &lt;td&gt;50000&lt;/td&gt;
+
+&lt;/tr&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">8. Complete Row and Column Header Example</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th scope="col"&gt;Product&lt;/th&gt;
+        &lt;th scope="col"&gt;Quantity&lt;/th&gt;
+        &lt;th scope="col"&gt;Price&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;th scope="row"&gt;Laptop&lt;/th&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td&gt;100000&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;th scope="row"&gt;Mouse&lt;/th&gt;
+        &lt;td&gt;5&lt;/td&gt;
+        &lt;td&gt;5000&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Output:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Laptop</th>
+                        <td>2</td>
+                        <td>100000</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Mouse</th>
+                        <td>5</td>
+                        <td>5000</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">9. thead with Headers</h2>
+
+            <p>
+                The <code>&lt;thead&gt;</code> element groups the header rows
+                of a table.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Name&lt;/th&gt;
+            &lt;th scope="col"&gt;Course&lt;/th&gt;
+            &lt;th scope="col"&gt;Marks&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;John&lt;/td&gt;
+            &lt;td&gt;HTML&lt;/td&gt;
+            &lt;td&gt;85&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">10. Multiple Header Rows</h2>
+
+            <p>
+                A table can have more than one header row, especially when
+                information is grouped into categories.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th rowspan="2"&gt;Course&lt;/th&gt;
+            &lt;th colspan="2"&gt;Performance&lt;/th&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;th&gt;Theory&lt;/th&gt;
+            &lt;th&gt;Practical&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">11. Header Cells with colspan</h2>
+
+            <p>
+                The <code>colspan</code> attribute allows a header to cover
+                multiple columns.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;th colspan="2"&gt;
+        Student Information
+    &lt;/th&gt;
+
+&lt;/tr&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Example:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th colspan="2">Student Information</th>
+                    </tr>
+
+                    <tr>
+                        <td>John</td>
+                        <td>HTML</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">12. Header Cells with rowspan</h2>
+
+            <p>
+                The <code>rowspan</code> attribute allows a header to cover
+                multiple rows.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;th rowspan="2"&gt;
+        Course
+    &lt;/th&gt;
+
+    &lt;th&gt;Theory&lt;/th&gt;
+    &lt;th&gt;Practical&lt;/th&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+    &lt;th&gt;Marks&lt;/th&gt;
+    &lt;th&gt;Marks&lt;/th&gt;
+
+&lt;/tr&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">13. Grouped Column Headers</h2>
+
+            <p>
+                Grouped headers are useful when multiple columns belong
+                to the same category.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+
+            &lt;th rowspan="2"&gt;Student&lt;/th&gt;
+            &lt;th colspan="2"&gt;Marks&lt;/th&gt;
+            &lt;th rowspan="2"&gt;Result&lt;/th&gt;
+
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+
+            &lt;th&gt;Theory&lt;/th&gt;
+            &lt;th&gt;Practical&lt;/th&gt;
+
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Output:</strong>
+
+                <table class="demo-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Student</th>
+                            <th colspan="2">Marks</th>
+                            <th rowspan="2">Result</th>
+                        </tr>
+
+                        <tr>
+                            <th>Theory</th>
+                            <th>Practical</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>John</td>
+                            <td>85</td>
+                            <td>90</td>
+                            <td>Pass</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">14. Accessible Header Structure</h2>
+
+            <p>
+                A well-structured table should clearly identify relationships
+                between headers and data cells.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+
+            &lt;th scope="col"&gt;Student&lt;/th&gt;
+            &lt;th scope="col"&gt;Course&lt;/th&gt;
+            &lt;th scope="col"&gt;Marks&lt;/th&gt;
+
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+
+            &lt;th scope="row"&gt;John&lt;/th&gt;
+            &lt;td&gt;HTML&lt;/td&gt;
+            &lt;td&gt;85&lt;/td&gt;
+
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">15. headers and id Attributes</h2>
+
+            <p>
+                For complex tables with multiple levels of headers, the
+                <code>headers</code> attribute can associate a data cell
+                with one or more header cells by their <code>id</code>.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th id="student"&gt;Student&lt;/th&gt;
+        &lt;th id="course"&gt;Course&lt;/th&gt;
+        &lt;th id="marks"&gt;Marks&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td headers="student"&gt;John&lt;/td&gt;
+        &lt;td headers="course"&gt;HTML&lt;/td&gt;
+        &lt;td headers="marks"&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                The <code>headers</code> and <code>id</code> relationship is
+                particularly useful for complex data tables with multiple
+                header associations.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">16. Column Header Example</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Product&lt;/th&gt;
+            &lt;th scope="col"&gt;Price&lt;/th&gt;
+            &lt;th scope="col"&gt;Quantity&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;Laptop&lt;/td&gt;
+            &lt;td&gt;50000&lt;/td&gt;
+            &lt;td&gt;2&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;Mouse&lt;/td&gt;
+            &lt;td&gt;1000&lt;/td&gt;
+            &lt;td&gt;5&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">17. Row Header Example</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+
+        &lt;th scope="col"&gt;Course&lt;/th&gt;
+        &lt;th scope="col"&gt;Duration&lt;/th&gt;
+        &lt;th scope="col"&gt;Level&lt;/th&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;th scope="row"&gt;HTML&lt;/th&gt;
+        &lt;td&gt;2 Months&lt;/td&gt;
+        &lt;td&gt;Beginner&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;th scope="row"&gt;CSS&lt;/th&gt;
+        &lt;td&gt;2 Months&lt;/td&gt;
+        &lt;td&gt;Beginner&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+
+            <h2 class="h3 fw-bold mt-5">18. Header Styling with CSS</h2>
+
+            <p>
+                CSS can be used to customize the visual appearance of
+                table header cells.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    th {
+        background-color: #212529;
+        color: white;
+        padding: 12px;
+        text-align: left;
+    }
+
+&lt;/style&gt;</code></pre>
+
+
+            <h2 class="h3 fw-bold mt-5">19. Center Header Text</h2>
+
+            <pre><code>&lt;style&gt;
+
+    th {
+        text-align: center;
+    }
+
+&lt;/style&gt;</code></pre>
+
+
+
+            <h2 class="h3 fw-bold mt-5">20. Header Padding</h2>
+
+            <pre><code>&lt;style&gt;
+
+    th {
+        padding: 15px;
+    }
+
+&lt;/style&gt;</code></pre>
+
+
+
+            <h2 class="h3 fw-bold mt-5">21. Header Borders</h2>
+
+            <pre><code>&lt;style&gt;
+
+    th {
+        border: 1px solid #000;
+    }
+
+&lt;/style&gt;</code></pre>
+
+
+
+            <h2 class="h3 fw-bold mt-5">22. Complete Header Styling Example</h2>
+
+            <pre><code>&lt;style&gt;
+
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .student-table th,
+    .student-table td {
+        border: 1px solid #dee2e6;
+        padding: 12px;
+    }
+
+    .student-table th {
+        background-color: #212529;
+        color: white;
+        text-align: left;
+    }
+
+&lt;/style&gt;
+
+&lt;table class="student-table"&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+
+            &lt;th scope="col"&gt;Name&lt;/th&gt;
+            &lt;th scope="col"&gt;Course&lt;/th&gt;
+            &lt;th scope="col"&gt;Marks&lt;/th&gt;
+
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;John&lt;/td&gt;
+            &lt;td&gt;HTML&lt;/td&gt;
+            &lt;td&gt;85&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">23. Header vs Data Cells</h2>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Element</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>&lt;th&gt;</code></td>
+                        <td>Defines a header cell.</td>
+                        <td><code>&lt;th&gt;Name&lt;/th&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;td&gt;</code></td>
+                        <td>Defines a normal data cell.</td>
+                        <td><code>&lt;td&gt;John&lt;/td&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">24. Common Header Mistakes</h2>
+
+            <ul>
+                <li>Using <code>&lt;td&gt;</code> instead of <code>&lt;th&gt;</code> for headers.</li>
+                <li>Creating unclear or missing header labels.</li>
+                <li>Using incorrect <code>scope</code> values.</li>
+                <li>Using too many grouped header levels without a clear structure.</li>
+                <li>Forgetting accessible relationships in complex tables.</li>
+                <li>Using CSS styling without providing semantic table headers.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">25. Best Practices</h2>
+
+            <ul>
+                <li>Use <code>&lt;th&gt;</code> for actual table headers.</li>
+                <li>Use <code>scope="col"</code> for column headers when appropriate.</li>
+                <li>Use <code>scope="row"</code> for row headers when appropriate.</li>
+                <li>Use <code>&lt;thead&gt;</code> for header rows.</li>
+                <li>Use <code>colspan</code> and <code>rowspan</code> carefully.</li>
+                <li>Keep complex table relationships clear.</li>
+                <li>Use CSS for visual styling rather than replacing semantic structure.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">26. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML table containing:</strong></p>
+
+                <ol>
+                    <li>Three column headers using <code>&lt;th&gt;</code>.</li>
+                    <li>Row headers using <code>scope="row"</code>.</li>
+                    <li>Column headers using <code>scope="col"</code>.</li>
+                    <li>A header spanning two columns using <code>colspan</code>.</li>
+                    <li>A header spanning two rows using <code>rowspan</code>.</li>
+                    <li>A table using <code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code>.</li>
+                    <li>Accessible associations using <code>headers</code> and <code>id</code>.</li>
+                    <li>CSS styling for the header row.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">27. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;Table Headers Example&lt;/title&gt;
+
+    &lt;style&gt;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Student Performance&lt;/h1&gt;
+
+    &lt;table&gt;
+
+        &lt;thead&gt;
+
+            &lt;tr&gt;
+                &lt;th rowspan="2" scope="col"&gt;Student&lt;/th&gt;
+                &lt;th colspan="2"&gt;Marks&lt;/th&gt;
+                &lt;th rowspan="2" scope="col"&gt;Result&lt;/th&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;th scope="col"&gt;Theory&lt;/th&gt;
+                &lt;th scope="col"&gt;Practical&lt;/th&gt;
+            &lt;/tr&gt;
+
+        &lt;/thead&gt;
+
+        &lt;tbody&gt;
+
+            &lt;tr&gt;
+                &lt;th scope="row"&gt;John&lt;/th&gt;
+                &lt;td&gt;85&lt;/td&gt;
+                &lt;td&gt;90&lt;/td&gt;
+                &lt;td&gt;Pass&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;th scope="row"&gt;David&lt;/th&gt;
+                &lt;td&gt;88&lt;/td&gt;
+                &lt;td&gt;92&lt;/td&gt;
+                &lt;td&gt;Pass&lt;/td&gt;
+            &lt;/tr&gt;
+
+        &lt;/tbody&gt;
+
+    &lt;/table&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    HTML table headers are created using the <code>&lt;th&gt;</code>
+                    element and are used to identify rows or columns. The
+                    <code>scope</code> attribute can clarify header relationships,
+                    while <code>colspan</code> and <code>rowspan</code> allow
+                    headers to span multiple columns or rows. For complex tables,
+                    the <code>headers</code> and <code>id</code> attributes can
+                    provide explicit associations between data cells and headers.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Tables", "ListsAndTables", new { area = "HTML" })">
+                    ← Previous: Tables
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("ColspanAndRowspan", "ListsAndTables", new { area = "HTML" })">
+                    Next: Colspan and Rowspan →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

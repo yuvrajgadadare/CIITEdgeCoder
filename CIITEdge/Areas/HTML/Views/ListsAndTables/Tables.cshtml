@@ -1,0 +1,1215 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Tables";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+
+    .demo-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+        .demo-table th,
+        .demo-table td {
+            border: 1px solid #212529;
+            padding: 10px;
+        }
+
+        .demo-table th {
+            background-color: #e9ecef;
+        }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Tables</h1>
+
+            <p class="lead">
+                HTML tables are used to organize and present structured data
+                in rows and columns.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. What is an HTML Table?</h2>
+
+            <p>
+                An HTML table displays information in a grid-like structure
+                consisting of rows and columns.
+            </p>
+
+            <p>
+                Tables are useful for structured data such as:
+            </p>
+
+            <ul>
+                <li>Student records</li>
+                <li>Employee information</li>
+                <li>Product details</li>
+                <li>Course schedules</li>
+                <li>Reports</li>
+                <li>Price lists</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">2. Basic Table Structure</h2>
+
+            <p>
+                A basic HTML table is created using the
+                <code>&lt;table&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+        &lt;th&gt;Marks&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+
+                <table class="demo-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Marks</th>
+                    </tr>
+
+                    <tr>
+                        <td>John</td>
+                        <td>HTML</td>
+                        <td>85</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">3. The table Element</h2>
+
+            <p>
+                The <code>&lt;table&gt;</code> element is the main container
+                for all table rows and cells.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;!-- Table content goes here --&gt;
+
+&lt;/table&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">4. The tr Element</h2>
+
+            <p>
+                The <code>&lt;tr&gt;</code> element defines a table row.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+    &lt;td&gt;John&lt;/td&gt;
+    &lt;td&gt;HTML&lt;/td&gt;
+    &lt;td&gt;85&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">5. The th Element</h2>
+
+            <p>
+                The <code>&lt;th&gt;</code> element defines a table header cell.
+                It identifies the data represented by a column or row.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;th&gt;Student Name&lt;/th&gt;
+    &lt;th&gt;Course&lt;/th&gt;
+    &lt;th&gt;Marks&lt;/th&gt;
+
+&lt;/tr&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">6. The td Element</h2>
+
+            <p>
+                The <code>&lt;td&gt;</code> element defines a normal data cell.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;td&gt;John&lt;/td&gt;
+    &lt;td&gt;HTML&lt;/td&gt;
+    &lt;td&gt;85&lt;/td&gt;
+
+&lt;/tr&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">7. Table with Multiple Rows</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+        &lt;th&gt;Marks&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;David&lt;/td&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+        &lt;td&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Sarah&lt;/td&gt;
+        &lt;td&gt;JavaScript&lt;/td&gt;
+        &lt;td&gt;88&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">8. Adding Borders with CSS</h2>
+
+            <p>
+                CSS is commonly used to add borders to tables and cells.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">9. border-collapse</h2>
+
+            <p>
+                The <code>border-collapse</code> property controls whether
+                adjacent table borders are separated or merged.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    table {
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Common Choice:</strong>
+                <code>border-collapse: collapse;</code> gives a clean,
+                compact table appearance.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">10. Table Width</h2>
+
+            <p>
+                CSS can be used to control the width of a table.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    table {
+        width: 100%;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <p>
+                A percentage-based width can make the table adapt to the
+                available container.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">11. Cell Padding</h2>
+
+            <p>
+                The <code>padding</code> property adds space inside table cells.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    th,
+    td {
+        padding: 12px;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">12. Text Alignment</h2>
+
+            <p>
+                The <code>text-align</code> property can control horizontal
+                text alignment.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    th,
+    td {
+        text-align: left;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">13. Table Header Styling</h2>
+
+            <pre><code>&lt;style&gt;
+
+    th {
+        background-color: #212529;
+        color: white;
+        padding: 12px;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">14. Table Row Styling</h2>
+
+            <p>
+                CSS selectors can be used to style table rows.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <p>
+                The <code>:nth-child(even)</code> selector can create alternating
+                row styles.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">15. Hover Effect</h2>
+
+            <p>
+                The <code>:hover</code> pseudo-class can highlight a row
+                when the user moves the pointer over it.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    tr:hover {
+        background-color: #e9ecef;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">16. Table Caption</h2>
+
+            <p>
+                The <code>&lt;caption&gt;</code> element gives the table
+                a visible title or description.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;caption&gt;Student Details&lt;/caption&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">17. thead Element</h2>
+
+            <p>
+                The <code>&lt;thead&gt;</code> element groups the header rows
+                of a table.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Marks&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">18. tbody Element</h2>
+
+            <p>
+                The <code>&lt;tbody&gt;</code> element groups the main data rows.
+            </p>
+
+            <pre><code>&lt;tbody&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;David&lt;/td&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+        &lt;td&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/tbody&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">19. tfoot Element</h2>
+
+            <p>
+                The <code>&lt;tfoot&gt;</code> element groups summary or footer rows.
+            </p>
+
+            <pre><code>&lt;tfoot&gt;
+
+    &lt;tr&gt;
+        &lt;td colspan="2"&gt;Average&lt;/td&gt;
+        &lt;td&gt;87.5&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/tfoot&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2 class="h3 fw-bold mt-5">20. Complete Table Structure</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;caption&gt;Student Results&lt;/caption&gt;
+
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Marks&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;John&lt;/td&gt;
+            &lt;td&gt;HTML&lt;/td&gt;
+            &lt;td&gt;85&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;David&lt;/td&gt;
+            &lt;td&gt;CSS&lt;/td&gt;
+            &lt;td&gt;90&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+    &lt;tfoot&gt;
+
+        &lt;tr&gt;
+            &lt;td colspan="2"&gt;Average&lt;/td&gt;
+            &lt;td&gt;87.5&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tfoot&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">21. Colspan</h2>
+
+            <p>
+                The <code>colspan</code> attribute allows one cell to span
+                across multiple columns.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th colspan="3"&gt;
+            Student Information
+        &lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">22. Rowspan</h2>
+
+            <p>
+                The <code>rowspan</code> attribute allows a cell to span
+                across multiple rows.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;Frontend&lt;/th&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">23. Table with Colspan and Rowspan</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;Course&lt;/th&gt;
+        &lt;th colspan="2"&gt;Performance&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Theory&lt;/th&gt;
+        &lt;th&gt;Practical&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+        &lt;td&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">24. Table with Links</h2>
+
+            <p>
+                Table cells can contain hyperlinks.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+        &lt;th&gt;Details&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;
+            &lt;a href="html.html"&gt;View Course&lt;/a&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">25. Table with Images</h2>
+
+            <p>
+                Images can also be placed inside table cells.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Product&lt;/th&gt;
+        &lt;th&gt;Image&lt;/th&gt;
+        &lt;th&gt;Price&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Laptop&lt;/td&gt;
+        &lt;td&gt;
+            &lt;img src="laptop.jpg"
+                 alt="Laptop"
+                 width="100"&gt;
+        &lt;/td&gt;
+        &lt;td&gt;50000&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">26. Table with Numeric Data</h2>
+
+            <p>
+                Tables are commonly used to display numeric information.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Product&lt;/th&gt;
+        &lt;th&gt;Quantity&lt;/th&gt;
+        &lt;th&gt;Price&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Laptop&lt;/td&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td&gt;100000&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Mouse&lt;/td&gt;
+        &lt;td&gt;5&lt;/td&gt;
+        &lt;td&gt;5000&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">27. Column Alignment</h2>
+
+            <p>
+                Different columns can use different alignment styles.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    .name-column {
+        text-align: left;
+    }
+
+    .marks-column {
+        text-align: center;
+    }
+
+    .price-column {
+        text-align: right;
+    }
+
+&lt;/style&gt;
+
+&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th class="name-column"&gt;Product&lt;/th&gt;
+        &lt;th class="marks-column"&gt;Quantity&lt;/th&gt;
+        &lt;th class="price-column"&gt;Price&lt;/th&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">28. Responsive Tables</h2>
+
+            <p>
+                Wide tables may require horizontal scrolling on smaller screens.
+                A wrapper can be used to allow horizontal scrolling.
+            </p>
+
+            <pre><code>&lt;div style="overflow-x:auto;"&gt;
+
+    &lt;table&gt;
+
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Duration&lt;/th&gt;
+            &lt;th&gt;Marks&lt;/th&gt;
+            &lt;th&gt;Status&lt;/th&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;John&lt;/td&gt;
+            &lt;td&gt;HTML&lt;/td&gt;
+            &lt;td&gt;2 Months&lt;/td&gt;
+            &lt;td&gt;85&lt;/td&gt;
+            &lt;td&gt;Completed&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/table&gt;
+
+&lt;/div&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="note-box">
+                <strong>Tip:</strong>
+                Responsive behavior is especially important when a table contains
+                many columns.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">29. Accessible Table Headers</h2>
+
+            <p>
+                Use proper table headers to clearly identify the meaning of
+                table data.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th&gt;Student Name&lt;/th&gt;
+            &lt;th&gt;Course&lt;/th&gt;
+            &lt;th&gt;Marks&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;John&lt;/td&gt;
+            &lt;td&gt;HTML&lt;/td&gt;
+            &lt;td&gt;85&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">30. scope Attribute</h2>
+
+            <p>
+                The <code>scope</code> attribute can clarify whether a
+                header applies to a column or row.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th scope="col"&gt;Name&lt;/th&gt;
+        &lt;th scope="col"&gt;Course&lt;/th&gt;
+        &lt;th scope="col"&gt;Marks&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;th scope="row"&gt;John&lt;/th&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">31. Table Styling Example</h2>
+
+            <pre><code>&lt;style&gt;
+
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .student-table th,
+    .student-table td {
+        border: 1px solid #dee2e6;
+        padding: 12px;
+    }
+
+    .student-table th {
+        background-color: #212529;
+        color: white;
+    }
+
+    .student-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    .student-table tr:hover {
+        background-color: #e9ecef;
+    }
+
+&lt;/style&gt;
+
+&lt;table class="student-table"&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Course&lt;/th&gt;
+        &lt;th&gt;Marks&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;David&lt;/td&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+        &lt;td&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">32. Complete Student Table</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;Student Table&lt;/title&gt;
+
+    &lt;style&gt;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        caption {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Student Results&lt;/h1&gt;
+
+    &lt;table&gt;
+
+        &lt;caption&gt;
+            Student Performance
+        &lt;/caption&gt;
+
+        &lt;thead&gt;
+
+            &lt;tr&gt;
+                &lt;th scope="col"&gt;Name&lt;/th&gt;
+                &lt;th scope="col"&gt;Course&lt;/th&gt;
+                &lt;th scope="col"&gt;Marks&lt;/th&gt;
+                &lt;th scope="col"&gt;Status&lt;/th&gt;
+            &lt;/tr&gt;
+
+        &lt;/thead&gt;
+
+        &lt;tbody&gt;
+
+            &lt;tr&gt;
+                &lt;td&gt;John&lt;/td&gt;
+                &lt;td&gt;HTML&lt;/td&gt;
+                &lt;td&gt;85&lt;/td&gt;
+                &lt;td&gt;Pass&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;td&gt;David&lt;/td&gt;
+                &lt;td&gt;CSS&lt;/td&gt;
+                &lt;td&gt;90&lt;/td&gt;
+                &lt;td&gt;Pass&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+                &lt;td&gt;Sarah&lt;/td&gt;
+                &lt;td&gt;JavaScript&lt;/td&gt;
+                &lt;td&gt;88&lt;/td&gt;
+                &lt;td&gt;Pass&lt;/td&gt;
+            &lt;/tr&gt;
+
+        &lt;/tbody&gt;
+
+        &lt;tfoot&gt;
+
+            &lt;tr&gt;
+                &lt;td colspan="2"&gt;Average Marks&lt;/td&gt;
+                &lt;td&gt;87.6&lt;/td&gt;
+                &lt;td&gt;Good&lt;/td&gt;
+            &lt;/tr&gt;
+
+        &lt;/tfoot&gt;
+
+    &lt;/table&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">33. Common Mistakes</h2>
+
+            <ul>
+                <li>Using tables for general page layout.</li>
+                <li>Forgetting table headers.</li>
+                <li>Incorrectly matching rows and cells.</li>
+                <li>Using <code>rowspan</code> or <code>colspan</code> incorrectly.</li>
+                <li>Creating very wide tables without responsive handling.</li>
+                <li>Using too much inline styling.</li>
+                <li>Creating unclear table structures.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">34. Best Practices</h2>
+
+            <ul>
+                <li>Use tables for actual tabular data.</li>
+                <li>Use <code>&lt;th&gt;</code> for meaningful headers.</li>
+                <li>Use <code>&lt;caption&gt;</code> when a table needs a title.</li>
+                <li>Use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and <code>&lt;tfoot&gt;</code> for larger tables.</li>
+                <li>Use CSS for presentation and styling.</li>
+                <li>Use responsive techniques for wide tables.</li>
+                <li>Keep table structures simple and understandable.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">35. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML page containing:</strong></p>
+
+                <ol>
+                    <li>A basic student table.</li>
+                    <li>A table with five rows.</li>
+                    <li>A table with a caption.</li>
+                    <li>A table using <code>thead</code>, <code>tbody</code>, and <code>tfoot</code>.</li>
+                    <li>A table using <code>colspan</code>.</li>
+                    <li>A table using <code>rowspan</code>.</li>
+                    <li>A table containing links.</li>
+                    <li>A table containing images.</li>
+                    <li>A responsive table.</li>
+                    <li>A table with accessible headers using <code>scope</code>.</li>
+                </ol>
+            </div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    HTML tables organize structured information into rows and columns.
+                    The main elements are <code>&lt;table&gt;</code>,
+                    <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, and
+                    <code>&lt;td&gt;</code>. Larger tables can use
+                    <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code>,
+                    <code>&lt;tbody&gt;</code>, and <code>&lt;tfoot&gt;</code>.
+                    The <code>colspan</code> and <code>rowspan</code> attributes
+                    allow cells to span multiple columns or rows. CSS can be used
+                    to create borders, spacing, alignment, hover effects, and
+                    responsive table layouts.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("NestedLists", "ListsAndTables", new { area = "HTML" })">
+                    ← Previous: Nested Lists
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("TableHeaders", "ListsAndTables", new { area = "HTML" })">
+                    Next: Table Headers →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

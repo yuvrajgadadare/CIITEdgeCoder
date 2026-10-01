@@ -1,0 +1,902 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Arithmetic Operators";
+}
+
+<style>
+
+    #javascript-arithmetic-operators-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-arithmetic-operators-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-arithmetic-operators-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-arithmetic-operators-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-arithmetic-operators-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-arithmetic-operators-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       INFO BOX
+       ========================================================= */
+
+    #javascript-arithmetic-operators-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-arithmetic-operators-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-arithmetic-operators-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-arithmetic-operators-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       OPERATOR REFERENCE
+       ========================================================= */
+
+    #javascript-arithmetic-operators-page .operator-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    #javascript-arithmetic-operators-page .operator-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 18px;
+        text-align: center;
+    }
+
+    #javascript-arithmetic-operators-page .operator-symbol {
+        width: 45px;
+        height: 45px;
+        margin: 0 auto 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #5b21b6;
+        color: #ffffff;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    #javascript-arithmetic-operators-page .operator-card h5 {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    #javascript-arithmetic-operators-page .operator-card p {
+        color: #6c757d;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-arithmetic-operators-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-arithmetic-operators-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-arithmetic-operators-page .diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-arithmetic-operators-page .diagram-item {
+        min-width: 130px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-arithmetic-operators-page .diagram-item small {
+        display: block;
+        color: #6c757d;
+        margin-top: 5px;
+        font-weight: 400;
+    }
+
+    #javascript-arithmetic-operators-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-arithmetic-operators-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-arithmetic-operators-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-arithmetic-operators-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-arithmetic-operators-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-arithmetic-operators-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-arithmetic-operators-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-arithmetic-operators-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-arithmetic-operators-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-arithmetic-operators-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-arithmetic-operators-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-arithmetic-operators-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-arithmetic-operators-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-arithmetic-operators-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-arithmetic-operators-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-arithmetic-operators-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-arithmetic-operators-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-arithmetic-operators-page .operator-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-arithmetic-operators-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-arithmetic-operators-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-arithmetic-operators-page .operator-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #javascript-arithmetic-operators-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-arithmetic-operators-page .nav-btn {
+            justify-content: center;
+        }
+
+        #javascript-arithmetic-operators-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-arithmetic-operators-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Arithmetic Operators
+                </h1>
+
+                <p class="lead-text">
+                    Learn how to perform mathematical calculations in JavaScript
+                    using arithmetic operators.
+                </p>
+
+
+                <!-- =================================================
+                     INTRODUCTION
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What are Arithmetic Operators?
+                </h2>
+
+                <p class="section-text">
+                    Arithmetic operators are symbols used to perform mathematical
+                    calculations with numeric values.
+                </p>
+
+                <p class="section-text">
+                    JavaScript provides arithmetic operators for addition,
+                    subtraction, multiplication, division, remainder,
+                    and exponentiation.
+                </p>
+
+
+                <!-- =================================================
+                     OPERATOR REFERENCE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Arithmetic Operators
+                </h2>
+
+                <div class="operator-grid">
+
+                    <div class="operator-card">
+
+                        <div class="operator-symbol">
+                            +
+                        </div>
+
+                        <h5>
+                            Addition
+                        </h5>
+
+                        <p>
+                            Adds two values.
+                        </p>
+
+                    </div>
+
+
+                    <div class="operator-card">
+
+                        <div class="operator-symbol">
+                            -
+                        </div>
+
+                        <h5>
+                            Subtraction
+                        </h5>
+
+                        <p>
+                            Subtracts one value from another.
+                        </p>
+
+                    </div>
+
+
+                    <div class="operator-card">
+
+                        <div class="operator-symbol">
+                            *
+                        </div>
+
+                        <h5>
+                            Multiplication
+                        </h5>
+
+                        <p>
+                            Multiplies two values.
+                        </p>
+
+                    </div>
+
+
+                    <div class="operator-card">
+
+                        <div class="operator-symbol">
+                            /
+                        </div>
+
+                        <h5>
+                            Division
+                        </h5>
+
+                        <p>
+                            Divides one value by another.
+                        </p>
+
+                    </div>
+
+
+                    <div class="operator-card">
+
+                        <div class="operator-symbol">
+                            %
+                        </div>
+
+                        <h5>
+                            Remainder
+                        </h5>
+
+                        <p>
+                            Returns the remainder after division.
+                        </p>
+
+                    </div>
+
+
+                    <div class="operator-card">
+
+                        <div class="operator-symbol">
+                            **
+                        </div>
+
+                        <h5>
+                            Exponentiation
+                        </h5>
+
+                        <p>
+                            Raises a number to a power.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How Arithmetic Operators Work
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Value → Operator → Result
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            20
+
+                            <small>
+                                First Value
+                            </small>
+                        </div>
+
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+
+                        <div class="diagram-item">
+                            +
+
+                            <small>
+                                Addition
+                            </small>
+                        </div>
+
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+
+                        <div class="diagram-item">
+                            5
+
+                            <small>
+                                Second Value
+                            </small>
+                        </div>
+
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+
+                        <div class="diagram-item">
+                            25
+
+                            <small>
+                                Final Result
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Basic Arithmetic Operations
+                </h2>
+
+                <p class="section-text">
+                    We can use arithmetic operators directly with numeric values
+                    or store the values inside variables.
+                </p>
+
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const firstNumber = 20;
+const secondNumber = 5;
+
+const addition = firstNumber + secondNumber;
+const subtraction = firstNumber - secondNumber;
+const multiplication = firstNumber * secondNumber;
+const division = firstNumber / secondNumber;
+
+console.log("Addition:", addition);
+console.log("Subtraction:", subtraction);
+console.log("Multiplication:", multiplication);
+console.log("Division:", division);</code></pre>
+
+
+                    <!-- TRY IT IS OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryArithmeticExample()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Addition: 25<br />
+                    Subtraction: 15<br />
+                    Multiplication: 100<br />
+                    Division: 4
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Remainder and Exponentiation
+                </h2>
+
+                <p class="section-text">
+                    The remainder operator (%) returns the value left after division.
+                    The exponentiation operator (**) is used to calculate powers.
+                </p>
+
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const students = 27;
+const groups = 5;
+
+const studentsPerGroup = Math.floor(students / groups);
+const remainingStudents = students % groups;
+const powerResult = 2 ** 3;
+
+console.log("Students Per Group:", studentsPerGroup);
+console.log("Remaining Students:", remainingStudents);
+console.log("2 Power 3:", powerResult);</code></pre>
+
+
+                    <!-- TRY IT IS OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryArithmeticExample2()">
+
+                            <span>▶</span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Students Per Group: 5<br />
+                    Remaining Students: 2<br />
+                    2 Power 3: 8
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Note
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Understanding the Remainder Operator
+                    </h5>
+
+                    <p>
+                        The <strong>%</strong> operator returns the remainder
+                        after division.
+                    </p>
+
+                    <p>
+                        For example,
+                        <strong>17 % 5</strong> gives <strong>2</strong>
+                        because 2 remains after dividing 17 by 5.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Arithmetic operators are used for mathematical calculations
+                        in JavaScript. The main operators are
+                        <strong>+</strong> for addition,
+                        <strong>-</strong> for subtraction,
+                        <strong>*</strong> for multiplication,
+                        <strong>/</strong> for division,
+                        <strong>%</strong> for remainder,
+                        and <strong>**</strong> for exponentiation.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Index", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Operators &amp; Control Flow
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("ComparisonLogicalOperators", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Comparison &amp; Logical Operators
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryArithmeticExample() {
+
+        const code =
+            'const firstNumber = 20;\n' +
+            'const secondNumber = 5;\n' +
+            '\n' +
+            'const addition = firstNumber + secondNumber;\n' +
+            'const subtraction = firstNumber - secondNumber;\n' +
+            'const multiplication = firstNumber * secondNumber;\n' +
+            'const division = firstNumber / secondNumber;\n' +
+            '\n' +
+            'console.log("Addition:", addition);\n' +
+            'console.log("Subtraction:", subtraction);\n' +
+            'console.log("Multiplication:", multiplication);\n' +
+            'console.log("Division:", division);';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryArithmeticExample2() {
+
+        const code =
+            'const students = 27;\n' +
+            'const groups = 5;\n' +
+            '\n' +
+            'const studentsPerGroup = Math.floor(students / groups);\n' +
+            'const remainingStudents = students % groups;\n' +
+            'const powerResult = 2 ** 3;\n' +
+            '\n' +
+            'console.log("Students Per Group:", studentsPerGroup);\n' +
+            'console.log("Remaining Students:", remainingStudents);\n' +
+            'console.log("2 Power 3:", powerResult);';
+
+        openCompiler(code);
+
+    }
+
+</script>

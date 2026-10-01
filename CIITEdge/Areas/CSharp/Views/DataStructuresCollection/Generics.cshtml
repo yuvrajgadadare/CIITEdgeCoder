@@ -1,0 +1,1003 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Generics";
+}
+<style>
+.try-it-btn {
+
+    background: #198754;
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 6px 12px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.2s ease;
+
+}
+ 
+.try-it-btn:hover {
+
+    background: #157347;
+
+    color: #fff;
+
+}
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <section class="col-lg-9">
+
+            <!-- GENERICS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4" id="generics">
+
+                <h2 class="h1 fw-bold text-dark mt-1 mb-4">Generics in C#</h2>
+
+                <p class="text-muted mb-4">
+                    Generics allow us to create classes, methods, interfaces, and collections
+                    that can work with different data types while providing type safety.
+                </p>
+
+                <div class="alert alert-info">
+                    <strong>Simple Definition:</strong>
+                    Generics allow us to write reusable code that can work with different
+                    data types without rewriting the same code.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">Why Do We Use Generics?</h4>
+
+                <p class="text-muted">
+                    Without generics, we may need to create separate classes or methods
+                    for different data types. Generics help us write one reusable
+                    implementation.
+                </p>
+
+                <ul class="text-muted">
+                    <li>Provides type safety.</li>
+                    <li>Reduces duplicate code.</li>
+                    <li>Improves code reusability.</li>
+                    <li>Provides better compile-time checking.</li>
+                    <li>Works efficiently with .NET collections.</li>
+                    <li>Makes applications easier to maintain.</li>
+                </ul>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic Syntax
+                </h4>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <div class="code-lang-tag">C#</div>
+                    <pre class="mb-0"><code>class ClassName&lt;T&gt;
+{
+    // Class members
+}</code></pre>
+                </div>
+
+                <p class="text-muted">
+                    Here, <strong>T</strong> represents a type parameter.
+                    It can represent different data types such as int, string,
+                    double, or custom classes.
+                </p>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic Class
+                </h4>
+
+                <p class="text-muted">
+                    A generic class allows us to create a class that can work
+                    with different data types.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Box&lt;T&gt;
+{
+    public T Value { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Box&lt;int&gt; numberBox = new Box&lt;int&gt;();
+
+        numberBox.Value = 100;
+
+        Console.WriteLine(numberBox.Value);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>100</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic Class with Different Data Types
+                </h4>
+
+                <p class="text-muted">
+                    The same generic class can be used with different data types.
+                </p>
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Box&lt;T&gt;
+{
+    public T Value { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Box&lt;int&gt; numberBox = new Box&lt;int&gt;();
+        numberBox.Value = 100;
+
+        Box&lt;string&gt; textBox = new Box&lt;string&gt;();
+        textBox.Value = "CIIT";
+
+        Console.WriteLine(numberBox.Value);
+        Console.WriteLine(textBox.Value);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>100
+CIIT</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic Method
+                </h4>
+
+                <p class="text-muted">
+                    A generic method can work with different data types without
+                    creating separate methods for each type.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Program
+{
+    static void Display&lt;T&gt;(T value)
+    {
+        Console.WriteLine(value);
+    }
+
+    static void Main()
+    {
+        Display&lt;int&gt;(100);
+        Display&lt;string&gt;("Hello");
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>100
+Hello</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic Method Type Inference
+                </h4>
+
+                <p class="text-muted">
+                    C# can often determine the generic type automatically from
+                    the value passed to the method.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+static void Display&lt;T&gt;(T value)
+{
+    Console.WriteLine(value);
+}
+
+Display(100);
+Display("CIIT");
+Display(25.5);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>100
+CIIT
+25.5</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic List
+                </h4>
+
+                <p class="text-muted">
+                    One of the most common examples of generics in C# is
+                    <strong>List&lt;T&gt;</strong>.
+                    The type inside &lt; &gt; specifies what type of data the list can store.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers = new List&lt;int&gt;();
+
+numbers.Add(10);
+numbers.Add(20);
+numbers.Add(30);
+
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>10
+20
+30</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic List with String
+                </h4>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;string&gt; students = new List&lt;string&gt;();
+
+students.Add("Rahul");
+students.Add("Sneha");
+students.Add("Amit");
+
+foreach (string student in students)
+{
+    Console.WriteLine(student);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Rahul
+Sneha
+Amit</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic Dictionary
+                </h4>
+
+                <p class="text-muted">
+                    Dictionary&lt;TKey, TValue&gt; is another commonly used generic collection.
+                    It stores data in key-value pairs.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+Dictionary&lt;int, string&gt; students =
+    new Dictionary&lt;int, string&gt;();
+
+students.Add(101, "Rahul");
+students.Add(102, "Sneha");
+students.Add(103, "Amit");
+
+Console.WriteLine(students[102]);</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Sneha</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic Interface
+                </h4>
+
+                <p class="text-muted">
+                    Interfaces can also use generic type parameters.
+                    This allows an interface to work with different types.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Storage&lt;T&gt; where T : class
+{
+    public T Value { get; set; }
+}
+
+class Student
+{
+    public string Name { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Storage&lt;Student&gt; storage = new Storage&lt;Student&gt;();
+
+        storage.Value = new Student
+        {
+            Name = "Rahul"
+        };
+
+        Console.WriteLine(storage.Value.Name);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Student Added: Rahul</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generic Constraints
+                </h4>
+
+                <p class="text-muted">
+                    Generic constraints allow us to restrict the types that can
+                    be used with a generic class or method.
+                </p>
+
+                <p class="text-muted">
+                    For example, the <strong>where T : class</strong> constraint
+                    specifies that T must be a reference type.
+                </p>
+
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+class Storage&lt;T&gt; where T : class
+{
+    public T Value { get; set; }
+}
+
+class Student
+{
+    public string Name { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Storage&lt;Student&gt; storage = new Storage&lt;Student&gt;();
+
+        storage.Value = new Student
+        {
+            Name = "Rahul"
+        };
+
+        Console.WriteLine(storage.Value.Name);
+    }
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>Rahul</code></pre>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Type Safety with Generics
+                </h4>
+
+                <p class="text-muted">
+                    Generics provide compile-time type checking.
+                    This helps prevent invalid data from being added to a strongly
+                    typed collection.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;int&gt; numbers = new List&lt;int&gt;();
+
+numbers.Add(10);
+numbers.Add(20);
+
+// numbers.Add("Hello");  // Compile-time error</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+                <div class="alert alert-warning">
+                    <strong>Important:</strong>
+                    A List&lt;int&gt; can store only integer values.
+                    Trying to add a string will result in a compile-time error.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Generics vs Non-Generic Collections
+                </h4>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Generics</th>
+                                <th>Non-Generic</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Type Safety</td>
+                                <td>Strong type safety</td>
+                                <td>Less type safety</td>
+                            </tr>
+                            <tr>
+                                <td>Performance</td>
+                                <td>Generally better</td>
+                                <td>May require casting</td>
+                            </tr>
+                            <tr>
+                                <td>Code Reusability</td>
+                                <td>High</td>
+                                <td>Lower</td>
+                            </tr>
+                            <tr>
+                                <td>Common Example</td>
+                                <td>List&lt;T&gt;</td>
+                                <td>ArrayList</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Common Generic Types in .NET
+                </h4>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Generic Type</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>List&lt;T&gt;</td>
+                                <td>Stores a dynamic list of strongly typed elements</td>
+                            </tr>
+                            <tr>
+                                <td>Dictionary&lt;TKey,TValue&gt;</td>
+                                <td>Stores key-value pairs</td>
+                            </tr>
+                            <tr>
+                                <td>HashSet&lt;T&gt;</td>
+                                <td>Stores unique elements</td>
+                            </tr>
+                            <tr>
+                                <td>Queue&lt;T&gt;</td>
+                                <td>Stores elements using FIFO behavior</td>
+                            </tr>
+                            <tr>
+                                <td>Stack&lt;T&gt;</td>
+                                <td>Stores elements using LIFO behavior</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                   Example 👨‍🏫🌍
+                </h4>
+
+                <p class="text-muted">
+                    Generics are widely used in real-world .NET applications.
+                    For example, an application may use a generic repository
+                    to work with different database entities.
+                </p>
+
+
+                <div class="try-it-example">
+ 
+    <div class="code-block shadow-sm">
+ 
+        <div class="code-lang-tag">
+            C#
+</div>
+ 
+        <pre class="mb-0"><code>using System;
+ 
+List&lt;string&gt; courses = new List&lt;string&gt;();
+
+courses.Add("C#");
+courses.Add(".NET");
+courses.Add("ASP.NET Core");
+
+foreach (string course in courses)
+{
+    Console.WriteLine(course);
+}</code></pre>
+ 
+    </div>
+ 
+    <div class="text-end mt-2 mb-3">
+<button type="button"
+                class="try-it-btn"
+                onclick="tryItYourself(this)">
+<i class="bi bi-play-fill me-1"></i>
+            Try It
+</button>
+</div>
+ 
+</div>
+
+
+
+
+                <h5 class="fw-bold">Output</h5>
+
+                <div class="code-block mb-4 shadow-sm">
+                    <pre class="mb-0"><code>C#
+.NET
+ASP.NET Core</code></pre>
+                </div>
+
+
+                <div class="alert alert-success">
+                    <strong>CIIT Practical Point:</strong>
+                    Generics are used extensively in modern .NET development,
+                    especially with collections, repositories, services,
+                    APIs and reusable business logic.
+                </div>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Common Mistakes with Generics
+                </h4>
+
+                <ul class="text-muted">
+                    <li>Use the correct generic type for your data.</li>
+                    <li>Do not try to add incompatible data types to strongly typed collections.</li>
+                    <li>Understand the difference between TKey and TValue in Dictionary.</li>
+                    <li>Use generic constraints when a type needs specific requirements.</li>
+                    <li>Prefer generic collections for strongly typed application code.</li>
+                </ul>
+
+
+                <h4 class="fw-bold text-dark mt-4 mb-3">
+                    Interview Questions
+                </h4>
+
+                <h5 class="fw-bold">1. What are Generics in C#?</h5>
+
+                <p class="text-muted mb-4">
+                    Generics allow developers to create reusable and type-safe
+                    classes, methods, interfaces and collections.
+                </p>
+
+                <h5 class="fw-bold">2. What is the advantage of Generics?</h5>
+
+                <p class="text-muted mb-4">
+                    Generics provide type safety, code reusability and better maintainability.
+                </p>
+
+                <h5 class="fw-bold">3. What is T in Generics?</h5>
+
+                <p class="text-muted mb-4">
+                    T is a type parameter that represents a data type.
+                </p>
+
+                <h5 class="fw-bold">4. What is a generic class?</h5>
+
+                <p class="text-muted mb-4">
+                    A generic class is a class that can work with different data types
+                    using a type parameter.
+                </p>
+
+                <h5 class="fw-bold">5. What is a generic method?</h5>
+
+                <p class="text-muted mb-4">
+                    A generic method is a method that can work with different
+                    data types using a type parameter.
+                </p>
+
+                <h5 class="fw-bold">6. What is a generic constraint?</h5>
+
+                <p class="text-muted">
+                    A generic constraint restricts the types that can be used
+                    as a generic type parameter.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Generics Summary
+                </h2>
+
+                <ul class="text-muted">
+                    <li>Generics allow reusable and type-safe code.</li>
+                    <li>Generic classes can work with different data types.</li>
+                    <li>Generic methods can work with different data types.</li>
+                    <li>List&lt;T&gt; is a commonly used generic collection.</li>
+                    <li>Dictionary&lt;TKey,TValue&gt; stores key-value pairs.</li>
+                    <li>Generic constraints restrict valid type parameters.</li>
+                    <li>Generics improve code reusability and maintainability.</li>
+                    <li>Generics are widely used in modern .NET applications.</li>
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE QUESTIONS -->
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <h2 class="h2 fw-bold text-dark mt-1 mb-4">
+                    Practice Questions
+                </h2>
+
+                <ol class="text-muted">
+                    <li>Create a generic class that stores an integer value.</li>
+                    <li>Create a generic class that stores a string value.</li>
+                    <li>Create a generic method to display different data types.</li>
+                    <li>Create a List&lt;int&gt; and add five numbers.</li>
+                    <li>Create a List&lt;string&gt; and add five student names.</li>
+                    <li>Create a Dictionary&lt;int,string&gt; for student records.</li>
+                    <li>Create a generic class with a class constraint.</li>
+                    <li>Explain the difference between generic and non-generic collections.</li>
+                    <li>Explain the advantages of Generics in C#.</li>
+                    <li>Create a generic repository-style class example.</li>
+                </ol>
+
+            </div>
+
+
+            <!-- TOPIC NAVIGATION -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+
+                <a href="/CSharp/DataStructuresCollection/Strings"
+                   class="btn btn-outline-secondary">
+                    ← Previous Topic
+                </a>    
+
+                <a href="/CSharp/DataStructuresCollection/Collections"
+                   class="btn btn-primary">
+                    Next Topic →
+                </a>
+
+            </div>
+
+        </section>
+    </div>
+</main>
+
+            <script>
+ 
+    function tryItYourself(button) {
+ 
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+ 
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+ 
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+ 
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+ 
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+ 
+        // Create temporary form
+
+        const form = document.createElement("form");
+ 
+        form.method = "POST";
+ 
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+ 
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+ 
+        const input = document.createElement("input");
+ 
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+ 
+        form.appendChild(input);
+ 
+        document.body.appendChild(form);
+ 
+        form.submit();
+ 
+        document.body.removeChild(form);
+
+    }
+ 
+</script>

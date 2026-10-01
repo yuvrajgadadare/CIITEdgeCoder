@@ -1,0 +1,1021 @@
+﻿@{
+    ViewData["Title"] = "Your First C# Program";
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+    .try-it-btn:hover {
+       background: #157347;
+       color: #fff;
+    }
+
+    .workflow-code {
+        margin: 0;
+        padding: 20px 10px;
+        text-align: center;
+        white-space: pre-line;
+        line-height: 1.8;
+    }
+
+        .workflow-code code {
+            display: block;
+            text-align: center;
+        }
+</style>
+
+<main id="tutorials" class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ========================================================= -->
+        <!-- LEFT SIDEBAR -->
+        <!-- ========================================================= -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ========================================================= -->
+        <!-- READING CONTENT -->
+        <!-- ========================================================= -->
+
+        <section class="col-lg-9">
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body p-4 p-lg-5">
+
+
+                    <!-- ================================================= -->
+                    <!-- PAGE HEADER -->
+                    <!-- ================================================= -->
+
+                    <div class="mb-4">
+
+                        <h2 class="fw-bold mb-3">
+                            Your First C# Program
+                        </h2>
+
+                        <p class="lead text-muted mb-0">
+                            To create your very first program in .NET, you will make
+                            a Console Application. This is a simple program that runs
+                            in a text window (terminal) and prints a message on the screen.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- INTRODUCTION -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <p>
+                            Here is how to create, understand, and run your first program
+                            using the <strong>VS Code</strong> and <strong>.NET CLI</strong>.
+                        </p>
+
+                        <p>
+                            Creating and running your first program in
+                            <strong>Visual Studio</strong> is easy because the software
+                            handles the background work for you. Here is the step-by-step
+                            guide to doing it in the full <strong>Visual Studio</strong>
+                            IDE on Windows.
+                        </p>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- VISUAL STUDIO -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-4">
+                            Create Your First Program Using Visual Studio
+                        </h3>
+
+
+                        <!-- STEP 1 -->
+
+                        <h4 class="fw-bold text-dark mt-1 mb-4">
+                            Step 1: Create a New Project
+                        </h4>
+
+
+                        <ol>
+
+                            <li class="mb-3">
+                                Open <strong>Visual Studio</strong>.
+                            </li>
+
+                            <li class="mb-3">
+                                On the startup screen, click
+                                <strong>Create a new project</strong>
+                                on the right side.
+                            </li>
+
+                            <li class="mb-3">
+                                In the search bar at the top, type
+                                <strong>Console</strong>.
+                            </li>
+
+                            <li class="mb-3">
+                                Select <strong>Console App</strong>
+                                (make sure it has the C# logo next to it),
+                                then click <strong>Next</strong>.
+                            </li>
+
+                            <li class="mb-3">
+                                Give your project a name, such as
+                                <strong>MyFirstApp</strong>, and click
+                                <strong>Next</strong>.
+                            </li>
+
+                            <li class="mb-3">
+                                Choose the latest .NET version listed
+                                (like .NET 8.0, .NET 9.0, or .NET 10.0)
+                                and click <strong>Create</strong>.
+                            </li>
+
+                        </ol>
+
+
+                        <div class="alert alert-info border-0 mt-4">
+
+                            <strong>Tip:</strong>
+                            The project name can be changed according to your
+                            requirement. For learning purposes, names such as
+                            <code>MyFirstApp</code> or <code>HelloWorld</code>
+                            are easy to understand.
+
+                        </div>
+
+
+                        <!-- STEP 2 -->
+
+                        <h4 class="fw-bold text-dark mt-5 mb-4">
+                            Step 2: Understand the Code
+                        </h4>
+
+
+                        <p>
+                            Visual Studio will automatically open a file called
+                            <strong>Program.cs</strong>. Inside, you will see this
+                            single line of code:
+                        </p>
+
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+<pre class="mb-0"><code>using System;
+
+Console.WriteLine("Hello, World 🌍..!");</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <p>
+                            This simple statement displays text on the console.
+                        </p>
+
+
+                        <ul>
+
+                            <li class="mb-3">
+                                <strong>Console:</strong>
+                                This means the text window on your screen.
+                            </li>
+
+                            <li class="mb-3">
+                                <strong>.WriteLine:</strong>
+                                This tells the computer to "write a line of text."
+                            </li>
+
+                            <li class="mb-3">
+                                <strong>("Hello, World!"):</strong>
+                                This is the exact message the computer will show.
+                            </li>
+
+                            <li class="mb-3">
+                                <strong>; (Semicolon):</strong>
+                                This acts like a period at the end of a sentence.
+                                It tells the computer the instruction is over.
+                            </li>
+
+                        </ul>
+
+
+                        <!-- STEP 3 -->
+
+                        <h4 class="fw-bold text-dark mt-5 mb-4">
+                            Step 3: Run the Program
+                        </h4>
+
+
+                        <ol>
+
+                            <li class="mb-3">
+                                Look at the top toolbar in Visual Studio.
+                                Find the <strong>green play button</strong>
+                                that says <strong>MyFirstApp</strong>
+                                (or has the name of your project).
+                            </li>
+
+                            <li class="mb-3">
+                                Click that green play button or press the
+                                <strong>F5</strong> key on your keyboard.
+                            </li>
+
+                            <li class="mb-3">
+                                A black text window (the console) will pop up
+                                on your screen, display
+                                <strong>Hello, World 🌍..!</strong>,
+                                and stay open so you can see it.
+                            </li>
+
+                            <li class="mb-3">
+                                Press any key on your keyboard to close the window.
+                            </li>
+
+                        </ol>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Expected Output
+                        </h5>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                Output
+                            </div>
+
+                            <pre class="mb-0"><code>Hello, World 🌍..!</code></pre>
+
+                        </div>
+
+
+                        <!-- STEP 4 -->
+
+                        <h4 class="fw-bold text-dark mt-5 mb-4">
+                            Step 4: Change the Message
+                        </h4>
+
+
+                        <p>
+                            You can change the text inside the quotation marks
+                            to display your own message.
+                        </p>
+
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+<pre class="mb-0"><code>using System;
+
+Console.WriteLine("Welcome to CIIT Training Institute 👨‍🏫❤️...!");</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                        <p>
+                            Click the green play button again, and you will see
+                            your new message on the screen!
+                        </p>
+
+
+                        <h5 class="fw-bold mt-4 mb-3">
+                            Output
+                        </h5>
+
+
+                        <div class="code-block mb-4">
+
+                            <div class="code-lang-tag">
+                                Output
+                            </div>
+
+                            <pre class="mb-0"><code>Welcome to CIIT Training Institute 👨‍🏫❤️...!</code></pre>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- UNDERSTANDING PROGRAM -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Understanding the Program
+                        </h3>
+
+                        <p>
+                            The following example shows a basic C# console program
+                            with a class and a Main method.
+                        </p>
+
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+<pre class="mb-0"><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, World 🌍...!");
+    }
+}</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Purpose</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <code>using System;</code>
+                                        </td>
+
+                                        <td>
+                                            Allows the program to use types from
+                                            the System namespace.
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <code>class Program</code>
+                                        </td>
+
+                                        <td>
+                                            Defines a class named Program.
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <code>static void Main()</code>
+                                        </td>
+
+                                        <td>
+                                            Defines the main entry point of the
+                                            traditional C# console program.
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>
+                                            <code>Console.WriteLine()</code>
+                                        </td>
+
+                                        <td>
+                                            Displays a message on the console.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- .NET CLI -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-4">
+                            Create Your First Program with .NET CLI
+                        </h3>
+
+
+                        <p>
+                            The .NET CLI allows you to create and run C# applications
+                            directly from the terminal without opening Visual Studio.
+                        </p>
+
+
+                        <h4 class="fw-bold text-dark mt-1 mb-4">
+                            Step 1: Create the Program
+                        </h4>
+
+
+                        <ol>
+
+                            <li class="mb-4">
+
+                                Open your terminal or Command Prompt.
+
+                            </li>
+
+
+                            <li class="mb-4">
+
+                                Type the below command to create a new folder
+                                and project:
+
+                                <div class="code-block mt-3 mb-2 shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        Terminal
+                                    </div>
+
+                                    <pre class="mb-0"><code>dotnet new console -n MyFirstProgram</code></pre>
+
+                                </div>
+
+                            </li>
+
+
+                            <li class="mb-4">
+
+                                Move into your new project folder:
+
+                                <div class="code-block mt-3 mb-2 shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        Terminal
+                                    </div>
+
+                                    <pre class="mb-0"><code>cd MyFirstProgram</code></pre>
+
+                                </div>
+
+                            </li>
+
+
+                            <li class="mb-4">
+
+                                Open this folder in VS Code by typing:
+
+                                <div class="code-block mt-3 mb-2 shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        Terminal
+                                    </div>
+
+                                    <pre class="mb-0"><code>code .</code></pre>
+
+                                </div>
+
+                            </li>
+
+                        </ol>
+
+
+                        <!-- ================================================= -->
+                        <!-- CLI STEP 2 -->
+                        <!-- ================================================= -->
+
+                        <h4 class="fw-bold text-dark mt-5 mb-4">
+                            Step 2: Look at the Code
+                        </h4>
+
+
+                        <p>
+                            Inside VS Code, you will see a file named
+                            <strong>Program.cs</strong>. Click to open it.
+                            By default, .NET creates a simple one-line program
+                            for you that looks like this:
+                        </p>
+
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+<pre class="mb-0"><code>using System;
+
+Console.WriteLine("Welcome to CIIT Training Institute 👨‍🏫❤️..!");</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+                                </button>
+                            </div>
+
+
+
+                        <!-- ================================================= -->
+                        <!-- CLI STEP 3 -->
+                        <!-- ================================================= -->
+
+                        <h4 class="fw-bold text-dark mt-5 mb-4">
+                            Step 3: Run the Program
+                        </h4>
+
+
+                        <ol>
+
+                            <li class="mb-4">
+
+                                Go back to your terminal or open the built-in
+                                terminal inside VS Code by pressing
+                                <strong>Ctrl + `</strong>.
+
+                            </li>
+
+
+                            <li class="mb-4">
+
+                                Type the run command:
+
+                                <div class="code-block mt-3 mb-4 shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        Terminal
+                                    </div>
+
+                                    <pre class="mb-0"><code>dotnet run</code></pre>
+
+                                </div>
+
+                            </li>
+
+
+                            <li class="mb-4">
+
+                                Press Enter. The computer will compile
+                                (translate) your code and output:
+
+                                <div class="code-block mt-3 mb-4 shadow-sm">
+
+                                    <div class="code-lang-tag">
+                                        Output
+                                    </div>
+
+                                    <pre class="mb-0"><code>Welcome to CIIT Training Institute 👨‍🏫❤️..!</code></pre>
+
+                                </div>
+
+                            </li>
+
+                        </ol>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- CLI WORKFLOW -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Understanding the .NET CLI Workflow
+                        </h3>
+
+                        <p>
+                            The basic workflow for creating and running a console
+                            application using the .NET CLI is:
+                        </p>
+
+
+                            <div class="code-block mb-4">
+
+                                <div class="code-lang-tag">
+                                    .NET CLI
+                                </div>
+
+<pre class="mb-0 workflow-code"><code>dotnet new console -n MyFirstProgram
+↓
+cd MyFirstProgram
+↓
+code .
+↓
+Write / Edit C# Code
+↓
+dotnet run
+↓
+View Output</code></pre>
+
+                            </div>
+
+
+                        <p>
+                            This workflow is useful because the same CLI approach
+                            can be used for many types of .NET projects.
+                        </p>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- VISUAL STUDIO VS CLI -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Visual Studio vs .NET CLI
+                        </h3>
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+
+                                        <th>
+                                            Visual Studio
+                                        </th>
+
+                                        <th>
+                                            .NET CLI
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            Graphical development environment
+                                        </td>
+
+                                        <td>
+                                            Command-line based development
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Project creation through menus
+                                        </td>
+
+                                        <td>
+                                            Project creation through commands
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Built-in debugging and project tools
+                                        </td>
+
+                                        <td>
+                                            Lightweight and fast
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Suitable for complete IDE-based development
+                                        </td>
+
+                                        <td>
+                                            Useful for terminal, automation and
+                                            cross-platform workflows
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- COMMON BEGINNER MISTAKES -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <h3 class="fw-bold mb-3">
+                            Common Beginner Mistakes
+                        </h3>
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-dark">
+
+                                    <tr>
+                                        <th>Problem</th>
+                                        <th>What to Check</th>
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            Missing semicolon
+                                        </td>
+
+                                        <td>
+                                            Make sure statements such as
+                                            <code>Console.WriteLine()</code>
+                                            end with <code>;</code>.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Wrong project folder
+                                        </td>
+
+                                        <td>
+                                            Use <code>cd</code> to move into the
+                                            correct project directory before
+                                            running <code>dotnet run</code>.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            .NET command not working
+                                        </td>
+
+                                        <td>
+                                            Check whether the .NET SDK is installed
+                                            using <code>dotnet --version</code>.
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Code changes not visible
+                                        </td>
+
+                                        <td>
+                                            Save the file and run the application again.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- SUMMARY -->
+                    <!-- ================================================= -->
+
+                    <section class="mb-5">
+
+                        <div class="alert alert-primary border-0">
+
+                            <h5 class="fw-bold">
+                                Summary
+                            </h5>
+
+                            <p class="mb-0">
+
+                                In this topic, you created your first C# Console
+                                Application using Visual Studio and the .NET CLI.
+
+                                <br /><br />
+
+                                You learned how to create a project, understand
+                                <code>Program.cs</code>, use
+                                <code>Console.WriteLine()</code>, change the output
+                                message, run the application, and view the result
+                                in the console.
+
+                                <br /><br />
+
+                                You also learned the basic .NET CLI workflow using
+                                commands such as
+                                <code>dotnet new</code>,
+                                <code>cd</code>,
+                                <code>code .</code>,
+                                and <code>dotnet run</code>.
+
+                                <br /><br />
+
+                                These fundamentals provide the starting point for
+                                learning variables, data types, operators, control
+                                flow, methods, and other C# programming concepts.
+
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================================================= -->
+                    <!-- NEXT TOPIC -->
+                    <!-- ================================================= -->
+                    
+                        <div class="d-flex justify-content-between align-items-center mb-5">
+
+                            <a href="/CSharp/Introduction/DevelopmentTools"
+                               class="btn btn-outline-secondary">
+                                ← Previous Topic
+                            </a>
+
+                            <a href="/CSharp/BasicLanguage/VariableAndDataTypes"
+                               class="btn btn-primary">
+                                Next Topic →
+                            </a>
+
+                        </div>
+
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+    <script>
+
+        function tryItYourself(button) {
+
+            // Find the code example containing this button
+            const example = button.closest(".try-it-example");
+
+            if (!example) {
+                alert("Code example not found.");
+                return;
+            }
+
+            // Find only this example's code
+            const codeElement = example.querySelector("pre code");
+
+            if (!codeElement) {
+                alert("Tutorial code not found.");
+                return;
+            }
+
+            // Get exact code and preserve indentation/new lines
+            const code = codeElement.textContent.trim();
+
+            // Create temporary form
+            const form = document.createElement("form");
+
+            form.method = "POST";
+
+            form.action =
+                '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+            // IMPORTANT: Open compiler in new tab
+            form.target = "_blank";
+
+            const input = document.createElement("input");
+
+            input.type = "hidden";
+            input.name = "code";
+            input.value = code;
+
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+
+            form.submit();
+
+            document.body.removeChild(form);
+        }
+
+    </script>

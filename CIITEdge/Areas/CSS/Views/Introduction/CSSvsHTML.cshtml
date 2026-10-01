@@ -1,0 +1,506 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS vs HTML";
+}
+
+<style>
+
+    /* ===================================================== */
+    /* CONTENT */
+    /* ===================================================== */
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+        .content-section h1,
+        .content-section h2,
+        .content-section h3 {
+            color: #212529 !important;
+            font-weight: 700;
+        }
+
+        .content-section h1 {
+            margin-bottom: 12px;
+        }
+
+        .content-section h2 {
+            margin-top: 28px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.75;
+        }
+
+
+    /* ===================================================== */
+    /* COMPARISON TABLE */
+    /* ===================================================== */
+
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 18px;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 14px 16px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .comparison-table th {
+            background-color: #f8f9fa;
+            color: #212529;
+            font-weight: 700;
+        }
+
+        .comparison-table td {
+            color: #495057;
+        }
+
+
+    /* ===================================================== */
+    /* DIAGRAM */
+    /* ===================================================== */
+
+    .comparison-diagram {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin: 28px 0;
+    }
+
+    .diagram-card {
+        width: 250px;
+        min-height: 145px;
+        padding: 22px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .html-card {
+        background-color: #fff3cd;
+        border: 1px solid #ffe69c;
+    }
+
+    .css-card {
+        background-color: #e0e7ff;
+        border: 1px solid #c7d2fe;
+    }
+
+    .diagram-card h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #212529 !important;
+    }
+
+    .diagram-card p {
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+
+
+    /* ===================================================== */
+    /* CODE BLOCK */
+    /* ===================================================== */
+
+    .css-example {
+        background-color: #0f172a;
+        color: #f1f5f9;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 12px;
+    }
+
+
+    /* ===================================================== */
+    /* INFO BOX */
+    /* ===================================================== */
+
+    .info-box {
+        border-left: 4px solid #2563eb;
+        background-color: #f8f9fa;
+        padding: 18px 20px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+    .content-list {
+        padding-left: 22px;
+    }
+
+
+    /* ===================================================== */
+    /* TOPIC NAVIGATION */
+    /* ===================================================== */
+
+    .topic-navigation {
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 24px;
+    }
+
+        .topic-navigation .btn {
+            min-height: 42px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .topic-navigation .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+            .topic-navigation .btn-primary:hover {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+
+    /* ===================================================== */
+    /* RESPONSIVE */
+    /* ===================================================== */
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .diagram-card {
+            width: 100%;
+            max-width: 320px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- ================================================= -->
+        <!-- LEFT: COURSE SYLLABUS -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- RIGHT: CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS vs HTML
+                </h1>
+
+                <p class="lead text-muted">
+                    Understand the difference between HTML and CSS and
+                    why both are needed to build modern web pages.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC DIFFERENCE -->
+                <!-- ================================================= -->
+
+                <h2>What is the Difference?</h2>
+
+                <p>
+                    HTML and CSS work together, but they have different
+                    responsibilities.
+                </p>
+
+                <p>
+                    HTML defines the structure and content of a page,
+                    while CSS controls its visual appearance and layout.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>HTML and CSS Together</h2>
+
+                <div class="comparison-diagram">
+
+                    <div class="diagram-card html-card">
+
+                        <h3>HTML</h3>
+
+                        <p>
+                            Defines the structure and content
+                            of the web page.
+                        </p>
+
+                        <p class="mt-2">
+                            Example:
+                            Heading, paragraph, image, button
+                        </p>
+
+                    </div>
+
+
+                    <div class="diagram-card css-card">
+
+                        <h3>CSS</h3>
+
+                        <p>
+                            Controls the appearance, spacing,
+                            layout, and design.
+                        </p>
+
+                        <p class="mt-2">
+                            Example:
+                            Color, font, margin, layout
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- COMPARISON TABLE -->
+                <!-- ================================================= -->
+
+                <h2>HTML vs CSS</h2>
+
+                <table class="comparison-table">
+
+                    <thead>
+                        <tr>
+                            <th>HTML</th>
+                            <th>CSS</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Defines page structure</td>
+                            <td>Defines page styling</td>
+                        </tr>
+
+                        <tr>
+                            <td>Creates content and elements</td>
+                            <td>Styles those elements</td>
+                        </tr>
+
+                        <tr>
+                            <td>Uses elements and tags</td>
+                            <td>Uses selectors and declarations</td>
+                        </tr>
+
+                        <tr>
+                            <td>Defines headings, paragraphs, images, forms, etc.</td>
+                            <td>Defines colors, fonts, spacing, borders, layouts, etc.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Provides the structure</td>
+                            <td>Provides the presentation</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+                <!-- ================================================= -->
+                <!-- SIMPLE EXAMPLE -->
+                <!-- ================================================= -->
+
+                <h2>Simple Example</h2>
+
+                <p>
+                    HTML can create a heading, while CSS can change
+                    its color and size.
+                </p>
+
+                <div class="css-example">
+                    <pre class="mb-0">&lt;h1 class="title"&gt;Welcome to CIIT&lt;/h1&gt;
+
+&lt;style&gt;
+.title {
+    color: blue;
+    font-size: 32px;
+}
+&lt;/style&gt;</pre>
+                </div>
+
+
+                <h3>What does HTML do?</h3>
+
+                <p>
+                    The HTML element creates the heading and provides
+                    the content that should be displayed.
+                </p>
+
+
+                <h3>What does CSS do?</h3>
+
+                <p>
+                    CSS selects that heading and changes its appearance
+                    using properties such as <strong>color</strong> and
+                    <strong>font-size</strong>.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- CAN HTML WORK WITHOUT CSS? -->
+                <!-- ================================================= -->
+
+                <h2>Can HTML Work Without CSS?</h2>
+
+                <p>
+                    Yes. A browser can display HTML without CSS, but the
+                    page will have very basic browser styling.
+                </p>
+
+                <p>
+                    CSS is used when we want better visual design,
+                    spacing, layouts, responsiveness, and user experience.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- CAN CSS WORK WITHOUT HTML? -->
+                <!-- ================================================= -->
+
+                <h2>Can CSS Work Without HTML?</h2>
+
+                <p>
+                    CSS is normally used to style HTML or other web
+                    document elements. Without elements to style,
+                    CSS has no visible page structure to present.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT -->
+                <!-- ================================================= -->
+
+                <div class="info-box">
+
+                    <strong>Remember:</strong>
+
+                    <p class="mb-0 mt-2">
+                        HTML builds the structure.
+                        CSS styles the structure.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="alert alert-info mt-4">
+
+                    <h2 class="h4 fw-bold">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        HTML is responsible for the structure and content
+                        of a web page. CSS is responsible for styling,
+                        layout, spacing, colors, fonts, and visual
+                        presentation. Modern web pages commonly use
+                        HTML and CSS together.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PREVIOUS / NEXT -->
+                <!-- ================================================= -->
+
+                <div class="topic-navigation">
+
+                    <div class="row g-3 align-items-center">
+
+
+                        <!-- PREVIOUS -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-outline-secondary w-100"
+                               href="@Url.Action("HowCSSWorks", "Introduction", new { area = "CSS" })">
+
+                                ← Previous: How CSS Works
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- NEXT -->
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("AddingCSS", "Introduction", new { area = "CSS" })">
+
+                                Next: Adding CSS →
+
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

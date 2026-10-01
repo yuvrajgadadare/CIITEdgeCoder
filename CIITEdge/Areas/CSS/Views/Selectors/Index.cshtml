@@ -1,0 +1,675 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Selectors";
+}
+
+<style>
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        .content-section > h1,
+        .content-section > h2,
+        .content-section > h3 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        .content-section > h1 {
+            margin-bottom: 12px;
+        }
+
+        .content-section > h2 {
+            margin-top: 30px;
+            margin-bottom: 14px;
+        }
+
+        .content-section > h3 {
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* ============================= */
+    /* CODE */
+    /* ============================= */
+
+    .code-box {
+        background: #111827;
+        color: #f8fafc;
+        padding: 18px 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+        .code-box pre {
+            margin: 0;
+        }
+
+    /* ============================= */
+    /* DIAGRAM */
+    /* ============================= */
+
+    .selector-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 28px 0;
+    }
+
+    .diagram-box {
+        min-width: 175px;
+        padding: 18px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .html-box {
+        background: #fff3cd;
+        border: 1px solid #ffe69c;
+    }
+
+    .selector-box {
+        background: #e0e7ff;
+        border: 1px solid #c7d2fe;
+    }
+
+    .style-box {
+        background: #d1fae5;
+        border: 1px solid #a7f3d0;
+    }
+
+    .diagram-box strong {
+        display: block;
+        color: #212529;
+        margin-bottom: 5px;
+    }
+
+    .diagram-box span {
+        color: #495057;
+        font-size: 13px;
+    }
+
+    .arrow {
+        font-size: 26px;
+        font-weight: bold;
+        color: #495057;
+    }
+
+    /* ============================= */
+    /* OUTPUT */
+    /* ============================= */
+
+    .output-title {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .browser-window {
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #ffffff;
+    }
+
+    .browser-bar {
+        background: #f1f3f5;
+        padding: 9px 14px;
+        border-bottom: 1px solid #dee2e6;
+        color: #6c757d;
+        font-size: 13px;
+    }
+
+    .browser-content {
+        padding: 30px;
+        min-height: 130px;
+    }
+
+    /* ============================= */
+    /* EXAMPLE OUTPUT */
+    /* ============================= */
+
+    .element-output {
+        color: blue;
+        font-size: 28px;
+        margin: 0;
+    }
+
+    .class-output {
+        color: green;
+        font-size: 20px;
+        margin: 10px 0 0;
+    }
+
+    .id-output {
+        color: red;
+        font-size: 22px;
+        margin: 10px 0 0;
+    }
+
+    /* ============================= */
+    /* INFO */
+    /* ============================= */
+
+    .info-box {
+        background: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        padding: 16px 18px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+    /* ============================= */
+    /* NAVIGATION */
+    /* ============================= */
+
+    .topic-navigation {
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 24px;
+    }
+
+        .topic-navigation .btn {
+            min-height: 42px;
+            font-weight: 500;
+        }
+
+        .topic-navigation .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+            .topic-navigation .btn-primary:hover {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .selector-diagram {
+            flex-direction: column;
+        }
+
+        .arrow {
+            transform: rotate(90deg);
+        }
+
+        .diagram-box {
+            width: 100%;
+            max-width: 280px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- LEFT SIDE -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1>
+                    CSS Selectors
+                </h1>
+
+                <p class="lead text-muted">
+                    Learn how CSS selectors identify HTML elements
+                    and apply styles to them.
+                </p>
+
+
+                <!-- ============================= -->
+                <!-- WHAT ARE SELECTORS -->
+                <!-- ============================= -->
+
+                <h2>
+                    What is a CSS Selector?
+                </h2>
+
+                <p>
+                    A CSS selector is used to select the HTML elements
+                    that you want to style.
+                </p>
+
+                <p>
+                    After selecting an element, CSS applies the
+                    specified properties and values to it.
+                </p>
+
+
+                <!-- ============================= -->
+                <!-- DIAGRAM -->
+                <!-- ============================= -->
+
+                <h2>
+                    CSS Selector Diagram
+                </h2>
+
+                <div class="selector-diagram">
+
+                    <div class="diagram-box html-box">
+
+                        <strong>
+                            HTML Element
+                        </strong>
+
+                        <span>
+                            &lt;h1&gt;Hello&lt;/h1&gt;
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-box selector-box">
+
+                        <strong>
+                            CSS Selector
+                        </strong>
+
+                        <span>
+                            h1
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-box style-box">
+
+                        <strong>
+                            CSS Style
+                        </strong>
+
+                        <span>
+                            color: blue;
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ============================= -->
+                <!-- BASIC SYNTAX -->
+                <!-- ============================= -->
+
+                <h2>
+                    Basic Selector Syntax
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>selector {
+    property: value;
+}</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    The selector identifies the HTML element,
+                    while the property and value define its style.
+                </p>
+
+
+                <!-- ============================= -->
+                <!-- EXAMPLE 1 -->
+                <!-- ============================= -->
+
+                <h2>
+                    Example 1: Element Selector
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>h1 {
+    color: blue;
+}
+
+&lt;h1&gt;
+    Welcome To CIIT Institute 👨‍🏫❤️..!
+&lt;/h1&gt;</code></pre>
+
+                </div>
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    The <strong>h1</strong> selector selects all
+                    <strong>&lt;h1&gt;</strong> elements and changes
+                    their color to blue.
+                </p>
+
+
+                <!-- OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h1 style="color: blue; margin: 0;">
+                                Welcome To CIIT Institute 👨‍🏫❤️..!
+                            </h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ============================= -->
+                <!-- EXAMPLE 2 -->
+                <!-- ============================= -->
+
+                <h2>
+                    Example 2: Class Selector
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>.title {
+    color: green;
+}
+
+&lt;p class="title"&gt;
+    Learn CIIT Institute 👨‍🏫👀.
+&lt;/p&gt;</code></pre>
+
+                </div>
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    A class selector starts with a
+                    <strong>.</strong> symbol.
+                    It can be used to style multiple HTML elements
+                    with the same class.
+                </p>
+
+
+                <!-- OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <p style="color: green; font-size: 20px; margin: 0;">
+                                Learn CIIT Institute 👨‍🏫👀.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ============================= -->
+                <!-- EXAMPLE 3 -->
+                <!-- ============================= -->
+
+                <h2>
+                    Example 3: ID Selector
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>#heading {
+    color: red;
+}
+
+&lt;h1 id="heading"&gt;
+    CSS Selectors
+&lt;/h1&gt;</code></pre>
+
+                </div>
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    An ID selector starts with a
+                    <strong>#</strong> symbol.
+                    It targets the HTML element having that specific ID.
+                </p>
+
+
+                <!-- OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h1 style="color: red; font-size: 22px; margin: 0;">
+                                CSS Selectors
+                            </h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ============================= -->
+                <!-- TYPES -->
+                <!-- ============================= -->
+
+                <h2>
+                    Common CSS Selectors
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Element Selector
+                    </li>
+
+                    <li>
+                        Class Selector
+                    </li>
+
+                    <li>
+                        ID Selector
+                    </li>
+
+                    <li>
+                        Universal Selector
+                    </li>
+
+                    <li>
+                        Grouping Selector
+                    </li>
+
+                    <li>
+                        Attribute Selector
+                    </li>
+
+                    <li>
+                        Descendant Selector
+                    </li>
+
+                    <li>
+                        Child Selector
+                    </li>
+
+                    <li>
+                        Pseudo-Class Selector
+                    </li>
+
+                    <li>
+                        Pseudo-Element Selector
+                    </li>
+
+                </ul>
+
+
+                <!-- ============================= -->
+                <!-- IMPORTANT -->
+                <!-- ============================= -->
+
+                <div class="info-box">
+
+                    <strong>
+                        Remember:
+                    </strong>
+
+                    <p class="mb-0 mt-2">
+                        CSS selectors tell the browser
+                        <strong>which HTML elements should be styled</strong>.
+                        Different selectors are used for different
+                        styling requirements.
+                    </p>
+
+                </div>
+
+
+                <!-- ============================= -->
+                <!-- SUMMARY -->
+                <!-- ============================= -->
+
+                <div class="alert alert-info mt-4">
+
+                    <h2 class="h4 fw-bold">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS selectors are used to identify HTML elements
+                        for styling. Common selectors include element,
+                        class, ID, universal, attribute, descendant,
+                        child, pseudo-class, and pseudo-element selectors.
+                    </p>
+
+                </div>
+
+
+                <!-- ============================= -->
+                <!-- NAVIGATION -->
+                <!-- ============================= -->
+
+                <div class="topic-navigation">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-outline-secondary w-100"
+                               href="@Url.Action("CSSComments", "CSSBasics", new { area = "CSS" })">
+
+                                ← Previous: CSS Comments
+
+                            </a>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("ElementSelector", "Selectors", new { area = "CSS" })">
+
+                                Next: Element Selector →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

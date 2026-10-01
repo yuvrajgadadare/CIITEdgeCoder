@@ -1,0 +1,809 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Click Events";
+}
+
+<style>
+    #javascript-click-events-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-click-events-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-click-events-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-click-events-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-click-events-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-click-events-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+    /* CONCEPT */
+
+    #javascript-click-events-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-click-events-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-click-events-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-click-events-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* IMAGE */
+
+    #javascript-click-events-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-click-events-page .click-events-image {
+        width: 100%;
+        height: 340px;
+        object-fit: contain;
+        display: block;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-click-events-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 12px 5px 0;
+    }
+
+    /* DIAGRAM */
+
+    #javascript-click-events-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 26px;
+        margin: 28px 0;
+    }
+
+    #javascript-click-events-page .diagram-title {
+        text-align: center;
+        font-size: 19px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 25px;
+    }
+
+    #javascript-click-events-page .click-flow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-click-events-page .flow-box {
+        background: #ffffff;
+        border: 2px solid #d8dee9;
+        border-radius: 9px;
+        padding: 16px 20px;
+        min-width: 155px;
+        text-align: center;
+        font-family: Consolas, Monaco, monospace;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #javascript-click-events-page .flow-box small {
+        display: block;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+        color: #6c757d;
+        margin-top: 7px;
+    }
+
+    #javascript-click-events-page .flow-highlight {
+        background: #f3ecff;
+        border-color: #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-click-events-page .flow-result {
+        background: #ecfdf3;
+        border-color: #198754;
+        color: #157347;
+    }
+
+    #javascript-click-events-page .flow-arrow {
+        color: #5b21b6;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    /* CODE */
+
+    #javascript-click-events-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-click-events-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-click-events-page .code-box code {
+        color: #ffffff;
+    }
+
+    /* TRY IT */
+
+    #javascript-click-events-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-click-events-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-click-events-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+    /* OUTPUT */
+
+    #javascript-click-events-page .output-box {
+        background: #000000;
+        color: #ffffff;
+        border-radius: 7px;
+        padding: 16px 18px;
+        margin-top: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.8;
+    }
+
+    /* SUMMARY */
+
+    #javascript-click-events-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-click-events-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-click-events-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* NAVIGATION */
+
+    #javascript-click-events-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-click-events-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-click-events-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-click-events-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-click-events-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-click-events-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-click-events-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-click-events-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-click-events-page .click-flow {
+            flex-direction: column;
+        }
+
+        #javascript-click-events-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-click-events-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-click-events-page .nav-btn {
+            justify-content: center;
+            width: 100%;
+        }
+    }
+</style>
+
+
+<main id="javascript-click-events-page">
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3 mb-4">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- =================================================
+                         TITLE
+                         ================================================= -->
+
+                    <h1 class="page-title">
+                        Click Events
+                    </h1>
+
+                    <p class="lead-text">
+                        A click event occurs when a user clicks on an
+                        HTML element such as a button, link, image,
+                        or other interactive element.
+                    </p>
+
+
+                    <!-- =================================================
+                         INTRODUCTION
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What is a Click Event?
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>click</strong> event is one of the
+                        most commonly used JavaScript events.
+                    </p>
+
+                    <p class="section-text">
+                        When a user clicks an element, JavaScript can
+                        detect that action and execute a function.
+                    </p>
+
+
+                    <!-- =================================================
+                         CONCEPT
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p>
+                            A click event happens when the user
+                            clicks an element on a web page.
+                        </p>
+
+                        <p>
+                            JavaScript can use the click event to
+                            perform an action after the user clicks.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RELATED IMAGE
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <img
+                            src="https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event/click-event.png"
+                            alt="JavaScript Click Event"
+                            class="click-events-image"
+                            onerror="this.style.display='none';"
+                        />
+
+                        <p class="image-caption">
+                            A click on an element can trigger JavaScript
+                            code through a click event.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DIAGRAM
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Click Event Flow
+                    </h2>
+
+                    <div class="diagram-box">
+
+                        <div class="diagram-title">
+                            How a Click Event Works
+                        </div>
+
+                        <div class="click-flow">
+
+                            <div class="flow-box">
+                                User
+                                <small>Clicks Button</small>
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box flow-highlight">
+                                click
+                                <small>Event Occurs</small>
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Function
+                                <small>Runs JavaScript</small>
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box flow-result">
+                                Output
+                                <small>Action / Message</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Basic Click Event
+                    </h2>
+
+                    <p class="section-text">
+                        In this example, a function runs when the
+                        click event occurs.
+                    </p>
+
+                    <div class="code-section">
+
+<pre class="code-box"><code>function handleClick() {
+    console.log("Button clicked!");
+}
+
+handleClick();</code></pre>
+
+                    </div>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runBasicClickExample()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+                        Button clicked!
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Click Counter
+                    </h2>
+
+                    <p class="section-text">
+                        A click event can also be used to increase
+                        a counter whenever a button is clicked.
+                    </p>
+
+                    <div class="code-section">
+
+<pre class="code-box"><code>let count = 0;
+
+function handleClick() {
+    count++;
+    console.log("Button clicked:", count, "times");
+}
+
+handleClick();
+handleClick();
+handleClick();</code></pre>
+
+                    </div>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runClickCounterExample()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+                        Button clicked: 1 times
+                        <br />
+                        Button clicked: 2 times
+                        <br />
+                        Button clicked: 3 times
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Click Event with Message
+                    </h2>
+
+                    <p class="section-text">
+                        A click event can execute a function that
+                        displays a message.
+                    </p>
+
+                    <div class="code-section">
+
+<pre class="code-box"><code>function showMessage() {
+    console.log("Welcome to CIIT Training Institute!");
+}
+
+showMessage();</code></pre>
+
+                    </div>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runMessageExample()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+                        Welcome to CIIT Training Institute!
+                    </div>
+
+
+                    <!-- =================================================
+                         BROWSER EXAMPLE
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Browser Example
+                    </h2>
+
+                    <p class="section-text">
+                        In a real browser application, a click event
+                        can be attached to a button using
+                        <strong>addEventListener()</strong>.
+                    </p>
+
+                    <div class="code-section">
+
+<pre class="code-box"><code>const button = document.querySelector("#myButton");
+
+button.addEventListener("click", function () {
+    console.log("Button clicked!");
+});</code></pre>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT NOTE
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Note
+                        </h5>
+
+                        <p>
+                            The browser example uses
+                            <strong>document</strong> because it needs
+                            the browser DOM.
+                        </p>
+
+                        <p>
+                            The CIIT Try It examples are written so
+                            they can run safely in the existing
+                            JavaScript compiler without depending on
+                            browser-only DOM objects.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+                            A click event is triggered when a user
+                            clicks an element. JavaScript can respond
+                            to the event by executing a function.
+                            Click events are commonly used for buttons,
+                            menus, forms, navigation, and interactive
+                            web applications.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("Index", "Events", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            ←
+                            Previous: Events Introduction
+
+                        </a>
+
+
+                        <a href="@Url.Action("KeyboardEvents", "Events", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            Next: Keyboard Events
+                            →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       BASIC CLICK EVENT
+       ========================================================= */
+
+    function runBasicClickExample() {
+
+        const code = `
+function handleClick() {
+    console.log("Button clicked!");
+}
+
+handleClick();
+`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       CLICK COUNTER
+       ========================================================= */
+
+    function runClickCounterExample() {
+
+        const code = `
+let count = 0;
+
+function handleClick() {
+    count++;
+    console.log("Button clicked:", count, "times");
+}
+
+handleClick();
+handleClick();
+handleClick();
+`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       MESSAGE EXAMPLE
+       ========================================================= */
+
+    function runMessageExample() {
+
+        const code = `
+function showMessage() {
+    console.log("Welcome to CIIT Training Institute!");
+}
+
+showMessage();
+`;
+
+        openCompiler(code);
+    }
+
+</script>

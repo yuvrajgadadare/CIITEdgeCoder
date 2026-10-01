@@ -1,0 +1,871 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "If Else";
+}
+
+<style>
+
+    #javascript-ifelse-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-ifelse-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-ifelse-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-ifelse-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-ifelse-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-ifelse-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       INFO BOX
+       ========================================================= */
+
+    #javascript-ifelse-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-ifelse-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-ifelse-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-ifelse-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       IF ELSE FLOW DIAGRAM
+       ========================================================= */
+
+    #javascript-ifelse-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-ifelse-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 25px;
+    }
+
+    #javascript-ifelse-page .decision-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-ifelse-page .flow-box {
+        min-width: 130px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0,0,0,0.05);
+    }
+
+    #javascript-ifelse-page .flow-box small {
+        display: block;
+        color: #6c757d;
+        margin-top: 6px;
+        font-weight: 400;
+    }
+
+    #javascript-ifelse-page .condition-box {
+        min-width: 145px;
+        padding: 18px;
+        background: #eee7ff;
+        border: 2px solid #7c3aed;
+        border-radius: 12px;
+        text-align: center;
+        font-weight: 700;
+        color: #4c1d95;
+        box-shadow: 0 3px 10px rgba(91,33,182,0.08);
+    }
+
+    #javascript-ifelse-page .condition-box small {
+        display: block;
+        color: #6b7280;
+        margin-top: 6px;
+        font-weight: 400;
+    }
+
+    #javascript-ifelse-page .flow-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+    #javascript-ifelse-page .branch-row {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-top: 22px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-ifelse-page .branch-box {
+        min-width: 180px;
+        padding: 16px;
+        border-radius: 10px;
+        text-align: center;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        font-weight: 700;
+    }
+
+    #javascript-ifelse-page .true-branch {
+        border-top: 4px solid #198754;
+    }
+
+    #javascript-ifelse-page .false-branch {
+        border-top: 4px solid #dc3545;
+    }
+
+    #javascript-ifelse-page .branch-label {
+        display: block;
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+
+    #javascript-ifelse-page .true-label {
+        color: #198754;
+    }
+
+    #javascript-ifelse-page .false-label {
+        color: #dc3545;
+    }
+
+
+    /* =========================================================
+       CONDITION TYPES
+       ========================================================= */
+
+    #javascript-ifelse-page .condition-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-ifelse-page .condition-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-ifelse-page .condition-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-ifelse-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-ifelse-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-ifelse-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-ifelse-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-ifelse-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-ifelse-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-ifelse-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-ifelse-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-ifelse-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-ifelse-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-ifelse-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-ifelse-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-ifelse-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-ifelse-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-ifelse-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-ifelse-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-ifelse-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-ifelse-page .nav-btn {
+            justify-content: center;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-ifelse-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-ifelse-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-ifelse-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-ifelse-page .decision-flow {
+            flex-direction: column;
+        }
+
+    }
+
+</style>
+
+
+<main id="javascript-ifelse-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    If Else
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript makes decisions using
+                    <strong>if</strong>, <strong>else if</strong>,
+                    and <strong>else</strong> statements.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS IF ELSE?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What is if...else?
+                </h2>
+
+                <p class="section-text">
+                    An <strong>if</strong> statement runs a block of code when
+                    a condition is true.
+                </p>
+
+                <p class="section-text">
+                    The optional <strong>else</strong> block runs when that
+                    condition is false. This allows a program to choose
+                    between different actions.
+                </p>
+
+
+                <!-- =================================================
+                     BASIC SYNTAX
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Basic Syntax
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>if (condition) {
+    // code runs when condition is true
+} else {
+    // code runs when condition is false
+}</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     ONE PROPER DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How if...else Works
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Condition → Decision → Execute One Branch
+                    </div>
+
+                    <div class="decision-flow">
+
+                        <div class="flow-box">
+                            Input
+                            <small>Value is received</small>
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="condition-box">
+                            Condition?
+                            <small>true or false</small>
+                        </div>
+
+                    </div>
+
+                    <div class="branch-row">
+
+                        <div class="branch-box true-branch">
+
+                            <span class="branch-label true-label">
+                                TRUE
+                            </span>
+
+                            Run the <strong>if</strong> block
+
+                        </div>
+
+                        <div class="branch-box false-branch">
+
+                            <span class="branch-label false-label">
+                                FALSE
+                            </span>
+
+                            Run the <strong>else</strong> block
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ELSE IF
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    else if
+                </h2>
+
+                <p class="section-text">
+                    When more than two possible conditions exist, we can use
+                    <strong>else if</strong> to test additional conditions.
+                </p>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="condition-card">
+
+                            <h5>if</h5>
+
+                            <p>
+                                Checks the first condition.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="condition-card">
+
+                            <h5>else if</h5>
+
+                            <p>
+                                Checks another condition when the previous
+                                condition was false.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="condition-card">
+
+                            <h5>else</h5>
+
+                            <p>
+                                Runs when none of the previous conditions
+                                are true.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Checking Pass or Fail
+                </h2>
+
+                <p class="section-text">
+                    We can use an if...else statement to check whether a
+                    student's marks meet the passing requirement.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const marks = 68;
+
+if (marks &gt;= 40) {
+    console.log("Student Passed");
+} else {
+    console.log("Student Failed");
+}</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryIfElseExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Student Passed
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Using else if
+                </h2>
+
+                <p class="section-text">
+                    We can use multiple conditions to assign a result
+                    based on marks.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const marks = 82;
+
+if (marks &gt;= 90) {
+    console.log("Grade A+");
+} else if (marks &gt;= 75) {
+    console.log("Grade A");
+} else if (marks &gt;= 60) {
+    console.log("Grade B");
+} else if (marks &gt;= 40) {
+    console.log("Grade C");
+} else {
+    console.log("Fail");
+}</code></pre>
+
+
+                    <!-- TRY IT OUTSIDE PRE -->
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryElseIfExample()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Grade A
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Note
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Conditions are checked in order
+                    </h5>
+
+                    <p>
+                        In an <strong>else if</strong> chain, JavaScript checks
+                        conditions from top to bottom.
+                    </p>
+
+                    <p>
+                        When a condition becomes true, its block executes and
+                        the remaining <strong>else if</strong> and
+                        <strong>else</strong> blocks are skipped.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>if</strong> statement executes code when
+                        a condition is true. The <strong>else</strong>
+                        statement handles the false case, while
+                        <strong>else if</strong> allows multiple conditions
+                        to be checked in sequence. These statements are
+                        commonly used to make decisions in JavaScript programs.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("ComparisonLogicalOperators", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>←</span>
+
+                        <span>
+                            Previous: Comparison &amp; Logical Operators
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Switch", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Switch
+                        </span>
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryIfElseExample() {
+
+        const code =
+            'const marks = 68;\n' +
+            '\n' +
+            'if (marks >= 40) {\n' +
+            '    console.log("Student Passed");\n' +
+            '} else {\n' +
+            '    console.log("Student Failed");\n' +
+            '}';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryElseIfExample() {
+
+        const code =
+            'const marks = 82;\n' +
+            '\n' +
+            'if (marks >= 90) {\n' +
+            '    console.log("Grade A+");\n' +
+            '} else if (marks >= 75) {\n' +
+            '    console.log("Grade A");\n' +
+            '} else if (marks >= 60) {\n' +
+            '    console.log("Grade B");\n' +
+            '} else if (marks >= 40) {\n' +
+            '    console.log("Grade C");\n' +
+            '} else {\n' +
+            '    console.log("Fail");\n' +
+            '}';
+
+        openCompiler(code);
+
+    }
+
+</script>

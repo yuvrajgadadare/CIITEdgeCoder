@@ -1,0 +1,829 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Responsive Design";
+}
+
+<style>
+
+    #responsive-design-page {
+        color: #212529;
+    }
+
+        #responsive-design-page .content-section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+            #responsive-design-page .content-section > h1 {
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            #responsive-design-page .content-section > h2 {
+                font-weight: 700;
+                margin-top: 35px;
+                margin-bottom: 15px;
+            }
+
+            #responsive-design-page .content-section > p {
+                line-height: 1.7;
+            }
+
+        #responsive-design-page .code-box {
+            background-color: #212529;
+            color: #f8f9fa;
+            border-radius: 6px;
+            padding: 18px;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+
+            #responsive-design-page .code-box pre {
+                margin: 0;
+                white-space: pre-wrap;
+                font-family: Consolas, Monaco, monospace;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+        #responsive-design-page .explanation-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2563eb;
+            border-radius: 4px;
+            padding: 18px 20px;
+            margin-top: 15px;
+        }
+
+            #responsive-design-page .explanation-box p:last-child {
+                margin-bottom: 0;
+            }
+
+        #responsive-design-page .diagram-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        #responsive-design-page .device-row {
+            display: flex;
+            gap: 20px;
+            align-items: flex-end;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #responsive-design-page .device {
+            border: 4px solid #212529;
+            border-radius: 10px;
+            background-color: #ffffff;
+            padding: 12px;
+            text-align: center;
+        }
+
+        #responsive-design-page .desktop {
+            width: 300px;
+            height: 190px;
+        }
+
+        #responsive-design-page .tablet {
+            width: 210px;
+            height: 150px;
+        }
+
+        #responsive-design-page .mobile {
+            width: 120px;
+            height: 180px;
+        }
+
+        #responsive-design-page .screen-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            height: 100%;
+        }
+
+        #responsive-design-page .screen-box {
+            background-color: #2563eb;
+            border-radius: 4px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        #responsive-design-page .tablet .screen-content {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #responsive-design-page .mobile .screen-content {
+            grid-template-columns: 1fr;
+        }
+
+        #responsive-design-page .output-box {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        #responsive-design-page .responsive-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+        }
+
+        #responsive-design-page .output-main,
+        #responsive-design-page .output-sidebar,
+        #responsive-design-page .output-header,
+        #responsive-design-page .output-footer {
+            background-color: lightblue;
+            border: 2px solid blue;
+            border-radius: 6px;
+            padding: 18px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        #responsive-design-page .output-header,
+        #responsive-design-page .output-footer {
+            grid-column: 1 / 3;
+        }
+
+        #responsive-design-page .property-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 18px;
+            height: 100%;
+            background-color: #ffffff;
+        }
+
+            #responsive-design-page .property-card h3 {
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            #responsive-design-page .property-card p {
+                line-height: 1.6;
+                margin-bottom: 0;
+            }
+
+        #responsive-design-page .note-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffecb5;
+            border-radius: 6px;
+            padding: 16px 18px;
+            margin-top: 20px;
+        }
+
+        #responsive-design-page .summary-box {
+            background-color: #e0f7fa;
+            border: 1px solid #90e0ef;
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin-top: 30px;
+        }
+
+            #responsive-design-page .summary-box h2 {
+                color: #075985;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            #responsive-design-page .summary-box p {
+                color: #075985;
+                margin-bottom: 0;
+                line-height: 1.6;
+            }
+
+    @@media (max-width: 991px) {
+
+        #responsive-design-page .content-section {
+            padding: 20px;
+        }
+
+        #responsive-design-page .responsive-layout {
+            grid-template-columns: 1fr;
+        }
+
+        #responsive-design-page .output-header,
+        #responsive-design-page .output-footer {
+            grid-column: 1;
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        #responsive-design-page .desktop {
+            width: 250px;
+            height: 170px;
+        }
+
+        #responsive-design-page .tablet {
+            width: 180px;
+            height: 140px;
+        }
+
+        #responsive-design-page .mobile {
+            width: 110px;
+            height: 160px;
+        }
+    }
+
+</style>
+
+
+<div id="responsive-design-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- Title -->
+
+                <h1>
+                    Responsive Design
+                </h1>
+
+                <p>
+                    Responsive Design is an approach to web design
+                    that allows a website to adapt its layout and
+                    content to different screen sizes.
+                </p>
+
+                <p>
+                    A responsive website should provide a comfortable
+                    viewing and interaction experience on desktops,
+                    tablets, and mobile devices.
+                </p>
+
+
+                <!-- What is Responsive Design -->
+
+                <h2>
+                    What is Responsive Design?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Responsive Design means creating a website
+                        that automatically adjusts according to the
+                        device and available screen width.
+                    </p>
+
+                    <p>
+                        Instead of creating separate websites for
+                        desktop, tablet, and mobile devices, one
+                        flexible layout can adapt to different
+                        screen sizes.
+                    </p>
+
+                </div>
+
+
+                <!-- Why Responsive Design -->
+
+                <h2>
+                    Why is Responsive Design Important?
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Mobile Devices
+                            </h3>
+
+                            <p>
+                                Websites can adapt their layouts to
+                                smaller mobile screens.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Better Usability
+                            </h3>
+
+                            <p>
+                                Content remains easier to read and
+                                interact with across different devices.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Flexible Layout
+                            </h3>
+
+                            <p>
+                                Elements can resize, reposition, or
+                                rearrange according to available space.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Diagram -->
+
+                <h2>
+                    Responsive Design Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="device-row">
+
+                        <div class="device desktop">
+
+                            <strong>
+                                Desktop
+                            </strong>
+
+                            <div class="screen-content mt-2">
+
+                                <div class="screen-box">
+                                    1
+                                </div>
+
+                                <div class="screen-box">
+                                    2
+                                </div>
+
+                                <div class="screen-box">
+                                    3
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="device tablet">
+
+                            <strong>
+                                Tablet
+                            </strong>
+
+                            <div class="screen-content mt-2">
+
+                                <div class="screen-box">
+                                    1
+                                </div>
+
+                                <div class="screen-box">
+                                    2
+                                </div>
+
+                                <div class="screen-box">
+                                    3
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="device mobile">
+
+                            <strong>
+                                Mobile
+                            </strong>
+
+                            <div class="screen-content mt-2">
+
+                                <div class="screen-box">
+                                    1
+                                </div>
+
+                                <div class="screen-box">
+                                    2
+                                </div>
+
+                                <div class="screen-box">
+                                    3
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-4 mb-0">
+                        The same website can adapt its layout
+                        according to the available screen size.
+                    </p>
+
+                </div>
+
+
+                <!-- Flexible Units -->
+
+                <h2>
+                    Flexible Units
+                </h2>
+
+                <p>
+                    Responsive layouts commonly use flexible units
+                    instead of fixed dimensions wherever appropriate.
+                </p>
+
+                <div class="code-box">
+
+                    <pre><code>.container {
+    width: 80%;
+}
+
+.box {
+    width: 50%;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The percentage values allow elements to
+                        scale relative to their parent container.
+                    </p>
+
+                    <p>
+                        This makes the layout more flexible than
+                        using only fixed pixel widths.
+                    </p>
+
+                </div>
+
+
+                <!-- Responsive Grid -->
+
+                <h2>
+                    Responsive Grid Layout
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+@@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        On larger screens, the Grid contains
+                        <strong>3 equal columns</strong>.
+                    </p>
+
+                    <p>
+                        At a maximum width of
+                        <strong>768px</strong>, the layout changes
+                        to <strong>1 column</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- Responsive Layout -->
+
+                <h2>
+                    Responsive Layout Example
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>.layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+}
+
+@@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        On larger screens, the layout contains a
+                        main content area and a sidebar.
+                    </p>
+
+                    <p>
+                        On smaller screens, both areas become a
+                        single column and appear one below another.
+                    </p>
+
+                </div>
+
+
+                <!-- Output -->
+
+                <h2>
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    <div class="responsive-layout">
+
+                        <div class="output-header">
+                            Header
+                        </div>
+
+                        <div class="output-main">
+                            Main Content
+                        </div>
+
+                        <div class="output-sidebar">
+                            Sidebar
+                        </div>
+
+                        <div class="output-footer">
+                            Footer
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="mt-3">
+                    On smaller screens, the same layout can change
+                    from two columns into one column using a
+                    media query.
+                </p>
+
+
+                <!-- Main Techniques -->
+
+                <h2>
+                    Main Responsive Design Techniques
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Flexible Layouts
+                            </h3>
+
+                            <p>
+                                Use flexible widths and Grid or Flexbox
+                                to create layouts that adapt to space.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Media Queries
+                            </h3>
+
+                            <p>
+                                Change styles and layouts at different
+                                screen widths.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Responsive Images
+                            </h3>
+
+                            <p>
+                                Make images scale correctly without
+                                breaking the page layout.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Responsive Typography
+                            </h3>
+
+                            <p>
+                                Adjust text sizes and spacing for
+                                different screen sizes.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Viewport
+                            </h3>
+
+                            <p>
+                                Configure how a webpage should scale
+                                on mobile devices.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="property-card">
+
+                            <h3>
+                                Mobile First
+                            </h3>
+
+                            <p>
+                                Start with a mobile layout and
+                                progressively enhance it for larger
+                                screens.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Real World -->
+
+                <h2>
+                    Real-World Uses
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Business websites
+                    </li>
+
+                    <li>
+                        E-commerce websites
+                    </li>
+
+                    <li>
+                        Training and education websites
+                    </li>
+
+                    <li>
+                        Admin dashboards
+                    </li>
+
+                    <li>
+                        Portfolio websites
+                    </li>
+
+                    <li>
+                        Blog websites
+                    </li>
+
+                </ul>
+
+
+                <!-- Note -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    Responsive Design is not limited to changing
+                    the number of columns. A responsive website may
+                    also adjust spacing, typography, images,
+                    navigation, and the overall arrangement of
+                    content according to the available screen size.
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Responsive Design allows a website to adapt
+                        its layout and content to different screen
+                        sizes. Flexible layouts, media queries,
+                        responsive images, viewport settings,
+                        responsive typography, and mobile-first
+                        techniques are commonly used to create
+                        responsive websites.
+                    </p>
+
+                </div>
+
+
+                <!-- Navigation -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2 mb-md-0">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("ResponsiveGrid", "Grid", new { area = "CSS" })">
+
+                            ← Previous: Responsive Grid
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("ResponsiveWebDesign", "ResponsiveDesign", new { area = "CSS" })">
+
+                            Next: Responsive Web Design →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

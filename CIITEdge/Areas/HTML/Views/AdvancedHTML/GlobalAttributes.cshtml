@@ -1,0 +1,627 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Global Attributes";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #ffffff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .attribute-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 125px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML Global Attributes</h1>
+
+            <p>
+                Global attributes are HTML attributes that can be used on many
+                different HTML elements.
+            </p>
+
+            <p>
+                They help developers identify elements, apply CSS classes,
+                provide additional information, control visibility, define language,
+                and support other common HTML requirements.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Idea:</strong>
+                A global attribute is an attribute that is available to many
+                HTML elements instead of being limited to one specific tag.
+            </div>
+
+            <h2>1. How Global Attributes Work</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    Global Attribute Concept
+                </div>
+
+                <div class="attribute-flow">
+
+                    <div class="flow-item">
+                        HTML Element
+                    </div>
+
+                    <div class="flow-arrow">+</div>
+
+                    <div class="flow-item">
+                        Global Attribute
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        More Control
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Better HTML
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>2. Common Global Attributes</h2>
+
+            <p>
+                Some commonly used global attributes are:
+            </p>
+
+            <ul>
+                <li><code>id</code></li>
+                <li><code>class</code></li>
+                <li><code>title</code></li>
+                <li><code>style</code></li>
+                <li><code>hidden</code></li>
+                <li><code>lang</code></li>
+                <li><code>dir</code></li>
+                <li><code>tabindex</code></li>
+                <li><code>data-*</code></li>
+            </ul>
+
+            <h2>3. id Attribute</h2>
+
+            <p>
+                The <code>id</code> attribute gives an element a unique identifier
+                within the page.
+            </p>
+
+            <p>
+                It is commonly used for CSS, JavaScript, labels, and internal page links.
+            </p>
+
+            <pre><code>&lt;h2 id="html-basics"&gt;
+    HTML Basics
+&lt;/h2&gt;</code></pre>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                An ID should normally be unique within the document.
+            </div>
+
+            <h2>4. class Attribute</h2>
+
+            <p>
+                The <code>class</code> attribute assigns one or more class names
+                to an element.
+            </p>
+
+            <p>
+                Classes are commonly used for CSS styling and can also be used
+                by JavaScript.
+            </p>
+
+            <pre><code>&lt;p class="highlight"&gt;
+    Important Information
+&lt;/p&gt;</code></pre>
+
+            <p>
+                Multiple classes can also be assigned:
+            </p>
+
+            <pre><code>&lt;div class="card shadow"&gt;
+    Course Content
+&lt;/div&gt;</code></pre>
+
+            <h2>5. title Attribute</h2>
+
+            <p>
+                The <code>title</code> attribute provides additional information
+                about an element.
+            </p>
+
+            <pre><code>&lt;button title="Save your changes"&gt;
+    Save
+&lt;/button&gt;</code></pre>
+
+            <p>
+                Browsers may display the title as additional information,
+                commonly when the user points at the element.
+            </p>
+
+            <h2>6. style Attribute</h2>
+
+            <p>
+                The <code>style</code> attribute allows CSS declarations to be
+                written directly on an element.
+            </p>
+
+            <pre><code>&lt;p style="font-weight: bold;"&gt;
+    Important Text
+&lt;/p&gt;</code></pre>
+
+            <div class="info-box">
+                <strong>Best Practice:</strong>
+                Inline styles are useful for small cases, but reusable styles
+                are usually better placed in CSS classes.
+            </div>
+
+            <h2>7. hidden Attribute</h2>
+
+            <p>
+                The <code>hidden</code> attribute indicates that an element is
+                not currently relevant or should not be displayed.
+            </p>
+
+            <pre><code>&lt;p hidden&gt;
+    This content is hidden.
+&lt;/p&gt;</code></pre>
+
+            <p>
+                The browser normally does not display an element with the
+                <code>hidden</code> attribute.
+            </p>
+
+            <h2>8. lang Attribute</h2>
+
+            <p>
+                The <code>lang</code> attribute identifies the language of
+                the content.
+            </p>
+
+            <pre><code>&lt;html lang="en"&gt;</code></pre>
+
+            <p>
+                It is especially useful for accessibility, document processing,
+                and language-aware browser features.
+            </p>
+
+            <h2>9. dir Attribute</h2>
+
+            <p>
+                The <code>dir</code> attribute defines the direction in which
+                text should be displayed.
+            </p>
+
+            <p>Common values include:</p>
+
+            <ul>
+                <li><code>ltr</code> - Left to Right</li>
+                <li><code>rtl</code> - Right to Left</li>
+                <li><code>auto</code> - Browser determines direction</li>
+            </ul>
+
+            <pre><code>&lt;p dir="rtl"&gt;
+    Text Direction
+&lt;/p&gt;</code></pre>
+
+            <h2>10. tabindex Attribute</h2>
+
+            <p>
+                The <code>tabindex</code> attribute can control whether an element
+                participates in keyboard focus navigation.
+            </p>
+
+            <pre><code>&lt;button tabindex="0"&gt;
+    Submit
+&lt;/button&gt;</code></pre>
+
+            <p>
+                Proper keyboard navigation is an important part of accessibility.
+            </p>
+
+            <div class="info-box">
+                Use <code>tabindex</code> carefully. Changing normal keyboard
+                navigation unnecessarily can make a page harder to use.
+            </div>
+
+            <h2>11. data-* Attributes</h2>
+
+            <p>
+                Custom data attributes allow application-specific information
+                to be stored on HTML elements.
+            </p>
+
+            <pre><code>&lt;button
+    data-course="html"
+    data-level="beginner"&gt;
+
+    Start Course
+
+&lt;/button&gt;</code></pre>
+
+            <p>
+                JavaScript can access these values through the
+                <code>dataset</code> property.
+            </p>
+
+            <h2>12. contenteditable Attribute</h2>
+
+            <p>
+                The <code>contenteditable</code> attribute makes an element's
+                content editable by the user.
+            </p>
+
+            <pre><code>&lt;p contenteditable="true"&gt;
+    Edit this text.
+&lt;/p&gt;</code></pre>
+
+            <div class="demo-box">
+                <p contenteditable="true" class="mb-0">
+                    Click here and edit this text.
+                </p>
+            </div>
+
+            <h2>13. spellcheck Attribute</h2>
+
+            <p>
+                The <code>spellcheck</code> attribute indicates whether the browser
+                should check spelling for editable content.
+            </p>
+
+            <pre><code>&lt;textarea spellcheck="true"&gt;
+    Type your content here.
+&lt;/textarea&gt;</code></pre>
+
+            <h2>14. draggable Attribute</h2>
+
+            <p>
+                The <code>draggable</code> attribute indicates whether an element
+                can be dragged using the browser's drag-and-drop behavior.
+            </p>
+
+            <pre><code>&lt;div draggable="true"&gt;
+    Drag Me
+&lt;/div&gt;</code></pre>
+
+            <h2>15. Accesskey Attribute</h2>
+
+            <p>
+                The <code>accesskey</code> attribute can define a keyboard shortcut
+                for an element.
+            </p>
+
+            <pre><code>&lt;button accesskey="s"&gt;
+    Save
+&lt;/button&gt;</code></pre>
+
+            <p>
+                The exact keyboard combination used with an access key can depend
+                on the browser and operating system.
+            </p>
+
+            <h2>16. Global Attributes Overview</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Simple Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><code>id</code></td>
+                            <td>Unique identifier for an element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>class</code></td>
+                            <td>Assigns one or more class names.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>title</code></td>
+                            <td>Provides additional information.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>style</code></td>
+                            <td>Adds inline CSS.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>hidden</code></td>
+                            <td>Hides an element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>lang</code></td>
+                            <td>Defines the language of content.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>dir</code></td>
+                            <td>Defines text direction.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>tabindex</code></td>
+                            <td>Controls keyboard focus behavior.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>data-*</code></td>
+                            <td>Stores custom application data.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>contenteditable</code></td>
+                            <td>Makes content editable.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>17. Global Attributes in One Example</h2>
+
+            <p>
+                Multiple global attributes can be used on the same element when
+                they serve different purposes.
+            </p>
+
+            <pre><code>&lt;p
+    id="course-title"
+    class="highlight"
+    title="HTML Course"
+    data-course="html"&gt;
+
+    Learn HTML
+
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <p>
+                Here, each attribute has a different responsibility.
+            </p>
+
+            <h2>18. Global Attributes and Accessibility</h2>
+
+            <p>
+                Some global attributes can contribute to accessibility when they
+                are used correctly.
+            </p>
+
+            <p>
+                For example, <code>lang</code> helps identify document language,
+                while appropriate focus behavior can help keyboard users.
+            </p>
+
+            <h2>19. Global Attributes and JavaScript</h2>
+
+            <p>
+                JavaScript commonly uses attributes such as
+                <code>id</code>, <code>class</code>, and <code>data-*</code>
+                to find elements or read additional information.
+            </p>
+
+            <pre><code>const element =
+    document.getElementById("course-title");
+
+const course =
+    element.dataset.course;</code></pre>
+
+            <h2>20. Common Mistakes</h2>
+
+            <h3>Mistake 1: Duplicate IDs</h3>
+
+            <p>
+                Avoid giving the same ID to multiple elements when a unique
+                identifier is expected.
+            </p>
+
+            <h3>Mistake 2: Too many inline styles</h3>
+
+            <p>
+                Large amounts of inline CSS make code harder to maintain.
+                Reusable CSS classes are usually better.
+            </p>
+
+            <h3>Mistake 3: Poor tabindex usage</h3>
+
+            <p>
+                Unnecessary tabindex values can create confusing keyboard navigation.
+            </p>
+
+            <h3>Mistake 4: Storing sensitive data in data-*</h3>
+
+            <p>
+                Data attributes are visible in the browser and should not contain
+                passwords, secret keys, or confidential information.
+            </p>
+
+            <h2>21. Best Practices</h2>
+
+            <ul>
+                <li>Use unique and meaningful IDs.</li>
+                <li>Use classes for reusable styling.</li>
+                <li>Use meaningful titles when additional information is helpful.</li>
+                <li>Use semantic HTML before adding unnecessary custom attributes.</li>
+                <li>Use tabindex carefully.</li>
+                <li>Use data attributes only for small application-specific values.</li>
+                <li>Keep sensitive information out of HTML attributes.</li>
+            </ul>
+
+            <h2>22. Practice Example</h2>
+
+            <p>
+                Create a course card using an ID, class, title, and custom data attribute.
+            </p>
+
+            <pre><code>&lt;div
+    id="html-course"
+    class="course-card"
+    title="HTML Beginner Course"
+    data-level="beginner"&gt;
+
+    &lt;h2&gt;
+        HTML Course
+    &lt;/h2&gt;
+
+    &lt;p&gt;
+        Learn HTML from scratch.
+    &lt;/p&gt;
+
+&lt;/div&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    Global attributes are attributes that can be used across many
+                    HTML elements. Important examples include <code>id</code>,
+                    <code>class</code>, <code>title</code>, <code>hidden</code>,
+                    <code>lang</code>, <code>dir</code>, <code>tabindex</code>,
+                    and <code>data-*</code>. They help identify, describe, control,
+                    and enhance HTML elements while keeping the document meaningful
+                    and maintainable.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Index", "AdvancedHTML", new { area = "HTML" })">
+                    ← Previous: Advanced HTML
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("MetaTags", "AdvancedHTML", new { area = "HTML" })">
+                    Next: Meta Tags →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

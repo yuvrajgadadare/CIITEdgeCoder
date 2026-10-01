@@ -1,0 +1,994 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Keyboard Events";
+}
+
+<style>
+    /* =========================================================
+       KEYBOARD EVENTS PAGE
+       ========================================================= */
+
+    #javascript-keyboard-events-page {
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
+
+    #javascript-keyboard-events-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+    }
+
+    #javascript-keyboard-events-page .page-title {
+        color: #111827;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-keyboard-events-page .lead-text {
+        color: #4b5563;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+
+    #javascript-keyboard-events-page .section-title {
+        color: #111827;
+        font-size: 27px;
+        font-weight: 700;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-keyboard-events-page .section-text {
+        color: #4b5563;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-keyboard-events-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin: 25px 0;
+    }
+
+    #javascript-keyboard-events-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-keyboard-events-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 8px;
+    }
+
+    /* =========================================================
+       KEYBOARD VISUAL
+       ========================================================= */
+
+    #javascript-keyboard-events-page .keyboard-image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin: 25px 0;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    #javascript-keyboard-events-page .keyboard-visual {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+    }
+
+    #javascript-keyboard-events-page .keyboard-row {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-keyboard-events-page .keyboard-key {
+        min-width: 48px;
+        height: 42px;
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        box-shadow: 0 2px 0 #cbd5e1;
+        color: #374151;
+        font-family: Consolas, Monaco, monospace;
+        font-weight: 600;
+        font-size: 13px;
+    }
+
+    #javascript-keyboard-events-page .keyboard-key.active-key {
+        background: #5b21b6;
+        color: #ffffff;
+        border-color: #5b21b6;
+        box-shadow: 0 2px 0 #4c1d95;
+    }
+
+    #javascript-keyboard-events-page .space-key {
+        min-width: 280px;
+    }
+
+    #javascript-keyboard-events-page .image-caption {
+        color: #6c757d;
+        font-size: 14px;
+        margin-top: 18px;
+        margin-bottom: 0;
+    }
+
+    /* =========================================================
+       FLOW DIAGRAM
+       ========================================================= */
+
+    #javascript-keyboard-events-page .flow-card {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 28px;
+        margin: 20px 0 30px;
+    }
+
+    #javascript-keyboard-events-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #javascript-keyboard-events-page .flow-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-keyboard-events-page .flow-box {
+        min-width: 155px;
+        padding: 18px 15px;
+        text-align: center;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+    }
+
+    #javascript-keyboard-events-page .flow-box strong {
+        display: block;
+        color: #111827;
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    #javascript-keyboard-events-page .flow-box span {
+        color: #6b7280;
+        font-size: 13px;
+    }
+
+    #javascript-keyboard-events-page .flow-box.event-box {
+        border: 2px solid #7c3aed;
+    }
+
+    #javascript-keyboard-events-page .flow-box.output-box-flow {
+        border: 2px solid #198754;
+    }
+
+    #javascript-keyboard-events-page .flow-arrow {
+        color: #5b21b6;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    /* =========================================================
+       EVENT TYPES
+       ========================================================= */
+
+    #javascript-keyboard-events-page .event-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+    #javascript-keyboard-events-page .event-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-keyboard-events-page .event-card p {
+        color: #495057;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-keyboard-events-page .code-section {
+        margin-top: 20px;
+    }
+
+    #javascript-keyboard-events-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* =========================================================
+       TRY IT BUTTON - RIGHT SIDE
+       ========================================================= */
+
+    #javascript-keyboard-events-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+
+    #javascript-keyboard-events-page .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 18px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-keyboard-events-page .try-it-btn:hover {
+        background: #157347;
+        color: #ffffff;
+    }
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-keyboard-events-page .output-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 12px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        font-weight: 700;
+    }
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-keyboard-events-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-keyboard-events-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-keyboard-events-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-keyboard-events-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-keyboard-events-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-keyboard-events-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-keyboard-events-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-keyboard-events-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-keyboard-events-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 768px) {
+
+        #javascript-keyboard-events-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-keyboard-events-page .page-title {
+            font-size: 29px;
+        }
+
+        #javascript-keyboard-events-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-keyboard-events-page .space-key {
+            min-width: 180px;
+        }
+
+        #javascript-keyboard-events-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-keyboard-events-page .nav-btn {
+            justify-content: center;
+        }
+    }
+</style>
+
+
+<main id="javascript-keyboard-events-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDE - COURSE SYLLABUS
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 RIGHT SIDE - CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- =================================================
+                         PAGE HEADER
+                         ================================================= -->
+
+                    <h1 class="page-title">
+                        Keyboard Events
+                    </h1>
+
+                    <p class="lead-text">
+                        Learn how JavaScript detects keyboard interactions
+                        such as pressing and releasing keyboard keys.
+                    </p>
+
+
+                    <!-- =================================================
+                         INTRODUCTION
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What are Keyboard Events?
+                    </h2>
+
+                    <p class="section-text">
+                        Keyboard events are generated when a user interacts
+                        with the keyboard.
+                    </p>
+
+                    <p class="section-text">
+                        JavaScript provides events such as
+                        <strong>keydown</strong> and
+                        <strong>keyup</strong> to detect keyboard
+                        interactions.
+                    </p>
+
+
+                    <!-- =================================================
+                         CONCEPT BOX
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p>
+                            A keyboard event occurs when the user presses
+                            or releases a keyboard key.
+                        </p>
+
+                        <p>
+                            JavaScript can detect the event and execute
+                            specific code.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         KEYBOARD VISUAL
+                         ================================================= -->
+
+                    <div class="keyboard-image-card">
+
+                        <div class="keyboard-visual">
+
+                            <div class="keyboard-row">
+                                <div class="keyboard-key">Esc</div>
+                                <div class="keyboard-key">F1</div>
+                                <div class="keyboard-key">F2</div>
+                                <div class="keyboard-key">F3</div>
+                                <div class="keyboard-key">F4</div>
+                                <div class="keyboard-key">F5</div>
+                                <div class="keyboard-key">F6</div>
+                                <div class="keyboard-key">F7</div>
+                                <div class="keyboard-key">F8</div>
+                                <div class="keyboard-key">F9</div>
+                                <div class="keyboard-key">F10</div>
+                                <div class="keyboard-key">F11</div>
+                                <div class="keyboard-key">F12</div>
+                            </div>
+
+                            <div class="keyboard-row">
+                                <div class="keyboard-key">Q</div>
+                                <div class="keyboard-key">W</div>
+                                <div class="keyboard-key">E</div>
+                                <div class="keyboard-key">R</div>
+                                <div class="keyboard-key">T</div>
+                                <div class="keyboard-key">Y</div>
+                                <div class="keyboard-key">U</div>
+                                <div class="keyboard-key">I</div>
+                                <div class="keyboard-key">O</div>
+                                <div class="keyboard-key">P</div>
+                            </div>
+
+                            <div class="keyboard-row">
+                                <div class="keyboard-key">A</div>
+                                <div class="keyboard-key active-key">S</div>
+                                <div class="keyboard-key">D</div>
+                                <div class="keyboard-key">F</div>
+                                <div class="keyboard-key">G</div>
+                                <div class="keyboard-key">H</div>
+                                <div class="keyboard-key">J</div>
+                                <div class="keyboard-key">K</div>
+                                <div class="keyboard-key">L</div>
+                            </div>
+
+                            <div class="keyboard-row">
+                                <div class="keyboard-key">Z</div>
+                                <div class="keyboard-key">X</div>
+                                <div class="keyboard-key">C</div>
+                                <div class="keyboard-key">V</div>
+                                <div class="keyboard-key">B</div>
+                                <div class="keyboard-key">N</div>
+                                <div class="keyboard-key">M</div>
+                            </div>
+
+                            <div class="keyboard-row">
+                                <div class="keyboard-key">Ctrl</div>
+                                <div class="keyboard-key">Alt</div>
+                                <div class="keyboard-key space-key">
+                                    SPACE
+                                </div>
+                                <div class="keyboard-key">Alt</div>
+                                <div class="keyboard-key">Ctrl</div>
+                            </div>
+
+                        </div>
+
+                        <p class="image-caption">
+                            Keyboard interaction generates events that
+                            JavaScript can detect and handle.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         KEYBOARD EVENT FLOW
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Keyboard Event Flow
+                    </h2>
+
+                    <div class="flow-card">
+
+                        <div class="flow-title">
+                            How a Keyboard Event Works
+                        </div>
+
+                        <div class="flow-container">
+
+                            <div class="flow-box">
+                                <strong>User</strong>
+                                <span>Presses a Key</span>
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box event-box">
+                                <strong>keydown</strong>
+                                <span>Key is Pressed</span>
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                <strong>JavaScript</strong>
+                                <span>Event Handler</span>
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box output-box-flow">
+                                <strong>Output</strong>
+                                <span>Action / Message</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         KEYBOARD EVENT TYPES
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Common Keyboard Events
+                    </h2>
+
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+
+                            <div class="event-card">
+
+                                <h5>
+                                    keydown
+                                </h5>
+
+                                <p>
+                                    Occurs when a keyboard key is pressed
+                                    down.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="event-card">
+
+                                <h5>
+                                    keyup
+                                </h5>
+
+                                <p>
+                                    Occurs when a keyboard key is released.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="event-card">
+
+                                <h5>
+                                    key
+                                </h5>
+
+                                <p>
+                                    The <strong>key</strong> property
+                                    identifies the actual key value,
+                                    such as A or Enter.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Keyboard Event Information
+                    </h2>
+
+                    <p class="section-text">
+                        A keyboard event contains useful information such
+                        as the event type, key value, and key code.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const event = {
+    type: "keydown",
+    key: "A",
+    code: "KeyA"
+};
+
+console.log("Event Type:", event.type);
+console.log("Key:", event.key);
+console.log("Code:", event.code);</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryKeyboardEventsExample1()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Event Type: keydown<br />
+                        Key: A<br />
+                        Code: KeyA
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Checking a Pressed Key
+                    </h2>
+
+                    <p class="section-text">
+                        We can check the value of a key and perform an
+                        action based on that key.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const key = "Enter";
+
+if (key === "Enter") {
+    console.log("Enter key was pressed.");
+}</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryKeyboardEventsExample2()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Enter key was pressed.
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Detecting Different Keys
+                    </h2>
+
+                    <p class="section-text">
+                        JavaScript can check different key values and
+                        execute different instructions.
+                    </p>
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const key = "ArrowUp";
+
+if (key === "ArrowUp") {
+    console.log("Up arrow was pressed.");
+}
+else {
+    console.log("Another key was pressed.");
+}</code></pre>
+
+                        <div class="try-it-wrapper">
+
+                            <button type="button"
+                                    class="try-it-btn"
+                                    onclick="tryKeyboardEventsExample3()">
+
+                                <span>▶</span>
+                                <span>Try It</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        Up arrow was pressed.
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT NOTE
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Note
+                        </h5>
+
+                        <p>
+                            The CIIT JavaScript compiler is designed for
+                            console-based JavaScript execution.
+                        </p>
+
+                        <p class="mb-0">
+                            Therefore, the Try It examples above use normal
+                            JavaScript objects and conditions to demonstrate
+                            keyboard-event information without depending on
+                            browser-only objects such as
+                            <strong>document</strong>.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+                            Keyboard events allow JavaScript to respond to
+                            keyboard interactions. The most commonly used
+                            events are <strong>keydown</strong> and
+                            <strong>keyup</strong>. Keyboard-event
+                            information can include the
+                            <strong>key</strong> and
+                            <strong>code</strong> values, which can be used
+                            to perform specific actions in a web application.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("ClickEvents", "Events", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Click Events
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("FormEvents", "Events", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Form Events
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       EXISTING CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function tryKeyboardEventsExample1() {
+
+        const code =
+            'const event = {\\n' +
+            '    type: "keydown",\\n' +
+            '    key: "A",\\n' +
+            '    code: "KeyA"\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Event Type:", event.type);\\n' +
+            'console.log("Key:", event.key);\\n' +
+            'console.log("Code:", event.code);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function tryKeyboardEventsExample2() {
+
+        const code =
+            'const key = "Enter";\\n' +
+            '\\n' +
+            'if (key === "Enter") {\\n' +
+            '    console.log("Enter key was pressed.");\\n' +
+            '}';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function tryKeyboardEventsExample3() {
+
+        const code =
+            'const key = "ArrowUp";\\n' +
+            '\\n' +
+            'if (key === "ArrowUp") {\\n' +
+            '    console.log("Up arrow was pressed.");\\n' +
+            '}\\n' +
+            'else {\\n' +
+            '    console.log("Another key was pressed.");\\n' +
+            '}';
+
+        openCompiler(code);
+    }
+
+</script>

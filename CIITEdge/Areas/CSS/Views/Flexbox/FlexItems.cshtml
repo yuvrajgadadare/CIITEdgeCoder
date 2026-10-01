@@ -1,0 +1,982 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Flex Items";
+}
+
+<style>
+
+    #css-flex-items-page {
+        color: #212529;
+    }
+
+    #css-flex-items-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-flex-items-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-items-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-flex-items-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-flex-items-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* ================================================= */
+    /* CODE */
+    /* ================================================= */
+
+    #css-flex-items-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-flex-items-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* ================================================= */
+    /* EXPLANATION */
+    /* ================================================= */
+
+    #css-flex-items-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-flex-items-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ================================================= */
+    /* DIAGRAM */
+    /* ================================================= */
+
+    #css-flex-items-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flex-items-page .diagram-container {
+        display: flex;
+        gap: 15px;
+        padding: 20px;
+        border: 3px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flex-items-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 18px 25px;
+        text-align: center;
+        font-weight: 700;
+        flex: 1;
+    }
+
+    /* ================================================= */
+    /* OUTPUT */
+    /* ================================================= */
+
+    #css-flex-items-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-flex-items-page .output-container {
+        display: flex;
+        gap: 15px;
+        padding: 20px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-flex-items-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 20px;
+        text-align: center;
+        font-weight: 700;
+        flex: 1;
+    }
+
+    /* ================================================= */
+    /* PROPERTY CARDS */
+    /* ================================================= */
+
+    #css-flex-items-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-flex-items-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-items-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* ================================================= */
+    /* NOTE */
+    /* ================================================= */
+
+    #css-flex-items-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* ================================================= */
+    /* SUMMARY */
+    /* ================================================= */
+
+    #css-flex-items-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-flex-items-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-flex-items-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+</style>
+
+
+<div id="css-flex-items-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS Flex Items
+                </h1>
+
+                <p>
+                    Flex Items are the direct child elements of a
+                    Flex Container.
+                </p>
+
+                <p>
+                    When a parent element uses
+                    <strong>display: flex;</strong>, its direct
+                    children automatically become Flex Items.
+                </p>
+
+                <p>
+                    CSS provides several properties that allow us to
+                    control the size, position, order, and flexibility
+                    of individual Flex Items.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC CONCEPT -->
+                <!-- ================================================= -->
+
+                <h2>
+                    What is a Flex Item?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        A Flex Item is a direct child of a Flex Container.
+                    </p>
+
+                    <p>
+                        For example, if a
+                        <strong>div</strong> contains three child
+                        <strong>div</strong> elements and the parent
+                        has <strong>display: flex;</strong>, those
+                        three child elements become Flex Items.
+                    </p>
+
+                    <p>
+                        Flex Item properties are normally applied to
+                        the individual child elements rather than
+                        the parent container.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- BASIC STRUCTURE -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Basic Structure
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>&lt;div class="container"&gt;
+
+    &lt;div class="item"&gt;Item 1&lt;/div&gt;
+    &lt;div class="item"&gt;Item 2&lt;/div&gt;
+    &lt;div class="item"&gt;Item 3&lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+
+                </div>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+}</code></pre>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Flex Container and Flex Items
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-container">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        Parent = Flex Container
+                        &nbsp; | &nbsp;
+                        Children = Flex Items
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FLEX ITEM PROPERTIES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Important Flex Item Properties
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Property</th>
+                                <th>Purpose</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>order</strong>
+                                </td>
+
+                                <td>
+                                    Changes the visual order of
+                                    individual Flex Items.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>flex-grow</strong>
+                                </td>
+
+                                <td>
+                                    Controls how an item grows when
+                                    extra space is available.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>flex-shrink</strong>
+                                </td>
+
+                                <td>
+                                    Controls how an item shrinks when
+                                    space is limited.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>flex-basis</strong>
+                                </td>
+
+                                <td>
+                                    Defines the initial size of
+                                    a Flex Item.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>flex</strong>
+                                </td>
+
+                                <td>
+                                    Shorthand for flex-grow,
+                                    flex-shrink, and flex-basis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>align-self</strong>
+                                </td>
+
+                                <td>
+                                    Overrides align-items for
+                                    an individual Flex Item.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- INDIVIDUAL FLEX ITEM -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Styling an Individual Flex Item
+                </h2>
+
+                <p>
+                    Flex Item properties are applied directly to the
+                    child element that needs special behavior.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+}
+
+.item {
+    flex-grow: 1;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Here, <strong>.container</strong> is the
+                        Flex Container.
+                    </p>
+
+                    <p>
+                        The <strong>.item</strong> elements are
+                        Flex Items.
+                    </p>
+
+                    <p>
+                        The <strong>flex-grow</strong> property
+                        controls how an individual Flex Item uses
+                        available space.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FLEX GROW -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Flex Item with flex-grow
+                </h2>
+
+                <p>
+                    The <strong>flex-grow</strong> property allows
+                    a Flex Item to take a proportional amount of
+                    available space.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+}
+
+.item {
+    flex-grow: 1;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            JavaScript
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DIFFERENT GROW -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Different Flex Grow Values
+                </h2>
+
+                <p>
+                    Different Flex Items can have different
+                    <strong>flex-grow</strong> values.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item1 {
+    flex-grow: 1;
+}
+
+.item2 {
+    flex-grow: 2;
+}
+
+.item3 {
+    flex-grow: 1;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The second item has a grow value of
+                        <strong>2</strong>, while the first and third
+                        items have a value of <strong>1</strong>.
+                    </p>
+
+                    <p>
+                        Therefore, the second item receives twice
+                        as much of the available extra space as
+                        each of the other items, subject to the
+                        Flexbox sizing rules.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FLEX BASIS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Flex Item with flex-basis
+                </h2>
+
+                <p>
+                    The <strong>flex-basis</strong> property defines
+                    the initial size of a Flex Item along the
+                    main axis before remaining space is distributed.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    flex-basis: 200px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        A basis of <strong>200px</strong> tells the
+                        Flexbox layout to start the item at a main-axis
+                        size of 200px before growth or shrinking is
+                        considered.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FLEX SHRINK -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Flex Item with flex-shrink
+                </h2>
+
+                <p>
+                    The <strong>flex-shrink</strong> property controls
+                    how much a Flex Item can shrink when the container
+                    does not have enough space.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    flex-shrink: 1;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The default value of
+                        <strong>flex-shrink</strong> is generally
+                        <strong>1</strong>.
+                    </p>
+
+                    <p>
+                        An item with a larger shrink value can take
+                        a larger share of the required shrinking,
+                        subject to the Flexbox sizing rules.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FLEX SHORTHAND -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Flex Shorthand Property
+                </h2>
+
+                <p>
+                    The <strong>flex</strong> property is a shorthand
+                    for three Flex Item properties:
+                    <strong>flex-grow</strong>,
+                    <strong>flex-shrink</strong>, and
+                    <strong>flex-basis</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.item {
+    flex: 1 1 200px;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The first value
+                        <strong>1</strong> represents
+                        <strong>flex-grow</strong>.
+                    </p>
+
+                    <p>
+                        The second value
+                        <strong>1</strong> represents
+                        <strong>flex-shrink</strong>.
+                    </p>
+
+                    <p>
+                        The third value
+                        <strong>200px</strong> represents
+                        <strong>flex-basis</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- ALIGN SELF -->
+                <!-- ================================================= -->
+
+                <h2>
+                    align-self
+                </h2>
+
+                <p>
+                    The <strong>align-self</strong> property allows
+                    one Flex Item to have a different cross-axis
+                    alignment from the other items.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    align-items: center;
+}
+
+.item-special {
+    align-self: flex-end;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        The parent container aligns all items using
+                        <strong>align-items: center;</strong>.
+                    </p>
+
+                    <p>
+                        The special item overrides that alignment
+                        using <strong>align-self: flex-end;</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- REAL WORLD -->
+                <!-- ================================================= -->
+
+                <h2>
+                   Example 🌍🤓
+                </h2>
+
+                <p>
+                    Suppose CIIT Training Institute displays several
+                    technology cards in a Flexbox layout.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.courses {
+    display: flex;
+    gap: 20px;
+}
+
+.course {
+    flex: 1;
+}</code></pre>
+
+                </div>
+
+                <div class="explanation-box">
+
+                    <p>
+                        Each course card becomes a Flex Item because
+                        it is a direct child of the Flex Container.
+                    </p>
+
+                    <p>
+                        The <strong>flex: 1;</strong> declaration
+                        allows the cards to share the available
+                        space.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PROPERTY CARDS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Main Flex Item Properties
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                order
+                            </h3>
+
+                            <p>
+                                Changes the visual position of an
+                                individual Flex Item.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex-grow
+                            </h3>
+
+                            <p>
+                                Controls how an item uses available
+                                extra space.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex-shrink
+                            </h3>
+
+                            <p>
+                                Controls how an item shrinks when
+                                space is limited.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex-basis
+                            </h3>
+
+                            <p>
+                                Defines the initial main-axis size
+                                of an item.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex
+                            </h3>
+
+                            <p>
+                                Shorthand for grow, shrink,
+                                and basis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                align-self
+                            </h3>
+
+                            <p>
+                                Allows one Flex Item to override
+                                the container's align-items value.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT NOTE -->
+                <!-- ================================================= -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    Flex Item properties are applied to the direct
+                    children of a Flex Container. Properties such as
+                    <strong>order</strong>,
+                    <strong>flex-grow</strong>,
+                    <strong>flex-shrink</strong>,
+                    <strong>flex-basis</strong>, and
+                    <strong>align-self</strong> control individual
+                    items.
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Flex Items are the direct children of a Flex
+                        Container. Individual Flex Items can be
+                        controlled using properties such as
+                        <strong>order</strong>,
+                        <strong>flex-grow</strong>,
+                        <strong>flex-shrink</strong>,
+                        <strong>flex-basis</strong>,
+                        <strong>flex</strong>, and
+                        <strong>align-self</strong>. These properties
+                        provide detailed control over the size,
+                        position, and behavior of individual items.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- NAVIGATION -->
+                <!-- ================================================= -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("Gap", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Gap
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Order", "Flexbox", new { area = "CSS" })">
+
+                            Next: Order →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

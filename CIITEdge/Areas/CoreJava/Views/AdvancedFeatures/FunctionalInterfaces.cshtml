@@ -1,0 +1,1441 @@
+﻿@{
+    ViewData["Title"] = "Functional Interfaces in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <!-- HEADER -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Functional Interfaces in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn functional interfaces, the
+                <code>@@FunctionalInterface</code> annotation,
+                built-in interfaces from <code>java.util.function</code>,
+                lambda expressions, method references, and functional-style
+                programming in Java.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is a Functional Interface?</h3>
+
+            <p>
+                A functional interface is an interface that contains exactly
+                one abstract method.
+            </p>
+
+            <p>
+                Functional interfaces are the target types for lambda
+                expressions and method references.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Calculator {
+
+    int calculate(int a, int b);
+
+}</code></pre>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <strong>Important:</strong>
+                A functional interface can also contain default and static
+                methods. The important requirement is that it has only one
+                abstract method.
+            </div>
+
+        </section>
+
+
+        <!-- FUNCTIONAL INTERFACE ANNOTATION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                @@FunctionalInterface Annotation
+            </h3>
+
+            <p>
+                The <code>@@FunctionalInterface</code> annotation tells the
+                compiler and other developers that an interface is intended
+                to be a functional interface.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>@@FunctionalInterface
+interface Calculator {
+
+    int calculate(int a, int b);
+
+}</code></pre>
+            </div>
+
+            <p class="mt-3">
+                If another abstract method is added, the compiler reports an
+                error because the interface no longer satisfies the functional
+                interface contract.
+            </p>
+
+        </section>
+
+
+        <!-- LAMBDA -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Functional Interface with Lambda
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>@@FunctionalInterface
+interface Calculator {
+
+    int calculate(int a, int b);
+
+}
+
+Calculator addition =
+    (a, b) -&gt; a + b;
+
+int result =
+    addition.calculate(10, 20);
+
+System.out.println(result);</code></pre>
+            </div>
+
+<p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30</code></pre>
+</div>
+
+            <p class="mt-3">
+                The lambda expression provides the implementation of the
+                interface's single abstract method.
+            </p>
+
+        </section>
+
+
+        <!-- BUILT-IN INTERFACES -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Built-in Functional Interfaces
+            </h3>
+
+            <p>
+                Java provides commonly used functional interfaces in the
+                <code>java.util.function</code> package.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Interface</th>
+                            <th>Input</th>
+                            <th>Output</th>
+                            <th>Main Method</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>Predicate&lt;T&gt;</code></td>
+                            <td>T</td>
+                            <td>boolean</td>
+                            <td><code>test()</code></td>
+                        </tr>
+
+                        <tr>
+                            <td><code>Function&lt;T,R&gt;</code></td>
+                            <td>T</td>
+                            <td>R</td>
+                            <td><code>apply()</code></td>
+                        </tr>
+
+                        <tr>
+                            <td><code>Consumer&lt;T&gt;</code></td>
+                            <td>T</td>
+                            <td>void</td>
+                            <td><code>accept()</code></td>
+                        </tr>
+
+                        <tr>
+                            <td><code>Supplier&lt;T&gt;</code></td>
+                            <td>None</td>
+                            <td>T</td>
+                            <td><code>get()</code></td>
+                        </tr>
+
+                        <tr>
+                            <td><code>UnaryOperator&lt;T&gt;</code></td>
+                            <td>T</td>
+                            <td>T</td>
+                            <td><code>apply()</code></td>
+                        </tr>
+
+                        <tr>
+                            <td><code>BinaryOperator&lt;T&gt;</code></td>
+                            <td>T, T</td>
+                            <td>T</td>
+                            <td><code>apply()</code></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- PREDICATE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Predicate&lt;T&gt;
+            </h3>
+
+            <p>
+                Predicate represents a condition that returns either
+                <code>true</code> or <code>false</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.function.Predicate;
+
+Predicate&lt;Integer&gt; isPositive =
+    number -&gt; number &gt; 0;
+
+System.out.println(
+    isPositive.test(10)
+);
+
+System.out.println(
+    isPositive.test(-5)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>true
+ false</code></pre>
+</div>
+        </section>
+
+
+        <!-- FUNCTION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Function&lt;T,R&gt;
+            </h3>
+
+            <p>
+                Function accepts one input and produces one output.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.function.Function;
+
+Function&lt;String, Integer&gt; length =
+    text -&gt; text.length();
+
+int result =
+    length.apply("CIIT Institute");
+
+System.out.println(result);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>14</code></pre>
+</div>
+        </section>
+
+
+        <!-- CONSUMER -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Consumer&lt;T&gt;
+            </h3>
+
+            <p>
+                Consumer accepts an input but does not return a value.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.function.Consumer;
+
+Consumer&lt;String&gt; printer =
+    text -&gt; System.out.println(text);
+
+printer.accept(
+    "Welcome to CIIT Institute"
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Welcome to CIIT Institute
+</code></pre>
+</div>
+        </section>
+
+
+        <!-- SUPPLIER -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Supplier&lt;T&gt;
+            </h3>
+
+            <p>
+                Supplier produces a value without receiving an input.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.function.Supplier;
+
+Supplier&lt;String&gt; message =
+    () -&gt; "Hello Java";
+
+System.out.println(
+    message.get()
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Hello Java
+</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- UNARY OPERATOR -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                UnaryOperator&lt;T&gt;
+            </h3>
+
+            <p>
+                UnaryOperator represents a function where the input and output
+                are of the same type.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.function.UnaryOperator;
+
+UnaryOperator&lt;Integer&gt; square =
+    number -&gt; number * number;
+
+System.out.println(
+    square.apply(5)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>25
+</code></pre>
+</div>
+        </section>
+
+
+        <!-- BINARY OPERATOR -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                BinaryOperator&lt;T&gt;
+            </h3>
+
+            <p>
+                BinaryOperator accepts two values of the same type and returns
+                a value of that same type.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.function.BinaryOperator;
+
+BinaryOperator&lt;Integer&gt; addition =
+    (a, b) -&gt; a + b;
+
+System.out.println(
+    addition.apply(10, 20)
+);</code></pre>
+            </div>
+             <p class="mt-3">
+    Output:
+</p>
+
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30
+</code></pre>
+</div>
+        </section>
+
+
+        <!-- BIFUNCTION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                BiFunction&lt;T,U,R&gt;
+            </h3>
+
+            <p>
+                BiFunction accepts two inputs and produces one output.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.function.BiFunction;
+
+BiFunction&lt;Integer, Integer, Integer&gt; multiply =
+    (a, b) -&gt; a * b;
+
+System.out.println(
+    multiply.apply(5, 4)
+);</code></pre>
+            </div>
+          <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>20
+</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- BIPREDICATE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                BiPredicate&lt;T,U&gt;
+            </h3>
+
+            <p>
+                BiPredicate accepts two inputs and returns a boolean result.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.function.BiPredicate;
+
+BiPredicate&lt;Integer, Integer&gt; greater =
+    (a, b) -&gt; a &gt; b;
+
+System.out.println(
+    greater.test(20, 10)
+);</code></pre>
+            </div>
+             <p class="mt-3">
+    Output:
+</p>
+
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>true
+</code></pre>
+</div>
+        </section>
+
+
+        <!-- BICONSUMER -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                BiConsumer&lt;T,U&gt;
+            </h3>
+
+            <p>
+                BiConsumer accepts two inputs and does not return a value.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>import java.util.function.BiConsumer;
+
+BiConsumer&lt;String, Integer&gt; display =
+    (name, age) -&gt;
+        System.out.println(
+            name + " : " + age
+        );
+
+display.accept(
+    "Amit",
+    22
+);</code></pre>
+            </div>
+             <p class="mt-3">
+    Output:
+</p>
+
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit:22
+</code></pre>
+</div>
+        </section>
+
+
+        <!-- CUSTOM INTERFACE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Creating Your Own Functional Interface
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>@@FunctionalInterface
+interface MessageFormatter {
+
+    String format(String message);
+
+}
+
+MessageFormatter formatter =
+    message -&gt;
+        "[INFO] " + message;
+
+System.out.println(
+    formatter.format(
+        "Application started"
+    )
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>[INFO] Application started
+</code></pre>
+</div>
+        </section>
+
+
+        <!-- DEFAULT METHOD -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Functional Interface with Default Method
+            </h3>
+
+            <p>
+                A functional interface may contain default methods because
+                default methods are not abstract methods.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>@@FunctionalInterface
+interface Greeting {
+
+    void sayHello();
+
+    default void welcome() {
+
+        System.out.println(
+            "Welcome!"
+        );
+
+    }
+
+}</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- STATIC METHOD -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Functional Interface with Static Method
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>@@FunctionalInterface
+interface Calculator {
+
+    int calculate(int a, int b);
+
+    static int square(int number) {
+
+        return number * number;
+
+    }
+
+}</code></pre>
+            </div>
+
+            <p class="mt-3">
+                Static methods belong to the interface itself and do not count
+                as abstract methods.
+            </p>
+
+        </section>
+
+
+        <!-- OBJECT METHODS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Object Methods and Functional Interfaces
+            </h3>
+
+            <p>
+                Methods that correspond to public methods of
+                <code>Object</code> do not count toward the single abstract
+                method requirement.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>@@FunctionalInterface
+interface Task {
+
+    void execute();
+
+    String toString();
+
+}</code></pre>
+            </div>
+
+            <p class="mt-3">
+                The interface still qualifies as functional because
+                <code>toString()</code> corresponds to a method from
+                <code>Object</code>.
+            </p>
+
+        </section>
+
+
+        <!-- METHOD REFERENCE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Functional Interfaces and Method References
+            </h3>
+
+            <p>
+                Method references can be assigned to functional interface
+                variables when their signatures are compatible.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Consumer&lt;String&gt; printer =
+    System.out::println;
+
+printer.accept(
+    "Hello from Java"
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Hello from Java
+</code></pre>
+</div>
+        </section>
+
+
+        <!-- COLLECTIONS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Functional Interfaces with Collections
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of(
+        "Amit",
+        "Neha",
+        "Rahul"
+    );
+
+names.forEach(
+    name -&gt;
+        System.out.println(name)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit
+Neha
+Rahul</code></pre>
+</div>
+
+            <p class="mt-3">
+                The <code>forEach()</code> operation accepts a
+                <code>Consumer</code>.
+            </p>
+
+        </section>
+
+
+        <!-- STREAM API -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Functional Interfaces and Streams
+            </h3>
+
+            <p>
+                Stream operations frequently accept functional interfaces.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(
+        10,
+        15,
+        20,
+        25,
+        30
+    );
+
+numbers.stream()
+    .filter(
+        number -&gt; number &gt; 20
+    )
+    .map(
+        number -&gt; number * 2
+    )
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>50
+60</code></pre>
+</div>
+            <div class="alert alert-success mt-3">
+
+                <strong>Key idea:</strong>
+
+                <code>filter()</code> uses a predicate-like condition,
+                <code>map()</code> transforms values, and
+                <code>forEach()</code> consumes values.
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPOSITION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Composing Functional Operations
+            </h3>
+
+            <p>
+                Some functional interfaces provide methods that allow
+                operations to be combined.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Predicate&lt;Integer&gt; positive =
+    number -&gt; number &gt; 0;
+
+Predicate&lt;Integer&gt; even =
+    number -&gt; number % 2 == 0;
+
+Predicate&lt;Integer&gt; positiveAndEven =
+    positive.and(even);
+
+System.out.println(
+    positiveAndEven.test(10)
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>true
+</code></pre>
+</div>
+        </section>
+
+
+        <!-- FUNCTION COMPOSITION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Function Composition
+            </h3>
+
+            <p>
+                Function interfaces support operations such as
+                <code>andThen()</code> and <code>compose()</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Function&lt;Integer, Integer&gt; multiply =
+    number -&gt; number * 2;
+
+Function&lt;Integer, Integer&gt; add =
+    number -&gt; number + 10;
+
+Function&lt;Integer, Integer&gt; combined =
+    multiply.andThen(add);
+
+System.out.println(
+    combined.apply(5)
+);</code></pre>
+            </div>
+
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>20
+</code></pre>
+</div>
+        </section>
+
+
+        <!-- PRIMITIVE SPECIALIZATIONS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Primitive Functional Interfaces
+            </h3>
+
+            <p>
+                Java also provides primitive-specialized functional interfaces
+                to reduce unnecessary boxing and unboxing in suitable cases.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Interface</th>
+                            <th>Purpose</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>IntPredicate</code></td>
+                            <td>Predicate for int values.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>IntFunction&lt;R&gt;</code></td>
+                            <td>Accepts int and returns a reference type.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>IntConsumer</code></td>
+                            <td>Consumes an int value.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>IntSupplier</code></td>
+                            <td>Supplies an int value.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>IntUnaryOperator</code></td>
+                            <td>Transforms one int into another int.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>IntBinaryOperator</code></td>
+                            <td>Combines two int values.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- REAL WORLD -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Example
+            </h3>
+
+            <p>
+                Functional interfaces are useful when business logic needs to
+                be supplied dynamically.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>static int calculate(
+    int a,
+    int b,
+    BinaryOperator&lt;Integer&gt; operation
+) {
+
+    return operation.apply(a, b);
+
+}
+
+int addition =
+    calculate(
+        10,
+        20,
+        (a, b) -&gt; a + b
+    );
+
+int multiplication =
+    calculate(
+        10,
+        20,
+        (a, b) -&gt; a * b
+    );
+
+System.out.println(addition);
+System.out.println(multiplication);</code></pre>
+            </div>
+
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30
+200</code></pre>
+</div>
+        </section>
+
+
+        <!-- BENEFITS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Benefits of Functional Interfaces
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Enables lambda expressions.
+                </li>
+
+                <li class="mb-2">
+                    Reduces boilerplate code.
+                </li>
+
+                <li class="mb-2">
+                    Supports functional-style programming.
+                </li>
+
+                <li class="mb-2">
+                    Works naturally with the Stream API.
+                </li>
+
+                <li class="mb-2">
+                    Makes behavior easy to pass as an argument.
+                </li>
+
+                <li>
+                    Encourages reusable and composable operations.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Use <code>@@FunctionalInterface</code> when defining an
+                    interface intended to be functional.
+                </li>
+
+                <li class="mb-2">
+                    Prefer standard interfaces from
+                    <code>java.util.function</code> when they fit the use case.
+                </li>
+
+                <li class="mb-2">
+                    Create custom functional interfaces when domain-specific
+                    meaning improves readability.
+                </li>
+
+                <li class="mb-2">
+                    Keep lambda expressions short and readable.
+                </li>
+
+                <li>
+                    Prefer method references when they make the code clearer.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW QUESTIONS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="functionalInterfaceQuestions">
+
+                <!-- QUESTION 1 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#functionalQuestionOne">
+
+                            What is a functional interface?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="functionalQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#functionalInterfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            A functional interface is an interface with exactly
+                            one abstract method.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 2 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#functionalQuestionTwo">
+
+                            What is @@FunctionalInterface?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="functionalQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#functionalInterfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>@@FunctionalInterface</code> is an annotation
+                            that documents and compiler-checks the intent that
+                            an interface should contain one abstract method.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 3 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#functionalQuestionThree">
+
+                            Can a functional interface have default methods?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="functionalQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#functionalInterfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            Yes. A functional interface can have multiple
+                            default and static methods as long as it has only
+                            one abstract method.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 4 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#functionalQuestionFour">
+
+                            What is Predicate?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="functionalQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#functionalInterfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>Predicate&lt;T&gt;</code> represents a
+                            function that accepts a value and returns a
+                            boolean result.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 5 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#functionalQuestionFive">
+
+                            What is the difference between Function and Consumer?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="functionalQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#functionalInterfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            Function accepts an input and returns an output,
+                            while Consumer accepts an input and returns
+                            nothing.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 6 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#functionalQuestionSix">
+
+                            What is the difference between Predicate and Function?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="functionalQuestionSix"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#functionalInterfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            Predicate returns a boolean result, while Function
+                            transforms an input value into an output value.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 7 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#functionalQuestionSeven">
+
+                            Can lambda expressions be used without functional interfaces?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="functionalQuestionSeven"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#functionalInterfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            A lambda expression needs a target functional
+                            interface type, either explicitly or through
+                            type inference.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">
+                    Summary
+                </h5>
+
+                <p class="mb-0">
+                    Functional interfaces contain one abstract method and form
+                    the foundation for lambda expressions and method
+                    references. Java provides Predicate, Function, Consumer,
+                    Supplier, UnaryOperator, BinaryOperator, BiFunction,
+                    BiPredicate, BiConsumer, and primitive-specialized
+                    interfaces for common functional programming tasks.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "LambdaExpressions",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+
+            <a href="@Url.Action(
+                               "StreamAPI",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+</div>

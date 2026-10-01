@@ -1,0 +1,935 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Array Methods";
+}
+
+<style>
+
+    #javascript-array-methods-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-array-methods-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-array-methods-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-array-methods-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-array-methods-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-array-methods-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+    /* =========================
+       CONCEPT BOX
+       ========================= */
+
+    #javascript-array-methods-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-array-methods-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-array-methods-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-array-methods-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* =========================
+       IMAGE
+       ========================= */
+
+    #javascript-array-methods-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-array-methods-page .methods-image {
+        width: 100%;
+        height: 360px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+
+    #javascript-array-methods-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+    /* =========================
+       METHOD CARDS
+       ========================= */
+
+    #javascript-array-methods-page .method-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-array-methods-page .method-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-array-methods-page .method-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-array-methods-page .method-name {
+        display: inline-block;
+        background: #f3ecff;
+        color: #4c1d95;
+        border: 1px solid #d8b4fe;
+        border-radius: 6px;
+        padding: 5px 9px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    /* =========================
+       DIAGRAM
+       ========================= */
+
+    #javascript-array-methods-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-array-methods-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 24px;
+    }
+
+    #javascript-array-methods-page .method-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-array-methods-page .array-box {
+        background: #ffffff;
+        border: 2px solid #d8dee9;
+        border-radius: 9px;
+        padding: 15px 18px;
+        font-family: Consolas, Monaco, monospace;
+        font-weight: 700;
+        color: #212529;
+        text-align: center;
+        min-width: 190px;
+    }
+
+    #javascript-array-methods-page .method-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+    #javascript-array-methods-page .method-highlight {
+        background: #f3ecff;
+        border: 2px solid #7c3aed;
+        color: #4c1d95;
+    }
+
+    #javascript-array-methods-page .diagram-note {
+        text-align: center;
+        color: #6c757d;
+        margin-top: 18px;
+        margin-bottom: 0;
+        line-height: 1.7;
+    }
+
+    /* =========================
+       CODE
+       ========================= */
+
+    #javascript-array-methods-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-array-methods-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-array-methods-page .code-box code {
+        color: #ffffff;
+    }
+
+    /* =========================
+       TRY IT
+       ========================= */
+
+    #javascript-array-methods-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-array-methods-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-array-methods-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+    /* =========================
+       OUTPUT
+       ========================= */
+
+    #javascript-array-methods-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    /* =========================
+       SUMMARY
+       ========================= */
+
+    #javascript-array-methods-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-array-methods-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-array-methods-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    #javascript-array-methods-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-array-methods-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-array-methods-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-array-methods-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-array-methods-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-array-methods-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    @@media (max-width: 992px) {
+
+        #javascript-array-methods-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-array-methods-page .nav-btn {
+            justify-content: center;
+        }
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-array-methods-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-array-methods-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-array-methods-page .methods-image {
+            height: 260px;
+        }
+
+        #javascript-array-methods-page .method-flow {
+            flex-direction: column;
+        }
+
+        #javascript-array-methods-page .method-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+</style>
+
+
+<main id="javascript-array-methods-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- LEFT SIDE - COURSE SYLLABUS -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- RIGHT SIDE - CONTENT -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="page-title">
+                    Array Methods
+                </h1>
+
+                <p class="lead-text">
+                    JavaScript provides built-in methods that make it easier
+                    to add, remove, search, and work with elements in an array.
+                </p>
+
+
+                <!-- WHAT ARE ARRAY METHODS -->
+
+                <h2 class="section-title">
+                    What are Array Methods?
+                </h2>
+
+                <p class="section-text">
+                    Array methods are built-in JavaScript functions that
+                    help us perform common operations on arrays.
+                </p>
+
+                <p class="section-text">
+                    Instead of writing the same logic manually, we can use
+                    methods such as <strong>push()</strong>,
+                    <strong>pop()</strong>,
+                    <strong>shift()</strong>, and
+                    <strong>unshift()</strong>.
+                </p>
+
+
+                <!-- CONCEPT BOX -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Why Do We Use Array Methods?
+                    </h5>
+
+                    <p>
+                        Array methods make array operations shorter,
+                        easier to understand, and easier to maintain.
+                    </p>
+
+                    <p>
+                        Different methods are used for different tasks,
+                        such as adding elements, removing elements,
+                        searching for elements, or converting array data.
+                    </p>
+
+                </div>
+
+
+                <!-- ACTUAL ARRAY METHODS IMAGE -->
+
+                <div class="image-card">
+
+                    <img src="https://miro.medium.com/v2/resize%3Afit%3A1400/1%2A-gu2RChaAphzGVamzhiGIA.png"
+                         alt="JavaScript Array Methods push pop unshift shift"
+                         class="methods-image" />
+
+                    <p class="image-caption">
+                        JavaScript array methods such as push(), pop(),
+                        unshift(), and shift() are used to add and remove
+                        elements from an array.
+                    </p>
+
+                </div>
+
+
+                <!-- COMMON METHODS -->
+
+                <h2 class="section-title">
+                    Common Array Methods
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="method-card">
+
+                            <span class="method-name">
+                                push()
+                            </span>
+
+                            <h5>
+                                Add at the End
+                            </h5>
+
+                            <p>
+                                Adds one or more elements to the end of
+                                an array and returns the new array length.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="method-card">
+
+                            <span class="method-name">
+                                pop()
+                            </span>
+
+                            <h5>
+                                Remove from the End
+                            </h5>
+
+                            <p>
+                                Removes the last element from an array
+                                and returns the removed element.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="method-card">
+
+                            <span class="method-name">
+                                shift()
+                            </span>
+
+                            <h5>
+                                Remove from the Start
+                            </h5>
+
+                            <p>
+                                Removes the first element from an array
+                                and returns the removed element.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="method-card">
+
+                            <span class="method-name">
+                                unshift()
+                            </span>
+
+                            <h5>
+                                Add at the Start
+                            </h5>
+
+                            <p>
+                                Adds one or more elements to the beginning
+                                of an array and returns the new length.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DIAGRAM -->
+
+                <h2 class="section-title">
+                    How Array Methods Change an Array
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Array Method Flow
+                    </div>
+
+                    <div class="method-flow">
+
+                        <div class="array-box">
+                            ["Java", "Python", "C#"]
+                        </div>
+
+                        <div class="method-arrow">
+                            →
+                        </div>
+
+                        <div class="array-box method-highlight">
+                            push("JavaScript")
+                        </div>
+
+                        <div class="method-arrow">
+                            →
+                        </div>
+
+                        <div class="array-box">
+                            ["Java", "Python", "C#", "JavaScript"]
+                        </div>
+
+                    </div>
+
+                    <p class="diagram-note">
+                        The <strong>push()</strong> method adds a new element
+                        at the end of the array.
+                    </p>
+
+                </div>
+
+
+                <!-- EXAMPLE 1 -->
+
+                <h2 class="section-title">
+                    Example 1: push()
+                </h2>
+
+                <p class="section-text">
+                    The <strong>push()</strong> method adds an element
+                    to the end of an array.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let courses = ["Java", "Python", "C#"];
+
+courses.push("JavaScript");
+
+console.log(courses);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrayMethodExample1()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: ["Java", "Python", "C#", "JavaScript"]
+                </div>
+
+
+                <!-- EXAMPLE 2 -->
+
+                <h2 class="section-title">
+                    Example 2: pop()
+                </h2>
+
+                <p class="section-text">
+                    The <strong>pop()</strong> method removes the last
+                    element from an array.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let courses = ["Java", "Python", "C#", "JavaScript"];
+
+let removedCourse = courses.pop();
+
+console.log(removedCourse);
+console.log(courses);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrayMethodExample2()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: JavaScript
+                    <br />
+                    ["Java", "Python", "C#"]
+                </div>
+
+
+                <!-- EXAMPLE 3 -->
+
+                <h2 class="section-title">
+                    Example 3: shift()
+                </h2>
+
+                <p class="section-text">
+                    The <strong>shift()</strong> method removes the first
+                    element from an array.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let students = ["Priya", "Amit", "Rahul"];
+
+let firstStudent = students.shift();
+
+console.log(firstStudent);
+console.log(students);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrayMethodExample3()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: Priya
+                    <br />
+                    ["Amit", "Rahul"]
+                </div>
+
+
+                <!-- EXAMPLE 4 -->
+
+                <h2 class="section-title">
+                    Example 4: unshift()
+                </h2>
+
+                <p class="section-text">
+                    The <strong>unshift()</strong> method adds one or more
+                    elements to the beginning of an array.
+                </p>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let students = ["Amit", "Rahul"];
+
+students.unshift("Priya");
+
+console.log(students);</code></pre>
+
+                </div>
+
+                <div class="try-it-wrapper">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrayMethodExample4()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+                    Output: ["Priya", "Amit", "Rahul"]
+                </div>
+
+
+                <!-- SUMMARY -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        JavaScript array methods provide ready-to-use
+                        operations for working with arrays. The
+                        <strong>push()</strong> method adds an element
+                        at the end, <strong>pop()</strong> removes the
+                        last element, <strong>shift()</strong> removes
+                        the first element, and <strong>unshift()</strong>
+                        adds an element at the beginning.
+                    </p>
+
+                </div>
+
+
+                <!-- BOTTOM NAVIGATION -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Arrays", "ArraysStrings", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Arrays
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Strings", "ArraysStrings", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Strings
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /*
+       IMPORTANT FIX:
+
+       Browser URL was receiving literal \n characters.
+       This converts literal \\n into actual new lines
+       before sending the code to the compiler.
+    */
+
+    function openCompiler(code) {
+
+        // Convert literal \n into actual line breaks
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================
+       EXAMPLE 1 - PUSH
+       ========================= */
+
+    function runArrayMethodExample1() {
+
+        const code =
+            'let courses = ["Java", "Python", "C#"];\\n' +
+            'courses.push("JavaScript");\\n' +
+            'console.log(courses);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================
+       EXAMPLE 2 - POP
+       ========================= */
+
+    function runArrayMethodExample2() {
+
+        const code =
+            'let courses = ["Java", "Python", "C#", "JavaScript"];\\n' +
+            'let removedCourse = courses.pop();\\n' +
+            'console.log(removedCourse);\\n' +
+            'console.log(courses);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================
+       EXAMPLE 3 - SHIFT
+       ========================= */
+
+    function runArrayMethodExample3() {
+
+        const code =
+            'let students = ["Priya", "Amit", "Rahul"];\\n' +
+            'let firstStudent = students.shift();\\n' +
+            'console.log(firstStudent);\\n' +
+            'console.log(students);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================
+       EXAMPLE 4 - UNSHIFT
+       ========================= */
+
+    function runArrayMethodExample4() {
+
+        const code =
+            'let students = ["Amit", "Rahul"];\\n' +
+            'students.unshift("Priya");\\n' +
+            'console.log(students);';
+
+        openCompiler(code);
+    }
+
+</script>

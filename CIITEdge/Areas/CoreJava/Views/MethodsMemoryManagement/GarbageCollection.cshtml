@@ -1,0 +1,1236 @@
+﻿@{
+    ViewData["Title"] = "Garbage Collection";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Garbage Collection in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how the JVM automatically identifies unreachable
+                objects and reclaims heap memory.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is Garbage Collection?</h3>
+
+            <p>
+                Garbage Collection, commonly called GC, is the JVM's
+                automatic memory-management mechanism for reclaiming heap
+                memory occupied by objects that are no longer reachable.
+            </p>
+
+            <p>
+                Developers normally do not explicitly free Java objects.
+                Instead, the garbage collector determines which objects are
+                no longer reachable and may reclaim their memory.
+            </p>
+
+        </section>
+
+
+        <!-- WHY GC -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Why Does Java Need Garbage Collection?</h3>
+
+            <p>
+                In languages with manual memory management, developers often
+                need to explicitly release dynamically allocated memory.
+                Java instead provides automatic memory management through
+                the JVM.
+            </p>
+
+            <div class="alert alert-primary border-0">
+
+                <strong>Main benefit:</strong>
+
+                Garbage collection reduces the amount of manual memory
+                management required by application developers.
+
+            </div>
+
+        </section>
+
+
+        <!-- REACHABILITY -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Object Reachability</h3>
+
+            <p>
+                Garbage collection is based primarily on reachability.
+                An object is generally considered eligible for collection
+                when it can no longer be reached through references from
+                GC roots.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Student student = new Student();
+
+student.name = "Samadhan";
+
+student = null;</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                After <code>student</code> is assigned <code>null</code>,
+                the previously created object may become unreachable if
+                there are no other references to it.
+            </p>
+
+        </section>
+
+
+        <!-- GC ROOTS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">GC Roots</h3>
+
+            <p>
+                The garbage collector determines reachability starting from
+                special references known as GC roots.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>GC Root Category</th>
+                            <th>Example</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Local variables</td>
+                            <td>
+                                References held by active stack frames.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Active threads</td>
+                            <td>
+                                Objects referenced by currently running
+                                threads.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Static references</td>
+                            <td>
+                                Objects reachable through active class-level
+                                references.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>JNI references</td>
+                            <td>
+                                References maintained through native code.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ELIGIBLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Eligible for Garbage Collection
+            </h3>
+
+            <p>
+                An object becomes eligible for garbage collection when there
+                are no active references pointing to it. The JVM can then
+                reclaim the memory occupied by that object when garbage
+                collection occurs.
+            </p>
+
+
+            <!-- GARBAGE COLLECTION PROGRAM -->
+
+            <h4 class="fw-bold mb-3">
+                Garbage Collection Example
+            </h4>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Demo {
+
+    @@Override
+    protected void finalize() throws Throwable {
+
+        System.out.println("Garbage Collector executed successfully at CIIT Institute 🤓❤️...!");
+
+        System.out.println("Object is successfully 🫥 removed from Heap Memory...!");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Demo object = new Demo();
+
+        object = null;
+
+        System.gc();
+
+        System.out.println("Main method execution finished.");
+    }
+}</code></pre>
+
+            </div>
+
+
+            <!-- OUTPUT -->
+
+            <h4 class="fw-bold mt-4 mb-3">
+                Output
+            </h4>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Main method execution finished.
+
+Possible Garbage Collection messages:
+
+Garbage Collector executed successfully at CIIT Institute 🤓❤️...!
+
+Object is successfully 🫥 removed from Heap Memory...!</code></pre>
+
+            </div>
+
+
+            <!-- LINE BY LINE EXPLANATION -->
+
+            <div class="mt-5">
+
+                <h4 class="fw-bold mb-3">
+                    Line-by-Line Explanation
+                </h4>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-striped">
+
+                        <thead class="table-dark">
+
+                            <tr>
+                                <th style="width: 40%;">Code</th>
+                                <th>Explanation</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <code>class Demo</code>
+                                </td>
+
+                                <td>
+                                    Defines a class named <code>Demo</code>.
+                                    An object of this class is created inside
+                                    the <code>main()</code> method.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>@@Override</code>
+                                </td>
+
+                                <td>
+                                    Indicates that the <code>finalize()</code>
+                                    method overrides the method inherited
+                                    from Java's <code>Object</code> class.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>protected void finalize() throws Throwable</code>
+                                </td>
+
+                                <td>
+                                    Defines the <code>finalize()</code> method.
+                                    Older Java programs used this method for
+                                    cleanup associated with garbage collection.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>System.out.println("Garbage Collector executed successfully at CIIT Institute!");</code>
+                                </td>
+
+                                <td>
+                                    Prints a message when the
+                                    <code>finalize()</code> method executes.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>System.out.println("Object is successfully removed from Heap Memory.");</code>
+                                </td>
+
+                                <td>
+                                    Prints a message describing the processing
+                                    of the object for memory reclamation.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>public class Main</code>
+                                </td>
+
+                                <td>
+                                    Defines the <code>Main</code> class that
+                                    contains the entry point of the Java program.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>public static void main(String[] args)</code>
+                                </td>
+
+                                <td>
+                                    This is the main method. Java starts
+                                    program execution from this method.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>Demo object = new Demo();</code>
+                                </td>
+
+                                <td>
+                                    Creates a new <code>Demo</code> object.
+                                    Memory for the object is allocated in the
+                                    heap, and <code>object</code> stores its
+                                    reference.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>object = null;</code>
+                                </td>
+
+                                <td>
+                                    Removes the reference from the
+                                    <code>object</code> variable. If there are
+                                    no other references to the object, it
+                                    becomes eligible for garbage collection.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>System.gc();</code>
+                                </td>
+
+                                <td>
+                                    Requests the JVM to consider performing
+                                    garbage collection. It does not guarantee
+                                    that garbage collection will happen
+                                    immediately.
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <code>System.out.println("Main method execution finished.");</code>
+                                </td>
+
+                                <td>
+                                    Prints a message indicating that the main
+                                    method has reached this point of execution.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- GARBAGE COLLECTION FLOW -->
+
+            <div class="mt-5">
+
+                <h4 class="fw-bold mb-3">
+                    How This Program Works
+                </h4>
+
+                <div class="code-block">
+
+                    <div class="code-lang-tag">Flow</div>
+
+                    <pre class="mb-0"><code>Step 1:
+Demo object = new Demo();
+        ↓
+Object is created in Heap Memory
+
+Step 2:
+object = null;
+        ↓
+Reference to the object is removed
+
+Step 3:
+Object has no active reference
+        ↓
+Object becomes eligible for Garbage Collection
+
+Step 4:
+System.gc();
+        ↓
+JVM receives a request to perform Garbage Collection
+
+Step 5:
+Garbage Collector may process the object
+        ↓
+Memory may be reclaimed</code></pre>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMPORTANT NOTE -->
+
+            <div class="alert alert-warning mt-4">
+
+                <strong>Important:</strong>
+
+                <p class="mb-0 mt-2">
+                    <code>System.gc()</code> only requests garbage collection.
+                    The JVM decides whether and when garbage collection
+                    actually occurs. The <code>finalize()</code> mechanism is
+                    deprecated in modern Java and should not be used for
+                    normal resource cleanup.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOT IMMEDIATE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Eligible Does Not Mean Immediately Collected
+            </h3>
+
+            <p>
+                Making an object unreachable does not mean that the garbage
+                collector immediately removes it.
+            </p>
+
+            <p>
+                The JVM decides when and how garbage collection occurs based
+                on the selected garbage collector, runtime conditions, memory
+                pressure, and other implementation details.
+            </p>
+
+            <div class="alert alert-warning">
+
+                <strong>Important:</strong>
+
+                Do not write application logic that depends on garbage
+                collection happening at a particular moment.
+
+            </div>
+
+        </section>
+
+
+        <!-- GC PROCESS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Basic Garbage Collection Process</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>
+                                       Objects allocated
+                                            ↓
+                                    Objects become reachable
+                                            ↓
+                                    References may disappear
+                                            ↓
+                                   Unreachable objects identified
+                                            ↓
+                                Garbage collector reclaims memory</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- MARK AND SWEEP -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Mark-and-Sweep Concept</h3>
+
+            <p>
+                A simplified model of garbage collection is the
+                mark-and-sweep approach.
+            </p>
+
+            <ol>
+
+                <li class="mb-2">
+                    Start from GC roots.
+                </li>
+
+                <li class="mb-2">
+                    Mark objects that are reachable.
+                </li>
+
+                <li class="mb-2">
+                    Identify objects that are not marked.
+                </li>
+
+                <li>
+                    Reclaim memory associated with unreachable objects.
+                </li>
+
+            </ol>
+
+            <div class="alert alert-secondary">
+
+                This is a conceptual model. Modern JVM garbage collectors
+                use more sophisticated algorithms and optimizations.
+
+            </div>
+
+        </section>
+
+
+        <!-- GENERATIONAL GC -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Generational Garbage Collection</h3>
+
+            <p>
+                Many JVM garbage-collection designs take advantage of the
+                observation that many objects become unreachable shortly
+                after they are created, while some objects survive for a
+                longer time.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>
+                                           Heap
+                                            ↓
+                                     Young Generation
+                                            ↓
+                                    Short-lived objects
+                                            ↓
+                                    Objects that survive
+                                            ↓
+                                      Older Generation
+                                            ↓
+                                    Longer-lived objects</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- YOUNG GENERATION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Young Generation</h3>
+
+            <p>
+                Newly created objects commonly begin their lifetime in the
+                young generation in JVM garbage collectors that use a
+                generational design.
+            </p>
+
+            <p>
+                Objects that survive collection cycles can be promoted to
+                older regions.
+            </p>
+
+        </section>
+
+
+        <!-- OLD GENERATION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Old Generation</h3>
+
+            <p>
+                Objects that remain reachable for longer periods may be
+                promoted into older regions of the heap.
+            </p>
+
+            <p>
+                Collection behavior differs between garbage collectors, so
+                applications should not rely on a particular internal heap
+                layout.
+            </p>
+
+        </section>
+
+
+        <!-- MINOR MAJOR FULL -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Minor, Major, and Full GC Terminology
+            </h3>
+
+            <p>
+                Terms such as minor GC, major GC, and full GC are commonly
+                used when discussing JVM garbage collection. Their exact
+                meaning can depend on the garbage collector and JVM version.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Term</th>
+                            <th>General Meaning</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Minor GC</td>
+                            <td>
+                                Often refers to collection activity focused
+                                on young-generation regions.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Major GC</td>
+                            <td>
+                                A commonly used term for collection involving
+                                older regions, although terminology varies.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Full GC</td>
+                            <td>
+                                Generally refers to collection involving
+                                broader parts of the heap and potentially
+                                other memory-management work.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- GC ALGORITHMS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Garbage Collectors</h3>
+
+            <p>
+                The JVM provides different garbage collectors optimized for
+                different workload characteristics.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Collector</th>
+                            <th>General Focus</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Serial GC</td>
+                            <td>
+                                Simple collector that uses a single thread
+                                for GC work.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Parallel GC</td>
+                            <td>
+                                Designed to use multiple threads for
+                                collection and emphasizes throughput.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>G1 GC</td>
+                            <td>
+                                Region-based collector designed to balance
+                                throughput and pause-time goals.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>ZGC</td>
+                            <td>
+                                Low-latency collector designed for very short
+                                pause times on large heaps.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Shenandoah</td>
+                            <td>
+                                Collector designed to reduce pause times by
+                                performing more work concurrently.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- STOP THE WORLD -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Stop-the-World Pauses</h3>
+
+            <p>
+                Some garbage-collection operations require application
+                threads to pause temporarily. Such pauses are commonly
+                described as stop-the-world pauses.
+            </p>
+
+            <p>
+                Modern low-latency collectors perform much of their work
+                concurrently to reduce the duration of application pauses.
+            </p>
+
+        </section>
+
+
+        <!-- SYSTEM GC -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">System.gc()</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>System.gc();</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                This method requests that the JVM consider performing garbage
+                collection. It does not guarantee that garbage collection
+                will happen immediately.
+            </p>
+
+            <div class="alert alert-warning">
+
+                <strong>Best Practice:</strong>
+
+                Avoid using <code>System.gc()</code> as a normal strategy for
+                managing application memory.
+
+            </div>
+
+        </section>
+
+
+        <!-- FINALIZATION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Finalization</h3>
+
+            <p>
+                Older Java code sometimes used the
+                <code>finalize()</code> mechanism for cleanup.
+            </p>
+
+            <p>
+                Finalization has been deprecated and should not be used as a
+                modern resource-management technique.
+            </p>
+
+            <p>
+                For resources such as files, sockets, and database
+                connections, use explicit resource-management mechanisms
+                such as <code>try-with-resources</code>.
+            </p>
+
+        </section>
+
+
+        <!-- TRY WITH RESOURCES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Resource Management with try-with-resources
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>try (BufferedReader reader =
+         new BufferedReader(new FileReader("data.txt"))) {
+
+    String line = reader.readLine();
+
+    System.out.println(line);
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Garbage collection manages memory, but resources such as
+                files should be closed explicitly through appropriate
+                resource-management APIs.
+            </p>
+
+        </section>
+
+
+        <!-- MEMORY LEAK -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Garbage Collection Does Not Prevent Memory Leaks
+            </h3>
+
+            <p>
+                Java applications can still experience memory leaks when
+                unnecessary objects remain reachable.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>class Cache {
+
+    static List&lt;Object&gt; values = new ArrayList&lt;&gt;();
+
+    static void add(Object value) {
+
+        values.add(value);
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Objects stored in the static collection remain reachable
+                through the collection. If the collection grows without
+                limits, memory usage can grow continuously.
+            </p>
+
+        </section>
+
+
+        <!-- WEAK REFERENCES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Weak References</h3>
+
+            <p>
+                Java provides reference types such as
+                <code>WeakReference</code> for use cases where an object
+                should not be kept strongly reachable solely by that
+                reference.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>WeakReference&lt;Student&gt; reference =
+    new WeakReference&lt;&gt;(new Student());
+
+Student student = reference.get();</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                Weak references are useful in specialized memory-sensitive
+                designs such as certain caches.
+            </p>
+
+        </section>
+
+
+        <!-- MONITORING -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Monitoring Garbage Collection</h3>
+
+            <p>
+                When diagnosing memory or GC problems, developers can use
+                JVM monitoring and profiling tools.
+            </p>
+
+            <ul>
+
+                <li class="mb-2">
+                    Java Flight Recorder.
+                </li>
+
+                <li class="mb-2">
+                    Java Mission Control.
+                </li>
+
+                <li class="mb-2">
+                    JVM garbage-collection logs.
+                </li>
+
+                <li class="mb-2">
+                    Heap dumps and memory analyzers.
+                </li>
+
+                <li>
+                    Application Performance Monitoring tools.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Garbage Collection Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Avoid unnecessary object creation.
+                </li>
+
+                <li class="mb-2">
+                    Avoid retaining objects longer than required.
+                </li>
+
+                <li class="mb-2">
+                    Avoid unbounded static collections and caches.
+                </li>
+
+                <li class="mb-2">
+                    Use try-with-resources for closeable resources.
+                </li>
+
+                <li class="mb-2">
+                    Do not depend on <code>System.gc()</code> for normal
+                    memory management.
+                </li>
+
+                <li>
+                    Profile the application before changing JVM memory
+                    settings.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="gcQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#gcQuestionOne">
+
+                            What is garbage collection?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="gcQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#gcQuestions">
+
+                        <div class="accordion-body">
+
+                            Garbage collection is the JVM mechanism that
+                            automatically reclaims heap memory from objects
+                            that are no longer reachable.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#gcQuestionTwo">
+
+                            Does System.gc() guarantee garbage collection?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="gcQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#gcQuestions">
+
+                        <div class="accordion-body">
+
+                            No. It only requests that the JVM consider
+                            performing garbage collection.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#gcQuestionThree">
+
+                            Can Java applications have memory leaks?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="gcQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#gcQuestions">
+
+                        <div class="accordion-body">
+
+                            Yes. Objects can remain reachable even when the
+                            application no longer logically needs them.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#gcQuestionFour">
+
+                            Does garbage collection clean files and database
+                            connections?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="gcQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#gcQuestions">
+
+                        <div class="accordion-body">
+
+                            No. External resources should be managed using
+                            appropriate APIs such as try-with-resources.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Java uses automatic garbage collection to reclaim heap
+                    memory from unreachable objects. Understanding
+                    reachability, GC roots, heap behavior, collector choices,
+                    memory leaks, and explicit resource management is
+                    important for building reliable Java applications.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                                              "MemoryBasics",
+                                              "MethodsMemoryManagement",
+                                              new { area = "CoreJava" }
+                                          )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                                              "ClassesObjects",
+                                              "OOP",
+                                              new { area = "CoreJava" }
+                                          )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

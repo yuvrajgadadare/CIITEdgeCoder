@@ -1,0 +1,884 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "Semantic HTML";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #374151;
+        font-weight: 600;
+        margin-top: 22px;
+        margin-bottom: 12px;
+    }
+
+    .content-section p {
+        color: #4b5563;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+    pre code {
+        background: transparent !important;
+        color: #fff !important;
+    }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .semantic-layout {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 18px;
+    }
+
+    .semantic-header,
+    .semantic-nav,
+    .semantic-main,
+    .semantic-section,
+    .semantic-article,
+    .semantic-aside,
+    .semantic-footer {
+        padding: 16px;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .semantic-header {
+        background: #e9ecef;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .semantic-nav {
+        background: #f8f9fa;
+        text-align: center;
+    }
+
+    .semantic-main {
+        display: flex;
+        gap: 16px;
+        background: #ffffff;
+    }
+
+    .semantic-section {
+        flex: 1;
+        background: #f8f9fa;
+    }
+
+    .semantic-article {
+        margin-top: 12px;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+    }
+
+    .semantic-aside {
+        width: 30%;
+        background: #f3f4ff;
+    }
+
+    .semantic-footer {
+        background: #e9ecef;
+        text-align: center;
+        border-bottom: none;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+
+    @@media (max-width: 768px) {
+        .semantic-main {
+            flex-direction: column;
+        }
+
+        .semantic-aside {
+            width: 100%;
+        }
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">Semantic HTML</h1>
+
+            <p>
+                Semantic HTML uses HTML elements that clearly describe the meaning and purpose
+                of their content. Instead of using generic containers for everything, semantic
+                elements help describe the structure of a web page.
+            </p>
+
+            <div class="info-box">
+                <strong>Key Point:</strong>
+                Semantic elements describe the role of content.
+                Examples include <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+                <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>,
+                <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, and
+                <code>&lt;footer&gt;</code>.
+            </div>
+
+            <h2>1. What is Semantic HTML?</h2>
+
+            <p>
+                Semantic HTML means choosing HTML elements based on the meaning of the content
+                they contain.
+            </p>
+
+            <p>
+                For example, a navigation area should use
+                <code>&lt;nav&gt;</code>, the main content should use
+                <code>&lt;main&gt;</code>, and the bottom section of a page can use
+                <code>&lt;footer&gt;</code>.
+            </p>
+
+            <h3>Semantic Example</h3>
+
+            <pre><code>&lt;header&gt;
+    Website Header
+&lt;/header&gt;
+
+&lt;nav&gt;
+    Home | About | Contact
+&lt;/nav&gt;
+
+&lt;main&gt;
+    Main Content
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Website Footer
+&lt;/footer&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>2. Semantic vs Non-Semantic Elements</h2>
+
+            <p>
+                A semantic element communicates its purpose through its name.
+                A non-semantic element generally does not describe what the content means.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Semantic Element</th>
+                            <th>Meaning</th>
+                            <th>Generic Alternative</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;header&gt;</code></td>
+                            <td>Introductory or header content</td>
+                            <td><code>&lt;div&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;nav&gt;</code></td>
+                            <td>Navigation links</td>
+                            <td><code>&lt;div&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;main&gt;</code></td>
+                            <td>Main content</td>
+                            <td><code>&lt;div&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;section&gt;</code></td>
+                            <td>Thematic section</td>
+                            <td><code>&lt;div&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;article&gt;</code></td>
+                            <td>Independent content</td>
+                            <td><code>&lt;div&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;aside&gt;</code></td>
+                            <td>Related or secondary content</td>
+                            <td><code>&lt;div&gt;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;footer&gt;</code></td>
+                            <td>Footer information</td>
+                            <td><code>&lt;div&gt;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>3. Why Use Semantic HTML?</h2>
+
+            <p>
+                Semantic HTML provides a clearer document structure and makes the purpose
+                of different parts of a page easier to understand.
+            </p>
+
+            <h3>Main Benefits</h3>
+
+            <ul>
+                <li>Creates a more meaningful document structure.</li>
+                <li>Makes HTML easier to read and maintain.</li>
+                <li>Helps assistive technologies understand page structure.</li>
+                <li>Provides clearer relationships between different content areas.</li>
+                <li>Supports better organization of large web pages.</li>
+                <li>Can provide useful structural information to search engines.</li>
+            </ul>
+
+            <h2>4. Common Semantic Elements</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Common Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;header&gt;</code></td>
+                            <td>Header or introductory content</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;nav&gt;</code></td>
+                            <td>Navigation links</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;main&gt;</code></td>
+                            <td>Primary page content</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;section&gt;</code></td>
+                            <td>Thematic grouping of content</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;article&gt;</code></td>
+                            <td>Self-contained content</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;aside&gt;</code></td>
+                            <td>Related or secondary content</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;footer&gt;</code></td>
+                            <td>Footer information</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;figure&gt;</code></td>
+                            <td>Self-contained media or illustration</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;figcaption&gt;</code></td>
+                            <td>Caption for a figure</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;time&gt;</code></td>
+                            <td>Represents a date or time</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>5. Basic Semantic Page Structure</h2>
+
+            <p>
+                A common semantic page structure can look like this:
+            </p>
+
+            <pre><code>&lt;header&gt;
+    Website Header
+&lt;/header&gt;
+
+&lt;nav&gt;
+    Navigation Links
+&lt;/nav&gt;
+
+&lt;main&gt;
+
+    &lt;section&gt;
+        Main Section
+    &lt;/section&gt;
+
+    &lt;aside&gt;
+        Related Information
+    &lt;/aside&gt;
+
+&lt;/main&gt;
+
+&lt;footer&gt;
+    Footer Information
+&lt;/footer&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h3>Visual Structure</h3>
+
+            <div class="semantic-layout">
+                <div class="semantic-header">
+                    &lt;header&gt;
+                </div>
+
+                <div class="semantic-nav">
+                    &lt;nav&gt;
+                </div>
+
+                <div class="semantic-main">
+                    <div class="semantic-section">
+                        &lt;section&gt;
+
+                        <div class="semantic-article">
+                            &lt;article&gt;
+                        </div>
+                    </div>
+
+                    <div class="semantic-aside">
+                        &lt;aside&gt;
+                    </div>
+                </div>
+
+                <div class="semantic-footer">
+                    &lt;footer&gt;
+                </div>
+            </div>
+
+            <h2>6. header Element</h2>
+
+            <p>
+                The <code>&lt;header&gt;</code> element represents introductory content
+                for a page or for a specific section.
+            </p>
+
+            <pre><code>&lt;header&gt;
+    &lt;h1&gt;CIIT Training Institute&lt;/h1&gt;
+    &lt;p&gt;Technology Training and Learning&lt;/p&gt;
+&lt;/header&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>7. nav Element</h2>
+
+            <p>
+                The <code>&lt;nav&gt;</code> element represents a section containing
+                navigation links.
+            </p>
+
+            <pre><code>&lt;nav&gt;
+    &lt;a href="/home"&gt;Home&lt;/a&gt;
+    &lt;a href="/courses"&gt;Courses&lt;/a&gt;
+    &lt;a href="/contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>8. main Element</h2>
+
+            <p>
+                The <code>&lt;main&gt;</code> element represents the primary content
+                of the document.
+            </p>
+
+            <pre><code>&lt;main&gt;
+
+    &lt;h1&gt;HTML Tutorial&lt;/h1&gt;
+
+    &lt;p&gt;
+        Learn HTML from basic concepts to advanced topics.
+    &lt;/p&gt;
+
+&lt;/main&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>9. section Element</h2>
+
+            <p>
+                The <code>&lt;section&gt;</code> element represents a thematic grouping
+                of content.
+            </p>
+
+            <pre><code>&lt;section&gt;
+
+    &lt;h2&gt;HTML Forms&lt;/h2&gt;
+
+    &lt;p&gt;
+        Learn how to create and validate HTML forms.
+    &lt;/p&gt;
+
+&lt;/section&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="info-box">
+                A section usually represents a meaningful part of a document and often has
+                its own heading.
+            </div>
+
+            <h2>10. article Element</h2>
+
+            <p>
+                The <code>&lt;article&gt;</code> element represents self-contained content
+                that can stand independently.
+            </p>
+
+            <pre><code>&lt;article&gt;
+
+    &lt;h2&gt;Introduction to HTML&lt;/h2&gt;
+
+    &lt;p&gt;
+        HTML is the standard markup language for creating web pages.
+    &lt;/p&gt;
+
+&lt;/article&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>11. aside Element</h2>
+
+            <p>
+                The <code>&lt;aside&gt;</code> element represents content that is related
+                to the surrounding content but is not part of its main flow.
+            </p>
+
+            <pre><code>&lt;aside&gt;
+
+    &lt;h3&gt;Related Topics&lt;/h3&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;CSS&lt;/li&gt;
+        &lt;li&gt;JavaScript&lt;/li&gt;
+    &lt;/ul&gt;
+
+&lt;/aside&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>12. footer Element</h2>
+
+            <p>
+                The <code>&lt;footer&gt;</code> element represents footer information
+                for a page or section.
+            </p>
+
+            <pre><code>&lt;footer&gt;
+
+    &lt;p&gt;
+        &copy; 2026 CIIT Training Institute
+    &lt;/p&gt;
+
+&lt;/footer&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>13. figure and figcaption</h2>
+
+            <p>
+                The <code>&lt;figure&gt;</code> element can contain self-contained media,
+                while <code>&lt;figcaption&gt;</code> provides a caption.
+            </p>
+
+            <pre><code>&lt;figure&gt;
+
+    &lt;img src="html-diagram.png"
+         alt="HTML document structure"&gt;
+
+    &lt;figcaption&gt;
+        HTML document structure
+    &lt;/figcaption&gt;
+
+&lt;/figure&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>14. time Element</h2>
+
+            <p>
+                The <code>&lt;time&gt;</code> element represents a specific date or time.
+            </p>
+
+            <pre><code>&lt;p&gt;
+    Course starts on
+    &lt;time datetime="2026-10-01"&gt;
+        October 1, 2026
+    &lt;/time&gt;.
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>15. Nested Semantic Elements</h2>
+
+            <p>
+                Semantic elements can be nested together to create a meaningful page structure.
+            </p>
+
+            <pre><code>&lt;main&gt;
+
+    &lt;section&gt;
+
+        &lt;h2&gt;Latest Courses&lt;/h2&gt;
+
+        &lt;article&gt;
+            &lt;h3&gt;.NET Full Stack&lt;/h3&gt;
+            &lt;p&gt;
+                Learn C#, .NET, SQL, Web API and frontend technologies.
+            &lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article&gt;
+            &lt;h3&gt;Python Programming&lt;/h3&gt;
+            &lt;p&gt;
+                Learn Python programming from the fundamentals.
+            &lt;/p&gt;
+        &lt;/article&gt;
+
+    &lt;/section&gt;
+
+&lt;/main&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>16. Semantic HTML Page Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Semantic HTML&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;header&gt;
+        &lt;h1&gt;My Learning Website&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;nav&gt;
+        &lt;a href="#"&gt;Home&lt;/a&gt;
+        &lt;a href="#"&gt;Courses&lt;/a&gt;
+        &lt;a href="#"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;main&gt;
+
+        &lt;section&gt;
+
+            &lt;h2&gt;HTML Course&lt;/h2&gt;
+
+            &lt;article&gt;
+                &lt;h3&gt;Introduction&lt;/h3&gt;
+                &lt;p&gt;
+                    Learn the fundamentals of HTML.
+                &lt;/p&gt;
+            &lt;/article&gt;
+
+        &lt;/section&gt;
+
+        &lt;aside&gt;
+            &lt;h3&gt;Related Topics&lt;/h3&gt;
+            &lt;p&gt;CSS and JavaScript&lt;/p&gt;
+        &lt;/aside&gt;
+
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;
+            &copy; 2026 My Learning Website
+        &lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>17. Semantic HTML and Accessibility</h2>
+
+            <p>
+                Semantic elements provide meaningful structure that can help assistive
+                technologies understand the organization of a page.
+            </p>
+
+            <p>
+                For example, using <code>&lt;nav&gt;</code> for navigation makes the purpose
+                of that section clearer than using a generic <code>&lt;div&gt;</code>.
+            </p>
+
+            <h2>18. Semantic HTML and SEO</h2>
+
+            <p>
+                A well-structured HTML document provides clearer information about the
+                organization of the page. Semantic elements can contribute to a meaningful
+                document structure that search engines can process.
+            </p>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                Semantic HTML is not a replacement for proper content, headings,
+                accessibility practices, or other SEO techniques. It is one part of
+                creating a well-structured page.
+            </div>
+
+            <h2>19. Common Mistakes</h2>
+
+            <h3>Mistake 1: Using div for everything</h3>
+
+            <pre><code>&lt;div&gt;
+    Header
+&lt;/div&gt;
+
+&lt;div&gt;
+    Navigation
+&lt;/div&gt;
+
+&lt;div&gt;
+    Main Content
+&lt;/div&gt;</code></pre>
+
+            <p>
+                This structure does not communicate the specific role of each area.
+                Semantic elements can make the intended structure clearer.
+            </p>
+
+            <h3>Mistake 2: Using section without meaningful content</h3>
+
+            <p>
+                A <code>&lt;section&gt;</code> should represent a meaningful thematic grouping,
+                not simply be used as a generic replacement for every container.
+            </p>
+
+            <h3>Mistake 3: Multiple main elements</h3>
+
+            <p>
+                A page should normally have one main content area represented by
+                <code>&lt;main&gt;</code>.
+            </p>
+
+            <h2>20. Best Practices</h2>
+
+            <ul>
+                <li>Use semantic elements according to the meaning of the content.</li>
+                <li>Use <code>&lt;main&gt;</code> for the primary page content.</li>
+                <li>Use <code>&lt;nav&gt;</code> for major navigation links.</li>
+                <li>Use <code>&lt;section&gt;</code> for meaningful thematic groups.</li>
+                <li>Use <code>&lt;article&gt;</code> for independent or self-contained content.</li>
+                <li>Use <code>&lt;aside&gt;</code> for related secondary content.</li>
+                <li>Use <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> appropriately.</li>
+                <li>Do not use semantic elements only for visual styling.</li>
+            </ul>
+
+            <h2>21. Practice Example</h2>
+
+            <p>
+                Create a semantic web page using the following structure:
+            </p>
+
+            <ul>
+                <li>Header with website title</li>
+                <li>Navigation with three links</li>
+                <li>Main content area</li>
+                <li>Section containing two articles</li>
+                <li>Aside containing related information</li>
+                <li>Footer with copyright information</li>
+            </ul>
+
+            <pre><code>&lt;header&gt;
+    &lt;h1&gt;Learning Portal&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+    &lt;a href="#"&gt;Courses&lt;/a&gt;
+    &lt;a href="#"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+
+    &lt;section&gt;
+
+        &lt;h2&gt;Popular Courses&lt;/h2&gt;
+
+        &lt;article&gt;
+            &lt;h3&gt;HTML Course&lt;/h3&gt;
+            &lt;p&gt;
+                Learn HTML fundamentals.
+            &lt;/p&gt;
+        &lt;/article&gt;
+
+        &lt;article&gt;
+            &lt;h3&gt;CSS Course&lt;/h3&gt;
+            &lt;p&gt;
+                Learn how to style web pages.
+            &lt;/p&gt;
+        &lt;/article&gt;
+
+    &lt;/section&gt;
+
+    &lt;aside&gt;
+        &lt;h3&gt;Related Topics&lt;/h3&gt;
+        &lt;p&gt;
+            JavaScript and Web Development
+        &lt;/p&gt;
+    &lt;/aside&gt;
+
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;
+        &copy; 2026 Learning Portal
+    &lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    Semantic HTML uses meaningful elements such as
+                    <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+                    <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>,
+                    <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, and
+                    <code>&lt;footer&gt;</code> to describe the structure and purpose of
+                    web page content. It makes documents clearer, easier to maintain,
+                    and more meaningful for users and assistive technologies.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("FormValidation", "Forms", new { area = "HTML" })">
+                    ← Previous: Form Validation
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("SemanticElements", "SemanticHTML", new { area = "HTML" })">
+                    Next: Semantic Elements →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

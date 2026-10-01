@@ -1,0 +1,822 @@
+﻿@{
+    ViewData["Title"] = "Sealed Classes in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-2">Sealed Classes in Java</h1>
+                <p class="text-muted mb-0">
+                    Learn how sealed classes control inheritance and define restricted class hierarchies.
+                </p>
+            </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Introduction -->
+        <h2 class="fw-bold">1. What are Sealed Classes?</h2>
+
+        <p>
+            A <strong>sealed class</strong> is a Java class or interface that restricts
+            which classes or interfaces are allowed to extend or implement it.
+        </p>
+
+        <p>
+            Sealed classes are useful when an application needs a controlled and known
+            inheritance hierarchy.
+        </p>
+
+        <div class="alert alert-info">
+            <strong>Key idea:</strong>
+            A sealed type explicitly defines which types are permitted to become
+            direct subtypes.
+        </div>
+
+        <!-- Version -->
+        <h2 class="fw-bold mt-5">2. Java Version</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Java Version</th>
+                        <th>Sealed Classes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Java 15</td>
+                        <td>First preview</td>
+                    </tr>
+                    <tr>
+                        <td>Java 16</td>
+                        <td>Second preview</td>
+                    </tr>
+                    <tr>
+                        <td>Java 17</td>
+                        <td>Standard feature</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Basic syntax -->
+        <h2 class="fw-bold mt-5">3. Basic Sealed Class Syntax</h2>
+
+        <p>
+            The <code>sealed</code> keyword is followed by the <code>permits</code>
+            clause that lists the allowed subclasses.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public sealed class Vehicle
+    permits Car, Bike {
+}
+
+public final class Car
+    extends Vehicle {
+}
+
+public final class Bike
+    extends Vehicle {
+}</code></pre>
+        </div>
+
+        <p>
+            Here, only <code>Car</code> and <code>Bike</code> are permitted to
+            directly extend <code>Vehicle</code>.
+        </p>
+
+        <!-- permits -->
+        <h2 class="fw-bold mt-5">4. permits Keyword</h2>
+
+        <p>
+            The <code>permits</code> clause defines the direct subclasses that
+            are allowed to inherit from the sealed type.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface Payment
+    permits CardPayment, CashPayment {
+}
+
+final class CardPayment
+    implements Payment {
+}
+
+final class CashPayment
+    implements Payment {
+}</code></pre>
+        </div>
+
+        <div class="alert alert-success">
+            <strong>Benefit:</strong>
+            The compiler knows the complete set of direct implementations.
+        </div>
+
+        <!-- Final -->
+        <h2 class="fw-bold mt-5">5. final Subclasses</h2>
+
+        <p>
+            A permitted subclass can be declared <code>final</code> when it should
+            not have any further subclasses.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed class Animal
+    permits Dog, Cat {
+}
+
+final class Dog
+    extends Animal {
+}
+
+final class Cat
+    extends Animal {
+}</code></pre>
+        </div>
+
+        <!-- Non-sealed -->
+        <h2 class="fw-bold mt-5">6. non-sealed Classes</h2>
+
+        <p>
+            A permitted subclass can use the <code>non-sealed</code> modifier
+            to reopen the inheritance hierarchy.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed class Vehicle
+    permits Car, Truck {
+}
+
+non-sealed class Car
+    extends Vehicle {
+}
+
+class SportsCar
+    extends Car {
+}</code></pre>
+        </div>
+
+        <p>
+            Because <code>Car</code> is <code>non-sealed</code>, other classes
+            such as <code>SportsCar</code> can extend it.
+        </p>
+
+        <!-- sealed subclass -->
+        <h2 class="fw-bold mt-5">7. A Sealed Subclass</h2>
+
+        <p>
+            A permitted subclass can itself remain sealed and restrict its own
+            subclasses.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed class Vehicle
+    permits Car {
+}
+
+sealed class Car
+    extends Vehicle
+    permits ElectricCar {
+}
+
+final class ElectricCar
+    extends Car {
+}</code></pre>
+        </div>
+
+        <!-- Three modifiers -->
+        <h2 class="fw-bold mt-5">8. Three Possible Subclass Modifiers</h2>
+
+        <p>
+            Every direct subclass of a sealed class must continue the inheritance
+            policy using one of three modifiers:
+        </p>
+
+        <ul>
+            <li><code>final</code></li>
+            <li><code>sealed</code></li>
+            <li><code>non-sealed</code></li>
+        </ul>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Modifier</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>final</code></td>
+                        <td>No further inheritance is allowed.</td>
+                    </tr>
+                    <tr>
+                        <td><code>sealed</code></td>
+                        <td>Inheritance continues but remains restricted.</td>
+                    </tr>
+                    <tr>
+                        <td><code>non-sealed</code></td>
+                        <td>Inheritance is reopened.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Interface -->
+        <h2 class="fw-bold mt-5">9. Sealed Interfaces</h2>
+
+        <p>
+            Interfaces can also be sealed.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public sealed interface Shape
+    permits Circle, Rectangle {
+}
+
+final class Circle
+    implements Shape {
+}
+
+final class Rectangle
+    implements Shape {
+}</code></pre>
+        </div>
+
+        <!-- Multiple interfaces -->
+        <h2 class="fw-bold mt-5">10. Sealed Interfaces with Multiple Implementations</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface Payment
+    permits CardPayment,
+            UpiPayment,
+            CashPayment {
+}
+
+final class CardPayment
+    implements Payment {
+}
+
+final class UpiPayment
+    implements Payment {
+}
+
+final class CashPayment
+    implements Payment {
+}</code></pre>
+        </div>
+
+        <!-- Same package -->
+        <h2 class="fw-bold mt-5">11. Location of Permitted Classes</h2>
+
+        <p>
+            In the common named-package case, permitted direct subclasses must
+            belong to the same package as the sealed type.
+        </p>
+
+        <p>
+            The Java language also provides rules for unnamed modules and named
+            modules, so the exact source-location rules depend on the module/package
+            structure of the application.
+        </p>
+
+        <!-- Reflection -->
+        <h2 class="fw-bold mt-5">12. Checking Sealed Types at Runtime</h2>
+
+        <p>
+            Java reflection can determine whether a class is sealed and inspect
+            its permitted subclasses.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed class Vehicle
+    permits Car, Bike {
+}
+
+final class Car
+    extends Vehicle {
+}
+
+final class Bike
+    extends Vehicle {
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        System.out.println(
+            Vehicle.class.isSealed()
+        );
+
+        Class&lt;?&gt;[] permitted =
+            Vehicle.class.getPermittedSubclasses();
+
+        for (Class&lt;?&gt; type : permitted) {
+
+            System.out.println(
+                type.getName()
+            );
+        }
+    }
+}</code></pre>
+        </div>
+
+    <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>true
+Car
+Bike</code></pre>
+</div>
+        <!-- Pattern matching -->
+        <h2 class="fw-bold mt-5">13. Sealed Classes and Pattern Matching</h2>
+
+        <p>
+            Sealed hierarchies work particularly well with modern pattern matching.
+            Since the compiler knows the permitted subclasses, switch expressions
+            can often be exhaustive without a <code>default</code> branch.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface Shape
+    permits Circle, Rectangle {
+}
+
+final class Circle
+    implements Shape {
+}
+
+final class Rectangle
+    implements Shape {
+}
+
+static String describe(Shape shape) {
+
+    return switch (shape) {
+
+        case Circle circle -&gt;
+            "Circle";
+
+        case Rectangle rectangle -&gt;
+            "Rectangle";
+    };
+}</code></pre>
+        </div>
+
+        <div class="alert alert-success">
+            <strong>Important:</strong>
+            The compiler can use the sealed hierarchy to verify that all permitted
+            direct subtypes have been handled.
+        </div>
+
+        <!-- Domain modeling -->
+        <h2 class="fw-bold mt-5">14. Sealed Classes for Domain Modeling</h2>
+
+        <p>
+            Sealed classes are useful when a domain has a fixed set of possible
+            states or types.
+        </p>
+
+        <p>Examples include:</p>
+
+        <ul>
+            <li>Payment types</li>
+            <li>Notification types</li>
+            <li>Account states</li>
+            <li>Vehicle categories</li>
+            <li>Document types</li>
+            <li>Command types</li>
+            <li>Application results</li>
+        </ul>
+
+        <!-- Result -->
+        <h2 class="fw-bold mt-5">15. Example: Result Hierarchy</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface Result
+    permits Success, Failure {
+}
+
+record Success(String message)
+    implements Result {
+}
+
+record Failure(String error)
+    implements Result {
+}</code></pre>
+        </div>
+
+        <p>
+            The hierarchy clearly communicates that the result can be either
+            successful or failed.
+        </p>
+
+        <!-- Processing -->
+        <h2 class="fw-bold mt-5">16. Processing a Sealed Result</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String process(Result result) {
+
+    return switch (result) {
+
+        case Success success -&gt;
+            "Success: " + success.message();
+
+        case Failure failure -&gt;
+            "Failure: " + failure.error();
+    };
+}</code></pre>
+        </div>
+
+        <!-- Record integration -->
+        <h2 class="fw-bold mt-5">17. Sealed Interfaces and Records</h2>
+
+        <p>
+            Records are implicitly final, which makes them convenient permitted
+            implementations of sealed interfaces.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface Command
+    permits CreateUser, DeleteUser {
+}
+
+record CreateUser(
+    String name
+) implements Command {
+}
+
+record DeleteUser(
+    long id
+) implements Command {
+}</code></pre>
+        </div>
+
+        <!-- Abstract -->
+        <h2 class="fw-bold mt-5">18. Sealed Abstract Classes</h2>
+
+        <p>
+            A sealed class can also be abstract when the parent type should
+            represent a common abstraction rather than be instantiated directly.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public abstract sealed class Employee
+    permits Developer, Manager {
+}
+
+final class Developer
+    extends Employee {
+}
+
+final class Manager
+    extends Employee {
+}</code></pre>
+        </div>
+
+        <!-- Inheritance -->
+        <h2 class="fw-bold mt-5">19. Sealed Classes and Inheritance</h2>
+
+        <p>
+            Sealed classes do not remove inheritance. They make inheritance
+            explicitly controlled.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed class Employee
+    permits Developer, Manager {
+}
+
+final class Developer
+    extends Employee {
+}
+
+final class Manager
+    extends Employee {
+}</code></pre>
+        </div>
+
+        <div class="alert alert-info">
+            <strong>Difference:</strong>
+            Normal inheritance is open by default. Sealed inheritance is restricted
+            to an explicitly defined set of direct subtypes.
+        </div>
+
+        <!-- Benefits -->
+        <h2 class="fw-bold mt-5">20. Advantages of Sealed Classes</h2>
+
+        <ul>
+            <li>Controls inheritance explicitly.</li>
+            <li>Improves domain modeling.</li>
+            <li>Provides stronger compile-time guarantees.</li>
+            <li>Works well with pattern matching.</li>
+            <li>Can make switch expressions exhaustive.</li>
+            <li>Makes permitted implementations easy to discover.</li>
+            <li>Reduces unintended extension of important abstractions.</li>
+            <li>Works well with records and modern Java features.</li>
+        </ul>
+
+        <!-- Limitations -->
+        <h2 class="fw-bold mt-5">21. Limitations</h2>
+
+        <ul>
+            <li>Not suitable when an inheritance hierarchy intentionally needs to remain open.</li>
+            <li>Requires Java 17 or later as a standard language feature.</li>
+            <li>Direct subclasses must follow the sealed, final, or non-sealed rules.</li>
+            <li>Package and module rules must be respected.</li>
+            <li>Can be unnecessary for simple class hierarchies.</li>
+        </ul>
+
+        <!-- Comparison -->
+        <h2 class="fw-bold mt-5">22. Sealed vs final vs non-sealed</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Keyword</th>
+                        <th>Inheritance Behavior</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>final</code></td>
+                        <td>Stops inheritance completely.</td>
+                    </tr>
+                    <tr>
+                        <td><code>sealed</code></td>
+                        <td>Allows only explicitly permitted subtypes.</td>
+                    </tr>
+                    <tr>
+                        <td><code>non-sealed</code></td>
+                        <td>Reopens inheritance below that subtype.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Real world -->
+        <h2 class="fw-bold mt-5">23. Example 🌍🫠</h2>
+
+        <p>
+            An order processing system may have a fixed set of order states.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>sealed interface OrderStatus
+    permits Pending,
+            Confirmed,
+            Cancelled {
+}
+
+record Pending()
+    implements OrderStatus {
+}
+
+record Confirmed()
+    implements OrderStatus {
+}
+
+record Cancelled()
+    implements OrderStatus {
+}</code></pre>
+        </div>
+
+        <p>
+            The application can then process the states using an exhaustive switch.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>static String message(
+    OrderStatus status
+) {
+
+    return switch (status) {
+
+        case Pending pending -&gt;
+            "Order is pending";
+
+        case Confirmed confirmed -&gt;
+            "Order is confirmed";
+
+        case Cancelled cancelled -&gt;
+            "Order is cancelled";
+    };
+}</code></pre>
+        </div>
+
+        <!-- Best Practices -->
+        <h2 class="fw-bold mt-5">24. Best Practices</h2>
+
+        <ul>
+            <li>Use sealed types when the set of direct subtypes is intentionally closed.</li>
+            <li>Use <code>final</code> for leaf classes that should not be extended.</li>
+            <li>Use <code>non-sealed</code> only when reopening inheritance is intentional.</li>
+            <li>Combine sealed hierarchies with pattern matching when appropriate.</li>
+            <li>Keep the permitted hierarchy small and meaningful.</li>
+            <li>Use records for simple immutable implementations when suitable.</li>
+            <li>Document why the hierarchy is intentionally restricted.</li>
+        </ul>
+
+        <!-- Interview -->
+        <h2 class="fw-bold mt-5">25. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="sealedQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#sealedQuestionOne">
+                        What is a sealed class in Java?
+                    </button>
+                </h2>
+
+                <div id="sealedQuestionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#sealedQuestions">
+
+                    <div class="accordion-body">
+                        A sealed class restricts which classes are allowed to directly
+                        extend it.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#sealedQuestionTwo">
+                        Which Java version standardized sealed classes?
+                    </button>
+                </h2>
+
+                <div id="sealedQuestionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#sealedQuestions">
+
+                    <div class="accordion-body">
+                        Sealed classes became a standard Java feature in Java 17.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#sealedQuestionThree">
+                        What is the permits keyword?
+                    </button>
+                </h2>
+
+                <div id="sealedQuestionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#sealedQuestions">
+
+                    <div class="accordion-body">
+                        The <code>permits</code> clause lists the classes or interfaces
+                        allowed to be direct subtypes of a sealed type.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#sealedQuestionFour">
+                        What are the three modifiers available to permitted subclasses?
+                    </button>
+                </h2>
+
+                <div id="sealedQuestionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#sealedQuestions">
+
+                    <div class="accordion-body">
+                        A direct permitted subtype must be <code>final</code>,
+                        <code>sealed</code>, or <code>non-sealed</code>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#sealedQuestionFive">
+                        What is the difference between sealed and non-sealed?
+                    </button>
+                </h2>
+
+                <div id="sealedQuestionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#sealedQuestions">
+
+                    <div class="accordion-body">
+                        A sealed type continues to restrict its direct subtypes,
+                        while a non-sealed permitted subtype reopens inheritance.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#sealedQuestionSix">
+                        Why are sealed classes useful with pattern matching?
+                    </button>
+                </h2>
+
+                <div id="sealedQuestionSix"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#sealedQuestions">
+
+                    <div class="accordion-body">
+                        Because the compiler knows the permitted subtype hierarchy,
+                        it can verify exhaustive handling in suitable switch expressions.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="alert alert-success mt-5">
+            <h4 class="fw-bold">Summary</h4>
+
+            <p class="mb-2">
+                In this lesson, you learned:
+            </p>
+
+            <ul class="mb-0">
+                <li>What sealed classes are</li>
+                <li>The <code>sealed</code> keyword</li>
+                <li>The <code>permits</code> clause</li>
+                <li>final subclasses</li>
+                <li>sealed subclasses</li>
+                <li>non-sealed subclasses</li>
+                <li>Sealed interfaces</li>
+                <li>Sealed classes with records</li>
+                <li>Pattern matching with sealed hierarchies</li>
+                <li>Exhaustive switch expressions</li>
+                <li>Real-world domain modeling</li>
+                <li>Best practices and limitations</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("RecordClasses", "ModernJava", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("ModernInterfaces", "ModernJava", new { area = "CoreJava" })">
+                Next: Topic →
+            </a>
+
+        </div>
+
+    </div>
+</div>

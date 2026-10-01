@@ -1,0 +1,95 @@
+﻿@{
+    Layout = "~/Areas/GitHub/Views/Shared/GithubLayout.cshtml";
+    ViewData["Title"] = "Initializing Reositories";
+}
+ 
+ 
+<style>
+    ul.no-bullets {
+        list-style-type: none; /* Removes the bullet points */
+    }
+</style>
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <!-- HEADER -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Initializing Reositories</h2>
+
+            <p class="mb-2">
+                To initialize a repository, you turn a local directory on your computer into a tracked Git repository, which allows you to start saving versions of your code and eventually push it to GitHub.
+            </p>
+            <p class="mb-3">
+                Below we have given two scenarios to explain how to initialize a repository based on your project's current state:
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+            <div class="mb-3">
+                <h4>Scenario 1: Starting a Brand New Project</h4>
+                <div class="mb-3">
+                    <p>
+                        Open your terminal (Mac/Linux) or Git Bash (Windows) and type the following commands. Make sure the email matches the one registered to your GitHub Account.
+
+                    </p>
+                   <p>
+                        Use this if you are starting from absolute scratch with an empty folder.
+                   </p>
+                    <ul>
+                        <li>
+                            <p>Create and enter your project folder:</p>
+                            <div class="code-block mb-4 shadow-sm">
+                                mkdir my-new-project <br />
+                                cd my-new-project
+                            </div>
+                        </li>
+                        <li>
+                            <p>Initialize Git:</p>
+                            <div class="code-block mb-1 shadow-sm">
+                                git init
+                            </div>
+                            <p class="mb-3">This creates a hidden .git folder inside your directory to track changes)</p>
+                        </li>
+                        <li>
+                            <p>Create your first file and save it:</p>
+                            <div class="code-block mb-5 shadow-sm">
+                                echo "# My Project" > README.md <br />
+                                git add README.md <br />
+                                git commit -m "First commit" <br />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <h4>Scenario 2: Tracking an Existing Project Folder</h4>
+                <div class="mb-3">
+                     <p>
+                        Use this if you already have a folder full of code on your computer that you want to start tracking with Git.
+                     </p>
+                    <ul>
+                        <li>
+                            <p>Navigate to your existing folder:</p>
+                            <div class="code-block mb-4 shadow-sm">
+                                cd /path/to/your/existing-folder
+                            </div>
+                        </li>
+                        <li>
+                            <p>Initialize Git:</p>
+                            <div class="code-block mb-1 shadow-sm">
+                                git init
+                            </div>
+                        </li>
+                        <li>
+                            <p>Stage and commit all existing files:</p>
+                            <div class="code-block mb-1 shadow-sm">
+                                git add . <br />    
+                                git commit -m "Initial commit of existing project files"
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

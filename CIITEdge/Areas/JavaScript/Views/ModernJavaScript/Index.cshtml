@@ -1,0 +1,856 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Modern JavaScript";
+}
+
+<style>
+
+    #modern-javascript-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #modern-javascript-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #modern-javascript-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #modern-javascript-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #modern-javascript-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #modern-javascript-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+    /* CONCEPT */
+
+    #modern-javascript-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #modern-javascript-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #modern-javascript-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 8px;
+    }
+
+    /* IMAGE */
+
+    #modern-javascript-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+
+    #modern-javascript-page .image-card img {
+        width: 100%;
+        max-height: 360px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    #modern-javascript-page .image-caption {
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* DIAGRAM */
+
+    #modern-javascript-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 28px 20px;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    #modern-javascript-page .diagram-title {
+        font-size: 21px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 25px;
+    }
+
+    #modern-javascript-page .diagram-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    #modern-javascript-page .diagram-item {
+        min-width: 150px;
+        padding: 18px 14px;
+        border-radius: 9px;
+        background: #ffffff;
+        border: 2px solid #6d3fc0;
+        font-weight: 600;
+        color: #212529;
+    }
+
+    #modern-javascript-page .diagram-item.main {
+        background: #6d3fc0;
+        color: #ffffff;
+    }
+
+    #modern-javascript-page .diagram-item.green {
+        border-color: #198754;
+        background: #eefbf3;
+        color: #198754;
+    }
+
+    #modern-javascript-page .diagram-arrow {
+        font-size: 26px;
+        font-weight: 700;
+        color: #6d3fc0;
+    }
+
+    /* CODE */
+
+    #modern-javascript-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 22px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #modern-javascript-page .code-box code {
+        color: #f8f9fa;
+    }
+
+    /* TRY IT */
+
+    #modern-javascript-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 22px;
+    }
+
+    #modern-javascript-page .try-it-btn {
+        background: #198754;
+        border: 1px solid #198754;
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #modern-javascript-page .try-it-btn:hover {
+        background: #157347;
+        border-color: #157347;
+    }
+
+    /* OUTPUT */
+
+    #modern-javascript-page .output-box {
+        background: #212529;
+        color: #ffffff;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 18px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    /* SUMMARY */
+
+    #modern-javascript-page .summary-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #modern-javascript-page .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #modern-javascript-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* NAVIGATION */
+
+    #modern-javascript-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    #modern-javascript-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    #modern-javascript-page .previous-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    #modern-javascript-page .next-btn {
+        background: #5b21b6;
+        border: 1px solid #5b21b6;
+        color: #ffffff;
+    }
+
+    #modern-javascript-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #modern-javascript-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    @@media (max-width: 768px) {
+
+        #modern-javascript-page .content-section {
+            padding: 20px;
+        }
+
+        #modern-javascript-page .page-title {
+            font-size: 30px;
+        }
+
+        #modern-javascript-page .section-title {
+            font-size: 23px;
+        }
+
+        #modern-javascript-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #modern-javascript-page .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        #modern-javascript-page .diagram-row {
+            flex-direction: column;
+        }
+
+        #modern-javascript-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+    }
+
+</style>
+
+
+<main id="modern-javascript-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 RIGHT CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- HEADER -->
+
+                    <h1 class="page-title">
+                        Modern JavaScript
+                    </h1>
+
+                    <p class="lead-text">
+                        Modern JavaScript provides cleaner, shorter and
+                        more powerful ways to write JavaScript programs.
+                    </p>
+
+
+                    <!-- INTRODUCTION -->
+
+                    <h2 class="section-title">
+                        What is Modern JavaScript?
+                    </h2>
+
+                    <p class="section-text">
+
+                        Modern JavaScript refers to the newer features
+                        introduced in JavaScript to make code easier to
+                        read, maintain and develop.
+
+                    </p>
+
+                    <p class="section-text">
+
+                        These features include
+                        <strong>let</strong>,
+                        <strong>const</strong>,
+                        template literals,
+                        arrow functions,
+                        spread and rest operators,
+                        destructuring and modules.
+
+                    </p>
+
+
+                    <!-- CONCEPT -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+
+                            Modern JavaScript means using newer JavaScript
+                            features and syntax to write clean,
+                            readable and maintainable code.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- RELATED IMAGE -->
+
+                    <div class="image-card">
+
+                        <img
+                            src="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_overview/JavaScript_language_overview/JavaScript_Logo.png"
+                            alt="Modern JavaScript"
+                            onerror="this.style.display='none';"
+                        />
+
+                        <p class="image-caption">
+
+                            Modern JavaScript helps developers write
+                            cleaner and more efficient code.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- DIAGRAM -->
+
+                    <div class="diagram-box">
+
+                        <div class="diagram-title">
+                            Modern JavaScript Features
+                        </div>
+
+                        <div class="diagram-row">
+
+                            <div class="diagram-item main">
+                                Modern JavaScript
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-item">
+                                let / const
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-item">
+                                Template Literals
+                            </div>
+
+                            <div class="diagram-arrow">
+                                →
+                            </div>
+
+                            <div class="diagram-item green">
+                                Spread / Rest
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXAMPLE 1 -->
+
+                    <h2 class="section-title">
+                        Example 1: let and const
+                    </h2>
+
+                    <p class="section-text">
+
+                        Modern JavaScript provides
+                        <strong>let</strong> and
+                        <strong>const</strong> for declaring variables.
+
+                    </p>
+
+                    <pre class="code-box"><code>let name = "Rahul";
+const course = "JavaScript";
+
+console.log("Name:", name);
+console.log("Course:", course);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryModernExample1()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Name: Rahul
+                        <br />
+                        Course: JavaScript
+
+                    </div>
+
+
+                    <!-- EXAMPLE 2 -->
+
+                    <h2 class="section-title">
+                        Example 2: Template Literals
+                    </h2>
+
+                    <p class="section-text">
+
+                        Template literals allow us to create strings
+                        using backticks and easily insert variables
+                        using <strong>${}</strong>.
+
+                    </p>
+
+                    <pre class="code-box"><code>let name = "Rahul";
+let course = "JavaScript";
+
+let message = `Welcome ${name} to ${course}`;
+
+console.log(message);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryModernExample2()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Welcome Rahul to JavaScript
+
+                    </div>
+
+
+                    <!-- EXAMPLE 3 -->
+
+                    <h2 class="section-title">
+                        Example 3: Arrow Function
+                    </h2>
+
+                    <p class="section-text">
+
+                        Arrow functions provide a shorter syntax for
+                        writing functions.
+
+                    </p>
+
+                    <pre class="code-box"><code>const add = (a, b) => {
+    return a + b;
+};
+
+console.log("Result:", add(10, 20));</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryModernExample3()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Result: 30
+
+                    </div>
+
+
+                    <!-- EXAMPLE 4 -->
+
+                    <h2 class="section-title">
+                        Example 4: Spread Operator
+                    </h2>
+
+                    <p class="section-text">
+
+                        The spread operator
+                        <strong>...</strong>
+                        can be used to expand elements of an array.
+
+                    </p>
+
+                    <pre class="code-box"><code>let numbers1 = [10, 20];
+let numbers2 = [30, 40];
+
+let numbers = [...numbers1, ...numbers2];
+
+console.log(numbers);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryModernExample4()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        [10, 20, 30, 40]
+
+                    </div>
+
+
+                    <!-- EXAMPLE 5 -->
+
+                    <h2 class="section-title">
+                        Example 5: Destructuring
+                    </h2>
+
+                    <p class="section-text">
+
+                        Destructuring allows us to extract values from
+                        arrays or objects into separate variables.
+
+                    </p>
+
+                    <pre class="code-box"><code>const student = {
+    name: "Amit",
+    age: 22
+};
+
+const { name, age } = student;
+
+console.log("Name:", name);
+console.log("Age:", age);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryModernExample5()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Name: Amit
+                        <br />
+                        Age: 22
+
+                    </div>
+
+
+                    <!-- WHY MODERN JS -->
+
+                    <h2 class="section-title">
+                        Why Use Modern JavaScript?
+                    </h2>
+
+                    <div class="concept-box">
+
+                        <p>
+                            ✔ Cleaner code
+                        </p>
+
+                        <p>
+                            ✔ Shorter syntax
+                        </p>
+
+                        <p>
+                            ✔ Better readability
+                        </p>
+
+                        <p>
+                            ✔ Easier maintenance
+                        </p>
+
+                        <p class="mb-0">
+                            ✔ Useful for modern web applications
+                        </p>
+
+                    </div>
+
+
+                    <!-- SUMMARY -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+
+                            Modern JavaScript introduces powerful features
+                            that make JavaScript development easier and
+                            more efficient. Important features include
+                            let and const, template literals, arrow
+                            functions, spread operators and destructuring.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- NAVIGATION -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("EventListeners", "Events", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            ← Previous: Event Listeners
+
+                        </a>
+
+                        <a href="@Url.Action("LetConst", "ModernJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            Next: let and const →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       CIIT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function tryModernExample1() {
+
+        const code =
+            'let name = "Rahul";\\n' +
+            'const course = "JavaScript";\\n' +
+            '\\n' +
+            'console.log("Name:", name);\\n' +
+            'console.log("Course:", course);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function tryModernExample2() {
+
+        const code =
+            'let name = "Rahul";\\n' +
+            'let course = "JavaScript";\\n' +
+            '\\n' +
+            'let message = `Welcome ${name} to ${course}`;\\n' +
+            '\\n' +
+            'console.log(message);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function tryModernExample3() {
+
+        const code =
+            'const add = (a, b) => {\\n' +
+            '    return a + b;\\n' +
+            '};\\n' +
+            '\\n' +
+            'console.log("Result:", add(10, 20));';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       ========================================================= */
+
+    function tryModernExample4() {
+
+        const code =
+            'let numbers1 = [10, 20];\\n' +
+            'let numbers2 = [30, 40];\\n' +
+            '\\n' +
+            'let numbers = [...numbers1, ...numbers2];\\n' +
+            '\\n' +
+            'console.log(numbers);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 5
+       ========================================================= */
+
+    function tryModernExample5() {
+
+        const code =
+            'const student = {\\n' +
+            '    name: "Amit",\\n' +
+            '    age: 22\\n' +
+            '};\\n' +
+            '\\n' +
+            'const { name, age } = student;\\n' +
+            '\\n' +
+            'console.log("Name:", name);\\n' +
+            'console.log("Age:", age);';
+
+        openCompiler(code);
+    }
+
+</script>

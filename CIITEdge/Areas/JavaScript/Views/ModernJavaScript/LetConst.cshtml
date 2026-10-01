@@ -1,0 +1,986 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "let and const";
+}
+
+<style>
+
+    #let-const-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #let-const-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #let-const-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #let-const-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #let-const-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #let-const-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+    /* CONCEPT */
+
+    #let-const-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #let-const-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #let-const-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* VISUAL */
+
+    #let-const-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+
+    #let-const-page .let-const-visual {
+        width: 100%;
+        min-height: 340px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    #let-const-page .image-caption {
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* COMPARISON */
+
+    #let-const-page .comparison-wrapper {
+        overflow-x: auto;
+        margin: 25px 0;
+    }
+
+    #let-const-page .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+
+    #let-const-page .comparison-table th,
+    #let-const-page .comparison-table td {
+        border: 1px solid #dee2e6;
+        padding: 14px;
+        text-align: left;
+    }
+
+    #let-const-page .comparison-table th {
+        background: #5b21b6;
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    #let-const-page .comparison-table td {
+        color: #495057;
+        background: #ffffff;
+    }
+
+    /* CODE */
+
+    #let-const-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 22px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #let-const-page .code-box code {
+        color: #f8f9fa;
+    }
+
+    /* TRY IT */
+
+    #let-const-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 22px;
+    }
+
+    #let-const-page .try-it-btn {
+        background: #198754;
+        border: 1px solid #198754;
+        color: #ffffff;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #let-const-page .try-it-btn:hover {
+        background: #157347;
+        border-color: #157347;
+    }
+
+    /* OUTPUT */
+
+    #let-const-page .output-box {
+        background: #212529;
+        color: #ffffff;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 18px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    /* SUMMARY */
+
+    #let-const-page .summary-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #let-const-page .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #let-const-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* NAVIGATION */
+
+    #let-const-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    #let-const-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    #let-const-page .previous-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+    }
+
+    #let-const-page .next-btn {
+        background: #5b21b6;
+        border: 1px solid #5b21b6;
+        color: #ffffff;
+    }
+
+    #let-const-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #let-const-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    @@media (max-width: 768px) {
+
+        #let-const-page .content-section {
+            padding: 20px;
+        }
+
+        #let-const-page .page-title {
+            font-size: 30px;
+        }
+
+        #let-const-page .section-title {
+            font-size: 23px;
+        }
+
+        #let-const-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #let-const-page .nav-btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+<main id="let-const-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+
+            <!-- =====================================================
+                 LEFT SIDEBAR
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+
+                    <!-- HEADER -->
+
+                    <h1 class="page-title">
+                        let and const
+                    </h1>
+
+                    <p class="lead-text">
+                        Modern JavaScript provides
+                        <strong>let</strong> and
+                        <strong>const</strong> for declaring variables
+                        with block scope.
+                    </p>
+
+
+                    <!-- INTRODUCTION -->
+
+                    <h2 class="section-title">
+                        What are let and const?
+                    </h2>
+
+                    <p class="section-text">
+
+                        In modern JavaScript, <strong>let</strong> and
+                        <strong>const</strong> are used to declare
+                        variables.
+
+                    </p>
+
+                    <p class="section-text">
+
+                        Both are block-scoped, but they are different
+                        in how their values can be changed.
+
+                    </p>
+
+
+                    <!-- SIMPLE DEFINITION -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+
+                            <strong>let</strong> is used when a variable's
+                            value may change, while <strong>const</strong>
+                            is used when the variable should not be
+                            reassigned.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RELATED VISUAL
+                         ================================================= -->
+
+                    <div class="image-card">
+
+                        <div class="let-const-visual">
+
+                            <svg width="100%"
+                                 height="340"
+                                 viewBox="0 0 900 340"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+                                <rect width="900"
+                                      height="340"
+                                      fill="#f8f9fa" />
+
+                                <text x="450"
+                                      y="45"
+                                      text-anchor="middle"
+                                      font-size="27"
+                                      font-weight="700"
+                                      fill="#212529">
+
+                                    JavaScript Variable Declarations
+
+                                </text>
+
+
+                                <!-- LET -->
+
+                                <rect x="85"
+                                      y="100"
+                                      width="300"
+                                      height="150"
+                                      rx="14"
+                                      fill="#ffffff"
+                                      stroke="#6d3fc0"
+                                      stroke-width="3" />
+
+                                <text x="235"
+                                      y="140"
+                                      text-anchor="middle"
+                                      font-size="27"
+                                      font-weight="700"
+                                      fill="#5b21b6">
+
+                                    let
+
+                                </text>
+
+                                <text x="235"
+                                      y="175"
+                                      text-anchor="middle"
+                                      font-size="17"
+                                      fill="#495057">
+
+                                    Value can be changed
+
+                                </text>
+
+                                <text x="235"
+                                      y="210"
+                                      text-anchor="middle"
+                                      font-size="16"
+                                      fill="#198754">
+
+                                    let age = 20;
+
+                                </text>
+
+                                <text x="235"
+                                      y="235"
+                                      text-anchor="middle"
+                                      font-size="16"
+                                      fill="#198754">
+
+                                    age = 21;
+
+                                </text>
+
+
+                                <!-- VS -->
+
+                                <circle cx="450"
+                                        cy="175"
+                                        r="30"
+                                        fill="#212529" />
+
+                                <text x="450"
+                                      y="183"
+                                      text-anchor="middle"
+                                      font-size="15"
+                                      font-weight="700"
+                                      fill="#ffffff">
+
+                                    VS
+
+                                </text>
+
+
+                                <!-- CONST -->
+
+                                <rect x="515"
+                                      y="100"
+                                      width="300"
+                                      height="150"
+                                      rx="14"
+                                      fill="#ffffff"
+                                      stroke="#198754"
+                                      stroke-width="3" />
+
+                                <text x="665"
+                                      y="140"
+                                      text-anchor="middle"
+                                      font-size="27"
+                                      font-weight="700"
+                                      fill="#198754">
+
+                                    const
+
+                                </text>
+
+                                <text x="665"
+                                      y="175"
+                                      text-anchor="middle"
+                                      font-size="17"
+                                      fill="#495057">
+
+                                    Cannot be reassigned
+
+                                </text>
+
+                                <text x="665"
+                                      y="210"
+                                      text-anchor="middle"
+                                      font-size="16"
+                                      fill="#198754">
+
+                                    const age = 20;
+
+                                </text>
+
+                                <text x="665"
+                                      y="235"
+                                      text-anchor="middle"
+                                      font-size="16"
+                                      fill="#dc3545">
+
+                                    age = 21; ❌
+
+                                </text>
+
+
+                                <text x="450"
+                                      y="295"
+                                      text-anchor="middle"
+                                      font-size="17"
+                                      font-weight="600"
+                                      fill="#495057">
+
+                                    Both let and const are block-scoped
+
+                                </text>
+
+                            </svg>
+
+                        </div>
+
+                        <p class="image-caption">
+
+                            Difference between let and const in JavaScript
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         COMPARISON
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        let vs const
+                    </h2>
+
+                    <div class="comparison-wrapper">
+
+                        <table class="comparison-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>let</th>
+                                    <th>const</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Block Scoped</td>
+                                    <td>Yes</td>
+                                    <td>Yes</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Reassignment</td>
+                                    <td>Allowed</td>
+                                    <td>Not Allowed</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Redeclaration in Same Scope</td>
+                                    <td>No</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Must Initialize</td>
+                                    <td>No</td>
+                                    <td>Yes</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Using let
+                    </h2>
+
+                    <p class="section-text">
+
+                        A <strong>let</strong> variable can be reassigned
+                        after it has been declared.
+
+                    </p>
+
+                    <pre class="code-box"><code>let age = 20;
+
+age = 21;
+
+console.log("Age:", age);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryLetConstExample1()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Age: 21
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Using const
+                    </h2>
+
+                    <p class="section-text">
+
+                        A <strong>const</strong> variable must be initialized
+                        when it is declared and cannot be reassigned.
+
+                    </p>
+
+                    <pre class="code-box"><code>const course = "JavaScript";
+
+console.log("Course:", course);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryLetConstExample2()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Course: JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Changing a let Variable
+                    </h2>
+
+                    <pre class="code-box"><code>let marks = 70;
+
+console.log("Before:", marks);
+
+marks = 85;
+
+console.log("After:", marks);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryLetConstExample3()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Before: 70
+                        <br />
+                        After: 85
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 4
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 4: Block Scope
+                    </h2>
+
+                    <p class="section-text">
+
+                        Variables declared using <strong>let</strong>
+                        and <strong>const</strong> are available only
+                        inside their block.
+
+                    </p>
+
+                    <pre class="code-box"><code>{
+    let city = "Pune";
+    const country = "India";
+
+    console.log("City:", city);
+    console.log("Country:", country);
+}</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryLetConstExample4()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        City: Pune
+                        <br />
+                        Country: India
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 5
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 5: let and const Together
+                    </h2>
+
+                    <pre class="code-box"><code>let student = "Amit";
+const course = "JavaScript";
+
+student = "Rahul";
+
+console.log("Student:", student);
+console.log("Course:", course);</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryLetConstExample5()">
+
+                            ▶ Try It
+
+                        </button>
+
+                    </div>
+
+                    <div class="output-box">
+
+                        Student: Rahul
+                        <br />
+                        Course: JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT NOTE
+                         ================================================= -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Important Note
+                        </h5>
+
+                        <p>
+
+                            Use <strong>let</strong> when you know that
+                            the variable value needs to change.
+
+                        </p>
+
+                        <p class="mb-0">
+
+                            Use <strong>const</strong> by default when
+                            the variable should not be reassigned.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2 class="h4">
+                            Summary
+                        </h2>
+
+                        <p>
+
+                            <strong>let</strong> and
+                            <strong>const</strong> are modern JavaScript
+                            variable declarations. Both are block-scoped.
+                            The main difference is that
+                            <strong>let</strong> can be reassigned while
+                            <strong>const</strong> cannot be reassigned.
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("Index", "ModernJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            ← Previous: Modern JavaScript
+
+                        </a>
+
+                        <a href="@Url.Action("TemplateLiterals", "ModernJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            Next: Template Literals →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        code = code.replace(/\\n/g, "\n");
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function tryLetConstExample1() {
+
+        const code =
+            'let age = 20;\\n' +
+            '\\n' +
+            'age = 21;\\n' +
+            '\\n' +
+            'console.log("Age:", age);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function tryLetConstExample2() {
+
+        const code =
+            'const course = "JavaScript";\\n' +
+            '\\n' +
+            'console.log("Course:", course);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function tryLetConstExample3() {
+
+        const code =
+            'let marks = 70;\\n' +
+            '\\n' +
+            'console.log("Before:", marks);\\n' +
+            '\\n' +
+            'marks = 85;\\n' +
+            '\\n' +
+            'console.log("After:", marks);';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 4
+       ========================================================= */
+
+    function tryLetConstExample4() {
+
+        const code =
+            '{\\n' +
+            '    let city = "Pune";\\n' +
+            '    const country = "India";\\n' +
+            '\\n' +
+            '    console.log("City:", city);\\n' +
+            '    console.log("Country:", country);\\n' +
+            '}';
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 5
+       ========================================================= */
+
+    function tryLetConstExample5() {
+
+        const code =
+            'let student = "Amit";\\n' +
+            'const course = "JavaScript";\\n' +
+            '\\n' +
+            'student = "Rahul";\\n' +
+            '\\n' +
+            'console.log("Student:", student);\\n' +
+            'console.log("Course:", course);';
+
+        openCompiler(code);
+    }
+
+</script>

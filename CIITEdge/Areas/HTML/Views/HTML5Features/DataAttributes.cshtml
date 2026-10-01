@@ -1,0 +1,640 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML5 Data Attributes";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+        .content-section h2 {
+            color: #212529 !important;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 14px;
+        }
+
+        .content-section h3 {
+            color: #374151;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            color: #4b5563;
+        }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 24px;
+        background: #ffffff;
+        margin: 20px 0;
+    }
+
+    .diagram-title {
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 18px;
+    }
+
+    .data-flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .flow-item {
+        border: 1px solid #dee2e6;
+        background: #f8f9fa;
+        padding: 14px 18px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 120px;
+        font-weight: 600;
+    }
+
+    .flow-arrow {
+        font-size: 22px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML5 Data Attributes</h1>
+
+            <p>
+                HTML5 custom data attributes allow developers to store
+                application-specific information directly on HTML elements.
+            </p>
+
+            <p>
+                These attributes always start with <code>data-</code>.
+                They are useful when JavaScript needs additional information
+                about an element.
+            </p>
+
+            <div class="info-box">
+                <strong>Simple Idea:</strong>
+                HTML stores the data using <code>data-*</code> attributes,
+                and JavaScript can later read that data and use it.
+            </div>
+
+            <h2>1. What are Data Attributes?</h2>
+
+            <p>
+                A custom data attribute is an attribute whose name starts with
+                <code>data-</code>.
+            </p>
+
+            <pre><code>&lt;button data-course="html"&gt;
+    Start Course
+&lt;/button&gt;</code></pre>
+
+            <p>
+                Here, <code>data-course</code> stores the value
+                <code>html</code>.
+            </p>
+
+            <h2>2. How Data Attributes Work</h2>
+
+            <div class="diagram-box">
+
+                <div class="diagram-title">
+                    Data Attribute Flow
+                </div>
+
+                <div class="data-flow">
+
+                    <div class="flow-item">
+                        HTML Element
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        data-*
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        Store Custom Data
+                    </div>
+
+                    <div class="flow-arrow">→</div>
+
+                    <div class="flow-item">
+                        JavaScript
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>3. Basic data-* Example</h2>
+
+            <p>
+                Suppose a website has different courses.
+                We can store the course name on each button.
+            </p>
+
+            <pre><code>&lt;button data-course="html"&gt;
+    HTML
+&lt;/button&gt;
+
+&lt;button data-course="python"&gt;
+    Python
+&lt;/button&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>4. Multiple Data Attributes</h2>
+
+            <p>
+                An element can contain more than one custom data attribute.
+            </p>
+
+            <pre><code>&lt;button
+    data-course="html"
+    data-level="beginner"
+    data-duration="3-months"&gt;
+
+    Start Course
+
+&lt;/button&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <p>
+                In this example, the button stores three separate pieces of information.
+            </p>
+
+            <h2>5. Data Attributes with Different Elements</h2>
+
+            <p>
+                Data attributes are not limited to buttons.
+                They can be used on many HTML elements.
+            </p>
+
+            <pre><code>&lt;div data-course="html"&gt;
+    HTML Course
+&lt;/div&gt;
+
+&lt;article data-category="web-development"&gt;
+    Web Development Article
+&lt;/article&gt;
+
+&lt;li data-id="101"&gt;
+    Student
+&lt;/li&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>6. Reading Data Using JavaScript</h2>
+
+            <p>
+                JavaScript can access data attributes using the
+                <code>dataset</code> property.
+            </p>
+
+            <pre><code>&lt;button
+    id="courseButton"
+    data-course="html"&gt;
+
+    HTML
+
+&lt;/button&gt;
+
+&lt;script&gt;
+
+    const button =
+        document.getElementById("courseButton");
+
+    const course =
+        button.dataset.course;
+
+    console.log(course);
+
+&lt;/script&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <p>
+                The result is:
+            </p>
+
+            <pre><code>html</code></pre>
+
+            <h2>7. dataset Property</h2>
+
+            <p>
+                The <code>dataset</code> property provides access to
+                <code>data-*</code> attributes through JavaScript.
+            </p>
+
+            <pre><code>button.dataset.course</code></pre>
+
+            <p>
+                This accesses:
+            </p>
+
+            <pre><code>data-course="html"</code></pre>
+
+            <h2>8. Multiple Data Values</h2>
+
+            <pre><code>&lt;div
+    id="course"
+    data-name="HTML"
+    data-level="beginner"&gt;
+
+    HTML Course
+
+&lt;/div&gt;
+
+&lt;script&gt;
+
+    const course =
+        document.getElementById("course");
+
+    console.log(course.dataset.name);
+
+    console.log(course.dataset.level);
+
+&lt;/script&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <p>
+                The two values can be accessed separately.
+            </p>
+
+            <h2>9. Data Attribute Naming</h2>
+
+            <p>
+                Custom data attributes must begin with <code>data-</code>.
+            </p>
+
+            <p>Valid examples:</p>
+
+            <ul>
+                <li><code>data-id</code></li>
+                <li><code>data-course</code></li>
+                <li><code>data-level</code></li>
+                <li><code>data-user-id</code></li>
+            </ul>
+
+            <p>Example:</p>
+
+            <pre><code>&lt;div
+    data-user-id="101"
+    data-course-name="HTML"&gt;
+
+    Student
+
+&lt;/div&gt;</code></pre>
+
+
+
+            <h2>10. Where Data Attributes are Useful</h2>
+
+            <p>
+                Data attributes are especially useful when HTML elements need
+                small pieces of application-specific information.
+            </p>
+
+            <ul>
+                <li>Course IDs</li>
+                <li>Product IDs</li>
+                <li>User IDs</li>
+                <li>Category names</li>
+                <li>Button actions</li>
+                <li>Filter values</li>
+                <li>UI configuration values</li>
+            </ul>
+
+            <h2>11. Example: Product ID</h2>
+
+            <pre><code>&lt;button
+    data-product-id="501"&gt;
+
+    Buy Now
+
+&lt;/button&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <p>
+                JavaScript can read the product ID when the button is clicked.
+            </p>
+
+            <h2>12. Example: Student Data</h2>
+
+            <pre><code>&lt;div
+    data-student-id="101"
+    data-course="dotnet"&gt;
+
+    Rahul
+
+&lt;/div&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <p>
+                This element stores custom information about the student.
+            </p>
+
+            <h2>13. Example: Course Filter</h2>
+
+            <pre><code>&lt;button data-category="frontend"&gt;
+    Frontend
+&lt;/button&gt;
+
+&lt;button data-category="backend"&gt;
+    Backend
+&lt;/button&gt;
+
+&lt;button data-category="database"&gt;
+    Database
+&lt;/button&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <p>
+                JavaScript can use these values to determine which category
+                the user selected.
+            </p>
+
+            <h2>14. Data Attributes and CSS</h2>
+
+            <p>
+                Data attributes can also be used in CSS selectors when needed.
+            </p>
+
+            <pre><code>[data-category="frontend"] {
+    font-weight: bold;
+}</code></pre>
+
+            <p>
+                This selects elements that contain
+                <code>data-category="frontend"</code>.
+            </p>
+
+            <h2>15. Data Attributes vs Normal Attributes</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Example</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Standard Attribute</td>
+                            <td><code>id="course"</code></td>
+                            <td>Provides standard HTML functionality or metadata.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Custom Data Attribute</td>
+                            <td><code>data-course="html"</code></td>
+                            <td>Stores application-specific information.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>16. Important Point About Data Attributes</h2>
+
+            <p>
+                Data attributes are meant for small pieces of custom information
+                associated with an element.
+            </p>
+
+            <p>
+                They should not be treated as a replacement for a database,
+                application state management system, or secure storage.
+            </p>
+
+            <div class="info-box">
+                <strong>Security Note:</strong>
+                Data attributes are visible in the HTML sent to the browser.
+                Do not store passwords, secret keys, or other sensitive information
+                in them.
+            </div>
+
+            <h2>17. Common Mistakes</h2>
+
+            <h3>Mistake 1: Forgetting the data- Prefix</h3>
+
+            <pre><code>&lt;div course="html"&gt;
+    HTML
+&lt;/div&gt;</code></pre>
+
+            <p>
+                For a custom data attribute, use:
+            </p>
+
+            <pre><code>&lt;div data-course="html"&gt;
+    HTML
+&lt;/div&gt;</code></pre>
+
+            <h3>Mistake 2: Using data attributes for sensitive information</h3>
+
+            <p>
+                Data attributes are visible to users and client-side scripts.
+                They should not contain confidential information.
+            </p>
+
+            <h3>Mistake 3: Storing too much data</h3>
+
+            <p>
+                Data attributes are best for small values that belong to the
+                particular HTML element.
+            </p>
+
+            <h2>18. Best Practices</h2>
+
+            <ul>
+                <li>Start custom attributes with <code>data-</code>.</li>
+                <li>Use clear and meaningful names.</li>
+                <li>Store small application-specific values.</li>
+                <li>Use <code>dataset</code> in JavaScript to access the values.</li>
+                <li>Do not store passwords, secret keys, or sensitive information.</li>
+                <li>Do not use data attributes as a replacement for proper application storage.</li>
+            </ul>
+
+            <h2>19. Practice Example</h2>
+
+            <p>
+                Create three course buttons and store the course name and level
+                using custom data attributes.
+            </p>
+
+            <pre><code>&lt;button
+    data-course="html"
+    data-level="beginner"&gt;
+
+    HTML
+
+&lt;/button&gt;
+
+&lt;button
+    data-course="python"
+    data-level="intermediate"&gt;
+
+    Python
+
+&lt;/button&gt;
+
+&lt;button
+    data-course="dotnet"
+    data-level="advanced"&gt;
+
+    .NET
+
+&lt;/button&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <p>
+                Then use JavaScript's <code>dataset</code> property to read
+                the selected course information.
+            </p>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML5 data attributes allow developers to store small,
+                    custom pieces of information directly on HTML elements.
+                    They use the <code>data-</code> prefix and can be accessed
+                    through JavaScript using the <code>dataset</code> property.
+                    They are useful for IDs, categories, actions, and other
+                    application-specific values, but should never be used for
+                    sensitive information.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("DetailsSummary", "HTML5Features", new { area = "HTML" })">
+                    ← Previous: Details &amp; Summary
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Index", "AdvancedHTML", new { area = "HTML" })">
+                    Next: Advanced HTML →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

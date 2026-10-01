@@ -1,0 +1,150 @@
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+    bool IsActive(string controller, string action) => string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase) && string.Equals(currentAction, action, StringComparison.OrdinalIgnoreCase);
+}
+<style>
+/* =========================================================
+   AWS SIDEBAR
+   Same sizing, sticky position and individual scrolling as HTML.
+   ========================================================= */
+.ciit-syllabus-card{
+    border:0;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    position:sticky;
+    top:90px;
+    max-height:calc(100vh - 110px);
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+.ciit-syllabus-header{
+    background-color:#212529!important;
+    color:#fff!important;
+    padding:14px 18px!important;
+    font-size:15px;
+    font-weight:700;
+    display:block!important;
+    visibility:visible!important;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+.ciit-syllabus-header span{color:#fff!important}
+.module-title{
+    background-color:#f8f9fa!important;
+    font-weight:700!important;
+    color:#212529!important;
+    padding:12px 16px;
+    border-bottom:1px solid #e9ecef;
+}
+.topic-link{
+    display:block;
+    padding:10px 16px 10px 28px;
+    font-size:14px;
+    color:#495057!important;
+    text-decoration:none!important;
+    border:0!important;
+    border-bottom:1px solid #f1f1f1!important;
+    background-color:#fff!important;
+}
+.topic-link:hover{
+    background-color:#f1f3f5!important;
+    color:#212529!important;
+}
+.topic-link.active,
+.topic-link.active:hover,
+.topic-link.active:focus{
+    background-color:#fff!important;
+    color:#495057!important;
+    font-weight:400!important;
+    border-top:0!important;
+    border-left:0!important;
+    border-right:0!important;
+    border-bottom:2px solid #2563eb!important;
+    box-shadow:none!important;
+}
+.ciit-syllabus-card::-webkit-scrollbar{width:6px}
+.ciit-syllabus-card::-webkit-scrollbar-track{background:#f1f1f1}
+.ciit-syllabus-card::-webkit-scrollbar-thumb{background:#c8c8c8;border-radius:10px}
+.ciit-syllabus-card::-webkit-scrollbar-thumb:hover{background:#aaa}
+@@media(max-width:991.98px){
+    .ciit-syllabus-card{
+        position:static;
+        top:auto;
+        height:auto;
+        max-height:none;
+        overflow:visible;
+    }
+    .ciit-syllabus-header{position:relative}
+}
+</style>
+<div class="card ciit-syllabus-card">
+<div class="card-header ciit-syllabus-header"><span>COURSE SYLLABUS</span></div>
+<div class="list-group list-group-flush">
+<div class="list-group-item module-title">1. AWS Introduction</div>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction","Index")?"active":"")" href="@Url.Action("Index","Introduction",new{area="AWS"})">Introduction to AWS</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction","WhatIsAWS")?"active":"")" href="@Url.Action("WhatIsAWS","Introduction",new{area="AWS"})">What is AWS?</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction","AWSGlobalInfrastructure")?"active":"")" href="@Url.Action("AWSGlobalInfrastructure","Introduction",new{area="AWS"})">AWS Global Infrastructure</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction","AWSManagementConsole")?"active":"")" href="@Url.Action("AWSManagementConsole","Introduction",new{area="AWS"})">AWS Management Console</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction","AWSAccountSetup")?"active":"")" href="@Url.Action("AWSAccountSetup","Introduction",new{area="AWS"})">AWS Account Setup</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction","RootVsIAM")?"active":"")" href="@Url.Action("RootVsIAM","Introduction",new{area="AWS"})">Root User vs IAM User</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Introduction","AWSFreeTier")?"active":"")" href="@Url.Action("AWSFreeTier","Introduction",new{area="AWS"})">Free Tier & Billing Safety</a>
+<div class="list-group-item module-title">2. Identity & Access Management</div>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("IAM","Index")?"active":"")" href="@Url.Action("Index","IAM",new{area="AWS"})">Introduction to IAM</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("IAM","IAMUsers")?"active":"")" href="@Url.Action("IAMUsers","IAM",new{area="AWS"})">IAM Users</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("IAM","IAMGroups")?"active":"")" href="@Url.Action("IAMGroups","IAM",new{area="AWS"})">IAM Groups</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("IAM","IAMPolicies")?"active":"")" href="@Url.Action("IAMPolicies","IAM",new{area="AWS"})">IAM Policies</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("IAM","IAMRoles")?"active":"")" href="@Url.Action("IAMRoles","IAM",new{area="AWS"})">IAM Roles</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("IAM","MultiFactorAuthentication")?"active":"")" href="@Url.Action("MultiFactorAuthentication","IAM",new{area="AWS"})">Multi-Factor Authentication</a>
+<div class="list-group-item module-title">3. Amazon EC2</div>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("EC2","Index")?"active":"")" href="@Url.Action("Index","EC2",new{area="AWS"})">Introduction to EC2</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("EC2","IntroductionToEC2")?"active":"")" href="@Url.Action("IntroductionToEC2","EC2",new{area="AWS"})">EC2 Basics</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("EC2","EC2InstanceTypes")?"active":"")" href="@Url.Action("EC2InstanceTypes","EC2",new{area="AWS"})">EC2 Instance Types</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("EC2","LaunchEC2Instance")?"active":"")" href="@Url.Action("LaunchEC2Instance","EC2",new{area="AWS"})">Launch an EC2 Instance</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("EC2","SecurityGroups")?"active":"")" href="@Url.Action("SecurityGroups","EC2",new{area="AWS"})">Security Groups</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("EC2","KeyPairs")?"active":"")" href="@Url.Action("KeyPairs","EC2",new{area="AWS"})">Key Pairs</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("EC2","ElasticBlockStore")?"active":"")" href="@Url.Action("ElasticBlockStore","EC2",new{area="AWS"})">Elastic Block Store (EBS)</a>
+<div class="list-group-item module-title">4. Amazon S3</div>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("S3","Index")?"active":"")" href="@Url.Action("Index","S3",new{area="AWS"})">Introduction to S3</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("S3","IntroductionToS3")?"active":"")" href="@Url.Action("IntroductionToS3","S3",new{area="AWS"})">S3 Concepts</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("S3","S3Buckets")?"active":"")" href="@Url.Action("S3Buckets","S3",new{area="AWS"})">S3 Buckets</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("S3","S3Objects")?"active":"")" href="@Url.Action("S3Objects","S3",new{area="AWS"})">S3 Objects & Keys</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("S3","Versioning")?"active":"")" href="@Url.Action("Versioning","S3",new{area="AWS"})">Versioning</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("S3","BucketPolicies")?"active":"")" href="@Url.Action("BucketPolicies","S3",new{area="AWS"})">Bucket Policies</a>
+<div class="list-group-item module-title">5. Amazon VPC</div>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("VPC","Index")?"active":"")" href="@Url.Action("Index","VPC",new{area="AWS"})">Introduction to VPC</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("VPC","IntroductionToVPC")?"active":"")" href="@Url.Action("IntroductionToVPC","VPC",new{area="AWS"})">VPC Concepts</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("VPC","Subnets")?"active":"")" href="@Url.Action("Subnets","VPC",new{area="AWS"})">Subnets</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("VPC","RouteTables")?"active":"")" href="@Url.Action("RouteTables","VPC",new{area="AWS"})">Route Tables</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("VPC","InternetGateway")?"active":"")" href="@Url.Action("InternetGateway","VPC",new{area="AWS"})">Internet Gateway</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("VPC","NATGateway")?"active":"")" href="@Url.Action("NATGateway","VPC",new{area="AWS"})">NAT Gateway</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("VPC","VPCSecurityGroups")?"active":"")" href="@Url.Action("VPCSecurityGroups","VPC",new{area="AWS"})">VPC Security Groups</a>
+<div class="list-group-item module-title">6. Amazon RDS</div>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("RDS","Index")?"active":"")" href="@Url.Action("Index","RDS",new{area="AWS"})">Introduction to RDS</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("RDS","IntroductionToRDS")?"active":"")" href="@Url.Action("IntroductionToRDS","RDS",new{area="AWS"})">RDS Concepts</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("RDS","DatabaseEngines")?"active":"")" href="@Url.Action("DatabaseEngines","RDS",new{area="AWS"})">Database Engines</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("RDS","CreateRDSDatabase")?"active":"")" href="@Url.Action("CreateRDSDatabase","RDS",new{area="AWS"})">Create RDS Database</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("RDS","Backups")?"active":"")" href="@Url.Action("Backups","RDS",new{area="AWS"})">Backups</a>
+<div class="list-group-item module-title">7. AWS Lambda</div>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Lambda","Index")?"active":"")" href="@Url.Action("Index","Lambda",new{area="AWS"})">Introduction to Lambda</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Lambda","IntroductionToLambda")?"active":"")" href="@Url.Action("IntroductionToLambda","Lambda",new{area="AWS"})">Lambda Concepts</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Lambda","LambdaFunctions")?"active":"")" href="@Url.Action("LambdaFunctions","Lambda",new{area="AWS"})">Lambda Functions</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Lambda","Triggers")?"active":"")" href="@Url.Action("Triggers","Lambda",new{area="AWS"})">Triggers</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("Lambda","EnvironmentVariables")?"active":"")" href="@Url.Action("EnvironmentVariables","Lambda",new{area="AWS"})">Environment Variables</a>
+<div class="list-group-item module-title">8. Amazon CloudWatch</div>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("CloudWatch","Index")?"active":"")" href="@Url.Action("Index","CloudWatch",new{area="AWS"})">Introduction to CloudWatch</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("CloudWatch","IntroductionToCloudWatch")?"active":"")" href="@Url.Action("IntroductionToCloudWatch","CloudWatch",new{area="AWS"})">CloudWatch Concepts</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("CloudWatch","Metrics")?"active":"")" href="@Url.Action("Metrics","CloudWatch",new{area="AWS"})">Metrics</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("CloudWatch","CloudWatchLogs")?"active":"")" href="@Url.Action("CloudWatchLogs","CloudWatch",new{area="AWS"})">CloudWatch Logs</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("CloudWatch","Alarms")?"active":"")" href="@Url.Action("Alarms","CloudWatch",new{area="AWS"})">Alarms</a>
+<div class="list-group-item module-title">9. Elastic Load Balancing</div>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("ElasticLoadBalancing","Index")?"active":"")" href="@Url.Action("Index","ElasticLoadBalancing",new{area="AWS"})">Introduction to Elastic Load Balancing</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("ElasticLoadBalancing","Introduction")?"active":"")" href="@Url.Action("Introduction","ElasticLoadBalancing",new{area="AWS"})">ELB Concepts</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("ElasticLoadBalancing","ApplicationLoadBalancer")?"active":"")" href="@Url.Action("ApplicationLoadBalancer","ElasticLoadBalancing",new{area="AWS"})">Application Load Balancer (ALB)</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("ElasticLoadBalancing","NetworkLoadBalancer")?"active":"")" href="@Url.Action("NetworkLoadBalancer","ElasticLoadBalancing",new{area="AWS"})">Network Load Balancer (NLB)</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("ElasticLoadBalancing","GatewayLoadBalancer")?"active":"")" href="@Url.Action("GatewayLoadBalancer","ElasticLoadBalancing",new{area="AWS"})">Gateway Load Balancer</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("ElasticLoadBalancing","TargetGroups")?"active":"")" href="@Url.Action("TargetGroups","ElasticLoadBalancing",new{area="AWS"})">Target Groups</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("ElasticLoadBalancing","HealthChecks")?"active":"")" href="@Url.Action("HealthChecks","ElasticLoadBalancing",new{area="AWS"})">Health Checks</a>
+<a class="list-group-item list-group-item-action topic-link @(IsActive("ElasticLoadBalancing","ListenerAndRules")?"active":"")" href="@Url.Action("ListenerAndRules","ElasticLoadBalancing",new{area="AWS"})">Listeners & Rules</a>
+</div></div>

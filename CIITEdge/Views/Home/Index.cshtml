@@ -1,0 +1,1812 @@
+﻿@{
+    ViewData["Title"] = "CIIT Stack Lab";
+}
+
+<!-- =========================================================
+     CIIT STACK LAB - HOME PAGE
+     ========================================================= -->
+
+<style>
+
+    <!-- =========================================================
+    TOPICS NAVBAR
+    ========================================================= -->
+    .ciit-topics-bar {
+        width: 100%;
+        background: #ffffff;
+        border-top: 1px solid #eef1f5;
+        border-bottom: 1px solid #e5e9ef;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        position: relative;
+        z-index: 100;
+    }
+
+    .topics-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        min-height: 62px;
+        padding: 0 14px;
+    }
+
+    .topics-title {
+        flex: 0 0 auto;
+        padding: 0 22px 0 8px;
+        margin-right: 4px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid #e1e5eb;
+        font-size: 17px;
+        font-weight: 700;
+        color: #172033;
+        white-space: nowrap;
+    }
+
+    .topics-arrow {
+        flex: 0 0 38px;
+        width: 38px;
+        height: 42px;
+        border: 0;
+        background: #ffffff;
+        color: #1769ff;
+        font-size: 26px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        z-index: 5;
+    }
+
+        .topics-arrow:hover {
+            background: #f1f6ff;
+            color: #0758e8;
+            border-radius: 8px;
+        }
+
+    .topics-scroll-container {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .topics-scroll {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        white-space: nowrap;
+        scrollbar-width: none;
+        padding: 8px 4px;
+        cursor: grab;
+    }
+
+        .topics-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .topics-scroll.dragging {
+            cursor: grabbing;
+            scroll-behavior: auto;
+        }
+
+    .topic-link {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        padding: 0 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #4d596b;
+        font-size: 15px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+
+        .topic-link:hover {
+            color: #1264f5;
+            background: #f2f6ff;
+            text-decoration: none;
+        }
+
+        .topic-link.active {
+            color: #1264f5;
+            background: #edf4ff;
+            font-weight: 700;
+        }
+
+
+    /* =========================================================
+               HERO SECTION
+               ========================================================= */
+
+    .hero-section {
+        background: linear-gradient(135deg, #eef8ff 0%, #ffffff 100%);
+        padding: 70px 0;
+    }
+
+    .fw-extrabold {
+        font-weight: 800;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+        line-height: 1.05;
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: #64748b;
+    }
+
+
+    /* =========================================================
+               HERO IMAGE SLIDER
+               ========================================================= */
+
+    .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(15,23,42,0.18);
+        background: #111827;
+    }
+
+    .hero-slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.7s ease;
+    }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient( to top, rgba(2,6,23,0.92), rgba(2,6,23,0.15) );
+    }
+
+    .hero-slide-content {
+        position: absolute;
+        left: 35px;
+        right: 35px;
+        bottom: 35px;
+        color: white;
+        z-index: 2;
+    }
+
+        .hero-slide-content .category {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(8px);
+            padding: 7px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero-slide-content h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin: 0 0 6px;
+        }
+
+        .hero-slide-content p {
+            margin: 0;
+            color: #e2e8f0;
+            font-size: 15px;
+        }
+
+    .slider-dots {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 7px;
+        z-index: 5;
+    }
+
+    .slider-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.45);
+        cursor: pointer;
+    }
+
+        .slider-dot.active {
+            background: #ffffff;
+        }
+
+
+    /* =========================================================
+               STATS
+               ========================================================= */
+
+    .stats-row {
+        border-top: 1px solid #dce5ef;
+        padding-top: 18px;
+    }
+
+
+    /* =========================================================
+               TUTORIAL SECTION
+               ========================================================= */
+
+    .tutorials-section {
+        background: #ffffff;
+    }
+
+    .tutorial-heading {
+        max-width: 750px;
+        margin: auto;
+    }
+
+        .tutorial-heading h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #172033;
+        }
+
+        .tutorial-heading p {
+            font-size: 1.05rem;
+        }
+
+
+    /* =========================================================
+               TECHNOLOGY CARDS
+               ========================================================= */
+
+    .technology-card {
+        height: 100%;
+        border: 1px solid #e2e8f0;
+        border-radius: 18px;
+        background: #ffffff;
+        padding: 22px;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 14px rgba(15,23,42,0.03);
+    }
+
+        .technology-card:hover {
+            transform: translateY(-7px);
+            border-color: #7daeff;
+            box-shadow: 0 18px 35px rgba(37,99,235,0.12);
+        }
+
+    .technology-logo-box {
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+
+    .technology-logo {
+        width: 65px;
+        height: 65px;
+        object-fit: contain;
+    }
+
+    .technology-card h4 {
+        font-weight: 800;
+        color: #172033;
+        margin-bottom: 8px;
+    }
+
+    .technology-card p {
+        color: #64748b;
+        font-size: 14px;
+        line-height: 1.6;
+        min-height: 48px;
+    }
+
+    .start-tutorial-btn {
+        width: 100%;
+        border: 1px solid #1769ff;
+        color: #1769ff;
+        background: #ffffff;
+        font-weight: 700;
+        padding: 10px 15px;
+        border-radius: 9px;
+        text-decoration: none;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease;
+    }
+
+        .start-tutorial-btn:hover {
+            background: #1769ff;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+
+    /* =========================================================
+               WHY CIIT
+               ========================================================= */
+
+    .feature-icon-box {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        background: #e9f1ff;
+        color: #1769ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+    }
+
+
+    /* =========================================================
+               COMPILER
+               ========================================================= */
+
+    .compiler-section {
+        background: #10182c;
+        color: #ffffff;
+    }
+
+    .compiler-code {
+        background: #0b1220;
+        border: 1px solid #334155;
+        border-radius: 15px;
+        padding: 25px;
+    }
+
+    .code-font {
+        font-family: Consolas, Monaco, "Courier New", monospace;
+    }
+
+
+    /* =========================================================
+               MOBILE
+               ========================================================= */
+
+    @@media (max-width: 992px) {
+
+        .hero-title {
+            font-size: 3rem;
+        }
+
+        .hero-slider {
+            height: 430px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+
+        .topics-wrapper {
+            min-height: 56px;
+            padding: 0 6px;
+        }
+
+        .topics-title {
+            padding-right: 12px;
+            padding-left: 4px;
+            font-size: 15px;
+        }
+
+        .topics-arrow {
+            flex-basis: 30px;
+            width: 30px;
+            font-size: 22px;
+        }
+
+        .topic-link {
+            height: 38px;
+            padding: 0 12px;
+            font-size: 14px;
+        }
+
+        .hero-section {
+            padding: 45px 0;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-slider {
+            height: 360px;
+        }
+
+        .hero-slide-content h2 {
+            font-size: 1.8rem;
+        }
+    }
+
+</style>
+
+
+<!-- =========================================================
+     TOPICS NAVIGATION
+     ========================================================= -->
+<!-- =========================================================
+     HERO SECTION
+     ========================================================= -->
+
+<section class="hero-section">
+
+    <div class="container">
+
+        <div class="row align-items-center gy-5">
+
+            <!-- LEFT -->
+
+            <div class="col-lg-6">
+
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-2 mb-3 fw-bold">
+                    🚀 Premier Software Training Institute
+                </span>
+
+                <h1 class="hero-title fw-extrabold text-dark mb-4">
+
+                    Master Programming
+                    <br />
+
+                    with
+                    <span class="text-primary">
+                        CIIT
+                    </span>
+
+                </h1>
+
+                <p class="hero-description mb-4">
+
+                    Learn programming through interactive tutorials,
+                    hands-on coding practice and real-world projects.
+                    Build your skills step by step with CIIT Training Institute.
+                    Designed for beginners, students, developers and career changers.
+
+                </p>
+
+                <div class="d-flex flex-sm-row flex-column gap-3 mb-4">
+
+                    <a href="#tutorials"
+                       class="btn btn-primary btn-lg px-4 fw-bold">
+                        Explore All Tutorials
+                    </a>
+
+                    <a href="#compiler"
+                       class="btn btn-outline-dark btn-lg px-4 fw-bold">
+                        <i class="bi bi-play-circle me-2"></i>
+                        Try Code Runner
+                    </a>
+
+                </div>
+
+                <div class="row stats-row text-muted text-center text-sm-start">
+
+                    <div class="col-4">
+                        <h4 class="fw-bold text-dark m-0">
+                            50K+
+                        </h4>
+                        <small>
+                            Learners
+                        </small>
+                    </div>
+
+                    <div class="col-4">
+                        <h4 class="fw-bold text-dark m-0">
+                            100+
+                        </h4>
+                        <small>
+                            Projects
+                        </small>
+                    </div>
+
+                    <div class="col-4">
+                        <h4 class="fw-bold text-dark m-0">
+                            4.9 ★
+                        </h4>
+                        <small>
+                            Rating
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT IMAGE SLIDER -->
+
+            <div class="col-lg-6">
+
+                <div class="hero-slider" id="heroSlider">
+
+                    <div class="hero-slide active">
+
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+                             alt="Web Development" />
+
+                        <div class="hero-overlay"></div>
+
+                        <div class="hero-slide-content">
+
+                            <span class="category">
+                                WEB DEVELOPMENT
+                            </span>
+
+                            <h2>
+                                HTML
+                            </h2>
+
+                            <p>
+                                Build the foundation of modern websites.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-slide">
+
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+                             alt="Programming" />
+
+                        <div class="hero-overlay"></div>
+
+                        <div class="hero-slide-content">
+
+                            <span class="category">
+                                PROGRAMMING
+                            </span>
+
+                            <h2>
+                                JavaScript
+                            </h2>
+
+                            <p>
+                                Create interactive web applications.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-slide">
+
+                        <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80"
+                             alt="Python Programming" />
+
+                        <div class="hero-overlay"></div>
+
+                        <div class="hero-slide-content">
+
+                            <span class="category">
+                                DATA & AI
+                            </span>
+
+                            <h2>
+                                Python
+                            </h2>
+
+                            <p>
+                                Learn programming, automation and data science.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-slide">
+
+                        <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=1200&q=80"
+                             alt="Software Development" />
+
+                        <div class="hero-overlay"></div>
+
+                        <div class="hero-slide-content">
+
+                            <span class="category">
+                                SOFTWARE DEVELOPMENT
+                            </span>
+
+                            <h2>
+                                C# .NET
+                            </h2>
+
+                            <p>
+                                Build modern enterprise applications.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-slide">
+
+                        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80"
+                             alt="Coding" />
+
+                        <div class="hero-overlay"></div>
+
+                        <div class="hero-slide-content">
+
+                            <span class="category">
+                                FULL STACK
+                            </span>
+
+                            <h2>
+                                Full Stack Development
+                            </h2>
+
+                            <p>
+                                Learn frontend, backend and modern development tools.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="slider-dots">
+
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     POPULAR PROGRAMMING TUTORIALS
+     ========================================================= -->
+
+<section id="tutorials" class="tutorials-section py-5">
+
+    <div class="container py-4">
+
+        <div class="tutorial-heading text-center mb-5">
+
+            <h2>
+                Popular Programming Tutorials
+            </h2>
+
+            <p class="text-muted">
+                Choose your technology and start learning with structured
+                tutorials, practical examples and hands-on coding.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- =================================================
+                 HTML
+                 ================================================= -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+                             alt="HTML Logo" />
+
+                    </div>
+
+                    <h4>
+                        HTML
+                    </h4>
+
+                    <p>
+                        Learn HTML structure, tags, forms, tables and modern web page creation.
+                    </p>
+
+                    <a href="/Html/Introduction/Index"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CSS -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                             alt="CSS Logo" />
+
+                    </div>
+
+                    <h4>
+                        CSS
+                    </h4>
+
+                    <p>
+                        Learn styling, layouts, Flexbox, Grid, responsive design and animations.
+                    </p>
+
+                    <a href="/CSS/Introduction/Index"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bootstrap -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
+                             alt="Bootstrap Logo" />
+
+                    </div>
+
+                    <h4>
+                        Bootstrap
+                    </h4>
+
+                    <p>
+                        Build responsive websites using Bootstrap components and utilities.
+                    </p>
+
+                    <a href="/Bootstrap/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- JavaScript -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+                             alt="JavaScript Logo" />
+
+                    </div>
+
+                    <h4>
+                        JavaScript
+                    </h4>
+
+                    <p>
+                        Learn modern JavaScript, DOM, events, functions, async programming and APIs.
+                    </p>
+
+                    <a href="/Javascript/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- TypeScript -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                             alt="TypeScript Logo" />
+
+                    </div>
+
+                    <h4>
+                        TypeScript
+                    </h4>
+
+                    <p>
+                        Learn types, interfaces, generics, classes and modern TypeScript.
+                    </p>
+
+                    <a href="/TypeScript/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- React -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                             alt="React Logo" />
+
+                    </div>
+
+                    <h4>
+                        React
+                    </h4>
+
+                    <p>
+                        Build interactive user interfaces with components, hooks and state.
+                    </p>
+
+                    <a href="/React/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Angular -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg"
+                             alt="Angular Logo" />
+
+                    </div>
+
+                    <h4>
+                        Angular
+                    </h4>
+
+                    <p>
+                        Learn components, services, routing, forms, RxJS and Angular development.
+                    </p>
+
+                    <a href="/Angular/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Node.js -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+                             alt="Node.js Logo" />
+
+                    </div>
+
+                    <h4>
+                        Node.js
+                    </h4>
+
+                    <p>
+                        Learn backend development, modules, Express, APIs and server-side JavaScript.
+                    </p>
+
+                    <a href="/NodeJs/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Full Stack Java -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
+                             alt="Java Logo" />
+
+                    </div>
+
+                    <h4>
+                        Full Stack Java
+                    </h4>
+
+                    <p>
+                        Learn Java, JDBC, Spring Boot, Hibernate and REST APIs.
+                    </p>
+
+                    <a href="/FullStackJava/FullStackJava"
+                       class="start-tutorial-btn">
+                        Start Learning →
+                    </a>
+
+                </div>
+
+            </div>
+            <!-- Python -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                             alt="Python Logo" />
+
+                    </div>
+
+                    <h4>
+                        Python
+                    </h4>
+
+                    <p>
+                        Learn Python programming, collections, functions, OOP and practical projects.
+                    </p>
+
+                    <a href="/Python/PythonBasics/Index"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- C# -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+                             alt="C Sharp Logo" />
+
+                    </div>
+
+                    <h4>
+                        C# (.NET)
+                    </h4>
+
+                    <p>
+                        Build applications using C#, .NET, LINQ, APIs and modern development concepts.
+                    </p>
+
+                    <a href="/csharp/introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Git -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                             alt="Git Logo" />
+
+                    </div>
+
+                    <h4>
+                        Git
+                    </h4>
+
+                    <p>
+                        Learn repositories, branches, commits, merge, stash and Git workflow.
+                    </p>
+
+                    <a href="/Git/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- GitHub -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                             alt="GitHub Logo" />
+
+                    </div>
+
+                    <h4>
+                        GitHub
+                    </h4>
+
+                    <p>
+                        Learn repositories, pull requests, collaboration, branches and GitHub workflow.
+                    </p>
+
+                    <a href="/GitHub/VersionControlFundamental/WhatisVersionControl"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Jenkins -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg"
+                             alt="Jenkins Logo" />
+
+                    </div>
+
+                    <h4>
+                        Jenkins
+                    </h4>
+
+                    <p>
+                        Learn CI/CD, pipelines, automation and continuous integration.
+                    </p>
+
+                    <a href="/Jenkins/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Azure -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"
+                             alt="Azure Logo" />
+
+                    </div>
+
+                    <h4>
+                        Azure
+                    </h4>
+
+                    <p>
+                        Learn Microsoft Azure cloud services, deployment and cloud fundamentals.
+                    </p>
+
+                    <a href="/Azure/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- AWS -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                             alt="AWS Logo" />
+
+                    </div>
+
+                    <h4>
+                        AWS
+                    </h4>
+
+                    <p>
+                        Learn AWS cloud concepts, services, deployment and cloud architecture.
+                    </p>
+
+                    <a href="/AWS/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SQL Server -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
+                             alt="SQL Server Logo" />
+
+                    </div>
+
+                    <h4>
+                        SQL Server
+                    </h4>
+
+                    <p>
+                        Learn SQL queries, joins, procedures, functions, database design and more.
+                    </p>
+
+                    <a href="/SqlServer/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- NumPy -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg"
+                             alt="NumPy Logo" />
+
+                    </div>
+
+                    <h4>
+                        NumPy
+                    </h4>
+
+                    <p>
+                        Learn arrays, numerical operations, mathematical functions and data processing.
+                    </p>
+
+                    <a href="/NumPy/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Pandas -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg"
+                             alt="Pandas Logo" />
+
+                    </div>
+
+                    <h4>
+                        Pandas
+                    </h4>
+
+                    <p>
+                        Learn DataFrames, Series, data cleaning, filtering and analysis.
+                    </p>
+
+                    <a href="/Pandas/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Matplotlib -->
+
+            <div class="col-12 col-sm-6 col-lg-3">
+
+                <div class="technology-card">
+
+                    <div class="technology-logo-box">
+
+                        <img class="technology-logo"
+                             src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg"
+                             alt="Matplotlib Logo" />
+
+                    </div>
+
+                    <h4>
+                        Matplotlib
+                    </h4>
+
+                    <p>
+                        Learn charts, graphs, plotting and data visualization using Python.
+                    </p>
+
+                    <a href="/MatplotLib/Introduction"
+                       class="start-tutorial-btn">
+                        Start Tutorial →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY LEARN WITH CIIT
+     ========================================================= -->
+
+<section class="bg-light py-5">
+
+    <div class="container py-4">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                Why Learn With CIIT eTutorial?
+            </h2>
+
+            <p class="text-muted">
+                Designed to give you real practical knowledge,
+                not just theoretical concepts.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 text-center">
+
+            <div class="col-md-3">
+
+                <div class="p-3">
+
+                    <div class="feature-icon-box">
+                        <i class="bi bi-diagram-3"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Step-by-Step Paths
+                    </h5>
+
+                    <p class="text-muted small">
+                        Clear roadmaps tailored for college learners and developers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="p-3">
+
+                    <div class="feature-icon-box">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Browser Compiler
+                    </h5>
+
+                    <p class="text-muted small">
+                        Write and test your code directly inside your web browser.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="p-3">
+
+                    <div class="feature-icon-box">
+                        <i class="bi bi-journal-check"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Interview Prep
+                    </h5>
+
+                    <p class="text-muted small">
+                        Top interview questions with practical code examples.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="p-3">
+
+                    <div class="feature-icon-box">
+                        <i class="bi bi-award"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Verified Certificates
+                    </h5>
+
+                    <p class="text-muted small">
+                        Earn certificates after completing modules and assignments.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ONLINE CODE RUNNER
+     ========================================================= -->
+
+<section id="compiler" class="compiler-section py-5">
+
+    <div class="container py-4">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <span class="badge bg-info text-dark fw-bold mb-2">
+                    Live Practice Sandbox
+                </span>
+
+                <h2 class="fw-bold mb-3">
+                    Practice Code Instantly in Your Browser
+                </h2>
+
+                <p class="text-secondary mb-4">
+                    No setup or installation needed.
+                    Pick your technology and start writing code immediately.
+                </p>
+
+                <a href="/coderunner"
+                   class="btn btn-info text-dark fw-bold btn-lg">
+
+                    Open Code Compiler
+
+                    <i class="bi bi-box-arrow-up-right ms-2"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-6 mt-4 mt-lg-0">
+
+                <div class="compiler-code code-font">
+
+                    <div class="d-flex justify-content-between mb-3">
+
+                        <span class="text-muted">
+                            # Python Example
+                        </span>
+
+                        <span class="text-success">
+
+                            <i class="bi bi-play-fill"></i>
+
+                            Ready
+
+                        </span>
+
+                    </div>
+
+                    <pre class="m-0 text-light">def calculate_square(numbers):
+    return [n ** 2 for n in numbers]
+
+
+
+print(calculate_square([1, 2, 3, 4, 5]))</pre>
+
+                    <hr class="border-secondary">
+
+                    <div class="text-info">
+                        [1, 4, 9, 16, 25]
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+    <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+        /* =====================================================
+           TOPICS HORIZONTAL SCROLL
+           ===================================================== */
+
+        const topicsScroll =
+            document.getElementById("topicsScroll");
+
+        const prevButton =
+            document.getElementById("topicsPrev");
+
+        const nextButton =
+            document.getElementById("topicsNext");
+
+
+
+        if (topicsScroll && prevButton && nextButton) {
+
+            const scrollAmount = 350;
+
+
+            prevButton.addEventListener("click", function() {
+
+                topicsScroll.scrollBy({
+                    left: -scrollAmount,
+                    behavior: "smooth"
+                });
+
+            });
+
+
+            nextButton.addEventListener("click", function() {
+
+                topicsScroll.scrollBy({
+                    left: scrollAmount,
+                    behavior: "smooth"
+                });
+
+            });
+
+
+            /* Mouse wheel */
+
+            topicsScroll.addEventListener("wheel", function(event) {
+
+                if (
+                    Math.abs(event.deltaY) >
+                    Math.abs(event.deltaX)
+                ) {
+
+                    event.preventDefault();
+
+                    topicsScroll.scrollLeft += event.deltaY;
+
+                }
+
+            }, { passive: false });
+
+
+            /* Mouse drag */
+
+            let isDragging = false;
+
+            let startX = 0;
+
+            let startScrollLeft = 0;
+
+
+            topicsScroll.addEventListener(
+                "mousedown",
+                function(event) {
+
+                    isDragging = true;
+
+                    topicsScroll.classList.add("dragging");
+
+                    startX =
+                        event.pageX -
+                        topicsScroll.offsetLeft;
+
+                    startScrollLeft =
+                        topicsScroll.scrollLeft;
+
+                }
+            );
+
+
+            topicsScroll.addEventListener(
+                "mouseleave",
+                function() {
+
+                    isDragging = false;
+
+
+                    topicsScroll.classList.remove("dragging");
+
+                }
+            );
+
+
+            topicsScroll.addEventListener(
+                "mouseup",
+                function() {
+
+                    isDragging = false;
+
+                    topicsScroll.classList.remove("dragging");
+
+                }
+            );
+
+
+            topicsScroll.addEventListener(
+                "mousemove",
+                function(event) {
+
+                    if (!isDragging) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    const x =
+                        event.pageX -
+                        topicsScroll.offsetLeft;
+
+                    const walk =
+                        (x - startX) * 1.5;
+
+
+                    topicsScroll.scrollLeft =
+                        startScrollLeft - walk;
+
+                }
+            );
+
+
+                Active topic
+
+            const currentPath =
+                window.location.pathname.toLowerCase();
+
+            const topicLinks =
+                document.querySelectorAll(".topic-link");
+
+
+            topicLinks.forEach(function(link) {
+
+                const linkPath =
+                    new URL(
+                        link.href,
+                        window.location.origin
+                    )
+                        .pathname
+                        .toLowerCase();
+
+
+                if (
+                    currentPath === linkPath ||
+                    currentPath.startsWith(linkPath)
+                ) {
+
+                    link.classList.add("active");
+
+                }
+
+            });
+
+        }
+
+
+        /* =====================================================
+           HERO IMAGE AUTO SLIDER
+           ===================================================== */
+
+        const slides =
+            document.querySelectorAll(".hero-slide");
+
+        const dots =
+            document.querySelectorAll(".slider-dot");
+
+        let currentSlide = 0;
+
+
+        function showSlide(index) {
+
+            slides.forEach(function(slide) {
+
+                slide.classList.remove("active");
+
+            });
+
+
+            dots.forEach(function(dot) {
+
+                dot.classList.remove("active");
+
+            });
+
+
+            slides[index].classList.add("active");
+
+            dots[index].classList.add("active");
+
+        }
+
+
+        if (slides.length > 0) {
+
+            setInterval(function() {
+
+                currentSlide++;
+
+                if (currentSlide >= slides.length) {
+
+                    currentSlide = 0;
+
+                }
+
+                showSlide(currentSlide);
+
+            }, 4000);
+
+
+            dots.forEach(function(dot, index) {
+
+                dot.addEventListener("click", function() {
+
+                    currentSlide = index;
+
+                    showSlide(currentSlide);
+
+                });
+
+            });
+
+
+        }
+
+    });
+
+</script>

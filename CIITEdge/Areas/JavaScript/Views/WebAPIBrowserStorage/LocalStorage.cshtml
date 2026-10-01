@@ -1,0 +1,692 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Local Storage";
+}
+
+<style>
+    #local-storage-page {
+        padding: 30px 0 50px;
+    }
+
+    #local-storage-page .content-section {
+        background: #fff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+
+    #local-storage-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #local-storage-page .lead-text,
+    #local-storage-page .section-text {
+        color: #495057;
+        line-height: 1.8;
+        font-size: 16px;
+    }
+
+    #local-storage-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #local-storage-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin: 22px 0 30px;
+    }
+
+    #local-storage-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #local-storage-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* DIAGRAM */
+
+    #local-storage-page .flow-card {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin: 25px 0 30px;
+    }
+
+    #local-storage-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #local-storage-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #local-storage-page .flow-box {
+        min-width: 150px;
+        padding: 15px 20px;
+        border: 2px solid #7c3aed;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+        background: #fff;
+    }
+
+    #local-storage-page .flow-arrow {
+        font-size: 24px;
+        color: #7c3aed;
+        font-weight: bold;
+    }
+
+    /* IMAGE */
+
+    #local-storage-page .image-card {
+        text-align: center;
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 25px 0 30px;
+    }
+
+    #local-storage-page .storage-image {
+        width: 100%;
+        max-width: 850px;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        margin: auto;
+    }
+
+    #local-storage-page .image-caption {
+        color: #6c757d;
+        font-size: 14px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* CODE */
+
+    #local-storage-page .code-box {
+        background: #212529;
+        color: #fff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    /* TRY IT */
+
+    #local-storage-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px 0;
+    }
+
+    #local-storage-page .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    #local-storage-page .try-it-btn:hover {
+        background: #157347;
+    }
+
+    /* OUTPUT */
+
+    #local-storage-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin: 10px 0 28px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        line-height: 1.8;
+    }
+
+    /* NOTE */
+
+    #local-storage-page .note-box {
+        background: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 5px solid #ffb300;
+        border-radius: 8px;
+        padding: 18px;
+        margin: 25px 0;
+        color: #6d4c41;
+        line-height: 1.7;
+    }
+
+    /* NAVIGATION */
+
+    #local-storage-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #local-storage-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    #local-storage-page .previous-btn {
+        background: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #local-storage-page .next-btn {
+        background: #5b21b6;
+        color: #fff;
+        border: 1px solid #5b21b6;
+    }
+
+    #local-storage-page .next-btn:hover {
+        background: #4c1d95;
+        color: #fff;
+    }
+
+    @@media (max-width: 768px) {
+        #local-storage-page .content-section {
+            padding: 20px;
+        }
+
+        #local-storage-page .page-title {
+            font-size: 29px;
+        }
+
+        #local-storage-page .flow-row {
+            flex-direction: column;
+        }
+
+        #local-storage-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #local-storage-page .bottom-navigation {
+            flex-direction: column;
+        }
+    }
+</style>
+
+
+<main id="local-storage-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- ================================
+                 COURSE SYLLABUS
+                 ================================ -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- ================================
+                 MAIN CONTENT
+                 ================================ -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <h1 class="page-title">
+                        Local Storage in JavaScript
+                    </h1>
+
+                    <p class="lead-text">
+                        Local Storage allows JavaScript applications to
+                        store data directly inside the user's browser.
+                        The stored data remains available even after the
+                        browser is closed and opened again.
+                    </p>
+
+
+                    <!-- WHAT IS LOCAL STORAGE -->
+
+                    <h2 class="section-title">
+                        What is Local Storage?
+                    </h2>
+
+                    <p class="section-text">
+                        Local Storage is a browser storage mechanism used
+                        to store data as key-value pairs.
+                    </p>
+
+                    <p class="section-text">
+                        It is commonly used for storing user preferences,
+                        application settings, theme information and other
+                        small pieces of client-side data.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+                            Local Storage is a browser feature that allows
+                            JavaScript to save data on the user's device
+                            using key-value pairs.
+                        </p>
+
+                    </div>
+
+
+                    <!-- DIAGRAM -->
+
+                    <div class="flow-card">
+
+                        <div class="flow-title">
+                            How Local Storage Works
+                        </div>
+
+                        <div class="flow-row">
+
+                            <div class="flow-box">
+                                JavaScript
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                setItem()
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Browser Storage
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                getItem()
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ONLINE IMAGE -->
+
+                    <div class="image-card">
+
+                        <img src="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage/localstorage.png"
+                             alt="JavaScript Local Storage"
+                             class="storage-image"
+                             onerror="this.style.display='none';" />
+
+                        <p class="image-caption">
+                            Local Storage stores data inside the browser
+                            using key-value pairs.
+                        </p>
+
+                    </div>
+
+
+                    <!-- METHODS -->
+
+                    <h2 class="section-title">
+                        Local Storage Methods
+                    </h2>
+
+                    <div class="concept-box">
+
+                        <p>
+                            <strong>setItem()</strong> –
+                            Stores data in Local Storage.
+                        </p>
+
+                        <p>
+                            <strong>getItem()</strong> –
+                            Retrieves stored data.
+                        </p>
+
+                        <p>
+                            <strong>removeItem()</strong> –
+                            Removes a specific item.
+                        </p>
+
+                        <p class="mb-0">
+                            <strong>clear()</strong> –
+                            Removes all Local Storage data.
+                        </p>
+
+                    </div>
+
+
+                    <!-- EXAMPLE 1 -->
+
+                    <h2 class="section-title">
+                        Example 1: Store and Retrieve Data
+                    </h2>
+
+                    <p class="section-text">
+                        In this example, we store a username and then
+                        retrieve it from Local Storage.
+                    </p>
+
+                    <pre class="code-box"><code>localStorage.setItem("username", "Rahul");
+
+var username = localStorage.getItem("username");
+
+console.log(username);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runExample1()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        Rahul
+
+                    </div>
+
+
+                    <!-- EXAMPLE 2 -->
+
+                    <h2 class="section-title">
+                        Example 2: Remove Data
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>removeItem()</strong> method removes
+                        a specific value from Local Storage.
+                    </p>
+
+                    <pre class="code-box"><code>localStorage.setItem("course", "JavaScript");
+
+localStorage.removeItem("course");
+
+console.log("Course removed");</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runExample2()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        Course removed
+
+                    </div>
+
+
+                    <!-- EXAMPLE 3 -->
+
+                    <h2 class="section-title">
+                        Example 3: Clear Local Storage
+                    </h2>
+
+                    <p class="section-text">
+                        The <strong>clear()</strong> method removes all
+                        stored Local Storage data.
+                    </p>
+
+                    <pre class="code-box"><code>localStorage.clear();
+
+console.log("Local Storage cleared");</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runExample3()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        Local Storage cleared
+
+                    </div>
+
+
+                    <!-- IMPORTANT POINTS -->
+
+                    <h2 class="section-title">
+                        Important Points
+                    </h2>
+
+                    <div class="note-box">
+
+                        <p>
+                            • Local Storage stores data as key-value pairs.
+                        </p>
+
+                        <p>
+                            • Data normally remains after the browser
+                            is closed.
+                        </p>
+
+                        <p>
+                            • Data can be accessed using JavaScript.
+                        </p>
+
+                        <p>
+                            • Local Storage is available only on the
+                            client side.
+                        </p>
+
+                        <p class="mb-0">
+                            • Do not store passwords or sensitive data
+                            in Local Storage.
+                        </p>
+
+                    </div>
+
+
+                    <!-- SUMMARY -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Summary
+                        </h5>
+
+                        <p class="mb-0">
+                            Local Storage provides a simple way to store
+                            small amounts of data in the browser.
+                            The main methods are setItem(), getItem(),
+                            removeItem() and clear().
+                        </p>
+
+                    </div>
+
+
+                    <!-- NAVIGATION -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("WebAPIBrowserStorage", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Web APIs & Browser Storage
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("SessionStorage", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Session Storage
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    function runExample1() {
+
+        var code =
+`var storage = {};
+
+storage["username"] = "Rahul";
+
+var username = storage["username"];
+
+console.log(username);`;
+
+        openCompiler(code);
+    }
+
+
+    function runExample2() {
+
+        var code =
+`var storage = {};
+
+storage["course"] = "JavaScript";
+
+delete storage["course"];
+
+console.log("Course removed");`;
+
+        openCompiler(code);
+    }
+
+
+    function runExample3() {
+
+        var code =
+`var storage = {};
+
+storage["name"] = "Rahul";
+storage["course"] = "JavaScript";
+
+storage = {};
+
+console.log("Local Storage cleared");`;
+
+        openCompiler(code);
+    }
+
+</script>

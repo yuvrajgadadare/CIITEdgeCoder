@@ -1,0 +1,1136 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Animations";
+}
+
+<div id="css-animations-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <h1 class="mb-3">CSS Animations</h1>
+
+                <p class="lead">
+                    CSS animations allow elements to change from one style to
+                    another over time without requiring JavaScript.
+                </p>
+
+                <hr />
+
+                <!-- Introduction -->
+                <h2 class="h4 mt-4">What is CSS Animation?</h2>
+
+                <p>
+                    CSS animation allows you to define a sequence of visual
+                    changes and control how an element moves, changes color,
+                    rotates, scales, or fades over time.
+                </p>
+
+                <p>
+                    Animations are commonly used for loading effects,
+                    attention indicators, banners, cards, buttons,
+                    illustrations, and interactive user interfaces.
+                </p>
+
+                <!-- Effective Interactive Image -->
+                <h2 class="h4 mt-4">Interactive Animation Example</h2>
+
+                <p>
+                    Hover over the artwork below. The image itself uses CSS
+                    animation and transform effects to create a moving visual.
+                </p>
+
+                <div class="interactive-art-section">
+
+                    <div class="interactive-art-wrapper">
+
+                        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1200&q=80"
+                             alt="Colorful abstract art representing CSS animation"
+                             class="interactive-art"
+                             tabindex="0" />
+
+                        <div class="art-overlay">
+                            <span>CSS Animation</span>
+                            <small>Hover Me</small>
+                        </div>
+
+                    </div>
+
+                    <p class="image-caption">
+                        A visual example of movement, scale, and color effects
+                        created with CSS.
+                    </p>
+
+                </div>
+
+                <!-- What You Will Learn -->
+                <h2 class="h4 mt-4">What You Will Learn</h2>
+
+                <div class="animation-topic-grid">
+
+                    <div class="animation-topic-card">
+                        <div class="topic-icon">K</div>
+                        <strong>@@keyframes</strong>
+                        <span>Define animation steps</span>
+                    </div>
+
+                    <div class="animation-topic-card">
+                        <div class="topic-icon">D</div>
+                        <strong>Duration</strong>
+                        <span>Control animation time</span>
+                    </div>
+
+                    <div class="animation-topic-card">
+                        <div class="topic-icon">I</div>
+                        <strong>Iteration</strong>
+                        <span>Repeat the animation</span>
+                    </div>
+
+                    <div class="animation-topic-card">
+                        <div class="topic-icon">F</div>
+                        <strong>Fill Mode</strong>
+                        <span>Control final state</span>
+                    </div>
+
+                </div>
+
+                <!-- Keyframes -->
+                <h2 class="h4 mt-4">1. @@keyframes</h2>
+
+                <p>
+                    The <code>@@keyframes</code> rule defines the different
+                    stages of an animation.
+                </p>
+
+                <pre class="code-box"><code>@@keyframes moveBox {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(200px);
+    }
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">Simple Explanation</h3>
+
+                    <p>
+                        <code>from</code> represents the starting state and
+                        <code>to</code> represents the ending state.
+                    </p>
+
+                    <p class="mb-0">
+                        CSS automatically creates the intermediate movement
+                        between these states.
+                    </p>
+
+                </div>
+
+                <!-- Basic Animation -->
+                <h2 class="h4 mt-4">2. Basic Animation</h2>
+
+                <pre class="code-box"><code>.moving-box {
+    animation: moveBox 2s infinite alternate;
+}
+
+@@keyframes moveBox {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(180px);
+    }
+}</code></pre>
+
+                <!-- Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box animation-stage">
+
+                    <div class="moving-box">
+                        Moving
+                    </div>
+
+                </div>
+
+                <!-- Animation Name -->
+                <h2 class="h4 mt-4">3. animation-name</h2>
+
+                <p>
+                    The <code>animation-name</code> property specifies the
+                    name of the keyframe animation that should be applied.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    animation-name: colorChange;
+}
+
+@@keyframes colorChange {
+
+    from {
+        background-color: #2563eb;
+    }
+
+    to {
+        background-color: #7c3aed;
+    }
+}</code></pre>
+
+                <!-- Duration -->
+                <h2 class="h4 mt-4">4. animation-duration</h2>
+
+                <p>
+                    The <code>animation-duration</code> property controls
+                    how long one complete animation cycle takes.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    animation-duration: 2s;
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Example</h3>
+
+                    <p class="mb-0">
+                        <code>2s</code> means the animation takes
+                        two seconds to complete one cycle.
+                    </p>
+
+                </div>
+
+                <!-- Timing -->
+                <h2 class="h4 mt-4">5. animation-timing-function</h2>
+
+                <p>
+                    This property controls the speed pattern of the animation.
+                </p>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Value</th>
+                                <th>Behavior</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><code>ease</code></td>
+                                <td>Starts slowly and ends slowly</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>linear</code></td>
+                                <td>Constant speed</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>ease-in</code></td>
+                                <td>Starts slowly</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>ease-out</code></td>
+                                <td>Ends slowly</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>ease-in-out</code></td>
+                                <td>Starts and ends slowly</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Iteration Count -->
+                <h2 class="h4 mt-4">6. animation-iteration-count</h2>
+
+                <p>
+                    This property specifies how many times the animation
+                    should repeat.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    animation-iteration-count: 3;
+}</code></pre>
+
+                <p>
+                    To repeat an animation continuously, use:
+                </p>
+
+                <pre class="code-box"><code>.box {
+    animation-iteration-count: infinite;
+}</code></pre>
+
+                <!-- Direction -->
+                <h2 class="h4 mt-4">7. animation-direction</h2>
+
+                <p>
+                    The <code>animation-direction</code> property controls
+                    whether the animation runs forward, backward, or alternates.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    animation-direction: alternate;
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Common Values</h3>
+
+                    <p class="mb-2">
+                        <code>normal</code> → Runs normally
+                    </p>
+
+                    <p class="mb-2">
+                        <code>reverse</code> → Runs in reverse
+                    </p>
+
+                    <p class="mb-0">
+                        <code>alternate</code> → Forward, then backward
+                    </p>
+
+                </div>
+
+                <!-- Delay -->
+                <h2 class="h4 mt-4">8. animation-delay</h2>
+
+                <p>
+                    The <code>animation-delay</code> property defines how
+                    long the browser waits before starting the animation.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    animation-delay: 1s;
+}</code></pre>
+
+                <!-- Fill Mode -->
+                <h2 class="h4 mt-4">9. animation-fill-mode</h2>
+
+                <p>
+                    The <code>animation-fill-mode</code> property controls
+                    the styles applied before or after the animation runs.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    animation-fill-mode: forwards;
+}</code></pre>
+
+                <div class="explanation-box">
+
+                    <h3 class="h5">forwards</h3>
+
+                    <p class="mb-0">
+                        The element keeps the styles from the final keyframe
+                        after the animation finishes.
+                    </p>
+
+                </div>
+
+                <!-- Multiple Keyframes -->
+                <h2 class="h4 mt-4">10. Multiple Keyframe Steps</h2>
+
+                <p>
+                    An animation can have more than two stages.
+                </p>
+
+                <pre class="code-box"><code>@@keyframes colorfulMove {
+
+    0% {
+        transform: translateX(0) scale(1);
+        background-color: #2563eb;
+    }
+
+    50% {
+        transform: translateX(120px) scale(1.2);
+        background-color: #7c3aed;
+    }
+
+    100% {
+        transform: translateX(0) scale(1);
+        background-color: #0f766e;
+    }
+}</code></pre>
+
+                <!-- Colorful Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box colorful-animation-stage">
+
+                    <div class="colorful-animation-box">
+                        Colorful
+                    </div>
+
+                </div>
+
+                <!-- Image Animation -->
+                <h2 class="h4 mt-4">Image Animation with CSS</h2>
+
+                <p>
+                    CSS animations can also be applied to images to create
+                    visual movement and attention effects.
+                </p>
+
+                <pre class="code-box"><code>.animated-image {
+    animation: imageFloat 3s ease-in-out infinite;
+}
+
+@@keyframes imageFloat {
+
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-12px) scale(1.04);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}</code></pre>
+
+                <!-- Animated Image Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box image-animation-output">
+
+                    <div class="animated-image-wrapper">
+
+                        <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=900&q=80"
+                             alt="Colorful abstract artwork"
+                             class="animated-image" />
+
+                    </div>
+
+                    <p class="output-note">
+                        This image continuously moves up and down using
+                        CSS animation.
+                    </p>
+
+                </div>
+
+                <!-- Loading Animation -->
+                <h2 class="h4 mt-4">Practical Example: Loading Animation</h2>
+
+                <p>
+                    A common real-world use of CSS animations is a loading
+                    indicator.
+                </p>
+
+                <pre class="code-box"><code>.loader {
+    animation: spin 1s linear infinite;
+}
+
+@@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}</code></pre>
+
+                <!-- Loader Output -->
+                <h2 class="h4 mt-4">Output</h2>
+
+                <div class="output-box loader-output">
+
+                    <div class="loader">
+                    </div>
+
+                    <span>
+                        Loading...
+                    </span>
+
+                </div>
+
+                <!-- Shorthand -->
+                <h2 class="h4 mt-4">Animation Shorthand</h2>
+
+                <p>
+                    You can define multiple animation properties using the
+                    shorthand <code>animation</code> property.
+                </p>
+
+                <pre class="code-box"><code>.box {
+    animation:
+        moveBox
+        2s
+        ease
+        1s
+        infinite
+        alternate;
+}</code></pre>
+
+                <div class="property-card">
+
+                    <h3 class="h6">Shorthand Structure</h3>
+
+                    <p class="mb-0">
+                        A common animation shorthand includes
+                        <code>name</code>, <code>duration</code>,
+                        <code>timing-function</code>, <code>delay</code>,
+                        <code>iteration-count</code>, and
+                        <code>direction</code>.
+                    </p>
+
+                </div>
+
+                <!-- Transitions vs Animations -->
+                <h2 class="h4 mt-4">CSS Transitions vs CSS Animations</h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Transitions</th>
+                                <th>Animations</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Usually needs a state change</td>
+                                <td>Can run automatically</td>
+                            </tr>
+
+                            <tr>
+                                <td>Often used with <code>:hover</code></td>
+                                <td>Uses <code>@@keyframes</code></td>
+                            </tr>
+
+                            <tr>
+                                <td>Usually between two states</td>
+                                <td>Can contain multiple stages</td>
+                            </tr>
+
+                            <tr>
+                                <td>Simple UI effects</td>
+                                <td>Complex movement and effects</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Best Practices -->
+                <h2 class="h4 mt-4">Best Practices</h2>
+
+                <ul>
+
+                    <li>
+                        Keep animations smooth and purposeful.
+                    </li>
+
+                    <li>
+                        Avoid excessive animations that distract users.
+                    </li>
+
+                    <li>
+                        Keep durations appropriate for the type of effect.
+                    </li>
+
+                    <li>
+                        Use transforms and opacity for many performant visual effects.
+                    </li>
+
+                    <li>
+                        Test animations on mobile and desktop screens.
+                    </li>
+
+                    <li>
+                        Consider users who prefer reduced motion.
+                    </li>
+
+                </ul>
+
+                <!-- Important Note -->
+                <div class="note-box">
+
+                    <h3 class="h6">Important Note</h3>
+
+                    <p class="mb-0">
+                        CSS animations can run automatically and can repeat
+                        multiple times. Use them to improve usability and
+                        visual feedback rather than adding unnecessary movement.
+                    </p>
+
+                </div>
+
+                <!-- Summary -->
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS animations use <code>@@keyframes</code> and animation
+                        properties to create movement and visual effects.
+                        Important properties include
+                        <code>animation-name</code>,
+                        <code>animation-duration</code>,
+                        <code>animation-timing-function</code>,
+                        <code>animation-iteration-count</code>,
+                        <code>animation-direction</code>,
+                        <code>animation-delay</code>, and
+                        <code>animation-fill-mode</code>.
+                    </p>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="row mt-5">
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("Transitions", "AdvancedCSS", new { area = "CSS" })">
+
+                            ← Previous: CSS Transitions
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("CSSVariables", "AdvancedCSS", new { area = "CSS" })">
+
+                            Next: CSS Variables →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #css-animations-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        #css-animations-page .content-section h1 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-animations-page .content-section h2 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        #css-animations-page .content-section p,
+        #css-animations-page .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+    /* Interactive Artwork */
+    #css-animations-page .interactive-art-section {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 15px;
+        overflow: hidden;
+    }
+
+    #css-animations-page .interactive-art-wrapper {
+        max-width: 750px;
+        height: 360px;
+        margin: 0 auto;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    #css-animations-page .interactive-art {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+        transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    #css-animations-page .interactive-art-wrapper::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient( 135deg, rgba(37,99,235,0.10), rgba(124,58,237,0.18) );
+        pointer-events: none;
+    }
+
+    #css-animations-page .interactive-art-wrapper:hover .interactive-art,
+    #css-animations-page .interactive-art:focus {
+        transform: scale(1.08) rotate(1.5deg);
+        filter: saturate(1.25) brightness(1.05);
+    }
+
+    #css-animations-page .art-overlay {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        color: #ffffff;
+        text-align: center;
+        background-color: rgba(33,37,41,0.72);
+        border-radius: 10px;
+        padding: 15px 22px;
+        pointer-events: none;
+    }
+
+        #css-animations-page .art-overlay span {
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        #css-animations-page .art-overlay small {
+            display: block;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+    #css-animations-page .image-caption {
+        margin: 14px 5px 0;
+        color: #6c757d !important;
+        font-size: 14px;
+    }
+
+    /* Topic Cards */
+    #css-animations-page .animation-topic-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #css-animations-page .animation-topic-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #css-animations-page .topic-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 10px;
+        border-radius: 50%;
+        background-color: #2563eb;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+    }
+
+    #css-animations-page .animation-topic-card strong {
+        display: block;
+        color: #212529;
+        margin-bottom: 5px;
+    }
+
+    #css-animations-page .animation-topic-card span {
+        font-size: 13px;
+        color: #6c757d;
+    }
+
+    /* Code */
+    #css-animations-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Explanation */
+    #css-animations-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 20px;
+    }
+
+        #css-animations-page .explanation-box h3 {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+    /* Property */
+    #css-animations-page .property-card {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+        #css-animations-page .property-card h3 {
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    /* Output */
+    #css-animations-page .output-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-animations-page .output-note {
+        margin-top: 15px;
+        margin-bottom: 0;
+        color: #6c757d !important;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Moving Box */
+    #css-animations-page .animation-stage {
+        min-height: 150px;
+        overflow: hidden;
+    }
+
+    #css-animations-page .moving-box {
+        width: 110px;
+        padding: 15px;
+        background-color: #2563eb;
+        color: #ffffff;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 700;
+        animation: moveAnimationBox 2s infinite alternate ease-in-out;
+    }
+
+    @@keyframes moveAnimationBox {
+
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(220px);
+        }
+    }
+
+    /* Colorful Box */
+    #css-animations-page .colorful-animation-stage {
+        min-height: 190px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    #css-animations-page .colorful-animation-box {
+        width: 140px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        color: #ffffff;
+        font-weight: 700;
+        animation: colorfulMove 3s ease-in-out infinite;
+    }
+
+    @@keyframes colorfulMove {
+
+        0% {
+            transform: translateX(-120px) scale(1);
+            background-color: #2563eb;
+        }
+
+        50% {
+            transform: translateX(0) scale(1.2);
+            background-color: #7c3aed;
+        }
+
+        100% {
+            transform: translateX(120px) scale(1);
+            background-color: #0f766e;
+        }
+    }
+
+    /* Image Animation */
+    #css-animations-page .image-animation-output {
+        text-align: center;
+    }
+
+    #css-animations-page .animated-image-wrapper {
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    #css-animations-page .animated-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+        animation: imageFloat 3s ease-in-out infinite;
+    }
+
+    @@keyframes imageFloat {
+
+        0% {
+            transform: translateY(0) scale(1);
+        }
+
+        50% {
+            transform: translateY(-12px) scale(1.04);
+        }
+
+        100% {
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Loader */
+    #css-animations-page .loader-output {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        min-height: 130px;
+    }
+
+    #css-animations-page .loader {
+        width: 42px;
+        height: 42px;
+        border: 5px solid #dbeafe;
+        border-top-color: #2563eb;
+        border-radius: 50%;
+        animation: spinLoader 1s linear infinite;
+    }
+
+    @@keyframes spinLoader {
+
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    #css-animations-page .loader-output span {
+        color: #495057;
+        font-weight: 600;
+    }
+
+    /* Note */
+    #css-animations-page .note-box {
+        background-color: #fff8e1;
+        border: 1px solid #ffd166;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 25px;
+    }
+
+        #css-animations-page .note-box h3 {
+            color: #92400e;
+            font-weight: 700;
+        }
+
+        #css-animations-page .note-box p {
+            color: #78350f;
+        }
+
+    /* Summary */
+    #css-animations-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+        #css-animations-page .summary-box h2 {
+            color: #075985;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #css-animations-page .summary-box p {
+            color: #075985;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+    /* Reduced Motion */
+    @@media (prefers-reduced-motion: reduce) {
+
+        #css-animations-page .moving-box,
+        #css-animations-page .colorful-animation-box,
+        #css-animations-page .animated-image,
+        #css-animations-page .loader {
+            animation: none;
+        }
+
+        #css-animations-page .interactive-art,
+        #css-animations-page .interactive-art-wrapper:hover .interactive-art {
+            transition: none;
+            transform: none;
+            filter: none;
+        }
+    }
+
+    /* Tablet */
+    @@media (max-width: 991px) {
+
+        #css-animations-page .animation-topic-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #css-animations-page .interactive-art-wrapper {
+            height: 320px;
+        }
+
+        #css-animations-page .moving-box {
+            animation-name: moveAnimationBoxTablet;
+        }
+
+        @@keyframes moveAnimationBoxTablet {
+
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(130px);
+            }
+        }
+    }
+
+    /* Mobile */
+    @@media (max-width: 768px) {
+
+        #css-animations-page .content-section {
+            padding: 20px;
+        }
+
+        #css-animations-page .interactive-art-wrapper {
+            height: 280px;
+        }
+
+        #css-animations-page .animated-image {
+            height: 250px;
+        }
+
+        #css-animations-page .colorful-animation-box {
+            animation-name: colorfulMoveMobile;
+        }
+
+        @@keyframes colorfulMoveMobile {
+
+            0% {
+                transform: translateX(-55px) scale(1);
+                background-color: #2563eb;
+            }
+
+            50% {
+                transform: translateX(0) scale(1.12);
+                background-color: #7c3aed;
+            }
+
+            100% {
+                transform: translateX(55px) scale(1);
+                background-color: #0f766e;
+            }
+        }
+    }
+
+    /* Small Mobile */
+    @@media (max-width: 576px) {
+
+        #css-animations-page .content-section {
+            padding: 16px;
+        }
+
+        #css-animations-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-animations-page .animation-topic-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #css-animations-page .interactive-art-wrapper {
+            height: 220px;
+        }
+
+        #css-animations-page .animated-image {
+            height: 210px;
+        }
+
+        #css-animations-page .art-overlay span {
+            font-size: 17px;
+        }
+
+        #css-animations-page .art-overlay small {
+            font-size: 12px;
+        }
+    }
+
+</style>

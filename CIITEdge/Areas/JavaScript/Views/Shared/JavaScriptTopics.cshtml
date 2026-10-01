@@ -1,0 +1,557 @@
+﻿@{
+    var currentController =
+        ViewContext.RouteData.Values["controller"]?.ToString();
+
+    var currentAction =
+        ViewContext.RouteData.Values["action"]?.ToString();
+
+    bool IsActive(string controller, string action)
+    {
+        return string.Equals(
+                   currentController,
+                   controller,
+                   StringComparison.OrdinalIgnoreCase)
+               &&
+               string.Equals(
+                   currentAction,
+                   action,
+                   StringComparison.OrdinalIgnoreCase);
+    }
+}
+
+<style>
+
+    .javascript-syllabus-card {
+        border: 0;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 90px;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: #ffffff;
+    }
+
+    .javascript-syllabus-header {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        padding: 14px 18px !important;
+        font-size: 15px;
+        font-weight: 700;
+        display: block !important;
+        visibility: visible !important;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .javascript-module-title {
+        background-color: #f8f9fa !important;
+        font-weight: 700 !important;
+        color: #212529 !important;
+        padding: 12px 16px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .javascript-topic-link {
+        display: block;
+        padding: 10px 16px 10px 28px;
+        font-size: 14px;
+        color: #495057 !important;
+        text-decoration: none !important;
+        border: 0 !important;
+        border-bottom: 1px solid #f1f1f1 !important;
+        background-color: #ffffff !important;
+    }
+
+        .javascript-topic-link:hover {
+            background-color: #f1f3f5 !important;
+            color: #212529 !important;
+        }
+
+        .javascript-topic-link.active,
+        .javascript-topic-link.active:hover,
+        .javascript-topic-link.active:focus {
+            background-color: #ffffff !important;
+            color: #495057 !important;
+            font-weight: 400 !important;
+            border-top: 0 !important;
+            border-left: 0 !important;
+            border-right: 0 !important;
+            border-bottom: 2px solid #2563eb !important;
+            box-shadow: none !important;
+        }
+
+    .javascript-syllabus-card::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .javascript-syllabus-card::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .javascript-syllabus-card::-webkit-scrollbar-thumb {
+        background: #c8c8c8;
+        border-radius: 10px;
+    }
+
+        .javascript-syllabus-card::-webkit-scrollbar-thumb:hover {
+            background: #aaaaaa;
+        }
+
+    @@media (max-width: 991px) {
+
+        .javascript-syllabus-card {
+            position: relative;
+            top: auto;
+            max-height: none;
+            overflow: hidden;
+        }
+
+        .javascript-syllabus-header {
+            position: relative;
+        }
+    }
+
+</style>
+
+
+<!-- =========================================================
+     JAVASCRIPT COURSE SYLLABUS
+     ========================================================= -->
+
+<div class="card javascript-syllabus-card">
+
+    <!-- =====================================================
+         COURSE SYLLABUS HEADER
+         ===================================================== -->
+
+    <div class="card-header javascript-syllabus-header">
+        <span>COURSE SYLLABUS</span>
+    </div>
+
+
+    <div class="list-group list-group-flush">
+
+
+        <!-- =====================================================
+             MODULE 1
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            1. Introduction to JavaScript
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Introduction", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Introduction", new { area = "JavaScript" })">
+            Introduction to JavaScript
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Introduction", "JavaScriptHistory") ? "active" : "")"
+           href="@Url.Action("JavaScriptHistory", "Introduction", new { area = "JavaScript" })">
+            JavaScript History
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Introduction", "HowJavaScriptWorks") ? "active" : "")"
+           href="@Url.Action("HowJavaScriptWorks", "Introduction", new { area = "JavaScript" })">
+            How JavaScript Works
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Introduction", "JavaScriptInBrowser") ? "active" : "")"
+           href="@Url.Action("JavaScriptInBrowser", "Introduction", new { area = "JavaScript" })">
+            JavaScript in the Browser
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Introduction", "DeveloperTools") ? "active" : "")"
+           href="@Url.Action("DeveloperTools", "Introduction", new { area = "JavaScript" })">
+            Browser Developer Tools
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 2
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            2. JavaScript Basics
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Basics", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Basics", new { area = "JavaScript" })">
+            JavaScript Basics
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Basics", "Variables") ? "active" : "")"
+           href="@Url.Action("Variables", "Basics", new { area = "JavaScript" })">
+            Variables
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Basics", "DataTypes") ? "active" : "")"
+           href="@Url.Action("DataTypes", "Basics", new { area = "JavaScript" })">
+            Data Types
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Basics", "TypeConversion") ? "active" : "")"
+           href="@Url.Action("TypeConversion", "Basics", new { area = "JavaScript" })">
+            Type Conversion
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Basics", "InputOutput") ? "active" : "")"
+           href="@Url.Action("InputOutput", "Basics", new { area = "JavaScript" })">
+            Input and Output
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 3
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            3. Operators & Control Flow
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("OperatorsControlFlow", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "OperatorsControlFlow", new { area = "JavaScript" })">
+            Operators & Control Flow
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("OperatorsControlFlow", "ArithmeticOperators") ? "active" : "")"
+           href="@Url.Action("ArithmeticOperators", "OperatorsControlFlow", new { area = "JavaScript" })">
+            Arithmetic Operators
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("OperatorsControlFlow", "ComparisonLogicalOperators") ? "active" : "")"
+           href="@Url.Action("ComparisonLogicalOperators", "OperatorsControlFlow", new { area = "JavaScript" })">
+            Comparison & Logical Operators
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("OperatorsControlFlow", "IfElse") ? "active" : "")"
+           href="@Url.Action("IfElse", "OperatorsControlFlow", new { area = "JavaScript" })">
+            if, else and else if
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("OperatorsControlFlow", "Switch") ? "active" : "")"
+           href="@Url.Action("Switch", "OperatorsControlFlow", new { area = "JavaScript" })">
+            switch Statement
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("OperatorsControlFlow", "Loops") ? "active" : "")"
+           href="@Url.Action("Loops", "OperatorsControlFlow", new { area = "JavaScript" })">
+            Loops
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 4
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            4. Functions
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Functions", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Functions", new { area = "JavaScript" })">
+            Functions
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Functions", "FunctionDeclaration") ? "active" : "")"
+           href="@Url.Action("FunctionDeclaration", "Functions", new { area = "JavaScript" })">
+            Function Declaration
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Functions", "ParametersArguments") ? "active" : "")"
+           href="@Url.Action("ParametersArguments", "Functions", new { area = "JavaScript" })">
+            Parameters & Arguments
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Functions", "ReturnValues") ? "active" : "")"
+           href="@Url.Action("ReturnValues", "Functions", new { area = "JavaScript" })">
+            Return Values
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Functions", "ArrowFunctions") ? "active" : "")"
+           href="@Url.Action("ArrowFunctions", "Functions", new { area = "JavaScript" })">
+            Arrow Functions
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Functions", "CallbackFunctions") ? "active" : "")"
+           href="@Url.Action("CallbackFunctions", "Functions", new { area = "JavaScript" })">
+            Callback Functions
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 5
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            5. Arrays & Strings
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ArraysStrings", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "ArraysStrings", new { area = "JavaScript" })">
+            Arrays & Strings
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ArraysStrings", "Arrays") ? "active" : "")"
+           href="@Url.Action("Arrays", "ArraysStrings", new { area = "JavaScript" })">
+            Arrays
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ArraysStrings", "ArrayMethods") ? "active" : "")"
+           href="@Url.Action("ArrayMethods", "ArraysStrings", new { area = "JavaScript" })">
+            Array Methods
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ArraysStrings", "Strings") ? "active" : "")"
+           href="@Url.Action("Strings", "ArraysStrings", new { area = "JavaScript" })">
+            Strings
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ArraysStrings", "StringMethods") ? "active" : "")"
+           href="@Url.Action("StringMethods", "ArraysStrings", new { area = "JavaScript" })">
+            String Methods
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 6
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            6. Objects
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Objects", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Objects", new { area = "JavaScript" })">
+            JavaScript Objects
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Objects", "ObjectProperties") ? "active" : "")"
+           href="@Url.Action("ObjectProperties", "Objects", new { area = "JavaScript" })">
+            Object Properties
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Objects", "ObjectMethods") ? "active" : "")"
+           href="@Url.Action("ObjectMethods", "Objects", new { area = "JavaScript" })">
+            Object Methods
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Objects", "ThisKeyword") ? "active" : "")"
+           href="@Url.Action("ThisKeyword", "Objects", new { area = "JavaScript" })">
+            this Keyword
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Objects", "Destructuring") ? "active" : "")"
+           href="@Url.Action("Destructuring", "Objects", new { area = "JavaScript" })">
+            Destructuring
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 7
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            7. DOM Manipulation
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("DOM", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "DOM", new { area = "JavaScript" })">
+            DOM Introduction
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("DOM", "SelectingElements") ? "active" : "")"
+           href="@Url.Action("SelectingElements", "DOM", new { area = "JavaScript" })">
+            Selecting Elements
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("DOM", "ChangingContent") ? "active" : "")"
+           href="@Url.Action("ChangingContent", "DOM", new { area = "JavaScript" })">
+            Changing Content
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("DOM", "ChangingStyles") ? "active" : "")"
+           href="@Url.Action("ChangingStyles", "DOM", new { area = "JavaScript" })">
+            Changing Styles
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("DOM", "CreatingElements") ? "active" : "")"
+           href="@Url.Action("CreatingElements", "DOM", new { area = "JavaScript" })">
+            Creating Elements
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 8
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            8. JavaScript Events
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Events", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "Events", new { area = "JavaScript" })">
+            Events Introduction
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Events", "ClickEvents") ? "active" : "")"
+           href="@Url.Action("ClickEvents", "Events", new { area = "JavaScript" })">
+            Click Events
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Events", "KeyboardEvents") ? "active" : "")"
+           href="@Url.Action("KeyboardEvents", "Events", new { area = "JavaScript" })">
+            Keyboard Events
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Events", "FormEvents") ? "active" : "")"
+           href="@Url.Action("FormEvents", "Events", new { area = "JavaScript" })">
+            Form Events
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("Events", "EventListeners") ? "active" : "")"
+           href="@Url.Action("EventListeners", "Events", new { area = "JavaScript" })">
+            Event Listeners
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 9
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            9. Modern JavaScript
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ModernJavaScript", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "ModernJavaScript", new { area = "JavaScript" })">
+            Modern JavaScript
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ModernJavaScript", "LetConst") ? "active" : "")"
+           href="@Url.Action("LetConst", "ModernJavaScript", new { area = "JavaScript" })">
+            let and const
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ModernJavaScript", "TemplateLiterals") ? "active" : "")"
+           href="@Url.Action("TemplateLiterals", "ModernJavaScript", new { area = "JavaScript" })">
+            Template Literals
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ModernJavaScript", "SpreadRest") ? "active" : "")"
+           href="@Url.Action("SpreadRest", "ModernJavaScript", new { area = "JavaScript" })">
+            Spread & Rest Operators
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("ModernJavaScript", "Modules") ? "active" : "")"
+           href="@Url.Action("Modules", "ModernJavaScript", new { area = "JavaScript" })">
+            JavaScript Modules
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 10
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            10. Asynchronous JavaScript
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AsynchronousJavaScript", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "AsynchronousJavaScript", new { area = "JavaScript" })">
+            Asynchronous JavaScript
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AsynchronousJavaScript", "Callbacks") ? "active" : "")"
+           href="@Url.Action("Callbacks", "AsynchronousJavaScript", new { area = "JavaScript" })">
+            Callbacks
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AsynchronousJavaScript", "Promises") ? "active" : "")"
+           href="@Url.Action("Promises", "AsynchronousJavaScript", new { area = "JavaScript" })">
+            Promises
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AsynchronousJavaScript", "AsyncAwait") ? "active" : "")"
+           href="@Url.Action("AsyncAwait", "AsynchronousJavaScript", new { area = "JavaScript" })">
+            async and await
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AsynchronousJavaScript", "FetchAPI") ? "active" : "")"
+           href="@Url.Action("FetchAPI", "AsynchronousJavaScript", new { area = "JavaScript" })">
+            Fetch API
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 11
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            11. Web APIs & Browser Storage
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("WebAPIBrowserStorage", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "WebAPIBrowserStorage", new { area = "JavaScript" })">
+            Web APIs & Browser Storage
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("WebAPIBrowserStorage", "LocalStorage") ? "active" : "")"
+           href="@Url.Action("LocalStorage", "WebAPIBrowserStorage", new { area = "JavaScript" })">
+            Local Storage
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("WebAPIBrowserStorage", "SessionStorage") ? "active" : "")"
+           href="@Url.Action("SessionStorage", "WebAPIBrowserStorage", new { area = "JavaScript" })">
+            Session Storage
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("WebAPIBrowserStorage", "JSON") ? "active" : "")"
+           href="@Url.Action("JSON", "WebAPIBrowserStorage", new { area = "JavaScript" })">
+            JSON
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("WebAPIBrowserStorage", "DateAndTime") ? "active" : "")"
+           href="@Url.Action("DateAndTime", "WebAPIBrowserStorage", new { area = "JavaScript" })">
+            Date & Time
+        </a>
+
+
+        <!-- =====================================================
+             MODULE 12
+             ===================================================== -->
+
+        <div class="list-group-item javascript-module-title">
+            12. Advanced JavaScript
+        </div>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AdvancedJavaScript", "Index") ? "active" : "")"
+           href="@Url.Action("Index", "AdvancedJavaScript", new { area = "JavaScript" })">
+            Advanced JavaScript
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AdvancedJavaScript", "Scope") ? "active" : "")"
+           href="@Url.Action("Scope", "AdvancedJavaScript", new { area = "JavaScript" })">
+            Scope
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AdvancedJavaScript", "Closures") ? "active" : "")"
+           href="@Url.Action("Closures", "AdvancedJavaScript", new { area = "JavaScript" })">
+            Closures
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AdvancedJavaScript", "ErrorHandling") ? "active" : "")"
+           href="@Url.Action("ErrorHandling", "AdvancedJavaScript", new { area = "JavaScript" })">
+            Error Handling
+        </a>
+
+        <a class="list-group-item list-group-item-action javascript-topic-link @(IsActive("AdvancedJavaScript", "BestPractices") ? "active" : "")"
+           href="@Url.Action("BestPractices", "AdvancedJavaScript", new { area = "JavaScript" })">
+            JavaScript Best Practices
+        </a>
+
+    </div>
+
+</div>

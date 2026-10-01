@@ -1,0 +1,617 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Image Attributes";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Image Attributes</h1>
+
+            <p class="lead">
+                HTML image attributes provide additional information and control over
+                how images are loaded, displayed, described, and used on a webpage.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. Introduction</h2>
+
+            <p>
+                The <code>&lt;img&gt;</code> element supports several attributes
+                that control image behavior and provide useful information.
+            </p>
+
+            <pre><code>&lt;img src="image.jpg"
+     alt="Sample Image"
+     width="400"
+     height="250"&gt;</code></pre>
+
+            <p>
+                Common image attributes include:
+                <code>src</code>, <code>alt</code>, <code>width</code>,
+                <code>height</code>, <code>title</code>, <code>loading</code>,
+                <code>srcset</code>, <code>sizes</code>, and <code>usemap</code>.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">2. src Attribute</h2>
+
+            <p>
+                The <code>src</code> attribute specifies the location of the image.
+                It can contain a relative path or an absolute URL.
+            </p>
+
+            <pre><code>&lt;img src="images/logo.png" alt="Website Logo"&gt;</code></pre>
+
+            <h3 class="h5 fw-bold mt-4">Relative Path</h3>
+
+            <pre><code>&lt;img src="images/logo.png" alt="Logo"&gt;</code></pre>
+
+            <h3 class="h5 fw-bold mt-4">Absolute URL</h3>
+
+            <pre><code>&lt;img src="https://example.com/images/logo.png"
+     alt="Example Logo"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">3. alt Attribute</h2>
+
+            <p>
+                The <code>alt</code> attribute specifies alternative text for an image.
+                It is useful when an image cannot be displayed and for accessibility.
+            </p>
+
+            <pre><code>&lt;img src="student.jpg"
+     alt="Student learning HTML"&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Use meaningful alternative text for informative images.
+                For decorative images, an empty <code>alt</code> attribute can be used.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">4. width Attribute</h2>
+
+            <p>
+                The <code>width</code> attribute specifies the width of an image.
+            </p>
+
+            <pre><code>&lt;img src="photo.jpg"
+     alt="Photo"
+     width="400"&gt;</code></pre>
+
+     <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+            <div class="example-box">
+                <strong>Example:</strong>
+                <div class="mt-3"
+                     style="width:400px; max-width:100%; height:150px; background:#e9ecef; display:flex; align-items:center; justify-content:center; border-radius:8px;">
+                    Image Width: 400px
+                </div>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">5. height Attribute</h2>
+
+            <p>
+                The <code>height</code> attribute specifies the height of an image.
+            </p>
+
+            <pre><code>&lt;img src="photo.jpg"
+     alt="Photo"
+     height="250"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">6. width and height Together</h2>
+
+            <p>
+                Both dimensions can be specified together.
+            </p>
+
+            <pre><code>&lt;img src="nature.jpg"
+     alt="Nature"
+     width="500"
+     height="300"&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                When using fixed dimensions, make sure the proportions of the image
+                are appropriate so that the image does not appear distorted.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">7. title Attribute</h2>
+
+            <p>
+                The <code>title</code> attribute provides additional information
+                about the image. Browsers may display it as a tooltip.
+            </p>
+
+            <pre><code>&lt;img src="logo.png"
+     alt="Company Logo"
+     title="Company Logo"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">8. loading Attribute</h2>
+
+            <p>
+                The <code>loading</code> attribute provides a hint to the browser
+                about when an image should be loaded.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>eager</code></td>
+                        <td>The image can be loaded immediately.</td>
+                    </tr>
+                    <tr>
+                        <td><code>lazy</code></td>
+                        <td>The image can be loaded when it is near the visible area.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="h5 fw-bold mt-4">Example</h3>
+
+            <pre><code>&lt;img src="images/banner.jpg"
+     alt="Website Banner"
+     loading="eager"&gt;
+
+&lt;img src="images/product.jpg"
+     alt="Product Image"
+     loading="lazy"&gt;</code></pre>
+
+     <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">9. style Attribute</h2>
+
+            <p>
+                The <code>style</code> attribute can be used to apply inline CSS
+                directly to an image.
+            </p>
+
+            <pre><code>&lt;img src="photo.jpg"
+     alt="Photo"
+     style="width:300px; border-radius:10px;"&gt;</code></pre>
+
+            <h3 class="h5 fw-bold mt-4">Common Styling Examples</h3>
+
+            <pre><code>&lt;img src="photo.jpg"
+     alt="Photo"
+     style="width:300px; height:auto;"&gt;
+
+&lt;img src="photo.jpg"
+     alt="Photo"
+     style="border-radius:50%;"&gt;
+
+&lt;img src="photo.jpg"
+     alt="Photo"
+     style="border:2px solid black;"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">10. class Attribute</h2>
+
+            <p>
+                The <code>class</code> attribute allows an image to be styled
+                using CSS classes.
+            </p>
+
+            <pre><code>&lt;style&gt;
+    .profile-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+&lt;/style&gt;
+
+&lt;img src="profile.jpg"
+     alt="Profile Photo"
+     class="profile-image"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">11. id Attribute</h2>
+
+            <p>
+                The <code>id</code> attribute gives an image a unique identifier.
+                It can be used by CSS or JavaScript.
+            </p>
+
+            <pre><code>&lt;img id="mainLogo"
+     src="logo.png"
+     alt="Main Logo"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">12. srcset Attribute</h2>
+
+            <p>
+                The <code>srcset</code> attribute allows you to provide multiple
+                image sources for different display sizes or resolutions.
+            </p>
+
+            <pre><code>&lt;img src="small.jpg"
+     srcset="small.jpg 480w,
+             medium.jpg 800w,
+             large.jpg 1200w"
+     alt="Responsive Landscape"&gt;</code></pre>
+
+            <p>
+                The browser can select an appropriate image from the available sources.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">13. sizes Attribute</h2>
+
+            <p>
+                The <code>sizes</code> attribute can be used together with
+                <code>srcset</code> to describe the expected display size of the image.
+            </p>
+
+            <pre><code>&lt;img src="large.jpg"
+     srcset="small.jpg 480w,
+             medium.jpg 800w,
+             large.jpg 1200w"
+     sizes="(max-width: 600px) 480px,
+            (max-width: 900px) 800px,
+            1200px"
+     alt="Responsive Landscape"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">14. Responsive Image Example</h2>
+
+            <pre><code>&lt;img src="large.jpg"
+     srcset="small.jpg 480w,
+             medium.jpg 800w,
+             large.jpg 1200w"
+     sizes="100vw"
+     alt="Responsive Image"
+     style="max-width:100%; height:auto;"&gt;</code></pre>
+
+            <div class="example-box">
+                <strong>Benefits:</strong>
+                <ul class="mt-2 mb-0">
+                    <li>Different image resources can be provided.</li>
+                    <li>Browsers can select a suitable source.</li>
+                    <li>Useful for responsive websites.</li>
+                    <li>Can help reduce unnecessary image downloads.</li>
+                </ul>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">15. decoding Attribute</h2>
+
+            <p>
+                The <code>decoding</code> attribute provides a hint about how
+                the browser should decode the image.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Value</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>auto</code></td>
+                        <td>The browser decides the decoding strategy.</td>
+                    </tr>
+                    <tr>
+                        <td><code>sync</code></td>
+                        <td>The image can be decoded synchronously.</td>
+                    </tr>
+                    <tr>
+                        <td><code>async</code></td>
+                        <td>The image can be decoded asynchronously.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pre><code>&lt;img src="photo.jpg"
+     alt="Photo"
+     decoding="async"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">16. draggable Attribute</h2>
+
+            <p>
+                The <code>draggable</code> attribute can indicate whether an element
+                can be dragged by the user.
+            </p>
+
+            <pre><code>&lt;img src="logo.png"
+     alt="Logo"
+     draggable="false"&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">17. usemap Attribute</h2>
+
+            <p>
+                The <code>usemap</code> attribute associates an image with an
+                image map.
+            </p>
+
+            <pre><code>&lt;img src="office.png"
+     alt="Office Layout"
+     usemap="#officeMap"&gt;</code></pre>
+
+            <p>
+                An image map allows different areas of an image to act as links.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">18. Image Map Example</h2>
+
+            <pre><code>&lt;img src="office.png"
+     alt="Office Layout"
+     usemap="#officeMap"&gt;
+
+&lt;map name="officeMap"&gt;
+
+    &lt;area shape="rect"
+          coords="0,0,200,150"
+          href="reception.html"
+          alt="Reception"&gt;
+
+    &lt;area shape="rect"
+          coords="200,0,400,150"
+          href="training.html"
+          alt="Training Room"&gt;
+
+&lt;/map&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">19. Common Image Attributes</h2>
+
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Specifies the image location.</td>
+                        <td><code>src="photo.jpg"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>alt</code></td>
+                        <td>Provides alternative text.</td>
+                        <td><code>alt="Nature Photo"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>width</code></td>
+                        <td>Sets image width.</td>
+                        <td><code>width="400"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>height</code></td>
+                        <td>Sets image height.</td>
+                        <td><code>height="300"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>title</code></td>
+                        <td>Provides additional information.</td>
+                        <td><code>title="Logo"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>loading</code></td>
+                        <td>Provides a loading hint.</td>
+                        <td><code>loading="lazy"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>srcset</code></td>
+                        <td>Provides multiple image sources.</td>
+                        <td><code>srcset="small.jpg 480w"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>sizes</code></td>
+                        <td>Describes expected image display size.</td>
+                        <td><code>sizes="100vw"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>class</code></td>
+                        <td>Associates the image with CSS classes.</td>
+                        <td><code>class="profile-image"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>id</code></td>
+                        <td>Provides a unique identifier.</td>
+                        <td><code>id="mainLogo"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">20. Accessibility Example</h2>
+
+            <p>
+                A descriptive <code>alt</code> value helps communicate the purpose
+                of an informative image.
+            </p>
+
+            <pre><code>&lt;img src="student.jpg"
+     alt="Student writing HTML code on a laptop"&gt;</code></pre>
+
+            <p>
+                For a decorative image that does not add meaningful information,
+                an empty <code>alt</code> attribute can be used.
+            </p>
+
+            <pre><code>&lt;img src="decorative-line.png" alt=""&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">21. Common Mistakes</h2>
+
+            <ul>
+                <li>Using an incorrect <code>src</code> path.</li>
+                <li>Leaving out the <code>alt</code> attribute.</li>
+                <li>Using incorrect width and height values.</li>
+                <li>Distorting the image by changing only one dimension incorrectly.</li>
+                <li>Using very large images without optimization.</li>
+                <li>Using unclear alternative text.</li>
+                <li>Using unnecessarily complex image attributes.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">22. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML page containing:</strong></p>
+
+                <ol>
+                    <li>An image using <code>src</code> and <code>alt</code>.</li>
+                    <li>An image with <code>width</code> and <code>height</code>.</li>
+                    <li>An image with a <code>title</code> attribute.</li>
+                    <li>An image using <code>loading="lazy"</code>.</li>
+                    <li>A responsive image using <code>srcset</code> and <code>sizes</code>.</li>
+                    <li>An image styled using a CSS class.</li>
+                    <li>An image with an <code>id</code>.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">23. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;title&gt;Image Attributes Example&lt;/title&gt;
+
+    &lt;style&gt;
+        .course-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;HTML Course&lt;/h1&gt;
+
+    &lt;img
+        id="courseImage"
+        class="course-image"
+        src="images/html-course.jpg"
+        srcset="images/html-small.jpg 480w,
+                images/html-medium.jpg 800w,
+                images/html-large.jpg 1200w"
+        sizes="100vw"
+        alt="HTML programming course"
+        title="HTML Course"
+        loading="lazy"&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML image attributes provide additional control over images.
+                    The most important attributes include <code>src</code>, <code>alt</code>,
+                    <code>width</code>, <code>height</code>, <code>title</code>,
+                    <code>loading</code>, <code>srcset</code>, and <code>sizes</code>.
+                    Using these attributes correctly helps create responsive, accessible,
+                    and well-structured webpages.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Images", "LinksAndMedia", new { area = "HTML" })">
+                    ← Previous: Images
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Audio", "LinksAndMedia", new { area = "HTML" })">
+                    Next: Audio →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,676 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Multiple Backgrounds";
+}
+
+<div class="container-fluid py-4" id="css-multiple-backgrounds-page">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/CSS/Views/Shared/CSSTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <!-- Page Title -->
+            <div class="content-section mb-4">
+
+                <h1 class="fw-bold mb-3">
+                    Multiple Backgrounds
+                </h1>
+
+                <p class="lead">
+                    CSS allows you to apply more than one background image
+                    to the same HTML element.
+                </p>
+
+                <p>
+                    Multiple background images are separated using commas
+                    in the <strong>background-image</strong> property.
+                </p>
+
+            </div>
+
+
+            <!-- Diagram -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-4">
+                        Multiple Backgrounds Flow
+                    </h4>
+
+                    <div class="background-diagram">
+
+                        <div class="diagram-box">
+                            Image 1
+                        </div>
+
+                        <div class="diagram-plus">
+                            +
+                        </div>
+
+                        <div class="diagram-box">
+                            Image 2
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-box">
+                            Single HTML Element
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Example 1 -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        Example 1: Two Background Images
+                    </h4>
+
+                    <p>
+                        Two background images can be applied to the same
+                        element by separating the URLs with a comma.
+                    </p>
+
+                    <h6 class="fw-bold mt-3">
+                        CSS Code
+                    </h6>
+
+                    <pre class="code-box"><code>div {
+    background-image:
+        url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=1200&amp;q=80");
+
+    background-size:
+        55% 100%,
+        55% 100%;
+
+    background-position:
+        left center,
+        right center;
+
+    background-repeat:
+        no-repeat,
+        no-repeat;
+
+    min-height: 300px;
+}</code></pre>
+
+                    <h6 class="fw-bold mt-4">
+                        Output
+                    </h6>
+
+                    <div class="background-output two-backgrounds-demo">
+
+                        <div class="output-content">
+                            <h3>Multiple Background Images</h3>
+                            <p>
+                                Two images are applied to one element.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Example 2 -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        Example 2: Background Image with CIIT Logo
+                    </h4>
+
+                    <p>
+                        Multiple backgrounds can also combine a real image
+                        with the CIIT Training Institute logo.
+                    </p>
+
+                    <h6 class="fw-bold mt-3">
+                        CSS Code
+                    </h6>
+
+                    <pre class="code-box"><code>div {
+    background-image:
+        url("https://ciitinstitute.com/assets/mainlogo.png"),
+        url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1200&amp;q=80");
+
+    background-size:
+        220px auto,
+        cover;
+
+    background-position:
+        center,
+        center;
+
+    background-repeat:
+        no-repeat,
+        no-repeat;
+
+    min-height: 300px;
+}</code></pre>
+
+                    <h6 class="fw-bold mt-4">
+                        Output
+                    </h6>
+
+                    <div class="background-output ciit-multiple-demo">
+
+                        <div class="output-content">
+                            <h3>CIIT Training Institute</h3>
+                            <p>
+                                Logo and background image used together.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Example 3 -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        Example 3: Gradient with Background Image
+                    </h4>
+
+                    <p>
+                        A gradient can also be combined with a background image.
+                        The first background is displayed above the second one.
+                    </p>
+
+                    <h6 class="fw-bold mt-3">
+                        CSS Code
+                    </h6>
+
+                    <pre class="code-box"><code>div {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+        ),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=1200&amp;q=80");
+
+    background-size:
+        cover,
+        cover;
+
+    background-position:
+        center,
+        center;
+
+    background-repeat:
+        no-repeat,
+        no-repeat;
+
+    min-height: 300px;
+}</code></pre>
+
+                    <h6 class="fw-bold mt-4">
+                        Output
+                    </h6>
+
+                    <div class="background-output gradient-background-demo">
+
+                        <div class="output-content">
+                            <h3>Learning Technology</h3>
+                            <p>
+                                A gradient is layered over the background image.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Layer Order -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-3">
+                        Background Layer Order
+                    </h4>
+
+                    <div class="layer-flow">
+
+                        <div class="layer-box layer-top">
+                            First Background
+                            <br />
+                            <small>Displayed on top</small>
+                        </div>
+
+                        <div class="layer-arrow">
+                            ↓
+                        </div>
+
+                        <div class="layer-box layer-bottom">
+                            Second Background
+                            <br />
+                            <small>Displayed behind</small>
+                        </div>
+
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        When multiple backgrounds are used, the first
+                        background image is placed on top of the following
+                        background images.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Syntax -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-3">
+                        Basic Syntax
+                    </h4>
+
+                    <pre class="code-box"><code>element {
+    background-image:
+        url("image1.jpg"),
+        url("image2.jpg");
+}</code></pre>
+
+                    <p class="mb-0">
+                        Separate multiple background images using commas.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Comparison Table -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-3">
+                        Common Properties with Multiple Backgrounds
+                    </h4>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered align-middle">
+
+                            <thead class="table-dark">
+
+                                <tr>
+                                    <th>Property</th>
+                                    <th>Purpose</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <code>background-image</code>
+                                    </td>
+                                    <td>
+                                        Defines multiple background images.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <code>background-size</code>
+                                    </td>
+                                    <td>
+                                        Defines the size of each background.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <code>background-position</code>
+                                    </td>
+                                    <td>
+                                        Defines the position of each background.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <code>background-repeat</code>
+                                    </td>
+                                    <td>
+                                        Defines whether each background repeats.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Simple Explanation -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-3">
+                        Simple Explanation
+                    </h4>
+
+                    <div class="explanation-box">
+
+                        <p>
+                            <strong>One image</strong>
+                            → One background image.
+                        </p>
+
+                        <p>
+                            <strong>Multiple images</strong>
+                            → Separate the images using commas.
+                        </p>
+
+                        <p>
+                            <strong>First image</strong>
+                            → Appears on top.
+                        </p>
+
+                        <p class="mb-0">
+                            <strong>Following images</strong>
+                            → Appear behind the previous layers.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Summary -->
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold mb-3">
+                        Summary
+                    </h4>
+
+                    <ul class="mb-0">
+
+                        <li>
+                            CSS supports multiple background images.
+                        </li>
+
+                        <li>
+                            Separate background images using commas.
+                        </li>
+
+                        <li>
+                            The first background is displayed on top.
+                        </li>
+
+                        <li>
+                            Background properties can be defined for each layer.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- Navigation -->
+            <div class="row g-3 mt-4 mb-5">
+
+                <div class="col-md-6">
+
+                    <a class="btn btn-outline-secondary w-100"
+                       href="@Url.Action("BackgroundAttachment", "ColorsBackgrounds", new { area = "CSS" })">
+
+                        ← Previous: Background Attachment
+
+                    </a>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <a class="btn btn-primary w-100"
+                       href="@Url.Action("Index", "TextFonts", new { area = "CSS" })">
+
+                        Next: Text &amp; Fonts →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+
+    #css-multiple-backgrounds-page .content-section h1,
+    #css-multiple-backgrounds-page .content-section h2,
+    #css-multiple-backgrounds-page .content-section h3,
+    #css-multiple-backgrounds-page .content-section h4 {
+        color: #212529;
+    }
+
+    #css-multiple-backgrounds-page .code-box {
+        background: #212529;
+        color: #f8f9fa;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+        #css-multiple-backgrounds-page .code-box code {
+            color: #f8f9fa;
+        }
+
+    #css-multiple-backgrounds-page .background-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    #css-multiple-backgrounds-page .diagram-box {
+        padding: 16px 22px;
+        background: #f1f3f5;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    #css-multiple-backgrounds-page .diagram-plus {
+        font-size: 28px;
+        font-weight: 700;
+        color: #2563eb;
+    }
+
+    #css-multiple-backgrounds-page .diagram-arrow {
+        font-size: 26px;
+        font-weight: 700;
+        color: #2563eb;
+    }
+
+    #css-multiple-backgrounds-page .background-output {
+        min-height: 300px;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #css-multiple-backgrounds-page .two-backgrounds-demo {
+        background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"), url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80");
+        background-size: 55% 100%, 55% 100%;
+        background-position: left center, right center;
+        background-repeat: no-repeat, no-repeat;
+        min-height: 300px;
+    }
+
+    #css-multiple-backgrounds-page .ciit-multiple-demo {
+        background-image: url("https://ciitinstitute.com/assets/mainlogo.png"), url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80");
+        background-size: 220px auto, cover;
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+        min-height: 300px;
+    }
+
+    #css-multiple-backgrounds-page .gradient-background-demo {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80");
+        background-size: cover, cover;
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+        min-height: 300px;
+    }
+
+    #css-multiple-backgrounds-page .output-content {
+        background: rgba(0, 0, 0, 0.68);
+        color: #ffffff;
+        padding: 20px 25px;
+        border-radius: 8px;
+        text-align: center;
+        max-width: 430px;
+    }
+
+        #css-multiple-backgrounds-page .output-content h3 {
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        #css-multiple-backgrounds-page .output-content p {
+            margin-bottom: 0;
+        }
+
+    #css-multiple-backgrounds-page .layer-flow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #css-multiple-backgrounds-page .layer-box {
+        width: 280px;
+        padding: 16px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #css-multiple-backgrounds-page .layer-top {
+        background: #dbeafe;
+        border: 2px solid #2563eb;
+    }
+
+    #css-multiple-backgrounds-page .layer-bottom {
+        background: #f3f4f6;
+        border: 2px solid #6b7280;
+    }
+
+    #css-multiple-backgrounds-page .layer-box small {
+        font-weight: 400;
+    }
+
+    #css-multiple-backgrounds-page .layer-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2563eb;
+    }
+
+    #css-multiple-backgrounds-page .explanation-box {
+        background: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        padding: 18px 20px;
+        border-radius: 6px;
+    }
+
+        #css-multiple-backgrounds-page .explanation-box p {
+            margin-bottom: 10px;
+        }
+
+    #css-multiple-backgrounds-page code {
+        color: #b02a37;
+    }
+
+    #css-multiple-backgrounds-page .code-box code {
+        color: #f8f9fa;
+    }
+
+    @@media (max-width: 767px) {
+
+        #css-multiple-backgrounds-page .background-diagram {
+            flex-direction: column;
+        }
+
+        #css-multiple-backgrounds-page .diagram-arrow {
+            transform: rotate(90deg);
+        }
+
+        #css-multiple-backgrounds-page .code-box {
+            font-size: 13px;
+        }
+
+        #css-multiple-backgrounds-page .background-output {
+            min-height: 230px;
+        }
+
+        #css-multiple-backgrounds-page .layer-box {
+            width: 100%;
+        }
+    }
+
+</style>

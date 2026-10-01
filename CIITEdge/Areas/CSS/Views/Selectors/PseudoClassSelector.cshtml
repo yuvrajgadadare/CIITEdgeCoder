@@ -1,0 +1,492 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "Pseudo-Class Selector";
+}
+
+<style>
+
+    .content-section > h1,
+    .content-section > h2,
+    .content-section > h3 {
+        color: #212529;
+        font-weight: 700;
+    }
+
+    .code-box {
+        background: #0f172a;
+        color: #f8fafc;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .diagram-box {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        background: #f8f9fa;
+        text-align: center;
+    }
+
+    .diagram-item {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 15px;
+        font-weight: 600;
+    }
+
+    .diagram-arrow {
+        font-size: 28px;
+        font-weight: 700;
+        color: #6f42c1;
+        margin: 8px 0;
+    }
+
+    .output-box {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .example-card {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .hover-demo:hover {
+        color: red !important;
+    }
+
+    .focus-demo:focus {
+        border-color: blue !important;
+        outline: none;
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- ================================================= -->
+        <!-- LEFT SIDEBAR -->
+        <!-- ================================================= -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <section class="col-lg-9 content-section">
+
+            <!-- ================================================= -->
+            <!-- PAGE TITLE -->
+            <!-- ================================================= -->
+
+            <h1 class="mb-3">
+                Pseudo-Class Selector
+            </h1>
+
+            <p class="lead">
+                A pseudo-class selector is used to style an HTML
+                element based on its state or position.
+            </p>
+
+
+            <!-- ================================================= -->
+            <!-- WHAT IS PSEUDO-CLASS -->
+            <!-- ================================================= -->
+
+            <h2>
+                What is a Pseudo-Class Selector?
+            </h2>
+
+            <p>
+                A pseudo-class selector defines a special state of
+                an HTML element.
+            </p>
+
+            <p>
+                Pseudo-classes are written using a colon
+                <code>:</code> followed by the pseudo-class name.
+            </p>
+
+
+            <!-- ================================================= -->
+            <!-- DIAGRAM -->
+            <!-- ================================================= -->
+
+            <h2>
+                Pseudo-Class Selector Flow
+            </h2>
+
+            <div class="diagram-box">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="diagram-item">
+                            HTML Element
+                            <br />
+                            <code>&lt;a&gt;</code>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="diagram-item">
+                            Pseudo-Class
+                            <br />
+                            <code>:hover</code>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="diagram-arrow">
+                    ↓
+                </div>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-md-5">
+
+                        <div class="diagram-item">
+                            State-Based CSS Style
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- BASIC SYNTAX -->
+            <!-- ================================================= -->
+
+            <h2>
+                Basic Syntax
+            </h2>
+
+            <div class="code-box mb-3">
+
+                <pre style="margin:0;">selector:pseudo-class {
+    property: value;
+}</pre>
+
+            </div>
+
+            <p>
+                The colon <code>:</code> is used before the
+                pseudo-class name.
+            </p>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 1 -->
+            <!-- ================================================= -->
+
+            <div class="example-card">
+
+                <h2>
+                    Example 1: Hover
+                </h2>
+
+                <p>
+                    The <code>:hover</code> pseudo-class applies
+                    styles when the mouse pointer moves over an element.
+                </p>
+
+                <div class="code-box mb-3">
+
+                    <pre style="margin:0;">a:hover {
+    color: red;
+}</pre>
+
+                </div>
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <a href="#"
+                       class="hover-demo"
+                       style="color: blue;">
+                        Move the mouse over this link
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 2 -->
+            <!-- ================================================= -->
+
+            <div class="example-card">
+
+                <h2>
+                    Example 2: First Child
+                </h2>
+
+                <p>
+                    The <code>:first-child</code> pseudo-class selects
+                    an element that is the first child of its parent.
+                </p>
+
+                <div class="code-box mb-3">
+
+                    <pre style="margin:0;">p:first-child {
+    color: green;
+}</pre>
+
+                </div>
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <div>
+
+                        <p style="color: green; margin-bottom: 8px;">
+                            First paragraph
+                        </p>
+
+                        <p style="margin-bottom: 0;">
+                            Second paragraph
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- EXAMPLE 3 -->
+            <!-- ================================================= -->
+
+            <div class="example-card">
+
+                <h2>
+                    Example 3: Focus
+                </h2>
+
+                <p>
+                    The <code>:focus</code> pseudo-class applies
+                    styles when an input element receives focus.
+                </p>
+
+                <div class="code-box mb-3">
+
+                    <pre style="margin:0;">input:focus {
+    border-color: blue;
+}</pre>
+
+                </div>
+
+                <h3 class="h5">
+                    Output
+                </h3>
+
+                <div class="output-box">
+
+                    <input type="text"
+                           class="focus-demo"
+                           placeholder="Click inside the input"
+                           style="
+                    padding: 8px;
+                    border: 1px solid #6c757d;
+                    border-radius: 4px;
+                    " />
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- COMMON PSEUDO-CLASSES -->
+            <!-- ================================================= -->
+
+            <h2>
+                Common Pseudo-Classes
+            </h2>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered">
+
+                    <thead class="table-light">
+
+                        <tr>
+                            <th>Pseudo-Class</th>
+                            <th>Meaning</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>:hover</code></td>
+                            <td>Selects an element when the mouse is over it.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>:focus</code></td>
+                            <td>Selects an element when it receives focus.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>:first-child</code></td>
+                            <td>Selects the first child element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>:last-child</code></td>
+                            <td>Selects the last child element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>:active</code></td>
+                            <td>Selects an element while it is being activated.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- IMPORTANT POINTS -->
+            <!-- ================================================= -->
+
+            <h2>
+                Important Points
+            </h2>
+
+            <ul>
+
+                <li class="mb-2">
+                    Pseudo-classes use the colon
+                    <code>:</code> symbol.
+                </li>
+
+                <li class="mb-2">
+                    They are commonly used to style different
+                    element states.
+                </li>
+
+                <li class="mb-2">
+                    Common examples include
+                    <code>:hover</code>,
+                    <code>:focus</code>, and
+                    <code>:first-child</code>.
+                </li>
+
+                <li>
+                    Pseudo-classes can make web pages more
+                    interactive.
+                </li>
+
+            </ul>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY -->
+            <!-- ================================================= -->
+
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    Pseudo-class selectors are used to style elements
+                    based on their state or position. They use the
+                    colon symbol and are commonly used for interactions
+                    such as hover, focus, and active states.
+                </p>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- NAVIGATION -->
+            <!-- ================================================= -->
+
+            <div class="topic-navigation mt-4">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("ChildSelector", "Selectors", new { area = "CSS" })">
+
+                            ← Previous: Child Selector
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("PseudoElementSelector", "Selectors", new { area = "CSS" })">
+
+                            Next: Pseudo-Element Selector →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>

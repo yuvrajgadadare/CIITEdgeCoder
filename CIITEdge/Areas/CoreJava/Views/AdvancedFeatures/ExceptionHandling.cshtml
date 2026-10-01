@@ -1,0 +1,750 @@
+﻿@{
+    ViewData["Title"] = "Exception Handling in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Exception Handling in Java</h2>
+            <p class="lead text-muted mb-0">
+                Learn how Java handles runtime errors using try, catch, finally,
+                throw, throws, custom exceptions, and best practices.
+            </p>
+        </div>
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">What is an Exception?</h3>
+
+            <p>
+                An exception is an event that interrupts the normal flow of a
+                Java program during execution.
+            </p>
+
+            <p>
+                Exception handling allows a program to detect exceptional
+                situations and respond to them without unnecessarily terminating
+                the application.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>
+                                           try
+                                            ↓
+                                        Risky Code
+                                            ↓
+                                        Exception?
+                                            ↓
+                                          catch
+                                            ↓
+                                     Handle Exception
+                                            ↓
+                                         finally</code></pre>
+            </div>
+        </section>
+
+        <!-- TRY CATCH -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">try-catch</h3>
+
+            <p>
+                The <code>try</code> block contains code that may throw an
+                exception. The <code>catch</code> block handles the exception.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>try {
+
+    int result = 10 / 0;
+
+}
+catch (ArithmeticException exception) {
+
+    System.out.println(
+        "Cannot divide by zero"
+    );
+
+}</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Cannot divide by zero</code></pre>
+</div>
+        </section>
+
+        <!-- FINALLY -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">finally</h3>
+
+            <p>
+                The <code>finally</code> block is commonly used for cleanup
+                operations. It normally executes after the try/catch processing,
+                including when an exception occurs.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>try {
+
+    System.out.println(
+        "Opening resource"
+    );
+
+}
+catch (Exception exception) {
+
+    System.out.println(
+        "Exception occurred"
+    );
+
+}
+finally {
+
+    System.out.println(
+        "Cleanup completed"
+    );
+
+}</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Opening resource
+Cleanup completed</code></pre>
+</div>
+        </section>
+
+        <!-- MULTIPLE CATCH -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Multiple catch Blocks</h3>
+
+            <p>
+                A single try block can be followed by multiple catch blocks
+                when different exception types require different handling.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>try {
+
+    int[] numbers = {10, 20, 30};
+
+    System.out.println(
+        numbers[5]
+    );
+
+}
+catch (ArrayIndexOutOfBoundsException exception) {
+
+    System.out.println(
+        "Invalid array index"
+    );
+
+}
+catch (Exception exception) {
+
+    System.out.println(
+        "Unexpected error"
+    );
+
+}</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Invalid array index</code></pre>
+</div>
+
+            <div class="alert alert-info mt-3">
+                Put more specific exception types before broader types such as
+                <code>Exception</code>.
+            </div>
+        </section>
+
+        <!-- EXCEPTION HIERARCHY -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Exception Hierarchy</h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>Throwable
+├── Error
+│   ├── OutOfMemoryError
+│   └── StackOverflowError
+│
+└── Exception
+    ├── RuntimeException
+    │   ├── NullPointerException
+    │   ├── ArithmeticException
+    │   └── IllegalArgumentException
+    │
+    └── Other Checked Exceptions
+        ├── IOException
+        └── SQLException</code></pre>
+            </div>
+
+            <p class="mt-3">
+                <code>Error</code> generally represents serious conditions
+                that applications are not normally expected to recover from,
+                while <code>Exception</code> represents conditions that
+                application code may handle.
+            </p>
+        </section>
+
+        <!-- CHECKED -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Checked Exceptions</h3>
+
+            <p>
+                Checked exceptions are exceptions that the compiler requires
+                the program to handle or declare.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>import java.io.IOException;
+
+void readFile()
+    throws IOException {
+
+    // File operations
+
+}</code></pre>
+            </div>
+
+            <p class="mt-3">
+                Examples include <code>IOException</code> and many other
+                exceptions derived from <code>Exception</code> but not from
+                <code>RuntimeException</code>.
+            </p>
+        </section>
+
+        <!-- UNCHECKED -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Unchecked Exceptions</h3>
+
+            <p>
+                Unchecked exceptions are runtime exceptions. The compiler does
+                not require them to be explicitly caught or declared.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>int number = 10;
+
+int result = number / 0;</code></pre>
+            </div>
+
+            <p class="mt-3">
+                This produces an <code>ArithmeticException</code> at runtime.
+            </p>
+        </section>
+
+        <!-- THROW -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">throw Keyword</h3>
+
+            <p>
+                The <code>throw</code> keyword is used to explicitly throw an
+                exception.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>int age = 15;
+
+if (age &lt; 18) {
+
+    throw new IllegalArgumentException(
+        "Age must be at least 18"
+    );
+
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- THROWS -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">throws Keyword</h3>
+
+            <p>
+                The <code>throws</code> keyword declares that a method may
+                propagate one or more exceptions to its caller.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>import java.io.IOException;
+
+void loadData()
+    throws IOException {
+
+    // File operation
+
+}</code></pre>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <strong>Remember:</strong>
+                <code>throw</code> actually throws an exception,
+                while <code>throws</code> declares possible exceptions.
+            </div>
+        </section>
+
+        <!-- CUSTOM EXCEPTION -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Custom Exception</h3>
+
+            <p>
+                Applications can define their own exception classes to
+                represent domain-specific error conditions.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>class InvalidAgeException
+    extends Exception {
+
+    public InvalidAgeException(
+        String message
+    ) {
+
+        super(message);
+
+    }
+
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- CUSTOM EXCEPTION USAGE -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Using a Custom Exception</h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>static void validateAge(int age)
+    throws InvalidAgeException {
+
+    if (age &lt; 18) {
+
+        throw new InvalidAgeException(
+            "Age must be 18 or above"
+        );
+
+    }
+
+    System.out.println(
+        "Eligible"
+    );
+
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- MULTI CATCH -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Multi-Catch</h3>
+
+            <p>
+                Java allows multiple exception types to be handled by a single
+                catch block using the <code>|</code> operator.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>try {
+
+    // risky operation
+
+}
+catch (
+    IOException | IllegalArgumentException exception
+) {
+
+    System.out.println(
+        "Operation failed"
+    );
+
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- TRY WITH RESOURCES -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Try-with-Resources</h3>
+
+            <p>
+                Try-with-resources automatically closes objects that implement
+                <code>AutoCloseable</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+try (
+    BufferedReader reader =
+        new BufferedReader(
+            new FileReader("data.txt")
+        )
+) {
+
+    String line = reader.readLine();
+
+    System.out.println(line);
+
+}
+catch (IOException exception) {
+
+    System.out.println(
+        "Unable to read file"
+    );
+
+}</code></pre>
+            </div>
+
+            <div class="alert alert-success mt-3">
+                This is generally preferred over manually closing resources
+                in a finally block.
+            </div>
+        </section>
+
+        <!-- EXCEPTION CHAINING -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Exception Chaining</h3>
+
+            <p>
+                Exception chaining preserves the original cause when a
+                higher-level exception is created.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>try {
+
+    loadData();
+
+}
+catch (IOException exception) {
+
+    throw new RuntimeException(
+        "Unable to load application data",
+        exception
+    );
+
+}</code></pre>
+            </div>
+
+            <p class="mt-3">
+                The original exception is retained as the cause and can be
+                inspected using methods such as <code>getCause()</code>.
+            </p>
+        </section>
+
+        <!-- GET MESSAGE -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Useful Exception Methods</h3>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Method</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><code>getMessage()</code></td>
+                            <td>Returns the exception message.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>getCause()</code></td>
+                            <td>Returns the underlying cause.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>printStackTrace()</code></td>
+                            <td>Prints diagnostic stack-trace information.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>toString()</code></td>
+                            <td>Returns a string representation of the exception.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- STACK TRACE -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Stack Trace</h3>
+
+            <p>
+                A stack trace shows the sequence of method calls that led to
+                the exception.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+                <pre class="mb-0"><code>try {
+
+    int result = 10 / 0;
+
+}
+catch (ArithmeticException exception) {
+
+    exception.printStackTrace();
+
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- BEST PRACTICES -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Exception Handling Best Practices</h3>
+
+            <ul>
+                <li class="mb-2">
+                    Catch exceptions at the level where meaningful recovery
+                    or handling is possible.
+                </li>
+
+                <li class="mb-2">
+                    Prefer specific exception types instead of catching
+                    <code>Exception</code> everywhere.
+                </li>
+
+                <li class="mb-2">
+                    Do not silently ignore exceptions.
+                </li>
+
+                <li class="mb-2">
+                    Use meaningful exception messages.
+                </li>
+
+                <li class="mb-2">
+                    Preserve the original cause when wrapping exceptions.
+                </li>
+
+                <li class="mb-2">
+                    Use try-with-resources for closeable resources.
+                </li>
+
+                <li>
+                    Avoid using exceptions as normal program-flow control.
+                </li>
+            </ul>
+        </section>
+
+        <!-- COMMON MISTAKES -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Common Mistakes</h3>
+
+            <div class="alert alert-warning">
+                <ul class="mb-0">
+                    <li class="mb-2">
+                        Catching a very broad exception without a good reason.
+                    </li>
+
+                    <li class="mb-2">
+                        Empty catch blocks.
+                    </li>
+
+                    <li class="mb-2">
+                        Losing the original cause when rethrowing an exception.
+                    </li>
+
+                    <li>
+                        Using exceptions to replace ordinary conditional logic.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- INTERVIEW QUESTIONS -->
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Interview Questions</h3>
+
+            <div class="accordion" id="exceptionQuestions">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#exceptionQuestionOne">
+                            What is exception handling?
+                        </button>
+                    </h2>
+
+                    <div id="exceptionQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#exceptionQuestions">
+
+                        <div class="accordion-body">
+                            Exception handling is the mechanism used to detect,
+                            propagate, and handle exceptional conditions during
+                            program execution.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#exceptionQuestionTwo">
+                            What is the difference between throw and throws?
+                        </button>
+                    </h2>
+
+                    <div id="exceptionQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#exceptionQuestions">
+
+                        <div class="accordion-body">
+                            <code>throw</code> is used to explicitly throw an
+                            exception, while <code>throws</code> declares that
+                            a method can propagate specified exceptions.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#exceptionQuestionThree">
+                            What is the purpose of finally?
+                        </button>
+                    </h2>
+
+                    <div id="exceptionQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#exceptionQuestions">
+
+                        <div class="accordion-body">
+                            The <code>finally</code> block is commonly used for
+                            cleanup code that should execute after exception
+                            handling.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#exceptionQuestionFour">
+                            What is a checked exception?
+                        </button>
+                    </h2>
+
+                    <div id="exceptionQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#exceptionQuestions">
+
+                        <div class="accordion-body">
+                            A checked exception is one that the compiler
+                            requires the application to catch or declare.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#exceptionQuestionFive">
+                            What is try-with-resources?
+                        </button>
+                    </h2>
+
+                    <div id="exceptionQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#exceptionQuestions">
+
+                        <div class="accordion-body">
+                            Try-with-resources automatically closes resources
+                            that implement <code>AutoCloseable</code>.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SUMMARY -->
+        <section class="mb-4">
+            <div class="alert alert-primary border-0">
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Java exception handling uses try, catch, finally, throw,
+                    and throws to manage exceptional conditions. Important
+                    concepts include checked and unchecked exceptions, custom
+                    exceptions, multi-catch, try-with-resources, exception
+                    chaining, and good exception-handling practices.
+                </p>
+            </div>
+        </section>
+
+        <!-- NAVIGATION -->
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Serialization",
+                               "FileIO",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+                ← Previous: Topic
+            </a>
+
+            <a href="@Url.Action(
+                               "LambdaExpressions",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+                Next: Topic
+                <span class="ms-2">→</span>
+            </a>
+
+        </div>
+
+    </div>
+</div>

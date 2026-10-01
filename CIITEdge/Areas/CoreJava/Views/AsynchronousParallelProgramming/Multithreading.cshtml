@@ -1,0 +1,1252 @@
+﻿@{
+    ViewData["Title"] = "Multithreading in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-2">Multithreading in Java</h1>
+                <p class="text-muted mb-0">
+                    Learn how Java creates and manages multiple threads for concurrent execution.
+                </p>
+            </div>
+            <div class="display-6">🧵</div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- What is Multithreading -->
+        <h2 class="fw-bold">1. What is Multithreading?</h2>
+
+        <p>
+            <strong>Multithreading</strong> is the process of executing multiple threads concurrently
+            within a single Java application.
+        </p>
+
+        <p>
+            A thread is a lightweight unit of execution. Multiple threads can work on different
+            tasks while sharing the same process memory.
+        </p>
+
+        <div class="alert alert-info">
+            <strong>Key idea:</strong>
+            Multithreading allows an application to perform multiple tasks concurrently.
+        </div>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Simple {
+    public static void main(String[] args) {
+
+        System.out.println("Main thread is running");
+
+        Thread thread = new Thread(() -&gt; {
+            System.out.println("Worker thread is running");
+        });
+
+        thread.start();
+    }
+}</code></pre>
+        </div>
+
+        <p class="mt-3"> Output: </p> <div class="code-block mb-4 shadow-sm">
+            <div class="code-lang-tag"> Output </div> <pre class="mb-0">
+<code>Main thread is running Worker thread is running</code></pre> 
+                </div>
+        <!-- Process vs Thread -->
+        <h2 class="fw-bold mt-5">2. Process vs Thread</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Process</th>
+                        <th>Thread</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Independent program in execution</td>
+                        <td>Lightweight unit inside a process</td>
+                    </tr>
+                    <tr>
+                        <td>Has its own memory space</td>
+                        <td>Shares process memory</td>
+                    </tr>
+                    <tr>
+                        <td>More expensive to create</td>
+                        <td>Less expensive to create</td>
+                    </tr>
+                    <tr>
+                        <td>Communication is relatively expensive</td>
+                        <td>Communication is easier through shared memory</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Creating Thread -->
+        <h2 class="fw-bold mt-5">3. Creating a Thread by Extending Thread</h2>
+
+        <p>
+            One way to create a thread is by extending the
+            <code>Thread</code> class and overriding its <code>run()</code> method.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>class MyThread extends Thread {
+
+    @@Override
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
+
+public class Simple {
+    public static void main(String[] args) {
+
+        MyThread thread = new MyThread();
+
+        thread.start();
+    }
+}</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Thread is running</code></pre>
+</div>
+
+        <div class="alert alert-warning">
+            <strong>Important:</strong>
+            Call <code>start()</code> to create a new thread.
+            Calling <code>run()</code> directly does not create a new thread.
+        </div>
+
+        <!-- Runnable -->
+        <h2 class="fw-bold mt-5">4. Creating a Thread Using Runnable</h2>
+
+        <p>
+            Implementing <code>Runnable</code> is generally more flexible because Java allows
+            a class to extend only one class.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>class Task implements Runnable {
+
+    @@Override
+    public void run() {
+        System.out.println("Task is running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Runnable task = new Task();
+
+        Thread thread = new Thread(task);
+
+        thread.start();
+    }
+}</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Task is running</code></pre>
+</div>
+
+        <!-- Lambda -->
+        <h2 class="fw-bold mt-5">5. Creating Threads Using Lambda Expressions</h2>
+
+        <p>
+            Since <code>Runnable</code> is a functional interface, it can be used with a lambda expression.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Main {
+    public static void main(String[] args) {
+
+        Thread thread = new Thread(() -&gt; {
+            System.out.println("Processing live mock test updates for CIIT students 🤓👨‍🏫...!");
+        });
+
+        thread.start();
+    }
+}</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Processing live mock test updates for CIIT students 🤓👨‍🏫...!</code></pre>
+</div>
+
+        <!-- Start vs Run -->
+        <h2 class="fw-bold mt-5">6. start() vs run()</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>start()</th>
+                        <th>run()</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Creates a new thread</td>
+                        <td>Runs like a normal method</td>
+                    </tr>
+                    <tr>
+                        <td>Execution can happen concurrently</td>
+                        <td>No new thread is created</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred for starting a thread</td>
+                        <td>Used when direct method execution is intended</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Thread thread = new Thread(() -&gt; {
+    System.out.println("Worker");
+});
+
+thread.start();   // Creates a new thread
+
+// thread.run();  // Executes directly on current thread</code></pre>
+        </div>
+
+        <!-- Thread Name -->
+        <h2 class="fw-bold mt-5">7. Thread Name and ID</h2>
+
+        <p>
+            Every thread has a name and an ID.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Program {
+    public static void main(String[] args) {
+
+        Thread thread = new Thread(() -&gt; {
+            System.out.println(
+                "Name: " + Thread.currentThread().getName()
+            );
+
+            System.out.println(
+                "ID: " + Thread.currentThread().getId()
+            );
+        });
+
+        thread.setName("Worker-1");
+
+        thread.start();
+    }
+}</code></pre>
+        </div>
+
+        <!-- Sleep -->
+        <h2 class="fw-bold mt-5">8. Thread.sleep()</h2>
+
+        <p>
+            <code>Thread.sleep()</code> pauses the current thread for a specified amount of time.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Main {
+    public static void main(String[] args) throws InterruptedException {
+
+        System.out.println("Start");
+
+        Thread.sleep(2000);
+
+        System.out.println("After 2 seconds");
+    }
+}</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Start
+After 2 seconds</code></pre>
+</div>
+
+        <!-- Join -->
+        <h2 class="fw-bold mt-5">9. join()</h2>
+
+        <p>
+            The <code>join()</code> method makes one thread wait until another thread completes.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Main {
+    public static void main(String[] args)
+            throws InterruptedException {
+
+        Thread worker = new Thread(() -&gt; {
+
+            for (int i = 1; i &lt;= 5; i++) {
+                System.out.println("Worker: " + i);
+            }
+        });
+
+        worker.start();
+
+        worker.join();
+
+        System.out.println("Worker completed");
+    }
+}</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Worker: 1
+Worker: 2
+Worker: 3
+Worker: 4
+Worker: 5
+Worker completed</code></pre>
+</div>
+
+        <!-- Daemon -->
+        <h2 class="fw-bold mt-5">10. Daemon Threads</h2>
+
+        <p>
+            A daemon thread is a background thread that normally does not keep the JVM alive
+            after all user threads have finished.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Main {
+    public static void main(String[] args) {
+
+        Thread daemon = new Thread(() -&gt; {
+
+            while (true) {
+                System.out.println("Background task");
+            }
+        });
+
+        daemon.setDaemon(true);
+
+        daemon.start();
+
+        System.out.println("Main completed");
+    }
+}</code></pre>
+        </div>
+
+        <!-- Priority -->
+        <h2 class="fw-bold mt-5">11. Thread Priority</h2>
+
+        <p>
+            Java provides thread priorities from <code>1</code> to <code>10</code>.
+            The default priority is <code>5</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Thread thread = new Thread(() -&gt; {
+    System.out.println("Worker");
+});
+
+thread.setPriority(Thread.MAX_PRIORITY);
+
+thread.start();</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Worker</code></pre>
+</div>
+
+        <div class="alert alert-warning">
+            Thread priority is only a scheduling hint. It should not be used to guarantee execution order.
+        </div>
+
+        <!-- Lifecycle -->
+        <h2 class="fw-bold mt-5">12. Thread Lifecycle</h2>
+
+        <p>A Java thread can move through several states:</p>
+
+        <ul>
+            <li><strong>NEW</strong> - Thread object is created but not started.</li>
+            <li><strong>RUNNABLE</strong> - Thread is ready or running.</li>
+            <li><strong>BLOCKED</strong> - Waiting to acquire a monitor lock.</li>
+            <li><strong>WAITING</strong> - Waiting indefinitely for another thread.</li>
+            <li><strong>TIMED_WAITING</strong> - Waiting for a specified period.</li>
+            <li><strong>TERMINATED</strong> - Thread execution has completed.</li>
+        </ul>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>Thread thread = new Thread(() -&gt; {
+    System.out.println("Running");
+});
+
+System.out.println(thread.getState());
+
+thread.start();
+
+System.out.println(thread.getState());</code></pre>
+        </div>
+
+        <!-- Race Condition -->
+        <h2 class="fw-bold mt-5">13. Race Condition</h2>
+
+        <p>
+            A <strong>race condition</strong> occurs when multiple threads access shared data
+            concurrently and the final result depends on the timing of execution.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>class Counter {
+
+    int count = 0;
+
+    void increment() {
+        count++;
+    }
+}</code></pre>
+        </div>
+
+        <p>
+            If several threads call <code>increment()</code> at the same time,
+            updates can be lost.
+        </p>
+
+        <!-- synchronized -->
+        <h2 class="fw-bold mt-5">14. synchronized Methods</h2>
+
+        <p>
+            The <code>synchronized</code> keyword provides mutual exclusion so that
+            only one thread can execute the synchronized method on the same object at a time.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>class Counter {
+
+    private int count = 0;
+
+    synchronized void increment() {
+        count++;
+    }
+
+    int getCount() {
+        return count;
+    }
+}</code></pre>
+        </div>
+
+        <!-- Synchronized block -->
+        <h2 class="fw-bold mt-5">15. synchronized Block</h2>
+
+        <p>
+            A synchronized block allows you to protect only the critical section of code.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>class Counter {
+
+    private int count = 0;
+
+    void increment() {
+
+        synchronized (this) {
+            count++;
+        }
+    }
+
+    int getCount() {
+        return count;
+    }
+}</code></pre>
+        </div>
+
+        <!-- Object lock -->
+        <h2 class="fw-bold mt-5">16. Object Locks</h2>
+
+        <p>
+            Every Java object can act as a monitor lock.
+            Synchronized instance methods use the object's monitor.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>class BankAccount {
+
+    private double balance = 1000;
+
+    synchronized void withdraw(double amount) {
+
+        if (balance &gt;= amount) {
+            balance -= amount;
+        }
+    }
+
+    synchronized double getBalance() {
+        return balance;
+    }
+}</code></pre>
+        </div>
+
+        <!-- ReentrantLock -->
+        <h2 class="fw-bold mt-5">17. ReentrantLock</h2>
+
+        <p>
+            <code>ReentrantLock</code> provides more explicit locking control than
+            the <code>synchronized</code> keyword.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.locks.ReentrantLock;
+
+class Counter {
+
+    private int count = 0;
+
+    private final ReentrantLock lock =
+        new ReentrantLock();
+
+    void increment() {
+
+        lock.lock();
+
+        try {
+            count++;
+        }
+        finally {
+            lock.unlock();
+        }
+    }
+}</code></pre>
+        </div>
+
+        <div class="alert alert-danger">
+            <strong>Important:</strong>
+            Always release an explicit lock in a <code>finally</code> block.
+        </div>
+
+        <!-- ReadWriteLock -->
+        <h2 class="fw-bold mt-5">18. ReadWriteLock</h2>
+
+        <p>
+            <code>ReadWriteLock</code> allows multiple readers at the same time while
+            keeping writes exclusive.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.locks.*;
+
+class DataStore {
+
+    private final ReadWriteLock lock =
+        new ReentrantReadWriteLock();
+
+    private String data = "CIIT";
+
+    String read() {
+
+        lock.readLock().lock();
+
+        try {
+            return data;
+        }
+        finally {
+            lock.readLock().unlock();
+        }
+    }
+
+    void write(String value) {
+
+        lock.writeLock().lock();
+
+        try {
+            data = value;
+        }
+        finally {
+            lock.writeLock().unlock();
+        }
+    }
+}</code></pre>
+        </div>
+
+        <!-- volatile -->
+        <h2 class="fw-bold mt-5">19. volatile Keyword</h2>
+
+        <p>
+            The <code>volatile</code> keyword provides visibility guarantees for a variable
+            between threads.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>class Worker {
+
+    private volatile boolean running = true;
+
+    void stop() {
+        running = false;
+    }
+
+    void work() {
+
+        while (running) {
+            // perform work
+        }
+    }
+}</code></pre>
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>Note:</strong>
+            volatile does not make compound operations such as <code>count++</code> atomic.
+        </div>
+
+        <!-- Atomic -->
+        <h2 class="fw-bold mt-5">20. Atomic Classes</h2>
+
+        <p>
+            Atomic classes provide thread-safe operations without manually using synchronized blocks
+            for many common counters and state variables.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.atomic.AtomicInteger;
+
+class Counter {
+
+    private final AtomicInteger count =
+        new AtomicInteger(0);
+
+    void increment() {
+        count.incrementAndGet();
+    }
+
+    int getCount() {
+        return count.get();
+    }
+}</code></pre>
+        </div>
+
+        <!-- ExecutorService -->
+        <h2 class="fw-bold mt-5">21. ExecutorService</h2>
+
+        <p>
+            <code>ExecutorService</code> manages a pool of worker threads and is usually
+            preferred over manually creating many threads.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class Program {
+
+    public static void main(String[] args) {
+
+        ExecutorService executor =
+            Executors.newFixedThreadPool(3);
+
+        executor.submit(() -&gt; {
+            System.out.println("CIIT Server: Generating student report cards ℹ️.");
+
+        });
+
+        executor.submit(() -&gt; {
+            System.out.println("CIIT Server: Sending automated attendance SMS to parents 😒☎️.");
+
+        });
+
+        executor.shutdown();
+    }
+}</code></pre>
+        </div>
+
+        <!-- Callable -->
+        <h2 class="fw-bold mt-5">22. Callable</h2>
+
+        <p>
+            <code>Callable</code> is similar to <code>Runnable</code>, but it can return a result
+            and throw checked exceptions.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.*;
+
+public class Main {
+
+    public static void main(String[] args)
+            throws Exception {
+
+        ExecutorService executor =
+            Executors.newSingleThreadExecutor();
+
+        Callable&lt;Integer&gt; task = () -&gt; {
+            return 10 + 20;
+        };
+
+        Future&lt;Integer&gt; result =
+            executor.submit(task);
+
+        System.out.println(result.get());
+
+        executor.shutdown();
+    }
+}</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30</code></pre>
+</div>
+
+        <!-- Future -->
+        <h2 class="fw-bold mt-5">23. Future</h2>
+
+        <p>
+            A <code>Future</code> represents the result of an asynchronous computation.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>ExecutorService executor =
+    Executors.newSingleThreadExecutor();
+
+Future&lt;String&gt; future =
+    executor.submit(() -&gt; {
+
+        Thread.sleep(1000);
+
+        return "Task completed";
+    });
+
+System.out.println(future.get());
+
+executor.shutdown();</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Task completed</code></pre>
+</div>
+
+        <!-- CountDownLatch -->
+        <h2 class="fw-bold mt-5">24. CountDownLatch</h2>
+
+        <p>
+            <code>CountDownLatch</code> allows one or more threads to wait until a set of
+            operations has completed.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.CountDownLatch;
+
+CountDownLatch latch =
+    new CountDownLatch(2);
+
+Thread t1 = new Thread(() -&gt; {
+
+   System.out.println("CIIT Server 1: Student Records Database initialized 👨‍🏫🤞 .");
+
+    latch.countDown();
+});
+
+Thread t2 = new Thread(() -&gt; {
+
+    System.out.println("CIIT Server 2: Fee Payment Portal initialized 😊☎️.");
+
+    latch.countDown();
+});
+
+t1.start();
+t2.start();
+
+latch.await();
+
+System.out.println("All CIIT core systems ready. Opening Main Admission Portal 🤓👨‍🏫!");
+</code></pre>
+        </div>
+
+        <!-- Semaphore -->
+        <h2 class="fw-bold mt-5">25. Semaphore</h2>
+
+        <p>
+            A <code>Semaphore</code> controls access to a limited number of resources.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.Semaphore;
+
+Semaphore semaphore =
+    new Semaphore(2);
+
+semaphore.acquire();
+
+try {
+    System.out.println("Using resource");
+}
+finally {
+    semaphore.release();
+}</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Using resource</code></pre>
+</div>
+        <!-- Deadlock -->
+        <h2 class="fw-bold mt-5">26. Deadlock</h2>
+
+        <p>
+            A <strong>deadlock</strong> occurs when two or more threads wait forever for
+            resources held by each other.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Concept</span>
+            <pre class="mb-0"><code>Thread 1:
+Lock A → waits for Lock B
+
+Thread 2:
+Lock B → waits for Lock A</code></pre>
+        </div>
+
+        <div class="alert alert-danger">
+            <strong>Avoid deadlocks by:</strong>
+            keeping lock ordering consistent, minimizing lock scope,
+            and avoiding unnecessary nested locks.
+        </div>
+
+        <!-- Starvation -->
+        <h2 class="fw-bold mt-5">27. Starvation</h2>
+
+        <p>
+            <strong>Starvation</strong> occurs when a thread continuously fails to obtain
+            the CPU or required resources because other threads keep getting priority.
+        </p>
+
+        <!-- Livelock -->
+        <h2 class="fw-bold mt-5">28. Livelock</h2>
+
+        <p>
+            In a <strong>livelock</strong>, threads are active but continuously respond to
+            each other without making useful progress.
+        </p>
+
+        <!-- Concurrent Collections -->
+        <h2 class="fw-bold mt-5">29. Concurrent Collections</h2>
+
+        <p>
+            Java provides thread-safe collections designed for concurrent applications.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.ConcurrentHashMap;
+
+ConcurrentHashMap&lt;String, Integer&gt; map =
+    new ConcurrentHashMap&lt;&gt;();
+
+map.put("Java", 100);
+map.put("Spring", 200);
+
+System.out.println(map.get("Java"));</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>100</code></pre>
+</div>
+
+        <p>Common concurrent collections include:</p>
+
+        <ul>
+            <li><code>ConcurrentHashMap</code></li>
+            <li><code>CopyOnWriteArrayList</code></li>
+            <li><code>BlockingQueue</code></li>
+            <li><code>ConcurrentLinkedQueue</code></li>
+        </ul>
+
+        <!-- Immutability -->
+        <h2 class="fw-bold mt-5">30. Immutability and Thread Safety</h2>
+
+        <p>
+            Immutable objects cannot change after creation. They are naturally safer
+            to share between multiple threads.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public final class Employee {
+
+    private final String name;
+
+    public Employee(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}</code></pre>
+        </div>
+
+        <!-- Virtual Threads -->
+        <h2 class="fw-bold mt-5">31. Virtual Threads</h2>
+
+        <p>
+            Modern Java provides <strong>virtual threads</strong>, which are lightweight
+            threads designed to make high-concurrency applications easier to build.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>public class Main {
+
+    public static void main(String[] args) {
+
+        Thread.startVirtualThread(() -&gt; {
+
+           System.out.println("
+           CIIT high-concurrency student portal request running on an ultra-lightweight virtual thread 🤓👀."
+
+            );
+
+        });
+    }
+}</code></pre>
+        </div>
+
+        <div class="alert alert-info">
+            <strong>Modern Java:</strong>
+            Virtual threads are especially useful for applications with large numbers
+            of concurrent I/O-bound tasks.
+        </div>
+
+        <!-- Real World -->
+        <h2 class="fw-bold mt-5">32. Example 🌍🤓</h2>
+
+        <p>
+            Imagine an online shopping application processing multiple orders.
+            Different tasks can execute concurrently:
+        </p>
+
+        <ul>
+            <li>Validate payment</li>
+            <li>Check inventory</li>
+            <li>Send confirmation email</li>
+            <li>Update order status</li>
+            <li>Generate notification</li>
+        </ul>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>ExecutorService executor =
+    Executors.newFixedThreadPool(4);
+
+executor.submit(() -&gt;
+   System.out.println("CIIT System: Processing admission fee payment confirmation ℹ️.");
+);
+
+executor.submit(() -&gt;
+    System.out.println("CIIT System: Checking batch seat availability and updates 👀.");
+);
+
+executor.submit(() -&gt;
+    System.out.println("CIIT System: Sending welcome kit email with student portal login info 😊.");
+);
+
+executor.submit(() -&gt;
+    System.out.println("CIIT System: Allocating roll number and updating student roster status 🤷‍.");
+);
+
+executor.shutdown();</code></pre>
+        </div>
+
+        <!-- Best Practices -->
+        <h2 class="fw-bold mt-5">33. Multithreading Best Practices</h2>
+
+        <ul>
+            <li>Prefer <code>ExecutorService</code> for managing thread pools.</li>
+            <li>Keep shared mutable state to a minimum.</li>
+            <li>Prefer immutable objects where possible.</li>
+            <li>Keep synchronized sections small.</li>
+            <li>Always release explicit locks.</li>
+            <li>Avoid unnecessary thread creation.</li>
+            <li>Use concurrent collections when appropriate.</li>
+            <li>Do not depend on thread priority for program correctness.</li>
+            <li>Use virtual threads for suitable high-concurrency workloads.</li>
+            <li>Design carefully to avoid deadlocks.</li>
+        </ul>
+
+        <!-- Interview Questions -->
+        <h2 class="fw-bold mt-5">34. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="multithreadingQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#questionOne">
+                        What is multithreading?
+                    </button>
+                </h2>
+                <div id="questionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#multithreadingQuestions">
+                    <div class="accordion-body">
+                        Multithreading is the concurrent execution of multiple threads
+                        within a process.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#questionTwo">
+                        What is the difference between start() and run()?
+                    </button>
+                </h2>
+                <div id="questionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#multithreadingQuestions">
+                    <div class="accordion-body">
+                        <code>start()</code> creates a new thread and eventually invokes
+                        <code>run()</code>. Calling <code>run()</code> directly executes
+                        the method on the current thread.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#questionThree">
+                        What is a race condition?
+                    </button>
+                </h2>
+                <div id="questionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#multithreadingQuestions">
+                    <div class="accordion-body">
+                        A race condition happens when multiple threads access shared
+                        mutable data concurrently and the result depends on timing.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#questionFour">
+                        What is synchronization?
+                    </button>
+                </h2>
+                <div id="questionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#multithreadingQuestions">
+                    <div class="accordion-body">
+                        Synchronization controls concurrent access to shared resources
+                        so that unsafe simultaneous modifications are prevented.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#questionFive">
+                        What is deadlock?
+                    </button>
+                </h2>
+                <div id="questionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#multithreadingQuestions">
+                    <div class="accordion-body">
+                        Deadlock occurs when threads wait indefinitely for locks or
+                        resources held by each other.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#questionSix">
+                        What is ExecutorService?
+                    </button>
+                </h2>
+                <div id="questionSix"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#multithreadingQuestions">
+                    <div class="accordion-body">
+                        ExecutorService is a framework for submitting and managing
+                        asynchronous tasks using reusable worker threads.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#questionSeven">
+                        What are virtual threads?
+                    </button>
+                </h2>
+                <div id="questionSeven"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#multithreadingQuestions">
+                    <div class="accordion-body">
+                        Virtual threads are lightweight Java threads designed to support
+                        applications with very large numbers of concurrent tasks.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="alert alert-success mt-5">
+            <h4 class="fw-bold">Summary</h4>
+
+            <p class="mb-2">
+                In this lesson, you learned:
+            </p>
+
+            <ul class="mb-0">
+                <li>What multithreading is</li>
+                <li>Process vs thread</li>
+                <li>Creating threads with Thread and Runnable</li>
+                <li>Lambda-based threads</li>
+                <li>start(), run(), sleep(), and join()</li>
+                <li>Thread lifecycle and priorities</li>
+                <li>Race conditions and synchronization</li>
+                <li>Locks and atomic classes</li>
+                <li>ExecutorService, Callable, and Future</li>
+                <li>CountDownLatch and Semaphore</li>
+                <li>Deadlock, starvation, and livelock</li>
+                <li>Concurrent collections</li>
+                <li>Immutability and thread safety</li>
+                <li>Modern virtual threads</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("AsynchronousProgramming", "AsynchronousParallelProgramming", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("ParallelProcessing", "AsynchronousParallelProgramming", new { area = "CoreJava" })">
+                Next: Topic 
+            </a>
+
+        </div>
+
+    </div>
+</div>

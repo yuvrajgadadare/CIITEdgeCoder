@@ -1,0 +1,1023 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Basics";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-basics-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-basics-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-basics-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-basics-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-basics-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-basics-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-basics-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #javascript-basics-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-basics-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGE
+       ========================================================= */
+
+    #javascript-basics-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-basics-page .basics-image {
+        width: 100%;
+        max-height: 430px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-basics-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0 5px;
+    }
+
+
+    /* =========================================================
+       SIMPLE DIAGRAM
+       ========================================================= */
+
+    #javascript-basics-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-basics-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-basics-page .diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-basics-page .diagram-item {
+        min-width: 135px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-basics-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       BASIC CARDS
+       ========================================================= */
+
+    #javascript-basics-page .basic-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-basics-page .basic-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-basics-page .basic-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-basics-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-basics-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-basics-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-basics-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-basics-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        min-width: 105px;
+    }
+
+    #javascript-basics-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-basics-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-basics-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-basics-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-basics-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-basics-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-basics-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-basics-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-basics-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-basics-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-basics-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-basics-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - TUTORIAL CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- =================================================
+                     PAGE TITLE
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    JavaScript Basics
+                </h1>
+
+                <p class="lead-text">
+                    Learn the basic building blocks of JavaScript,
+                    including variables, values, data types, and
+                    simple JavaScript statements.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT ARE JAVASCRIPT BASICS?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What are JavaScript Basics?
+                </h2>
+
+                <p class="section-text">
+                    JavaScript basics are the fundamental concepts you
+                    need before building larger JavaScript programs.
+                </p>
+
+                <p class="section-text">
+                    In this module, you will learn how to store data,
+                    identify data types, convert values, and work with
+                    basic input and output.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://miro.medium.com/v2/resize%3Afit%3A1400/1%2Ap7C8gBFfhtPaQ1DmyaWVDA.png"
+                         alt="JavaScript variables and data types"
+                         class="basics-image" />
+
+                    <p class="image-caption">
+                        JavaScript variables and common data types.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     MAIN BASIC CONCEPTS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Main Concepts
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="basic-card">
+
+                            <h5>
+                                Variables
+                            </h5>
+
+                            <p>
+                                Variables are used to store values that
+                                your program needs to work with.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="basic-card">
+
+                            <h5>
+                                Data Types
+                            </h5>
+
+                            <p>
+                                Data types describe the kind of value
+                                stored in a JavaScript variable.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="basic-card">
+
+                            <h5>
+                                Type Conversion
+                            </h5>
+
+                            <p>
+                                Type conversion changes a value from
+                                one data type to another.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="basic-card">
+
+                            <h5>
+                                Input and Output
+                            </h5>
+
+                            <p>
+                                JavaScript can receive information and
+                                display results using different methods.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     VARIABLE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    How a Variable Works
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Variable and Value
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            Variable
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Value
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Data Type
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     VARIABLE EXAMPLE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Variables
+                </h2>
+
+                <p class="section-text">
+                    You can create variables using the
+                    <strong>let</strong> and <strong>const</strong>
+                    keywords.
+                </p>
+
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>let studentName = "Samadhan";
+let course = "JavaScript";
+const institute = "CIIT Training Institute";
+
+console.log("Welcome to " + institute + " ❤️🧑‍🎓.....!");
+console.log("Student:", studentName);
+console.log("Course:", course);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryVariablesCode()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Welcome to CIIT Training Institute ❤️🧑‍🎓.....!<br />
+                    Student: Samadhan<br />
+                    Course: JavaScript
+
+                </div>
+
+
+                <!-- =================================================
+                     DATA TYPES
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Basic Data Types
+                </h2>
+
+                <p class="section-text">
+                    JavaScript values can represent different kinds
+                    of information, such as text, numbers, and
+                    true or false values.
+                </p>
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <div class="basic-card">
+
+                            <h5>
+                                String
+                            </h5>
+
+                            <p>
+                                Used for text values such as
+                                names and course titles.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="basic-card">
+
+                            <h5>
+                                Number
+                            </h5>
+
+                            <p>
+                                Used for numeric values such as
+                                marks, prices, and quantities.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="basic-card">
+
+                            <h5>
+                                Boolean
+                            </h5>
+
+                            <p>
+                                Represents either
+                                <strong>true</strong> or
+                                <strong>false</strong>.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     DATA TYPE EXAMPLE
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Data Types
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const institute = "CIIT Training Institute";
+const students = 150;
+const isLearning = true;
+
+console.log("Institute:", institute);
+console.log("Students:", students);
+console.log("Learning JavaScript:", isLearning);
+
+console.log("Type of institute:", typeof institute);
+console.log("Type of students:", typeof students);
+console.log("Type of isLearning:", typeof isLearning);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryDataTypesCode()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Institute: CIIT Training Institute<br />
+                    Students: 150<br />
+                    Learning JavaScript: true<br />
+                    Type of institute: string<br />
+                    Type of students: number<br />
+                    Type of isLearning: boolean
+
+                </div>
+
+
+                <!-- =================================================
+                     TYPE CONVERSION PREVIEW
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Type Conversion
+                </h2>
+
+                <p class="section-text">
+                    Sometimes a value needs to be converted from one
+                    type to another. JavaScript provides methods such
+                    as <strong>Number()</strong> and
+                    <strong>String()</strong> for explicit conversion.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Example
+                    </h5>
+
+                    <p>
+                        A text value such as <strong>"100"</strong>
+                        can be converted into the number
+                        <strong>100</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     INPUT OUTPUT PREVIEW
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Input and Output
+                </h2>
+
+                <p class="section-text">
+                    JavaScript can display information using
+                    <strong>console.log()</strong>. Browser-based
+                    applications can also collect user input through
+                    HTML forms and browser APIs.
+                </p>
+
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const name = "CIIT Student";
+
+console.log("Hello " + name);
+console.log("Welcome to CIIT Training Institute ❤️🧑‍🎓.....!");</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryInputOutputCode()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Hello CIIT Student<br />
+                    Welcome to CIIT Training Institute ❤️🧑‍🎓.....!
+
+                </div>
+
+
+                <!-- =================================================
+                     LEARNING FLOW
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What You Will Learn Next
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        JavaScript Basics Learning Flow
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            Variables
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Data Types
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Type Conversion
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Input / Output
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        JavaScript basics include variables, data types,
+                        type conversion, and input and output concepts.
+                        These fundamentals provide the foundation for
+                        writing larger JavaScript programs.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("DeveloperTools", "Introduction", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Browser Developer Tools
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Variables", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Variables
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function tryVariablesCode() {
+
+        const code =
+            'let studentName = "Samadhan";\n' +
+            'let course = "JavaScript";\n' +
+            'const institute = "CIIT Training Institute";\n' +
+            '\n' +
+            'console.log("Welcome to " + institute + " ❤️🧑‍🎓.....!");\n' +
+            'console.log("Student:", studentName);\n' +
+            'console.log("Course:", course);';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryDataTypesCode() {
+
+        const code =
+            'const institute = "CIIT Training Institute";\n' +
+            'const students = 150;\n' +
+            'const isLearning = true;\n' +
+            '\n' +
+            'console.log("Institute:", institute);\n' +
+            'console.log("Students:", students);\n' +
+            'console.log("Learning JavaScript:", isLearning);\n' +
+            '\n' +
+            'console.log("Type of institute:", typeof institute);\n' +
+            'console.log("Type of students:", typeof students);\n' +
+            'console.log("Type of isLearning:", typeof isLearning);';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryInputOutputCode() {
+
+        const code =
+            'const name = "CIIT Student";\n' +
+            '\n' +
+            'console.log("Hello " + name);\n' +
+            'console.log("Welcome to CIIT Training Institute ❤️🧑‍🎓.....!");';
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+</script>

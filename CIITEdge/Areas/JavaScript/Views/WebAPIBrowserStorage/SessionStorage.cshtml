@@ -1,0 +1,744 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Session Storage";
+}
+
+<style>
+    #session-storage-page {
+        padding: 30px 0 50px;
+    }
+
+    #session-storage-page .content-section {
+        background: #fff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+
+    #session-storage-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #session-storage-page .lead-text,
+    #session-storage-page .section-text {
+        color: #495057;
+        line-height: 1.8;
+        font-size: 16px;
+    }
+
+    #session-storage-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    /* CONCEPT BOX */
+
+    #session-storage-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin: 22px 0 30px;
+    }
+
+    #session-storage-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #session-storage-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+    }
+
+    /* DIAGRAM */
+
+    #session-storage-page .flow-card {
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin: 25px 0 30px;
+    }
+
+    #session-storage-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #session-storage-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #session-storage-page .flow-box {
+        min-width: 150px;
+        padding: 15px 20px;
+        border: 2px solid #7c3aed;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+        background: #fff;
+    }
+
+    #session-storage-page .flow-arrow {
+        font-size: 24px;
+        color: #7c3aed;
+        font-weight: bold;
+    }
+
+    /* IMAGE */
+
+    #session-storage-page .image-card {
+        text-align: center;
+        background: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 25px 0 30px;
+    }
+
+    #session-storage-page .storage-image {
+        width: 100%;
+        max-width: 850px;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        margin: auto;
+    }
+
+    #session-storage-page .image-caption {
+        color: #6c757d;
+        font-size: 14px;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* CODE */
+
+    #session-storage-page .code-box {
+        background: #212529;
+        color: #fff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #session-storage-page .code-box code {
+        color: #fff;
+    }
+
+    /* TRY IT */
+
+    #session-storage-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px 0;
+    }
+
+    #session-storage-page .try-it-btn {
+        background: #198754;
+        color: #fff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 105px;
+        justify-content: center;
+    }
+
+    #session-storage-page .try-it-btn:hover {
+        background: #157347;
+        border-color: #157347;
+    }
+
+    /* OUTPUT */
+
+    #session-storage-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin: 10px 0 28px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        line-height: 1.8;
+    }
+
+    /* NOTE */
+
+    #session-storage-page .note-box {
+        background: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 5px solid #ffb300;
+        border-radius: 8px;
+        padding: 18px;
+        margin: 25px 0;
+        color: #6d4c41;
+        line-height: 1.7;
+    }
+
+    /* NAVIGATION */
+
+    #session-storage-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #session-storage-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    #session-storage-page .previous-btn {
+        background: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #session-storage-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #session-storage-page .next-btn {
+        background: #5b21b6;
+        color: #fff;
+        border: 1px solid #5b21b6;
+    }
+
+    #session-storage-page .next-btn:hover {
+        background: #4c1d95;
+        color: #fff;
+    }
+
+    @@media (max-width: 768px) {
+
+        #session-storage-page .content-section {
+            padding: 20px;
+        }
+
+        #session-storage-page .page-title {
+            font-size: 29px;
+        }
+
+        #session-storage-page .flow-row {
+            flex-direction: column;
+        }
+
+        #session-storage-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #session-storage-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #session-storage-page .nav-btn {
+            justify-content: center;
+        }
+    }
+</style>
+
+
+<main id="session-storage-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- ============================================
+                 COURSE SYLLABUS
+                 ============================================ -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- ============================================
+                 MAIN CONTENT
+                 ============================================ -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- PAGE TITLE -->
+
+                    <h1 class="page-title">
+                        Session Storage
+                    </h1>
+
+                    <p class="lead-text">
+                        Session Storage allows JavaScript applications
+                        to store data temporarily in the browser.
+                        The stored data is available during the current
+                        browser session.
+                    </p>
+
+
+                    <!-- WHAT IS SESSION STORAGE -->
+
+                    <h2 class="section-title">
+                        What is Session Storage?
+                    </h2>
+
+                    <p class="section-text">
+                        Session Storage is a browser storage mechanism
+                        that stores data as key-value pairs.
+                    </p>
+
+                    <p class="section-text">
+                        Unlike Local Storage, Session Storage is associated
+                        with the current browser session. The stored data
+                        is normally removed when the browser tab or window
+                        is closed.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+                            Session Storage is used to temporarily store
+                            data for the current browser session using
+                            key-value pairs.
+                        </p>
+
+                    </div>
+
+
+                    <!-- DIAGRAM -->
+
+                    <div class="flow-card">
+
+                        <div class="flow-title">
+                            How Session Storage Works
+                        </div>
+
+                        <div class="flow-row">
+
+                            <div class="flow-box">
+                                JavaScript
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                setItem()
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Session Storage
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                getItem()
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+
+                    <div class="image-card">
+
+                        <img src="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage/sessionstorage.png"
+                             alt="JavaScript Session Storage"
+                             class="storage-image"
+                             onerror="this.style.display='none';" />
+
+                        <p class="image-caption">
+                            Session Storage stores temporary data
+                            for the current browser session.
+                        </p>
+
+                    </div>
+
+
+                    <!-- METHODS -->
+
+                    <h2 class="section-title">
+                        Session Storage Methods
+                    </h2>
+
+                    <div class="concept-box">
+
+                        <p>
+                            <strong>setItem()</strong> –
+                            Stores a value in Session Storage.
+                        </p>
+
+                        <p>
+                            <strong>getItem()</strong> –
+                            Retrieves a stored value.
+                        </p>
+
+                        <p>
+                            <strong>removeItem()</strong> –
+                            Removes a specific stored value.
+                        </p>
+
+                        <p class="mb-0">
+                            <strong>clear()</strong> –
+                            Removes all Session Storage data.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ============================================
+                         EXAMPLE 1
+                         ============================================ -->
+
+                    <h2 class="section-title">
+                        Example 1: Store and Retrieve Data
+                    </h2>
+
+                    <p class="section-text">
+                        In this example, we store a user's name and
+                        retrieve the value using getItem().
+                    </p>
+
+
+                    <pre class="code-box"><code>sessionStorage.setItem("username", "Rahul");
+
+var username = sessionStorage.getItem("username");
+
+console.log(username);</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runExample1()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        Rahul
+
+                    </div>
+
+
+                    <!-- ============================================
+                         EXAMPLE 2
+                         ============================================ -->
+
+                    <h2 class="section-title">
+                        Example 2: Remove Data
+                    </h2>
+
+                    <p class="section-text">
+                        The removeItem() method removes a specific
+                        item from Session Storage.
+                    </p>
+
+
+                    <pre class="code-box"><code>sessionStorage.setItem("course", "JavaScript");
+
+sessionStorage.removeItem("course");
+
+console.log("Course removed");</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runExample2()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        Course removed
+
+                    </div>
+
+
+                    <!-- ============================================
+                         EXAMPLE 3
+                         ============================================ -->
+
+                    <h2 class="section-title">
+                        Example 3: Clear Session Storage
+                    </h2>
+
+                    <p class="section-text">
+                        The clear() method removes all data stored
+                        in Session Storage.
+                    </p>
+
+
+                    <pre class="code-box"><code>sessionStorage.clear();
+
+console.log("Session Storage cleared");</code></pre>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runExample3()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+                        Session Storage cleared
+
+                    </div>
+
+
+                    <!-- IMPORTANT POINTS -->
+
+                    <h2 class="section-title">
+                        Important Points
+                    </h2>
+
+                    <div class="note-box">
+
+                        <p>
+                            • Session Storage stores data as key-value pairs.
+                        </p>
+
+                        <p>
+                            • It is intended for temporary browser-session
+                            data.
+                        </p>
+
+                        <p>
+                            • Data can be accessed using JavaScript.
+                        </p>
+
+                        <p>
+                            • setItem() stores data.
+                        </p>
+
+                        <p>
+                            • getItem() retrieves data.
+                        </p>
+
+                        <p>
+                            • removeItem() removes one item.
+                        </p>
+
+                        <p class="mb-0">
+                            • clear() removes all Session Storage data.
+                        </p>
+
+                    </div>
+
+
+                    <!-- SUMMARY -->
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Summary
+                        </h5>
+
+                        <p class="mb-0">
+                            Session Storage provides a simple way to store
+                            temporary data in the browser. The main methods
+                            are setItem(), getItem(), removeItem() and clear().
+                        </p>
+
+                    </div>
+
+
+                    <!-- NAVIGATION -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("LocalStorage", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Local Storage
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("JSON", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: JSON in JavaScript
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function runExample1() {
+
+        var code =
+`var sessionStorage = {};
+
+sessionStorage["username"] = "Rahul";
+
+var username = sessionStorage["username"];
+
+console.log(username);`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function runExample2() {
+
+        var code =
+`var sessionStorage = {};
+
+sessionStorage["course"] = "JavaScript";
+
+delete sessionStorage["course"];
+
+console.log("Course removed");`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function runExample3() {
+
+        var code =
+`var sessionStorage = {};
+
+sessionStorage["username"] = "Rahul";
+sessionStorage["course"] = "JavaScript";
+
+sessionStorage = {};
+
+console.log("Session Storage cleared");`;
+
+        openCompiler(code);
+    }
+
+</script>

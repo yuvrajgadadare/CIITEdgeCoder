@@ -1,0 +1,822 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Closures in JavaScript";
+}
+
+<style>
+
+    #javascript-closures-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-closures-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-closures-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-closures-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-closures-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-closures-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* ==============================
+       CONCEPT BOX
+       ============================== */
+
+    #javascript-closures-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-closures-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-closures-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-closures-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       DIAGRAM
+       ============================== */
+
+    #javascript-closures-page .flow-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-closures-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #javascript-closures-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-closures-page .flow-box {
+        min-width: 150px;
+        padding: 16px 20px;
+        border: 2px solid #7c3aed;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 600;
+        background: #ffffff;
+    }
+
+    #javascript-closures-page .flow-box.result {
+        background: #f3e8ff;
+        color: #5b21b6;
+    }
+
+    #javascript-closures-page .flow-arrow {
+        font-size: 28px;
+        color: #7c3aed;
+        font-weight: bold;
+    }
+
+    #javascript-closures-page .flow-caption {
+        text-align: center;
+        color: #6c757d;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       CODE
+       ============================== */
+
+    #javascript-closures-page .code-section {
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    #javascript-closures-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-closures-page .code-box code {
+        color: #ffffff;
+        background: transparent;
+    }
+
+    /* ==============================
+       TRY IT
+       ============================== */
+
+    #javascript-closures-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-closures-page .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        padding: 9px 18px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    #javascript-closures-page .try-it-btn:hover {
+        background: #157347;
+        transform: translateY(-1px);
+    }
+
+    /* ==============================
+       OUTPUT
+       ============================== */
+
+    #javascript-closures-page .output-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-left: 5px solid #198754;
+        border-radius: 8px;
+        padding: 15px 18px;
+        margin-top: 8px;
+        margin-bottom: 30px;
+        color: #212529;
+        line-height: 1.8;
+    }
+
+    /* ==============================
+       NOTE
+       ============================== */
+
+    #javascript-closures-page .note-box {
+        background: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 5px solid #ffb300;
+        border-radius: 8px;
+        padding: 18px;
+        margin: 25px 0;
+        color: #6d4c41;
+        line-height: 1.7;
+    }
+
+    /* ==============================
+       SUMMARY
+       ============================== */
+
+    #javascript-closures-page .summary-box {
+        background: #f3e8ff;
+        border: 1px solid #d8b4fe;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-closures-page .summary-box h2 {
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-closures-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       NAVIGATION
+       ============================== */
+
+    #javascript-closures-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-closures-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    #javascript-closures-page .previous-btn {
+        background: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-closures-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-closures-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-closures-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    /* ==============================
+       RESPONSIVE
+       ============================== */
+
+    @@media (max-width: 768px) {
+
+        #javascript-closures-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-closures-page .page-title {
+            font-size: 29px;
+        }
+
+        #javascript-closures-page .flow-row {
+            flex-direction: column;
+        }
+
+        #javascript-closures-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-closures-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-closures-page .nav-btn {
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+<main id="javascript-closures-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDE - COURSE SYLLABUS
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 RIGHT SIDE - MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- PAGE TITLE -->
+
+                    <h1 class="page-title">
+                        Closures in JavaScript
+                    </h1>
+
+                    <p class="lead-text">
+                        A closure allows an inner function to remember
+                        and access variables from its outer function,
+                        even after the outer function has finished execution.
+                    </p>
+
+
+                    <!-- =================================================
+                         WHAT IS CLOSURE
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What is a Closure?
+                    </h2>
+
+                    <p class="section-text">
+                        A closure is created when an inner function
+                        remembers the variables of its outer function.
+                    </p>
+
+                    <p class="section-text">
+                        The inner function can continue to access those
+                        variables even after the outer function has
+                        completed its execution.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+                            A closure is a function together with the
+                            variables from its surrounding scope.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DIAGRAM
+                         ================================================= -->
+
+                    <div class="flow-card">
+
+                        <div class="flow-title">
+                            How a Closure Works
+                        </div>
+
+                        <div class="flow-row">
+
+                            <div class="flow-box">
+                                Outer Function
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Variable
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Inner Function
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box result">
+                                Remembers Value
+                            </div>
+
+                        </div>
+
+                        <p class="flow-caption">
+                            The inner function remembers variables
+                            from its outer scope.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 1: Basic Closure
+                    </h2>
+
+                    <p class="section-text">
+                        In this example, the inner function can access
+                        the variable declared inside the outer function.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function outerFunction() {
+
+    let message = "Welcome to CIIT";
+
+    function innerFunction() {
+        console.log(message);
+    }
+
+    innerFunction();
+}
+
+outerFunction();</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runClosureExample1()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        Welcome to CIIT
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 2: Returning an Inner Function
+                    </h2>
+
+                    <p class="section-text">
+                        A function can return another function.
+                        The returned function can still remember
+                        variables from the outer function.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function createMessage() {
+
+    let message = "Hello JavaScript";
+
+    return function() {
+        console.log(message);
+    };
+}
+
+let showMessage = createMessage();
+
+showMessage();</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runClosureExample2()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        Hello JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EXAMPLE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Example 3: Counter Using Closure
+                    </h2>
+
+                    <p class="section-text">
+                        Closures can be used to create private variables.
+                        Here, the counter variable is maintained by the
+                        returned function.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function createCounter() {
+
+    let count = 0;
+
+    return function() {
+
+        count++;
+
+        console.log(count);
+    };
+}
+
+let counter = createCounter();
+
+counter();
+counter();
+counter();</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runClosureExample3()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        1
+                        <br />
+
+                        2
+                        <br />
+
+                        3
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT POINTS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Important Points
+                    </h2>
+
+
+                    <div class="note-box">
+
+                        <p>
+                            • A closure is created when an inner function
+                            accesses variables from an outer function.
+                        </p>
+
+                        <p>
+                            • The inner function remembers those variables
+                            even after the outer function finishes.
+                        </p>
+
+                        <p>
+                            • Closures are useful for creating private
+                            data and maintaining state.
+                        </p>
+
+                        <p class="mb-0">
+                            • Closures are commonly used in callbacks,
+                            event handlers and JavaScript applications.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2>
+                            Summary
+                        </h2>
+
+                        <p>
+                            Closures allow a function to remember and
+                            access variables from its surrounding scope.
+                            They are useful for maintaining state,
+                            creating private variables and building
+                            reusable JavaScript functionality.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+
+                    <div class="bottom-navigation">
+
+                        <a href="@Url.Action("Scope", "AdvancedJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn previous-btn">
+
+                            <span>←</span>
+
+                            <span>
+                                Previous: Scope
+                            </span>
+
+                        </a>
+
+
+                        <a href="@Url.Action("ErrorHandling", "AdvancedJavaScript", new { area = "JavaScript" })"
+                           class="nav-btn next-btn">
+
+                            <span>
+                                Next: Error Handling
+                            </span>
+
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1 - BASIC CLOSURE
+       ========================================================= */
+
+    function runClosureExample1() {
+
+        var code =
+`function outerFunction() {
+
+    let message = "Welcome to CIIT";
+
+    function innerFunction() {
+        console.log(message);
+    }
+
+    innerFunction();
+}
+
+outerFunction();`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2 - RETURNING INNER FUNCTION
+       ========================================================= */
+
+    function runClosureExample2() {
+
+        var code =
+`function createMessage() {
+
+    let message = "Hello JavaScript";
+
+    return function() {
+        console.log(message);
+    };
+}
+
+let showMessage = createMessage();
+
+showMessage();`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3 - COUNTER USING CLOSURE
+       ========================================================= */
+
+    function runClosureExample3() {
+
+        var code =
+`function createCounter() {
+
+    let count = 0;
+
+    return function() {
+
+        count++;
+
+        console.log(count);
+    };
+}
+
+let counter = createCounter();
+
+counter();
+counter();
+counter();`;
+
+        openCompiler(code);
+    }
+
+</script>

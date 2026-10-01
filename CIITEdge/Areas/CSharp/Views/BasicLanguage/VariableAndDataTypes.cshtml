@@ -1,0 +1,1613 @@
+﻿@{
+    Layout = "~/Areas/CSharp/Views/Shared/CSharpLayout.cshtml";
+    ViewData["Title"] = "Variables & Data Types";
+}
+
+<style>
+    .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+        transition: all 0.2s ease;
+    }
+
+    .try-it-btn:hover 
+    {
+        background: #157347;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+</style>
+
+<main id="tutorials" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+            @Html.Partial("~/Areas/CSharp/Views/Shared/CSharpTopics.cshtml")
+        </aside>
+
+        <!-- Reading Content Area -->
+        <section class="col-lg-9">
+
+            <div class="card shadow-sm p-4 p-md-5 mb-4">
+
+                <!-- PAGE TITLE -->
+                <h1 class="h1 fw-bold text-dark mt-1 mb-4">
+                    Variables & Data Types
+                </h1>
+
+
+                <!-- ===================================================== -->
+                <!-- VARIABLES -->
+                <!-- ===================================================== -->
+
+                <h2 class="h4 fw-bold text-dark mt-1 mb-3">
+                    Variables - Introduction
+                </h2>
+
+                <p class="text-muted mb-4">
+                    <b>C# variables</b> are fundamental building blocks in any C# program
+                    and are used to store data. You can assign, access, and manipulate
+                    the data with the help of variables.
+                </p>
+
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-2">
+                    What Are Variables in C#?
+                </h3>
+
+                <p class="text-muted mb-4">
+                    <b>C# variables</b> are the containers to store data and help you
+                    to access and manipulate the data during the program execution.
+                    A variable must be declared by using a specific data type which
+                    can store that type of value.
+                </p>
+
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-2">
+                    Why Are Variables Important in C#?
+                </h3>
+
+                <ul class="text-muted mb-4">
+                    <li class="mb-2">
+                        <b>Data Storage:</b>
+                        Variables allow you to store data like numbers, text, and more.
+                    </li>
+
+                    <li class="mb-2">
+                        <b>Data Manipulation:</b>
+                        You can manipulate the data within variables to perform
+                        calculations, transformations, or display results.
+                    </li>
+
+                    <li class="mb-2">
+                        <b>Program Flow Control:</b>
+                        Variables help manage and control how data flows through your program.
+                    </li>
+                </ul>
+
+
+                <!-- REAL TIME EXAMPLE -->
+
+                <div class="alert alert-info mb-4">
+
+                    <h5 class="fw-bold">
+                        Example
+                    </h5>
+
+                    <p class="mb-2">
+                        In a student management system, we may need to store
+                        a student's name, age and percentage.
+                    </p>
+
+                    <div class="code-block">
+                        <div class="code-lang-tag">C#</div>
+
+                        <pre class="mb-0"><code>string studentName = "Rahul";
+int age = 22;
+double percentage = 82.50;</code></pre>
+                    </div>
+
+                    <p class="mt-2 mb-0">
+                        Here, each variable stores different information about the student.
+                    </p>
+
+                </div>
+
+
+                <!-- DECLARING VARIABLES -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-2">
+                    Declaring Variables in C#
+                </h3>
+
+                <h4 class="h6 fw-bold text-dark mt-3 mb-2">
+                    Syntax
+                </h4>
+
+                <p class="text-muted mb-3">
+                    Here's the basic syntax to declare a variable:
+                    In C#, you declare a variable by specifying its data type
+                    and a variable name.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+
+                    <div class="code-lang-tag">
+                        Static Code Layout Reference
+                    </div>
+
+                    <pre class="mb-0"><code>&lt;data_type&gt; &lt;variable_name&gt;;</code></pre>
+
+                </div>
+
+
+                <h4 class="h6 fw-bold text-dark mt-3 mb-2">
+                    Example
+                </h4>
+
+                <p class="text-muted mb-3">
+                    Here's the basic syntax to declare a variable:
+                    In C#, you declare a variable by specifying its data type
+                    and a variable name.
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+
+                    <div class="code-lang-tag">
+                        Static Code Layout Reference
+                    </div>
+
+                    <pre class="mb-0"><code>int age;
+string name;</code></pre>
+
+                </div>
+
+
+                <h6 class="fw-bold text-dark">
+                    Line-by-Line Explanation
+                </h6>
+
+                <ul class="text-muted mb-4">
+                    <li>
+                        <code>int</code> defines an integer variable.
+                    </li>
+
+                    <li>
+                        <code>age</code> is the variable name.
+                    </li>
+
+                    <li>
+                        <code>string</code> defines a text variable.
+                    </li>
+
+                    <li>
+                        <code>name</code> is the variable name.
+                    </li>
+                </ul>
+
+
+                <!-- TYPES OF VARIABLES -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-3">
+                    Types of Variables in C#
+                </h3>
+
+                <p class="text-muted mb-3">
+                    C# supports several types of variables, categorized as follows:
+                </p>
+
+                <ol class="text-muted">
+
+                    <li class="mb-4">
+
+                        <h5 class="h6 fw-bold text-dark">
+                            Primitive Variables
+                        </h5>
+
+                        <p>
+                            The primitive variables are basic data types like
+                            int, float, char, and bool.
+                        </p>
+
+                        <h6 class="fw-bold">Example</h6>
+
+                        <div class="code-block shadow-sm">
+
+                            <div class="code-lang-tag">
+                                Static Code Layout Reference
+                            </div>
+
+                            <pre class="mb-0"><code>int number = 10;
+double pi = 3.14;</code></pre>
+
+                        </div>
+
+                    </li>
+
+
+                    <li class="mb-4">
+
+                        <h5 class="h6 fw-bold text-dark">
+                            Reference Variables
+                        </h5>
+
+                        <p>
+                            The reference variables hold references to objects in memory,
+                            like arrays and classes.
+                        </p>
+
+                        <h6 class="fw-bold">Example</h6>
+
+                        <div class="code-block shadow-sm">
+
+                            <div class="code-lang-tag">
+                                Static Code Layout Reference
+                            </div>
+
+                            <pre class="mb-0"><code>string name = "Alice";
+int[] numbers = new int[] { 1, 2, 3 };</code></pre>
+
+                        </div>
+
+                    </li>
+
+
+                    <li class="mb-4">
+
+                        <h5 class="h6 fw-bold text-dark">
+                            Constants
+                        </h5>
+
+                        <p>
+                            The constants are variables whose value cannot be changed
+                            once assigned.
+                        </p>
+
+                        <h6 class="fw-bold">Example</h6>
+
+                        <div class="code-block shadow-sm">
+
+                            <div class="code-lang-tag">
+                                Static Code Layout Reference
+                            </div>
+
+                            <pre class="mb-0"><code>const double PI = 3.14159;</code></pre>
+
+                        </div>
+
+                    </li>
+
+
+                    <li class="mb-4">
+
+                        <h5 class="h6 fw-bold text-dark">
+                            Nullable Variables
+                        </h5>
+
+                        <p>
+                            The nullable variables can hold a null value.
+                        </p>
+
+                        <h6 class="fw-bold">Example</h6>
+
+                        <div class="code-block shadow-sm">
+
+                            <div class="code-lang-tag">
+                                Static Code Layout Reference
+                            </div>
+
+                            <pre class="mb-0"><code>int? age = null;</code></pre>
+
+                        </div>
+
+                    </li>
+
+                </ol>
+
+
+                <!-- BEST PRACTICES -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-2">
+                    Best Practices for Using Variables in C#
+                </h3>
+
+                <p class="text-muted">
+                    <b>Use Descriptive Names:</b>
+                    While declaring variables, always choose meaningful variable names
+                    that describe the purpose of the variables to be used.
+                    For example, use <code>studentAge</code> to store the age of a
+                    student instead of <code>x</code>.
+                </p>
+
+                <p class="text-muted">
+                    <b>Follow Naming Conventions:</b>
+                    You should follow the naming conventions when declaring the variables.
+                    C# recommends using camelCase for local variables and PascalCase
+                    for class-level variables.
+                </p>
+
+                <h6>For example:</h6>
+
+                <div class="code-block mb-4 shadow-sm">
+
+                    <div class="code-lang-tag">
+                        Static Code Layout Reference
+                    </div>
+
+                    <pre class="mb-0"><code>int studentAge;          // CamelCase for local variable
+public string StudentName; // PascalCase for class-level variable</code></pre>
+
+                </div>
+
+
+                <!-- COMMON EXAMPLES -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-2">
+                    Common C# Variable Examples
+                </h3>
+
+                <p class="text-muted">
+                    Here are a few examples of variables in action to give you
+                    a better understanding:
+                </p>
+
+
+                <ol class="text-muted">
+
+                    <!-- STUDENT -->
+
+                    <li class="mb-4">
+
+                        <h6 class="fw-bold">
+                            Storing Student Information
+                        </h6>
+
+                        <p>
+                            In this example, we store student details such as
+                            student name, qualification, age and percentage.
+                        </p>
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+<pre class="mb-0"><code>using System;
+
+string studentName = "Sudhir";
+string qualification = "Sharma";
+int age = 28;
+float percentage = 89.56f;
+
+Console.WriteLine("Student: " + studentName);
+Console.WriteLine("Qualification: " + qualification);
+Console.WriteLine("Age: " + age);
+Console.WriteLine("Percentage: " + percentage);</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+
+                                </button>
+                            </div>
+
+                        </div>
+                        <h6 class="fw-bold">
+                            Line-by-Line Explanation
+                        </h6>
+
+                        <ul>
+                            <li>
+                                <code>studentName</code> stores the student name.
+                            </li>
+
+                            <li>
+                                <code>qualification</code> stores qualification information.
+                            </li>
+
+                            <li>
+                                <code>age</code> stores the student's age.
+                            </li>
+
+                            <li>
+                                <code>percentage</code> stores the student's percentage.
+                            </li>
+
+                            <li>
+                                <code>Console.WriteLine()</code> displays the information.
+                            </li>
+                        </ul>
+
+                    </li>
+
+
+                    <!-- ARITHMETIC -->
+
+                    <li class="mb-4">
+
+                        <h6 class="fw-bold">
+                            Performing Simple Arithmetic
+                        </h6>
+
+                        <p>
+                            This example demonstrates a basic arithmetic operation.
+                        </p>
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+<pre class="mb-0"><code>using System;
+
+int num1 = 12;
+int num2 = 8;
+int sum = num1 + num2;
+
+Console.WriteLine("Addition = : " + sum);</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <h6 class="fw-bold">
+                            Explanation
+                        </h6>
+
+                        <ul>
+                            <li><code>num1</code> stores 12.</li>
+                            <li><code>num2</code> stores 8.</li>
+                            <li><code>sum</code> stores the addition result.</li>
+                            <li>The output will be <b>20</b>.</li>
+                        </ul>
+
+                    </li>
+
+
+                    <!-- BOOLEAN -->
+
+                    <li class="mb-4">
+
+                        <h6 class="fw-bold">
+                            Using Boolean Variables
+                        </h6>
+
+                        <p>
+                            This example shows how a boolean variable can be used
+                            to control program flow.
+                        </p>
+
+@*                         <div class="code-block mb-3 shadow-sm">
+
+                            <div class="code-lang-tag">
+                                Static Code Layout Reference
+                            </div>
+
+                            <pre class="mb-0"><code>bool isMember = true;
+
+Console.WriteLine("Is Member = : " + isMember);</code></pre>
+
+                        </div> *@
+
+                        <div class="try-it-example">
+
+                            <div class="code-block shadow-sm">
+
+                                <div class="code-lang-tag">
+                                    C#
+                                </div>
+
+<pre class="mb-0"><code>using System;
+
+bool isMember = true;
+
+Console.WriteLine("Is Member = : " + isMember);</code></pre>
+
+                            </div>
+
+                            <div class="text-end mt-2 mb-3">
+                                <button type="button"
+                                        class="try-it-btn"
+                                        onclick="tryItYourself(this)">
+
+                                    <i class="bi bi-play-fill me-1"></i>
+                                    Try It
+
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <h6 class="fw-bold">
+                            Explanation
+                        </h6>
+
+                        <p>
+                            A <code>bool</code> variable stores either
+                            <code>true</code> or <code>false</code>.
+                        </p>
+
+                    </li>
+
+                </ol>
+
+
+                <!-- FAQ VARIABLES -->
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-3">
+                    FAQ About C# Variables
+                </h3>
+
+                <ol class="text-muted">
+
+                    <li class="mb-3">
+                        <b>What is a variable in C#?</b>
+
+                        <p>
+                            A variable is a named memory location used to store
+                            data that a program can manipulate during execution.
+                        </p>
+                    </li>
+
+                    <li class="mb-3">
+                        <b>What is the difference between int and long in C#?</b>
+
+                        <p>
+                            The int data type is a 32-bit signed integer, whereas
+                            long type is a 64-bit signed integer. You should use
+                            long for larger numbers that exceed the range of int.
+                        </p>
+                    </li>
+
+                    <li class="mb-3">
+                        <b>Can I change the value of a constant in C#?</b>
+
+                        <p>
+                            No, C# constants cannot be changed once assigned a value.
+                        </p>
+                    </li>
+
+                    <li class="mb-3">
+                        <b>What is a nullable variable in C#?</b>
+
+                        <p>
+                            A nullable variable can hold a null value in addition
+                            to its type value. The nullable type is useful when
+                            a value is optional.
+                        </p>
+                    </li>
+
+                </ol>
+
+
+                <!-- ===================================================== -->
+                <!-- DATA TYPES -->
+                <!-- ===================================================== -->
+
+                <hr class="my-5" />
+
+                <h2 class="h4 fw-bold text-dark mt-1 mb-3">
+                    Data Types
+                </h2>
+
+                <h3 class="h5 fw-bold text-dark mt-3 mb-3">
+                    Introduction to C# Data Types
+                </h3>
+
+                <p class="text-muted mb-3">
+                    C# <b>data types</b> specify the type of data that variables
+                    can store. In C#, all variables must be declared with the
+                    data types before their use, as it is a strongly typed language.
+                </p>
+
+
+                <h5 class="h6 fw-bold text-dark mt-3 mb-2">
+                    Syntax for Declaring a Variable with Data Type
+                </h5>
+
+                <div class="code-block mb-4 shadow-sm">
+
+                    <div class="code-lang-tag">
+                        Static Code Layout Reference
+                    </div>
+
+                    <pre class="mb-0"><code>&lt;data_type&gt; &lt;variable_name&gt; = &lt;value&gt;;</code></pre>
+
+                </div>
+
+
+                <h5 class="h6 fw-bold text-dark mt-3 mb-2">
+                    Example of C# Data Types
+                </h5>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+string studentName = "Ajay Jadhav";
+int age = 22;
+double Percentage = 78.59;
+char grade = 'A';
+bool isEnrolled = true;
+
+Console.WriteLine("Student Name: " + studentName);
+Console.WriteLine("Age: " + age);
+Console.WriteLine("Percentage: " + Percentage + "%");
+Console.WriteLine("Grade: " + grade);
+Console.WriteLine("Enrolled: " + isEnrolled);</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <h6 class="fw-bold">
+                    Line-by-Line Explanation
+                </h6>
+
+                <ul class="text-muted mb-4">
+
+                    <li>
+                        <code>string</code> stores text.
+                    </li>
+
+                    <li>
+                        <code>int</code> stores whole numbers.
+                    </li>
+
+                    <li>
+                        <code>double</code> stores decimal numbers.
+                    </li>
+
+                    <li>
+                        <code>char</code> stores one character.
+                    </li>
+
+                    <li>
+                        <code>bool</code> stores true or false.
+                    </li>
+
+                </ul>
+
+
+                <!-- TYPES -->
+
+                <h5 class="h5 fw-bold text-dark mt-3 mb-2">
+                    Types of Data in C#
+                </h5>
+
+                <p class="text-muted">
+                    The variables in C# are categorized into the following types:
+                </p>
+
+                <ul class="text-muted">
+                    <li>Value types</li>
+                    <li>Reference types</li>
+                    <li>Pointer types</li>
+                </ul>
+
+
+                <!-- VALUE TYPES -->
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-2">
+                    Value Types in C#
+                </h5>
+
+                <p class="text-muted">
+                    Value type variables can be assigned a value directly.
+                    They are derived from the class System.ValueType.
+                </p>
+
+                <p class="text-muted">
+                    The value types directly contain data. Some examples are
+                    int, char, and float, which store numbers, alphabets,
+                    and floating point numbers, respectively.
+                </p>
+
+                <p class="text-muted">
+                    Value types store actual values and include:
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+
+                    <div class="code-lang-tag">
+                        Static Code Layout Reference
+                    </div>
+
+                    <pre class="mb-0"><code>Integral types (int, byte, long, etc.)
+Floating-point types (float, double, decimal)
+Character type (char)
+Boolean type (bool)
+Enumerations (enum)
+Structs (struct)</code></pre>
+
+                </div>
+
+
+                <!-- INTEGRAL -->
+
+                <h4 class="h5 fw-bold text-dark mt-4 mb-2">
+                    Integral Data Types
+                </h4>
+
+                <p class="text-muted mb-3">
+                    Integral data types are used for storing whole numbers.
+                </p>
+
+                <div class="table-responsive mb-4">
+
+                    <table class="table table-bordered text-muted">
+
+                        <thead>
+                            <tr>
+                                <th>C# Keyword</th>
+                                <th>.NET Framework Type</th>
+                                <th>Size</th>
+                                <th>Range / Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>byte</td>
+                                <td>System.Byte</td>
+                                <td>1 byte</td>
+                                <td>0 to 255 (Unsigned)</td>
+                            </tr>
+
+                            <tr>
+                                <td>sbyte</td>
+                                <td>System.SByte</td>
+                                <td>1 byte</td>
+                                <td>-128 to 127 (Signed)</td>
+                            </tr>
+
+                            <tr>
+                                <td>short</td>
+                                <td>System.Int16</td>
+                                <td>2 bytes</td>
+                                <td>-32,768 to 32,767</td>
+                            </tr>
+
+                            <tr>
+                                <td>ushort</td>
+                                <td>System.UInt16</td>
+                                <td>2 bytes</td>
+                                <td>0 to 65,535</td>
+                            </tr>
+
+                            <tr>
+                                <td>int</td>
+                                <td>System.Int32</td>
+                                <td>4 bytes</td>
+                                <td>-2.1B to 2.1B</td>
+                            </tr>
+
+                            <tr>
+                                <td>uint</td>
+                                <td>System.UInt32</td>
+                                <td>4 bytes</td>
+                                <td>0 to 4.2B</td>
+                            </tr>
+
+                            <tr>
+                                <td>long</td>
+                                <td>System.Int64</td>
+                                <td>8 bytes</td>
+                                <td>Large numbers requiring 64 bits</td>
+                            </tr>
+
+                            <tr>
+                                <td>ulong</td>
+                                <td>System.UInt64</td>
+                                <td>8 bytes</td>
+                                <td>Large positive numbers requiring 64 bits</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <h5 class="h6 fw-bold text-dark mt-3 mb-2">
+                    Example
+                </h5>
+
+@*                 <div class="code-block mb-3 shadow-sm">
+
+                    <div class="code-lang-tag">
+                        Static Code Layout Reference
+                    </div>
+
+                    <pre class="mb-0"><code>int EmployeeId = 1024;
+long Salary = 5000000L;
+byte ExperienceYears = 10;
+
+Console.WriteLine("Employee Id: " + EmployeeId);
+Console.WriteLine("Total Salary: " + Salary);
+Console.WriteLine("Total Years Of Experience: " + ExperienceYears);</code></pre>
+
+                </div> *@
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+int EmployeeId = 1024;
+long Salary = 5000000L;
+byte ExperienceYears = 10;
+
+Console.WriteLine("Employee Id: " + EmployeeId);
+Console.WriteLine("Total Salary: " + Salary);
+Console.WriteLine("Total Years Of Experience: " + ExperienceYears);</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+                <h6 class="fw-bold">
+                    Explanation
+                </h6>
+
+                <ul class="text-muted">
+                    <li>
+                        <code>EmployeeId</code> stores an integer employee ID.
+                    </li>
+
+                    <li>
+                        <code>Salary</code> stores a larger whole number using long.
+                    </li>
+
+                    <li>
+                        <code>ExperienceYears</code> stores a small positive number.
+                    </li>
+                </ul>
+
+
+                <!-- CHAR BOOL -->
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-2">
+                    Character and Boolean Data Types
+                </h5>
+
+                <div class="table-responsive mb-4">
+
+                    <table class="table table-bordered text-muted">
+
+                        <thead>
+                            <tr>
+                                <th>C# Keyword</th>
+                                <th>.NET Framework Type</th>
+                                <th>Size</th>
+                                <th>Default Value</th>
+                                <th>Syntax</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>char</td>
+                                <td>System.Char</td>
+                                <td>2 bytes</td>
+                                <td>\0</td>
+                                <td>Single quotes, e.g. 'A'</td>
+                            </tr>
+
+                            <tr>
+                                <td>bool</td>
+                                <td>System.Boolean</td>
+                                <td>Boolean value</td>
+                                <td>false</td>
+                                <td>true or false</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="code-block mb-4 shadow-sm">
+
+                    <div class="code-lang-tag">
+                        Static Code Layout Reference
+                    </div>
+
+                    <pre class="mb-0"><code>char letter = 'g';
+
+bool isLetter = char.IsLetter(letter);    // true
+bool isDigit  = char.IsDigit('7');        // true
+bool isSpace  = char.IsWhiteSpace('\n');  // true
+char upper    = char.ToUpper(letter);     // 'G'</code></pre>
+
+                </div>
+
+
+                <!-- ENUM -->
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-2">
+                    Enumerations (enum)
+                </h5>
+
+                <p class="text-muted">
+                    An enum is a special data type used for defining named
+                    constant values.
+                </p>
+
+@*                 <div class="code-block mb-4 shadow-sm">
+
+                    <div class="code-lang-tag">
+                        Static Code Layout Reference
+                    </div>
+
+                    <pre class="mb-0"><code>enum JobLevel
+{
+    Intern,
+    Junior,
+    Mid,
+    Senior,
+    Manager
+}
+
+JobLevel currentLevel = JobLevel.Mid;
+
+Console.WriteLine("Current Job Level: " + currentLevel);</code></pre>
+
+                </div> *@
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+JobLevel currentLevel = JobLevel.Mid;
+
+Console.WriteLine("Current Job Level: " + currentLevel);
+
+enum JobLevel
+{
+    Intern,
+    Junior,
+    Mid,
+    Senior,
+    Manager
+}</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+                <h6 class="fw-bold">
+                    Line-by-Line Explanation
+                </h6>
+
+                <ul class="text-muted">
+                    <li>
+                        <code>enum JobLevel</code> creates an enumeration.
+                    </li>
+
+                    <li>
+                        It contains predefined job levels.
+                    </li>
+
+                    <li>
+                        <code>currentLevel</code> stores the selected job level.
+                    </li>
+
+                    <li>
+                        <code>JobLevel.Mid</code> selects the Mid level.
+                    </li>
+                </ul>
+
+
+                <!-- STRUCT -->
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-2">
+                    Structs
+                </h5>
+
+                <p class="text-muted">
+                    A struct is a value type used to encapsulate related data.
+                </p>
+
+
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+Employee emp = new Employee();
+
+emp.Id = 101;
+emp.Name = "Amit";
+emp.Salary = 60000.50;
+
+Console.WriteLine("Employee Id: " + emp.Id);
+Console.WriteLine("Employee Name: " + emp.Name);
+Console.WriteLine("Employee Salary: $" + emp.Salary);
+
+struct Employee
+{
+    public int Id;
+    public string Name;
+    public double Salary;
+}</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- REFERENCE TYPES -->
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-2">
+                    Reference Types in C#
+                </h5>
+
+                <p class="text-muted mb-3">
+                    In C#, a reference type does not hold its data directly.
+                    Instead, it holds a reference that tells the computer where
+                    the object is stored in memory.
+                </p>
+
+                <p class="text-muted mb-4">
+                    In other words, they refer to a memory location. Using multiple
+                    variables, the reference types can refer to the same object.
+                    If the object is changed through one variable, the change can
+                    be seen through another variable referring to the same object.
+                </p>
+
+
+                <!-- REAL WORLD ANALOGY -->
+
+                <h5 class="h5 fw-bold text-dark mt-3 mb-2">
+                    The "Real World" Analogy
+                </h5>
+
+                <p class="text-muted">
+                    Think of a <b>Value Type</b> like a dollar bill in your wallet.
+                    You hold the actual value right there. If you give a copy to
+                    a friend, they have their own dollar bill.
+                </p>
+
+                <p class="text-muted">
+                    Think of a <b>Reference Type</b> like a
+                    <b>home address written on a piece of paper</b>.
+                    The paper doesn't contain a house; it just tells you where
+                    the house is. If you copy the address onto a second piece
+                    of paper, both papers can point to the same house.
+                </p>
+
+
+                <!-- BUILT-IN -->
+
+                <h5 class="h5 fw-bold text-dark mt-3 mb-2">
+                    Common Built-in Reference Types
+                </h5>
+
+                <ul class="text-muted mb-4">
+
+                    <li>
+                        <b>class:</b>
+                        Used to create custom objects like Person or Car.
+                    </li>
+
+                    <li>
+                        <b>string:</b>
+                        Used to hold text like "Hello World".
+                    </li>
+
+                    <li>
+                        <b>Array:</b>
+                        Collections of data like int[] or string[].
+                    </li>
+
+                    <li>
+                        <b>interface, delegate, and record:</b>
+                        Advanced building blocks.
+                    </li>
+
+                </ul>
+
+
+                <!-- REFERENCE EXAMPLE -->
+
+                <h5 class="h5 fw-bold text-dark mt-3 mb-2">
+                    How It Works in Code (Example)
+                </h5>
+
+                <p class="text-muted mb-3">
+                    Let's see what happens when we copy a reference type.
+                    Imagine we have a simple class called Car:
+                </p>
+
+                <div class="code-block mb-4 shadow-sm">
+
+                    <div class="code-lang-tag">
+                        Static Code Layout Reference
+                    </div>
+
+                    <pre class="mb-0"><code>class Car
+{
+    public string Name;
+}</code></pre>
+
+                </div>
+
+
+                <p class="text-muted mb-3">
+                    Now, let's look at what happens in the main program.
+                </p>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+// 1. Create a new car and give it a name
+Car car1 = new Car();
+car1.Name = "Swift";
+
+// 2. Copy car1 into car2
+Car car2 = car1;
+
+// 3. Change the name using car2
+car2.Name = "Creta";
+
+Console.WriteLine("Car 1 Name: " + car1.Name);
+Console.WriteLine("Car 2 Name: " + car2.Name);</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+                <h6 class="fw-bold">
+                    Line-by-Line Explanation
+                </h6>
+
+                <ol class="text-muted">
+
+                    <li>
+                        <code>Car car1 = new Car();</code>
+                        creates a Car object.
+                    </li>
+
+                    <li>
+                        <code>car1.Name = "Swift";</code>
+                        gives the car a name.
+                    </li>
+
+                    <li>
+                        <code>Car car2 = car1;</code>
+                        copies the reference.
+                    </li>
+
+                    <li>
+                        Both variables refer to the same Car object.
+                    </li>
+
+                    <li>
+                        <code>car2.Name = "Creta";</code>
+                        changes the object's name.
+                    </li>
+
+                    <li>
+                        Therefore, <code>car1.Name</code> also becomes
+                        <b>Creta</b>.
+                    </li>
+
+                </ol>
+
+
+                <!-- VALUE VS REFERENCE -->
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-2">
+                    Value Types vs. Reference Types
+                </h5>
+
+                <div class="table-responsive mb-4">
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Value Types</th>
+                                <th>Reference Types</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>What is stored?</td>
+                                <td>The actual data directly</td>
+                                <td>A reference to the object</td>
+                            </tr>
+
+                            <tr>
+                                <td>Examples</td>
+                                <td>int, bool, double, struct</td>
+                                <td>class, string, array</td>
+                            </tr>
+
+                            <tr>
+                                <td>When copied</td>
+                                <td>Value is copied</td>
+                                <td>Reference is copied</td>
+                            </tr>
+
+                            <tr>
+                                <td>Can it be null?</td>
+                                <td>Normally no, nullable value types can use null</td>
+                                <td>Reference variables can be null</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- FAQ -->
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    FAQ on Data Types
+                </h5>
+
+                <ol class="text-muted">
+
+                    <li class="mb-4">
+
+                        <b>
+                            What is the main difference between a Value Type
+                            and a Reference Type?
+                        </b>
+
+                        <ul class="mt-2">
+
+                            <li>
+                                <b>Value Types</b> store their actual data directly.
+                                Examples include int, double, bool, and struct.
+                            </li>
+
+                            <li>
+                                <b>Reference Types</b> refer to an object.
+                                Examples include class, string, and arrays.
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+
+                    <li class="mb-4">
+
+                        <b>What does null mean?</b>
+
+                        <p class="mt-2">
+                            null means <b>"nothing"</b> or
+                            <b>"no reference."</b>
+                            It means that a reference does not currently point
+                            to an object.
+                        </p>
+
+                    </li>
+
+                </ol>
+
+
+                <!-- ===================================================== -->
+                <!-- PRACTICE -->
+                <!-- ===================================================== -->
+
+                <h5 class="h5 fw-bold text-dark mt-4 mb-3">
+                    Practice Example
+                </h5>
+
+                <p class="text-muted">
+                    Try changing the values below and run the program.
+                    This is a simple real-world student example.
+                </p>
+
+                <div class="try-it-example">
+
+                    <div class="code-block shadow-sm">
+
+                        <div class="code-lang-tag">
+                            C#
+                        </div>
+
+<pre class="mb-0"><code>using System;
+
+string studentName = "Rahul";
+int age = 22;
+double percentage = 85.50;
+char grade = 'A';
+bool isEnrolled = true;
+
+Console.WriteLine("Student Name: " + studentName);
+Console.WriteLine("Age: " + age);
+Console.WriteLine("Percentage: " + percentage + "%");
+Console.WriteLine("Grade: " + grade);
+Console.WriteLine("Enrolled: " + isEnrolled);</code></pre>
+
+                    </div>
+
+                    <div class="text-end mt-2 mb-3">
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryItYourself(this)">
+
+                            <i class="bi bi-play-fill me-1"></i>
+                            Try It
+
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- SUMMARY -->
+
+                <div class="alert alert-primary mt-4">
+
+                    <h5 class="fw-bold">
+                        Summary
+                    </h5>
+
+                    <ul class="mb-0">
+
+                        <li>
+                            Variables are used to store data.
+                        </li>
+
+                        <li>
+                            Every variable has a data type.
+                        </li>
+
+                        <li>
+                            Common data types include int, double, float,
+                            char, bool and string.
+                        </li>
+
+                        <li>
+                            Constants cannot be changed after assignment.
+                        </li>
+
+                        <li>
+                            Nullable variables can represent null.
+                        </li>
+
+                        <li>
+                            Value types store values directly.
+                        </li>
+
+                        <li>
+                            Reference types refer to objects.
+                        </li>
+
+                        <li>
+                            enum is used for named constant values.
+                        </li>
+
+                        <li>
+                            struct is a value type used to group related data.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- NEXT TOPIC -->
+
+                <div class="d-flex justify-content-between align-items-center mb-5">
+
+                    <a href="/CSharp/Introduction/FirstProgram"
+                       class="btn btn-outline-secondary">
+                        ← Previous Topic
+                    </a>
+
+                    <a href="/CSharp/BasicLanguage/TypeConversion"
+                       class="btn btn-primary">
+                        Next Topic →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+<script>
+
+    function tryItYourself(button) {
+
+        // Find the code example containing this button
+
+        const example = button.closest(".try-it-example");
+
+        if (!example) {
+
+            alert("Code example not found.");
+
+            return;
+
+        }
+
+        // Find only this example's code
+
+        const codeElement = example.querySelector("pre code");
+
+        if (!codeElement) {
+
+            alert("Tutorial code not found.");
+
+            return;
+
+        }
+
+        // Get exact code and preserve indentation/new lines
+
+        const code = codeElement.textContent.trim();
+
+        // Create temporary form
+
+        const form = document.createElement("form");
+
+        form.method = "POST";
+
+        form.action =
+
+            '@Url.Action("Index", "CSharpCompiler", new { area = "" })';
+
+        // IMPORTANT: Open compiler in new tab
+
+        form.target = "_blank";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+
+        input.name = "code";
+
+        input.value = code;
+
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        form.submit();
+
+        document.body.removeChild(form);
+
+    }
+
+</script>
+
+ 

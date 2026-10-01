@@ -1,0 +1,792 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Comments";
+}
+
+<style>
+
+    #html-comments-page pre {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        #html-comments-page pre code {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+    #html-comments-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 24px;
+    }
+
+    #html-comments-page .info-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+        #html-comments-page .info-card h5 {
+            color: #5b21b6;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+    #html-comments-page .example-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #html-comments-page .table-responsive {
+        margin-top: 15px;
+    }
+
+</style>
+
+
+<main id="html-comments-page"
+      class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/HTML/Views/Shared/HTMLTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <section class="col-lg-9">
+
+
+            <!-- PAGE TITLE -->
+            <div class="mb-4">
+
+                <h1 class="fw-bold">
+                    HTML Comments
+                </h1>
+
+                <p class="lead">
+                    Learn how to write comments in HTML and understand
+                    how comments help developers organize, explain, and
+                    maintain their code.
+                </p>
+
+            </div>
+
+
+            <!-- INTRODUCTION -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    What are HTML Comments?
+                </h2>
+
+                <p>
+                    HTML comments are notes written inside the HTML source code.
+                    They are not displayed as normal visible content on the
+                    rendered web page.
+                </p>
+
+                <p>
+                    Comments are mainly used by developers to explain sections
+                    of code, leave reminders, or temporarily hide specific
+                    HTML code from rendering.
+                </p>
+
+                <div class="alert alert-info">
+
+                    <strong>Basic Syntax:</strong>
+
+                    <pre class="mb-0 mt-3"><code>&lt;!-- This is an HTML comment --&gt;</code></pre>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIMPLE COMMENT -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Simple HTML Comment
+                </h2>
+
+                <pre><code>&lt;!-- Welcome to CIIT Institute --&gt;</code></pre>
+
+                <p>
+                    The browser does not display the text inside the comment
+                    as visible page content.
+                </p>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        The comment is not visible here.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMMENT WITH HTML -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Comment with HTML Code
+                </h2>
+
+                <pre><code>&lt;!--
+    &lt;h1&gt;Welcome to CIIT Institute&lt;/h1&gt;
+--&gt;</code></pre>
+
+                <p>
+                    The heading inside the comment will not be rendered as
+                    normal page content.
+                </p>
+
+                <div class="alert alert-warning">
+
+                    <strong>Important:</strong>
+
+                    HTML comments are ignored for normal visual rendering,
+                    but the comment text remains part of the page source.
+
+                </div>
+
+            </div>
+
+
+            <!-- COMMENTS FOR DOCUMENTATION -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Using Comments for Documentation
+                </h2>
+
+                <p>
+                    Comments can explain what a particular part of the HTML
+                    document is responsible for.
+                </p>
+
+                <pre><code>&lt;!-- Main Page Heading --&gt;
+
+&lt;h1&gt;
+    CIIT Institute
+&lt;/h1&gt;
+
+
+&lt;!-- Course Description --&gt;
+
+&lt;p&gt;
+    Learn HTML step-by-step.
+&lt;/p&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+                <div class="alert alert-success">
+
+                    <strong>Benefit:</strong>
+
+                    Documentation comments make the source code easier
+                    for developers to understand and maintain.
+
+                </div>
+
+            </div>
+
+
+            <!-- SECTION COMMENTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Using Comments to Mark Sections
+                </h2>
+
+                <p>
+                    Large HTML documents can be divided into logical sections
+                    by using comments.
+                </p>
+
+                <pre><code>&lt;!-- HEADER SECTION --&gt;
+
+&lt;header&gt;
+
+    &lt;h1&gt;CIIT Institute&lt;/h1&gt;
+
+&lt;/header&gt;
+
+
+&lt;!-- MAIN CONTENT SECTION --&gt;
+
+&lt;main&gt;
+
+    &lt;p&gt;
+        Welcome to the HTML course.
+    &lt;/p&gt;
+
+&lt;/main&gt;
+
+
+&lt;!-- FOOTER SECTION --&gt;
+
+&lt;footer&gt;
+
+    &lt;p&gt;
+        Copyright CIIT Institute
+    &lt;/p&gt;
+
+&lt;/footer&gt;</code></pre>
+
+            </div>
+            <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <!-- MULTI LINE COMMENTS -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Multi-Line Comments
+                </h2>
+
+                <p>
+                    HTML comments can contain multiple lines.
+                </p>
+
+                <pre><code>&lt;!--
+
+    This is a multi-line comment.
+
+    It can contain
+    multiple lines of text.
+
+--&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+                <p>
+                    Everything between the opening comment marker
+                    <code>&lt;!--</code> and the closing comment marker
+                    <code>--&gt;</code> is part of the comment.
+                </p>
+
+            </div>
+
+
+            <!-- COMMENT OUT CODE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Temporarily Disable HTML Code
+                </h2>
+
+                <p>
+                    Comments are sometimes used to temporarily prevent a
+                    block of HTML from being rendered.
+                </p>
+
+                <pre><code>&lt;!--
+
+&lt;div&gt;
+
+    &lt;h2&gt;Temporary Section&lt;/h2&gt;
+
+    &lt;p&gt;
+        This content is currently disabled.
+    &lt;/p&gt;
+
+&lt;/div&gt;
+
+--&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+                <div class="alert alert-warning">
+
+                    <strong>Note:</strong>
+
+                    This technique is useful during development, but unnecessary
+                    commented-out code should generally be removed before
+                    production when it is no longer needed.
+
+                </div>
+
+            </div>
+
+
+            <!-- COMMENTS AND BROWSER -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    How Browsers Handle Comments
+                </h2>
+
+                <p>
+                    A browser reads the HTML document and recognizes comment
+                    sections as comments rather than visible page elements.
+                </p>
+
+                <div class="concept-box">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+
+                            <div class="info-card">
+
+                                <h5>
+                                    HTML Source
+                                </h5>
+
+                                <p class="mb-0">
+                                    The comment exists inside the HTML source.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="info-card">
+
+                                <h5>
+                                    Browser
+                                </h5>
+
+                                <p class="mb-0">
+                                    The browser recognizes the comment syntax.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="info-card">
+
+                                <h5>
+                                    Web Page
+                                </h5>
+
+                                <p class="mb-0">
+                                    The comment is not displayed as normal
+                                    page content.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMMENTS IN A PAGE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Complete Example with Comments
+                </h2>
+
+                <pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;
+        HTML Comments Example
+    &lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;!-- Main Heading --&gt;
+
+    &lt;h1&gt;
+        CIIT Institute
+    &lt;/h1&gt;
+
+
+    &lt;!-- Course Description --&gt;
+
+    &lt;p&gt;
+        Learn HTML step-by-step.
+    &lt;/p&gt;
+
+
+    &lt;!-- Course Link --&gt;
+
+    &lt;a href="#"&gt;
+        Learn More
+    &lt;/a&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+            </div><div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <!-- COMMENT SYNTAX -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Comment Syntax Breakdown
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead class="table-light">
+
+                            <tr>
+
+                                <th>
+                                    Part
+                                </th>
+
+                                <th>
+                                    Syntax
+                                </th>
+
+                                <th>
+                                    Purpose
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    Opening Marker
+                                </td>
+
+                                <td>
+                                    <code>&lt;!--</code>
+                                </td>
+
+                                <td>
+                                    Starts the comment.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Comment Content
+                                </td>
+
+                                <td>
+                                    <code>Comment Text</code>
+                                </td>
+
+                                <td>
+                                    Contains the developer's note.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Closing Marker
+                                </td>
+
+                                <td>
+                                    <code>--&gt;</code>
+                                </td>
+
+                                <td>
+                                    Ends the comment.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- GOOD USES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Good Uses of HTML Comments
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Explain Code
+                            </h5>
+
+                            <p class="mb-0">
+                                Explain what a specific section of HTML does.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Mark Sections
+                            </h5>
+
+                            <p class="mb-0">
+                                Clearly identify header, main content,
+                                sidebar, and footer sections.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Development Notes
+                            </h5>
+
+                            <p class="mb-0">
+                                Leave useful notes for yourself or other
+                                developers.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Temporary Code Removal
+                            </h5>
+
+                            <p class="mb-0">
+                                Temporarily disable a section during development.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMPORTANT NOTE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Important Security Note
+                </h2>
+
+                <p>
+                    HTML comments are not a secure way to hide sensitive
+                    information.
+                </p>
+
+                <div class="alert alert-danger">
+
+                    <strong>Never store sensitive information in comments.</strong>
+
+                    Do not place passwords, secret keys, private credentials,
+                    API secrets, or confidential information inside HTML comments.
+
+                </div>
+
+            </div>
+
+
+            <!-- COMMON MISTAKES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Common Mistakes
+                </h2>
+
+                <ul>
+
+                    <li class="mb-2">
+                        Forgetting the closing <code>--&gt;</code> marker.
+                    </li>
+
+                    <li class="mb-2">
+                        Accidentally placing visible HTML content outside
+                        the comment.
+                    </li>
+
+                    <li class="mb-2">
+                        Writing sensitive information inside comments.
+                    </li>
+
+                    <li>
+                        Leaving unnecessary commented-out code in finished
+                        production pages.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Practice Exercise
+                </h2>
+
+                <ol>
+
+                    <li class="mb-2">
+                        Create a heading and add a comment above it.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a paragraph and explain it using a comment.
+                    </li>
+
+                    <li class="mb-2">
+                        Add comments before the header, main, and footer sections.
+                    </li>
+
+                    <li class="mb-2">
+                        Temporarily comment out one HTML element.
+                    </li>
+
+                    <li>
+                        Open the page in a browser and observe which content
+                        is visible.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    HTML comments are written using
+                    <code>&lt;!-- --&gt;</code>. They are used to document code,
+                    mark sections, leave development notes, and temporarily
+                    disable HTML content. Comments are not displayed as normal
+                    visible content, and sensitive information should never
+                    be stored inside them.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Paragraphs", "BasicHTML", new { area = "HTML" })">
+
+                    ← Previous: Paragraphs
+
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("LineBreaks", "BasicHTML", new { area = "HTML" })">
+
+                    Next: Line Breaks →
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>

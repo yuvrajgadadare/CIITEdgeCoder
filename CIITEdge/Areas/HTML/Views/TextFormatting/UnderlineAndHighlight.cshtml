@@ -1,0 +1,874 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "Underline and Highlight";
+}
+
+<style>
+
+    #html-underline-highlight-page pre {
+        background-color: #212529 !important;
+        color: #ffffff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        #html-underline-highlight-page pre code {
+            background: transparent !important;
+            color: #ffffff !important;
+        }
+
+    #html-underline-highlight-page .info-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+        #html-underline-highlight-page .info-card h5 {
+            color: #5b21b6;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+    #html-underline-highlight-page .example-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #html-underline-highlight-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 24px;
+    }
+
+    #html-underline-highlight-page .table th {
+        background: #f8f9fa;
+        vertical-align: middle;
+    }
+
+    #html-underline-highlight-page .table td {
+        vertical-align: middle;
+    }
+
+</style>
+
+
+<main id="html-underline-highlight-page"
+      class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/HTML/Views/Shared/HTMLTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <section class="col-lg-9">
+
+
+            <!-- PAGE TITLE -->
+            <div class="mb-4">
+
+                <h1 class="fw-bold">
+                    Underline and Highlight
+                </h1>
+
+                <p class="lead">
+                    Learn how to underline text and highlight relevant
+                    content using HTML and CSS.
+                </p>
+
+            </div>
+
+
+            <!-- INTRODUCTION -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Introduction
+                </h2>
+
+                <p>
+                    HTML and CSS provide different ways to visually distinguish
+                    text. The <code>&lt;u&gt;</code> element can represent text
+                    with an unarticulated annotation, while the
+                    <code>&lt;mark&gt;</code> element highlights text because
+                    it is relevant to the current context.
+                </p>
+
+                <div class="alert alert-info">
+
+                    <strong>Common Elements:</strong>
+
+                    <div class="mt-2">
+
+                        <code>&lt;u&gt;</code>
+                        for underline-style annotation
+
+                        <br />
+
+                        <code>&lt;mark&gt;</code>
+                        for highlighted text
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- UNDERLINE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    The &lt;u&gt; Element
+                </h2>
+
+                <p>
+                    The <code>&lt;u&gt;</code> element represents text with
+                    a non-textual annotation. Browsers commonly render it
+                    with an underline.
+                </p>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Syntax
+                </h3>
+
+                <pre><code>&lt;u&gt;Underlined Text&lt;/u&gt;</code></pre>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Example
+                </h3>
+
+                <pre><code>&lt;p&gt;
+    Learn &lt;u&gt;HTML&lt;/u&gt; step-by-step.
+&lt;/p&gt;</code></pre>
+
+               <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        Learn <u>HTML</u> step-by-step.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- UNDERLINE USE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Example Uses of &lt;u&gt;
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Annotation
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    This word has an
+    &lt;u&gt;annotation&lt;/u&gt;.
+&lt;/p&gt;</code></pre>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Misspelled Word
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    Check the
+    &lt;u&gt;speling&lt;/u&gt;
+    in this sentence.
+&lt;/p&gt;</code></pre>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- MARK -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    The &lt;mark&gt; Element
+                </h2>
+
+                <p>
+                    The <code>&lt;mark&gt;</code> element represents text
+                    that is highlighted because it is relevant to the
+                    user's current context.
+                </p>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Syntax
+                </h3>
+
+                <pre><code>&lt;mark&gt;Highlighted Text&lt;/mark&gt;</code></pre>
+
+                <h3 class="h5 fw-bold mt-4">
+                    Example
+                </h3>
+
+                <pre><code>&lt;p&gt;
+    Learn &lt;mark&gt;HTML&lt;/mark&gt; first.
+&lt;/p&gt;</code></pre>
+
+                <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+                        Learn <mark>HTML</mark> first.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MARK USES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Common Uses of &lt;mark&gt;
+                </h2>
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Search Result
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    Search result:
+    &lt;mark&gt;HTML&lt;/mark&gt;
+&lt;/p&gt;</code></pre>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Important Keyword
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    Learn
+    &lt;mark&gt;semantic HTML&lt;/mark&gt;.
+&lt;/p&gt;</code></pre>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Matching Text
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    Found:
+    &lt;mark&gt;JavaScript&lt;/mark&gt;
+&lt;/p&gt;</code></pre>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="info-card">
+
+                            <h5>
+                                Study Material
+                            </h5>
+
+                            <pre class="mb-0"><code>&lt;p&gt;
+    Focus on
+    &lt;mark&gt;HTML Tags&lt;/mark&gt;
+&lt;/p&gt;</code></pre>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- UNDERLINE VS MARK -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    &lt;u&gt; vs &lt;mark&gt;
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle">
+
+                        <thead>
+
+                            <tr>
+                                <th>Feature</th>
+                                <th>&lt;u&gt;</th>
+                                <th>&lt;mark&gt;</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    Main Purpose
+                                </td>
+
+                                <td>
+                                    Represents text with an annotation.
+                                </td>
+
+                                <td>
+                                    Highlights relevant text.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Common Browser Appearance
+                                </td>
+
+                                <td>
+                                    Underlined text.
+                                </td>
+
+                                <td>
+                                    Highlighted text.
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    Typical Example
+                                </td>
+
+                                <td>
+                                    Annotated or specially marked text.
+                                </td>
+
+                                <td>
+                                    Search matches or relevant text.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- CSS UNDERLINE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Underline Using CSS
+                </h2>
+
+                <p>
+                    When the goal is purely visual styling, CSS is usually
+                    more appropriate than using HTML semantics.
+                </p>
+
+                <pre><code>&lt;p class="underlined-text"&gt;
+    HTML Course
+&lt;/p&gt;
+
+&lt;style&gt;
+
+    .underlined-text {
+        text-decoration: underline;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0"
+                       style="text-decoration: underline;">
+
+                        HTML Course
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DIFFERENT CSS STYLES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Different Underline Styles with CSS
+                </h2>
+
+                <div class="example-box">
+
+                    <p>
+                        Solid underline:
+                    </p>
+
+                    <p style="text-decoration: underline;">
+                        HTML Course
+                    </p>
+
+                    <p>
+                        Dashed underline:
+                    </p>
+
+                    <p style="text-decoration: underline dashed;">
+                        HTML Course
+                    </p>
+
+                    <p>
+                        Dotted underline:
+                    </p>
+
+                    <p style="text-decoration: underline dotted;">
+                        HTML Course
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CUSTOM HIGHLIGHT -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Custom Highlighting with CSS
+                </h2>
+
+                <p>
+                    CSS can also be used when you need a custom visual
+                    highlighting style.
+                </p>
+
+                <pre><code>&lt;span class="custom-highlight"&gt;
+    Important Text
+&lt;/span&gt;
+
+&lt;style&gt;
+
+    .custom-highlight {
+        background-color: yellow;
+        padding: 2px 5px;
+    }
+
+&lt;/style&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+
+                <div class="example-box">
+
+                    <p class="mb-0">
+
+                        <span style="background-color: yellow; padding: 2px 5px;">
+                            Important Text
+                        </span>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMBINING -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Combining Underline and Highlight
+                </h2>
+
+                <pre><code>&lt;p&gt;
+    &lt;u&gt;
+        &lt;mark&gt;Important HTML Topic&lt;/mark&gt;
+    &lt;/u&gt;
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+                <div class="example-box">
+
+                    <p class="mb-0">
+
+                        <u>
+                            <mark>Important HTML Topic</mark>
+                        </u>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SEMANTIC DIFFERENCE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Semantic Meaning
+                </h2>
+
+                <div class="concept-box">
+
+                    <div class="row g-3">
+
+
+                        <div class="col-md-6">
+
+                            <div class="info-card">
+
+                                <h5>
+                                    &lt;u&gt;
+                                </h5>
+
+                                <p class="mb-0">
+                                    Represents text with an annotation or
+                                    non-textual distinction.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="info-card">
+
+                                <h5>
+                                    &lt;mark&gt;
+                                </h5>
+
+                                <p class="mb-0">
+                                    Indicates text that is relevant or
+                                    highlighted in the current context.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCESSIBILITY -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Accessibility Considerations
+                </h2>
+
+                <p>
+                    Text styling should not be the only way important
+                    information is communicated.
+                </p>
+
+                <div class="alert alert-warning">
+
+                    <strong>Important:</strong>
+
+                    Do not rely only on underline or highlight color to
+                    communicate critical information. The content should
+                    remain understandable through its text and structure.
+
+                </div>
+
+            </div>
+
+
+            <!-- REAL WORLD -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Real-World Example
+                </h2>
+
+                <pre><code>&lt;h2&gt;
+    HTML Course
+&lt;/h2&gt;
+
+&lt;p&gt;
+    Focus on the
+    &lt;mark&gt;HTML Tags&lt;/mark&gt;
+    chapter first.
+&lt;/p&gt;
+
+&lt;p&gt;
+    Review the
+    &lt;u&gt;important note&lt;/u&gt;
+    before continuing.
+&lt;/p&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+                <div class="example-box">
+
+                    <h3>
+                        HTML Course
+                    </h3>
+
+                    <p>
+                        Focus on the
+                        <mark>HTML Tags</mark>
+                        chapter first.
+                    </p>
+
+                    <p class="mb-0">
+                        Review the
+                        <u>important note</u>
+                        before continuing.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMMON MISTAKES -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Common Mistakes
+                </h2>
+
+                <ul>
+
+                    <li class="mb-2">
+                        Using <code>&lt;u&gt;</code> only because you want
+                        visual decoration.
+                    </li>
+
+                    <li class="mb-2">
+                        Using highlighting everywhere without a meaningful
+                        reason.
+                    </li>
+
+                    <li class="mb-2">
+                        Using color alone to communicate important information.
+                    </li>
+
+                    <li>
+                        Forgetting that CSS can control visual underline and
+                        highlight styles.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PRACTICE -->
+            <div class="mb-4">
+
+                <h2 class="h3 fw-bold">
+                    Practice Exercise
+                </h2>
+
+                <ol>
+
+                    <li class="mb-2">
+                        Underline a word using <code>&lt;u&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Highlight an important keyword using
+                        <code>&lt;mark&gt;</code>.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a custom underline using CSS.
+                    </li>
+
+                    <li class="mb-2">
+                        Create a custom highlight using CSS.
+                    </li>
+
+                    <li>
+                        Compare semantic HTML with purely visual CSS styling.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="alert alert-info mt-4">
+
+                <h2 class="h4 fw-bold">
+                    Summary
+                </h2>
+
+                <p class="mb-0">
+                    The <code>&lt;u&gt;</code> element represents text with
+                    a non-textual annotation and is commonly displayed with
+                    an underline. The <code>&lt;mark&gt;</code> element
+                    highlights text that is relevant to the current context.
+                    CSS should be used for purely visual underline or
+                    highlighting requirements.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("ItalicAndEmphasis", "TextFormatting", new { area = "HTML" })">
+
+                    ← Previous: Italic and Emphasis
+
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("SubscriptAndSuperscript", "TextFormatting", new { area = "HTML" })">
+
+                    Next: Subscript and Superscript →
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>

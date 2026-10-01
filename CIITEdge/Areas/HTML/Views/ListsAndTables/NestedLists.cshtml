@@ -1,0 +1,1222 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Nested Lists";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Nested Lists</h1>
+
+            <p class="lead">
+                Nested lists are lists placed inside another list item.
+                They are useful for representing hierarchical and grouped information.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. What is a Nested List?</h2>
+
+            <p>
+                A nested list is a list placed inside an existing
+                <code>&lt;li&gt;</code> element.
+            </p>
+
+            <p>
+                A nested list can be an unordered list, ordered list,
+                or even a combination of both.
+            </p>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Frontend
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+
+                <ul class="mt-2 mb-0">
+                    <li>
+                        Frontend
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">2. Basic Nested Unordered List</h2>
+
+            <p>
+                An unordered list can contain another unordered list.
+            </p>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Fruits
+
+        &lt;ul&gt;
+            &lt;li&gt;Apple&lt;/li&gt;
+            &lt;li&gt;Banana&lt;/li&gt;
+            &lt;li&gt;Orange&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Vegetables
+
+        &lt;ul&gt;
+            &lt;li&gt;Carrot&lt;/li&gt;
+            &lt;li&gt;Potato&lt;/li&gt;
+            &lt;li&gt;Tomato&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">3. Basic Nested Ordered List</h2>
+
+            <p>
+                An ordered list can contain another ordered list.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;
+        Frontend
+
+        &lt;ol&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ol&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Backend
+
+        &lt;ol&gt;
+            &lt;li&gt;C#&lt;/li&gt;
+            &lt;li&gt;.NET&lt;/li&gt;
+            &lt;li&gt;SQL&lt;/li&gt;
+        &lt;/ol&gt;
+
+    &lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>   
+
+
+            <div class="example-box">
+
+                <ol class="mt-2 mb-0">
+                    <li>
+                        Frontend
+                        <ol>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        Backend
+                        <ol>
+                            <li>C#</li>
+                            <li>.NET</li>
+                            <li>SQL</li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">4. Unordered List Inside Ordered List</h2>
+
+            <p>
+                Different list types can be combined.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;
+        Frontend Technologies
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Backend Technologies
+
+        &lt;ul&gt;
+            &lt;li&gt;C#&lt;/li&gt;
+            &lt;li&gt;.NET&lt;/li&gt;
+            &lt;li&gt;SQL&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">5. Ordered List Inside Unordered List</h2>
+
+            <p>
+                An ordered list can also be placed inside an unordered list item.
+            </p>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Learn Web Development
+
+        &lt;ol&gt;
+            &lt;li&gt;Learn HTML&lt;/li&gt;
+            &lt;li&gt;Learn CSS&lt;/li&gt;
+            &lt;li&gt;Learn JavaScript&lt;/li&gt;
+        &lt;/ol&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">6. Three-Level Nested List</h2>
+
+            <p>
+                Lists can contain multiple levels when the information has
+                several layers of hierarchy.
+            </p>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Web Development
+
+        &lt;ul&gt;
+
+            &lt;li&gt;
+                Frontend
+
+                &lt;ul&gt;
+                    &lt;li&gt;HTML&lt;/li&gt;
+                    &lt;li&gt;CSS&lt;/li&gt;
+                    &lt;li&gt;JavaScript&lt;/li&gt;
+                &lt;/ul&gt;
+
+            &lt;/li&gt;
+
+            &lt;li&gt;
+                Backend
+
+                &lt;ul&gt;
+                    &lt;li&gt;C#&lt;/li&gt;
+                    &lt;li&gt;.NET&lt;/li&gt;
+                    &lt;li&gt;SQL&lt;/li&gt;
+                &lt;/ul&gt;
+
+            &lt;/li&gt;
+
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+<h3 class="h5 fw-bold mt-4">
+    Output
+</h3>
+            <div class="example-box">
+
+                <ul class="mt-2 mb-0">
+                    <li>
+                        Web Development
+
+                        <ul>
+                            <li>
+                                Frontend
+
+                                <ul>
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JavaScript</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                Backend
+
+                                <ul>
+                                    <li>C#</li>
+                                    <li>.NET</li>
+                                    <li>SQL</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">7. Four-Level Nested List</h2>
+
+            <p>
+                HTML allows lists to be nested to multiple levels,
+                although excessive nesting can make content difficult to read.
+            </p>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Technology
+
+        &lt;ul&gt;
+
+            &lt;li&gt;
+                Web Development
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;
+                        Frontend
+
+                        &lt;ul&gt;
+                            &lt;li&gt;HTML&lt;/li&gt;
+                            &lt;li&gt;CSS&lt;/li&gt;
+                            &lt;li&gt;JavaScript&lt;/li&gt;
+                        &lt;/ul&gt;
+
+                    &lt;/li&gt;
+
+                &lt;/ul&gt;
+
+            &lt;/li&gt;
+
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">8. Nested List for Course Structure</h2>
+
+            <p>
+                Nested lists are useful for organizing course modules and topics.
+            </p>
+
+            <pre><code>&lt;h2&gt;Full Stack Development&lt;/h2&gt;
+
+&lt;ul&gt;
+
+    &lt;li&gt;
+        Frontend
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Backend
+
+        &lt;ul&gt;
+            &lt;li&gt;C#&lt;/li&gt;
+            &lt;li&gt;.NET&lt;/li&gt;
+            &lt;li&gt;Web API&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Database
+
+        &lt;ul&gt;
+            &lt;li&gt;SQL Server&lt;/li&gt;
+            &lt;li&gt;Queries&lt;/li&gt;
+            &lt;li&gt;Stored Procedures&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">9. Nested List for Website Navigation</h2>
+
+            <p>
+                Nested lists can represent dropdown-style navigation structures.
+            </p>
+
+            <pre><code>&lt;nav&gt;
+
+    &lt;ul&gt;
+
+        &lt;li&gt;
+            Courses
+
+            &lt;ul&gt;
+                &lt;li&gt;
+                    Web Development
+                &lt;/li&gt;
+
+                &lt;li&gt;
+                    Data Science
+                &lt;/li&gt;
+
+                &lt;li&gt;
+                    Software Testing
+                &lt;/li&gt;
+            &lt;/ul&gt;
+
+        &lt;/li&gt;
+
+        &lt;li&gt;About&lt;/li&gt;
+        &lt;li&gt;Contact&lt;/li&gt;
+
+    &lt;/ul&gt;
+
+&lt;/nav&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">10. Nested List with Links</h2>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Programming
+
+        &lt;ul&gt;
+
+            &lt;li&gt;
+                &lt;a href="java.html"&gt;Java&lt;/a&gt;
+            &lt;/li&gt;
+
+            &lt;li&gt;
+                &lt;a href="csharp.html"&gt;C#&lt;/a&gt;
+            &lt;/li&gt;
+
+            &lt;li&gt;
+                &lt;a href="python.html"&gt;Python&lt;/a&gt;
+            &lt;/li&gt;
+
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">11. Nested List for Step-by-Step Learning</h2>
+
+            <p>
+                A top-level ordered list can contain detailed unordered lists
+                under each step.
+            </p>
+
+            <pre><code>&lt;ol&gt;
+
+    &lt;li&gt;
+        Learn HTML
+
+        &lt;ul&gt;
+            &lt;li&gt;Elements&lt;/li&gt;
+            &lt;li&gt;Attributes&lt;/li&gt;
+            &lt;li&gt;Forms&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Learn CSS
+
+        &lt;ul&gt;
+            &lt;li&gt;Selectors&lt;/li&gt;
+            &lt;li&gt;Colors&lt;/li&gt;
+            &lt;li&gt;Layouts&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">12. Nested List for Product Categories</h2>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Electronics
+
+        &lt;ul&gt;
+            &lt;li&gt;Laptops&lt;/li&gt;
+            &lt;li&gt;Mobile Phones&lt;/li&gt;
+            &lt;li&gt;Tablets&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Accessories
+
+        &lt;ul&gt;
+            &lt;li&gt;Mouse&lt;/li&gt;
+            &lt;li&gt;Keyboard&lt;/li&gt;
+            &lt;li&gt;Headphones&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">13. Nested List for Organization Structure</h2>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Management
+
+        &lt;ul&gt;
+
+            &lt;li&gt;
+                Development Team
+
+                &lt;ul&gt;
+                    &lt;li&gt;Frontend Developers&lt;/li&gt;
+                    &lt;li&gt;Backend Developers&lt;/li&gt;
+                &lt;/ul&gt;
+
+            &lt;/li&gt;
+
+            &lt;li&gt;
+                Testing Team
+
+                &lt;ul&gt;
+                    &lt;li&gt;Manual Testers&lt;/li&gt;
+                    &lt;li&gt;Automation Testers&lt;/li&gt;
+                &lt;/ul&gt;
+
+            &lt;/li&gt;
+
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">14. Nested Ordered List with Custom Types</h2>
+
+            <p>
+                Different levels can use different ordered list marker styles.
+            </p>
+
+            <pre><code>&lt;ol type="I"&gt;
+
+    &lt;li&gt;
+        Frontend
+
+        &lt;ol type="A"&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ol&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Backend
+
+        &lt;ol type="A"&gt;
+            &lt;li&gt;C#&lt;/li&gt;
+            &lt;li&gt;.NET&lt;/li&gt;
+            &lt;li&gt;SQL&lt;/li&gt;
+        &lt;/ol&gt;
+
+    &lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">15. Nested Lists with CSS</h2>
+
+            <p>
+                CSS can be used to control indentation and spacing between
+                different levels.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    .main-list {
+        padding-left: 25px;
+    }
+
+    .main-list ul {
+        padding-left: 30px;
+        margin-top: 8px;
+    }
+
+    .main-list li {
+        margin-bottom: 8px;
+    }
+
+&lt;/style&gt;
+
+&lt;ul class="main-list"&gt;
+
+    &lt;li&gt;
+        Frontend
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">16. Removing Default List Markers</h2>
+
+            <p>
+                CSS can remove the default markers if a custom design is required.
+            </p>
+
+            <pre><code>&lt;style&gt;
+
+    .menu,
+    .menu ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+&lt;/style&gt;
+
+&lt;ul class="menu"&gt;
+
+    &lt;li&gt;
+        Courses
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">17. Nested Lists with Description Lists</h2>
+
+            <p>
+                Description lists can also contain other lists in their descriptions.
+            </p>
+
+            <pre><code>&lt;dl&gt;
+
+    &lt;dt&gt;Frontend Development&lt;/dt&gt;
+
+    &lt;dd&gt;
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/dd&gt;
+
+    &lt;dt&gt;Backend Development&lt;/dt&gt;
+
+    &lt;dd&gt;
+
+        &lt;ul&gt;
+            &lt;li&gt;C#&lt;/li&gt;
+            &lt;li&gt;.NET&lt;/li&gt;
+            &lt;li&gt;SQL&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/dd&gt;
+
+&lt;/dl&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">18. Nested List with Images</h2>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Programming Languages
+
+        &lt;ul&gt;
+
+            &lt;li&gt;
+                &lt;img src="java.png"
+                     alt="Java"
+                     width="30"&gt;
+                Java
+            &lt;/li&gt;
+
+            &lt;li&gt;
+                &lt;img src="csharp.png"
+                     alt="C#"
+                     width="30"&gt;
+                C#
+            &lt;/li&gt;
+
+            &lt;li&gt;
+                &lt;img src="python.png"
+                     alt="Python"
+                     width="30"&gt;
+                Python
+            &lt;/li&gt;
+
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">19. Nested List for FAQ Categories</h2>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        HTML Questions
+
+        &lt;ul&gt;
+            &lt;li&gt;What is HTML?&lt;/li&gt;
+            &lt;li&gt;What is an element?&lt;/li&gt;
+            &lt;li&gt;What is an attribute?&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        CSS Questions
+
+        &lt;ul&gt;
+            &lt;li&gt;What is CSS?&lt;/li&gt;
+            &lt;li&gt;What is a selector?&lt;/li&gt;
+            &lt;li&gt;What is the box model?&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">20. Correct Structure of Nested Lists</h2>
+
+            <p>
+                The nested list should be placed inside the relevant
+                <code>&lt;li&gt;</code> element.
+            </p>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Parent Item
+
+        &lt;ul&gt;
+            &lt;li&gt;Child Item 1&lt;/li&gt;
+            &lt;li&gt;Child Item 2&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                The nested <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code>
+                should be placed inside the parent <code>&lt;li&gt;</code>
+                when it represents sub-items of that item.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">21. Incorrect Concept</h2>
+
+            <p>
+                A nested list should not be placed as an unrelated sibling
+                when it actually belongs to a parent item.
+            </p>
+
+            <p>
+                Compare this:
+            </p>
+
+            <pre><code>&lt;ul&gt;
+    &lt;li&gt;Frontend&lt;/li&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;HTML&lt;/li&gt;
+        &lt;li&gt;CSS&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/ul&gt;</code></pre>
+
+            <p>
+                The clearer structure is:
+            </p>
+
+            <pre><code>&lt;ul&gt;
+
+    &lt;li&gt;
+        Frontend
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ul&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">22. Accessibility Considerations</h2>
+
+            <p>
+                Nested lists should represent meaningful relationships between
+                parent and child items.
+            </p>
+
+            <ul>
+                <li>Keep hierarchy logical.</li>
+                <li>Use headings when a new major section begins.</li>
+                <li>Avoid unnecessary levels of nesting.</li>
+                <li>Use list elements according to their meaning.</li>
+                <li>Keep labels descriptive and understandable.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">23. Common Mistakes</h2>
+
+            <ul>
+                <li>Placing the nested list outside the related <code>&lt;li&gt;</code>.</li>
+                <li>Creating too many nesting levels.</li>
+                <li>Using nested lists only to create visual indentation.</li>
+                <li>Mixing unrelated content in the same hierarchy.</li>
+                <li>Using inconsistent list structures.</li>
+                <li>Forgetting to close nested list elements.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">24. Practical Example</h2>
+
+            <pre><code>&lt;h1&gt;Web Development Roadmap&lt;/h1&gt;
+
+&lt;ol&gt;
+
+    &lt;li&gt;
+        Frontend Development
+
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Backend Development
+
+        &lt;ul&gt;
+            &lt;li&gt;C#&lt;/li&gt;
+            &lt;li&gt;.NET&lt;/li&gt;
+            &lt;li&gt;Web API&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        Database
+
+        &lt;ul&gt;
+            &lt;li&gt;SQL Server&lt;/li&gt;
+            &lt;li&gt;Queries&lt;/li&gt;
+            &lt;li&gt;Stored Procedures&lt;/li&gt;
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+
+&lt;/ol&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+ 
+
+            <h2 class="h3 fw-bold mt-5">25. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;Nested Lists Example&lt;/title&gt;
+
+    &lt;style&gt;
+
+        .roadmap {
+            padding-left: 25px;
+        }
+
+        .roadmap ul {
+            margin-top: 8px;
+            padding-left: 25px;
+        }
+
+        .roadmap li {
+            margin-bottom: 8px;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Full Stack Development Roadmap&lt;/h1&gt;
+
+    &lt;ol class="roadmap"&gt;
+
+        &lt;li&gt;
+
+            Frontend
+
+            &lt;ul&gt;
+                &lt;li&gt;HTML&lt;/li&gt;
+                &lt;li&gt;CSS&lt;/li&gt;
+                &lt;li&gt;JavaScript&lt;/li&gt;
+            &lt;/ul&gt;
+
+        &lt;/li&gt;
+
+        &lt;li&gt;
+
+            Backend
+
+            &lt;ul&gt;
+                &lt;li&gt;C#&lt;/li&gt;
+                &lt;li&gt;.NET&lt;/li&gt;
+                &lt;li&gt;Web API&lt;/li&gt;
+            &lt;/ul&gt;
+
+        &lt;/li&gt;
+
+        &lt;li&gt;
+
+            Database
+
+            &lt;ul&gt;
+                &lt;li&gt;SQL Server&lt;/li&gt;
+                &lt;li&gt;Queries&lt;/li&gt;
+                &lt;li&gt;Stored Procedures&lt;/li&gt;
+            &lt;/ul&gt;
+
+        &lt;/li&gt;
+
+    &lt;/ol&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <h2 class="h3 fw-bold mt-5">26. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML page containing:</strong></p>
+
+                <ol>
+                    <li>A two-level unordered list.</li>
+                    <li>A two-level ordered list.</li>
+                    <li>An ordered list containing unordered sub-lists.</li>
+                    <li>An unordered list containing ordered sub-lists.</li>
+                    <li>A three-level technology hierarchy.</li>
+                    <li>A nested course structure.</li>
+                    <li>A navigation menu with nested items.</li>
+                    <li>A product category hierarchy.</li>
+                </ol>
+            </div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    Nested lists are created by placing a <code>&lt;ul&gt;</code>
+                    or <code>&lt;ol&gt;</code> inside a parent
+                    <code>&lt;li&gt;</code>. They are useful for representing
+                    hierarchical information such as course structures,
+                    navigation menus, categories, roadmaps, and organizational
+                    data. Different list types can be combined, and CSS can be
+                    used to control indentation, spacing, and visual appearance.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("DescriptionLists", "ListsAndTables", new { area = "HTML" })">
+                    ← Previous: Description Lists
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Tables", "ListsAndTables", new { area = "HTML" })">
+                    Next: Tables →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

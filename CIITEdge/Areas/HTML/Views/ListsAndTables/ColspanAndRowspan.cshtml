@@ -1,0 +1,1145 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Colspan and Rowspan";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+
+    .demo-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+        .demo-table th,
+        .demo-table td {
+            border: 1px solid #212529;
+            padding: 10px;
+        }
+
+        .demo-table th {
+            background-color: #e9ecef;
+            font-weight: 700;
+        }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Colspan and Rowspan</h1>
+
+            <p class="lead">
+                The <code>colspan</code> and <code>rowspan</code> attributes allow
+                HTML table cells to span across multiple columns or rows.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. Introduction</h2>
+
+            <p>
+                Normally, one table cell occupies one column and one row.
+                Sometimes a table requires a cell to cover multiple columns
+                or multiple rows.
+            </p>
+
+            <p>
+                HTML provides two important attributes for this purpose:
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>colspan</code></td>
+                        <td>Allows a cell to span across multiple columns.</td>
+                    </tr>
+                    <tr>
+                        <td><code>rowspan</code></td>
+                        <td>Allows a cell to span across multiple rows.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">2. What is colspan?</h2>
+
+            <p>
+                The <code>colspan</code> attribute specifies how many columns
+                a table cell should occupy.
+            </p>
+
+            <pre><code>&lt;td colspan="2"&gt;
+    Combined Cell
+&lt;/td&gt;</code></pre>
+
+            <p>
+                In this example, the cell occupies the space of two columns.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">3. Basic colspan Example</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th colspan="2"&gt;
+            Student Information
+        &lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Output:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th colspan="2">Student Information</th>
+                    </tr>
+
+                    <tr>
+                        <td>John</td>
+                        <td>HTML</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">4. colspan="3"</h2>
+
+            <p>
+                A cell can span across three columns by using
+                <code>colspan="3"</code>.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th colspan="3"&gt;
+            Course Details
+        &lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;2 Months&lt;/td&gt;
+        &lt;td&gt;Beginner&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Output:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th colspan="3">Course Details</th>
+                    </tr>
+
+                    <tr>
+                        <td>HTML</td>
+                        <td>2 Months</td>
+                        <td>Beginner</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">5. colspan with Table Headers</h2>
+
+            <p>
+                The <code>colspan</code> attribute can be used with
+                <code>&lt;th&gt;</code> elements.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+    &lt;th colspan="3"&gt;
+        Student Performance
+    &lt;/th&gt;
+&lt;/tr&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">6. colspan with Table Data Cells</h2>
+
+            <p>
+                The <code>colspan</code> attribute can also be used with
+                <code>&lt;td&gt;</code> elements.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;td colspan="2"&gt;
+        Total
+    &lt;/td&gt;
+
+    &lt;td&gt;
+        50000
+    &lt;/td&gt;
+
+&lt;/tr&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">7. Practical colspan Example</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th colspan="3"&gt;
+            Product Information
+        &lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;th&gt;Product&lt;/th&gt;
+        &lt;th&gt;Quantity&lt;/th&gt;
+        &lt;th&gt;Price&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;Laptop&lt;/td&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td&gt;100000&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Result:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th colspan="3">Product Information</th>
+                    </tr>
+
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+
+                    <tr>
+                        <td>Laptop</td>
+                        <td>2</td>
+                        <td>100000</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">8. What is rowspan?</h2>
+
+            <p>
+                The <code>rowspan</code> attribute specifies how many rows
+                a table cell should occupy.
+            </p>
+
+            <pre><code>&lt;td rowspan="2"&gt;
+    Combined Cell
+&lt;/td&gt;</code></pre>
+
+            <p>
+                In this example, the cell occupies the space of two rows.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">9. Basic rowspan Example</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;
+            Course
+        &lt;/th&gt;
+
+        &lt;td&gt;HTML&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Output:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th rowspan="2">Course</th>
+                        <td>HTML</td>
+                    </tr>
+
+                    <tr>
+                        <td>CSS</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">10. rowspan="3"</h2>
+
+            <p>
+                A cell can span across three rows using
+                <code>rowspan="3"</code>.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+        &lt;th rowspan="3"&gt;
+            Frontend
+        &lt;/th&gt;
+
+        &lt;td&gt;HTML&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+        &lt;td&gt;JavaScript&lt;/td&gt;
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Output:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th rowspan="3">Frontend</th>
+                        <td>HTML</td>
+                    </tr>
+
+                    <tr>
+                        <td>CSS</td>
+                    </tr>
+
+                    <tr>
+                        <td>JavaScript</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">11. rowspan with th</h2>
+
+            <p>
+                The <code>rowspan</code> attribute can be used with
+                a header cell.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;th rowspan="2"&gt;
+        Student
+    &lt;/th&gt;
+
+    &lt;th&gt;Theory&lt;/th&gt;
+    &lt;th&gt;Practical&lt;/th&gt;
+
+&lt;/tr&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">12. rowspan with td</h2>
+
+            <p>
+                The <code>rowspan</code> attribute can also be used with
+                a normal data cell.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;td rowspan="2"&gt;
+        C# Course
+    &lt;/td&gt;
+
+    &lt;td&gt;Beginner&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+
+    &lt;td&gt;Advanced&lt;/td&gt;
+
+&lt;/tr&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">13. Combining colspan and rowspan</h2>
+
+            <p>
+                Both attributes can be used in the same table when a complex
+                header structure is required.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+
+        &lt;th rowspan="2"&gt;
+            Course
+        &lt;/th&gt;
+
+        &lt;th colspan="2"&gt;
+            Performance
+        &lt;/th&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;th&gt;Theory&lt;/th&gt;
+        &lt;th&gt;Practical&lt;/th&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+        &lt;td&gt;90&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Output:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <th rowspan="2">Course</th>
+                        <th colspan="2">Performance</th>
+                    </tr>
+
+                    <tr>
+                        <th>Theory</th>
+                        <th>Practical</th>
+                    </tr>
+
+                    <tr>
+                        <td>HTML</td>
+                        <td>85</td>
+                        <td>90</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">14. Student Performance Table</h2>
+
+            <p>
+                This is a common real-world example of using both
+                <code>rowspan</code> and <code>colspan</code>.
+            </p>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+
+        &lt;th rowspan="2"&gt;
+            Student
+        &lt;/th&gt;
+
+        &lt;th colspan="2"&gt;
+            Marks
+        &lt;/th&gt;
+
+        &lt;th rowspan="2"&gt;
+            Result
+        &lt;/th&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;th&gt;Theory&lt;/th&gt;
+        &lt;th&gt;Practical&lt;/th&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+        &lt;td&gt;90&lt;/td&gt;
+        &lt;td&gt;Pass&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">15. colspan in Footer</h2>
+
+            <p>
+                The <code>colspan</code> attribute is frequently used in
+                table summary or footer rows.
+            </p>
+
+            <pre><code>&lt;tfoot&gt;
+
+    &lt;tr&gt;
+
+        &lt;td colspan="2"&gt;
+            Total Amount
+        &lt;/td&gt;
+
+        &lt;td&gt;
+            105000
+        &lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/tfoot&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">16. colspan with thead and tbody</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+            &lt;th colspan="3"&gt;
+                Employee Details
+            &lt;/th&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Department&lt;/th&gt;
+            &lt;th&gt;Salary&lt;/th&gt;
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;John&lt;/td&gt;
+            &lt;td&gt;Development&lt;/td&gt;
+            &lt;td&gt;60000&lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">17. rowspan in Employee Data</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+
+        &lt;th&gt;Department&lt;/th&gt;
+        &lt;th&gt;Employee&lt;/th&gt;
+        &lt;th&gt;Role&lt;/th&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;th rowspan="2"&gt;
+            Development
+        &lt;/th&gt;
+
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;Developer&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;td&gt;David&lt;/td&gt;
+        &lt;td&gt;Senior Developer&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">18. colspan with Pricing Table</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;tr&gt;
+
+        &lt;th colspan="4"&gt;
+            Course Pricing
+        &lt;/th&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;th&gt;Course&lt;/th&gt;
+        &lt;th&gt;Duration&lt;/th&gt;
+        &lt;th&gt;Mode&lt;/th&gt;
+        &lt;th&gt;Price&lt;/th&gt;
+
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;2 Months&lt;/td&gt;
+        &lt;td&gt;Online&lt;/td&gt;
+        &lt;td&gt;15000&lt;/td&gt;
+
+    &lt;/tr&gt;
+
+&lt;/table&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">19. Complex Table Example</h2>
+
+            <pre><code>&lt;table&gt;
+
+    &lt;thead&gt;
+
+        &lt;tr&gt;
+
+            &lt;th rowspan="2"&gt;
+                Course
+            &lt;/th&gt;
+
+            &lt;th colspan="3"&gt;
+                Performance
+            &lt;/th&gt;
+
+            &lt;th rowspan="2"&gt;
+                Result
+            &lt;/th&gt;
+
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+
+            &lt;th&gt;Theory&lt;/th&gt;
+            &lt;th&gt;Practical&lt;/th&gt;
+            &lt;th&gt;Project&lt;/th&gt;
+
+        &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        &lt;tr&gt;
+
+            &lt;th scope="row"&gt;
+                HTML
+            &lt;/th&gt;
+
+            &lt;td&gt;85&lt;/td&gt;
+            &lt;td&gt;90&lt;/td&gt;
+            &lt;td&gt;95&lt;/td&gt;
+            &lt;td&gt;Pass&lt;/td&gt;
+
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+
+            &lt;th scope="row"&gt;
+                CSS
+            &lt;/th&gt;
+
+            &lt;td&gt;80&lt;/td&gt;
+            &lt;td&gt;88&lt;/td&gt;
+            &lt;td&gt;92&lt;/td&gt;
+            &lt;td&gt;Pass&lt;/td&gt;
+
+        &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+&lt;/table&gt;</code></pre>
+
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <div class="example-box">
+                <strong>Output:</strong>
+
+                <table class="demo-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Course</th>
+                            <th colspan="3">Performance</th>
+                            <th rowspan="2">Result</th>
+                        </tr>
+
+                        <tr>
+                            <th>Theory</th>
+                            <th>Practical</th>
+                            <th>Project</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th>HTML</th>
+                            <td>85</td>
+                            <td>90</td>
+                            <td>95</td>
+                            <td>Pass</td>
+                        </tr>
+
+                        <tr>
+                            <th>CSS</th>
+                            <td>80</td>
+                            <td>88</td>
+                            <td>92</td>
+                            <td>Pass</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">20. How colspan Works</h2>
+
+            <p>
+                When you use <code>colspan="3"</code>, the cell takes the
+                horizontal space of three normal cells.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;td colspan="3"&gt;
+        One cell across three columns
+    &lt;/td&gt;
+
+&lt;/tr&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="example-box">
+                <strong>Concept:</strong>
+
+                <table class="demo-table">
+                    <tr>
+                        <td colspan="3">One Cell Across Three Columns</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">21. How rowspan Works</h2>
+
+            <p>
+                When you use <code>rowspan="3"</code>, the cell takes the
+                vertical space of three normal cells.
+            </p>
+
+            <pre><code>&lt;tr&gt;
+
+    &lt;td rowspan="3"&gt;
+        One cell across three rows
+    &lt;/td&gt;
+
+    &lt;td&gt;Row 1&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr&gt;
+    &lt;td&gt;Row 2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+    &lt;td&gt;Row 3&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2 class="h3 fw-bold mt-5">22. Important Rule for colspan and rowspan</h2>
+
+            <p>
+                When using <code>colspan</code> or <code>rowspan</code>,
+                the number of cells in the affected rows must be planned carefully.
+                Otherwise, the table structure may become incorrect.
+            </p>
+
+            <div class="note-box">
+                <strong>Example:</strong>
+                If one cell uses <code>colspan="3"</code>, that cell already
+                occupies three columns. Do not add three more cells in the same
+                row expecting the table to have the same original column count.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">23. Common Mistakes</h2>
+
+            <ul>
+                <li>Using an incorrect colspan value.</li>
+                <li>Using an incorrect rowspan value.</li>
+                <li>Adding too many cells after a spanning cell.</li>
+                <li>Removing required cells from other rows.</li>
+                <li>Creating a table with inconsistent column structure.</li>
+                <li>Using spans when a simple table would be clearer.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">24. Best Practices</h2>
+
+            <ul>
+                <li>Use <code>colspan</code> for horizontal grouping.</li>
+                <li>Use <code>rowspan</code> for vertical grouping.</li>
+                <li>Use clear header structures for complex tables.</li>
+                <li>Use <code>scope</code> where appropriate for header relationships.</li>
+                <li>Keep spanning structures easy to understand.</li>
+                <li>Test complex tables carefully before using them in production.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">25. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML table containing:</strong></p>
+
+                <ol>
+                    <li>A heading spanning three columns.</li>
+                    <li>A header spanning two rows.</li>
+                    <li>A student performance section using both attributes.</li>
+                    <li>A footer using <code>colspan</code>.</li>
+                    <li>A department column using <code>rowspan</code>.</li>
+                    <li>A table with <code>thead</code>, <code>tbody</code>, and <code>tfoot</code>.</li>
+                    <li>Proper column and row headers.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">26. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;Colspan and Rowspan Example&lt;/title&gt;
+
+    &lt;style&gt;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Student Performance&lt;/h1&gt;
+
+    &lt;table&gt;
+
+        &lt;thead&gt;
+
+            &lt;tr&gt;
+
+                &lt;th rowspan="2"&gt;
+                    Student
+                &lt;/th&gt;
+
+                &lt;th colspan="3"&gt;
+                    Performance
+                &lt;/th&gt;
+
+                &lt;th rowspan="2"&gt;
+                    Result
+                &lt;/th&gt;
+
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+
+                &lt;th&gt;Theory&lt;/th&gt;
+                &lt;th&gt;Practical&lt;/th&gt;
+                &lt;th&gt;Project&lt;/th&gt;
+
+            &lt;/tr&gt;
+
+        &lt;/thead&gt;
+
+        &lt;tbody&gt;
+
+            &lt;tr&gt;
+
+                &lt;th scope="row"&gt;
+                    John
+                &lt;/th&gt;
+
+                &lt;td&gt;85&lt;/td&gt;
+                &lt;td&gt;90&lt;/td&gt;
+                &lt;td&gt;95&lt;/td&gt;
+                &lt;td&gt;Pass&lt;/td&gt;
+
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+
+                &lt;th scope="row"&gt;
+                    David
+                &lt;/th&gt;
+
+                &lt;td&gt;80&lt;/td&gt;
+                &lt;td&gt;88&lt;/td&gt;
+                &lt;td&gt;92&lt;/td&gt;
+                &lt;td&gt;Pass&lt;/td&gt;
+
+            &lt;/tr&gt;
+
+        &lt;/tbody&gt;
+
+        &lt;tfoot&gt;
+
+            &lt;tr&gt;
+
+                &lt;td colspan="4"&gt;
+                    Overall Status
+                &lt;/td&gt;
+
+                &lt;td&gt;
+                    Completed
+                &lt;/td&gt;
+
+            &lt;/tr&gt;
+
+        &lt;/tfoot&gt;
+
+    &lt;/table&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    The <code>colspan</code> attribute makes a table cell span
+                    across multiple columns, while <code>rowspan</code> makes
+                    a cell span across multiple rows. They can be used with
+                    both <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code>.
+                    These attributes are especially useful for grouped headers,
+                    reports, schedules, student results, and other complex
+                    tabular structures. Careful planning is required to keep
+                    the number of cells consistent across the table.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("TableHeaders", "ListsAndTables", new { area = "HTML" })">
+                    ← Previous: Table Headers
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Index", "Forms", new { area = "HTML" })">
+                    Next: HTML Forms →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

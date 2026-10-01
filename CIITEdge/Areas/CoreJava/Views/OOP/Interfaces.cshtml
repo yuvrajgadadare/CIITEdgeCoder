@@ -1,0 +1,1015 @@
+﻿@{
+    ViewData["Title"] = "Interfaces in Java";
+}
+
+<div class="card border-0 shadow-sm">
+
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Interfaces in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn how interfaces define contracts, support abstraction,
+                enable multiple inheritance of type, and help build loosely
+                coupled Java applications.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is an Interface?</h3>
+
+            <p>
+                An interface in Java is a reference type that defines a
+                contract that implementing classes agree to follow.
+            </p>
+
+            <p>
+                Interfaces are commonly used to achieve abstraction,
+                polymorphism, loose coupling, and multiple inheritance of
+                type.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface CiitAccount { {
+
+    void login();
+
+    void logout();
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- IMPLEMENTATION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Implementing an Interface</h3>
+
+            <p>
+                A class implements an interface using the
+                <code>implements</code> keyword.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface CiitAccount {
+
+    void login();
+
+    void logout();
+
+}
+
+class StudentAccount implements CiitAccount {
+
+    public void login() {
+
+        System.out.println("Student logged in : Accessible online classes..🤓👀");
+
+    }
+
+    public void logout() {
+
+        System.out.println("Student logged out safely..🫥");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERFACE REFERENCE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Using an Interface Reference</h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+               <pre class="mb-0"><code>CiitAccount account = new StudentAccount();
+
+account.login();
+accoutn.logout();</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>Student logged in : Accessible online classes..🤓👀
+
+Student logged out safely..🫥</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The reference type is <code>Vehicle</code>, while the actual
+                object is <code>Car</code>. This is interface-based runtime
+                polymorphism.
+            </p>
+
+        </section>
+
+
+        <!-- ABSTRACT METHODS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Abstract Methods in Interfaces</h3>
+
+            <p>
+                A traditional interface method without a body is implicitly
+                <code>public</code> and <code>abstract</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface CiitExam  {
+
+    void evaluate();
+
+}
+
+class LabExam implements CiitExam {
+        
+    @@Override
+     public void edit() {
+
+        System.out.println("Lab Exam Evaluated: Checking practical coding assignments.");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONSTANTS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Variables in Interfaces</h3>
+
+            <p>
+                Fields declared in an interface are implicitly
+                <code>public</code>, <code>static</code>, and
+                <code>final</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Configuration {
+
+    int MAX_USERS = 100;
+
+}
+
+class Application {
+
+    void showLimit() {
+
+        System.out.println(
+            Configuration.MAX_USERS
+        );
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- MULTIPLE INTERFACES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Implementing Multiple Interfaces
+            </h3>
+
+            <p>
+                A Java class can implement multiple interfaces.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Printable {
+
+    void print();
+
+}
+
+interface Scannable {
+
+    void scan();
+
+}
+
+class Printer implements Printable, Scannable {
+
+    public void print() {
+
+        System.out.println("Printing CIIT study materials and notes 🤓👀.");
+
+    }
+
+    public void scan() {
+
+        System.out.println("Scanning CIIT student admission documents.");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                This is how Java supports multiple inheritance of type without
+                allowing a class to extend multiple classes.
+            </p>
+
+        </section>
+
+
+        <!-- INTERFACE EXTENSION -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interface Inheritance
+            </h3>
+
+            <p>
+                One interface can extend another interface using
+                <code>extends</code>.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Animal {
+
+    void eat();
+
+}
+
+interface Pet extends Animal {
+
+    void play();
+
+}
+
+class Dog implements Pet {
+
+    public void eat() {
+
+        System.out.println("Dog eats");
+
+    }
+
+    public void play() {
+
+        System.out.println("Dog plays");
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- MULTIPLE INTERFACE INHERITANCE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Multiple Interface Inheritance
+            </h3>
+
+            <p>
+                An interface can extend multiple interfaces.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Camera {
+
+    void takePhoto();
+
+}
+
+interface GPS {
+
+    void locate();
+
+}
+
+interface SmartPhone extends Camera, GPS {
+
+    void call();
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- DEFAULT METHODS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Default Methods
+            </h3>
+
+            <p>
+                Since Java 8, interfaces can contain
+                <code>default</code> methods with an implementation.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Vehicle {
+
+    void start();
+
+    default void horn() {
+
+        System.out.println("Beep beep");
+
+    }
+
+}
+
+class Car implements Vehicle {
+
+    public void start() {
+
+        System.out.println("Car started");
+
+    }
+
+}
+
+Car car = new Car();
+
+car.start();
+car.horn();</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Car started
+Beep beep</code></pre>
+</div>
+
+        </section>
+
+
+        <!-- STATIC METHODS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Static Methods in Interfaces
+            </h3>
+
+            <p>
+                Interfaces can also contain static methods. These methods
+                belong to the interface itself.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface MathUtil {
+
+    static int square(int number) {
+
+        return number * number;
+
+    }
+
+}
+
+int result = MathUtil.square(5);
+
+System.out.println(result);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>25</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRIVATE METHODS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Private Methods in Interfaces
+            </h3>
+
+            <p>
+                Since Java 9, interfaces can contain private methods.
+                They are useful for sharing implementation logic between
+                default and static methods inside the interface.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Logger {
+
+    default void info(String message) {
+
+        log("INFO", message);
+
+    }
+
+    default void error(String message) {
+
+        log("ERROR", message);
+
+    }
+
+    private void log(
+        String level,
+        String message
+    ) {
+
+        System.out.println(
+            level + ": " + message
+        );
+
+    }
+
+}</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- FUNCTIONAL INTERFACE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Functional Interfaces
+            </h3>
+
+            <p>
+                A functional interface contains exactly one abstract method.
+                It can be used with lambda expressions.
+            </p>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>@@FunctionalInterface
+interface Calculator {
+
+    int calculate(int a, int b);
+
+}
+
+Calculator addition =
+    (a, b) -&gt; a + b;
+
+System.out.println(
+    addition.calculate(10, 20)
+);</code></pre>
+
+            </div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Output</div>
+
+                <pre class="mb-0"><code>30</code></pre>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERFACE VS ABSTRACT -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interface vs Abstract Class
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Feature</th>
+                            <th>Interface</th>
+                            <th>Abstract Class</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Keyword</td>
+                            <td>interface</td>
+                            <td>abstract class</td>
+                        </tr>
+
+                        <tr>
+                            <td>Class Inheritance</td>
+                            <td>Class implements it</td>
+                            <td>Class extends it</td>
+                        </tr>
+
+                        <tr>
+                            <td>Multiple Type Inheritance</td>
+                            <td>Supported</td>
+                            <td>Not through classes</td>
+                        </tr>
+
+                        <tr>
+                            <td>Constructors</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+
+                        <tr>
+                            <td>Instance Fields</td>
+                            <td>No ordinary instance fields</td>
+                            <td>Yes</td>
+                        </tr>
+
+                        <tr>
+                            <td>Default Methods</td>
+                            <td>Yes</td>
+                            <td>Not applicable</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- DI EXAMPLE -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+               Example: Payment System
+            </h3>
+
+            <div class="code-block">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>interface Payment {
+
+    void pay(double amount);
+
+}
+
+class CreditCardPayment implements Payment {
+
+    public void pay(double amount) {
+
+        System.out.println(
+            "Credit card payment: " + amount
+        );
+
+    }
+
+}
+
+class UpiPayment implements Payment {
+
+    public void pay(double amount) {
+
+        System.out.println(
+            "UPI payment: " + amount
+        );
+
+    }
+
+}
+
+class PaymentService {
+
+    void processPayment(
+        Payment payment,
+        double amount
+    ) {
+
+        payment.pay(amount);
+
+    }
+
+}</code></pre>
+
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Credit card payment: 1500.0
+UPI payment: 800.0</code></pre>
+</div>
+
+            <div class="code-block mt-3">
+
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>PaymentService service =
+    new PaymentService();
+
+service.processPayment(
+    new CreditCardPayment(),
+    1500
+);
+
+service.processPayment(
+    new UpiPayment(),
+    800
+);</code></pre>
+
+            </div>
+
+            <p class="mt-3">
+                The service depends on the <code>Payment</code> abstraction,
+                not on a specific payment implementation. This improves
+                flexibility and reduces coupling.
+            </p>
+
+        </section>
+
+
+        <!-- BENEFITS -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Benefits of Interfaces</h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Provides a clear contract between components.
+                </li>
+
+                <li class="mb-2">
+                    Supports abstraction.
+                </li>
+
+                <li class="mb-2">
+                    Enables runtime polymorphism.
+                </li>
+
+                <li class="mb-2">
+                    Supports multiple inheritance of type.
+                </li>
+
+                <li class="mb-2">
+                    Helps achieve loose coupling.
+                </li>
+
+                <li>
+                    Makes systems easier to test and extend.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Interface Best Practices</h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Keep interfaces focused and cohesive.
+                </li>
+
+                <li class="mb-2">
+                    Prefer meaningful method names that clearly express the
+                    contract.
+                </li>
+
+                <li class="mb-2">
+                    Avoid unnecessarily large interfaces.
+                </li>
+
+                <li class="mb-2">
+                    Use interfaces when multiple implementations are expected
+                    or when abstraction provides value.
+                </li>
+
+                <li>
+                    Program against interfaces when loose coupling is
+                    beneficial.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="interfaceQuestions">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#interfaceQuestionOne">
+
+                            What is an interface?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="interfaceQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#interfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            An interface defines a contract that implementing
+                            classes agree to follow. It is commonly used for
+                            abstraction and polymorphism.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#interfaceQuestionTwo">
+
+                            Can a class implement multiple interfaces?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="interfaceQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#interfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            Yes. A Java class can implement multiple
+                            interfaces.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#interfaceQuestionThree">
+
+                            Can an interface have method implementations?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="interfaceQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#interfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            Yes. Modern Java interfaces can contain default,
+                            static, and private methods with implementations.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#interfaceQuestionFour">
+
+                            Can an interface have a constructor?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="interfaceQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#interfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            No. Interfaces do not have constructors because
+                            they cannot be instantiated directly.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#interfaceQuestionFive">
+
+                            What is a functional interface?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="interfaceQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#interfaceQuestions">
+
+                        <div class="accordion-body">
+
+                            A functional interface has exactly one abstract
+                            method and can be used as the target type of a
+                            lambda expression.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">Summary</h5>
+
+                <p class="mb-0">
+                    Interfaces define contracts and are a key part of
+                    abstraction and polymorphism in Java. A class can
+                    implement multiple interfaces, while interfaces can
+                    extend other interfaces. Modern Java also supports
+                    default, static, and private interface methods.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "Polymorphism",
+                               "OOP",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+            <a href="@Url.Action(
+                               "Arrays",
+                               "DataStructuresCollections",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

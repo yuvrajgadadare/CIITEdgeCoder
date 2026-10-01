@@ -1,0 +1,833 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Form Validation";
+}
+
+<style>
+    .content-section {
+        line-height: 1.8;
+    }
+
+    .content-section h2 {
+        color: #212529 !important;
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .content-section h3 {
+        color: #374151;
+        font-weight: 600;
+        margin-top: 22px;
+        margin-bottom: 12px;
+    }
+
+    .content-section p {
+        color: #4b5563;
+    }
+
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+    pre code {
+        background: transparent !important;
+        color: #fff !important;
+    }
+
+    .info-box {
+        background: #f3f4ff;
+        border-left: 4px solid #4f46e5;
+        padding: 16px;
+        border-radius: 6px;
+        margin: 18px 0;
+    }
+
+    .demo-box {
+        border: 1px solid #dee2e6;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 18px 0;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+    }
+
+    .validation-message {
+        color: #dc3545;
+        font-size: 0.9rem;
+    }
+</style>
+
+<main id="main-content" class="container py-5">
+    <div class="row g-4">
+
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 content-section">
+
+            <h1 class="fw-bold mb-3">HTML Form Validation</h1>
+
+            <p>
+                Form validation is the process of checking whether the information entered
+                by a user is valid and complete before the form is submitted.
+            </p>
+
+            <div class="info-box">
+                <strong>Key Point:</strong>
+                HTML provides built-in validation features through attributes such as
+                <code>required</code>, <code>type</code>, <code>minlength</code>,
+                <code>maxlength</code>, <code>min</code>, <code>max</code>, and
+                <code>pattern</code>.
+            </div>
+
+            <h2>1. What is Form Validation?</h2>
+
+            <p>
+                Form validation ensures that users enter information in the expected format.
+                For example, a required field should not be empty and an email field should contain
+                an appropriate email format.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text"
+           id="name"
+           name="name"
+           required&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+            <p>
+                Here, the <code>required</code> attribute prevents the form from being submitted
+                when the name field is empty.
+            </p>
+
+            <h2>2. The required Attribute</h2>
+
+            <p>
+                The <code>required</code> attribute makes a form field mandatory.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"
+       required&gt;</code></pre>
+
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <form>
+                    <label for="required-name" class="form-label">Name</label>
+
+                    <input type="text"
+                           id="required-name"
+                           name="name"
+                           class="form-control mb-3"
+                           required>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <h2>3. Email Validation</h2>
+
+            <p>
+                Use <code>type="email"</code> when the user must enter an email address.
+                Browsers provide built-in validation for this input type.
+            </p>
+
+            <pre><code>&lt;input type="email"
+       name="email"
+       required&gt;</code></pre>
+
+            <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <form>
+                    <label for="email-demo" class="form-label">Email</label>
+
+                    <input type="email"
+                           id="email-demo"
+                           name="email"
+                           class="form-control mb-3"
+                           required>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <h2>4. Number Validation</h2>
+
+            <p>
+                The <code>number</code> input type is useful when the user must enter a numeric value.
+            </p>
+
+            <pre><code>&lt;input type="number"
+       name="age"
+       required&gt;</code></pre>
+
+            <h2>5. min and max Attributes</h2>
+
+            <p>
+                The <code>min</code> and <code>max</code> attributes define the minimum
+                and maximum allowed values for numeric inputs.
+            </p>
+
+            <pre><code>&lt;input type="number"
+       name="age"
+       min="18"
+       max="60"
+       required&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+            <div class="demo-box">
+                <label for="age-demo" class="form-label">
+                    Age (18 to 60)
+                </label>
+
+                <input type="number"
+                       id="age-demo"
+                       class="form-control"
+                       min="18"
+                       max="60">
+            </div>
+
+            <h2>6. minlength Attribute</h2>
+
+            <p>
+                The <code>minlength</code> attribute specifies the minimum number of characters
+                allowed in a text input.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"
+       minlength="5"
+       required&gt;</code></pre>
+
+            <p>
+                The user must provide at least five characters.
+            </p>
+
+            <h2>7. maxlength Attribute</h2>
+
+            <p>
+                The <code>maxlength</code> attribute specifies the maximum number of characters
+                allowed.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"
+       maxlength="20"
+       required&gt;</code></pre>
+
+            <p>
+                The browser prevents the user from entering more than the specified number of characters
+                for supported text controls.
+            </p>
+
+            <h2>8. pattern Attribute</h2>
+
+            <p>
+                The <code>pattern</code> attribute allows you to define a pattern that the
+                entered value must match.
+            </p>
+
+            <pre><code>&lt;input type="text"
+       name="username"
+       pattern="[A-Za-z]{5,}"
+       required&gt;</code></pre>
+
+            <p>
+                This example expects at least five alphabetic characters.
+            </p>
+
+            <div class="info-box">
+                <strong>Note:</strong>
+                The value of <code>pattern</code> uses a regular expression.
+                The exact pattern should be designed according to the required input format.
+            </div>
+
+            <h2>9. URL Validation</h2>
+
+            <p>
+                Use <code>type="url"</code> when the user should enter a URL.
+            </p>
+
+            <pre><code>&lt;input type="url"
+       name="website"
+       required&gt;</code></pre>
+
+            <h2>10. Date Validation</h2>
+
+            <p>
+                HTML date controls can be used when the user needs to select a date.
+            </p>
+
+            <pre><code>&lt;input type="date"
+       name="birthDate"
+       required&gt;</code></pre>
+
+       <div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+
+            <div class="demo-box">
+                <label for="date-demo" class="form-label">Date</label>
+
+                <input type="date"
+                       id="date-demo"
+                       name="date"
+                       class="form-control">
+            </div>
+
+            <h2>11. Password Validation</h2>
+
+            <p>
+                Password fields can use <code>required</code>, <code>minlength</code>,
+                and other attributes.
+            </p>
+
+            <pre><code>&lt;input type="password"
+       name="password"
+       minlength="8"
+       required&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h3>Output</h3>
+            <div class="demo-box">
+                <label for="password-demo" class="form-label">Password</label>
+
+                <input type="password"
+                       id="password-demo"
+                       name="password"
+                       class="form-control"
+                       minlength="8"
+                       required>
+            </div>
+
+            <h2>12. Required Radio Buttons</h2>
+
+            <p>
+                Radio button groups can also use the <code>required</code> attribute
+                so the user must choose an option.
+            </p>
+
+            <pre><code>&lt;input type="radio"
+       id="online"
+       name="mode"
+       value="online"
+       required&gt;
+&lt;label for="online"&gt;Online&lt;/label&gt;
+
+&lt;input type="radio"
+       id="offline"
+       name="mode"
+       value="offline"&gt;
+&lt;label for="offline"&gt;Offline&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+            <h2>13. Required Checkbox</h2>
+
+            <p>
+                A checkbox can be made mandatory using the <code>required</code> attribute.
+            </p>
+
+            <pre><code>&lt;input type="checkbox"
+       id="terms"
+       name="terms"
+       required&gt;
+
+&lt;label for="terms"&gt;
+    I agree to the terms and conditions
+&lt;/label&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>14. Validation with Select</h2>
+
+            <p>
+                A <code>&lt;select&gt;</code> element can be made mandatory using
+                <code>required</code>.
+            </p>
+
+            <pre><code>&lt;select name="course" required&gt;
+
+    &lt;option value=""&gt;
+        Select a course
+    &lt;/option&gt;
+
+    &lt;option value="dotnet"&gt;
+        .NET
+    &lt;/option&gt;
+
+    &lt;option value="java"&gt;
+        Java
+    &lt;/option&gt;
+
+&lt;/select&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="info-box">
+                Using an empty placeholder value such as
+                <code>value=""</code> allows the browser to detect that the user
+                has not selected a real option when <code>required</code> is used.
+            </div>
+
+            <h2>15. Complete Form Validation Example</h2>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="fullName"&gt;Full Name:&lt;/label&gt;
+    &lt;input type="text"
+           id="fullName"
+           name="fullName"
+           minlength="3"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="emailAddress"&gt;Email:&lt;/label&gt;
+    &lt;input type="email"
+           id="emailAddress"
+           name="email"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="age"&gt;Age:&lt;/label&gt;
+    &lt;input type="number"
+           id="age"
+           name="age"
+           min="18"
+           max="60"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+    &lt;input type="password"
+           id="password"
+           name="password"
+           minlength="8"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;input type="checkbox"
+           id="terms"
+           name="terms"
+           required&gt;
+
+    &lt;label for="terms"&gt;
+        I agree to the terms
+    &lt;/label&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>16. Browser Validation</h2>
+
+            <p>
+                Modern browsers provide built-in validation for many common HTML form controls.
+                When a value does not satisfy a validation rule, the browser can prevent
+                the form from being submitted.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;input type="email"
+           required&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>17. novalidate Attribute</h2>
+
+            <p>
+                The <code>novalidate</code> attribute disables the browser's built-in
+                validation for a form.
+            </p>
+
+            <pre><code>&lt;form novalidate&gt;
+
+    &lt;input type="email"
+           required&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                Disabling client-side validation does not remove the need for
+                server-side validation in a real application.
+            </div>
+
+            <h2>18. formnovalidate Attribute</h2>
+
+            <p>
+                The <code>formnovalidate</code> attribute can be used on a submit button
+                to bypass browser validation for that particular submission.
+            </p>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;input type="email"
+           name="email"
+           required&gt;
+
+    &lt;button type="submit"&gt;
+        Submit
+    &lt;/button&gt;
+
+    &lt;button type="submit"
+            formnovalidate&gt;
+        Skip Validation
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <h2>19. Validation Attributes Overview</h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>required</code></td>
+                            <td>Requires the user to provide a value.</td>
+                        </tr>
+                        <tr>
+                            <td><code>type="email"</code></td>
+                            <td>Validates the input as an email field.</td>
+                        </tr>
+                        <tr>
+                            <td><code>type="url"</code></td>
+                            <td>Validates the input as a URL field.</td>
+                        </tr>
+                        <tr>
+                            <td><code>min</code></td>
+                            <td>Defines the minimum allowed numeric value.</td>
+                        </tr>
+                        <tr>
+                            <td><code>max</code></td>
+                            <td>Defines the maximum allowed numeric value.</td>
+                        </tr>
+                        <tr>
+                            <td><code>minlength</code></td>
+                            <td>Defines the minimum number of characters.</td>
+                        </tr>
+                        <tr>
+                            <td><code>maxlength</code></td>
+                            <td>Defines the maximum number of characters.</td>
+                        </tr>
+                        <tr>
+                            <td><code>pattern</code></td>
+                            <td>Requires the value to match a specified pattern.</td>
+                        </tr>
+                        <tr>
+                            <td><code>novalidate</code></td>
+                            <td>Disables built-in form validation for the form.</td>
+                        </tr>
+                        <tr>
+                            <td><code>formnovalidate</code></td>
+                            <td>Disables built-in validation for a specific submit button.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>20. Client-Side vs Server-Side Validation</h2>
+
+            <p>
+                HTML validation happens in the browser and provides immediate feedback to users.
+                Server-side validation happens on the server after the form is submitted.
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Validation</th>
+                            <th>Where It Happens</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Client-side</td>
+                            <td>Browser</td>
+                            <td>Provides immediate feedback.</td>
+                        </tr>
+                        <tr>
+                            <td>Server-side</td>
+                            <td>Server</td>
+                            <td>Validates submitted data before processing.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                Client-side validation improves the user experience, but important
+                application rules should also be validated on the server.
+            </div>
+
+            <h2>21. Common Mistakes</h2>
+
+            <h3>Mistake 1: Forgetting required</h3>
+
+            <pre><code>&lt;input type="text" name="username"&gt;</code></pre>
+
+            <p>
+                Use <code>required</code> when the field must contain a value.
+            </p>
+
+            <h3>Mistake 2: Using the wrong input type</h3>
+
+            <pre><code>&lt;input type="text" name="email"&gt;</code></pre>
+
+            <p>
+                For email input, prefer:
+            </p>
+
+            <pre><code>&lt;input type="email" name="email"&gt;</code></pre>
+
+            <h3>Mistake 3: Invalid pattern</h3>
+
+            <p>
+                A poorly designed regular expression can reject valid values or accept
+                values that should not be allowed.
+            </p>
+
+            <h2>22. Best Practices</h2>
+
+            <ul>
+                <li>Use the correct HTML input type whenever possible.</li>
+                <li>Use <code>required</code> only for fields that are genuinely mandatory.</li>
+                <li>Use clear labels so users understand what information is expected.</li>
+                <li>Use <code>min</code>, <code>max</code>, <code>minlength</code>, and <code>maxlength</code> where appropriate.</li>
+                <li>Use <code>pattern</code> carefully for specific formats.</li>
+                <li>Do not rely only on client-side validation for important application data.</li>
+                <li>Provide useful error messages and clear instructions to users.</li>
+            </ul>
+
+            <h2>23. Practice Example</h2>
+
+            <p>
+                Create a registration form with the following validation rules:
+            </p>
+
+            <ul>
+                <li>Full name is required and must contain at least 3 characters.</li>
+                <li>Email is required and must use an email input.</li>
+                <li>Age must be between 18 and 60.</li>
+                <li>Password must contain at least 8 characters.</li>
+                <li>Terms and conditions must be accepted.</li>
+            </ul>
+
+            <pre><code>&lt;form&gt;
+
+    &lt;label for="name"&gt;Full Name:&lt;/label&gt;
+    &lt;input type="text"
+           id="name"
+           name="name"
+           minlength="3"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email"
+           id="email"
+           name="email"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="age"&gt;Age:&lt;/label&gt;
+    &lt;input type="number"
+           id="age"
+           name="age"
+           min="18"
+           max="60"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+    &lt;input type="password"
+           id="password"
+           name="password"
+           minlength="8"
+           required&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;input type="checkbox"
+           id="terms"
+           name="terms"
+           required&gt;
+
+    &lt;label for="terms"&gt;
+        I agree to the Terms and Conditions
+    &lt;/label&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;
+        Register
+    &lt;/button&gt;
+
+&lt;/form&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+                <p class="mb-0">
+                    HTML form validation helps ensure that users enter valid and required information.
+                    Common validation features include <code>required</code>,
+                    <code>type</code>, <code>min</code>, <code>max</code>,
+                    <code>minlength</code>, <code>maxlength</code>, and
+                    <code>pattern</code>. Built-in browser validation improves the user experience,
+                    while important data should also be validated on the server.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Buttons", "Forms", new { area = "HTML" })">
+                    ← Previous: Buttons
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Index", "SemanticHTML", new { area = "HTML" })">
+                    Next: Semantic HTML →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

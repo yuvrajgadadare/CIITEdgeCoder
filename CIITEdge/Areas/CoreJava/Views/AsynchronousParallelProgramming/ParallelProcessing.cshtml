@@ -1,0 +1,866 @@
+﻿@{
+    ViewData["Title"] = "Parallel Processing in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+               
+                <h1 class="fw-bold mb-2">Parallel Processing in Java</h1>
+                <p class="text-muted mb-0">
+                    Learn how Java executes independent tasks simultaneously using multiple CPU cores.
+                </p>
+            </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Introduction -->
+        <h2 class="fw-bold">1. What is Parallel Processing?</h2>
+
+        <p>
+            <strong>Parallel processing</strong> means performing multiple independent
+            computations at the same time, usually by using multiple CPU cores.
+        </p>
+
+        <p>
+            Parallelism can improve performance for CPU-intensive workloads such as:
+        </p>
+
+        <ul>
+            <li>Large mathematical calculations</li>
+            <li>Image and video processing</li>
+            <li>Data analysis</li>
+            <li>Large collection processing</li>
+            <li>Scientific calculations</li>
+            <li>Machine learning workloads</li>
+        </ul>
+
+        <div class="alert alert-info">
+            <strong>Important:</strong>
+            Concurrency means dealing with multiple tasks.
+            Parallelism means actually executing multiple computations at the same time.
+        </div>
+
+        <!-- Concurrency vs Parallelism -->
+        <h2 class="fw-bold mt-5">2. Concurrency vs Parallelism</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Concurrency</th>
+                        <th>Parallelism</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Multiple tasks make progress during overlapping periods.</td>
+                        <td>Multiple tasks execute simultaneously.</td>
+                    </tr>
+                    <tr>
+                        <td>Can work on a single CPU core.</td>
+                        <td>Benefits from multiple CPU cores.</td>
+                    </tr>
+                    <tr>
+                        <td>Focuses on task coordination.</td>
+                        <td>Focuses on simultaneous computation.</td>
+                    </tr>
+                    <tr>
+                        <td>Useful for I/O-bound applications.</td>
+                        <td>Often useful for CPU-bound applications.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Parallel Stream -->
+        <h2 class="fw-bold mt-5">3. Parallel Streams</h2>
+
+        <p>
+            Java Streams can process collection elements in parallel using
+            <code>parallelStream()</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        List&lt;Integer&gt; numbers =
+            List.of(1, 2, 3, 4, 5, 6, 7, 8);
+
+        numbers.parallelStream()
+               .forEach(number -&gt;
+                   System.out.println(
+                       Thread.currentThread().getName()
+                       + " : "
+                       + number
+                   )
+               );
+    }
+}</code></pre>
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>Note:</strong>
+            Parallel stream execution order is not guaranteed when using
+            <code>forEach()</code>.
+        </div>
+
+        <!-- Sequential vs Parallel -->
+        <h2 class="fw-bold mt-5">4. Sequential vs Parallel Stream</h2>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(1, 2, 3, 4, 5, 6);
+
+numbers.stream()
+       .forEach(System.out::println);
+
+numbers.parallelStream()
+       .forEach(System.out::println);</code></pre>
+        </div>
+
+        <p>
+            A sequential stream processes elements through a sequential pipeline,
+            while a parallel stream may split the work among multiple worker threads.
+        </p>
+
+        <!-- Fork Join -->
+        <h2 class="fw-bold mt-5">5. Fork/Join Framework</h2>
+
+        <p>
+            The <strong>Fork/Join Framework</strong> is designed for parallel
+            divide-and-conquer algorithms.
+        </p>
+
+        <p>
+            A large task is divided into smaller subtasks. The subtasks are processed
+            independently and their results are combined.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.RecursiveTask;
+
+class SumTask extends RecursiveTask&lt;Integer&gt; {
+
+    private final int[] numbers;
+    private final int start;
+    private final int end;
+
+    SumTask(int[] numbers, int start, int end) {
+        this.numbers = numbers;
+        this.start = start;
+        this.end = end;
+    }
+
+    @@Override
+    protected Integer compute() {
+
+        if (end - start &lt;= 2) {
+
+            int sum = 0;
+
+            for (int i = start; i &lt; end; i++) {
+                sum += numbers[i];
+            }
+
+            return sum;
+        }
+
+        int middle = (start + end) / 2;
+
+        SumTask left =
+            new SumTask(numbers, start, middle);
+
+        SumTask right =
+            new SumTask(numbers, middle, end);
+
+        left.fork();
+
+        int rightResult = right.compute();
+
+        int leftResult = left.join();
+
+        return leftResult + rightResult;
+    }
+}</code></pre>
+        </div>
+
+        <!-- ForkJoinPool -->
+        <h2 class="fw-bold mt-5">6. ForkJoinPool</h2>
+
+        <p>
+            <code>ForkJoinPool</code> manages worker threads for Fork/Join tasks.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.ForkJoinPool;
+
+ForkJoinPool pool =
+    new ForkJoinPool();
+
+int result =
+    pool.invoke(task);
+
+System.out.println(result);
+
+pool.shutdown();</code></pre>
+        </div>
+
+        <!-- RecursiveAction -->
+        <h2 class="fw-bold mt-5">7. RecursiveAction</h2>
+
+        <p>
+            Use <code>RecursiveAction</code> when a parallel task does not return a result.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.RecursiveAction;
+
+class PrintTask extends RecursiveAction {
+
+    private final int start;
+    private final int end;
+
+    PrintTask(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    @@Override
+    protected void compute() {
+
+        if (end - start &lt;= 2) {
+
+            for (int i = start; i &lt; end; i++) {
+                System.out.println(i);
+            }
+
+            return;
+        }
+
+        int middle = (start + end) / 2;
+
+        PrintTask left =
+            new PrintTask(start, middle);
+
+        PrintTask right =
+            new PrintTask(middle, end);
+
+        invokeAll(left, right);
+    }
+}</code></pre>
+        </div>
+
+        <!-- Work Stealing -->
+        <h2 class="fw-bold mt-5">8. Work-Stealing</h2>
+
+        <p>
+            The Fork/Join framework uses a <strong>work-stealing</strong> strategy.
+            When one worker finishes its own tasks, it can take available work from
+            another worker's queue.
+        </p>
+
+        <div class="alert alert-success">
+            <strong>Benefit:</strong>
+            Work-stealing helps keep worker threads busy and can improve utilization.
+        </div>
+
+        <!-- CompletableFuture -->
+        <h2 class="fw-bold mt-5">9. CompletableFuture</h2>
+
+        <p>
+            <code>CompletableFuture</code> provides an API for asynchronous computation
+            and composition of dependent tasks.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.CompletableFuture;
+
+CompletableFuture&lt;String&gt; future =
+    CompletableFuture.supplyAsync(() -&gt; {
+
+        return "Java";
+    });
+
+future.thenAccept(result -&gt; {
+
+    System.out.println(
+        "Result: " + result
+    );
+});</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Result: Java</code></pre>
+</div>
+
+        <!-- Combining -->
+        <h2 class="fw-bold mt-5">10. Combining Parallel Tasks</h2>
+
+        <p>
+            Multiple asynchronous operations can be combined using
+            <code>thenCombine()</code>.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>CompletableFuture&lt;Integer&gt; first =
+    CompletableFuture.supplyAsync(() -&gt; 10);
+
+CompletableFuture&lt;Integer&gt; second =
+    CompletableFuture.supplyAsync(() -&gt; 20);
+
+CompletableFuture&lt;Integer&gt; total =
+    first.thenCombine(
+        second,
+        (a, b) -&gt; a + b
+    );
+
+System.out.println(total.join());</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30</code></pre>
+</div>
+
+        <!-- allOf -->
+        <h2 class="fw-bold mt-5">11. Running Multiple Tasks with allOf()</h2>
+
+        <p>
+            <code>CompletableFuture.allOf()</code> can be used when multiple asynchronous
+            operations need to complete before continuing.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>CompletableFuture&lt;Void&gt; task1 =
+    CompletableFuture.runAsync(() -&gt; {
+        System.out.println("Task 1");
+    });
+
+CompletableFuture&lt;Void&gt; task2 =
+    CompletableFuture.runAsync(() -&gt; {
+        System.out.println("Task 2");
+    });
+
+CompletableFuture&lt;Void&gt; task3 =
+    CompletableFuture.runAsync(() -&gt; {
+        System.out.println("Task 3");
+    });
+
+CompletableFuture.allOf(
+    task1,
+    task2,
+    task3
+).join();
+
+System.out.println("All tasks completed");</code></pre>
+        </div>
+
+        <!-- Custom Executor -->
+        <h2 class="fw-bold mt-5">12. Custom Executor</h2>
+
+        <p>
+            Asynchronous tasks can use a custom executor when application-specific
+            thread management is required.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+ExecutorService executor =
+    Executors.newFixedThreadPool(4);
+
+CompletableFuture.runAsync(
+    () -&gt; {
+        System.out.println(
+            "Running in custom executor"
+        );
+    },
+    executor
+);
+
+executor.shutdown();</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Running in custom executor</code></pre>
+</div>
+
+        <!-- CPU Bound -->
+        <h2 class="fw-bold mt-5">13. CPU-Bound vs I/O-Bound Tasks</h2>
+
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>CPU-Bound</th>
+                        <th>I/O-Bound</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Uses significant CPU computation.</td>
+                        <td>Spends significant time waiting for I/O.</td>
+                    </tr>
+                    <tr>
+                        <td>Examples: calculations and image processing.</td>
+                        <td>Examples: database and network requests.</td>
+                    </tr>
+                    <tr>
+                        <td>Parallelism can improve throughput.</td>
+                        <td>Concurrency can improve resource utilization.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Parallel Array -->
+        <h2 class="fw-bold mt-5">14. Parallel Array Operations</h2>
+
+        <p>
+            The <code>Arrays</code> utility class provides methods such as
+            <code>parallelSort()</code> for parallel array processing.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.Arrays;
+
+int[] numbers = {
+    9, 5, 2, 8, 1, 7, 3
+};
+
+Arrays.parallelSort(numbers);
+
+System.out.println(
+    Arrays.toString(numbers)
+);</code></pre>
+        </div>
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>[1, 2, 3, 5, 7, 8, 9]</code></pre>
+</div>
+
+        <!-- Parallel Prefix -->
+        <h2 class="fw-bold mt-5">15. Parallel Prefix</h2>
+
+        <p>
+            Java arrays also provide parallel prefix operations for suitable workloads.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>import java.util.Arrays;
+
+int[] numbers = {
+    1, 2, 3, 4
+};
+
+Arrays.parallelPrefix(
+    numbers,
+    (a, b) -&gt; a + b
+);
+
+System.out.println(
+    Arrays.toString(numbers)
+);</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>[1, 3, 6, 10]</code></pre>
+</div>
+        <!-- Thread Safety -->
+        <h2 class="fw-bold mt-5">16. Thread Safety in Parallel Processing</h2>
+
+        <p>
+            Parallel code must be designed carefully when multiple tasks access shared
+            mutable state.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>List&lt;Integer&gt; results =
+    Collections.synchronizedList(
+        new ArrayList&lt;&gt;()
+    );
+
+numbers.parallelStream()
+       .forEach(number -&gt; {
+           results.add(number * 2);
+       });</code></pre>
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>Better approach:</strong>
+            Prefer stream operations that avoid shared mutable state whenever possible.
+        </div>
+
+        <!-- Reduction -->
+        <h2 class="fw-bold mt-5">17. Parallel Reduction</h2>
+
+        <p>
+            Reduction combines multiple elements into a single result.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(1, 2, 3, 4, 5);
+
+int sum =
+    numbers.parallelStream()
+           .reduce(
+               0,
+               Integer::sum
+           );
+
+System.out.println(sum);</code></pre>
+        </div>
+
+        <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>15</code></pre>
+</div>
+        <!-- Ordered -->
+        <h2 class="fw-bold mt-5">18. Ordering in Parallel Streams</h2>
+
+        <p>
+            Parallel streams do not automatically guarantee encounter order for
+            every terminal operation.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(1, 2, 3, 4, 5);
+
+numbers.parallelStream()
+       .forEach(number -&gt;
+           System.out.println(number)
+       );
+
+numbers.parallelStream()
+       .forEachOrdered(number -&gt;
+           System.out.println(number)
+       );</code></pre>
+        </div>
+
+        <p>
+            Use <code>forEachOrdered()</code> when encounter order needs to be preserved,
+            understanding that ordering can reduce some parallel performance benefits.
+        </p>
+
+        <!-- Performance -->
+        <h2 class="fw-bold mt-5">19. Parallel Processing and Performance</h2>
+
+        <p>
+            Parallel processing is not automatically faster.
+            Creating tasks, scheduling work, synchronization, communication, and combining
+            results all introduce overhead.
+        </p>
+
+        <div class="alert alert-info">
+            <strong>Rule of thumb:</strong>
+            Parallelism is most useful when tasks are sufficiently independent and
+            large enough to justify the overhead.
+        </div>
+
+        <!-- Common Problems -->
+        <h2 class="fw-bold mt-5">20. Common Problems</h2>
+
+        <ul>
+            <li>Race conditions</li>
+            <li>Data corruption</li>
+            <li>Excessive synchronization</li>
+            <li>Thread contention</li>
+            <li>Deadlocks</li>
+            <li>Too many tasks</li>
+            <li>Unexpected ordering</li>
+            <li>Parallel overhead</li>
+        </ul>
+
+        <!-- Best Practices -->
+        <h2 class="fw-bold mt-5">21. Parallel Processing Best Practices</h2>
+
+        <ul>
+            <li>Use parallelism only when it provides a real performance benefit.</li>
+            <li>Prefer immutable data where possible.</li>
+            <li>Avoid shared mutable state.</li>
+            <li>Use Fork/Join for divide-and-conquer workloads.</li>
+            <li>Use parallel streams for suitable collection operations.</li>
+            <li>Use CompletableFuture for asynchronous task composition.</li>
+            <li>Measure performance instead of assuming parallel code is faster.</li>
+            <li>Use appropriate executors for application workloads.</li>
+            <li>Keep tasks reasonably independent.</li>
+            <li>Handle exceptions from asynchronous tasks carefully.</li>
+        </ul>
+
+        <!-- Real World -->
+        <h2 class="fw-bold mt-5">22. Example 🌍❤️</h2>
+
+        <p>
+            Consider an application that needs to process thousands of images.
+            Each image can be processed independently.
+        </p>
+
+        <div class="code-block mb-4">
+            <span class="code-lang-tag">Java</span>
+            <pre class="mb-0"><code>List&lt;String&gt; images =
+    List.of(
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg"
+    );
+
+images.parallelStream()
+      .forEach(image -&gt; {
+
+          System.out.println(
+              "Processing " + image
+              + " on "
+              + Thread.currentThread().getName()
+          );
+      });</code></pre>
+        </div>
+
+        <p>
+            Since each image can be processed independently, the work is a good candidate
+            for parallel execution.
+        </p>
+
+        <!-- Interview -->
+        <h2 class="fw-bold mt-5">23. Interview Questions</h2>
+
+        <div class="accordion mb-4" id="parallelQuestions">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#parallelQuestionOne">
+                        What is parallel processing?
+                    </button>
+                </h2>
+
+                <div id="parallelQuestionOne"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#parallelQuestions">
+
+                    <div class="accordion-body">
+                        Parallel processing executes independent computations simultaneously,
+                        typically using multiple CPU cores.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#parallelQuestionTwo">
+                        What is a parallel stream?
+                    </button>
+                </h2>
+
+                <div id="parallelQuestionTwo"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#parallelQuestions">
+
+                    <div class="accordion-body">
+                        A parallel stream allows stream operations to be divided among
+                        multiple worker threads.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#parallelQuestionThree">
+                        What is Fork/Join?
+                    </button>
+                </h2>
+
+                <div id="parallelQuestionThree"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#parallelQuestions">
+
+                    <div class="accordion-body">
+                        Fork/Join is a Java framework for divide-and-conquer parallel
+                        algorithms using worker threads and work-stealing.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#parallelQuestionFour">
+                        Is parallel processing always faster?
+                    </button>
+                </h2>
+
+                <div id="parallelQuestionFour"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#parallelQuestions">
+
+                    <div class="accordion-body">
+                        No. Task management, scheduling, synchronization, and communication
+                        introduce overhead, so small tasks may be faster sequentially.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#parallelQuestionFive">
+                        What is work-stealing?
+                    </button>
+                </h2>
+
+                <div id="parallelQuestionFive"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#parallelQuestions">
+
+                    <div class="accordion-body">
+                        Work-stealing allows an idle worker to take available tasks
+                        from another worker's queue.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#parallelQuestionSix">
+                        When should parallel streams be avoided?
+                    </button>
+                </h2>
+
+                <div id="parallelQuestionSix"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#parallelQuestions">
+
+                    <div class="accordion-body">
+                        Avoid them for very small workloads, operations with significant
+                        shared mutable state, or workloads where parallel overhead exceeds
+                        the performance benefit.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="alert alert-success mt-5">
+            <h4 class="fw-bold">Summary</h4>
+
+            <p class="mb-2">
+                In this lesson, you learned:
+            </p>
+
+            <ul class="mb-0">
+                <li>Parallel processing and parallelism</li>
+                <li>Concurrency vs parallelism</li>
+                <li>Parallel streams</li>
+                <li>Fork/Join Framework</li>
+                <li>RecursiveTask and RecursiveAction</li>
+                <li>ForkJoinPool and work-stealing</li>
+                <li>CompletableFuture</li>
+                <li>Combining asynchronous tasks</li>
+                <li>Parallel array operations</li>
+                <li>CPU-bound vs I/O-bound workloads</li>
+                <li>Thread safety and shared state</li>
+                <li>Performance considerations</li>
+                <li>Parallel processing best practices</li>
+            </ul>
+        </div>
+
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+
+            <a class="btn btn-outline-secondary px-4"
+               href="@Url.Action("Multithreading", "AsynchronousParallelProgramming", new { area = "CoreJava" })">
+                ← Previous: Topic
+            </a>
+
+            <a class="btn btn-primary px-4"
+               href="@Url.Action("VarKeyword", "ModernJava", new { area = "CoreJava" })">
+                Next: Topic
+            </a>
+
+        </div>
+
+    </div>
+</div>

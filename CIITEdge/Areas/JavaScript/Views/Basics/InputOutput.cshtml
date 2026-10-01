@@ -1,0 +1,817 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Input and Output";
+}
+
+<style>
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    #javascript-inputoutput-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-inputoutput-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================================================
+       TITLES
+       ========================================================= */
+
+    #javascript-inputoutput-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-inputoutput-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-inputoutput-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-inputoutput-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+
+    /* =========================================================
+       CONCEPT BOX
+       ========================================================= */
+
+    #javascript-inputoutput-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    #javascript-inputoutput-page .concept-box h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-inputoutput-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       ONLINE IMAGE
+       ========================================================= */
+
+    #javascript-inputoutput-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-inputoutput-page .input-output-image {
+        width: 100%;
+        max-height: 420px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-inputoutput-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+
+    /* =========================================================
+       CARDS
+       ========================================================= */
+
+    #javascript-inputoutput-page .io-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #javascript-inputoutput-page .io-card h5 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #javascript-inputoutput-page .io-card p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       DIAGRAM
+       ========================================================= */
+
+    #javascript-inputoutput-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-inputoutput-page .diagram-title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #5b21b6;
+        margin-bottom: 22px;
+    }
+
+    #javascript-inputoutput-page .diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-inputoutput-page .diagram-item {
+        min-width: 135px;
+        padding: 16px;
+        background: #ffffff;
+        border: 1px solid #d8dee9;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        color: #212529;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+    }
+
+    #javascript-inputoutput-page .diagram-arrow {
+        font-size: 24px;
+        font-weight: 700;
+        color: #5b21b6;
+    }
+
+
+    /* =========================================================
+       CODE
+       ========================================================= */
+
+    #javascript-inputoutput-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-inputoutput-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin: 0;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    #javascript-inputoutput-page .code-box code {
+        color: #ffffff;
+    }
+
+
+    /* =========================================================
+       TRY IT
+       ========================================================= */
+
+    #javascript-inputoutput-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 28px;
+    }
+
+    #javascript-inputoutput-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        min-width: 105px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-inputoutput-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+        transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       OUTPUT
+       ========================================================= */
+
+    #javascript-inputoutput-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 7px;
+        padding: 15px 17px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       SUMMARY
+       ========================================================= */
+
+    #javascript-inputoutput-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-inputoutput-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-inputoutput-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    #javascript-inputoutput-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-inputoutput-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    #javascript-inputoutput-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-inputoutput-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-inputoutput-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-inputoutput-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+</style>
+
+
+<main id="javascript-inputoutput-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - TUTORIAL CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- =================================================
+                     PAGE TITLE
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    Input and Output
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript receives values and displays
+                    information while running a program.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS INPUT AND OUTPUT?
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    What are Input and Output?
+                </h2>
+
+                <p class="section-text">
+                    <strong>Input</strong> means providing data to a program.
+                    <strong>Output</strong> means displaying the result
+                    produced by the program.
+                </p>
+
+                <p class="section-text">
+                    In browser-based JavaScript, input can come from
+                    HTML forms, buttons, text fields, and browser APIs.
+                    Output can be displayed on the page or in the
+                    browser console.
+                </p>
+
+
+                <!-- =================================================
+                     ONLINE IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Variables/boxes.png"
+                         alt="JavaScript data flow and values"
+                         class="input-output-image" />
+
+                    <p class="image-caption">
+                        JavaScript works with values supplied by the
+                        application and produces results from those values.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BASIC TYPES
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Common Input and Output Methods
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="io-card">
+
+                            <h5>
+                                Input
+                            </h5>
+
+                            <p>
+                                User input commonly comes from HTML
+                                forms, text boxes, buttons, and browser
+                                APIs.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="io-card">
+
+                            <h5>
+                                Output
+                            </h5>
+
+                            <p>
+                                JavaScript can display information using
+                                console.log() or by updating HTML content.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     SIMPLE DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Simple Input and Output Flow
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Data Flow
+                    </div>
+
+                    <div class="diagram">
+
+                        <div class="diagram-item">
+                            Input
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            JavaScript
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Processing
+                        </div>
+
+                        <div class="diagram-arrow">
+                            →
+                        </div>
+
+                        <div class="diagram-item">
+                            Output
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CONSOLE OUTPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Console Output
+                </h2>
+
+                <p class="section-text">
+                    The <strong>console.log()</strong> method displays
+                    values in the browser console. It is commonly used
+                    while learning and debugging JavaScript.
+                </p>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Displaying Output
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const institute = "CIIT Training Institute";
+const course = "JavaScript";
+
+console.log("Institute:", institute);
+console.log("Course:", course);
+console.log("Learning JavaScript ❤️🧑‍🎓.....!");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryOutputExample()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Institute: CIIT Training Institute<br />
+                    Course: JavaScript<br />
+                    Learning JavaScript ❤️🧑‍🎓.....!
+
+                </div>
+
+
+                <!-- =================================================
+                     INPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Using Input Values
+                </h2>
+
+                <p class="section-text">
+                    In a real web application, a value can come from
+                    an input field. Here we use a variable to represent
+                    the value received by the program.
+                </p>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Input Value and Output
+                </h2>
+
+                <div class="code-section">
+
+                    <pre class="code-box"><code>const studentName = "Shivani";
+const marks = 88;
+
+console.log("Student Name:", studentName);
+console.log("Marks:", marks);
+
+console.log(studentName + " is learning JavaScript.");</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryInputExample()">
+
+                            <span>
+                                ▶
+                            </span>
+
+                            <span>
+                                Try It
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OUTPUT -->
+
+                <h2 class="section-title">
+                    Output
+                </h2>
+
+                <div class="output-box">
+
+                    Student Name: Shivani<br />
+                    Marks: 88<br />
+                    Shivani is learning JavaScript.
+
+                </div>
+
+
+                <!-- =================================================
+                     HTML INPUT
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Input from an HTML Form
+                </h2>
+
+                <p class="section-text">
+                    In browser applications, JavaScript can read values
+                    entered into HTML input elements and then process
+                    those values.
+                </p>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Example
+                    </h5>
+
+                    <p>
+                        A student can enter a name in a text box.
+                        JavaScript can read that value and display
+                        a greeting on the page.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT POINT
+                     ================================================= -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Important Point
+                    </h5>
+
+                    <p>
+                        Input is the data received by a program.
+                        Output is the information produced by the program.
+                        In browser applications, JavaScript often connects
+                        HTML input elements with JavaScript logic.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        Input provides data to a JavaScript program,
+                        while output displays the result. JavaScript
+                        commonly uses console.log() for console output
+                        and can also read values from HTML form elements.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTTOM NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("TypeConversion", "Basics", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Previous: Type Conversion
+                        </span>
+
+                    </a>
+
+
+                    <a href="@Url.Action("Index", "OperatorsControlFlow", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        <span>
+                            Next: Operators &amp; Control Flow
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+
+    }
+
+
+    function tryOutputExample() {
+
+        const code =
+            'const institute = "CIIT Training Institute";\n' +
+            'const course = "JavaScript";\n' +
+            '\n' +
+            'console.log("Institute:", institute);\n' +
+            'console.log("Course:", course);\n' +
+            'console.log("Learning JavaScript ❤️🧑‍🎓.....!");';
+
+        openCompiler(code);
+
+    }
+
+
+    function tryInputExample() {
+
+        const code =
+            'const studentName = "Shivani";\n' +
+            'const marks = 88;\n' +
+            '\n' +
+            'console.log("Student Name:", studentName);\n' +
+            'console.log("Marks:", marks);\n' +
+            '\n' +
+            'console.log(studentName + " is learning JavaScript.");';
+
+        openCompiler(code);
+
+    }
+
+</script>

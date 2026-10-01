@@ -1,0 +1,732 @@
+﻿@{
+    Layout = "~/Areas/HTML/Views/Shared/HTMLLayout.cshtml";
+    ViewData["Title"] = "HTML Iframes";
+}
+
+<style>
+    pre {
+        background-color: #212529 !important;
+        color: #fff !important;
+        border-radius: 8px;
+        padding: 16px !important;
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+
+        pre code {
+            background: transparent !important;
+            color: #fff !important;
+        }
+
+    .example-box {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        margin-top: 15px;
+        background-color: #f8f9fa;
+    }
+
+    .output-box {
+        border-left: 4px solid #0d6efd;
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .note-box {
+        border-left: 4px solid #ffc107;
+        background-color: #fff8e1;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+
+    .iframe-demo {
+        width: 100%;
+        min-height: 250px;
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+
+    table th,
+    table td {
+        vertical-align: middle;
+    }
+</style>
+
+<main id="main" class="container py-5">
+
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            @Html.Partial("~/Areas/HTML/Views/Shared/HTMLTopics.cshtml")
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9">
+
+            <h1 class="display-5 fw-bold mb-3">HTML Iframes</h1>
+
+            <p class="lead">
+                HTML iframes allow you to embed another HTML document or supported
+                web content inside the current webpage.
+            </p>
+
+            <hr class="my-4" />
+
+            <h2 class="h3 fw-bold">1. What is an iframe?</h2>
+
+            <p>
+                An iframe, or inline frame, is created using the
+                <code>&lt;iframe&gt;</code> element.
+                It allows another document or supported external resource to be
+                displayed inside the current webpage.
+            </p>
+
+            <pre><code>&lt;iframe src="page.html"&gt;&lt;/iframe&gt;</code></pre>
+
+            <p>
+                Iframes are commonly used for embedded documents, maps,
+                videos, external widgets, and other supported content.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">2. Basic iframe Syntax</h2>
+
+            <p>
+                The basic syntax of an iframe is:
+            </p>
+
+            <pre><code>&lt;iframe
+    src="page.html"
+    width="600"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Specifies the resource to display.</td>
+                    </tr>
+                    <tr>
+                        <td><code>width</code></td>
+                        <td>Specifies the iframe width.</td>
+                    </tr>
+                    <tr>
+                        <td><code>height</code></td>
+                        <td>Specifies the iframe height.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">3. The src Attribute</h2>
+
+            <p>
+                The <code>src</code> attribute specifies the URL or path of
+                the content that should be displayed inside the iframe.
+            </p>
+
+            <pre><code>&lt;iframe src="about.html"&gt;&lt;/iframe&gt;</code></pre>
+
+            <p>
+                A relative path can be used for a page within the same website.
+            </p>
+
+            <pre><code>&lt;iframe src="pages/contact.html"&gt;&lt;/iframe&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">4. Embedding Another HTML Page</h2>
+
+            <p>
+                An HTML page can be embedded inside another HTML page.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="about.html"
+    width="600"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <div class="example-box">
+                <strong>Example Structure:</strong>
+
+                <pre><code>website/
+│
+├── index.html
+├── about.html
+└── contact.html</code></pre>
+
+                <p class="mb-0">
+                    The <code>index.html</code> page can display
+                    <code>about.html</code> inside an iframe.
+                </p>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">5. width Attribute</h2>
+
+            <p>
+                The <code>width</code> attribute specifies the width of the iframe.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="about.html"
+    width="700"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <p>
+                CSS is generally preferred when you need flexible or responsive sizing.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">6. height Attribute</h2>
+
+            <p>
+                The <code>height</code> attribute specifies the height of the iframe.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="about.html"
+    width="700"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">7. title Attribute</h2>
+
+            <p>
+                The <code>title</code> attribute provides an accessible name
+                describing the iframe content.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="about.html"
+    title="About Our Company"
+    width="700"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Give an iframe a meaningful <code>title</code>, especially when
+                the embedded content has an important purpose.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">8. border Styling</h2>
+
+            <p>
+                CSS can be used to add a border around an iframe.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="about.html"
+    title="About Page"
+    style="border:2px solid #0d6efd;"
+    width="700"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">9. Responsive Iframe</h2>
+
+            <p>
+                An iframe can be made responsive by using CSS.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="about.html"
+    title="About Page"
+    style="width:100%; height:400px; border:0;"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <div class="example-box">
+                <strong>Benefits:</strong>
+                <ul class="mt-2 mb-0">
+                    <li>Fits different screen widths.</li>
+                    <li>Works better on mobile devices.</li>
+                    <li>Prevents unnecessary horizontal scrolling.</li>
+                </ul>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">10. Embedding a Map</h2>
+
+            <p>
+                One common use of iframes is embedding a map supplied by a map provider.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="https://www.google.com/maps/embed?pb=..."
+    width="600"
+    height="450"
+    style="border:0;"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Location Map"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <p>
+                A map provider may give you an embed code that can be placed
+                directly into your webpage.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">11. Embedding a Video</h2>
+
+            <p>
+                Iframes are commonly used to embed videos from platforms that
+                provide an official embed URL or embed code.
+            </p>
+
+            <pre><code>&lt;iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="HTML Tutorial Video"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Note:</strong>
+                Use the official embed option provided by the video platform.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">12. allowfullscreen Attribute</h2>
+
+            <p>
+                The <code>allowfullscreen</code> attribute allows embedded
+                content to use fullscreen mode when supported.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="Tutorial Video"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">13. loading Attribute</h2>
+
+            <p>
+                The <code>loading</code> attribute provides a loading hint
+                for the iframe.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>lazy</code></td>
+                        <td>Defers loading until the iframe is near the viewport.</td>
+                    </tr>
+                    <tr>
+                        <td><code>eager</code></td>
+                        <td>Loads the iframe without deferring based on viewport proximity.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pre><code>&lt;iframe
+    src="contact.html"
+    title="Contact Page"
+    loading="lazy"
+    width="600"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">14. sandbox Attribute</h2>
+
+            <p>
+                The <code>sandbox</code> attribute applies restrictions to the
+                content loaded inside an iframe.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="embedded-page.html"
+    title="Embedded Page"
+    sandbox
+    width="600"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <p>
+                You can also provide specific sandbox permissions.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="embedded-page.html"
+    title="Embedded Page"
+    sandbox="allow-forms allow-scripts"
+    width="600"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <div class="note-box">
+                <strong>Important:</strong>
+                Sandbox permissions should be granted only when the embedded
+                content actually requires them.
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">15. referrerpolicy Attribute</h2>
+
+            <p>
+                The <code>referrerpolicy</code> attribute controls how much
+                referrer information is sent when the iframe loads its resource.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="https://example.com"
+    title="Example Website"
+    referrerpolicy="no-referrer"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">16. name Attribute</h2>
+
+            <p>
+                The <code>name</code> attribute gives the browsing context a name.
+                Links or forms can target a named iframe.
+            </p>
+
+            <pre><code>&lt;iframe
+    name="contentFrame"
+    src="page1.html"
+    title="Content Frame"
+    width="600"
+    height="400"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <p>
+                A link can target that iframe:
+            </p>
+
+            <pre><code>&lt;a href="page2.html" target="contentFrame"&gt;
+    Open Page 2
+&lt;/a&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">17. sandbox Tokens</h2>
+
+            <p>
+                The sandbox feature supports tokens that selectively relax
+                particular restrictions.
+            </p>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Token</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>allow-forms</code></td>
+                        <td>Allows form submission.</td>
+                    </tr>
+                    <tr>
+                        <td><code>allow-modals</code></td>
+                        <td>Allows modal-like features such as certain dialog APIs.</td>
+                    </tr>
+                    <tr>
+                        <td><code>allow-popups</code></td>
+                        <td>Allows certain popup creation.</td>
+                    </tr>
+                    <tr>
+                        <td><code>allow-presentation</code></td>
+                        <td>Allows presentation-related features.</td>
+                    </tr>
+                    <tr>
+                        <td><code>allow-same-origin</code></td>
+                        <td>Preserves the embedded content's origin.</td>
+                    </tr>
+                    <tr>
+                        <td><code>allow-scripts</code></td>
+                        <td>Allows scripts to run inside the sandbox.</td>
+                    </tr>
+                    <tr>
+                        <td><code>allow-downloads</code></td>
+                        <td>Allows downloads from the framed content where permitted.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">18. iframe with CSS Class</h2>
+
+            <p>
+                A CSS class can be used when the same iframe styling is required
+                in multiple places.
+            </p>
+
+            <pre><code>&lt;style&gt;
+    .content-frame {
+        width: 100%;
+        height: 450px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+    }
+&lt;/style&gt;
+
+&lt;iframe
+    class="content-frame"
+    src="about.html"
+    title="About Page"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">19. iframe Fallback Content</h2>
+
+            <p>
+                Content placed between the opening and closing
+                <code>&lt;iframe&gt;</code> tags can act as fallback content
+                for browsers that do not support iframes.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="about.html"
+    title="About Page"
+    width="600"
+    height="400"&gt;
+
+    Your browser does not support iframes.
+
+&lt;/iframe&gt;</code></pre>
+
+            <h2 class="h3 fw-bold mt-5">20. iframe and Same-Origin Concept</h2>
+
+            <p>
+                An iframe can display content from the same website or from
+                another origin, depending on the resource and the browser's
+                security rules.
+            </p>
+
+            <pre><code>&lt;iframe
+    src="/pages/about.html"
+    title="About Page"&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <p>
+                Browser security controls how documents from different origins
+                can interact with one another.
+            </p>
+
+            <h2 class="h3 fw-bold mt-5">21. iframe Security Considerations</h2>
+
+            <p>
+                When embedding content from another source, it is important to
+                understand the permissions being granted to that content.
+            </p>
+
+            <ul>
+                <li>Use trusted sources.</li>
+                <li>Use <code>sandbox</code> when appropriate.</li>
+                <li>Grant only required permissions.</li>
+                <li>Use an appropriate <code>referrerpolicy</code> when needed.</li>
+                <li>Avoid embedding unknown or untrusted content.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">22. Example: Complete Responsive iframe</h2>
+
+            <pre><code>&lt;style&gt;
+    .responsive-frame {
+        width: 100%;
+        height: 450px;
+        border: 0;
+        border-radius: 8px;
+    }
+&lt;/style&gt;
+
+&lt;iframe
+    class="responsive-frame"
+    src="about.html"
+    title="About Our Website"
+    loading="lazy"
+    referrerpolicy="no-referrer"&gt;
+&lt;/iframe&gt;</code></pre>
+
+
+
+            <h2 class="h3 fw-bold mt-5">23. Common iframe Attributes</h2>
+
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Purpose</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>src</code></td>
+                        <td>Specifies the embedded resource.</td>
+                        <td><code>src="about.html"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>width</code></td>
+                        <td>Specifies iframe width.</td>
+                        <td><code>width="600"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>height</code></td>
+                        <td>Specifies iframe height.</td>
+                        <td><code>height="400"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>title</code></td>
+                        <td>Provides an accessible name.</td>
+                        <td><code>title="About Page"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>loading</code></td>
+                        <td>Provides a loading hint.</td>
+                        <td><code>loading="lazy"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>sandbox</code></td>
+                        <td>Applies restrictions to embedded content.</td>
+                        <td><code>sandbox</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>allowfullscreen</code></td>
+                        <td>Allows fullscreen when supported.</td>
+                        <td><code>allowfullscreen</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>name</code></td>
+                        <td>Names the iframe browsing context.</td>
+                        <td><code>name="contentFrame"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>referrerpolicy</code></td>
+                        <td>Controls referrer information.</td>
+                        <td><code>referrerpolicy="no-referrer"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h3 fw-bold mt-5">24. Common Mistakes</h2>
+
+            <ul>
+                <li>Using an incorrect iframe URL.</li>
+                <li>Embedding untrusted content.</li>
+                <li>Forgetting the <code>title</code> attribute.</li>
+                <li>Using fixed dimensions that do not work on mobile devices.</li>
+                <li>Giving unnecessary sandbox permissions.</li>
+                <li>Embedding content that the external server does not allow to be framed.</li>
+                <li>Using too many iframes and making the page unnecessarily heavy.</li>
+            </ul>
+
+            <h2 class="h3 fw-bold mt-5">25. Practice Task</h2>
+
+            <div class="example-box">
+                <p><strong>Create an HTML page containing:</strong></p>
+
+                <ol>
+                    <li>An iframe that loads another local HTML page.</li>
+                    <li>An iframe with a meaningful <code>title</code>.</li>
+                    <li>A responsive iframe using CSS.</li>
+                    <li>An iframe with <code>loading="lazy"</code>.</li>
+                    <li>A video embed using an official embed URL.</li>
+                    <li>An iframe with the <code>sandbox</code> attribute.</li>
+                    <li>A named iframe targeted by a hyperlink.</li>
+                </ol>
+            </div>
+
+            <h2 class="h3 fw-bold mt-5">26. Complete Practice Example</h2>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+
+    &lt;title&gt;HTML iframe Example&lt;/title&gt;
+
+    &lt;style&gt;
+        .content-frame {
+            width: 100%;
+            height: 450px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Embedded Content&lt;/h1&gt;
+
+    &lt;iframe
+        class="content-frame"
+        src="about.html"
+        title="About Our Website"
+        loading="lazy"&gt;
+
+        Your browser does not support iframes.
+
+    &lt;/iframe&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;iframe
+        class="content-frame"
+        src="contact.html"
+        title="Contact Page"
+        loading="lazy"
+        referrerpolicy="no-referrer"&gt;
+
+        Your browser does not support iframes.
+
+    &lt;/iframe&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<div class="try-it-container">
+    <button type="button"
+            class="try-it-btn"
+            onclick="tryHTML(this)">
+        Try It
+    </button>
+</div>
+
+
+            <div class="alert alert-info mt-4">
+                <h2 class="h4 fw-bold">Summary</h2>
+
+                <p class="mb-0">
+                    HTML iframes are created using the <code>&lt;iframe&gt;</code>
+                    element and allow supported external or local content to be
+                    displayed inside a webpage. Important attributes include
+                    <code>src</code>, <code>width</code>, <code>height</code>,
+                    <code>title</code>, <code>loading</code>, <code>sandbox</code>,
+                    <code>allowfullscreen</code>, and <code>referrerpolicy</code>.
+                    Iframes are commonly used for maps, videos, documents,
+                    widgets, and embedded webpages.
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="d-flex justify-content-between mt-4">
+
+                <a class="btn btn-outline-primary"
+                   href="@Url.Action("Video", "LinksAndMedia", new { area = "HTML" })">
+                    ← Previous: Video
+                </a>
+
+                <a class="btn btn-primary"
+                   href="@Url.Action("Index", "ListsAndTables", new { area = "HTML" })">
+                    Next: Lists and Tables →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</main>

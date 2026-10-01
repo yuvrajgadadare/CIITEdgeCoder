@@ -1,0 +1,1252 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Align Content";
+}
+
+<style>
+
+    #css-align-content-page {
+        color: #212529;
+    }
+
+    #css-align-content-page .content-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    #css-align-content-page .content-section > h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #css-align-content-page .content-section > h2 {
+        font-weight: 700;
+        margin-top: 35px;
+        margin-bottom: 15px;
+    }
+
+    #css-align-content-page .content-section > h3 {
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 12px;
+    }
+
+    #css-align-content-page .content-section > p {
+        line-height: 1.7;
+    }
+
+    /* ================================================= */
+    /* CODE */
+    /* ================================================= */
+
+    #css-align-content-page .code-box {
+        background-color: #212529;
+        color: #f8f9fa;
+        border-radius: 6px;
+        padding: 18px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    #css-align-content-page .code-box pre {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    /* ================================================= */
+    /* EXPLANATION */
+    /* ================================================= */
+
+    #css-align-content-page .explanation-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-top: 15px;
+    }
+
+    #css-align-content-page .explanation-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* ================================================= */
+    /* DIAGRAM */
+    /* ================================================= */
+
+    #css-align-content-page .diagram-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-align-content-page .diagram-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        gap: 10px;
+        height: 260px;
+        padding: 15px;
+        border: 2px dashed #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-align-content-page .diagram-item {
+        background-color: #2563eb;
+        color: #ffffff;
+        padding: 15px 22px;
+        border-radius: 6px;
+        font-weight: 700;
+        width: 30%;
+        text-align: center;
+    }
+
+    /* ================================================= */
+    /* OUTPUT */
+    /* ================================================= */
+
+    #css-align-content-page .browser-output {
+        background-color: #ffffff;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    #css-align-content-page .output-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        height: 260px;
+        padding: 15px;
+        border: 2px solid #2563eb;
+        background-color: #dbeafe;
+    }
+
+    #css-align-content-page .output-item {
+        background-color: lightblue;
+        border: 2px solid blue;
+        padding: 18px;
+        width: 30%;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    /* ================================================= */
+    /* PROPERTY CARDS */
+    /* ================================================= */
+
+    #css-align-content-page .property-card {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 18px;
+        height: 100%;
+        background-color: #ffffff;
+    }
+
+    #css-align-content-page .property-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-align-content-page .property-card p {
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    /* ================================================= */
+    /* NOTE */
+    /* ================================================= */
+
+    #css-align-content-page .note-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffecb5;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 20px;
+    }
+
+    /* ================================================= */
+    /* SUMMARY */
+    /* ================================================= */
+
+    #css-align-content-page .summary-box {
+        background-color: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-top: 30px;
+    }
+
+    #css-align-content-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    #css-align-content-page .summary-box p {
+        color: #075985;
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+</style>
+
+
+<div id="css-align-content-page">
+
+    <div class="row">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-3 mb-4">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- ================================================= -->
+                <!-- TITLE -->
+                <!-- ================================================= -->
+
+                <h1>
+                    CSS Align Content
+                </h1>
+
+                <p>
+                    The CSS <strong>align-content</strong> property
+                    controls the spacing and alignment of multiple
+                    Flex Lines along the <strong>cross axis</strong>.
+                </p>
+
+                <p>
+                    Unlike <strong>align-items</strong>, which aligns
+                    individual Flex Items, <strong>align-content</strong>
+                    controls the position of the complete rows or
+                    columns created when Flex Items wrap.
+                </p>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT CONCEPT -->
+                <!-- ================================================= -->
+
+                <h2>
+                    When Does align-content Work?
+                </h2>
+
+                <div class="explanation-box">
+
+                    <p>
+                        <strong>align-content</strong> becomes useful
+                        when the Flex Container has multiple Flex Lines.
+                    </p>
+
+                    <p>
+                        Multiple lines are normally created when
+                        <strong>flex-wrap: wrap;</strong> is used and
+                        the items cannot fit on one line.
+                    </p>
+
+                    <p>
+                        If all Flex Items are on a single line,
+                        align-content generally has no visible effect.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SYNTAX -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: value;
+}</code></pre>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- DIAGRAM -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Align Content Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-container">
+
+                        <div class="diagram-item">
+                            Item 1
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 2
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 3
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 4
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 5
+                        </div>
+
+                        <div class="diagram-item">
+                            Item 6
+                        </div>
+
+                    </div>
+
+                    <p class="text-center mt-3 mb-0">
+                        Multiple Flex Lines are distributed along
+                        the cross axis.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- VALUES -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Values of align-content
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Value</th>
+                                <th>Description</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>stretch</strong>
+                                </td>
+
+                                <td>
+                                    Stretches the Flex Lines to
+                                    fill the available space.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>flex-start</strong>
+                                </td>
+
+                                <td>
+                                    Places all Flex Lines at the
+                                    beginning of the cross axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>flex-end</strong>
+                                </td>
+
+                                <td>
+                                    Places all Flex Lines at the
+                                    end of the cross axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>center</strong>
+                                </td>
+
+                                <td>
+                                    Centers all Flex Lines along
+                                    the cross axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>space-between</strong>
+                                </td>
+
+                                <td>
+                                    Places equal space between
+                                    the Flex Lines.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>space-around</strong>
+                                </td>
+
+                                <td>
+                                    Places space around each
+                                    Flex Line.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>space-evenly</strong>
+                                </td>
+
+                                <td>
+                                    Creates equal spacing between
+                                    Flex Lines and container edges.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FLEX START -->
+                <!-- ================================================= -->
+
+                <h2>
+                    1. align-content: flex-start
+                </h2>
+
+                <p>
+                    <strong>flex-start</strong> places all Flex Lines
+                    at the beginning of the cross axis.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div style="
+                        display:flex;
+                        flex-wrap:wrap;
+                        align-content:flex-start;
+                        gap:10px;
+                        height:260px;
+                        padding:15px;
+                        border:2px solid #2563eb;
+                        background-color:#dbeafe;
+                    ">
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            HTML
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            CSS
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Java
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            C#
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Python
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- FLEX END -->
+                <!-- ================================================= -->
+
+                <h2>
+                    2. align-content: flex-end
+                </h2>
+
+                <p>
+                    <strong>flex-end</strong> places all Flex Lines
+                    at the end of the cross axis.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div style="
+                        display:flex;
+                        flex-wrap:wrap;
+                        align-content:flex-end;
+                        gap:10px;
+                        height:260px;
+                        padding:15px;
+                        border:2px solid #2563eb;
+                        background-color:#dbeafe;
+                    ">
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            HTML
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            CSS
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Java
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            C#
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Python
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- CENTER -->
+                <!-- ================================================= -->
+
+                <h2>
+                    3. align-content: center
+                </h2>
+
+                <p>
+                    <strong>center</strong> places the complete group
+                    of Flex Lines in the center of the cross axis.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div style="
+                        display:flex;
+                        flex-wrap:wrap;
+                        align-content:center;
+                        gap:10px;
+                        height:260px;
+                        padding:15px;
+                        border:2px solid #2563eb;
+                        background-color:#dbeafe;
+                    ">
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            HTML
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            CSS
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Java
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            C#
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Python
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SPACE BETWEEN -->
+                <!-- ================================================= -->
+
+                <h2>
+                    4. align-content: space-between
+                </h2>
+
+                <p>
+                    <strong>space-between</strong> places equal
+                    space between the Flex Lines.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div class="output-container"
+                         style="align-content:space-between;">
+
+                        <div class="output-item">
+                            HTML
+                        </div>
+
+                        <div class="output-item">
+                            CSS
+                        </div>
+
+                        <div class="output-item">
+                            Java
+                        </div>
+
+                        <div class="output-item">
+                            C#
+                        </div>
+
+                        <div class="output-item">
+                            Python
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SPACE AROUND -->
+                <!-- ================================================= -->
+
+                <h2>
+                    5. align-content: space-around
+                </h2>
+
+                <p>
+                    <strong>space-around</strong> distributes space
+                    around each Flex Line.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div style="
+                        display:flex;
+                        flex-wrap:wrap;
+                        align-content:space-around;
+                        gap:10px;
+                        height:260px;
+                        padding:15px;
+                        border:2px solid #2563eb;
+                        background-color:#dbeafe;
+                    ">
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            HTML
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            CSS
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Java
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            C#
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Python
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SPACE EVENLY -->
+                <!-- ================================================= -->
+
+                <h2>
+                    6. align-content: space-evenly
+                </h2>
+
+                <p>
+                    <strong>space-evenly</strong> creates equal space
+                    between the Flex Lines and the container edges.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+}</code></pre>
+
+                </div>
+
+                <h3>
+                    Output
+                </h3>
+
+                <div class="browser-output">
+
+                    <div style="
+                        display:flex;
+                        flex-wrap:wrap;
+                        align-content:space-evenly;
+                        gap:10px;
+                        height:260px;
+                        padding:15px;
+                        border:2px solid #2563eb;
+                        background-color:#dbeafe;
+                    ">
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            HTML
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            CSS
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Java
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            C#
+                        </div>
+
+                        <div style="
+                            background-color:lightblue;
+                            border:2px solid blue;
+                            padding:18px;
+                            width:30%;
+                            text-align:center;
+                            font-weight:700;
+                        ">
+                            Python
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- ALIGN ITEMS VS ALIGN CONTENT -->
+                <!-- ================================================= -->
+
+                <h2>
+                    align-items vs align-content
+                </h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>Property</th>
+                                <th>Controls</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <strong>align-items</strong>
+                                </td>
+
+                                <td>
+                                    Alignment of individual Flex Items
+                                    along the cross axis.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>align-content</strong>
+                                </td>
+
+                                <td>
+                                    Alignment and spacing of multiple
+                                    Flex Lines along the cross axis.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- PROPERTY CARDS -->
+                <!-- ================================================= -->
+
+                <h2>
+                    Common align-content Values
+                </h2>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex-start
+                            </h3>
+
+                            <p>
+                                Moves all Flex Lines toward the
+                                beginning of the cross axis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                flex-end
+                            </h3>
+
+                            <p>
+                                Moves all Flex Lines toward the
+                                end of the cross axis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                center
+                            </h3>
+
+                            <p>
+                                Groups all Flex Lines in the
+                                center of the container.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                space-between
+                            </h3>
+
+                            <p>
+                                Places equal space between
+                                Flex Lines.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                space-around
+                            </h3>
+
+                            <p>
+                                Adds space around each Flex Line.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="property-card">
+
+                            <h3>
+                                space-evenly
+                            </h3>
+
+                            <p>
+                                Creates equal spacing between
+                                lines and container edges.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- IMPORTANT NOTE -->
+                <!-- ================================================= -->
+
+                <div class="note-box">
+
+                    <strong>Important:</strong>
+
+                    <strong>align-content</strong> works with multiple
+                    Flex Lines. To create multiple lines, the Flex
+                    Container generally needs
+                    <strong>flex-wrap: wrap;</strong>. If there is
+                    only one Flex Line, use
+                    <strong>align-items</strong> for cross-axis
+                    alignment of the items.
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- SUMMARY -->
+                <!-- ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The <strong>align-content</strong> property
+                        controls the alignment and spacing of multiple
+                        Flex Lines along the cross axis. It is mainly
+                        useful when <strong>flex-wrap: wrap;</strong>
+                        creates multiple lines. Common values include
+                        <strong>flex-start</strong>,
+                        <strong>flex-end</strong>,
+                        <strong>center</strong>,
+                        <strong>space-between</strong>,
+                        <strong>space-around</strong>, and
+                        <strong>space-evenly</strong>.
+                    </p>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- NAVIGATION -->
+                <!-- ================================================= -->
+
+                <div class="row mt-5">
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-outline-secondary w-100"
+                           href="@Url.Action("AlignItems", "Flexbox", new { area = "CSS" })">
+
+                            ← Previous: Align Items
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <a class="btn btn-primary w-100"
+                           href="@Url.Action("Gap", "Flexbox", new { area = "CSS" })">
+
+                            Next: Gap →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

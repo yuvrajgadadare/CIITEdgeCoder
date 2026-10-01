@@ -1,0 +1,752 @@
+﻿@{
+    Layout = "~/Areas/CSS/Views/Shared/CSSLayout.cshtml";
+    ViewData["Title"] = "CSS Comments";
+}
+
+<style>
+
+    /* =========================================================
+           MAIN CONTENT
+        ========================================================= */
+
+    .content-section {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 32px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+        .content-section > h1,
+        .content-section > h2,
+        .content-section > h3 {
+            color: #212529;
+            font-weight: 700;
+        }
+
+        .content-section > h1 {
+            margin-bottom: 12px;
+        }
+
+        .content-section > h2 {
+            margin-top: 30px;
+            margin-bottom: 14px;
+        }
+
+        .content-section > h3 {
+            margin-top: 22px;
+            margin-bottom: 10px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #495057;
+            line-height: 1.7;
+        }
+
+
+    /* =========================================================
+           CODE BOX
+        ========================================================= */
+
+    .code-box {
+        background: #111827;
+        color: #f8fafc;
+        padding: 18px 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+        .code-box pre {
+            margin: 0;
+        }
+
+        .code-box code {
+            color: #f8fafc;
+        }
+
+
+    /* =========================================================
+           DIAGRAM
+        ========================================================= */
+
+    .comment-diagram {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 28px 0;
+    }
+
+    .diagram-box {
+        min-width: 175px;
+        padding: 18px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .code-part {
+        background: #e0e7ff;
+        border: 1px solid #c7d2fe;
+    }
+
+    .comment-part {
+        background: #fff3cd;
+        border: 1px solid #ffe69c;
+    }
+
+    .browser-part {
+        background: #d1fae5;
+        border: 1px solid #a7f3d0;
+    }
+
+    .diagram-box strong {
+        display: block;
+        color: #212529;
+        margin-bottom: 5px;
+    }
+
+    .diagram-box span {
+        color: #495057;
+        font-size: 13px;
+    }
+
+    .arrow {
+        font-size: 26px;
+        font-weight: bold;
+        color: #495057;
+    }
+
+
+    /* =========================================================
+           OUTPUT
+        ========================================================= */
+
+    .output-title {
+        color: #212529;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .browser-window {
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #ffffff;
+    }
+
+    .browser-bar {
+        background: #f1f3f5;
+        padding: 9px 14px;
+        border-bottom: 1px solid #dee2e6;
+        color: #6c757d;
+        font-size: 13px;
+    }
+
+    .browser-content {
+        padding: 30px;
+        min-height: 110px;
+    }
+
+
+    /* =========================================================
+           OUTPUT STYLES
+        ========================================================= */
+
+    .output-heading-blue {
+        color: blue;
+        font-size: 30px;
+        margin: 0;
+    }
+
+    .output-text-green {
+        color: green;
+        font-size: 18px;
+        margin: 10px 0 0;
+    }
+
+    .output-box-yellow {
+        background-color: yellow;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+
+    /* =========================================================
+           INFO BOX
+        ========================================================= */
+
+    .info-box {
+        background: #f8f9fa;
+        border-left: 4px solid #2563eb;
+        padding: 16px 18px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+
+
+    /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+    .topic-navigation {
+        border-top: 1px solid #dee2e6;
+        margin-top: 35px;
+        padding-top: 24px;
+    }
+
+        .topic-navigation .btn {
+            min-height: 42px;
+            font-weight: 500;
+        }
+
+        .topic-navigation .btn-primary {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+            .topic-navigation .btn-primary:hover {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+
+    /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+    @@media (max-width: 767px) {
+
+        .content-section {
+            padding: 22px;
+        }
+
+        .comment-diagram {
+            flex-direction: column;
+        }
+
+        .arrow {
+            transform: rotate(90deg);
+        }
+
+        .diagram-box {
+            width: 100%;
+            max-width: 280px;
+        }
+    }
+
+</style>
+
+
+<main class="container py-5">
+
+    <div class="row g-4">
+
+
+        <!-- =====================================================
+             LEFT SIDE - SYLLABUS
+        ====================================================== -->
+
+        <div class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/CSS/Views/Shared/CSSTopics.cshtml"
+            )
+
+        </div>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+        ====================================================== -->
+
+        <div class="col-lg-9">
+
+            <div class="content-section">
+
+
+                <!-- PAGE TITLE -->
+
+                <h1>
+                    CSS Comments
+                </h1>
+
+                <p class="lead text-muted">
+                    Learn how to write comments in CSS and understand
+                    why comments are useful in a stylesheet.
+                </p>
+
+
+                <!-- =================================================
+                     WHAT IS CSS COMMENT
+                ================================================== -->
+
+                <h2>
+                    What is a CSS Comment?
+                </h2>
+
+                <p>
+                    A CSS comment is text written inside a stylesheet
+                    for developers to explain or document the code.
+                </p>
+
+                <p>
+                    The browser does not apply CSS rules written inside
+                    a comment.
+                </p>
+
+
+                <!-- =================================================
+                     DIAGRAM
+                ================================================== -->
+
+                <h2>
+                    CSS Comment Diagram
+                </h2>
+
+                <div class="comment-diagram">
+
+                    <div class="diagram-box code-part">
+
+                        <strong>
+                            CSS Code
+                        </strong>
+
+                        <span>
+                            Actual CSS Rule
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        +
+                    </div>
+
+                    <div class="diagram-box comment-part">
+
+                        <strong>
+                            Comment
+                        </strong>
+
+                        <span>
+                            Developer Note
+                        </span>
+
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                    <div class="diagram-box browser-part">
+
+                        <strong>
+                            Browser
+                        </strong>
+
+                        <span>
+                            Ignores Comment
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     COMMENT SYNTAX
+                ================================================== -->
+
+                <h2>
+                    CSS Comment Syntax
+                </h2>
+
+                <div class="code-box">
+
+                    <pre><code>/* This is a CSS comment */</code></pre>
+
+                </div>
+
+                <p class="mt-3">
+                    CSS comments start with
+                    <strong>/*</strong>
+                    and end with
+                    <strong>*/</strong>.
+                </p>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                ================================================== -->
+
+                <h2>
+                    Example 1: Single-Line Comment
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>/* Change heading color */
+
+h1 {
+    color: blue;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    The first line is a comment. The browser ignores
+                    the comment and applies the
+                    <strong>color: blue;</strong> rule to the heading.
+                </p>
+
+
+                <!-- OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h1 style="color: blue; margin: 0;">
+                                CSS Comments
+                            </h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                ================================================== -->
+
+                <h2>
+                    Example 2: Comment Between CSS Rules
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>h1 {
+    color: blue;
+}
+
+/* Paragraph styling */
+
+p {
+    color: green;
+    font-size: 18px;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    Comments can be placed between different CSS rules
+                    to explain what each section of the stylesheet does.
+                </p>
+
+
+                <!-- OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h1 style="color: blue; margin: 0;">
+                                CSS Comments
+                            </h1>
+
+                            <p style="color: green; font-size: 18px;">
+                                Comments help developers understand CSS.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                ================================================== -->
+
+                <h2>
+                    Example 3: Temporarily Disable CSS
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>h1 {
+    color: blue;
+
+    /* font-size: 40px; */
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    The <strong>font-size</strong> rule is inside a comment,
+                    so the browser ignores it.
+                </p>
+
+                <p>
+                    This is useful when you want to temporarily disable
+                    a CSS property without deleting the code.
+                </p>
+
+
+                <!-- OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <h1 style="color: blue; margin: 0;">
+                                CSS Comments
+                            </h1>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     MULTI-LINE COMMENT
+                ================================================== -->
+
+                <h2>
+                    Multi-Line CSS Comment
+                </h2>
+
+                <h3>
+                    Code
+                </h3>
+
+                <div class="code-box">
+
+                    <pre><code>/*
+    Website Header Styles
+
+    These styles control
+    the main website header.
+*/
+
+header {
+    background-color: black;
+    color: white;
+}</code></pre>
+
+                </div>
+
+
+                <h3>
+                    Simple Explanation
+                </h3>
+
+                <p>
+                    CSS uses the same
+                    <strong>/* */</strong>
+                    syntax for both short and multi-line comments.
+                </p>
+
+
+                <!-- OUTPUT -->
+
+                <div class="mt-4">
+
+                    <div class="output-title">
+                        Output
+                    </div>
+
+                    <div class="browser-window">
+
+                        <div class="browser-bar">
+                            Example Page
+                        </div>
+
+                        <div class="browser-content">
+
+                            <div style="background-color: black; color: white; padding: 15px;">
+                                Website Header
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     WHY USE COMMENTS
+                ================================================== -->
+
+                <h2>
+                    Why Use CSS Comments?
+                </h2>
+
+                <ul>
+
+                    <li>
+                        To explain CSS code.
+                    </li>
+
+                    <li>
+                        To organize large stylesheets.
+                    </li>
+
+                    <li>
+                        To make code easier to understand.
+                    </li>
+
+                    <li>
+                        To temporarily disable CSS properties.
+                    </li>
+
+                </ul>
+
+
+                <!-- =================================================
+                     IMPORTANT
+                ================================================== -->
+
+                <div class="info-box">
+
+                    <strong>
+                        Remember:
+                    </strong>
+
+                    <p class="mb-0 mt-2">
+                        CSS comments are written between
+                        <strong>/*</strong> and
+                        <strong>*/</strong>.
+                        The browser ignores comments when applying
+                        CSS styles.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                ================================================== -->
+
+                <div class="alert alert-info mt-4">
+
+                    <h2 class="h4 fw-bold">
+                        Summary
+                    </h2>
+
+                    <p class="mb-0">
+                        CSS comments are used to explain, organize,
+                        or temporarily disable CSS code. They are not
+                        displayed as part of the webpage output.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+     NAVIGATION
+================================================== -->
+
+                <div class="topic-navigation">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-outline-secondary w-100"
+                               href="@Url.Action("CSSComments", "CSSBasics", new { area = "CSS" })">
+
+                                ← Previous: CSS Comments
+
+                            </a>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <a class="btn btn-primary w-100"
+                               href="@Url.Action("Index", "Selectors", new { area = "CSS" })">
+
+                                Next: CSS Selectors →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

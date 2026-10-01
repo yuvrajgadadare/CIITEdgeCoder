@@ -1,0 +1,784 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "JavaScript Best Practices";
+}
+
+<style>
+
+    #javascript-best-practices-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-best-practices-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-best-practices-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-best-practices-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-best-practices-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-best-practices-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* CONCEPT */
+
+    #javascript-best-practices-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-best-practices-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-best-practices-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    #javascript-best-practices-page .concept-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* DIAGRAM */
+
+    #javascript-best-practices-page .flow-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 25px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-best-practices-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #javascript-best-practices-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-best-practices-page .flow-box {
+        min-width: 145px;
+        padding: 16px 20px;
+        border: 2px solid #7c3aed;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 600;
+        background: #ffffff;
+    }
+
+    #javascript-best-practices-page .flow-box.result {
+        background: #f3e8ff;
+        color: #5b21b6;
+    }
+
+    #javascript-best-practices-page .flow-arrow {
+        font-size: 28px;
+        color: #7c3aed;
+        font-weight: bold;
+    }
+
+    #javascript-best-practices-page .flow-caption {
+        text-align: center;
+        color: #6c757d;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+    /* CODE */
+
+    #javascript-best-practices-page .code-section {
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    #javascript-best-practices-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    #javascript-best-practices-page .code-box code {
+        color: #ffffff;
+        background: transparent;
+    }
+
+    /* TRY IT */
+
+    #javascript-best-practices-page .try-it-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-best-practices-page .try-it-btn {
+        background: #198754;
+        color: #ffffff;
+        border: none;
+        padding: 9px 18px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    #javascript-best-practices-page .try-it-btn:hover {
+        background: #157347;
+        transform: translateY(-1px);
+    }
+
+    /* OUTPUT */
+
+    #javascript-best-practices-page .output-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-left: 5px solid #198754;
+        border-radius: 8px;
+        padding: 15px 18px;
+        margin-top: 8px;
+        margin-bottom: 30px;
+        color: #212529;
+        line-height: 1.8;
+    }
+
+    /* NOTE */
+
+    #javascript-best-practices-page .note-box {
+        background: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 5px solid #ffb300;
+        border-radius: 8px;
+        padding: 18px;
+        margin: 25px 0;
+        color: #6d4c41;
+        line-height: 1.7;
+    }
+
+    /* SUMMARY */
+
+    #javascript-best-practices-page .summary-box {
+        background: #f3e8ff;
+        border: 1px solid #d8b4fe;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-best-practices-page .summary-box h2 {
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-best-practices-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* NAVIGATION */
+
+    #javascript-best-practices-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-best-practices-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    #javascript-best-practices-page .previous-btn {
+        background: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-best-practices-page .previous-btn:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    #javascript-best-practices-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-best-practices-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    @@media (max-width: 768px) {
+
+        #javascript-best-practices-page .content-section {
+            padding: 20px;
+        }
+
+        #javascript-best-practices-page .page-title {
+            font-size: 29px;
+        }
+
+        #javascript-best-practices-page .flow-row {
+            flex-direction: column;
+        }
+
+        #javascript-best-practices-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-best-practices-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-best-practices-page .nav-btn {
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+<main id="javascript-best-practices-page">
+
+    <div class="container-fluid">
+
+        <div class="row g-4">
+
+            <!-- =====================================================
+                 LEFT SIDE - COURSE SYLLABUS
+                 ===================================================== -->
+
+            <aside class="col-lg-3">
+
+                @Html.Partial(
+                    "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+                )
+
+            </aside>
+
+
+            <!-- =====================================================
+                 RIGHT SIDE - MAIN CONTENT
+                 ===================================================== -->
+
+            <section class="col-lg-9">
+
+                <div class="content-section">
+
+                    <!-- PAGE TITLE -->
+
+                    <h1 class="page-title">
+                        JavaScript Best Practices
+                    </h1>
+
+                    <p class="lead-text">
+                        JavaScript best practices help developers write
+                        clean, readable, maintainable and reliable code.
+                    </p>
+
+
+                    <!-- =================================================
+                         WHAT ARE BEST PRACTICES
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        What are JavaScript Best Practices?
+                    </h2>
+
+                    <p class="section-text">
+                        Best practices are recommended techniques that
+                        help developers write better JavaScript code.
+                    </p>
+
+                    <p class="section-text">
+                        Following these practices makes applications
+                        easier to understand, maintain and debug.
+                    </p>
+
+
+                    <div class="concept-box">
+
+                        <h5>
+                            Simple Definition
+                        </h5>
+
+                        <p class="mb-0">
+                            JavaScript best practices are coding habits
+                            that improve code quality, readability,
+                            performance and maintainability.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DIAGRAM
+                         ================================================= -->
+
+                    <div class="flow-card">
+
+                        <div class="flow-title">
+                            Good JavaScript Development
+                        </div>
+
+                        <div class="flow-row">
+
+                            <div class="flow-box">
+                                Clean Code
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Readable Code
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box">
+                                Easy Maintenance
+                            </div>
+
+                            <div class="flow-arrow">
+                                →
+                            </div>
+
+                            <div class="flow-box result">
+                                Better Application
+                            </div>
+
+                        </div>
+
+                        <p class="flow-caption">
+                            Good coding practices improve the overall
+                            quality of JavaScript applications.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PRACTICE 1
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        1. Use Meaningful Variable Names
+                    </h2>
+
+                    <p class="section-text">
+                        Variable names should clearly describe the data
+                        they contain. Avoid unclear names such as
+                        <code>x</code>, <code>a</code> or <code>temp</code>
+                        when a meaningful name can be used.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>let studentName = "Rahul";
+let courseName = "JavaScript";
+
+console.log(studentName);
+console.log(courseName);</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runBestPracticeExample1()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        Rahul
+                        <br />
+
+                        JavaScript
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PRACTICE 2
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        2. Use const and let
+                    </h2>
+
+                    <p class="section-text">
+                        Use <code>const</code> when a variable should not
+                        be reassigned and use <code>let</code> when its
+                        value needs to change.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>const course = "JavaScript";
+
+let score = 80;
+
+score = 90;
+
+console.log(course);
+console.log(score);</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runBestPracticeExample2()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        JavaScript
+                        <br />
+
+                        90
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PRACTICE 3
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        3. Keep Functions Small and Focused
+                    </h2>
+
+                    <p class="section-text">
+                        A function should ideally perform one clear task.
+                        Small functions are easier to read, test and reuse.
+                    </p>
+
+
+                    <div class="code-section">
+
+                        <pre class="code-box"><code>function calculateTotal(price, quantity) {
+
+    return price * quantity;
+}
+
+let total = calculateTotal(100, 3);
+
+console.log(total);</code></pre>
+
+                    </div>
+
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="runBestPracticeExample3()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="output-box">
+
+                        <strong>Output:</strong>
+                        <br />
+
+                        300
+
+                    </div>
+
+
+                    <!-- =================================================
+                         IMPORTANT POINTS
+                         ================================================= -->
+
+                    <h2 class="section-title">
+                        Important Best Practices
+                    </h2>
+
+
+                    <div class="note-box">
+
+                        <p>
+                            • Use meaningful variable and function names.
+                        </p>
+
+                        <p>
+                            • Prefer <code>const</code> and
+                            <code>let</code> instead of <code>var</code>.
+                        </p>
+
+                        <p>
+                            • Keep functions small and focused.
+                        </p>
+
+                        <p>
+                            • Avoid unnecessary global variables.
+                        </p>
+
+                        <p>
+                            • Write readable and properly formatted code.
+                        </p>
+
+                        <p>
+                            • Handle errors properly.
+                        </p>
+
+                        <p class="mb-0">
+                            • Add comments where they provide useful
+                            explanation.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUMMARY
+                         ================================================= -->
+
+                    <div class="summary-box">
+
+                        <h2>
+                            Summary
+                        </h2>
+
+                        <p>
+                            Following JavaScript best practices helps
+                            developers create clean, readable, reusable
+                            and maintainable applications. Meaningful
+                            names, proper variable declarations and
+                            focused functions are important parts of
+                            good JavaScript development.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BOTTOM NAVIGATION
+                         ================================================= -->
+<div class="bottom-navigation">
+
+    <a href="@Url.Action("ErrorHandling", "AdvancedJavaScript", new { area = "JavaScript" })"
+       class="nav-btn previous-btn">
+
+        <span>←</span>
+
+        <span>
+            Previous: Error Handling
+        </span>
+
+    </a>
+
+
+    <div class="nav-btn next-btn course-complete-btn">
+
+        <span>
+            🎉 Course Complete
+        </span>
+
+        <span>✓</span>
+
+    </div>
+
+</div>
+
+</div>
+
+<style>
+    .course-complete-btn {
+        background-color: #198754 !important;
+        color: white !important;        
+        cursor: default;
+        border: none !important;
+    }
+
+    .course-complete-btn:hover {
+        background-color: #157347 !important;
+        color: white !important;
+    }
+</style>
+            </section>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       ========================================================= */
+
+    function runBestPracticeExample1() {
+
+        var code =
+`let studentName = "Rahul";
+let courseName = "JavaScript";
+
+console.log(studentName);
+console.log(courseName);`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       ========================================================= */
+
+    function runBestPracticeExample2() {
+
+        var code =
+`const course = "JavaScript";
+
+let score = 80;
+
+score = 90;
+
+console.log(course);
+console.log(score);`;
+
+        openCompiler(code);
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ========================================================= */
+
+    function runBestPracticeExample3() {
+
+        var code =
+`function calculateTotal(price, quantity) {
+
+    return price * quantity;
+}
+
+let total = calculateTotal(100, 3);
+
+console.log(total);`;
+
+        openCompiler(code);
+    }
+
+</script>

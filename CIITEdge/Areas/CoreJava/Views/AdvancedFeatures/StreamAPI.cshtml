@@ -1,0 +1,1690 @@
+﻿@{
+    ViewData["Title"] = "Stream API in Java";
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+
+        <!-- HEADER -->
+        <div class="mb-4">
+            <h2 class="fw-bold mb-3">Stream API in Java</h2>
+
+            <p class="lead text-muted mb-0">
+                Learn the Java Stream API for processing collections and data
+                using filtering, mapping, sorting, reducing, grouping,
+                matching, and collecting operations.
+            </p>
+        </div>
+
+
+        <!-- INTRODUCTION -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">What is Stream API?</h3>
+
+            <p>
+                The Stream API provides a functional-style approach for
+                processing sequences of data.
+            </p>
+
+            <p>
+                A stream does not store data. Instead, it represents a
+                pipeline of operations performed on a data source such as a
+                collection, array, or generated sequence.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Concept</div>
+
+                <pre class="mb-0"><code>
+                                     Data Source
+                                         ↓
+                                       Stream
+                                         ↓
+                                Intermediate Operations
+                                         ↓
+                                  Terminal Operation
+                                         ↓
+                                       Result</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- BASIC STREAM -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Creating a Stream</h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of(
+        "Amit",
+        "Neha",
+        "Rahul"
+    );
+
+names.stream()
+    .forEach(
+        name -&gt;
+            System.out.println(name)
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit
+Neha
+Rahul</code></pre>
+</div>
+        </section>
+
+
+        <!-- STREAM PIPELINE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Stream Pipeline</h3>
+
+            <p>
+                A stream pipeline normally contains a source, zero or more
+                intermediate operations, and one terminal operation.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>numbers.stream()
+    .filter(number -&gt; number &gt; 10)
+    .map(number -&gt; number * 2)
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+
+            <ul class="mt-3">
+                <li class="mb-2">
+                    <code>stream()</code> creates the stream.
+                </li>
+
+                <li class="mb-2">
+                    <code>filter()</code> selects elements.
+                </li>
+
+                <li class="mb-2">
+                    <code>map()</code> transforms elements.
+                </li>
+
+                <li>
+                    <code>forEach()</code> consumes the result.
+                </li>
+            </ul>
+
+        </section>
+
+
+        <!-- INTERMEDIATE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Intermediate Operations</h3>
+
+            <p>
+                Intermediate operations transform or refine a stream and
+                return another stream.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Operation</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>filter()</code></td>
+                            <td>Selects elements matching a condition.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>map()</code></td>
+                            <td>Transforms each element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>flatMap()</code></td>
+                            <td>Flattens nested stream structures.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>distinct()</code></td>
+                            <td>Removes duplicate elements.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>sorted()</code></td>
+                            <td>Sorts elements.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>limit()</code></td>
+                            <td>Restricts the number of elements.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>skip()</code></td>
+                            <td>Skips the first elements.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>peek()</code></td>
+                            <td>Allows an action for debugging/observation.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- TERMINAL -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">Terminal Operations</h3>
+
+            <p>
+                Terminal operations produce a result or side effect and
+                consume the stream.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Operation</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><code>forEach()</code></td>
+                            <td>Performs an action for each element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>collect()</code></td>
+                            <td>Collects results into a data structure.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>reduce()</code></td>
+                            <td>Combines elements into a single result.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>count()</code></td>
+                            <td>Counts elements.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>min()</code></td>
+                            <td>Finds the minimum element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>max()</code></td>
+                            <td>Finds the maximum element.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>findFirst()</code></td>
+                            <td>Returns the first element if present.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>anyMatch()</code></td>
+                            <td>Checks whether any element matches.</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- FILTER -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">filter()</h3>
+
+            <p>
+                The <code>filter()</code> operation keeps elements that satisfy
+                a condition.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(
+        10,
+        15,
+        20,
+        25,
+        30
+    );
+
+numbers.stream()
+    .filter(
+        number -&gt; number &gt; 20
+    )
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>25
+30</code></pre>
+</div>
+        </section>
+
+
+        <!-- MAP -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">map()</h3>
+
+            <p>
+                The <code>map()</code> operation transforms each stream
+                element into another value.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(1, 2, 3, 4, 5);
+
+numbers.stream()
+    .map(
+        number -&gt; number * number
+    )
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>1
+4
+9
+16
+25</code></pre>
+</div>
+        </section>
+
+
+        <!-- DISTINCT -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">distinct()</h3>
+
+            <p>
+                The <code>distinct()</code> operation removes duplicate
+                elements according to the stream elements' equality.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(
+        10,
+        20,
+        10,
+        30,
+        20
+    );
+
+numbers.stream()
+    .distinct()
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>10
+20
+30</code></pre>
+</div>
+        </section>
+
+
+        <!-- SORTED -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">sorted()</h3>
+
+            <p>
+                The <code>sorted()</code> operation returns elements in sorted
+                order.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(
+        50,
+        10,
+        40,
+        20,
+        30
+    );
+
+numbers.stream()
+    .sorted()
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>10
+20
+30
+40
+50</code></pre>
+</div>
+        </section>
+
+
+        <!-- CUSTOM SORT -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Sorting with Comparator
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of(
+        "Amit",
+        "Neha",
+        "Rahul",
+        "Priya"
+    );
+
+names.stream()
+    .sorted(
+        (a, b) -&gt;
+            b.compareTo(a)
+    )
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Rahul
+Priya
+Neha
+Amit</code></pre>
+</div>
+        </section>
+
+
+        <!-- LIMIT -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">limit()</h3>
+
+            <p>
+                The <code>limit()</code> operation restricts the stream to a
+                maximum number of elements.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(
+        10,
+        20,
+        30,
+        40,
+        50
+    );
+
+numbers.stream()
+    .limit(3)
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>10
+20
+30</code></pre>
+</div>
+        </section>
+
+
+        <!-- SKIP -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">skip()</h3>
+
+            <p>
+                The <code>skip()</code> operation discards the first specified
+                number of elements.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>numbers.stream()
+    .skip(2)
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- FLATMAP -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">flatMap()</h3>
+
+            <p>
+                <code>flatMap()</code> is useful when each element produces
+                another collection or stream and you want one flattened
+                stream.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;List&lt;String&gt;&gt; groups =
+    List.of(
+        List.of("A", "B"),
+        List.of("C", "D")
+    );
+
+groups.stream()
+    .flatMap(
+        group -&gt; group.stream()
+    )
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>A
+B
+C
+D</code></pre>
+</div>
+        </section>
+
+
+        <!-- REDUCE -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">reduce()</h3>
+
+            <p>
+                The <code>reduce()</code> operation combines stream elements
+                into a single result.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(10, 20, 30, 40);
+
+int sum =
+    numbers.stream()
+        .reduce(
+            0,
+            (a, b) -&gt; a + b
+        );
+
+System.out.println(sum);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>100</code></pre>
+</div>
+        </section>
+
+
+        <!-- COUNT -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">count()</h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+<pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(10, 20, 30, 40);
+    long count =
+    numbers.stream()
+        .filter(
+            number -&gt; number &gt; 20
+        )
+        .count();
+
+System.out.println(count);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>2</code></pre>
+</div>
+        </section>
+
+
+        <!-- MIN MAX -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                min() and max()
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;Integer&gt; minimum =
+    numbers.stream()
+        .min(Integer::compareTo);
+
+Optional&lt;Integer&gt; maximum =
+    numbers.stream()
+        .max(Integer::compareTo);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- MATCHING -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Matching Operations
+            </h3>
+
+            <p>
+                Streams provide matching operations for checking conditions
+                across elements.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>boolean any =
+    numbers.stream()
+        .anyMatch(
+            number -&gt; number &gt; 30
+        );
+
+boolean all =
+    numbers.stream()
+        .allMatch(
+            number -&gt; number &gt; 0
+        );
+
+boolean none =
+    numbers.stream()
+        .noneMatch(
+            number -&gt; number &lt; 0
+        );</code></pre>
+            </div>
+
+            <div class="table-responsive mt-3">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Operation</th>
+                            <th>Meaning</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><code>anyMatch()</code></td>
+                            <td>At least one element matches.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>allMatch()</code></td>
+                            <td>Every element matches.</td>
+                        </tr>
+
+                        <tr>
+                            <td><code>noneMatch()</code></td>
+                            <td>No element matches.</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- FIND FIRST -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                findFirst() and findAny()
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;Integer&gt; first =
+    numbers.stream()
+        .filter(
+            number -&gt; number &gt; 20
+        )
+        .findFirst();
+
+first.ifPresent(
+    System.out::println
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>30</code></pre>
+</div>
+
+            <p class="mt-3">
+                The result is wrapped in <code>Optional</code> because the
+                stream may contain no matching element.
+            </p>
+
+        </section>
+
+
+        <!-- COLLECT -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">collect()</h3>
+
+            <p>
+                The <code>collect()</code> operation gathers stream results
+                into collections or other result containers.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Integer&gt; evenNumbers =
+    numbers.stream()
+        .filter(
+            number -&gt; number % 2 == 0
+        )
+        .collect(
+            Collectors.toList()
+        );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- TO LIST -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Collecting with toList()
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;String&gt; result =
+    names.stream()
+        .filter(
+            name -&gt; name.length() &gt; 4
+        )
+        .collect(
+            Collectors.toList()
+        );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- TO SET -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Collecting with toSet()
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Set&lt;String&gt; uniqueNames =
+    names.stream()
+        .collect(
+            Collectors.toSet()
+        );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- JOINING -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Collectors.joining()
+            </h3>
+
+            <p>
+                <code>joining()</code> can combine strings into a single
+                string.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><cod<pre class="mb-0"><code>List&lt;String&gt; names =
+    List.of(
+        "Amit",
+        "Neha",
+        "Rahul",
+        "Priya"
+    );
+ String result =
+    names.stream()
+        .collect(
+            Collectors.joining(", ")
+        );
+
+System.out.println(result);</code></pre>
+            </div>
+
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Amit, Neha, Rahul</code></pre>
+</div>
+        </section>
+
+
+        <!-- GROUPING -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                groupingBy()
+            </h3>
+
+            <p>
+                <code>groupingBy()</code> groups elements according to a
+                classification function.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;Integer, List&lt;String&gt;&gt; grouped =
+    names.stream()
+        .collect(
+            Collectors.groupingBy(
+                String::length
+            )
+        );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- PARTITIONING -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                partitioningBy()
+            </h3>
+
+            <p>
+                <code>partitioningBy()</code> divides elements into two
+                groups based on a boolean condition.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Map&lt;Boolean, List&lt;Integer&gt;&gt; partitioned =
+    numbers.stream()
+        .collect(
+            Collectors.partitioningBy(
+                number -&gt; number % 2 == 0
+            )
+        );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- PEEK -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                peek()
+            </h3>
+
+            <p>
+                <code>peek()</code> can be useful for observing elements while
+                debugging a stream pipeline. It should not normally be used
+                as the main mechanism for application side effects.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+<pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(10, 20, 30, 40);                    
+    numbers.stream()
+    .filter(
+        number -&gt; number &gt; 10
+    )
+    .peek(
+        number -&gt;
+            System.out.println(
+                "Before map: " + number
+            )
+    )
+    .map(
+        number -&gt; number * 2
+    )
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Before map: 20
+40
+Before map: 30
+60
+Before map: 40
+80</code></pre>
+</div>
+        </section>
+
+
+        <!-- LAZY -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Lazy Evaluation
+            </h3>
+
+            <p>
+                Intermediate operations are lazy. They are not generally
+                executed until a terminal operation is invoked.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+<pre class="mb-0"><code>List&lt;Integer&gt; numbers =
+    List.of(10, 20, 30, 40);   
+    Stream&lt;Integer&gt; stream =
+    numbers.stream()
+        .filter(
+            number -&gt; number &gt; 10
+        );
+
+System.out.println(
+    "Pipeline created"
+);
+
+stream.forEach(
+    System.out::println
+);</code></pre>
+            </div>
+            <p class="mt-3">
+    Output:
+</p>
+
+<div class="code-block mb-4 shadow-sm">
+    <div class="code-lang-tag">
+        Output
+    </div>
+
+    <pre class="mb-0"><code>Pipeline created
+20
+30
+40</code></pre>
+</div>
+        </section>
+
+
+        <!-- ONE TIME -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Streams Cannot Normally Be Reused
+            </h3>
+
+            <p>
+                A stream is intended for a single pipeline execution. After a
+                terminal operation consumes it, attempting to reuse the same
+                stream results in an exception.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Stream&lt;String&gt; stream =
+    names.stream();
+
+stream.forEach(
+    System.out::println
+);
+
+// Do not reuse the same stream here.</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- PARALLEL STREAM -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Parallel Streams
+            </h3>
+
+            <p>
+                A parallel stream can process elements using multiple threads.
+                It can be useful for suitable CPU-intensive workloads, but it
+                should not be assumed to be faster for every task.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>numbers.parallelStream()
+    .filter(
+        number -&gt; number &gt; 10
+    )
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+
+            <div class="alert alert-warning mt-3">
+                Parallel streams require careful consideration of workload,
+                ordering, shared state, thread safety, and performance.
+            </div>
+
+        </section>
+
+
+        <!-- OPTIONAL -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Stream and Optional
+            </h3>
+
+            <p>
+                Operations such as <code>findFirst()</code>,
+                <code>findAny()</code>, <code>min()</code>, and
+                <code>max()</code> commonly return <code>Optional</code>
+                because a result may not exist.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>Optional&lt;Integer&gt; result =
+    numbers.stream()
+        .filter(
+            number -&gt; number &gt; 100
+        )
+        .findFirst();
+
+result.ifPresent(
+    System.out::println
+);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- PRIMITIVE STREAMS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Primitive Streams
+            </h3>
+
+            <p>
+                Java provides specialized streams for primitive numeric types:
+                <code>IntStream</code>, <code>LongStream</code>, and
+                <code>DoubleStream</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>IntStream.range(
+        1,
+        6
+    )
+    .forEach(
+        System.out::println
+    );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Numeric Stream Operations
+            </h3>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>IntSummaryStatistics statistics =
+    numbers.stream()
+        .mapToInt(
+            Integer::intValue
+        )
+        .summaryStatistics();
+
+System.out.println(
+    statistics.getCount()
+);
+
+System.out.println(
+    statistics.getSum()
+);
+
+System.out.println(
+    statistics.getAverage()
+);
+
+System.out.println(
+    statistics.getMin()
+);
+
+System.out.println(
+    statistics.getMax()
+);</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- REAL WORLD -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Example 👨‍🏫🤓
+            </h3>
+
+            <p>
+                Suppose an application needs to find active employees whose
+                salary is above a particular threshold and return their names.
+            </p>
+
+            <div class="code-block">
+                <div class="code-lang-tag">Java</div>
+
+                <pre class="mb-0"><code>List&lt;Employee&gt; employees =
+    getEmployees();
+
+List&lt;String&gt; result =
+    employees.stream()
+        .filter(
+            employee -&gt;
+                employee.isActive()
+        )
+        .filter(
+            employee -&gt;
+                employee.getSalary() &gt; 50000
+        )
+        .map(
+            Employee::getName
+        )
+        .sorted()
+        .collect(
+            Collectors.toList()
+        );</code></pre>
+            </div>
+
+        </section>
+
+
+        <!-- BENEFITS -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Benefits of Stream API
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Provides concise data-processing pipelines.
+                </li>
+
+                <li class="mb-2">
+                    Works naturally with lambda expressions.
+                </li>
+
+                <li class="mb-2">
+                    Supports filtering, mapping, sorting, grouping, and
+                    reduction.
+                </li>
+
+                <li class="mb-2">
+                    Encourages declarative programming.
+                </li>
+
+                <li>
+                    Supports sequential and parallel processing models.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- BEST PRACTICES -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Stream API Best Practices
+            </h3>
+
+            <ul>
+
+                <li class="mb-2">
+                    Keep stream pipelines readable.
+                </li>
+
+                <li class="mb-2">
+                    Avoid unnecessary stream operations.
+                </li>
+
+                <li class="mb-2">
+                    Prefer method references when they improve readability.
+                </li>
+
+                <li class="mb-2">
+                    Avoid modifying shared mutable state inside stream
+                    operations.
+                </li>
+
+                <li class="mb-2">
+                    Use <code>peek()</code> mainly for debugging or observation.
+                </li>
+
+                <li>
+                    Use parallel streams only after considering workload and
+                    thread-safety implications.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- INTERVIEW -->
+        <section class="mb-5">
+
+            <h3 class="fw-bold mb-3">
+                Interview Questions
+            </h3>
+
+            <div class="accordion" id="streamQuestions">
+
+                <!-- Q1 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#streamQuestionOne">
+
+                            What is Stream API?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="streamQuestionOne"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#streamQuestions">
+
+                        <div class="accordion-body">
+
+                            Stream API provides a functional-style approach
+                            for processing sequences of data.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q2 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#streamQuestionTwo">
+
+                            What is the difference between intermediate and terminal operations?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="streamQuestionTwo"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#streamQuestions">
+
+                        <div class="accordion-body">
+
+                            Intermediate operations return another stream and
+                            are generally lazy. Terminal operations consume
+                            the stream and produce a result or side effect.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q3 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#streamQuestionThree">
+
+                            What is lazy evaluation in streams?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="streamQuestionThree"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#streamQuestions">
+
+                        <div class="accordion-body">
+
+                            Intermediate stream operations are generally not
+                            executed until a terminal operation starts
+                            consuming the pipeline.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q4 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#streamQuestionFour">
+
+                            What is the difference between map() and filter()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="streamQuestionFour"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#streamQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>filter()</code> selects elements based on a
+                            condition, while <code>map()</code> transforms
+                            elements into another form.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q5 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#streamQuestionFive">
+
+                            Can a stream be reused?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="streamQuestionFive"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#streamQuestions">
+
+                        <div class="accordion-body">
+
+                            A stream is intended for a single pipeline
+                            execution. After a terminal operation, the same
+                            stream should not be reused.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q6 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#streamQuestionSix">
+
+                            What is reduce()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="streamQuestionSix"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#streamQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>reduce()</code> combines stream elements into
+                            a single result using an accumulator operation.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q7 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#streamQuestionSeven">
+
+                            What is flatMap()?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="streamQuestionSeven"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#streamQuestions">
+
+                        <div class="accordion-body">
+
+                            <code>flatMap()</code> transforms each element into
+                            a stream and then flattens those streams into one
+                            stream.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q8 -->
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#streamQuestionEight">
+
+                            Are parallel streams always faster?
+
+                        </button>
+
+                    </h2>
+
+                    <div id="streamQuestionEight"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#streamQuestions">
+
+                        <div class="accordion-body">
+
+                            No. Performance depends on the workload, data
+                            size, operation costs, hardware, ordering
+                            requirements, and thread-safety characteristics.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+        <section class="mb-4">
+
+            <div class="alert alert-primary border-0">
+
+                <h5 class="fw-bold">
+                    Summary
+                </h5>
+
+                <p class="mb-0">
+                    The Java Stream API provides a powerful way to process
+                    collections and other data sources using declarative
+                    pipelines. Important operations include filter, map,
+                    flatMap, distinct, sorted, limit, skip, reduce, collect,
+                    groupingBy, matching operations, and primitive streams.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <div class="d-flex justify-content-between border-top pt-4">
+
+            <a href="@Url.Action(
+                               "FunctionalInterfaces",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-outline-secondary px-4">
+
+                ← Previous: Topic
+
+            </a>
+
+
+            <a href="@Url.Action(
+                               "Optional",
+                               "AdvancedFeatures",
+                               new { area = "CoreJava" }
+                           )"
+               class="btn btn-primary px-4">
+
+                Next: Topic
+
+                <span class="ms-2">→</span>
+
+            </a>
+
+        </div>
+
+    </div>
+</div>

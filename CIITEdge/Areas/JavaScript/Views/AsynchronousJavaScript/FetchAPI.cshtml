@@ -1,0 +1,848 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Fetch API in JavaScript";
+}
+
+<style>
+
+    #javascript-fetch-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-fetch-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    /* ==============================
+       PAGE TITLE
+       ============================== */
+
+    #javascript-fetch-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-fetch-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    /* ==============================
+       SECTION
+       ============================== */
+
+    #javascript-fetch-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-fetch-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    /* ==============================
+       CONCEPT BOX
+       ============================== */
+
+    #javascript-fetch-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #javascript-fetch-page .concept-box h5 {
+        color: #5b21b6;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-fetch-page .concept-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    /* ==============================
+       FETCH FLOW DIAGRAM
+       ============================== */
+
+    #javascript-fetch-page .flow-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-fetch-page .flow-title {
+        text-align: center;
+        color: #5b21b6;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    #javascript-fetch-page .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-fetch-page .flow-box {
+        min-width: 140px;
+        padding: 18px 16px;
+        text-align: center;
+        background: #ffffff;
+        border: 2px solid #7042d0;
+        border-radius: 8px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    #javascript-fetch-page .flow-box.start {
+        background: #7042d0;
+        color: #ffffff;
+    }
+
+    #javascript-fetch-page .flow-box.result {
+        border-color: #198754;
+        color: #198754;
+    }
+
+    #javascript-fetch-page .flow-arrow {
+        color: #7042d0;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    #javascript-fetch-page .flow-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 14px;
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       CODE SECTION
+       ============================== */
+
+    #javascript-fetch-page .code-section {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    #javascript-fetch-page .code-box {
+        background-color: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 18px;
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+        white-space: pre;
+    }
+
+    /* ==============================
+       TRY IT BUTTON
+       ============================== */
+
+    #javascript-fetch-page .try-it-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 12px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-fetch-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 6px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    #javascript-fetch-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+    }
+
+    /* ==============================
+       OUTPUT BOX
+       ============================== */
+
+    #javascript-fetch-page .output-box {
+        background-color: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 6px;
+        padding: 15px 18px;
+        margin-bottom: 30px;
+        color: #198754;
+        font-weight: 600;
+    }
+
+    /* ==============================
+       NOTE BOX
+       ============================== */
+
+    #javascript-fetch-page .note-box {
+        background-color: #fff8e1;
+        border-left: 4px solid #ffc107;
+        border-radius: 6px;
+        padding: 16px 18px;
+        margin-top: 25px;
+        margin-bottom: 30px;
+        color: #664d03;
+        line-height: 1.7;
+    }
+
+    /* ==============================
+       SUMMARY
+       ============================== */
+
+    #javascript-fetch-page .summary-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 30px;
+    }
+
+    #javascript-fetch-page .summary-box h2 {
+        color: #5b21b6;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    #javascript-fetch-page .summary-box p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* ==============================
+       NAVIGATION
+       ============================== */
+
+    #javascript-fetch-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-fetch-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+    #javascript-fetch-page .previous-btn {
+        background-color: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-fetch-page .next-btn {
+        background-color: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-fetch-page .previous-btn:hover {
+        background-color: #e9ecef;
+        color: #212529;
+        text-decoration: none;
+    }
+
+    #javascript-fetch-page .next-btn:hover {
+        background-color: #4c1d95;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    /* ==============================
+       RESPONSIVE
+       ============================== */
+
+    @@media (max-width: 768px) {
+
+        #javascript-fetch-page .flow-row {
+            flex-direction: column;
+        }
+
+        #javascript-fetch-page .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        #javascript-fetch-page .bottom-navigation {
+            flex-direction: column;
+        }
+
+        #javascript-fetch-page .nav-btn {
+            justify-content: center;
+        }
+    }
+
+</style>
+
+
+<main id="javascript-fetch-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- ==============================================
+             LEFT SIDE - COURSE SYLLABUS
+             ============================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- ==============================================
+             RIGHT SIDE - CONTENT
+             ============================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- PAGE TITLE -->
+
+                <h1 class="page-title">
+                    Fetch API in JavaScript
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript uses the Fetch API to request
+                    data from servers and work with asynchronous operations.
+                </p>
+
+
+                <!-- ==============================================
+                     WHAT IS FETCH API
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    What is Fetch API?
+                </h2>
+
+                <p class="section-text">
+                    The <strong>Fetch API</strong> is a modern JavaScript
+                    API used to make HTTP requests and communicate with
+                    web servers.
+                </p>
+
+                <p class="section-text">
+                    It can be used to retrieve data from an API,
+                    send data to a server, and work with JSON responses.
+                </p>
+
+
+                <!-- SIMPLE DEFINITION -->
+
+                <div class="concept-box">
+
+                    <h5>
+                        Simple Definition
+                    </h5>
+
+                    <p>
+                        Fetch API allows JavaScript to communicate with
+                        a server and get or send data over HTTP.
+                    </p>
+
+                </div>
+
+
+                <!-- ==============================================
+                     FETCH FLOW DIAGRAM
+                     ============================================== -->
+
+                <div class="flow-card">
+
+                    <div class="flow-title">
+                        How Fetch API Works
+                    </div>
+
+                    <div class="flow-row">
+
+                        <div class="flow-box start">
+                            JavaScript
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            fetch()
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Server / API
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box">
+                            Response
+                        </div>
+
+                        <div class="flow-arrow">
+                            →
+                        </div>
+
+                        <div class="flow-box result">
+                            Data
+                        </div>
+
+                    </div>
+
+                    <p class="flow-caption">
+                        JavaScript sends a request, the server returns a response,
+                        and JavaScript processes the received data.
+                    </p>
+
+                </div>
+
+
+                <!-- ==============================================
+                     BASIC SYNTAX
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Fetch API Syntax
+                </h2>
+
+                <p class="section-text">
+                    The basic Fetch API syntax starts with the
+                    <strong>fetch()</strong> function.
+                </p>
+
+                <div class="code-section">
+
+<pre class="code-box"><code>fetch("https://example.com/data")
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+    })
+    .catch(function(error) {
+        console.log(error);
+    });</code></pre>
+
+                </div>
+
+
+                <!-- ==============================================
+                     EXAMPLE 1
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Example 1: Basic Fetch Concept
+                </h2>
+
+                <p class="section-text">
+                    In a real application, <strong>fetch()</strong>
+                    can request data from an API. The example below
+                    shows the basic request flow.
+                </p>
+
+                <div class="code-section">
+
+<pre class="code-box"><code>fetch("https://example.com/api/data")
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+    })
+    .catch(function(error) {
+        console.log("Error:", error);
+    });</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryFetchExample1()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="output-box">
+                    Request started successfully.
+                    <br />
+                    Data received from the API.
+                </div>
+
+
+                <!-- ==============================================
+                     EXAMPLE 2
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Example 2: Fetch JSON Data
+                </h2>
+
+                <p class="section-text">
+                    Most APIs return data in JSON format.
+                    The <strong>response.json()</strong> method
+                    converts the response into a JavaScript object.
+                </p>
+
+                <div class="code-section">
+
+<pre class="code-box"><code>fetch("https://example.com/api/student")
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(student) {
+        console.log("Name:", student.name);
+        console.log("Course:", student.course);
+    });</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryFetchExample2()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="output-box">
+                    Name: Rahul
+                    <br />
+                    Course: JavaScript
+                </div>
+
+
+                <!-- ==============================================
+                     EXAMPLE 3
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Example 3: Fetch with async and await
+                </h2>
+
+                <p class="section-text">
+                    Fetch API is commonly used with
+                    <strong>async</strong> and <strong>await</strong>
+                    to make asynchronous code easier to read.
+                </p>
+
+                <div class="code-section">
+
+<pre class="code-box"><code>async function getData() {
+
+    const response =
+        await fetch("https://example.com/api/data");
+
+    const data =
+        await response.json();
+
+    console.log(data);
+}
+
+getData();</code></pre>
+
+                    <div class="try-it-wrapper">
+
+                        <button type="button"
+                                class="try-it-btn"
+                                onclick="tryFetchExample3()">
+
+                            <span>▶</span>
+                            <span>Try It</span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="output-box">
+                    Fetch completed successfully.
+                    <br />
+                    Data loaded using async and await.
+                </div>
+
+
+                <!-- ==============================================
+                     COMPILER NOTE
+                     ============================================== -->
+
+                <div class="note-box">
+
+                    <strong>Compiler Note:</strong>
+
+                    <br />
+
+                    The CIIT JavaScript compiler is
+                    console-based. The Try It buttons use
+                    <strong>compiler-safe examples</strong> so that
+                    output appears immediately in the compiler.
+
+                    <br /><br />
+
+                    The code displayed in the lesson shows the
+                    real Fetch API syntax, while the Try It version
+                    demonstrates the same concept without depending
+                    on an external API or network connection.
+
+                </div>
+
+
+                <!-- ==============================================
+                     WHY USE FETCH API
+                     ============================================== -->
+
+                <h2 class="section-title">
+                    Why Use Fetch API?
+                </h2>
+
+                <div class="concept-box">
+
+                    <h5>
+                        Important Benefits
+                    </h5>
+
+                    <p>
+                        • Used to communicate with web servers.
+                    </p>
+
+                    <p>
+                        • Can retrieve data from APIs.
+                    </p>
+
+                    <p>
+                        • Can send data to servers.
+                    </p>
+
+                    <p>
+                        • Works with JSON responses.
+                    </p>
+
+                    <p>
+                        • Works well with Promises.
+                    </p>
+
+                    <p>
+                        • Can be combined with async and await.
+                    </p>
+
+                </div>
+
+
+                <!-- ==============================================
+                     SUMMARY
+                     ============================================== -->
+
+                <div class="summary-box">
+
+                    <h2 class="h4">
+                        Summary
+                    </h2>
+
+                    <p>
+                        The Fetch API is used to make HTTP requests
+                        from JavaScript. It returns a Promise and
+                        can be used with <strong>then()</strong>,
+                        <strong>catch()</strong>, and
+                        <strong>async/await</strong>. Fetch API is
+                        commonly used when working with web APIs
+                        and server-side data.
+                    </p>
+
+                </div>
+
+
+                <!-- ==============================================
+                     NAVIGATION
+                     ============================================== -->
+
+              <div class="bottom-navigation">
+
+    <!-- PREVIOUS -->
+    <a href="@Url.Action("AsyncAwait", "AsynchronousJavaScript", new { area = "JavaScript" })"
+       class="nav-btn previous-btn">
+
+        <span>←</span>
+
+        <span>
+            Previous: async and await
+        </span>
+
+    </a>
+
+
+    <!-- NEXT : MODULE 11 -->
+    <a href="@Url.Action("Index", "WebAPIBrowserStorage", new { area = "JavaScript" })"
+       class="nav-btn next-btn">
+
+        <span>
+            Next: Web APIs & Browser Storage
+        </span>
+
+        <span>→</span>
+
+    </a>
+
+</div>
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       OPEN CIIT JAVASCRIPT COMPILER
+       ========================================================= */
+
+    function openCompiler(code) {
+
+        var compilerUrl =
+            "/JavaScriptCompiler/Index?code=" +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            "_blank"
+        );
+    }
+
+
+    /* =========================================================
+       EXAMPLE 1
+       BASIC FETCH CONCEPT
+
+       Compiler-safe version
+       ========================================================= */
+
+    function tryFetchExample1() {
+
+        var code =
+`console.log("Request started successfully.");
+
+console.log("Fetching data from server...");
+
+console.log("Data received from the API.");`;
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 2
+       FETCH JSON DATA
+
+       Compiler-safe version
+       ========================================================= */
+
+    function tryFetchExample2() {
+
+        var code =
+`var student = {
+    name: "Rahul",
+    course: "JavaScript"
+};
+
+console.log("Name:", student.name);
+console.log("Course:", student.course);`;
+
+        openCompiler(code);
+
+    }
+
+
+    /* =========================================================
+       EXAMPLE 3
+       ASYNC / AWAIT FETCH
+
+       Compiler-safe version
+       ========================================================= */
+
+    function tryFetchExample3() {
+
+        var code =
+`console.log("Fetching data...");
+
+console.log("Fetch completed successfully.");
+
+console.log("Data loaded using async and await.");`;
+
+        openCompiler(code);
+
+    }
+
+</script>

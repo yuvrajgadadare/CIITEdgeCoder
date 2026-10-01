@@ -1,0 +1,1005 @@
+﻿@{
+    Layout = "~/Areas/JavaScript/Views/Shared/JavaScriptLayout.cshtml";
+    ViewData["Title"] = "Arrays";
+}
+
+<style>
+    #javascript-arrays-page {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    #javascript-arrays-page .content-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #javascript-arrays-page .page-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 12px;
+    }
+
+    #javascript-arrays-page .lead-text {
+        color: #6c757d;
+        font-size: 17px;
+        line-height: 1.8;
+        margin-bottom: 28px;
+    }
+
+    #javascript-arrays-page .section-title {
+        font-size: 27px;
+        font-weight: 700;
+        color: #212529;
+        margin-top: 32px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-arrays-page .section-text {
+        color: #495057;
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+
+    /* =====================================================
+       CONCEPT BOX
+       ===================================================== */
+
+    #javascript-arrays-page .concept-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    /* =====================================================
+       RELATED IMAGE
+       ===================================================== */
+
+    #javascript-arrays-page .image-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 25px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #javascript-arrays-page .arrays-image {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    #javascript-arrays-page .image-caption {
+        text-align: center;
+        color: #6c757d;
+        font-size: 13px;
+        margin: 12px 5px 0;
+    }
+
+    /* =====================================================
+       PART CARDS
+       ===================================================== */
+
+    #javascript-arrays-page .part-card {
+        background: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+
+    #javascript-arrays-page .part-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #6f42c1;
+        color: #ffffff;
+        font-weight: 700;
+        margin-right: 10px;
+    }
+
+    /* =====================================================
+       ARRAY DIAGRAM
+       ===================================================== */
+
+    #javascript-arrays-page .diagram-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 25px;
+        margin: 25px 0;
+    }
+
+    #javascript-arrays-page .diagram-title {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 25px;
+    }
+
+    #javascript-arrays-page .array-flow {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    #javascript-arrays-page .array-cell {
+        width: 125px;
+        text-align: center;
+    }
+
+    #javascript-arrays-page .index-box {
+        background: #6f42c1;
+        color: #ffffff;
+        padding: 7px;
+        border-radius: 6px 6px 0 0;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    #javascript-arrays-page .value-box {
+        background: #ffffff;
+        border: 2px solid #6f42c1;
+        border-top: none;
+        padding: 16px 8px;
+        border-radius: 0 0 6px 6px;
+        font-weight: 600;
+        color: #212529;
+    }
+
+    #javascript-arrays-page .diagram-arrow {
+        font-size: 28px;
+        color: #6f42c1;
+        margin-top: 35px;
+    }
+
+    /* =====================================================
+       CODE BOX
+       ===================================================== */
+
+    #javascript-arrays-page .code-box {
+        background: #212529;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    #javascript-arrays-page .code-box pre {
+        margin: 0;
+    }
+
+    /* =====================================================
+       TRY IT
+       ===================================================== */
+
+    #javascript-arrays-page .try-it-container {
+        text-align: right;
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+
+    #javascript-arrays-page .try-it-btn {
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        border-radius: 6px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        cursor: pointer;
+    }
+
+    #javascript-arrays-page .try-it-btn:hover {
+        background-color: #157347;
+        border-color: #157347;
+    }
+
+    /* =====================================================
+       OUTPUT
+       ===================================================== */
+
+    #javascript-arrays-page .output-box {
+        background: #f8f9fa;
+        border-left: 4px solid #198754;
+        border-radius: 6px;
+        padding: 14px 16px;
+        margin-top: 12px;
+        color: #198754;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    /* =====================================================
+       NOTE
+       ===================================================== */
+
+    #javascript-arrays-page .note-box {
+        background: #fff8e1;
+        border-left: 4px solid #ffc107;
+        border-radius: 7px;
+        padding: 18px;
+        margin-top: 25px;
+    }
+
+    /* =====================================================
+       SUMMARY
+       ===================================================== */
+
+    #javascript-arrays-page .summary-box {
+        background: #e0f7fa;
+        border: 1px solid #90e0ef;
+        border-radius: 10px;
+        padding: 22px;
+        margin-top: 32px;
+    }
+
+    #javascript-arrays-page .summary-box h2 {
+        color: #075985;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    #javascript-arrays-page .summary-box p {
+        color: #075985;
+        line-height: 1.8;
+        margin-bottom: 0;
+    }
+
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
+
+    #javascript-arrays-page .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    #javascript-arrays-page .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    #javascript-arrays-page .previous-btn {
+        background: #f1f3f5;
+        color: #495057;
+        border: 1px solid #dee2e6;
+    }
+
+    #javascript-arrays-page .next-btn {
+        background: #5b21b6;
+        color: #ffffff;
+        border: 1px solid #5b21b6;
+    }
+
+    #javascript-arrays-page .next-btn:hover {
+        background: #4c1d95;
+        color: #ffffff;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @@media (max-width: 768px) {
+
+        #javascript-arrays-page .content-section {
+            padding: 24px;
+        }
+
+        #javascript-arrays-page .page-title {
+            font-size: 30px;
+        }
+
+        #javascript-arrays-page .arrays-image {
+            height: 230px;
+        }
+
+        #javascript-arrays-page .bottom-navigation {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        #javascript-arrays-page .nav-btn {
+            justify-content: center;
+        }
+    }
+</style>
+
+
+<main id="javascript-arrays-page" class="container">
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             LEFT SIDE - COMPLETE COURSE SYLLABUS
+             ===================================================== -->
+
+        <aside class="col-lg-3">
+
+            @Html.Partial(
+                "~/Areas/JavaScript/Views/Shared/JavaScriptTopics.cshtml"
+            )
+
+        </aside>
+
+
+        <!-- =====================================================
+             RIGHT SIDE - CONTENT
+             ===================================================== -->
+
+        <section class="col-lg-9">
+
+            <div class="content-section">
+
+                <!-- =================================================
+                     PAGE TITLE
+                     ================================================= -->
+
+                <h1 class="page-title">
+                    Arrays
+                </h1>
+
+                <p class="lead-text">
+                    Learn how JavaScript Arrays store multiple values
+                    inside a single variable and how to access and
+                    work with individual elements.
+                </p>
+
+
+                <!-- =================================================
+                     REAL ARRAY IMAGE
+                     ================================================= -->
+
+                <div class="image-card">
+
+                    <img src="https://miro.medium.com/v2/resize%3Afit%3A1200/1%2A02WCVa8-GUZUP5eb2SH1Eg.png"
+                         alt="JavaScript Array creation, indexing, push and length"
+                         class="arrays-image" />
+
+                    <p class="image-caption">
+                        JavaScript Array example showing elements,
+                        indexes, adding values, and array length.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SIMPLE EXPLANATION
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Simple Explanation
+                </h2>
+
+                <div class="concept-box">
+
+                    <p class="section-text mb-0">
+
+                        An <strong>Array</strong> is used to store multiple
+                        values inside a single variable.
+
+                        <br /><br />
+
+                        For example, instead of creating separate variables
+                        for different course names, we can store all the
+                        course names inside one Array.
+
+                        <br /><br />
+
+                        Each value inside an Array has an
+                        <strong>index</strong>. JavaScript Array indexing
+                        starts from <strong>0</strong>.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     BASIC SYNTAX
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Basic Array Syntax
+                </h2>
+
+                <div class="code-box">
+
+<pre><code>const courses = [
+    "Java",
+    ".NET",
+    "Python",
+    "JavaScript"
+];</code></pre>
+
+                </div>
+
+
+                <!-- =================================================
+                     ARRAY PARTS
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Important Parts of an Array
+                </h2>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        1
+                    </span>
+
+                    <strong>
+                        Array Name
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        The variable used to store the Array.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        2
+                    </span>
+
+                    <strong>
+                        Array Elements
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        The actual values stored inside the Array.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        3
+                    </span>
+
+                    <strong>
+                        Index
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        The position number of an element. The first
+                        element starts at index <strong>0</strong>.
+                    </p>
+
+                </div>
+
+
+                <div class="part-card">
+
+                    <span class="part-number">
+                        4
+                    </span>
+
+                    <strong>
+                        length
+                    </strong>
+
+                    <p class="section-text mt-2 mb-0">
+                        The <strong>length</strong> property tells us
+                        how many elements are present in the Array.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     ARRAY DIAGRAM
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Array Index Diagram
+                </h2>
+
+                <div class="diagram-box">
+
+                    <div class="diagram-title">
+                        Array Elements and Their Indexes
+                    </div>
+
+                    <div class="array-flow">
+
+                        <div class="array-cell">
+
+                            <div class="index-box">
+                                Index 0
+                            </div>
+
+                            <div class="value-box">
+                                Java
+                            </div>
+
+                        </div>
+
+
+                        <div class="array-cell">
+
+                            <div class="index-box">
+                                Index 1
+                            </div>
+
+                            <div class="value-box">
+                                .NET
+                            </div>
+
+                        </div>
+
+
+                        <div class="array-cell">
+
+                            <div class="index-box">
+                                Index 2
+                            </div>
+
+                            <div class="value-box">
+                                Python
+                            </div>
+
+                        </div>
+
+
+                        <div class="array-cell">
+
+                            <div class="index-box">
+                                Index 3
+                            </div>
+
+                            <div class="value-box">
+                                JavaScript
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 1
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 1: Creating an Array
+                </h2>
+
+                <p class="section-text">
+                    We can create an Array using square brackets
+                    <strong>[]</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>const courses = [
+    "Java",
+    ".NET",
+    "Python",
+    "JavaScript"
+];
+
+console.log(courses);</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrayExample1()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    Java, .NET, Python, JavaScript
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 2
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 2: Accessing Array Elements
+                </h2>
+
+                <p class="section-text">
+                    We can access an Array element using its index.
+                    Remember that the first index is <strong>0</strong>.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>const courses = [
+    "Java",
+    ".NET",
+    "Python",
+    "JavaScript"
+];
+
+console.log(courses[0]);
+console.log(courses[2]);</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrayExample2()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    Java
+                    <br />
+
+                    Python
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 3
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 3: Finding Array Length
+                </h2>
+
+                <p class="section-text">
+                    The <strong>length</strong> property tells us the
+                    number of elements present in an Array.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>const courses = [
+    "Java",
+    ".NET",
+    "Python",
+    "JavaScript"
+];
+
+console.log(courses.length);</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrayExample3()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    4
+
+                </div>
+
+
+                <!-- =================================================
+                     EXAMPLE 4
+                     ================================================= -->
+
+                <h2 class="section-title">
+                    Example 4: Updating an Array Element
+                </h2>
+
+                <p class="section-text">
+                    We can change an existing Array element by assigning
+                    a new value to its index.
+                </p>
+
+                <div class="code-box">
+
+<pre><code>const courses = [
+    "Java",
+    ".NET",
+    "Python"
+];
+
+courses[1] = "JavaScript";
+
+console.log(courses);</code></pre>
+
+                </div>
+
+                <div class="try-it-container">
+
+                    <button type="button"
+                            class="try-it-btn"
+                            onclick="runArrayExample4()">
+
+                        ▶ Try It
+
+                    </button>
+
+                </div>
+
+                <div class="output-box">
+
+                    <strong>
+                        Output:
+                    </strong>
+
+                    <br />
+
+                    Java, JavaScript, Python
+
+                </div>
+
+
+                <!-- =================================================
+                     IMPORTANT NOTE
+                     ================================================= -->
+
+                <div class="note-box">
+
+                    <strong>
+                        Important Note:
+                    </strong>
+
+                    <p class="section-text mb-0 mt-2">
+
+                        JavaScript Arrays are
+                        <strong>zero-indexed</strong>.
+
+                        <br /><br />
+
+                        This means the first element has index
+                        <strong>0</strong>, the second element has
+                        index <strong>1</strong>, and so on.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     SUMMARY
+                     ================================================= -->
+
+                <div class="summary-box">
+
+                    <h2>
+                        Summary
+                    </h2>
+
+                    <p>
+
+                        An Array is a collection of multiple values stored
+                        inside a single variable. JavaScript Arrays use
+                        zero-based indexing, which means the first element
+                        is at index 0. We can create Arrays, access their
+                        elements, find their length, and update existing
+                        values using their indexes. JavaScript also
+                        provides many built-in Array methods for performing
+                        more operations.
+
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     NAVIGATION
+                     ================================================= -->
+
+                <div class="bottom-navigation">
+
+                    <a href="@Url.Action("Index", "ArraysStrings", new { area = "JavaScript" })"
+                       class="nav-btn previous-btn">
+
+                        ← Previous: Arrays &amp; Strings
+
+                    </a>
+
+
+                    <a href="@Url.Action("ArrayMethods", "ArraysStrings", new { area = "JavaScript" })"
+                       class="nav-btn next-btn">
+
+                        Next: Array Methods →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     TRY IT JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+    function openCompiler(code) {
+
+        const compilerUrl =
+            '/JavaScriptCompiler/Index?code=' +
+            encodeURIComponent(code);
+
+        window.open(
+            compilerUrl,
+            '_blank'
+        );
+    }
+
+
+    // ========================================================
+    // EXAMPLE 1
+    // ========================================================
+
+    function runArrayExample1() {
+
+        const code = `
+const courses = [
+    "Java",
+    ".NET",
+    "Python",
+    "JavaScript"
+];
+
+console.log(courses);
+`;
+
+        openCompiler(code);
+    }
+
+
+    // ========================================================
+    // EXAMPLE 2
+    // ========================================================
+
+    function runArrayExample2() {
+
+        const code = `
+const courses = [
+    "Java",
+    ".NET",
+    "Python",
+    "JavaScript"
+];
+
+console.log(courses[0]);
+console.log(courses[2]);
+`;
+
+        openCompiler(code);
+    }
+
+
+    // ========================================================
+    // EXAMPLE 3
+    // ========================================================
+
+    function runArrayExample3() {
+
+        const code = `
+const courses = [
+    "Java",
+    ".NET",
+    "Python",
+    "JavaScript"
+];
+
+console.log(courses.length);
+`;
+
+        openCompiler(code);
+    }
+
+
+    // ========================================================
+    // EXAMPLE 4
+    // ========================================================
+
+    function runArrayExample4() {
+
+        const code = `
+const courses = [
+    "Java",
+    ".NET",
+    "Python"
+];
+
+courses[1] = "JavaScript";
+
+console.log(courses);
+`;
+
+        openCompiler(code);
+    }
+
+</script>
