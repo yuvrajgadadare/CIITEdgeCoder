@@ -1,0 +1,652 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    /* =========================================================
+       REGISTER PAGE
+       ========================================================= */
+
+    .ciit-register-page {
+        min-height: calc(100vh - 150px);
+        background: #f3f7fc;
+        padding: 45px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* =========================================================
+       MAIN CARD
+       ========================================================= */
+
+    .ciit-register-card {
+        width: 100%;
+        max-width: 980px;
+        min-height: 590px;
+        display: flex;
+        overflow: hidden;
+        background: #ffffff;
+        border-radius: 22px;
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.14);
+    }
+
+    /* =========================================================
+       LEFT IMAGE SECTION
+       ========================================================= */
+
+    .ciit-register-left {
+        width: 45%;
+        position: relative;
+        overflow: hidden;
+
+        background-image:
+            linear-gradient(
+                rgba(0, 103, 195, 0.82),
+                rgba(0, 76, 160, 0.92)
+            ),
+            url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85");
+
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+
+        display: flex;
+        align-items: center;
+        padding: 55px 45px;
+    }
+
+    .ciit-register-left::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.08);
+        top: -120px;
+        right: -110px;
+    }
+
+    .ciit-register-left::after {
+        content: "";
+        position: absolute;
+        width: 230px;
+        height: 230px;
+        border-radius: 50%;
+        background: rgba(0, 183, 255, 0.18);
+        bottom: -110px;
+        left: -80px;
+    }
+
+    .ciit-register-left-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+    }
+
+    /* =========================================================
+       BRAND
+       ========================================================= */
+
+    .ciit-register-brand {
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        margin-bottom: 55px;
+    }
+
+    .ciit-register-brand span {
+        color: #83e8ff;
+    }
+
+    /* =========================================================
+       LEFT HEADING
+       ========================================================= */
+
+    .ciit-register-welcome-title {
+        font-size: 40px;
+        line-height: 1.08;
+        font-weight: 800;
+        margin: 0 0 18px;
+    }
+
+    .ciit-register-welcome-title span {
+        color: #82e7ff;
+    }
+
+    .ciit-register-description {
+        font-size: 14px;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.9);
+        max-width: 390px;
+        margin-bottom: 30px;
+    }
+
+    /* =========================================================
+       FEATURES
+       ========================================================= */
+
+    .ciit-register-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ciit-register-features li {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        font-size: 13px;
+        margin-bottom: 13px;
+        color: #ffffff;
+    }
+
+    .ciit-feature-check {
+        width: 21px;
+        height: 21px;
+        min-width: 21px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.20);
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    /* =========================================================
+       RIGHT FORM SECTION
+       ========================================================= */
+
+    .ciit-register-right {
+        width: 55%;
+        background: #ffffff;
+        padding: 55px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ciit-register-form {
+        width: 100%;
+        max-width: 440px;
+    }
+
+    /* =========================================================
+       FORM HEADING
+       ========================================================= */
+
+    .ciit-register-title {
+        font-size: 32px;
+        line-height: 1.1;
+        font-weight: 800;
+        color: #172033;
+        margin: 0 0 7px;
+    }
+
+    .ciit-register-subtitle {
+        color: #718096;
+        font-size: 14px;
+        margin: 0 0 28px;
+    }
+
+    /* =========================================================
+       FORM GROUP
+       ========================================================= */
+
+    .ciit-form-group {
+        margin-bottom: 17px;
+    }
+
+    .ciit-form-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: #263238;
+        margin-bottom: 7px;
+    }
+
+    .ciit-form-control {
+        width: 100%;
+        height: 48px;
+        border: 1px solid #d8e1eb;
+        border-radius: 9px;
+        padding: 0 14px;
+        font-size: 14px;
+        color: #172033;
+        background: #ffffff;
+        outline: none;
+        transition: all 0.2s ease;
+    }
+
+    .ciit-form-control::placeholder {
+        color: #9aa6b2;
+    }
+
+    .ciit-form-control:focus {
+        border-color: #0878d9;
+        box-shadow: 0 0 0 3px rgba(8,120,217,0.11);
+    }
+
+    /* =========================================================
+       PASSWORD
+       ========================================================= */
+
+    .ciit-password-wrapper {
+        position: relative;
+    }
+
+    .ciit-password-wrapper .ciit-form-control {
+        padding-right: 48px;
+    }
+
+    .ciit-password-toggle {
+        position: absolute;
+        top: 50%;
+        right: 14px;
+        transform: translateY(-50%);
+        border: none;
+        background: transparent;
+        padding: 4px;
+        cursor: pointer;
+        color: #718096;
+        font-size: 17px;
+        line-height: 1;
+    }
+
+    .ciit-password-toggle:hover {
+        color: #0878d9;
+    }
+
+    /* =========================================================
+       CREATE ACCOUNT BUTTON
+       ========================================================= */
+
+    .ciit-create-button {
+        width: 100%;
+        height: 49px;
+        margin-top: 6px;
+        border: none;
+        border-radius: 9px;
+        background: #0878d9;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .ciit-create-button:hover {
+        background: #0668bd;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(8,120,217,0.22);
+    }
+
+    /* =========================================================
+       DIVIDER
+       ========================================================= */
+
+    .ciit-register-divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 24px 0;
+        color: #9aa6b2;
+        font-size: 12px;
+    }
+
+    .ciit-register-divider::before,
+    .ciit-register-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #e5eaf0;
+    }
+
+    /* =========================================================
+       LOGIN LINK
+       ========================================================= */
+
+    .ciit-login-text {
+        text-align: center;
+        color: #697586;
+        font-size: 13px;
+    }
+
+    .ciit-login-link {
+        color: #0878d9;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .ciit-login-link:hover {
+        text-decoration: underline;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @@media (max-width: 900px) {
+
+        .ciit-register-card {
+            max-width: 760px;
+        }
+
+        .ciit-register-left {
+            width: 42%;
+            padding: 40px 30px;
+        }
+
+        .ciit-register-right {
+            width: 58%;
+            padding: 45px 40px;
+        }
+
+        .ciit-register-welcome-title {
+            font-size: 32px;
+        }
+
+        .ciit-register-brand {
+            margin-bottom: 40px;
+        }
+    }
+
+
+    @@media (max-width: 700px) {
+
+        .ciit-register-page {
+            padding: 25px 15px;
+        }
+
+        .ciit-register-card {
+            flex-direction: column;
+            max-width: 500px;
+        }
+
+        .ciit-register-left,
+        .ciit-register-right {
+            width: 100%;
+        }
+
+        .ciit-register-left {
+            min-height: 360px;
+            padding: 40px 30px;
+        }
+
+        .ciit-register-right {
+            padding: 40px 30px;
+        }
+
+        .ciit-register-brand {
+            margin-bottom: 35px;
+        }
+
+        .ciit-register-welcome-title {
+            font-size: 32px;
+        }
+    }
+
+</style>
+
+
+<!-- =========================================================
+     REGISTER PAGE
+     ========================================================= -->
+
+<div class="ciit-register-page">
+
+    <div class="ciit-register-card">
+
+
+        <!-- =====================================================
+             LEFT SIDE
+             ===================================================== -->
+
+        <div class="ciit-register-left">
+
+            <div class="ciit-register-left-content">
+
+                <div class="ciit-register-brand">
+                    CIIT <span>Stack Lab</span>
+                </div>
+
+
+                <h1 class="ciit-register-welcome-title">
+                    Start Your
+                    <br />
+                    <span>Learning Journey</span>
+                </h1>
+
+
+                <p class="ciit-register-description">
+                    Join CIIT Training Institute and build your
+                    programming skills through practical training,
+                    interactive tutorials, coding practice and
+                    real-world projects.
+                </p>
+
+
+                <ul class="ciit-register-features">
+
+                    <li>
+                        <span class="ciit-feature-check">✓</span>
+                        Industry-Relevant Technologies
+                    </li>
+
+                    <li>
+                        <span class="ciit-feature-check">✓</span>
+                        Hands-on Practical Learning
+                    </li>
+
+                    <li>
+                        <span class="ciit-feature-check">✓</span>
+                        Interactive Tutorials & Coding Practice
+                    </li>
+
+                    <li>
+                        <span class="ciit-feature-check">✓</span>
+                        Build Real-World Projects
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             RIGHT SIDE
+             ===================================================== -->
+
+        <div class="ciit-register-right">
+
+            <div class="ciit-register-form">
+
+
+                <h2 class="ciit-register-title">
+                    REGISTER 🤓
+                </h2>
+
+                <p class="ciit-register-subtitle">
+                    Create your CIIT Stack Lab account.
+                </p>
+
+
+                <!-- FIRST NAME -->
+
+                <div class="ciit-form-group">
+
+                    <label class="ciit-form-label">
+                        First Name
+                    </label>
+
+                    <input type="text"
+                           class="ciit-form-control"
+                           placeholder="Enter your first name"
+                           autocomplete="given-name" />
+
+                </div>
+
+
+                <!-- LAST NAME -->
+
+                <div class="ciit-form-group">
+
+                    <label class="ciit-form-label">
+                        Last Name
+                    </label>
+
+                    <input type="text"
+                           class="ciit-form-control"
+                           placeholder="Enter your last name"
+                           autocomplete="family-name" />
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="ciit-form-group">
+
+                    <label class="ciit-form-label">
+                        Email
+                    </label>
+
+                    <input type="email"
+                           class="ciit-form-control"
+                           placeholder="Enter your email"
+                           autocomplete="email" />
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="ciit-form-group">
+
+                    <label class="ciit-form-label">
+                        Password
+                    </label>
+
+                    <div class="ciit-password-wrapper">
+
+                        <input type="password"
+                               id="registerPassword"
+                               class="ciit-form-control"
+                               placeholder="Create a password"
+                               autocomplete="new-password" />
+
+                        <button type="button"
+                                class="ciit-password-toggle"
+                                id="togglePassword"
+                                aria-label="Show password">
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CREATE ACCOUNT -->
+
+                <button type="button"
+                        class="ciit-create-button">
+
+                    Create Account
+
+                </button>
+
+
+                <!-- DIVIDER -->
+
+                <div class="ciit-register-divider">
+                    OR
+                </div>
+
+
+                <!-- LOGIN -->
+
+                <div class="ciit-login-text">
+
+                    Already have an account?
+
+                    <a href="/Account/Login"
+                       class="ciit-login-link">
+
+                        Sign In
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const passwordInput =
+            document.getElementById("registerPassword");
+
+        const toggleButton =
+            document.getElementById("togglePassword");
+
+
+        if (passwordInput && toggleButton) {
+
+            toggleButton.addEventListener("click", function () {
+
+                if (passwordInput.type === "password") {
+
+                    passwordInput.type = "text";
+
+                    toggleButton.textContent = "🙈";
+
+                    toggleButton.setAttribute(
+                        "aria-label",
+                        "Hide password"
+                    );
+
+                }
+                else {
+
+                    passwordInput.type = "password";
+
+                    toggleButton.textContent = "👁";
+
+                    toggleButton.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+
+                }
+
+            });
+
+        }
+
+    });
+
+</script>

@@ -1,0 +1,626 @@
+﻿@{
+    ViewData["Title"] = "Sign in";
+}
+
+<style>
+    .ciit-login-wrapper {
+        min-height: 650px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 20px;
+        background: #f4f8fc;
+    }
+
+    .ciit-login-card {
+        width: 100%;
+        max-width: 1050px;
+        min-height: 560px;
+        display: flex;
+        overflow: hidden;
+        border-radius: 24px;
+        background: #ffffff;
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+    }
+
+    /* ================================
+           LEFT WELCOME SECTION
+           ================================ */
+
+    .ciit-welcome-section {
+        width: 50%;
+        position: relative;
+        overflow: hidden;
+        padding: 55px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #ffffff;
+        background: linear-gradient(145deg, #0878d9, #005bb5);
+    }
+
+        .ciit-welcome-section::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            top: -100px;
+            right: -90px;
+        }
+
+        .ciit-welcome-section::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(0, 170, 255, 0.18);
+            bottom: -100px;
+            left: -70px;
+        }
+
+    .ciit-welcome-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .ciit-logo-text {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 55px;
+    }
+
+        .ciit-logo-text span {
+            color: #7ee8ff;
+        }
+
+    .ciit-welcome-title {
+        font-size: 42px;
+        line-height: 1.1;
+        font-weight: 800;
+        margin-bottom: 18px;
+    }
+
+        .ciit-welcome-title span {
+            color: #8be8ff;
+        }
+
+    .ciit-welcome-description {
+        font-size: 15px;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.88);
+        max-width: 390px;
+        margin-bottom: 30px;
+    }
+
+    .ciit-welcome-points {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+        .ciit-welcome-points li {
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+            .ciit-welcome-points li::before {
+                content: "✓";
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 22px;
+                height: 22px;
+                margin-right: 10px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.18);
+                font-weight: 700;
+            }
+
+
+    /* ================================
+           RIGHT LOGIN SECTION
+           ================================ */
+
+    .ciit-login-section {
+        width: 50%;
+        padding: 55px 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+    }
+
+    .ciit-login-form {
+        width: 100%;
+        max-width: 390px;
+    }
+
+    .ciit-login-title {
+        font-size: 34px;
+        font-weight: 800;
+        color: #172033;
+        margin-bottom: 8px;
+    }
+
+    .ciit-login-subtitle {
+        color: #718096;
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .ciit-form-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #263238;
+        margin-bottom: 8px;
+    }
+
+    .ciit-form-group {
+        margin-bottom: 20px;
+    }
+
+    .ciit-form-control {
+        width: 100%;
+        height: 50px;
+        border: 1px solid #d9e2ec;
+        border-radius: 10px;
+        padding: 0 15px;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.2s ease;
+        background: #ffffff;
+        box-sizing: border-box;
+    }
+
+        .ciit-form-control:focus {
+            border-color: #0878d9;
+            box-shadow: 0 0 0 3px rgba(8, 120, 217, 0.12);
+        }
+
+
+    /* ================================
+           PASSWORD ROW
+           ================================ */
+
+    .ciit-password-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .ciit-forgot-link {
+        font-size: 13px;
+        color: #0878d9;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+        .ciit-forgot-link:hover {
+            text-decoration: underline;
+        }
+
+    /* Password input + eye button */
+
+    .ciit-password-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+        .ciit-password-wrapper .ciit-form-control {
+            padding-right: 52px;
+        }
+
+    .ciit-password-toggle {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: transparent;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #64748b;
+        transition: all 0.2s ease;
+        padding: 0;
+    }
+
+        .ciit-password-toggle:hover {
+            background: #eef6ff;
+            color: #0878d9;
+        }
+
+        .ciit-password-toggle svg {
+            width: 21px;
+            height: 21px;
+            pointer-events: none;
+        }
+
+
+    /* ================================
+           SIGN IN BUTTON
+           ================================ */
+
+    .ciit-signin-button {
+        width: 100%;
+        height: 50px;
+        border: none;
+        border-radius: 10px;
+        background: #0878d9;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-top: 5px;
+    }
+
+        .ciit-signin-button:hover {
+            background: #0668bd;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(8, 120, 217, 0.22);
+        }
+
+
+    /* ================================
+           DIVIDER
+           ================================ */
+
+    .ciit-divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 25px 0;
+        color: #9aa6b2;
+        font-size: 13px;
+    }
+
+        .ciit-divider::before,
+        .ciit-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e5eaf0;
+        }
+
+
+    /* ================================
+           REGISTER
+           ================================ */
+
+    .ciit-register-text {
+        text-align: center;
+        font-size: 14px;
+        color: #5f6b76;
+    }
+
+    .ciit-register-link {
+        color: #0878d9;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+        .ciit-register-link:hover {
+            text-decoration: underline;
+        }
+
+
+    /* ================================
+           RESPONSIVE
+           ================================ */
+
+    @@media (max-width: 768px) {
+
+        .ciit-login-wrapper {
+            padding: 25px 15px;
+        }
+
+        .ciit-login-card {
+            flex-direction: column;
+            max-width: 500px;
+        }
+
+        .ciit-welcome-section,
+        .ciit-login-section {
+            width: 100%;
+        }
+
+        .ciit-welcome-section {
+            min-height: 330px;
+            padding: 40px 30px;
+        }
+
+        .ciit-logo-text {
+            margin-bottom: 30px;
+        }
+
+        .ciit-welcome-title {
+            font-size: 32px;
+        }
+
+        .ciit-welcome-description {
+            margin-bottom: 20px;
+        }
+
+        .ciit-login-section {
+            padding: 40px 30px;
+        }
+    }
+</style>
+
+
+<div class="ciit-login-wrapper">
+
+    <div class="ciit-login-card">
+
+        <!-- =========================================
+             LEFT SIDE - CIIT WELCOME
+             ========================================= -->
+
+        <div class="ciit-welcome-section">
+
+            <div class="ciit-welcome-content">
+
+                <div class="ciit-logo-text">
+                    CIIT <span>Stack Lab</span>
+                </div>
+
+                <h1 class="ciit-welcome-title">
+                    Welcome<br />
+                    to <span>CIIT</span>
+                </h1>
+
+                <p class="ciit-welcome-description">
+                    Build your programming skills with CIIT Training Institute.
+                    Learn through practical training, interactive tutorials,
+                    hands-on coding and real-world projects.
+                </p>
+
+                <ul class="ciit-welcome-points">
+                    <li>Learn Industry-Relevant Technologies</li>
+                    <li>Hands-on Practical Learning</li>
+                    <li>Interactive Tutorials & Coding Practice</li>
+                    <li>Build Real-World Projects</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             RIGHT SIDE - LOGIN FORM
+             ========================================= -->
+
+        <div class="ciit-login-section">
+
+            <div class="ciit-login-form">
+
+                <h2 class="ciit-login-title">
+                    Sign in 🤓
+                </h2>
+
+                <p class="ciit-login-subtitle">
+                    Sign in to continue your learning journey.
+                </p>
+
+
+                <!-- EMAIL -->
+
+                <div class="ciit-form-group">
+
+                    <label class="ciit-form-label">
+                        Email
+                    </label>
+
+                    <input type="email"
+                           id="ciitEmail"
+                           class="ciit-form-control"
+                           placeholder="Enter your email"
+                           autocomplete="email" />
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="ciit-form-group">
+
+                    <div class="ciit-password-row">
+
+                        <label class="ciit-form-label mb-0">
+                            Password
+                        </label>
+
+                        <a href="#"
+                           class="ciit-forgot-link">
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+
+                    <div class="ciit-password-wrapper">
+
+                        <input type="password"
+                               id="ciitPassword"
+                               class="ciit-form-control"
+                               placeholder="Enter your password"
+                               autocomplete="current-password" />
+
+
+                        <!-- EYE BUTTON -->
+
+                        <button type="button"
+                                class="ciit-password-toggle"
+                                id="ciitPasswordToggle"
+                                aria-label="Show password"
+                                title="Show password">
+
+                            <!-- Eye icon -->
+
+                            <svg id="ciitEyeIcon"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round">
+
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path>
+
+                                <circle cx="12"
+                                        cy="12"
+                                        r="3"></circle>
+
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SIGN IN BUTTON -->
+
+                <button type="button"
+                        class="ciit-signin-button">
+                    Sign In
+                </button>
+
+
+                <!-- DIVIDER -->
+
+                <div class="ciit-divider">
+                    OR
+                </div>
+
+
+                <!-- REGISTER -->
+
+                <div class="ciit-register-text">
+
+                    Don't have an account?
+
+                    <a href="/Account/Register"
+                       class="ciit-register-link">
+                        Register
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     PASSWORD SHOW / HIDE SCRIPT
+     ========================================= -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const passwordInput =
+            document.getElementById("ciitPassword");
+
+        const passwordToggle =
+            document.getElementById("ciitPasswordToggle");
+
+        const eyeIcon =
+            document.getElementById("ciitEyeIcon");
+
+
+        if (passwordInput && passwordToggle && eyeIcon) {
+
+            passwordToggle.addEventListener("click", function () {
+
+                if (passwordInput.type === "password") {
+
+                    // SHOW PASSWORD
+                    passwordInput.type = "text";
+
+                    passwordToggle.setAttribute(
+                        "aria-label",
+                        "Hide password"
+                    );
+
+                    passwordToggle.setAttribute(
+                        "title",
+                        "Hide password"
+                    );
+
+                    // Change icon to eye-off
+
+                    eyeIcon.innerHTML = `
+                        <path d="M3 3l18 18"></path>
+
+                        <path d="M10.6 10.6
+                                 a2 2 0 0 0 2.8 2.8"></path>
+
+                        <path d="M9.9 4.2
+                                 A10.8 10.8 0 0 1 12 4
+                                 c6.5 0 10 8 10 8
+                                 a17.5 17.5 0 0 1-3.1 4.4"></path>
+
+                        <path d="M6.1 6.1
+                                 C3.5 8.2 2 12
+                                 2 12
+                                 s3.5 7 10 7
+                                 c1.5 0 2.8-.3 4-.8"></path>
+                    `;
+
+                }
+                else {
+
+                    // HIDE PASSWORD
+                    passwordInput.type = "password";
+
+                    passwordToggle.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+
+                    passwordToggle.setAttribute(
+                        "title",
+                        "Show password"
+                    );
+
+                    // Change icon back to eye
+
+                    eyeIcon.innerHTML = `
+                        <path d="M2 12s3.5-7 10-7
+                                 10 7 10 7-3.5 7-10 7
+                                 S2 12 2 12Z"></path>
+
+                        <circle cx="12"
+                                cy="12"
+                                r="3"></circle>
+                    `;
+                }
+
+            });
+
+        }
+
+    });
+
+</script>
